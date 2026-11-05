@@ -16,7 +16,12 @@ LER_CARTOES = r"""() => [...document.querySelectorAll('button, a')]
   .map(b => { let c = b; for (let i = 0; i < 14 && c.parentElement; i++) { c = c.parentElement;
       if (/\d\d:\d\d[\s\S]*\d\d:\d\d/.test(c.innerText) && /R\$/.test(c.innerText)) break; }
     const logos = [...c.querySelectorAll('img')].map(i => (i.src || '').split('/').pop()).filter(n => n && !/App-Icon|rounded|\.svg/.test(n));
-    return c.innerText.replace(/\n+/g, ' | ') + ' | LOGO:' + [...new Set(logos)].join(','); })"""
+    // Zupper: cada tarifa (Light, Classic...) com o preço e se inclui mala despachada: M=com mala, S=sem; '=' total, '+' acréscimo
+    const tarifas = [...c.querySelectorAll('.fare-family-card-content')].map(f => {
+      const m = f.innerText.replace(/\n+/g, ' ').match(/(\+)?\s*R\$\s*([\d.]+,\d\d)/);
+      const mala = [...f.querySelectorAll('.benefit-item')].some(e => /Bagagem Despachada/.test(e.textContent) && e.classList.contains('active'));
+      return m ? (mala ? 'M' : 'S') + (m[1] ? '+' : '=') + m[2] : ''; }).filter(Boolean).join(';');
+    return c.innerText.replace(/\n+/g, ' | ') + ' | LOGO:' + [...new Set(logos)].join(',') + (tarifas ? ' | TARIFAS:' + tarifas : ''); })"""
 
 
 def _min(h, m):
@@ -76,12 +81,22 @@ def _total(t, pax):
     return round((int(m[1].replace('.', '')) + int(m[2]) / 100) / pax) if m else None
 
 
+def _mala_zupper(t, pax):
+    """Quanto a mais, por pessoa, custa a tarifa mais barata da Zupper que inclui mala despachada (None se não mostrou)."""
+    m = re.search(r'TARIFAS:(\S+)', t)
+    extras = []
+    for item in (m[1].split(';') if m else []):
+        if item[0] == 'M':
+            extras.append(0 if item[1] == '=' else int(item[2:].replace('.', '').replace(',', '')) / 100)
+    return round(min(extras) / pax) if extras else None
+
+
 def ler_zupper(cartoes, pax):
     out = []
     for t in cartoes:
         perna, pp = _perna_zupper(t, _cia_logo(_logos(t)[0])), _total(t, pax)
         if perna and pp:
-            out.append({**perna, 'vend': 'Zupper', 'pp': pp})
+            out.append({**perna, 'vend': 'Zupper', 'pp': pp, 'mala': _mala_zupper(t, pax)})
     return out
 
 
@@ -95,7 +110,7 @@ def ler_zupper_iv(cartoes, pax):
         lg = _logos(t)
         ida, volta, pp = _perna_zupper(a, _cia_logo(lg[0])), _perna_zupper(b, _cia_logo(lg[-1])), _total(t, pax)
         if ida and volta and pp:
-            out.append({'vend': 'Zupper', 'pp': pp, 'pernas': {'ida': ida, 'volta': volta}})
+            out.append({'vend': 'Zupper', 'pp': pp, 'mala': _mala_zupper(t, pax), 'pernas': {'ida': ida, 'volta': volta}})
     return out
 
 
@@ -220,6 +235,11 @@ def _teste():
     assert (rv['cia'], rv['saida'], rv['direto']) == ('Gol', '04:05', True), r[0]
     assert _aceita(ri) and _aceita(rv) and not _aceita(r[1]['pernas']['ida'])   # ida por Viracopos fica fora
     assert ler_zupper([iv[0].split(' | Volta | ')[0] + ' | TOTAL A PAGAR | R$ 900,00 | LOGO:G3x.png'], 2)[0]['cia'] == 'Gol'
+    # tarifas com mala (valores reais da Zupper, 2 adultos): Light sem mala; Classic +R$238,02 e Flex +R$450,04 com mala
+    zm = zp[0] + ' | TARIFAS:S=1.855,44;M+238,02;M+450,04'
+    assert ler_zupper([zm], 2)[0]['mala'] == 119 and ler_zupper(zp[:1], 2)[0]['mala'] is None
+    assert _mala_zupper('x | TARIFAS:M=1.000,00;M+50,00', 2) == 0 and _mala_zupper('x | TARIFAS:S=900,00;S+10,00', 2) is None
+    assert ler_zupper_iv([iv[0] + ' | TARIFAS:S=2.975,00;M+476,04'], 2)[0]['mala'] == 238
     u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2)
     assert 'type=roundTrip' in u and '%22originAirport%22%3A%22JDO%22' in u and '%22destinationAirport%22%3A%22FOR%22' in u
     print('ok')

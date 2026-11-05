@@ -43,11 +43,12 @@ def texto_trecho(t):
         (f" | na cia {brl(t['ppCia'])}" if t.get('ppCia') and t['ppCia'] != t['pp'] else '')
 
 
-def pernas(c, tre):
-    """Os dois voos de uma combinação. Se ela é ida e volta comprada junta (c['iv']), voos e link são os do pacote,
-    e o preço só existe para o par."""
+def pernas(c, tre, mala=False):
+    """Os dois voos de uma combinação (mala=True: as opções com mala de 23 kg de cada data). Se ela é ida e volta
+    comprada junta (c['iv']), voos e link são os do pacote, e o preço só existe para o par."""
     if not c.get('iv'):
-        return tre[('ida', c['ida'])], tre[('volta', c['volta'])]
+        k = 'mala' if mala else None
+        return tuple(tre[(s, c[s])][k] if k else tre[(s, c[s])] for s in ('ida', 'volta'))
     p = c['iv']
     return tuple({**p['pernas'][s], 'rota': f"{p['pernas'][s]['orig']}-{p['pernas'][s]['dest']}", 'vend': p['vend'], 'link': p['link'],
                   'pp': None, 'junto': True} for s in ('ida', 'volta'))
@@ -83,18 +84,24 @@ def nome_vendedor(v):
     return 'MaxMilhas' if v.lower() == 'maxmilhas' else v
 
 
-def bloco_tg(emoji, titulo, c, alvo, tre, pax):
-    """Uma combinação na mensagem do Telegram -> (texto, botões de compra da ida e da volta)."""
+def bloco_tg(emoji, titulo, c, alvo, tre, pax, mala=False):
+    """Uma combinação na mensagem do Telegram -> (texto, botões de compra da ida e da volta).
+    mala=True: preços já com 1 mala de 23 kg por pessoa em cada trecho; sem alvo."""
     voos, botoes = [], []
-    for (rotulo, s, seta), t in zip((('Ida', 'ida', '🛫'), ('Volta', 'volta', '🛬')), pernas(c, tre)):
+    for (rotulo, s, seta), t in zip((('Ida', 'ida', '🛫'), ('Volta', 'volta', '🛬')), pernas(c, tre, mala)):
         o, de = t['rota'].split('-')
-        preco = 'comprada junto' if t.get('junto') else f"{brl(t['pp'])} na {html.escape(nome_vendedor(t['vend']))}"
+        preco = 'comprada junto' if t.get('junto') else \
+            f"{brl(t['pp'])}{' com mala' if mala else ''} na {html.escape(nome_vendedor(t['vend']))}{' (mala à parte)' if t.get('estimado') else ''}"
         voos.append(f"{seta} <b>{dia(c[s])}</b> · {o} → {de}\n{html.escape(t['cia'])} {t['saida']}, {t['tipo']} · {preco}")
         botoes.append({'text': f"{emoji} {rotulo} {brl(t['pp'] or 0)}",
                        'url': t.get('link') or link_compra(s, c[s], t.get('voos'), pax) or link_mm(t['rota'], c[s], pax)})
     if c.get('iv'):   # um botão só: ida e volta saem juntas, mais barato que separado
         botoes = [{'text': f"{emoji} Ida e volta {brl(c['pp'])} na {c['iv']['vend']}", 'url': c['iv']['link']}]
-    meta = f"✅ abaixo do alvo de {brl(alvo)}" if c['pp'] <= alvo else f"faltam {brl(c['pp'] - alvo)} para o alvo de {brl(alvo)}"
+    if mala:
+        estimada = c['iv'].get('mala_estimada') if c.get('iv') else any(t.get('estimado') for t in pernas(c, tre, True))
+        meta = 'inclui 1 mala de 23 kg por pessoa em cada trecho' + ('\n<i>Mala à parte: valor estimado pela tarifa com mala da companhia.</i>' if estimada else '')
+    else:
+        meta = f"✅ abaixo do alvo de {brl(alvo)}" if c['pp'] <= alvo else f"faltam {brl(c['pp'] - alvo)} para o alvo de {brl(alvo)}"
     junto = f"\n🤝 Ida e volta compradas juntas na {c['iv']['vend']}: mais barato que separado" if c.get('iv') else ''
     return (f"{emoji} <b>{titulo} · {brl(c['pp'])}</b> por pessoa\n<blockquote>" + '\n\n'.join(voos) +
             f"</blockquote>\n{c['dias']} dias · {meta}{junto}"), botoes
@@ -234,18 +241,21 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
         blocos = [bloco_tg('🎄', 'Mais barata, e com Natal', n, ALVO_NATAL, tre, pax)]
     else:
         blocos = ([bloco_tg('🎄', 'Com Natal', n, ALVO_NATAL, tre, pax)] if n else []) + [bloco_tg('☀️', 'Mais barata', m, ALVO_GERAL, tre, pax)]
-    msg = (f"✈️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)} · {pax} adultos, sem mala</i>\n\n{topo}\n\n" +
+    cm = (scan.get('combos_mala') or [None])[0]   # melhor combinação já com mala despachada
+    if cm:
+        blocos.append(bloco_tg('🧳', 'Com mala de 23 kg' + (', e com Natal' if cm['natal'] else ''), cm, None, tre, pax, mala=True))
+    msg = (f"✈️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)} · {pax} adultos · sem mala, exceto no 🧳</i>\n\n{topo}\n\n" +
            '\n\n'.join(b[0] for b in blocos) + "\n\n<i>Os botões abrem o vendedor já com o voo.</i>")
     status_wpp = enviar(msg, silencioso=not (abaixo or recordes), botoes=[b[1] for b in blocos] + [PAINEL_BOTAO])
     saida.append(status_wpp)
 
     # painel.json: uma tabela, cada linha com seu "tipo"
-    def grupo(prefixo, c):
+    def grupo(prefixo, c, mala=False):
         if not c:
             return {}
         out = {f'{prefixo}_pp': c['pp'], f'{prefixo}_dias': c['dias'], f'{prefixo}_total': c['pp'] * pax}
         out[f'{prefixo}_iv'] = c['iv']['vend'] if c.get('iv') else ''
-        for (sentido, d), t in zip((('ida', c['ida']), ('volta', c['volta'])), pernas(c, tre)):
+        for (sentido, d), t in zip((('ida', c['ida']), ('volta', c['volta'])), pernas(c, tre, mala)):
             o, de = t['rota'].split('-')
             out.update({f'{prefixo}_{sentido}': d, f'{prefixo}_{sentido}_dia': dia(d), f'{prefixo}_{sentido}_cia': t['cia'],
                         f'{prefixo}_{sentido}_orig': o, f'{prefixo}_{sentido}_dest': de, f'{prefixo}_{sentido}_saida': t['saida'],
@@ -263,7 +273,8 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
               'menor_natal': min((float(r['natal_pp']) for r in linhas if r.get('natal_pp')), default=None),
               'ant_geral': float(ult['melhor_pp']) if ult.get('melhor_pp') else None,
               'ant_natal': float(ult['natal_pp']) if ult.get('natal_pp') else None,
-              'alerta': status_wpp, **grupo('geral', m), **grupo('natal', n)}
+              'alerta': status_wpp, **grupo('geral', m), **grupo('natal', n), **grupo('mala', cm, mala=True),
+              'mala_natal': bool(cm and cm['natal'])}
     rows = [resumo]
     rows += [{'tipo': 'hist', 'quando': r['data_hora'], 'geral_pp': float(r['melhor_pp']),
               'natal_pp': float(r['natal_pp']) if r.get('natal_pp') else None} for r in linhas]
@@ -274,7 +285,13 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
                      'pp': t['pp'], 'vend': t['vend'], 'pp_cia': t.get('ppCia') or t['pp'], 'cia': t['cia'], 'orig': o, 'dest': de,
                      'saida': t['saida'], 'chegada': t['chegada'], 'tipo_voo': t['tipo'],
                      'link': t.get('link') or link_compra(t['s'], t['d'], t.get('voos'), pax) or link_mm(t['rota'], t['d'], pax),
-                     'link_mm': link_mm(t['rota'], t['d'], pax)})
+                     'link_mm': link_mm(t['rota'], t['d'], pax),
+                     # melhor opção da data com 1 mala de 23 kg por pessoa (pode ser outro voo ou vendedor)
+                     **({'mala_pp': x['pp'], 'mala_vend': x['vend'], 'mala_cia': x['cia'], 'mala_orig': x['rota'][:3],
+                         'mala_dest': x['rota'][4:], 'mala_saida': x['saida'], 'mala_chegada': x['chegada'], 'mala_tipo_voo': x['tipo'],
+                         'mala_estimado': x['estimado'],
+                         'mala_link': x.get('link') or link_compra(t['s'], t['d'], x.get('voos'), pax) or link_mm(x['rota'], t['d'], pax)}
+                        if (x := t.get('mala')) else {})})
     # vendedores dos trechos que a varredura detalhou (os das combinações vencedoras)
     for chave, lista in scan.get('vend', {}).items():
         sentido, d = chave.split(' ')
@@ -282,16 +299,16 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     # ida e volta compradas juntas (Zupper): o painel usa no quadrado do par quando sai mais barato que somar os trechos
     for p in scan.get('pacotes', []):
         rows.append({'tipo': 'iv', 'chave': f"{p['ida']} {p['volta']}", 'ida': p['ida'], 'volta': p['volta'], 'pp': p['pp'],
-                     'vend': p['vend'], 'link': p['link'],
+                     'pp_mala': p.get('pp_mala'), 'mala_estimada': p.get('mala_estimada'), 'vend': p['vend'], 'link': p['link'],
                      'pernas': {s: {'orig': x['orig'], 'dest': x['dest'], 'saida': x['saida'], 'chegada': x['chegada'], 'cia': x['cia'],
                                     'tipo_voo': x['tipo']} for s, x in p['pernas'].items()}})
     json.dump(rows, open(painel, 'w', encoding='utf-8'), ensure_ascii=False)
 
     # ultimo.md
-    def bloco(titulo, c):
+    def bloco(titulo, c, mala=False):
         if not c:
             return f"## {titulo}\n\nNenhuma combinação.\n"
-        ti, tv = pernas(c, tre)
+        ti, tv = pernas(c, tre, mala)
         def compra(sentido, d, t):
             link = t.get('link') or link_compra(sentido, d, t.get('voos'), pax)
             return f"[comprar na {nome_vendedor(t['vend'])}]({link})" if link else f"[ver na MaxMilhas]({link_mm(t['rota'], d, pax)})"
@@ -302,6 +319,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
           ('**ALERTA:** ' + ' | '.join(alertas) + '\n') if alertas else 'Sem queda nova de preço.\n',
           f"Telegram: {status_wpp} (alvos: geral {brl(ALVO_GERAL)}, com Natal {brl(ALVO_NATAL)})\n",
           bloco('Melhor combinação', m), bloco('Melhor com Natal (ida até 24/12)', n),
+          bloco('Melhor com 1 mala de 23 kg por pessoa (preço já com mala)', cm, mala=True),
           '## Por data\n\n' + '\n'.join(f"- {t['s']} {dia(t['d'])}: {texto_trecho(t)}" for t in scan['trechos']) + '\n']
     if maxmilhas:
         md.append('## MaxMilhas direto (site)\n\n' + '\n'.join(f'- {x}' for x in maxmilhas) + '\n')
@@ -387,6 +405,25 @@ def _teste():
             res2 = [x for x in linhas2 if x['tipo'] == 'resumo'][0]
             assert ivr['ida'] == '2026-12-18' and ivr['pp'] == 1300 and ivr['pernas']['volta']['cia'] == 'LATAM' and res2['natal_iv'] == 'Zupper', (ivr, res2)
             assert res2['natal_ida_link'] == pac['link'] and 'ida e volta juntas via Zupper' in open(os.path.join(d2, 'ultimo.md')).read()
+        # com mala: bloco 🧳 com os preços já com mala, linha do painel e resumo
+        s4 = scan(1000, 430)
+        s4['trechos'][0]['mala'] = {'pp': 1119, 'estimado': True, 'vend': 'CIA LATAM', 'cia': 'LATAM', 'rota': 'GRU-NAT', 'saida': '07:05',
+                                    'chegada': '10:25', 'tipo': 'direto', 'link': None, 'voos': ''}
+        s4['trechos'][1]['mala'] = {'pp': 549, 'estimado': False, 'vend': 'Zupper', 'cia': 'Gol', 'rota': 'FOR-GRU', 'saida': '12:50',
+                                    'chegada': '16:30', 'tipo': 'direto', 'link': 'https://www.zupper.com.br/resultados?m', 'voos': ''}
+        s4['combos_mala'] = [{**s4['combos'][0], 'pp': 1668}]
+        with tempfile.TemporaryDirectory() as d3:
+            registrar(s4, d3, fake)
+            msg, mudo, bt = enviados[-1]
+            assert '🧳 <b>Com mala de 23 kg, e com Natal · R$1.668</b>' in msg and 'R$549 com mala na Zupper' in msg, msg
+            assert 'R$1.119 com mala na LATAM (mala à parte)' in msg and 'Mala à parte: valor estimado' in msg, msg
+            assert bt[1][1]['url'] == 'https://www.zupper.com.br/resultados?m' and bt[1][0]['url'].startswith('https://www.maxmilhas'), bt
+            linhas3 = json.load(open(os.path.join(d3, 'painel.json')))
+            res3 = [x for x in linhas3 if x['tipo'] == 'resumo'][0]
+            d0 = [x for x in linhas3 if x['tipo'] == 'data'][1]
+            assert res3['mala_pp'] == 1668 and res3['mala_natal'] and res3['mala_volta_vend'] == 'Zupper', res3
+            assert d0['mala_pp'] == 549 and d0['mala_estimado'] is False and d0['mala_link'].endswith('?m'), d0
+            assert 'Melhor com 1 mala de 23 kg por pessoa (preço já com mala): R$1.668' in open(os.path.join(d3, 'ultimo.md')).read()
         assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
         assert enviados[-1][1] and 'não consegui ler os preços' in enviados[-1][0] and '<i>x&lt;y</i>' in enviados[-1][0], enviados[-1]
     print('ok')

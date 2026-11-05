@@ -24,11 +24,48 @@ def mesmo_voo(x, t):
     return x['cia'] == t['cia'] and x['saida'] == t['saida'] and f"{x['orig']}-{x['dest']}" == t['rota']
 
 
+def taxas_mala(ofertas):
+    """Quanto custa a mala de 23 kg por companhia (por pessoa e trecho), medido nas tarifas com mala da Zupper
+    desta varredura: {cia: valor}, e a mediana geral para companhia sem medida."""
+    por_cia = {}
+    for lista in ofertas.values():
+        for x in lista:
+            if x.get('mala') is not None:
+                por_cia.setdefault(x['cia'], []).append(x['mala'])
+    med = lambda v: sorted(v)[len(v) // 2]
+    todas = [m for v in por_cia.values() for m in v]
+    return {c: med(v) for c, v in por_cia.items()}, (med(todas) if todas else None)
+
+
+def melhor_com_mala(t, lista, taxa, geral):
+    """Melhor opção de um trecho com 1 mala de 23 kg por pessoa: tarifa com mala real (Zupper) ou
+    preço sem mala + mala da companhia (estimada)."""
+    opcoes = []
+    for x in [{**t, 'orig': t['rota'][:3], 'dest': t['rota'][4:], 'link': t.get('link'), 'google': True}] + lista:
+        custo = x['mala'] if x.get('mala') is not None else taxa.get(x['cia'], geral)
+        if custo is not None:
+            opcoes.append((x['pp'] + custo, x.get('mala') is None, x))
+    if not opcoes:
+        return None
+    pp, estimado, x = min(opcoes, key=lambda o: o[0])
+    return {'pp': pp, 'estimado': estimado, 'vend': x['vend'], 'cia': x['cia'], 'rota': f"{x['orig']}-{x['dest']}", 'saida': x['saida'],
+            'chegada': x['chegada'], 'tipo': x['tipo'], 'link': x.get('link'), 'voos': t.get('voos') if x.get('google') else ''}
+
+
+def _selecao(combos, n):
+    """As n melhores combinações e, se ficou de fora, a melhor com Natal."""
+    combos.sort(key=lambda c: c['pp'])
+    sel = combos[:n]
+    natal = next((c for c in combos if c['natal']), None)
+    return sel + [natal] if natal and natal not in sel else sel
+
+
 def juntar(scan, ofertas):
     """Põe as ofertas dos vendedores em cada data, fica com a mais barata e refaz as combinações.
     ofertas: {('ida'|'volta', 'AAAA-MM-DD'): [oferta de vendedores.buscar, ...]}"""
     cfg = scan.get('cfg') or {'minDias': 27, 'maxDias': 36, 'natalAte': '2026-12-24'}
     vend_google = scan.get('vend', {})
+    taxa, geral = taxas_mala(ofertas)
     trechos, vend = [], {}
     for t in scan['trechos']:
         chave = (t['s'], t['d'])
@@ -51,33 +88,47 @@ def juntar(scan, ofertas):
         for nome, pp in lista_v:
             menor[nome] = min(pp, menor.get(nome, pp))
         vend[ks] = sorted(([n, p] for n, p in menor.items()), key=lambda x: x[1])[:10]
+        mala = melhor_com_mala(t, lista, taxa, geral)
+        if mala:
+            novo['mala'] = mala
         trechos.append(novo)
     idas = [t for t in trechos if t['s'] == 'ida']
     voltas = [t for t in trechos if t['s'] == 'volta']
-    combos = []
+    combos, combos_mala = [], []
     for i in idas:
         for v in voltas:
             dias = (date.fromisoformat(v['d']) - date.fromisoformat(i['d'])).days
             if cfg['minDias'] <= dias <= cfg['maxDias']:
-                combos.append({'ida': i['d'], 'volta': v['d'], 'dias': dias, 'pp': i['pp'] + v['pp'], 'natal': i['d'] <= cfg['natalAte']})
-    combos.sort(key=lambda c: c['pp'])
-    sel = combos[:8]   # as 8 melhores (+ a melhor com Natal) também são buscadas como ida e volta na Zupper
-    natal = next((c for c in combos if c['natal']), None)
-    if natal and natal not in sel:
-        sel.append(natal)
-    return {**scan, 'trechos': trechos, 'vend': vend, 'combos': sel,
+                c = {'ida': i['d'], 'volta': v['d'], 'dias': dias, 'pp': i['pp'] + v['pp'], 'natal': i['d'] <= cfg['natalAte']}
+                combos.append(c)
+                if 'mala' in i and 'mala' in v:
+                    combos_mala.append({**c, 'pp': i['mala']['pp'] + v['mala']['pp']})
+    sel = _selecao(combos, 8)   # as 8 melhores (+ a melhor com Natal) também são buscadas como ida e volta na Zupper
+    return {**scan, 'trechos': trechos, 'vend': vend, 'combos': sel, 'combos_mala': _selecao(combos_mala, 3),
+            'taxa_mala': {'cias': taxa, 'geral': geral},
             'status': 'ok' if sel else 'erro', 'erro': None if sel else 'nenhuma combinação dentro da estadia'}
 
 
 def com_pacotes(scan, pacotes):
     """Ida e volta compradas juntas: se sai mais barato que somar os trechos, a combinação passa a ser o pacote.
     pacotes: {(ida, volta): oferta de vendedores.buscar_iv}"""
-    combos = []
+    tx = scan.get('taxa_mala') or {}
+    taxa, geral = tx.get('cias', {}), tx.get('geral')
+    for p in pacotes.values():   # com mala: tarifa com mala do pacote (real) ou mala das companhias (estimada)
+        custos = [taxa.get(p['pernas'][s]['cia'], geral) for s in ('ida', 'volta')]
+        p['pp_mala'], p['mala_estimada'] = ((p['pp'] + p['mala'], False) if p.get('mala') is not None else
+                                            (p['pp'] + sum(custos), True) if None not in custos else (None, True))
+    combos, combos_mala = [], []
     for c in scan['combos']:
         p = pacotes.get((c['ida'], c['volta']))
         combos.append({**c, 'pp': p['pp'], 'iv': p} if p and p['pp'] < c['pp'] else c)
+    for c in scan.get('combos_mala', []):
+        p = pacotes.get((c['ida'], c['volta']))
+        combos_mala.append({**c, 'pp': p['pp_mala'], 'iv': p} if p and p['pp_mala'] is not None and p['pp_mala'] < c['pp'] else c)
     combos.sort(key=lambda c: c['pp'])
-    return {**scan, 'combos': combos, 'pacotes': [{'ida': i, 'volta': v, **p} for (i, v), p in pacotes.items()]}
+    combos_mala.sort(key=lambda c: c['pp'])
+    return {**scan, 'combos': combos, 'combos_mala': combos_mala,
+            'pacotes': [{'ida': i, 'volta': v, **p} for (i, v), p in pacotes.items()]}
 
 
 async def varrer():
@@ -159,6 +210,7 @@ def _teste():
         {'vend': 'MaxMilhas', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True,
          'tipo': 'direto', 'voo': None, 'pp': 894, 'link': 'https://maxmilhas.com.br/x'}]}
     r = juntar(scan, of)
+    assert 'mala' not in r['trechos'][0] and r['combos_mala'] == []   # sem tarifa com mala na Zupper: nada a estimar
     ida = [t for t in r['trechos'] if t['s'] == 'ida'][0]
     assert ida['pp'] == 857 and ida['vend'] == '123milhas' and ida['link'] == 'https://123milhas.com/x' and ida['ppCia'] == 927, ida
     assert r['vend']['ida 2026-12-27'] == [['123milhas', 857], ['MaxMilhas', 894], ['CIA Gol', 927], ['Booking.com', 965]], r['vend']
@@ -172,6 +224,27 @@ def _teste():
     assert r2['combos'][0]['pp'] == 1488 and r2['combos'][0]['iv'] is pac and r2['pacotes'][0]['ida'] == '2026-12-27' and r2['pacotes'][0]['pernas']['ida'] == perna, r2['combos']
     r3 = com_pacotes(r, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})
     assert r3['combos'][0]['pp'] == 1575 and 'iv' not in r3['combos'][0] and len(r3['pacotes']) == 1
+    # com mala: Zupper mostra Gol Classic +119 (real); 123milhas Gol 857 + 119 estimado = 976 é a melhor ida com mala.
+    # Volta: LATAM da Zupper 760 + 150 real = 910; Google LATAM 718 + 150 estimado = 868 fica.
+    zup = {'vend': 'Zupper', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True,
+           'tipo': 'direto', 'voo': None, 'pp': 928, 'mala': 119, 'link': 'https://www.zupper.com.br/x'}
+    zv = {**zup, 'cia': 'LATAM', 'orig': 'JDO', 'dest': 'GRU', 'saida': '03:20', 'chegada': '06:25', 'pp': 760, 'mala': 150}
+    of2 = {k: list(v) for k, v in of.items()}
+    of2[('ida', '2026-12-27')].append(zup)
+    of2[('volta', '2027-01-23')] = [zv]
+    r4 = juntar(scan, of2)
+    mi, mv = r4['trechos'][0]['mala'], r4['trechos'][1]['mala']
+    assert (mi['pp'], mi['vend'], mi['estimado']) == (976, '123milhas', True), mi
+    assert (mv['pp'], mv['vend'], mv['estimado'], mv['voos']) == (868, 'CIA LATAM', True, 'JDO>GRU 2027-01-23 LA 3000'), mv
+    assert r4['combos_mala'][0]['pp'] == 976 + 868 and r4['taxa_mala'] == {'cias': {'Gol': 119, 'LATAM': 150}, 'geral': 150}, r4['taxa_mala']
+    # pacote com tarifa com mala (real) mais barato que os trechos com mala vira a combinação com mala
+    r5 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1500, 'mala': 200}})
+    assert r5['combos_mala'][0]['pp'] == 1700 and r5['combos_mala'][0]['iv']['mala_estimada'] is False, r5['combos_mala']
+    # sem tarifa com mala no pacote: estima Gol 119 + Gol 119 = 1838, ainda abaixo dos trechos com mala (976 + 868 = 1844)
+    r6 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1600}})
+    assert r6['pacotes'][0]['pp_mala'] == 1838 and r6['combos_mala'][0]['pp'] == 1838 and r6['combos_mala'][0]['iv']['mala_estimada'], r6
+    r7 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})   # 1700 + 238 = 1938: trechos separados ficam
+    assert r7['combos_mala'][0]['pp'] == 1844 and 'iv' not in r7['combos_mala'][0], r7['combos_mala']
     print('ok')
 
 
