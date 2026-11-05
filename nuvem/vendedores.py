@@ -1,20 +1,22 @@
-"""Busca direta na MaxMilhas e na 123milhas (que o Google não mostra para servidores fora do Brasil).
+"""Busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil).
 
 Abre a página de resultados de cada vendedor e lê os cartões de voo. Só aceita voo direto
 ou com 1 parada e duração total de até 5h30 (aproximação de "escala de até 2h": o cartão não
-mostra o tempo de conexão). Preço é o total no Pix dividido pelos adultos.
+mostra o tempo de conexão). Preço é o total a pagar (na 123milhas, no Pix) dividido pelos adultos.
 """
-import asyncio, re
+import asyncio, json, re, urllib.parse
 
 CIAS = {'gol': 'Gol', 'latam': 'LATAM', 'azul': 'Azul'}
 MAX_MIN_COM_ESCALA = 330   # ponytail: duração total como proxy da escala; trocar se o cartão passar a mostrar a conexão
 
-# JS que lê os cartões já desenhados na página (devolve texto de cada cartão)
+# JS que lê os cartões já desenhados na página (devolve texto de cada cartão + nome do arquivo do logo da cia,
+# porque a Zupper só mostra a companhia como imagem)
 LER_CARTOES = r"""() => [...document.querySelectorAll('button, a')]
-  .filter(b => /^\s*Comprar\s*$/i.test(b.textContent || ''))
+  .filter(b => /^\s*(Comprar|Ir para pagamento)\s*$/i.test(b.textContent || ''))
   .map(b => { let c = b; for (let i = 0; i < 14 && c.parentElement; i++) { c = c.parentElement;
       if (/\d\d:\d\d[\s\S]*\d\d:\d\d/.test(c.innerText) && /R\$/.test(c.innerText)) break; }
-    return c.innerText.replace(/\n+/g, ' | '); })"""
+    const logo = [...c.querySelectorAll('img')].map(i => (i.src || '').split('/').pop()).find(n => n && !/App-Icon|rounded|\.svg/.test(n)) || '';
+    return c.innerText.replace(/\n+/g, ' | ') + ' | LOGO:' + logo; })"""
 
 
 def _min(h, m):
@@ -45,6 +47,21 @@ def ler_123milhas(cartoes, pax):
     return out
 
 
+def ler_zupper(cartoes, pax):
+    out = []
+    for t in cartoes:
+        m = re.search(r'De:\s*([A-Z]{3})[\s\S]*?Para:\s*([A-Z]{3})[\s\S]*?Saída\s*\|\s*(\d\d:\d\d)\s*\|\s*Chegada\s*\|\s*(\d\d:\d\d)'
+                      r'[\s\S]*?Duração\s*\|\s*(\d+)h(\d*)m?\s*\|\s*Voo (Direto|com conex)[\s\S]*?TOTAL A PAGAR\s*\|\s*R\$\s*([\d.]+),(\d\d)', t)
+        logo = (re.search(r'LOGO:(\S*)', t) or [''] * 2)[1]
+        cia = 'Gol' if re.match(r'G3|gol', logo, re.I) else 'LATAM' if re.match(r'LA|JJ|latam', logo, re.I) else \
+            'Azul' if re.search(r'azul|^AD', logo, re.I) else None
+        if m and cia:
+            out.append({'vend': 'Zupper', 'cia': cia, 'orig': m[1], 'dest': m[2], 'saida': m[3], 'chegada': m[4], 'voo': None,
+                        'dur': _min(m[5], m[6]), 'direto': m[7] == 'Direto',
+                        'pp': round((int(m[8].replace('.', '')) + int(m[9]) / 100) / pax)})
+    return out
+
+
 def url_maxmilhas(o, d, data, pax):
     return f'https://www.maxmilhas.com.br/busca-passagens-aereas/OW/{o}/{d}/{data}/{pax}/0/0/EC'
 
@@ -54,10 +71,20 @@ def url_123milhas(o, d, data, pax):
     return f'https://123milhas.com/v2/busca?de={o}&para={d}&adultos={pax}&criancas=0&bebes=0&ida={dd}-{m}-{a}&classe=3'
 
 
+def url_zupper(o, d, data, pax):
+    trecho = urllib.parse.quote(json.dumps([{'originAirport': o, 'destinationAirport': d, 'departureDate': data}], separators=(',', ':')))
+    return (f'https://www.zupper.com.br/resultados?type=oneWay&adultQty={pax}&childrenQty=0&infantQty=0'
+            f'&onlyBusinessClass=false&slices={trecho}')
+
+
+URL = {'MaxMilhas': url_maxmilhas, '123milhas': url_123milhas, 'Zupper': url_zupper}
+LER = {'MaxMilhas': ler_maxmilhas, '123milhas': ler_123milhas, 'Zupper': ler_zupper}
+
+
 async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
     """Ofertas de um vendedor para SAO <-> aeroporto do Nordeste numa data."""
     o, d = ('SAO', ne) if sentido == 'ida' else (ne, 'SAO')
-    url = (url_maxmilhas if vendedor == 'MaxMilhas' else url_123milhas)(o, d, data, pax)
+    url = URL[vendedor](o, d, data, pax)
     async with sem:
         # uma sessão por busca: a 123milhas não devolve nada a duas buscas abertas na mesma sessão
         ctx = await navegador.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
@@ -81,7 +108,7 @@ async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
             return []
         finally:
             await ctx.close()
-    ofertas = (ler_maxmilhas if vendedor == 'MaxMilhas' else ler_123milhas)(cartoes, pax)
+    ofertas = LER[vendedor](cartoes, pax)
     validas = []
     for x in ofertas:
         if 'VCP' in (x['orig'], x['dest']):
@@ -90,7 +117,7 @@ async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
             continue
         x['tipo'] = 'direto' if x['direto'] else 'com escala'
         # link da busca do vendedor já no aeroporto exato do voo (poucos voos na lista, o certo no topo)
-        x['link'] = (url_maxmilhas if vendedor == 'MaxMilhas' else url_123milhas)(x['orig'], x['dest'], data, pax)
+        x['link'] = URL[vendedor](x['orig'], x['dest'], data, pax)
         validas.append(x)
     return validas
 
@@ -108,6 +135,19 @@ def _teste():
     assert r[0]['voo'] == ('G3', '1580') and r[0]['pp'] == 857 and r[0]['direto'] and r[1]['dur'] == 940 and not r[1]['direto'], r
     assert (r[2]['cia'], r[2]['voo'], r[2]['dest'], r[2]['pp']) == ('LATAM', ('LA', '3440'), 'NAT', 1155), r
     assert url_123milhas('SAO', 'JDO', '2026-12-27', 2).endswith('ida=27-12-2026&classe=3')
+    # Zupper: textos reais (cia só no nome do arquivo do logo)
+    zp = ['Ida | De: GRU - Sao Paulo  -  Para: JDO - Juazeiro Do Norte | Saída | 22:10 | Chegada | 01:00 +1 | Duração | 2h50m | Voo Direto'
+          ' | Detalhes  | Melhor Preço | Light | R$ | 1.855,44 | Tarifa por adulto | R$ 890,97 | TOTAL A PAGAR | R$ 1.855,44 | Ir para pagamento'
+          ' | LOGO:G35ff4fe5f1e26d.png',
+          'Ida | De: CGH - Sao Paulo  -  Para: JDO - Juazeiro Do Norte | Saída | 14:25 | Chegada | 14:40 +1 | Duração | 24h15m'
+          ' | Voo com conexões | Detalhes  | Azul | R$ | 2.034,98 | TOTAL A PAGAR | R$ 2.034,98 | LOGO:logo_azul-PNG-0162bb4daa0efff.png',
+          'Ida | De: GRU - Sao Paulo  -  Para: JDO - Juazeiro Do Norte | Saída | 07:45 | Chegada | 10:40 | Duração | 2h55m | Voo Direto'
+          ' | TOTAL A PAGAR | R$ 2.460,26 | LOGO:LA5ff4fe43c4a2b.png']
+    z = ler_zupper(zp, 2)
+    assert [(x['cia'], x['orig'], x['saida'], x['pp'], x['direto'], x['dur']) for x in z] == \
+        [('Gol', 'GRU', '22:10', 928, True, 170), ('Azul', 'CGH', '14:25', 1017, False, 1455), ('LATAM', 'GRU', '07:45', 1230, True, 175)], z
+    assert '%22originAirport%22%3A%22SAO%22' in url_zupper('SAO', 'JDO', '2026-12-27', 2)
+    assert ler_maxmilhas([mm[0] + ' | LOGO:x.png'], 2) and LER['Zupper'] is ler_zupper
     print('ok')
 
 

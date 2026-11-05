@@ -1,6 +1,6 @@
 """Varredura completa no GitHub Actions: Google Voos (preço das companhias, confirmado na tela de compra)
-+ busca direta na MaxMilhas e na 123milhas (que o Google não mostra para servidores fora do Brasil)
-(MaxMilhas nos três aeroportos do Nordeste; 123milhas, uma busca por vez, no mais barato de cada data).
++ busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil)
+(MaxMilhas nos três aeroportos do Nordeste; 123milhas e Zupper, uma busca por vez, no mais barato de cada data).
 
 Uso: python nuvem/rodar.py          (roda tudo e registra)
      python nuvem/rodar.py --teste  (auto-checagem da junção, sem navegador)
@@ -100,18 +100,24 @@ async def varrer():
             for (chave, _), r in zip(pedidos, res):
                 ofertas.setdefault(chave, []).extend(r)
             print(f'MAXMILHAS: {sum(1 for r in res if r)} de {len(res)} buscas com voo')
-            # 2) 123milhas: devolve vazio se recebe muitas buscas juntas; então uma por vez,
-            #    só no aeroporto mais barato de cada data até aqui (ela costuma vender o mesmo voo mais barato no Pix)
-            achou = 0
-            um = asyncio.Semaphore(1)
+            # 2) 123milhas e Zupper: a 123milhas devolve vazio se recebe muitas buscas juntas; então cada uma faz
+            #    uma busca por vez (as duas em paralelo), só no aeroporto mais barato de cada data até aqui
+            alvo = {}
             for t in scan['trechos']:
-                chave = (t['s'], t['d'])
-                rota = min(ofertas.get(chave, []) + [{'pp': t['pp'], 'orig': t['rota'][:3], 'dest': t['rota'][4:]}], key=lambda x: x['pp'])
-                r = await vendedores.buscar(nav, '123milhas', t['s'], t['d'], rota['dest'] if t['s'] == 'ida' else rota['orig'], pax, um)
-                ofertas.setdefault(chave, []).extend(r)
-                achou += bool(r)
-                await asyncio.sleep(2)
-            print(f'123MILHAS: {achou} de {len(scan["trechos"])} buscas com voo')
+                rota = min(ofertas.get((t['s'], t['d']), []) + [{'pp': t['pp'], 'orig': t['rota'][:3], 'dest': t['rota'][4:]}],
+                           key=lambda x: x['pp'])
+                alvo[(t['s'], t['d'])] = rota['dest'] if t['s'] == 'ida' else rota['orig']
+
+            async def uma_por_vez(vendedor):
+                achou, um = 0, asyncio.Semaphore(1)
+                for (s, d), ne in alvo.items():
+                    r = await vendedores.buscar(nav, vendedor, s, d, ne, pax, um)
+                    ofertas.setdefault((s, d), []).extend(r)
+                    achou += bool(r)
+                    await asyncio.sleep(2)
+                print(f'{vendedor.upper()}: {achou} de {len(alvo)} buscas com voo')
+
+            await asyncio.gather(uma_por_vez('123milhas'), uma_por_vez('Zupper'))
             scan = juntar(scan, ofertas)
         await nav.close()
     return scan
