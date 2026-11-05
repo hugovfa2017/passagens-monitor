@@ -63,13 +63,18 @@ async def buscar(contexto, vendedor, sentido, data, ne, pax, sem):
         try:
             await pg.goto(url, wait_until='domcontentloaded', timeout=60000)
             try:
-                await pg.wait_for_function(LER_CARTOES + '().length > 0', timeout=45000)
+                await pg.wait_for_function(f'() => ({LER_CARTOES})().length > 0', timeout=45000)
             except Exception:
                 return []          # sem voos ou página não carregou: o Google continua valendo
-            for _ in range(3):     # a MaxMilhas desenha os cartões aos poucos
-                await pg.mouse.wheel(0, 4000)
+            await pg.wait_for_timeout(3000)   # deixa os preços chegarem
+            # a MaxMilhas só desenha os cartões visíveis e apaga os que saem da tela: lê a cada rolagem e junta
+            vistos = {}
+            for _ in range(5):
+                for t in await pg.evaluate(LER_CARTOES):
+                    vistos[t] = True
+                await pg.mouse.wheel(0, 1500)
                 await pg.wait_for_timeout(1200)
-            cartoes = await pg.evaluate(LER_CARTOES)
+            cartoes = list(vistos)
         except Exception:
             return []
         finally:
