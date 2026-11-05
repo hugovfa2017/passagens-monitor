@@ -141,7 +141,7 @@
         <h2>Preço por par de datas</h2>
         <div class="pn-scale" data-draw="escala" data-source="grade">—</div>
       </div>
-      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de 27 a 36 dias. Clique num quadrado para ver os voos e comprar.</p>
+      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de <span data-draw="f" data-source="resumo" data-row="0" data-field="min_dias">27</span> a <span data-draw="f" data-source="resumo" data-row="0" data-field="max_dias">39</span> dias. Clique num quadrado para ver os voos e comprar.</p>
       <div class="pn-gridbox" data-draw="grade" data-source="grade dias resumo">—</div>
     </div>
 
@@ -193,7 +193,7 @@
 
   <section class="pn-history" id="historico">
     <h2>Como o preço mudou</h2>
-    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita a cada 3 horas. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
+    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
     <div class="pn-legend"><span><i style="--sw: var(--pn-link)"></i>Com Natal</span><span><i style="--sw: var(--pn-muted)"></i>Mais barata</span></div>
     <div class="pn-chart" id="grafico-historico" data-draw="hist" data-source="historico resumo">—</div>
   </section>
@@ -201,7 +201,7 @@
   <footer class="pn-foot" id="notas">
     <p>Preços sem mala despachada. Some de R$ 95 a R$ 220 por mala de 23 kg em cada trecho, conforme a companhia ou o vendedor.</p>
     <p>Só entra o preço confirmado na tela de compra, porque a lista do Google às vezes mostra valor antigo. Mesmo assim o preço pode mudar até o pagamento.</p>
-    <p>Datas pesquisadas e alvos do alerta ficam no monitor do GitHub, que roda a cada 3 horas mesmo com o computador desligado. Peça ao Claude para mudar.</p>
+    <p>Datas pesquisadas e alvos do alerta ficam no monitor do GitHub, que roda de hora em hora mesmo com o computador desligado. Peça ao Claude para mudar.</p>
   </footer>
 </div>
 

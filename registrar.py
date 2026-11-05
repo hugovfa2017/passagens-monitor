@@ -179,7 +179,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
         with open(ultimo, 'a', encoding='utf-8') as f:
             f.write(f"\n\nVarredura de {agora} falhou: {erro}\n")
         aviso = (f"⚠️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)}</i>\n\nDesta vez não consegui ler os preços. "
-                 f"Tento de novo daqui a 3 horas; o painel continua com a última busca boa.\n\n<i>{html.escape(erro[:120])}</i>")
+                 f"Tento de novo daqui a 1 hora; o painel continua com a última busca boa.\n\n<i>{html.escape(erro[:120])}</i>")
         return [f"ERRO_VARREDURA {erro}", enviar(aviso, silencioso=True, botoes=[PAINEL_BOTAO])]
 
     pax = scan['pax']

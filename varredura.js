@@ -9,8 +9,8 @@
   const CFG = {
     pax: 2,                         // adultos (mude para 3 ou 4 se mais gente for)
     ida: ['2026-12-18','2026-12-19','2026-12-20','2026-12-21','2026-12-22','2026-12-23','2026-12-24','2026-12-25','2026-12-26','2026-12-27'],
-    volta: ['2027-01-15','2027-01-16','2027-01-17','2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23'],
-    minDias: 27, maxDias: 36,       // estadia aceitável
+    volta: ['2027-01-15','2027-01-16','2027-01-17','2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23','2027-01-24','2027-01-25','2027-01-26'],
+    minDias: 27, maxDias: 39,       // estadia aceitável (39 = ida 18/12, volta 26/01)
     natalAte: '2026-12-24',         // ida até esta data = "com Natal"
     maxEscalaMin: 120,              // só direto ou 1 escala de até 2h
     candidatosPorData: 2,           // quantos voos da lista validar por data

@@ -2,7 +2,7 @@ name: Monitor de passagens
 
 on:
   schedule:
-    - cron: '17 */3 * * *'   # a cada 3h (UTC); o GitHub pode atrasar em horário de pico
+    - cron: '17 * * * *'     # de hora em hora; o GitHub pode atrasar em horário de pico
   workflow_dispatch:          # botão "Run workflow" para rodar na hora
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   varredura:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       TZ: America/Sao_Paulo
     steps:
