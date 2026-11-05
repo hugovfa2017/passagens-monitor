@@ -20,6 +20,29 @@ NORDESTE = ('NAT', 'FOR', 'JDO')   # na MaxMilhas, cada data é buscada nos trê
 BLOQUEIO = r'unusual traffic|tráfego incomum|captcha|not a robot|Antes de continuar|Before you continue'
 
 
+def cfg_js(codigo):
+    """Datas e regras da estadia lidas do CFG de varredura.js (fonte única), para não depender do Google
+    devolver todas as datas."""
+    lista = lambda k: re.findall(r"'(\d{4}-\d\d-\d\d)'", re.search(k + r':\s*\[([^\]]*)\]', codigo)[1])
+    num = lambda k: int(re.search(k + r':\s*(\d+)', codigo)[1])
+    return {'ida': lista('ida'), 'volta': lista('volta'), 'pax': num('pax'), 'minDias': num('minDias'),
+            'maxDias': num('maxDias'), 'natalAte': re.search(r"natalAte:\s*'([\d-]+)'", codigo)[1]}
+
+
+def completar(scan, cfg):
+    """Garante uma linha para cada data configurada. Data que o Google não validou entra vazia (sem preço) e só
+    fica se algum vendedor tiver voo nela."""
+    tem = {(t['s'], t['d']) for t in scan.get('trechos', [])}
+    vazias = [{'s': s, 'd': d, 'pp': SEM_PRECO, 'vend': '', 'cia': '', 'rota': 'SAO-JDO' if s == 'ida' else 'JDO-SAO',
+               'saida': '', 'chegada': '', 'tipo': '', 'ppCia': None, 'voos': '', 'vazio': True}
+              for s in ('ida', 'volta') for d in cfg[s] if (s, d) not in tem]
+    return {**scan, 'pax': scan.get('pax') or cfg['pax'], 'trechos': scan.get('trechos', []) + vazias,
+            'cfg': scan.get('cfg') or {k: cfg[k] for k in ('minDias', 'maxDias', 'natalAte')}}, len(vazias)
+
+
+SEM_PRECO = 10 ** 9
+
+
 def mesmo_voo(x, t):
     return x['cia'] == t['cia'] and x['saida'] == t['saida'] and f"{x['orig']}-{x['dest']}" == t['rota']
 
@@ -41,7 +64,8 @@ def melhor_com_mala(t, lista, taxa, geral):
     """Melhor opção de um trecho com 1 mala de 23 kg por pessoa: tarifa com mala real (Zupper) ou
     preço sem mala + mala da companhia (estimada)."""
     opcoes = []
-    for x in [{**t, 'orig': t['rota'][:3], 'dest': t['rota'][4:], 'link': t.get('link'), 'google': True}] + lista:
+    google = [] if t.get('vazio') else [{**t, 'orig': t['rota'][:3], 'dest': t['rota'][4:], 'link': t.get('link'), 'google': True}]
+    for x in google + lista:
         custo = x['mala'] if x.get('mala') is not None else taxa.get(x['cia'], geral)
         if custo is not None:
             opcoes.append((x['pp'] + custo, x.get('mala') is None, x))
@@ -71,7 +95,9 @@ def juntar(scan, ofertas):
         chave = (t['s'], t['d'])
         lista = ofertas.get(chave, [])
         melhor = min(lista, key=lambda x: x['pp'], default=None)
-        novo = dict(t)
+        if t.get('vazio') and not melhor:
+            continue           # nem o Google nem os vendedores acharam voo nesta data
+        novo = {k: v for k, v in t.items() if k != 'vazio'}
         if melhor and melhor['pp'] < t['pp']:
             igual = mesmo_voo(melhor, t)
             novo.update({'pp': melhor['pp'], 'vend': melhor['vend'], 'cia': melhor['cia'], 'rota': f"{melhor['orig']}-{melhor['dest']}",
@@ -141,19 +167,21 @@ async def varrer():
         await pg.goto(GOOGLE, wait_until='domcontentloaded', timeout=60000)
         await pg.wait_for_timeout(3000)
         inicio = (await pg.inner_text('body'))[:3000]
-        # não tenta contornar verificação: se aparecer, registra e para
+        # não tenta contornar verificação: se aparecer, registra e segue só com os vendedores
         if re.search(BLOQUEIO, inicio, re.I):
-            await nav.close()
-            return {'status': 'erro', 'erro': 'Google pediu verificação: ' + inicio[:200].replace('\n', ' | ')}
-        await pg.evaluate('() => {\n' + codigo + '\n}')
-        for _ in range(60):
-            if await pg.evaluate('() => window.__scan && window.__scan.status') in ('ok', 'erro'):
-                break
-            await asyncio.sleep(10)
-        scan = json.loads(await pg.evaluate('() => window.__json || JSON.stringify(window.__scan || {status: "erro", erro: "varredura não terminou"})'))
+            scan = {'status': 'erro', 'erro': 'Google pediu verificação: ' + inicio[:200].replace('\n', ' | ')}
+        else:
+            await pg.evaluate('() => {\n' + codigo + '\n}')
+            for _ in range(60):
+                if await pg.evaluate('() => window.__scan && window.__scan.status') in ('ok', 'erro'):
+                    break
+                await asyncio.sleep(10)
+            scan = json.loads(await pg.evaluate('() => window.__json || JSON.stringify(window.__scan || {status: "erro", erro: "varredura não terminou"})'))
         await pg.close()
-        print('GOOGLE:', scan.get('status'), scan.get('erro') or '', '| datas:', len(scan.get('trechos', [])))
-        if scan.get('status') == 'ok':
+        scan, faltaram = completar(scan, cfg_js(codigo))
+        print('GOOGLE:', scan.get('status'), scan.get('erro') or '', '| datas validadas:', len(scan['trechos']) - faltaram,
+              '| sem Google (só vendedores):', faltaram)
+        if scan['trechos']:
             pax, ofertas = scan['pax'], {}
             # 1) MaxMilhas: cada data nos três aeroportos, várias buscas juntas
             sem = asyncio.Semaphore(6)
@@ -245,6 +273,15 @@ def _teste():
     assert r6['pacotes'][0]['pp_mala'] == 1838 and r6['combos_mala'][0]['pp'] == 1838 and r6['combos_mala'][0]['iv']['mala_estimada'], r6
     r7 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})   # 1700 + 238 = 1938: trechos separados ficam
     assert r7['combos_mala'][0]['pp'] == 1844 and 'iv' not in r7['combos_mala'][0], r7['combos_mala']
+    # datas que o Google não validou: entram vazias e só ficam se um vendedor tiver voo
+    cfg = cfg_js(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
+    assert len(cfg['ida']) == 10 and cfg['volta'][-1] == '2027-01-26' and (cfg['pax'], cfg['minDias'], cfg['maxDias']) == (2, 27, 39), cfg
+    s8, faltaram = completar({'status': 'erro', 'erro': 'Google pediu verificação'}, cfg)
+    assert faltaram == 22 and s8['cfg']['maxDias'] == 39 and s8['pax'] == 2
+    of8 = {('ida', '2026-12-27'): of[('ida', '2026-12-27')], ('volta', '2027-01-23'): [zv]}
+    r8 = juntar(s8, of8)
+    assert [(t['s'], t['d'], t['pp'], t['vend']) for t in r8['trechos']] == [('ida', '2026-12-27', 857, '123milhas'), ('volta', '2027-01-23', 760, 'Zupper')], r8['trechos']
+    assert r8['status'] == 'ok' and r8['combos'][0]['pp'] == 857 + 760 and 'vazio' not in r8['trechos'][0] and r8['erro'] is None
     print('ok')
 
 
