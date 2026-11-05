@@ -1,4 +1,6 @@
-"""Registra uma varredura (JSON de window.__scan): histórico, resumo, dados do painel e alerta no Telegram.
+"""Registra uma varredura (JSON de window.__scan): histórico, resumo, dados do painel e mensagem no Telegram.
+
+Toda varredura vira uma mensagem no Telegram; ela toca só com preço abaixo do alvo ou novo menor preço.
 
 Uso:  python3 registrar.py ultima.json ["linha MaxMilhas" ...]
       python3 registrar.py --teste                -> auto-checagem (não envia nada)
@@ -9,7 +11,7 @@ O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em t
 Saídas na pasta: historico.csv, ultimo.md, painel.json (o que o painel mostra).
 Imprime uma linha por evento: ALERTA ..., SEM_NOVIDADE ..., ERRO_VARREDURA ..., TELEGRAM_* ...
 """
-import base64, csv, json, os, subprocess, sys, tempfile, urllib.parse, urllib.request
+import base64, csv, html, json, os, subprocess, sys, tempfile, urllib.parse, urllib.request
 from datetime import datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -18,8 +20,7 @@ PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
 # "Algo muito bom" = preço por pessoa (ida + volta, sem mala) igual ou abaixo destes alvos.
 ALVO_GERAL = 1400
 ALVO_NATAL = 1450
-REALERTA = 30     # depois de avisar, só avisa de novo se cair mais R$30 por pessoa
-QUEDA_MIN = 20    # notificação no computador quando bate recorde por pelo menos isso
+QUEDA_MIN = 20    # "novo menor preço" (Telegram com som) quando cai pelo menos isso abaixo do menor já visto
 
 CAMPOS = ['data_hora', 'pax', 'melhor_pp', 'melhor_ida', 'melhor_volta', 'melhor_dias', 'melhor_voo_ida', 'melhor_voo_volta',
           'natal_pp', 'natal_ida', 'natal_volta', 'natal_voo_ida', 'natal_voo_volta']
@@ -70,12 +71,25 @@ def nome_vendedor(v):
     return 'MaxMilhas' if v.lower() == 'maxmilhas' else v
 
 
-def trecho_compra(rotulo, sentido, data, t, pax):
-    """Texto de um trecho com o link de compra e em qual vendedor clicar (o link direto ao pagamento expira em minutos)."""
-    link = t.get('link') or link_compra(sentido, data, t.get('voos'), pax)
-    acao = f"Comprar na {nome_vendedor(t['vend'])}, {brl(t['pp'])}: {link}" if link else \
-        f"Ver na MaxMilhas: {link_mm(t['rota'], data, pax)}"
-    return f"{rotulo} {dia(data)}: {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}\n{acao}"
+def _a(url, texto):
+    return f'<a href="{html.escape(url)}">{html.escape(texto)}</a>'
+
+
+def bloco_tg(titulo, c, alvo, tre, pax):
+    """Uma combinação na mensagem do Telegram: preço, datas, os dois voos com link de compra e distância do alvo."""
+    linhas = [f"<b>{titulo}: {brl(c['pp'])}</b> por pessoa", f"{dia(c['ida'])} → {dia(c['volta'])} · {c['dias']} dias"]
+    for rotulo, s in (('Ida', 'ida'), ('Volta', 'volta')):
+        t = tre[(s, c[s])]
+        link = t.get('link') or link_compra(s, c[s], t.get('voos'), pax) or link_mm(t['rota'], c[s], pax)
+        o, de = t['rota'].split('-')
+        compra = _a(link, f"{brl(t['pp'])} na {nome_vendedor(t['vend'])}")
+        linhas.append(f"{rotulo}: {o} → {de}, {t['cia']} {t['saida']} ({t['tipo']}) · {compra}")
+    linhas.append(f"✅ Abaixo do seu alvo de {brl(alvo)}" if c['pp'] <= alvo else f"Faltam {brl(c['pp'] - alvo)} para o alvo de {brl(alvo)}")
+    return '\n'.join(linhas)
+
+
+def quando_tg(agora):  # '2026-11-05 00:17' -> 'qui 05/11, 00:17'
+    return f"{dia(agora[:10])}, {agora[11:]}"
 
 
 CHAT_FILE = os.path.join(AQUI, 'telegram_chat.txt')
@@ -98,13 +112,14 @@ def _api(token, metodo, campos=None):
         return json.loads(r.read().decode())
 
 
-def telegram(texto):
+def telegram(texto, silencioso=False):
     token = _token()
     chat = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
     if not token or not chat:
         return 'TELEGRAM_NAO_CONFIGURADO'
     try:
-        r = _api(token, 'sendMessage', {'chat_id': chat, 'text': texto, 'disable_web_page_preview': 'true'})
+        r = _api(token, 'sendMessage', {'chat_id': chat, 'text': texto, 'parse_mode': 'HTML', 'disable_web_page_preview': 'true',
+                                        'disable_notification': 'true' if silencioso else 'false'})
         return 'TELEGRAM_ENVIADO' if r.get('ok') else f"TELEGRAM_FALHOU {r.get('description', '')[:150]}"
     except (OSError, ValueError) as e:
         return f'TELEGRAM_FALHOU {e}'
@@ -128,14 +143,16 @@ def configurar_telegram():
 
 def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     hist, ultimo, painel = (os.path.join(pasta, f) for f in ('historico.csv', 'ultimo.md', 'painel.json'))
-    estado_wpp = os.path.join(pasta, 'alerta_estado.json')
     # hora da varredura (não a do registro), no fuso do computador
     fim = scan.get('fim')
     agora = (datetime.fromisoformat(fim.replace('Z', '+00:00')).astimezone() if fim else datetime.now()).strftime('%Y-%m-%d %H:%M')
     if scan.get('status') != 'ok' or not scan.get('combos'):
+        erro = scan.get('erro') or 'sem combinações válidas'
         with open(ultimo, 'a', encoding='utf-8') as f:
-            f.write(f"\n\nVarredura de {agora} falhou: {scan.get('erro') or 'sem combinações válidas'}\n")
-        return [f"ERRO_VARREDURA {scan.get('erro') or 'sem combinações válidas'}"]
+            f.write(f"\n\nVarredura de {agora} falhou: {erro}\n")
+        aviso = (f"⚠️ <b>Passagens Nordeste</b> · {quando_tg(agora)}\n\nDesta vez não consegui ler os preços "
+                 f"({html.escape(erro[:120])}). Tento de novo daqui a 3 horas.\n\n📊 {_a(PAINEL_URL, 'Painel com a última busca boa')}")
+        return [f"ERRO_VARREDURA {erro}", enviar(aviso, silencioso=True)]
 
     pax = scan['pax']
     linhas = list(csv.DictReader(open(hist, encoding='utf-8'))) if os.path.exists(hist) else []
@@ -163,33 +180,37 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     linhas.append({k: str(v) for k, v in nova.items()})
 
     saida = []
-    # recorde (notificação no computador)
-    alertas = []
-    if ant_m is not None and m['pp'] <= ant_m - QUEDA_MIN:
-        alertas.append(f"melhor geral caiu p/ {brl(m['pp'])}/pessoa (antes {brl(ant_m)}): {dia(m['ida'])} -> {dia(m['volta'])}")
-    if n and ant_n is not None and n['pp'] <= ant_n - QUEDA_MIN:
-        alertas.append(f"com Natal caiu p/ {brl(n['pp'])}/pessoa (antes {brl(ant_n)}): {dia(n['ida'])} -> {dia(n['volta'])}")
+    # recorde: caiu pelo menos QUEDA_MIN abaixo do menor preço já visto
+    alertas, recordes = [], []
+    for rotulo, c, ant in (('opção com Natal', n, ant_n), ('mais barata', m, ant_m)):
+        if c and ant is not None and c['pp'] <= ant - QUEDA_MIN and not any(r[1] is c for r in recordes):
+            alertas.append(f"{rotulo} caiu p/ {brl(c['pp'])}/pessoa (antes {brl(ant)}): {dia(c['ida'])} -> {dia(c['volta'])}")
+            recordes.append((rotulo, c, ant))
     saida.append(('ALERTA ' + ' | '.join(alertas)) if alertas else f"SEM_NOVIDADE melhor {brl(m['pp'])}/pessoa")
 
-    # compra boa (Telegram)
-    estado = json.load(open(estado_wpp)) if os.path.exists(estado_wpp) else {}
-    boas = []
-    for chave, c, alvo, rotulo in (('natal', n, ALVO_NATAL, 'Com Natal'), ('geral', m, ALVO_GERAL, 'Melhor geral')):
-        if c and c['pp'] <= alvo and c['pp'] <= estado.get(chave, 10**9) - REALERTA:
-            boas.append((chave, c, f"{rotulo}: {brl(c['pp'])}/pessoa, {c['dias']} dias (alvo {brl(alvo)})\n\n"
-                                   f"{trecho_compra('Ida', 'ida', c['ida'], tre[('ida', c['ida'])], pax)}\n\n"
-                                   f"{trecho_compra('Volta', 'volta', c['volta'], tre[('volta', c['volta'])], pax)}"))
-    status_wpp = ''
-    if boas:
-        msg = f"Passagem boa para o Nordeste ({pax} adultos, sem mala)\n\n" + '\n\n'.join(b[2] for b in boas) + \
-              f"\n\nCada link abre o vendedor indicado já com o voo (MaxMilhas e 123milhas: preço no Pix). " \
-              f"No link do Google, clique em Continuar ao lado do vendedor." \
-              f"\nPreço muda rápido: confira e compre logo.\nPainel: {PAINEL_URL}"
-        status_wpp = enviar(msg)
-        saida.append(status_wpp)
-        if status_wpp == 'TELEGRAM_ENVIADO':
-            estado.update({b[0]: b[1]['pp'] for b in boas})
-            json.dump(estado, open(estado_wpp, 'w'))
+    # Telegram a cada varredura; com som só quando há recorde ou preço abaixo do alvo
+    abaixo = (n and n['pp'] <= ALVO_NATAL) or m['pp'] <= ALVO_GERAL
+    if abaixo:
+        topo = "🔥 <b>Hora de comprar!</b>\nAchei passagem abaixo do seu alvo. Preço muda rápido: confira e compre logo."
+    elif recordes:
+        topo = "📉 <b>Novo menor preço!</b>\n" + '\n'.join(
+            f"A {r} caiu {brl(ant - c['pp'])} e chegou a {brl(c['pp'])}, a menor desde que comecei a buscar." for r, c, ant in recordes)
+    elif not ult:
+        topo = "Primeira busca registrada. A partir de agora te conto como foi cada uma 🙂"
+    else:
+        dif = m['pp'] - float(ult['melhor_pp'])
+        topo = ("Tudo igual à busca anterior." if abs(dif) < 1 else
+                f"A mais barata subiu {brl(dif)} desde a busca anterior." if dif > 0 else
+                f"A mais barata caiu {brl(-dif)} desde a busca anterior, mas ainda não é a menor que já vi.") + " Sigo de olho 👀"
+    if n and (n['ida'], n['volta']) == (m['ida'], m['volta']):
+        blocos = [bloco_tg('🎄 Mais barata, e com Natal', n, ALVO_NATAL, tre, pax)]
+    else:
+        blocos = ([bloco_tg('🎄 Com Natal', n, ALVO_NATAL, tre, pax)] if n else []) + [bloco_tg('☀️ Mais barata', m, ALVO_GERAL, tre, pax)]
+    msg = (f"✈️ <b>Passagens Nordeste</b> · {quando_tg(agora)}\n\n{topo}\n\n" + '\n\n'.join(blocos) +
+           f"\n\nPreços para {pax} adultos, sem mala despachada. Os links abrem o vendedor já com o voo."
+           f"\n📊 {_a(PAINEL_URL, 'Abrir o painel completo')}")
+    status_wpp = enviar(msg, silencioso=not (abaixo or recordes))
+    saida.append(status_wpp)
 
     # painel.json: uma tabela, cada linha com seu "tipo"
     def grupo(prefixo, c):
@@ -215,7 +236,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
               'menor_natal': min((float(r['natal_pp']) for r in linhas if r.get('natal_pp')), default=None),
               'ant_geral': float(ult['melhor_pp']) if ult.get('melhor_pp') else None,
               'ant_natal': float(ult['natal_pp']) if ult.get('natal_pp') else None,
-              'alerta': status_wpp or 'sem alerta', **grupo('geral', m), **grupo('natal', n)}
+              'alerta': status_wpp, **grupo('geral', m), **grupo('natal', n)}
     rows = [resumo]
     rows += [{'tipo': 'hist', 'quando': r['data_hora'], 'geral_pp': float(r['melhor_pp']),
               'natal_pp': float(r['natal_pp']) if r.get('natal_pp') else None} for r in linhas]
@@ -246,7 +267,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
                 f"- **Volta {dia(c['volta'])}:** {texto_trecho(tv)} ({compra('volta', c['volta'], tv)})\n")
     md = [f"# Última varredura: {agora} ({pax} adultos, preço por pessoa, sem mala despachada)\n",
           ('**ALERTA:** ' + ' | '.join(alertas) + '\n') if alertas else 'Sem queda nova de preço.\n',
-          f"Telegram: {status_wpp or 'nenhuma oferta abaixo do alvo'} (alvos: geral {brl(ALVO_GERAL)}, com Natal {brl(ALVO_NATAL)})\n",
+          f"Telegram: {status_wpp} (alvos: geral {brl(ALVO_GERAL)}, com Natal {brl(ALVO_NATAL)})\n",
           bloco('Melhor combinação', m), bloco('Melhor com Natal (ida até 24/12)', n),
           '## Por data\n\n' + '\n'.join(f"- {t['s']} {dia(t['d'])}: {texto_trecho(t)}" for t in scan['trechos']) + '\n']
     if maxmilhas:
@@ -274,20 +295,29 @@ def _teste():
     assert base64.urlsafe_b64decode(tfs + '=' * (-len(tfs) % 4)) == esperado
     assert link_compra('ida', '2026-12-18', '', 2) == ''
     enviados = []
-    fake = lambda msg: enviados.append(msg) or 'TELEGRAM_ENVIADO'
+    fake = lambda msg, silencioso=False: enviados.append((msg, silencioso)) or 'TELEGRAM_ENVIADO'
     with tempfile.TemporaryDirectory() as d:
-        assert registrar(scan(1155, 477), d, fake) == ['SEM_NOVIDADE melhor R$1.632/pessoa']   # 1ª vez, acima do alvo
-        r = registrar(scan(1000, 430), d, fake)                                                 # 1.430: recorde e abaixo do alvo Natal
-        assert r[0].startswith('ALERTA') and r[1] == 'TELEGRAM_ENVIADO' and len(enviados) == 1, r
-        assert 'R$1.430/pessoa' in enviados[0] and 'Ida sex 18/12: LATAM GRU-NAT' in enviados[0], enviados[0]
-        assert 'Comprar na MaxMilhas, R$430: https://www.google.com/travel/flights/booking?tfs=' in enviados[0], enviados[0]
-        assert 'Ver na MaxMilhas: https://www.maxmilhas.com.br/' in enviados[0], enviados[0]   # ida sem número de voo
+        # 1ª busca, acima do alvo: mensagem sem som
+        assert registrar(scan(1155, 477), d, fake) == ['SEM_NOVIDADE melhor R$1.632/pessoa', 'TELEGRAM_ENVIADO']
+        msg, mudo = enviados[-1]
+        assert mudo and 'Primeira busca' in msg and 'Mais barata, e com Natal: R$1.632' in msg and 'Faltam R$182 para o alvo de R$1.450' in msg, msg
+        # 1.430: recorde e abaixo do alvo com Natal: com som e link de compra
+        r = registrar(scan(1000, 430), d, fake)
+        msg, mudo = enviados[-1]
+        assert r[0].startswith('ALERTA') and r[1] == 'TELEGRAM_ENVIADO' and not mudo, r
+        assert 'Hora de comprar' in msg and '✅ Abaixo do seu alvo de R$1.450' in msg and 'Ida: GRU → NAT, LATAM 07:05 (direto)' in msg, msg
+        assert '>R$430 na MaxMilhas</a>' in msg and 'href="https://www.google.com/travel/flights/booking?tfs=' in msg, msg
+        assert '&amp;hl=pt-BR' in msg and 'href="https://www.maxmilhas.com.br/' in msg, msg   # ida sem número de voo
+        # subiu: sem som
+        registrar(scan(1100, 430), d, fake)
+        assert enviados[-1][1] and 'subiu R$100 desde a busca anterior' in enviados[-1][0], enviados[-1]
+        # vendedor com link próprio (123milhas) vence o link do Google
         s2 = scan(1000, 430)
-        s2['trechos'][1].update({'vend': '123milhas', 'link': 'https://123milhas.com/v2/busca?x'})
-        assert link_compra('volta', '2027-01-19', s2['trechos'][1]['voos'], 2) not in trecho_compra('Volta', 'volta', '2027-01-19', s2['trechos'][1], 2)
-        assert 'Comprar na 123milhas, R$430: https://123milhas.com/v2/busca?x' in trecho_compra('Volta', 'volta', '2027-01-19', s2['trechos'][1], 2)
-        assert registrar(scan(1000, 420), d, fake)[1:] == [] and len(enviados) == 1              # caiu só R$10: não repete
-        assert registrar(scan(950, 420), d, fake)[1] == 'TELEGRAM_ENVIADO'                       # caiu R$60: avisa de novo
+        s2['trechos'][1].update({'vend': '123milhas', 'link': 'https://123milhas.com/v2/busca?x&y'})
+        b = bloco_tg('t', s2['combos'][0], 1450, {(t['s'], t['d']): t for t in s2['trechos']}, 2)
+        assert '<a href="https://123milhas.com/v2/busca?x&amp;y">R$430 na 123milhas</a>' in b and 'google' not in b, b
+        assert registrar(scan(950, 420), d, fake)[0].startswith('ALERTA') and not enviados[-1][1]  # novo recorde: com som
+        assert len(enviados) == 4
         rows = json.load(open(os.path.join(d, 'painel.json')))
         res = [x for x in rows if x['tipo'] == 'resumo'][0]
         assert res['natal_ida_orig'] == 'GRU' and res['natal_total'] == 2740 and len([x for x in rows if x['tipo'] == 'hist']) == 4
@@ -295,7 +325,8 @@ def _teste():
         assert dias[1]['orig'] == 'FOR' and dias[1]['link'].startswith('https://www.google.com/travel/flights/booking?tfs=')
         assert dias[0]['link'].startswith('https://www.maxmilhas.com.br/') and res['max_dias'] == 36
         assert len([x for x in rows if x['tipo'] == 'vend']) == 3
-        assert registrar({'status': 'erro', 'erro': 'x'}, d, fake)[0].startswith('ERRO_VARREDURA')
+        assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
+        assert enviados[-1][1] and 'não consegui ler os preços (x&lt;y)' in enviados[-1][0], enviados[-1]
     print('ok')
 
 
