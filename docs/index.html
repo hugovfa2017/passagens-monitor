@@ -115,6 +115,11 @@
   @media (max-width: 900px) { .pn-main { grid-template-columns: minmax(0, 1fr); } }
   .pn-gridcol { display: grid; gap: var(--cds-gap-md); min-width: 0; }
   .pn-gridtop { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--cds-gap-sm); }
+  .pn-seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--pn-line); border-radius: 8px; }
+  .pn-seg button { font: inherit; font-size: var(--cds-font-size-caption); font-weight: 550; color: var(--pn-muted); background: transparent;
+    border: 0; border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+  .pn-seg button[aria-pressed="true"] { color: var(--color-fg); background: var(--pn-tint); box-shadow: inset 0 0 0 1px var(--pn-acc); }
+  .pn-seg button:focus-visible { outline: 2px solid var(--pn-link); outline-offset: 2px; }
   .pn-scale { display: flex; align-items: center; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
   .pn-scale i { display: block; width: 18px; height: 10px; border-radius: 2px; }
   .pn-gridbox { overflow-x: auto; min-height: 320px; }
@@ -194,7 +199,7 @@
   <header class="pn-head" id="topo">
     <div class="pn-titles">
       <h1>Passagens Nordeste</h1>
-      <p class="pn-meta">Ida e volta para <span data-draw="f" data-source="resumo" data-row="0" data-field="pax">—</span> adultos, preço por pessoa sem mala despachada. Atualizado em <span data-draw="f" data-source="resumo" data-row="0" data-field="quando" data-fmt="quando">—</span>.</p>
+      <p class="pn-meta">Ida e volta para <span data-draw="f" data-source="resumo" data-row="0" data-field="pax">—</span> adultos, preço por pessoa (sem mala despachada, a não ser na opção com mala). Atualizado em <span data-draw="f" data-source="resumo" data-row="0" data-field="quando" data-fmt="quando">—</span>.</p>
     </div>
     <div class="pn-picks" role="group" aria-label="Combinações em destaque">
       <button type="button" class="pn-pick" id="pick-natal" data-pick="natal" aria-pressed="false">
@@ -207,6 +212,11 @@
         <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="geral_pp" data-fmt="brl">—</span>
         <span class="pn-pick-s" data-draw="chip" data-grupo="geral" data-source="variacao">—</span>
       </button>
+      <button type="button" class="pn-pick" id="pick-mala" data-pick="mala" aria-pressed="false">
+        <span class="pn-pick-k">Mais barata com mala</span>
+        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="mala_pp" data-fmt="brl">—</span>
+        <span class="pn-pick-s">1 mala de 23 kg por pessoa e trecho</span>
+      </button>
     </div>
   </header>
 
@@ -214,9 +224,13 @@
     <div class="pn-gridcol" id="grade">
       <div class="pn-gridtop">
         <h2>Preço por par de datas</h2>
+        <div class="pn-seg" role="group" aria-label="Preço sem ou com mala despachada">
+          <button type="button" data-modo="sem" aria-pressed="true">Sem mala</button>
+          <button type="button" data-modo="com" aria-pressed="false">Com mala de 23 kg</button>
+        </div>
         <div class="pn-scale" data-draw="escala" data-source="grade">—</div>
       </div>
-      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de 27 a 36 dias. Clique num quadrado para ver os voos e comprar.</p>
+      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de <span data-draw="f" data-source="resumo" data-row="0" data-field="min_dias">27</span> a <span data-draw="f" data-source="resumo" data-row="0" data-field="max_dias">39</span> dias. Clique num quadrado para ver os voos e comprar. Com mala: cada trecho já inclui 1 mala de 23 kg por pessoa; quando o vendedor não mostra a tarifa com mala, soma o valor da mala da companhia (estimado).</p>
       <div class="pn-gridbox" data-draw="grade" data-source="grade dias resumo">—</div>
     </div>
 
@@ -268,7 +282,7 @@
 
   <section class="pn-history" id="historico">
     <h2>Como o preço mudou</h2>
-    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita a cada 3 horas. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
+    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
     <div class="pn-legend"><span><i style="--sw: var(--pn-link)"></i>Com Natal</span><span><i style="--sw: var(--pn-muted)"></i>Mais barata</span></div>
     <div class="pn-chart" id="grafico-historico" data-draw="hist" data-source="historico resumo">—</div>
   </section>
@@ -276,7 +290,7 @@
   <footer class="pn-foot" id="notas">
     <p>Preços sem mala despachada. Some de R$ 95 a R$ 220 por mala de 23 kg em cada trecho, conforme a companhia ou o vendedor.</p>
     <p>Só entra o preço confirmado na tela de compra, porque a lista do Google às vezes mostra valor antigo. Mesmo assim o preço pode mudar até o pagamento.</p>
-    <p>Datas pesquisadas e alvos do alerta ficam no monitor do GitHub, que roda a cada 3 horas mesmo com o computador desligado. Peça ao Claude para mudar.</p>
+    <p>Datas pesquisadas e alvos do alerta ficam no monitor do GitHub, que roda de hora em hora mesmo com o computador desligado. Peça ao Claude para mudar.</p>
   </footer>
 </div>
 
@@ -305,7 +319,12 @@
         if (n < cfg.min_dias || n > cfg.max_dias) continue;
         const p = pacotes.filter((x) => x.ida === i.data && x.volta === v.data).sort((a, b) => a.pp - b.pp)[0];
         const iv = p && p.pp < i.pp + v.pp ? p : null;
-        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: iv ? iv.pp : i.pp + v.pp, iv, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
+        // com 1 mala de 23 kg por pessoa: soma das opções com mala de cada data, ou o pacote com mala se sair mais barato
+        const pm = i.mala_pp != null && v.mala_pp != null ? i.mala_pp + v.mala_pp : null;
+        const pk = pacotes.filter((x) => x.ida === i.data && x.volta === v.data && x.pp_mala != null).sort((a, b) => a.pp_mala - b.pp_mala)[0];
+        const ivMala = pk && (pm == null || pk.pp_mala < pm) ? pk : null;
+        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: iv ? iv.pp : i.pp + v.pp, iv,
+          pp_mala: ivMala ? ivMala.pp_mala : pm, iv_mala: ivMala, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
       }
       return out;
     } });
@@ -324,8 +343,16 @@
   const linha = (id) => { const d = dash.data(id); return d.status === 'ok' && d.data.length ? d.data[0] : null; };
   const rows = (id) => { const d = dash.data(id); return d.status === 'ok' ? d.data : null; };
 
-  // seleção atual: um par de datas da grade
-  let sel = null;
+  // seleção atual: um par de datas da grade, sem ou com mala despachada
+  let sel = null, modo = 'sem';
+  const valor = (c) => (modo === 'com' ? c.pp_mala : c.pp);
+  const trocarModo = (m) => {
+    modo = m;
+    document.querySelectorAll('.pn-seg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
+    ['grade', 'escala', 'sel', 'link', 'vend'].forEach((n) => dash.draw(n));
+    sincronizarAtalhos();
+  };
+  document.querySelectorAll('.pn-seg button').forEach((b) => b.addEventListener('click', () => trocarModo(b.dataset.modo)));
   const escolher = (ida, volta, rolar) => {
     sel = { ida, volta };
     ['grade', 'sel', 'link', 'vend'].forEach((n) => dash.draw(n));
@@ -335,30 +362,42 @@
   const atual = () => {
     const g = rows('grade'), d = rows('dias'), res = linha('resumo');
     if (!g || !d || !res) return null;
-    const existe = (s) => s && g.some((c) => c.ida === s.ida && c.volta === s.volta);
+    const existe = (s) => s && g.some((c) => c.ida === s.ida && c.volta === s.volta && valor(c) != null);
     if (!existe(sel)) {
-      const natal = { ida: res.natal_ida, volta: res.natal_volta }, geral = { ida: res.geral_ida, volta: res.geral_volta };
-      sel = existe(natal) ? natal : existe(geral) ? geral : g.length ? { ida: g[0].ida, volta: g[0].volta } : null;
+      const pref = modo === 'com' ? [{ ida: res.mala_ida, volta: res.mala_volta }] :
+        [{ ida: res.natal_ida, volta: res.natal_volta }, { ida: res.geral_ida, volta: res.geral_volta }];
+      const livre = g.filter((c) => valor(c) != null);
+      sel = pref.find(existe) || (livre.length ? { ida: livre[0].ida, volta: livre[0].volta } : null);
       if (!sel) return null;
     }
     const c = g.find((x) => x.ida === sel.ida && x.volta === sel.volta);
     let ida = d.find((x) => x.sentido === 'ida' && x.data === sel.ida), volta = d.find((x) => x.sentido === 'volta' && x.data === sel.volta);
-    if (c.iv) {   // ida e volta compradas juntas: os voos e o link são os do pacote; o preço só existe para o par
-      const junta = (base, perna) => ({ ...base, ...perna, pp: null, pp_cia: null, vend: c.iv.vend, link: c.iv.link, junto: true });
-      ida = junta(ida, c.iv.pernas.ida); volta = junta(volta, c.iv.pernas.volta);
+    const iv = modo === 'com' ? c.iv_mala : c.iv;
+    if (iv) {   // ida e volta compradas juntas: os voos e o link são os do pacote; o preço só existe para o par
+      const junta = (base, perna) => ({ ...base, ...perna, pp: null, pp_cia: null, vend: iv.vend, link: iv.link, junto: true,
+        estimado: modo === 'com' && iv.mala_estimada });
+      ida = junta(ida, iv.pernas.ida); volta = junta(volta, iv.pernas.volta);
+    } else if (modo === 'com') {   // a melhor opção com mala de cada data (pode ser outro voo ou vendedor)
+      const m = (r) => ({ ...r, pp: r.mala_pp, vend: r.mala_vend, cia: r.mala_cia, orig: r.mala_orig, dest: r.mala_dest, saida: r.mala_saida,
+        chegada: r.mala_chegada, tipo_voo: r.mala_tipo_voo, link: r.mala_link, pp_cia: null, estimado: r.mala_estimado, mala: true });
+      ida = m(ida); volta = m(volta);
     }
-    return { ...c, ida, volta, pax: res.pax };
+    return { ...c, pp: valor(c), ida, volta, pax: res.pax };
   };
   const sincronizarAtalhos = () => {
     const res = linha('resumo');
     document.querySelectorAll('.pn-pick').forEach((b) => {
       const g = b.dataset.pick;
-      b.setAttribute('aria-pressed', String(!!(res && sel && res[g + '_ida'] === sel.ida && res[g + '_volta'] === sel.volta)));
+      const doModo = (g === 'mala') === (modo === 'com');
+      b.setAttribute('aria-pressed', String(!!(doModo && res && sel && res[g + '_ida'] === sel.ida && res[g + '_volta'] === sel.volta)));
     });
   };
   document.querySelectorAll('.pn-pick').forEach((b) => b.addEventListener('click', () => {
     const res = linha('resumo');
-    if (res && res[b.dataset.pick + '_ida']) escolher(res[b.dataset.pick + '_ida'], res[b.dataset.pick + '_volta'], true);
+    if (!res || !res[b.dataset.pick + '_ida']) return;
+    sel = { ida: res[b.dataset.pick + '_ida'], volta: res[b.dataset.pick + '_volta'] };
+    trocarModo(b.dataset.pick === 'mala' ? 'com' : 'sem');
+    escolher(sel.ida, sel.volta, true);
   }));
   dash.onData(() => { atual(); sincronizarAtalhos(); });
 
@@ -378,9 +417,9 @@
 
   dash.draw('escala', (el) => {
     el.replaceChildren();
-    const g = rows('grade');
+    const g = rows('grade') && rows('grade').filter((c) => valor(c) != null);
     if (!g || !g.length) { el.textContent = '—'; return; }
-    const [lo, hi] = d3.extent(g, (r) => r.pp);
+    const [lo, hi] = d3.extent(g, valor);
     const a = document.createElement('span'); a.textContent = BRL.format(lo);
     const z = document.createElement('span'); z.textContent = BRL.format(hi);
     el.append(a);
@@ -394,16 +433,17 @@
     if (!g || !d || !res || !s) { el.textContent = '—'; return; }
     const idas = d.filter((r) => r.sentido === 'ida').sort((a, b) => (a.data < b.data ? -1 : 1));
     const voltas = d.filter((r) => r.sentido === 'volta').sort((a, b) => (a.data < b.data ? -1 : 1));
-    const mapa = new Map(g.map((c) => [c.ida + ' ' + c.volta, c]));
-    const [lo, hi] = d3.extent(g, (c) => c.pp);
+    const mapa = new Map(g.filter((c) => valor(c) != null).map((c) => [c.ida + ' ' + c.volta, c]));
+    const [lo, hi] = d3.extent([...mapa.values()], valor);
     const forca = (v) => (hi === lo ? 1 : (hi - v) / (hi - lo));
-    const destaque = new Set([res.natal_ida + ' ' + res.natal_volta, res.geral_ida + ' ' + res.geral_volta]);
+    const destaque = new Set(modo === 'com' ? [res.mala_ida + ' ' + res.mala_volta] : [res.natal_ida + ' ' + res.natal_volta, res.geral_ida + ' ' + res.geral_volta]);
     const mk = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
     const rotulo = (r, umaLinha) => {
       const f = document.createDocumentFragment();
       if (umaLinha) { const d = mk('span', 'pn-d'); d.append(mk('span', 'pn-wi', r.dia.slice(0, 3) + ' '), r.dia.slice(4)); f.append(d); }
       else f.append(mk('span', 'pn-w', r.dia.slice(0, 3)), mk('span', 'pn-d', r.dia.slice(4)));
-      f.append(mk('span', 'pn-p', BRL.format(r.pp)));
+      const v = modo === 'com' ? r.mala_pp : r.pp;
+      f.append(mk('span', 'pn-p', v == null ? '—' : BRL.format(v)));
       return f;
     };
 
@@ -426,16 +466,18 @@
         for (const v of voltas) {
           const td = mk('td'); const c = mapa.get(i.data + ' ' + v.data);
           if (!c) { td.className = 'pn-off'; td.setAttribute('aria-hidden', 'true'); tr.append(td); continue; }
-          const b = mk('button', 'pn-cell' + (destaque.has(c.chave) ? ' is-best' : ''), NUM.format(c.pp));
+          const b = mk('button', 'pn-cell' + (destaque.has(c.chave) ? ' is-best' : ''), NUM.format(valor(c)));
           // escala suave o bastante para o texto padrão ficar legível em qualquer quadrado, nos dois temas
-          const p = 4 + Math.round(42 * Math.pow(forca(c.pp), 1.2));
+          const p = 4 + Math.round(42 * Math.pow(forca(valor(c)), 1.2));
           b.type = 'button';
           b.style.setProperty('--c', `color-mix(in oklab, var(--pn-acc) ${p}%, var(--color-panel))`);
           const on = c.ida === s.ida.data && c.volta === s.volta.data;
           b.setAttribute('aria-pressed', String(on)); b.tabIndex = on ? 0 : -1;
           b.dataset.ida = c.ida; b.dataset.volta = c.volta;
-          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(c.pp)} por pessoa` + (c.iv ? `, ida e volta juntas na ${c.iv.vend}` : ''));
-          if (c.iv) b.title = `Ida e volta compradas juntas na ${c.iv.vend}`;
+          const ivc = modo === 'com' ? c.iv_mala : c.iv;
+          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(valor(c))} por pessoa` +
+            (modo === 'com' ? ' com mala' : '') + (ivc ? `, ida e volta juntas na ${ivc.vend}` : ''));
+          if (ivc) b.title = `Ida e volta compradas juntas na ${ivc.vend}`;
           b.addEventListener('click', () => escolher(c.ida, c.volta, true));
           td.append(b); tr.append(td);
         }
@@ -466,12 +508,14 @@
     if (!s || !s.ida || !s.volta) { el.textContent = '—'; return; }
     const k = el.dataset.k;
     const tipo = (t) => (t.tipo_voo === 'direto' ? 'voo direto' : t.tipo_voo.replace('escala ', 'escala de '));
-    const trecho = (t) => t.junto ? `${t.cia}, ${tipo(t)}. Ida e volta compradas juntas na ${t.vend}, mais barato que separado.` :
+    const estim = (t) => (t.estimado ? ' Mala comprada à parte: valor estimado.' : '');
+    const trecho = (t) => t.junto ? `${t.cia}, ${tipo(t)}. Ida e volta compradas juntas na ${t.vend}, mais barato que separado.` + estim(t) :
+      t.mala ? `${t.cia}, ${tipo(t)}. ${BRL.format(t.pp)} com mala em ${t.vend.replace(/^CIA /, '')}.` + estim(t) :
       `${t.cia}, ${tipo(t)}. ${BRL.format(t.pp)} em ${t.vend.replace(/^CIA /, '')}` + (t.pp_cia && t.pp_cia !== t.pp ? `; na companhia ${BRL.format(t.pp_cia)}.` : '.');
     const v = {
       titulo: `${s.ida.dia} a ${s.volta.dia}, ${s.dias} dias, ${s.natal === 'Sim' ? 'com Natal lá' : 'chegando depois do Natal'}`,
       pp: BRL.format(s.pp),
-      total: `${BRL.format(s.pp * s.pax)} para ${s.pax} adultos, sem mala`,
+      total: `${BRL.format(s.pp * s.pax)} para ${s.pax} adultos, ` + (modo === 'com' ? 'com 1 mala de 23 kg por pessoa' : 'sem mala'),
       'ida.dia': s.ida.dia, 'volta.dia': s.volta.dia,
       'ida.orig': s.ida.orig, 'ida.dest': s.ida.dest, 'ida.saida': `sai ${s.ida.saida}`, 'ida.chegada': `chega ${s.ida.chegada}`, 'ida.meta': trecho(s.ida),
       'volta.orig': s.volta.orig, 'volta.dest': s.volta.dest, 'volta.saida': `sai ${s.volta.saida}`, 'volta.chegada': `chega ${s.volta.chegada}`, 'volta.meta': trecho(s.volta),
@@ -488,7 +532,8 @@
     if (href && /^https:\/\//.test(href)) {
       // o botão de compra diz o vendedor e o preço: abre a busca dele já com o voo, ou a tela do Google
       el.textContent = campo !== 'link' ? el.dataset.label :
-        t.junto ? `Comprar ida e volta na ${nomeVendedor(t.vend)}, ${BRL.format(s.pp)}` : `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}`;
+        (t.junto ? `Comprar ida e volta na ${nomeVendedor(t.vend)}, ${BRL.format(s.pp)}` : `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}`) +
+        (modo === 'com' ? ' com mala' : '');
       el.href = href; el.target = '_blank'; el.rel = 'noopener'; el.removeAttribute('aria-disabled');
     } else {
       el.removeAttribute('href'); el.textContent = '—'; el.setAttribute('aria-disabled', 'true');
