@@ -141,7 +141,7 @@
         <h2>Preço por par de datas</h2>
         <div class="pn-scale" data-draw="escala" data-source="grade">—</div>
       </div>
-      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa. Quadrados riscados ficam fora da estadia de 27 a 36 dias. Clique num quadrado para ver os voos e comprar.</p>
+      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de 27 a 36 dias. Clique num quadrado para ver os voos e comprar.</p>
       <div class="pn-gridbox" data-draw="grade" data-source="grade dias resumo">—</div>
     </div>
 
@@ -219,14 +219,18 @@
     fn: (painel) => painel.filter((r) => r.tipo === 'data') });
   dash.calc('vendedores', { inputs: ['painel'], title: 'Preço por vendedor', description: 'Preço por pessoa em cada vendedor nos trechos detalhados.',
     fn: (painel) => painel.filter((r) => r.tipo === 'vend') });
-  dash.calc('grade', { inputs: ['dias', 'resumo'], title: 'Preço por par de datas', description: 'Ida mais volta mais baratas de cada par de dias, dentro da estadia aceita.',
-    fn: (dias, resumo) => {
+  dash.calc('pacotes', { inputs: ['painel'], title: 'Ida e volta compradas juntas', description: 'Preço por pessoa da ida e volta num pacote só, nas melhores combinações.',
+    fn: (painel) => painel.filter((r) => r.tipo === 'iv') });
+  dash.calc('grade', { inputs: ['dias', 'resumo', 'pacotes'], title: 'Preço por par de datas', description: 'Ida mais volta mais baratas de cada par de dias (ou a ida e volta junta, se sair mais barato), dentro da estadia aceita.',
+    fn: (dias, resumo, pacotes) => {
       const cfg = resumo[0] || {};
       const out = [];
       for (const i of dias.filter((r) => r.sentido === 'ida')) for (const v of dias.filter((r) => r.sentido === 'volta')) {
         const n = Math.round((Date.parse(v.data) - Date.parse(i.data)) / 864e5);
         if (n < cfg.min_dias || n > cfg.max_dias) continue;
-        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: i.pp + v.pp, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
+        const p = pacotes.filter((x) => x.ida === i.data && x.volta === v.data).sort((a, b) => a.pp - b.pp)[0];
+        const iv = p && p.pp < i.pp + v.pp ? p : null;
+        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: iv ? iv.pp : i.pp + v.pp, iv, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
       }
       return out;
     } });
@@ -263,7 +267,12 @@
       if (!sel) return null;
     }
     const c = g.find((x) => x.ida === sel.ida && x.volta === sel.volta);
-    return { ...c, ida: d.find((x) => x.sentido === 'ida' && x.data === sel.ida), volta: d.find((x) => x.sentido === 'volta' && x.data === sel.volta), pax: res.pax };
+    let ida = d.find((x) => x.sentido === 'ida' && x.data === sel.ida), volta = d.find((x) => x.sentido === 'volta' && x.data === sel.volta);
+    if (c.iv) {   // ida e volta compradas juntas: os voos e o link são os do pacote; o preço só existe para o par
+      const junta = (base, perna) => ({ ...base, ...perna, pp: null, pp_cia: null, vend: c.iv.vend, link: c.iv.link, junto: true });
+      ida = junta(ida, c.iv.pernas.ida); volta = junta(volta, c.iv.pernas.volta);
+    }
+    return { ...c, ida, volta, pax: res.pax };
   };
   const sincronizarAtalhos = () => {
     const res = linha('resumo');
@@ -350,7 +359,8 @@
           const on = c.ida === s.ida.data && c.volta === s.volta.data;
           b.setAttribute('aria-pressed', String(on)); b.tabIndex = on ? 0 : -1;
           b.dataset.ida = c.ida; b.dataset.volta = c.volta;
-          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(c.pp)} por pessoa`);
+          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(c.pp)} por pessoa` + (c.iv ? `, ida e volta juntas na ${c.iv.vend}` : ''));
+          if (c.iv) b.title = `Ida e volta compradas juntas na ${c.iv.vend}`;
           b.addEventListener('click', () => escolher(c.ida, c.volta, true));
           td.append(b); tr.append(td);
         }
@@ -380,8 +390,9 @@
     el.classList.toggle('dash-skeleton', !s && dash.data('dias').status === 'loading');
     if (!s || !s.ida || !s.volta) { el.textContent = '—'; return; }
     const k = el.dataset.k;
-    const trecho = (t) => `${t.cia}, ${t.tipo_voo === 'direto' ? 'voo direto' : t.tipo_voo.replace('escala ', 'escala de ')}. ${BRL.format(t.pp)} em ${t.vend.replace(/^CIA /, '')}` +
-      (t.pp_cia && t.pp_cia !== t.pp ? `; na companhia ${BRL.format(t.pp_cia)}.` : '.');
+    const tipo = (t) => (t.tipo_voo === 'direto' ? 'voo direto' : t.tipo_voo.replace('escala ', 'escala de '));
+    const trecho = (t) => t.junto ? `${t.cia}, ${tipo(t)}. Ida e volta compradas juntas na ${t.vend}, mais barato que separado.` :
+      `${t.cia}, ${tipo(t)}. ${BRL.format(t.pp)} em ${t.vend.replace(/^CIA /, '')}` + (t.pp_cia && t.pp_cia !== t.pp ? `; na companhia ${BRL.format(t.pp_cia)}.` : '.');
     const v = {
       titulo: `${s.ida.dia} a ${s.volta.dia}, ${s.dias} dias, ${s.natal === 'Sim' ? 'com Natal lá' : 'chegando depois do Natal'}`,
       pp: BRL.format(s.pp),
@@ -401,7 +412,8 @@
     const href = t ? t[campo] : '';
     if (href && /^https:\/\//.test(href)) {
       // o botão de compra diz o vendedor e o preço: abre a busca dele já com o voo, ou a tela do Google
-      el.textContent = campo === 'link' ? `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}` : el.dataset.label;
+      el.textContent = campo !== 'link' ? el.dataset.label :
+        t.junto ? `Comprar ida e volta na ${nomeVendedor(t.vend)}, ${BRL.format(s.pp)}` : `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}`;
       el.href = href; el.target = '_blank'; el.rel = 'noopener'; el.removeAttribute('aria-disabled');
     } else {
       el.removeAttribute('href'); el.textContent = '—'; el.setAttribute('aria-disabled', 'true');

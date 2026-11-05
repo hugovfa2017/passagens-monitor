@@ -37,8 +37,20 @@ def brl(n):
 
 
 def texto_trecho(t):
+    if t.get('junto'):
+        return f"ida e volta juntas via {t['vend']} | {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}"
     return f"{brl(t['pp'])}/pessoa via {t['vend']} | {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}" + \
         (f" | na cia {brl(t['ppCia'])}" if t.get('ppCia') and t['ppCia'] != t['pp'] else '')
+
+
+def pernas(c, tre):
+    """Os dois voos de uma combinação. Se ela é ida e volta comprada junta (c['iv']), voos e link são os do pacote,
+    e o preço só existe para o par."""
+    if not c.get('iv'):
+        return tre[('ida', c['ida'])], tre[('volta', c['volta'])]
+    p = c['iv']
+    return tuple({**p['pernas'][s], 'rota': f"{p['pernas'][s]['orig']}-{p['pernas'][s]['dest']}", 'vend': p['vend'], 'link': p['link'],
+                  'pp': None, 'junto': True} for s in ('ida', 'volta'))
 
 
 def link_compra(sentido, data, voos, pax):
@@ -74,16 +86,18 @@ def nome_vendedor(v):
 def bloco_tg(emoji, titulo, c, alvo, tre, pax):
     """Uma combinação na mensagem do Telegram -> (texto, botões de compra da ida e da volta)."""
     voos, botoes = [], []
-    for rotulo, s, seta in (('Ida', 'ida', '🛫'), ('Volta', 'volta', '🛬')):
-        t = tre[(s, c[s])]
+    for (rotulo, s, seta), t in zip((('Ida', 'ida', '🛫'), ('Volta', 'volta', '🛬')), pernas(c, tre)):
         o, de = t['rota'].split('-')
-        voos.append(f"{seta} <b>{dia(c[s])}</b> · {o} → {de}\n"
-                    f"{html.escape(t['cia'])} {t['saida']}, {t['tipo']} · {brl(t['pp'])} na {html.escape(nome_vendedor(t['vend']))}")
-        botoes.append({'text': f"{emoji} {rotulo} {brl(t['pp'])}",
+        preco = 'comprada junto' if t.get('junto') else f"{brl(t['pp'])} na {html.escape(nome_vendedor(t['vend']))}"
+        voos.append(f"{seta} <b>{dia(c[s])}</b> · {o} → {de}\n{html.escape(t['cia'])} {t['saida']}, {t['tipo']} · {preco}")
+        botoes.append({'text': f"{emoji} {rotulo} {brl(t['pp'] or 0)}",
                        'url': t.get('link') or link_compra(s, c[s], t.get('voos'), pax) or link_mm(t['rota'], c[s], pax)})
+    if c.get('iv'):   # um botão só: ida e volta saem juntas, mais barato que separado
+        botoes = [{'text': f"{emoji} Ida e volta {brl(c['pp'])} na {c['iv']['vend']}", 'url': c['iv']['link']}]
     meta = f"✅ abaixo do alvo de {brl(alvo)}" if c['pp'] <= alvo else f"faltam {brl(c['pp'] - alvo)} para o alvo de {brl(alvo)}"
+    junto = f"\n🤝 Ida e volta compradas juntas na {c['iv']['vend']}: mais barato que separado" if c.get('iv') else ''
     return (f"{emoji} <b>{titulo} · {brl(c['pp'])}</b> por pessoa\n<blockquote>" + '\n\n'.join(voos) +
-            f"</blockquote>\n{c['dias']} dias · {meta}"), botoes
+            f"</blockquote>\n{c['dias']} dias · {meta}{junto}"), botoes
 
 
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
@@ -182,9 +196,9 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     ant_m, ant_n = menor('melhor_pp'), menor('natal_pp')
     ult = linhas[-1] if linhas else {}
     nova = {'data_hora': agora, 'pax': pax, 'melhor_pp': m['pp'], 'melhor_ida': m['ida'], 'melhor_volta': m['volta'], 'melhor_dias': m['dias'],
-            'melhor_voo_ida': texto_trecho(tre[('ida', m['ida'])]), 'melhor_voo_volta': texto_trecho(tre[('volta', m['volta'])]),
+            'melhor_voo_ida': texto_trecho(pernas(m, tre)[0]), 'melhor_voo_volta': texto_trecho(pernas(m, tre)[1]),
             'natal_pp': n['pp'] if n else '', 'natal_ida': n['ida'] if n else '', 'natal_volta': n['volta'] if n else '',
-            'natal_voo_ida': texto_trecho(tre[('ida', n['ida'])]) if n else '', 'natal_voo_volta': texto_trecho(tre[('volta', n['volta'])]) if n else ''}
+            'natal_voo_ida': texto_trecho(pernas(n, tre)[0]) if n else '', 'natal_voo_volta': texto_trecho(pernas(n, tre)[1]) if n else ''}
     novo_arquivo = not os.path.exists(hist)
     with open(hist, 'a', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS)
@@ -230,8 +244,8 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
         if not c:
             return {}
         out = {f'{prefixo}_pp': c['pp'], f'{prefixo}_dias': c['dias'], f'{prefixo}_total': c['pp'] * pax}
-        for sentido, d in (('ida', c['ida']), ('volta', c['volta'])):
-            t = tre[(sentido, d)]
+        out[f'{prefixo}_iv'] = c['iv']['vend'] if c.get('iv') else ''
+        for (sentido, d), t in zip((('ida', c['ida']), ('volta', c['volta'])), pernas(c, tre)):
             o, de = t['rota'].split('-')
             out.update({f'{prefixo}_{sentido}': d, f'{prefixo}_{sentido}_dia': dia(d), f'{prefixo}_{sentido}_cia': t['cia'],
                         f'{prefixo}_{sentido}_orig': o, f'{prefixo}_{sentido}_dest': de, f'{prefixo}_{sentido}_saida': t['saida'],
@@ -265,13 +279,19 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     for chave, lista in scan.get('vend', {}).items():
         sentido, d = chave.split(' ')
         rows += [{'tipo': 'vend', 'chave': f'{chave} {v}', 'sentido': sentido, 'data': d, 'vendedor': v, 'pp': pp} for v, pp in lista]
+    # ida e volta compradas juntas (Zupper): o painel usa no quadrado do par quando sai mais barato que somar os trechos
+    for p in scan.get('pacotes', []):
+        rows.append({'tipo': 'iv', 'chave': f"{p['ida']} {p['volta']}", 'ida': p['ida'], 'volta': p['volta'], 'pp': p['pp'],
+                     'vend': p['vend'], 'link': p['link'],
+                     'pernas': {s: {'orig': x['orig'], 'dest': x['dest'], 'saida': x['saida'], 'chegada': x['chegada'], 'cia': x['cia'],
+                                    'tipo_voo': x['tipo']} for s, x in p['pernas'].items()}})
     json.dump(rows, open(painel, 'w', encoding='utf-8'), ensure_ascii=False)
 
     # ultimo.md
     def bloco(titulo, c):
         if not c:
             return f"## {titulo}\n\nNenhuma combinação.\n"
-        ti, tv = tre[('ida', c['ida'])], tre[('volta', c['volta'])]
+        ti, tv = pernas(c, tre)
         def compra(sentido, d, t):
             link = t.get('link') or link_compra(sentido, d, t.get('voos'), pax)
             return f"[comprar na {nome_vendedor(t['vend'])}]({link})" if link else f"[ver na MaxMilhas]({link_mm(t['rota'], d, pax)})"
@@ -350,6 +370,23 @@ def _teste():
         assert dias[1]['orig'] == 'FOR' and dias[1]['link'].startswith('https://www.google.com/travel/flights/booking?tfs=')
         assert dias[0]['link'].startswith('https://www.maxmilhas.com.br/') and res['max_dias'] == 36
         assert len([x for x in rows if x['tipo'] == 'vend']) == 3
+        # ida e volta comprada junta: voos do pacote, um botão só, linha no painel
+        perna = {'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True, 'tipo': 'direto', 'dur': 170}
+        pac = {'vend': 'Zupper', 'pp': 1300, 'link': 'https://www.zupper.com.br/resultados?x', 'pernas': {'ida': perna,
+               'volta': {**perna, 'cia': 'LATAM', 'orig': 'JDO', 'dest': 'GRU', 'saida': '03:20', 'chegada': '06:25'}}}
+        s3 = scan(1000, 430)
+        s3['combos'][0] = {**s3['combos'][0], 'pp': 1300, 'iv': pac}
+        s3['pacotes'] = [{'ida': '2026-12-18', 'volta': '2027-01-19', **pac}]
+        with tempfile.TemporaryDirectory() as d2:
+            registrar(s3, d2, fake)
+            msg, mudo, bt = enviados[-1]
+            assert bt[0] == [{'text': '🎄 Ida e volta R$1.300 na Zupper', 'url': pac['link']}] and '🤝 Ida e volta compradas juntas' in msg, bt
+            assert 'Gol 22:10, direto · comprada junto' in msg and 'LATAM 03:20, direto · comprada junto' in msg, msg
+            linhas2 = json.load(open(os.path.join(d2, 'painel.json')))
+            ivr = [x for x in linhas2 if x['tipo'] == 'iv'][0]
+            res2 = [x for x in linhas2 if x['tipo'] == 'resumo'][0]
+            assert ivr['ida'] == '2026-12-18' and ivr['pp'] == 1300 and ivr['pernas']['volta']['cia'] == 'LATAM' and res2['natal_iv'] == 'Zupper', (ivr, res2)
+            assert res2['natal_ida_link'] == pac['link'] and 'ida e volta juntas via Zupper' in open(os.path.join(d2, 'ultimo.md')).read()
         assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
         assert enviados[-1][1] and 'não consegui ler os preços' in enviados[-1][0] and '<i>x&lt;y</i>' in enviados[-1][0], enviados[-1]
     print('ok')

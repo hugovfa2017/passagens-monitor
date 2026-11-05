@@ -1,6 +1,7 @@
 """Varredura completa no GitHub Actions: Google Voos (preço das companhias, confirmado na tela de compra)
 + busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil)
-(MaxMilhas nos três aeroportos do Nordeste; 123milhas e Zupper, uma busca por vez, no mais barato de cada data).
+(MaxMilhas nos três aeroportos do Nordeste; 123milhas e Zupper, uma busca por vez, no mais barato de cada data)
+e, nas melhores combinações, ida e volta comprada junta na Zupper.
 
 Uso: python nuvem/rodar.py          (roda tudo e registra)
      python nuvem/rodar.py --teste  (auto-checagem da junção, sem navegador)
@@ -60,12 +61,23 @@ def juntar(scan, ofertas):
             if cfg['minDias'] <= dias <= cfg['maxDias']:
                 combos.append({'ida': i['d'], 'volta': v['d'], 'dias': dias, 'pp': i['pp'] + v['pp'], 'natal': i['d'] <= cfg['natalAte']})
     combos.sort(key=lambda c: c['pp'])
-    sel = combos[:5]
+    sel = combos[:8]   # as 8 melhores (+ a melhor com Natal) também são buscadas como ida e volta na Zupper
     natal = next((c for c in combos if c['natal']), None)
     if natal and natal not in sel:
         sel.append(natal)
     return {**scan, 'trechos': trechos, 'vend': vend, 'combos': sel,
             'status': 'ok' if sel else 'erro', 'erro': None if sel else 'nenhuma combinação dentro da estadia'}
+
+
+def com_pacotes(scan, pacotes):
+    """Ida e volta compradas juntas: se sai mais barato que somar os trechos, a combinação passa a ser o pacote.
+    pacotes: {(ida, volta): oferta de vendedores.buscar_iv}"""
+    combos = []
+    for c in scan['combos']:
+        p = pacotes.get((c['ida'], c['volta']))
+        combos.append({**c, 'pp': p['pp'], 'iv': p} if p and p['pp'] < c['pp'] else c)
+    combos.sort(key=lambda c: c['pp'])
+    return {**scan, 'combos': combos, 'pacotes': [{'ida': i, 'volta': v, **p} for (i, v), p in pacotes.items()]}
 
 
 async def varrer():
@@ -119,6 +131,17 @@ async def varrer():
 
             await asyncio.gather(uma_por_vez('123milhas'), uma_por_vez('Zupper'))
             scan = juntar(scan, ofertas)
+            # 3) Zupper ida e volta juntas nas melhores combinações (às vezes sai mais barato que somar os trechos)
+            if scan['status'] == 'ok':
+                tre, um, pacotes = {(t['s'], t['d']): t for t in scan['trechos']}, asyncio.Semaphore(1), {}
+                for c in scan['combos']:
+                    r = await vendedores.buscar_iv(nav, c['ida'], c['volta'], tre[('ida', c['ida'])]['rota'][4:],
+                                                   tre[('volta', c['volta'])]['rota'][:3], pax, um)
+                    if r:
+                        pacotes[(c['ida'], c['volta'])] = min(r, key=lambda x: x['pp'])
+                    await asyncio.sleep(2)
+                scan = com_pacotes(scan, pacotes)
+                print(f"ZUPPER IDA E VOLTA: {len(pacotes)} pacotes; {sum(1 for c in scan['combos'] if c.get('iv'))} mais baratos que separado")
         await nav.close()
     return scan
 
@@ -142,6 +165,13 @@ def _teste():
     assert r['combos'][0] == {'ida': '2026-12-27', 'volta': '2027-01-23', 'dias': 27, 'pp': 857 + 718, 'natal': False}, r['combos']
     volta = [t for t in r['trechos'] if t['s'] == 'volta'][0]
     assert volta == t_volta and r['vend']['volta 2027-01-23'] == [['CIA LATAM', 718]]
+    # ida e volta junta mais barata vira a combinação; mais cara é ignorada
+    perna = {'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True, 'tipo': 'direto', 'dur': 170}
+    pac = {'vend': 'Zupper', 'pp': 1488, 'link': 'https://www.zupper.com.br/x', 'pernas': {'ida': perna, 'volta': {**perna, 'orig': 'JDO', 'dest': 'GRU'}}}
+    r2 = com_pacotes(r, {('2026-12-27', '2027-01-23'): pac})
+    assert r2['combos'][0]['pp'] == 1488 and r2['combos'][0]['iv'] is pac and r2['pacotes'][0]['ida'] == '2026-12-27' and r2['pacotes'][0]['pernas']['ida'] == perna, r2['combos']
+    r3 = com_pacotes(r, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})
+    assert r3['combos'][0]['pp'] == 1575 and 'iv' not in r3['combos'][0] and len(r3['pacotes']) == 1
     print('ok')
 
 
