@@ -2,8 +2,13 @@ name: Monitor de passagens
 
 on:
   schedule:
-    - cron: '17 * * * *'     # de hora em hora; o GitHub pode atrasar em horário de pico
-  workflow_dispatch:          # botão "Run workflow" para rodar na hora
+    - cron: '17 * * * *'     # reserva: o agendamento do GitHub atrasa e descarta muitas execuções
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (de hora em hora, com origem=cron)
+    inputs:
+      origem:
+        description: 'Quem disparou (cron = cron-job.org)'
+        required: false
+        default: 'manual'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
     paths: ['varredura.js', 'registrar.py', 'painel-index.html', 'nuvem/rodar.py', 'nuvem/vendedores.py', 'nuvem/pagina.py', '.github/workflows/monitor.yml']
@@ -25,23 +30,45 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main                 # a versão mais nova (com os dados da varredura anterior), não a do momento em que entrou na fila
+      - name: Pular se outra varredura acabou de rodar
+        id: guarda
+        env:
+          EVENTO: ${{ github.event_name }}
+          ORIGEM: ${{ inputs.origem }}
+        # agendamento do GitHub e cron-job.org podem cair na mesma hora: a segunda é pulada (sem mensagem dobrada)
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'FIM'
+          import json, os, datetime as dt
+          pular = False
+          if os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
+              try:
+                  fim = json.load(open('ultima.json'))['fim']
+                  idade = dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(fim.replace('Z', '+00:00'))
+                  pular = idade.total_seconds() < 40 * 60
+              except Exception:
+                  pass
+          print('pular=' + str(pular).lower())
+          FIM
       - uses: actions/setup-python@v5
+        if: steps.guarda.outputs.pular != 'true'
         with:
           python-version: '3.12'
       - name: Instalar navegador sem tela
+        if: steps.guarda.outputs.pular != 'true'
         run: |
           pip install playwright==1.48.0
           python -m playwright install --with-deps chromium
       - name: Varredura e alerta
+        if: steps.guarda.outputs.pular != 'true'
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python nuvem/rodar.py
       - name: Gerar a página (GitHub Pages)
-        if: always()
+        if: always() && steps.guarda.outputs.pular != 'true'
         run: python nuvem/pagina.py
       - name: Guardar resultado
-        if: always()
+        if: always() && steps.guarda.outputs.pular != 'true'
         run: |
           git config user.name "monitor-passagens"
           git config user.email "monitor-passagens@users.noreply.github.com"
