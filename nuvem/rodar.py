@@ -1,5 +1,6 @@
 """Varredura completa no GitHub Actions: Google Voos (preço das companhias, confirmado na tela de compra)
-+ busca direta na MaxMilhas e na 123milhas (que o Google não mostra para servidores fora do Brasil).
++ busca direta na MaxMilhas e na 123milhas (que o Google não mostra para servidores fora do Brasil)
+(MaxMilhas nos três aeroportos do Nordeste; 123milhas, uma busca por vez, no mais barato de cada data).
 
 Uso: python nuvem/rodar.py          (roda tudo e registra)
      python nuvem/rodar.py --teste  (auto-checagem da junção, sem navegador)
@@ -14,6 +15,7 @@ import registrar  # noqa: E402
 import vendedores  # noqa: E402
 
 GOOGLE = 'https://www.google.com/travel/flights?hl=pt-BR&gl=BR&curr=BRL'
+NORDESTE = ('NAT', 'FOR', 'JDO')   # na MaxMilhas, cada data é buscada nos três
 BLOQUEIO = r'unusual traffic|tráfego incomum|captcha|not a robot|Antes de continuar|Before you continue'
 
 
@@ -89,18 +91,27 @@ async def varrer():
         await pg.close()
         print('GOOGLE:', scan.get('status'), scan.get('erro') or '', '| datas:', len(scan.get('trechos', [])))
         if scan.get('status') == 'ok':
+            pax, ofertas = scan['pax'], {}
+            # 1) MaxMilhas: cada data nos três aeroportos, várias buscas juntas
             sem = asyncio.Semaphore(6)
-            pedidos = []
-            for t in scan['trechos']:
-                ne = t['rota'].split('-')[1] if t['s'] == 'ida' else t['rota'].split('-')[0]
-                for v in ('MaxMilhas', '123milhas'):
-                    pedidos.append(((t['s'], t['d']), v, vendedores.buscar(ctx, v, t['s'], t['d'], ne, scan['pax'], sem)))
-            res = await asyncio.gather(*(c for _, _, c in pedidos))
-            ofertas, contagem = {}, {}
-            for (chave, v, _), r in zip(pedidos, res):
+            pedidos = [((t['s'], t['d']), vendedores.buscar(nav, 'MaxMilhas', t['s'], t['d'], ne, pax, sem))
+                       for t in scan['trechos'] for ne in NORDESTE]
+            res = await asyncio.gather(*(c for _, c in pedidos))
+            for (chave, _), r in zip(pedidos, res):
                 ofertas.setdefault(chave, []).extend(r)
-                contagem[v] = contagem.get(v, 0) + (1 if r else 0)
-            print('VENDEDORES (datas com oferta):', contagem)
+            print(f'MAXMILHAS: {sum(1 for r in res if r)} de {len(res)} buscas com voo')
+            # 2) 123milhas: devolve vazio se recebe muitas buscas juntas; então uma por vez,
+            #    só no aeroporto mais barato de cada data até aqui (ela costuma vender o mesmo voo mais barato no Pix)
+            achou = 0
+            um = asyncio.Semaphore(1)
+            for t in scan['trechos']:
+                chave = (t['s'], t['d'])
+                rota = min(ofertas.get(chave, []) + [{'pp': t['pp'], 'orig': t['rota'][:3], 'dest': t['rota'][4:]}], key=lambda x: x['pp'])
+                r = await vendedores.buscar(nav, '123milhas', t['s'], t['d'], rota['dest'] if t['s'] == 'ida' else rota['orig'], pax, um)
+                ofertas.setdefault(chave, []).extend(r)
+                achou += bool(r)
+                await asyncio.sleep(2)
+            print(f'123MILHAS: {achou} de {len(scan["trechos"])} buscas com voo')
             scan = juntar(scan, ofertas)
         await nav.close()
     return scan

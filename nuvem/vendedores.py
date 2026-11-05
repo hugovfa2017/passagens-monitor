@@ -24,7 +24,7 @@ def _min(h, m):
 def ler_maxmilhas(cartoes, pax):
     out = []
     for t in cartoes:
-        m = re.search(r'(Gol|Latam|Azul)\s*\|\s*([A-Z]{3})\s*\|\s*(\d\d:\d\d)\s*\|\s*(\d+)h(\d*)m?\s*\|\s*(Direto|\d+ paradas?)\s*\|'
+        m = re.search(r'(Gol|Latam|Azul)[^|]*\|\s*([A-Z]{3})\s*\|\s*(\d\d:\d\d)\s*\|\s*(\d+)h(\d*)m?\s*\|\s*(Direto|\d+ paradas?)\s*\|'
                       r'\s*([A-Z]{3})\s*\|\s*(\d\d:\d\d)[\s\S]*?Valor total\s*\|\s*R\$\s*([\d.]+),(\d\d)', t, re.I)
         if m:
             out.append({'vend': 'MaxMilhas', 'cia': CIAS[m[1].lower()], 'orig': m[2], 'saida': m[3], 'dur': _min(m[4], m[5]),
@@ -36,7 +36,7 @@ def ler_maxmilhas(cartoes, pax):
 def ler_123milhas(cartoes, pax):
     out = []
     for t in cartoes:
-        m = re.search(r'(GOL|LATAM|AZUL)\s*\|\s*voo ([A-Z0-9]{2})-(\d+)\s*\|\s*(\d\d:\d\d)\s*\|\s*([A-Z]{3})\s*\|\s*(Direto|\d+ Paradas?)\s*\|'
+        m = re.search(r'(GOL|LATAM|AZUL)[^|]*\|\s*voo ([A-Z0-9]{2})-(\d+)\s*\|\s*(\d\d:\d\d)\s*\|\s*([A-Z]{3})\s*\|\s*(Direto|\d+ Paradas?)\s*\|'
                       r'\s*(\d+)h\s*(\d+)m\s*\|\s*(\d\d:\d\d)\s*\|\s*([A-Z]{3})[\s\S]*?Total no Pix\s*\|\s*R\$\s*([\d.]+)', t, re.I)
         if m:
             out.append({'vend': '123milhas', 'cia': CIAS[m[1].lower()], 'voo': (m[2], m[3]), 'saida': m[4], 'orig': m[5],
@@ -54,12 +54,14 @@ def url_123milhas(o, d, data, pax):
     return f'https://123milhas.com/v2/busca?de={o}&para={d}&adultos={pax}&criancas=0&bebes=0&ida={dd}-{m}-{a}&classe=3'
 
 
-async def buscar(contexto, vendedor, sentido, data, ne, pax, sem):
+async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
     """Ofertas de um vendedor para SAO <-> aeroporto do Nordeste numa data."""
     o, d = ('SAO', ne) if sentido == 'ida' else (ne, 'SAO')
     url = (url_maxmilhas if vendedor == 'MaxMilhas' else url_123milhas)(o, d, data, pax)
     async with sem:
-        pg = await contexto.new_page()
+        # uma sessão por busca: a 123milhas não devolve nada a duas buscas abertas na mesma sessão
+        ctx = await navegador.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
+        pg = await ctx.new_page()
         try:
             await pg.goto(url, wait_until='domcontentloaded', timeout=60000)
             try:
@@ -78,7 +80,7 @@ async def buscar(contexto, vendedor, sentido, data, ne, pax, sem):
         except Exception:
             return []
         finally:
-            await pg.close()
+            await ctx.close()
     ofertas = (ler_maxmilhas if vendedor == 'MaxMilhas' else ler_123milhas)(cartoes, pax)
     validas = []
     for x in ofertas:
@@ -95,13 +97,16 @@ async def buscar(contexto, vendedor, sentido, data, ne, pax, sem):
 
 def _teste():
     mm = [' Ida - Domingo 27/12/26 | Gol | GRU | 22:10 | 2h50m | Direto | JDO | 01:00 | +1 | Detalhes | Até 12kg | Valor total | R$ 1.787,74 | -4% | Comp']
+    assert ler_maxmilhas([mm[0].replace('| Gol |', '| Latam Airlines |')], 2)[0]['cia'] == 'LATAM'
     r = ler_maxmilhas(mm, 2)[0]
     assert (r['cia'], r['orig'], r['saida'], r['dest'], r['pp'], r['direto']) == ('Gol', 'GRU', '22:10', 'JDO', 894, True), r
     t3 = ['Ida | Dom, 27/12/2026 | GOL | voo G3-1580 | 22:10 | GRU | Direto | 02h 50m | 01:00 | JDO | +1 | Detalhes | R$ | 819 | No Pix'
           ' | 2 adultos | R$ 1.905 | Valor das taxas | R$ 77 | Desconto no Pix | -R$ 267 | Total no Pix | R$ 1.714 | Comprar',
-          'Ida | Dom, 27/12/2026 | AZUL | voo AD-4152 | 23:00 | GRU | 1 Parada | 15h 40m | 14:40 | JDO | Total no Pix | R$ 3.100 | Comprar']
+          'Ida | Dom, 27/12/2026 | AZUL | voo AD-4152 | 23:00 | GRU | 1 Parada | 15h 40m | 14:40 | JDO | Total no Pix | R$ 3.100 | Comprar',
+          'Ida | Qui, 24/12/2026 | LATAM Airlines | voo LA-3440 | 13:35 | GRU | Direto | 03h 20m | 16:55 | NAT | Inclui uma mochila | Total no Pix | R$ 2.310 | Comprar']
     r = ler_123milhas(t3, 2)
     assert r[0]['voo'] == ('G3', '1580') and r[0]['pp'] == 857 and r[0]['direto'] and r[1]['dur'] == 940 and not r[1]['direto'], r
+    assert (r[2]['cia'], r[2]['voo'], r[2]['dest'], r[2]['pp']) == ('LATAM', ('LA', '3440'), 'NAT', 1155), r
     assert url_123milhas('SAO', 'JDO', '2026-12-27', 2).endswith('ida=27-12-2026&classe=3')
     print('ok')
 
