@@ -1,6 +1,6 @@
-# Última varredura: 2026-11-04 22:56 (2 adultos, preço por pessoa, sem mala despachada)
+# Última varredura: 2026-11-04 23:02 (2 adultos, preço por pessoa, sem mala despachada)
 
-**ALERTA:** melhor geral caiu p/ R$1.645/pessoa (antes R$1.864): dom 27/12 -> sáb 23/01
+Sem queda nova de preço.
 
 Telegram: nenhuma oferta abaixo do alvo (alvos: geral R$1.400, com Natal R$1.450)
 
@@ -27,7 +27,7 @@ Telegram: nenhuma oferta abaixo do alvo (alvos: geral R$1.400, com Natal R$1.450
 - ida sáb 26/12: R$1.196/pessoa via CIA Gol | Gol GRU-JDO 14:30-17:25 direto
 - ida dom 27/12: R$927/pessoa via CIA Gol | Gol GRU-JDO 22:10-01:00 direto
 - volta sex 15/01: R$519/pessoa via CIA Gol | Gol NAT-GRU 03:20-07:00 direto
-- volta sáb 16/01: R$732/pessoa via CIA Gol | Gol NAT-CGH 04:55-08:20 direto
+- volta sáb 16/01: R$732/pessoa via CIA LATAM | LATAM NAT-CGH 04:55-08:35 direto
 - volta dom 17/01: R$725/pessoa via CIA Gol | Gol FOR-GRU 12:35-16:10 direto
 - volta seg 18/01: R$718/pessoa via CIA Gol | Gol JDO-GRU 04:05-07:15 direto
 - volta ter 19/01: R$718/pessoa via CIA Gol | Gol JDO-GRU 19:05-22:15 direto
