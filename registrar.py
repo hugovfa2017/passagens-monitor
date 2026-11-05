@@ -13,7 +13,7 @@ import base64, csv, json, os, subprocess, sys, tempfile, urllib.parse, urllib.re
 from datetime import datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-PAINEL_URL = 'https://claude.ai/artifact/RtZgzusuDVPdxWR45UNBfN'
+PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
 
 # "Algo muito bom" = preço por pessoa (ida + volta, sem mala) igual ou abaixo destes alvos.
 ALVO_GERAL = 1400

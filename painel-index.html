@@ -187,7 +187,7 @@
           <div><h4>Volta</h4><div data-draw="vend" data-sentido="volta" data-source="vendedores">—</div></div>
         </div>
       </details>
-      <p class="pn-small">O botão abre a tela do Google daquele voo. Lá, clique em Continuar ao lado do vendedor escrito no botão para ir ao pagamento. Um link direto para o pagamento não serve aqui: o vendedor cria a sessão de compra no clique e ela expira em cerca de 20 minutos.</p>
+      <p class="pn-small">MaxMilhas e 123milhas: o botão abre a busca do vendedor já com esse voo no topo, com preço no Pix. Companhia aérea: abre a tela do Google com todos os vendedores; clique em Continuar ao lado dela.</p>
     </aside>
   </section>
 
@@ -400,9 +400,8 @@
     const t = s && s[lado];
     const href = t ? t[campo] : '';
     if (href && /^https:\/\//.test(href)) {
-      // o botão de compra já diz em qual vendedor clicar em Continuar na tela do Google
-      const google = campo === 'link' && href.startsWith('https://www.google.com/');
-      el.textContent = google ? `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}` : el.dataset.label;
+      // o botão de compra diz o vendedor e o preço: abre a busca dele já com o voo, ou a tela do Google
+      el.textContent = campo === 'link' ? `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}` : el.dataset.label;
       el.href = href; el.target = '_blank'; el.rel = 'noopener'; el.removeAttribute('aria-disabled');
     } else {
       el.removeAttribute('href'); el.textContent = '—'; el.setAttribute('aria-disabled', 'true');
