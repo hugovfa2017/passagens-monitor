@@ -11,7 +11,7 @@ O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em t
 Saídas na pasta: historico.csv, ultimo.md, painel.json (o que o painel mostra).
 Imprime uma linha por evento: ALERTA ..., SEM_NOVIDADE ..., ERRO_VARREDURA ..., TELEGRAM_* ...
 """
-import base64, csv, html, json, os, subprocess, sys, tempfile, urllib.parse, urllib.request
+import base64, csv, html, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
 from datetime import datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -97,14 +97,17 @@ CHAT_FILE = os.path.join(AQUI, 'telegram_chat.txt')
 
 
 def _token():
-    # no GitHub Actions o token vem do segredo TELEGRAM_TOKEN; no Mac, do Keychain
-    if os.environ.get('TELEGRAM_TOKEN'):
-        return os.environ['TELEGRAM_TOKEN'].strip()
-    try:
-        return subprocess.run(['security', 'find-generic-password', '-s', 'telegram-passagens', '-w'],
-                              capture_output=True, text=True).stdout.strip()
-    except OSError:
-        return ''
+    # no GitHub Actions o token vem do segredo TELEGRAM_TOKEN; no Mac, do Keychain.
+    # Fica só com o token (123456:ABC...), mesmo que tenha sido colado com texto ou espaço em volta.
+    bruto = os.environ.get('TELEGRAM_TOKEN', '')
+    if not bruto:
+        try:
+            bruto = subprocess.run(['security', 'find-generic-password', '-s', 'telegram-passagens', '-w'],
+                                   capture_output=True, text=True).stdout
+        except OSError:
+            return ''
+    achado = re.search(r'\d+:[A-Za-z0-9_-]{30,}', bruto)
+    return achado[0] if achado else ''
 
 
 def _api(token, metodo, campos=None):
@@ -126,8 +129,14 @@ def telegram(texto, silencioso=False, botoes=()):
     try:
         r = _api(token, 'sendMessage', campos)
         return 'TELEGRAM_ENVIADO' if r.get('ok') else f"TELEGRAM_FALHOU {r.get('description', '')[:150]}"
-    except (OSError, ValueError) as e:
-        return f'TELEGRAM_FALHOU {e}'
+    except Exception as e:  # o Telegram nunca derruba a varredura; sem str(e), que pode trazer o token na URL
+        desc = ''
+        if hasattr(e, 'read'):   # erro HTTP: o Telegram explica no corpo ("Unauthorized", "chat not found"...)
+            try:
+                desc = json.loads(e.read()).get('description', '')[:150]
+            except Exception:
+                pass
+        return f"TELEGRAM_FALHOU {type(e).__name__} {getattr(e, 'code', '')} {desc}".strip()
 
 
 def configurar_telegram():
@@ -298,6 +307,16 @@ def _teste():
     tfs = urllib.parse.parse_qs(urllib.parse.urlparse(link_compra('volta', '2027-01-19', 'FOR>GRU 2027-01-19 G3 1555', 2)).query)['tfs'][0]
     assert base64.urlsafe_b64decode(tfs + '=' * (-len(tfs) % 4)) == esperado
     assert link_compra('ida', '2026-12-18', '', 2) == ''
+    # token colado com texto/espaço em volta: fica só o token; sem token válido, não tenta enviar
+    antes = os.environ.get('TELEGRAM_TOKEN')
+    try:
+        tk = '123456789:AAH-abcdefghijklmnopqrstuvwxyz_0123'
+        os.environ['TELEGRAM_TOKEN'] = f' Use this token to access the HTTP API:\n{tk} \n'
+        assert _token() == tk, _token()
+        os.environ['TELEGRAM_TOKEN'] = 'sem token aqui'
+        assert _token() == '' and telegram('x') == 'TELEGRAM_NAO_CONFIGURADO'
+    finally:
+        os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
     enviados = []
     fake = lambda msg, silencioso=False, botoes=(): enviados.append((msg, silencioso, botoes)) or 'TELEGRAM_ENVIADO'
     with tempfile.TemporaryDirectory() as d:

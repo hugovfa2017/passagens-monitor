@@ -45,4 +45,5 @@ jobs:
           git config user.email "monitor-passagens@users.noreply.github.com"
           for f in historico.csv ultimo.md ultima.json painel.json docs/index.html docs/painel.json docs/.nojekyll; do [ -f "$f" ] && git add "$f"; done
           git commit -m "Varredura $(date '+%d/%m %H:%M')" || echo "nada novo"
+          git pull --rebase --autostash -q origin main   # alguém pode ter mudado o código durante a varredura
           git push
