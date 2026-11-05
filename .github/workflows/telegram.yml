@@ -1,0 +1,22 @@
+name: Teste do Telegram
+
+on:
+  workflow_dispatch:          # botão "Run workflow": manda uma mensagem de teste com os segredos do GitHub
+  push:
+    branches: [main]
+    paths: ['.github/workflows/telegram.yml']
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mandar mensagem de teste
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          r=$(python3 registrar.py --teste-telegram)
+          echo "$r"
+          [ "$r" = "TELEGRAM_ENVIADO" ]
