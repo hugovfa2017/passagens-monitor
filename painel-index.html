@@ -1,0 +1,485 @@
+<meta name="dash-one-writer">
+<style>
+  /* Painel de decisão: a grade ida x volta é a peça central; o itinerário escolhido fica ao lado com a compra.
+     Um destaque só (verde-mar) para seleção, botões e escala de preço; o resto vem dos tokens do tema. */
+  .pn {
+    --pn-acc: #17736c;
+    --pn-acc-ink: #ffffff;
+    --pn-link: color-mix(in oklab, var(--pn-acc) 72%, var(--color-fg));
+    --pn-tint: color-mix(in oklab, var(--pn-acc) 9%, var(--color-panel));
+    --pn-line: var(--color-border-line);
+    --pn-muted: var(--color-fg-muted);
+    --pn-r: 10px;
+    display: grid; gap: calc(var(--cds-gap-xl) * 1.5);
+    font-family: var(--font-anthropic-sans); font-variant-numeric: tabular-nums; color: var(--color-fg);
+  }
+  .pn ::selection { background: color-mix(in oklab, var(--pn-acc) 28%, transparent); }
+  .pn h1, .pn h2, .pn h3, .pn h4, .pn p { margin: 0; }
+  .pn h2 { font-size: var(--cds-font-size-heading); font-weight: 600; text-wrap: balance; }
+  .pn-note { font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; line-height: 1.5; }
+  .pn b { font-weight: 600; }
+
+  /* topo */
+  .pn-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--cds-gap-lg); }
+  .pn-titles { display: grid; gap: 6px; min-width: 0; }
+  .pn-head h1 { font-size: calc(var(--cds-font-size-title) * 1.1); font-weight: 650; letter-spacing: -0.015em; }
+  .pn-meta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-picks { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); }
+  .pn-pick { font: inherit; text-align: left; cursor: pointer; display: grid; gap: 2px; min-width: 11.5rem;
+    padding: 10px 14px; border-radius: var(--pn-r); border: 1px solid var(--pn-line); background: var(--color-panel); color: var(--color-fg);
+    transition: border-color .15s ease, background-color .15s ease; }
+  .pn-pick:hover { border-color: color-mix(in oklab, var(--pn-acc) 45%, var(--pn-line)); }
+  .pn-pick[aria-pressed="true"] { border-color: var(--pn-acc); background: var(--pn-tint); box-shadow: inset 0 0 0 1px var(--pn-acc); }
+  .pn-pick-k { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-pick-v { font-size: var(--cds-font-size-heading); font-weight: 650; }
+  .pn-pick-s { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-pick-s.is-hit { color: var(--color-ok); font-weight: 600; }
+
+  /* grade + itinerário */
+  .pn-main { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(19rem, 1fr); gap: calc(var(--cds-gap-xl) * 1.25); align-items: start; }
+  @media (max-width: 900px) { .pn-main { grid-template-columns: minmax(0, 1fr); } }
+  .pn-gridcol { display: grid; gap: var(--cds-gap-md); min-width: 0; }
+  .pn-gridtop { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--cds-gap-sm); }
+  .pn-scale { display: flex; align-items: center; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-scale i { display: block; width: 18px; height: 10px; border-radius: 2px; }
+  .pn-gridbox { overflow-x: auto; min-height: 320px; }
+  .pn-grid { border-collapse: separate; border-spacing: 3px; width: 100%; min-width: 34rem; font-size: var(--cds-font-size-caption); }
+  .pn-grid th { font-weight: 400; color: var(--pn-muted); padding: 0 2px; }
+  .pn-grid thead th { text-align: center; vertical-align: bottom; padding-bottom: 4px; }
+  .pn-grid .pn-axis { text-align: left; color: var(--color-fg); font-weight: 600; padding-bottom: 6px; }
+  .pn-grid tbody th { text-align: left; white-space: nowrap; padding-right: 8px; }
+  .pn-d { display: block; color: var(--color-fg); font-weight: 600; }
+  .pn-w, .pn-p { display: block; }
+  .pn-wi { font-weight: 400; color: var(--pn-muted); }
+  .pn-p { color: var(--pn-muted); }
+  .pn-grp th { text-align: left; color: var(--color-fg); font-weight: 600; padding: 12px 2px 4px; }
+  .pn-grid td { padding: 0; height: 2.6rem; }
+  .pn-cell { font: inherit; width: 100%; height: 100%; min-width: 3.1rem; border: 0; border-radius: 6px; cursor: pointer;
+    background: var(--c); color: var(--color-fg); font-weight: 500; transition: transform .15s ease, box-shadow .15s ease; }
+  .pn-cell:hover { box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--pn-acc) 55%, var(--color-fg)); }
+  .pn-cell.is-best { font-weight: 700; }
+  .pn-cell[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--color-fg), 0 0 0 2px var(--color-panel); font-weight: 700; }
+  .pn-cell:active { transform: scale(.97); }
+  .pn-off { background: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in oklab, var(--pn-line) 55%, transparent) 5px 6px); border-radius: 6px; }
+  .pn-cell:focus-visible, .pn-pick:focus-visible, .pn-buy:focus-visible, .pn-alt:focus-visible, .pn-vendors summary:focus-visible {
+    outline: 2px solid var(--pn-link); outline-offset: 2px; }
+
+  .pn-itin { display: grid; gap: var(--cds-gap-lg); padding: var(--cds-pad-lg); border-radius: var(--pn-r); background: var(--color-panel);
+    border: 1px solid var(--pn-line); box-shadow: 0 8px 24px -16px color-mix(in oklab, var(--color-fg) 35%, transparent); min-width: 0; }
+  .pn-when { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+  .pn-price b { font-size: calc(var(--cds-font-size-title) * 1.3); font-weight: 650; letter-spacing: -0.02em; line-height: 1.05; }
+  .pn-price span { color: var(--pn-muted); }
+  .pn-leg { display: grid; gap: 10px; padding-top: var(--cds-pad-md); border-top: 1px solid var(--pn-line); }
+  .pn-leg h3 { font-size: var(--cds-font-size-body); font-weight: 600; display: flex; gap: 8px; align-items: baseline; }
+  .pn-leg h3 span { font-weight: 400; color: var(--pn-muted); font-size: var(--cds-font-size-caption); }
+  .pn-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+  .pn-end { display: grid; gap: 2px; }
+  .pn-end b { font-size: var(--cds-font-size-heading); letter-spacing: .02em; }
+  .pn-end span { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-end--r { text-align: right; }
+  .pn-path { position: relative; height: 1px; background: var(--pn-line); }
+  .pn-path::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--pn-muted); border-right: 1px solid var(--pn-muted); transform: rotate(45deg); }
+  .pn-legmeta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.5; }
+  .pn-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .pn-buy { display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 8px; background: var(--pn-acc); color: var(--pn-acc-ink);
+    font-weight: 600; font-size: var(--cds-font-size-caption); text-decoration: none; transition: background-color .15s ease; white-space: nowrap; }
+  .pn-buy:hover { background: color-mix(in oklab, var(--pn-acc) 86%, #000); }
+  .pn-buy:active { transform: translateY(1px); }
+  .pn-alt { color: var(--pn-link); font-size: var(--cds-font-size-caption); font-weight: 500; text-underline-offset: 3px; }
+  .pn-buy[aria-disabled="true"], .pn-alt[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+  .pn-vendors { border-top: 1px solid var(--pn-line); padding-top: var(--cds-pad-md); }
+  .pn-vendors summary { cursor: pointer; font-size: var(--cds-font-size-caption); font-weight: 600; color: var(--pn-link); }
+  .pn-vcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); margin-top: var(--cds-gap-sm); }
+  .pn-vcols h4 { font-size: var(--cds-font-size-caption); font-weight: 600; margin: 0 0 4px; }
+  .pn-v { display: flex; justify-content: space-between; gap: 8px; font-size: var(--cds-font-size-caption); padding: 3px 0; color: var(--pn-muted); }
+  .pn-v.is-best { color: var(--color-fg); font-weight: 600; }
+  .pn-v.is-out { opacity: .55; }
+  .pn-small { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+
+  /* histórico */
+  .pn-history { display: grid; gap: var(--cds-gap-sm); }
+  .pn-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .pn-legend i { display: block; width: 14px; height: 2px; background: var(--sw); }
+  .pn-chart { position: relative; min-height: 220px; }
+  .pn-tick { font-size: var(--cds-font-size-caption); fill: var(--pn-muted); }
+  .pn-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius);
+    box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); z-index: 2; white-space: nowrap; }
+  .pn-tip .k { color: var(--cds-text-secondary); }
+
+  .pn-foot { display: grid; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; padding-top: var(--cds-pad-md); border-top: 1px solid var(--pn-line); }
+
+  [data-dash-source-state=empty] { color: transparent; }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  @media (prefers-reduced-motion: reduce) { .pn * { transition: none !important; } }
+</style>
+
+<div class="pn">
+  <header class="pn-head" id="topo">
+    <div class="pn-titles">
+      <h1>Passagens Nordeste</h1>
+      <p class="pn-meta">Ida e volta para <span data-draw="f" data-source="resumo" data-row="0" data-field="pax">—</span> adultos, preço por pessoa sem mala despachada. Atualizado em <span data-draw="f" data-source="resumo" data-row="0" data-field="quando" data-fmt="quando">—</span>.</p>
+    </div>
+    <div class="pn-picks" role="group" aria-label="Combinações em destaque">
+      <button type="button" class="pn-pick" id="pick-natal" data-pick="natal" aria-pressed="false">
+        <span class="pn-pick-k">Melhor com Natal</span>
+        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="natal_pp" data-fmt="brl">—</span>
+        <span class="pn-pick-s" data-draw="chip" data-grupo="natal" data-source="variacao">—</span>
+      </button>
+      <button type="button" class="pn-pick" id="pick-geral" data-pick="geral" aria-pressed="false">
+        <span class="pn-pick-k">Mais barata, qualquer data</span>
+        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="geral_pp" data-fmt="brl">—</span>
+        <span class="pn-pick-s" data-draw="chip" data-grupo="geral" data-source="variacao">—</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="pn-main" id="escolha">
+    <div class="pn-gridcol" id="grade">
+      <div class="pn-gridtop">
+        <h2>Preço por par de datas</h2>
+        <div class="pn-scale" data-draw="escala" data-source="grade">—</div>
+      </div>
+      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa. Quadrados riscados ficam fora da estadia de 27 a 36 dias. Clique num quadrado para ver os voos e comprar.</p>
+      <div class="pn-gridbox" data-draw="grade" data-source="grade dias resumo">—</div>
+    </div>
+
+    <aside class="pn-itin" id="selecionada" aria-live="polite">
+      <div>
+        <p class="pn-when" data-draw="sel" data-k="titulo" data-source="grade">—</p>
+        <p class="pn-price"><b data-draw="sel" data-k="pp" data-source="grade">—</b><span>por pessoa</span></p>
+        <p class="pn-small" data-draw="sel" data-k="total" data-source="grade resumo">—</p>
+      </div>
+
+      <div class="pn-leg">
+        <h3>Ida <span data-draw="sel" data-k="ida.dia" data-source="dias">—</span></h3>
+        <div class="pn-route">
+          <div class="pn-end"><b data-draw="sel" data-k="ida.orig" data-source="dias">—</b><span data-draw="sel" data-k="ida.saida" data-source="dias">—</span></div>
+          <div class="pn-path" aria-hidden="true"></div>
+          <div class="pn-end pn-end--r"><b data-draw="sel" data-k="ida.dest" data-source="dias">—</b><span data-draw="sel" data-k="ida.chegada" data-source="dias">—</span></div>
+        </div>
+        <p class="pn-legmeta" data-draw="sel" data-k="ida.meta" data-source="dias">—</p>
+        <div class="pn-actions">
+          <a class="pn-buy" data-draw="link" data-k="ida.link" data-label="Comprar ida" data-source="dias">—</a>
+          <a class="pn-alt" data-draw="link" data-k="ida.link_mm" data-label="Ver na MaxMilhas" data-source="dias">—</a>
+        </div>
+      </div>
+
+      <div class="pn-leg">
+        <h3>Volta <span data-draw="sel" data-k="volta.dia" data-source="dias">—</span></h3>
+        <div class="pn-route">
+          <div class="pn-end"><b data-draw="sel" data-k="volta.orig" data-source="dias">—</b><span data-draw="sel" data-k="volta.saida" data-source="dias">—</span></div>
+          <div class="pn-path" aria-hidden="true"></div>
+          <div class="pn-end pn-end--r"><b data-draw="sel" data-k="volta.dest" data-source="dias">—</b><span data-draw="sel" data-k="volta.chegada" data-source="dias">—</span></div>
+        </div>
+        <p class="pn-legmeta" data-draw="sel" data-k="volta.meta" data-source="dias">—</p>
+        <div class="pn-actions">
+          <a class="pn-buy" data-draw="link" data-k="volta.link" data-label="Comprar volta" data-source="dias">—</a>
+          <a class="pn-alt" data-draw="link" data-k="volta.link_mm" data-label="Ver na MaxMilhas" data-source="dias">—</a>
+        </div>
+      </div>
+
+      <details class="pn-vendors" id="vendedores">
+        <summary>Preço em cada vendedor</summary>
+        <div class="pn-vcols">
+          <div><h4>Ida</h4><div data-draw="vend" data-sentido="ida" data-source="vendedores">—</div></div>
+          <div><h4>Volta</h4><div data-draw="vend" data-sentido="volta" data-source="vendedores">—</div></div>
+        </div>
+      </details>
+      <p class="pn-small">O botão abre a tela do Google daquele voo. Lá, clique em Continuar ao lado do vendedor escrito no botão para ir ao pagamento. Um link direto para o pagamento não serve aqui: o vendedor cria a sessão de compra no clique e ela expira em cerca de 20 minutos.</p>
+    </aside>
+  </section>
+
+  <section class="pn-history" id="historico">
+    <h2>Como o preço mudou</h2>
+    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita a cada 3 horas. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
+    <div class="pn-legend"><span><i style="--sw: var(--pn-link)"></i>Com Natal</span><span><i style="--sw: var(--pn-muted)"></i>Mais barata</span></div>
+    <div class="pn-chart" id="grafico-historico" data-draw="hist" data-source="historico resumo">—</div>
+  </section>
+
+  <footer class="pn-foot" id="notas">
+    <p>Preços sem mala despachada. Some de R$ 95 a R$ 220 por mala de 23 kg em cada trecho, conforme a companhia ou o vendedor.</p>
+    <p>Só entra o preço confirmado na tela de compra, porque a lista do Google às vezes mostra valor antigo. Mesmo assim o preço pode mudar até o pagamento.</p>
+    <p>Datas pesquisadas e alvos do alerta ficam no monitor do seu computador. Peça ao Claude para mudar.</p>
+  </footer>
+</div>
+
+<script>
+  const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const NUM = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+  const CONFIAVEIS = /^(CIA |maxmilhas|123milhas|zupper|decolar|booking)/i;
+  const estreito = window.matchMedia('(max-width: 900px)');
+
+  dash.calc('resumo', { inputs: ['painel'], title: 'Resumo da última varredura', description: 'Melhores combinações, alvos do alerta e regras de estadia.',
+    fn: (painel) => painel.filter((r) => r.tipo === 'resumo') });
+  dash.calc('historico', { inputs: ['painel'], title: 'Histórico de preços', description: 'Melhor preço por pessoa de cada varredura.',
+    fn: (painel) => painel.filter((r) => r.tipo === 'hist').map((r) => ({ quando: r.quando, geral_pp: r.geral_pp, natal_pp: r.natal_pp })) });
+  dash.calc('dias', { inputs: ['painel'], title: 'Melhor voo por data', description: 'Voo mais barato confirmado em cada data de ida e de volta.',
+    fn: (painel) => painel.filter((r) => r.tipo === 'data') });
+  dash.calc('vendedores', { inputs: ['painel'], title: 'Preço por vendedor', description: 'Preço por pessoa em cada vendedor nos trechos detalhados.',
+    fn: (painel) => painel.filter((r) => r.tipo === 'vend') });
+  dash.calc('grade', { inputs: ['dias', 'resumo'], title: 'Preço por par de datas', description: 'Ida mais volta mais baratas de cada par de dias, dentro da estadia aceita.',
+    fn: (dias, resumo) => {
+      const cfg = resumo[0] || {};
+      const out = [];
+      for (const i of dias.filter((r) => r.sentido === 'ida')) for (const v of dias.filter((r) => r.sentido === 'volta')) {
+        const n = Math.round((Date.parse(v.data) - Date.parse(i.data)) / 864e5);
+        if (n < cfg.min_dias || n > cfg.max_dias) continue;
+        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: i.pp + v.pp, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
+      }
+      return out;
+    } });
+  dash.calc('variacao', { inputs: ['resumo'], title: 'Distância do alvo', description: 'Quanto falta para o alvo do alerta e a variação desde a varredura anterior.',
+    fn: (resumo) => resumo.map((r) => ({
+      natal_falta: r.natal_pp - r.alvo_natal, geral_falta: r.geral_pp - r.alvo_geral,
+      natal_delta: r.ant_natal == null ? null : r.natal_pp - r.ant_natal, geral_delta: r.ant_geral == null ? null : r.geral_pp - r.ant_geral,
+    })) });
+
+  const fmt = (v, f) => {
+    if (v == null || v === '') return '—';
+    if (f === 'brl') return BRL.format(v);
+    if (f === 'quando') return `${v.slice(8, 10)}/${v.slice(5, 7)} às ${v.slice(11, 16)}`;
+    return String(v);
+  };
+  const linha = (id) => { const d = dash.data(id); return d.status === 'ok' && d.data.length ? d.data[0] : null; };
+  const rows = (id) => { const d = dash.data(id); return d.status === 'ok' ? d.data : null; };
+
+  // seleção atual: um par de datas da grade
+  let sel = null;
+  const escolher = (ida, volta, rolar) => {
+    sel = { ida, volta };
+    ['grade', 'sel', 'link', 'vend'].forEach((n) => dash.draw(n));
+    sincronizarAtalhos();
+    if (rolar && estreito.matches) document.querySelectorAll('#selecionada').forEach((e) => e.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  };
+  const atual = () => {
+    const g = rows('grade'), d = rows('dias'), res = linha('resumo');
+    if (!g || !d || !res) return null;
+    const existe = (s) => s && g.some((c) => c.ida === s.ida && c.volta === s.volta);
+    if (!existe(sel)) {
+      const natal = { ida: res.natal_ida, volta: res.natal_volta }, geral = { ida: res.geral_ida, volta: res.geral_volta };
+      sel = existe(natal) ? natal : existe(geral) ? geral : g.length ? { ida: g[0].ida, volta: g[0].volta } : null;
+      if (!sel) return null;
+    }
+    const c = g.find((x) => x.ida === sel.ida && x.volta === sel.volta);
+    return { ...c, ida: d.find((x) => x.sentido === 'ida' && x.data === sel.ida), volta: d.find((x) => x.sentido === 'volta' && x.data === sel.volta), pax: res.pax };
+  };
+  const sincronizarAtalhos = () => {
+    const res = linha('resumo');
+    document.querySelectorAll('.pn-pick').forEach((b) => {
+      const g = b.dataset.pick;
+      b.setAttribute('aria-pressed', String(!!(res && sel && res[g + '_ida'] === sel.ida && res[g + '_volta'] === sel.volta)));
+    });
+  };
+  document.querySelectorAll('.pn-pick').forEach((b) => b.addEventListener('click', () => {
+    const res = linha('resumo');
+    if (res && res[b.dataset.pick + '_ida']) escolher(res[b.dataset.pick + '_ida'], res[b.dataset.pick + '_volta'], true);
+  }));
+  dash.onData(() => { atual(); sincronizarAtalhos(); });
+
+  dash.draw('f', (el) => {
+    const d = dash.data(el.dataset.source);
+    const row = d.status === 'ok' ? d.data[+(el.dataset.row || 0)] : null;
+    el.classList.toggle('dash-skeleton', d.status === 'loading');
+    el.textContent = row ? fmt(row[el.dataset.field], el.dataset.fmt) : '—';
+  });
+
+  dash.draw('chip', (el) => {
+    const r = linha('variacao');
+    const falta = r ? r[el.dataset.grupo + '_falta'] : null;
+    el.classList.toggle('is-hit', falta != null && falta <= 0);
+    el.textContent = falta == null ? '—' : falta <= 0 ? 'Abaixo do alvo: compre' : `${BRL.format(falta)} acima do alvo`;
+  });
+
+  dash.draw('escala', (el) => {
+    el.replaceChildren();
+    const g = rows('grade');
+    if (!g || !g.length) { el.textContent = '—'; return; }
+    const [lo, hi] = d3.extent(g, (r) => r.pp);
+    const a = document.createElement('span'); a.textContent = BRL.format(lo);
+    const z = document.createElement('span'); z.textContent = BRL.format(hi);
+    el.append(a);
+    [46, 35, 24, 14, 4].forEach((p) => { const i = document.createElement('i'); i.style.background = `color-mix(in oklab, var(--pn-acc) ${p}%, var(--color-panel))`; el.append(i); });
+    el.append(z);
+  });
+
+  dash.draw('grade', (el) => {
+    el.replaceChildren();
+    const g = rows('grade'), d = rows('dias'), res = linha('resumo'), s = atual();
+    if (!g || !d || !res || !s) { el.textContent = '—'; return; }
+    const idas = d.filter((r) => r.sentido === 'ida').sort((a, b) => (a.data < b.data ? -1 : 1));
+    const voltas = d.filter((r) => r.sentido === 'volta').sort((a, b) => (a.data < b.data ? -1 : 1));
+    const mapa = new Map(g.map((c) => [c.ida + ' ' + c.volta, c]));
+    const [lo, hi] = d3.extent(g, (c) => c.pp);
+    const forca = (v) => (hi === lo ? 1 : (hi - v) / (hi - lo));
+    const destaque = new Set([res.natal_ida + ' ' + res.natal_volta, res.geral_ida + ' ' + res.geral_volta]);
+    const mk = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+    const rotulo = (r, umaLinha) => {
+      const f = document.createDocumentFragment();
+      if (umaLinha) { const d = mk('span', 'pn-d'); d.append(mk('span', 'pn-wi', r.dia.slice(0, 3) + ' '), r.dia.slice(4)); f.append(d); }
+      else f.append(mk('span', 'pn-w', r.dia.slice(0, 3)), mk('span', 'pn-d', r.dia.slice(4)));
+      f.append(mk('span', 'pn-p', BRL.format(r.pp)));
+      return f;
+    };
+
+    const t = mk('table', 'pn-grid');
+    t.setAttribute('aria-label', 'Preço por pessoa para cada par de datas de ida e volta');
+    const thead = mk('thead'), h1 = mk('tr'), h2 = mk('tr');
+    const canto = mk('th'); canto.setAttribute('aria-hidden', 'true'); h1.append(canto);
+    const eixo = mk('th', 'pn-axis', 'Volta, saindo do Nordeste'); eixo.colSpan = voltas.length; eixo.style.textAlign = 'center'; h1.append(eixo);
+    h2.append(mk('th', 'pn-axis', 'Ida, saindo de SP'));
+    voltas.forEach((v) => { const th = mk('th'); th.scope = 'col'; th.append(rotulo(v)); h2.append(th); });
+    thead.append(h1, h2); t.append(thead);
+
+    const tbody = mk('tbody');
+    const grupos = [['Chegando antes do Natal', idas.filter((i) => i.data <= res.natal_ate)], ['Chegando depois do Natal', idas.filter((i) => i.data > res.natal_ate)]];
+    for (const [nome, lista] of grupos) {
+      if (!lista.length) continue;
+      const gr = mk('tr', 'pn-grp'); const gth = mk('th', null, nome); gth.colSpan = voltas.length + 1; gth.scope = 'rowgroup'; gr.append(gth); tbody.append(gr);
+      for (const i of lista) {
+        const tr = mk('tr'); const th = mk('th'); th.scope = 'row'; th.append(rotulo(i, true)); tr.append(th);
+        for (const v of voltas) {
+          const td = mk('td'); const c = mapa.get(i.data + ' ' + v.data);
+          if (!c) { td.className = 'pn-off'; td.setAttribute('aria-hidden', 'true'); tr.append(td); continue; }
+          const b = mk('button', 'pn-cell' + (destaque.has(c.chave) ? ' is-best' : ''), NUM.format(c.pp));
+          // escala suave o bastante para o texto padrão ficar legível em qualquer quadrado, nos dois temas
+          const p = 4 + Math.round(42 * Math.pow(forca(c.pp), 1.2));
+          b.type = 'button';
+          b.style.setProperty('--c', `color-mix(in oklab, var(--pn-acc) ${p}%, var(--color-panel))`);
+          const on = c.ida === s.ida.data && c.volta === s.volta.data;
+          b.setAttribute('aria-pressed', String(on)); b.tabIndex = on ? 0 : -1;
+          b.dataset.ida = c.ida; b.dataset.volta = c.volta;
+          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(c.pp)} por pessoa`);
+          b.addEventListener('click', () => escolher(c.ida, c.volta, true));
+          td.append(b); tr.append(td);
+        }
+        tbody.append(tr);
+      }
+    }
+    t.append(tbody);
+    // setas do teclado andam pela grade
+    t.addEventListener('keydown', (ev) => {
+      const passo = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] }[ev.key];
+      if (!passo || !ev.target.classList.contains('pn-cell')) return;
+      ev.preventDefault();
+      const linhas = [...t.querySelectorAll('tbody tr:not(.pn-grp)')];
+      let r = linhas.indexOf(ev.target.closest('tr')), col = [...ev.target.closest('tr').children].indexOf(ev.target.closest('td'));
+      for (let k = 0; k < 40; k++) {
+        r += passo[0]; col += passo[1];
+        if (r < 0 || r >= linhas.length || col < 1 || col > voltas.length) return;
+        const alvo = linhas[r].children[col] && linhas[r].children[col].querySelector('.pn-cell');
+        if (alvo) { t.querySelectorAll('.pn-cell').forEach((x) => { x.tabIndex = -1; }); alvo.tabIndex = 0; alvo.focus(); return; }
+      }
+    });
+    el.append(t);
+  });
+
+  dash.draw('sel', (el) => {
+    const s = atual();
+    el.classList.toggle('dash-skeleton', !s && dash.data('dias').status === 'loading');
+    if (!s || !s.ida || !s.volta) { el.textContent = '—'; return; }
+    const k = el.dataset.k;
+    const trecho = (t) => `${t.cia}, ${t.tipo_voo === 'direto' ? 'voo direto' : t.tipo_voo.replace('escala ', 'escala de ')}. ${BRL.format(t.pp)} em ${t.vend.replace(/^CIA /, '')}` +
+      (t.pp_cia && t.pp_cia !== t.pp ? `; na companhia ${BRL.format(t.pp_cia)}.` : '.');
+    const v = {
+      titulo: `${s.ida.dia} a ${s.volta.dia}, ${s.dias} dias, ${s.natal === 'Sim' ? 'com Natal lá' : 'chegando depois do Natal'}`,
+      pp: BRL.format(s.pp),
+      total: `${BRL.format(s.pp * s.pax)} para ${s.pax} adultos, sem mala`,
+      'ida.dia': s.ida.dia, 'volta.dia': s.volta.dia,
+      'ida.orig': s.ida.orig, 'ida.dest': s.ida.dest, 'ida.saida': `sai ${s.ida.saida}`, 'ida.chegada': `chega ${s.ida.chegada}`, 'ida.meta': trecho(s.ida),
+      'volta.orig': s.volta.orig, 'volta.dest': s.volta.dest, 'volta.saida': `sai ${s.volta.saida}`, 'volta.chegada': `chega ${s.volta.chegada}`, 'volta.meta': trecho(s.volta),
+    }[k];
+    el.textContent = v ?? '—';
+  });
+
+  const nomeVendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
+  dash.draw('link', (el) => {
+    const s = atual();
+    const [lado, campo] = el.dataset.k.split('.');
+    const t = s && s[lado];
+    const href = t ? t[campo] : '';
+    if (href && /^https:\/\//.test(href)) {
+      // o botão de compra já diz em qual vendedor clicar em Continuar na tela do Google
+      const google = campo === 'link' && href.startsWith('https://www.google.com/');
+      el.textContent = google ? `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}` : el.dataset.label;
+      el.href = href; el.target = '_blank'; el.rel = 'noopener'; el.removeAttribute('aria-disabled');
+    } else {
+      el.removeAttribute('href'); el.textContent = '—'; el.setAttribute('aria-disabled', 'true');
+    }
+  });
+
+  dash.draw('vend', (el) => {
+    el.replaceChildren();
+    const v = rows('vendedores'), s = atual();
+    if (!v || !s) { el.textContent = '—'; return; }
+    const lado = el.dataset.sentido, data = s[lado] && s[lado].data;
+    const lista = v.filter((r) => r.sentido === lado && r.data === data).sort((a, b) => a.pp - b.pp);
+    if (!lista.length) {
+      const p = document.createElement('p'); p.className = 'pn-small';
+      p.textContent = 'Este trecho não foi detalhado nesta varredura. O botão Comprar mostra todos os vendedores.';
+      el.append(p); return;
+    }
+    const melhor = lista.find((r) => CONFIAVEIS.test(r.vendedor));
+    for (const r of lista) {
+      const row = document.createElement('div');
+      row.className = 'pn-v' + (r === melhor ? ' is-best' : CONFIAVEIS.test(r.vendedor) ? '' : ' is-out');
+      const a = document.createElement('span'); a.textContent = r.vendedor.startsWith('CIA ') ? r.vendedor.slice(4) + ' (companhia)' : r.vendedor;
+      const b = document.createElement('span'); b.textContent = BRL.format(r.pp);
+      row.append(a, b); el.append(row);
+    }
+  });
+
+  dash.draw('hist', (el) => {
+    el.replaceChildren();
+    const h = rows('historico'), res = linha('resumo');
+    if (!h || !res || !h.length) { el.textContent = '—'; return; }
+    const parseT = (q) => new Date(q.replace(' ', 'T') + ':00');
+    const pts = h.map((x) => ({ t: parseT(x.quando), q: x.quando, g: x.geral_pp == null ? null : +x.geral_pp, n: x.natal_pp == null ? null : +x.natal_pp }))
+      .filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
+    const W = Math.max(280, el.clientWidth), H = 220;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Preço por pessoa em cada varredura');
+    const vals = pts.flatMap((p) => [p.g, p.n]).filter((v) => v != null).concat([res.alvo_geral, res.alvo_natal]);
+    const y = d3.scaleLinear([d3.min(vals) * 0.97, d3.max(vals) * 1.02], [H - 26, 10]).nice();
+    const ticks = y.ticks(4);
+    const meas = (txt) => { const tx = svg.append('text').attr('class', 'pn-tick').text(txt); const w = tx.node().getComputedTextLength(); tx.remove(); return w; };
+    const ml = d3.max(ticks, (v) => meas(BRL.format(v))) + 10;
+    const last = pts[pts.length - 1];
+    const ends = [{ cor: 'var(--pn-link)', v: last.n }, { cor: 'var(--pn-muted)', v: last.g }].filter((e) => e.v != null).map((e) => ({ ...e, txt: BRL.format(e.v) }));
+    const mr = (d3.max(ends, (e) => meas(e.txt)) || 0) + 14;
+    let [t0, t1] = d3.extent(pts, (p) => p.t);
+    if (+t0 === +t1) { t0 = new Date(+t0 - 3 * 36e5); t1 = new Date(+t1 + 3 * 36e5); }
+    const x = d3.scaleTime([t0, t1], [ml, W - mr]);
+    const g = svg.append('g');
+    g.selectAll('line.grid').data(ticks).join('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
+    g.selectAll('text.yt').data(ticks).join('text').attr('class', 'pn-tick').attr('x', ml - 8).attr('y', (v) => y(v)).attr('dy', '0.32em').attr('text-anchor', 'end').text((v) => BRL.format(v));
+    const tf = d3.timeFormat('%d/%m %Hh'), vistos = new Set();
+    const xt = x.ticks(Math.max(2, Math.floor((W - ml - mr) / 110))).filter((d) => { const k = tf(d); if (vistos.has(k)) return false; vistos.add(k); return true; });
+    g.selectAll('text.xt').data(xt).join('text').attr('class', 'pn-tick').attr('x', x).attr('y', H - 6).attr('text-anchor', 'middle').text(tf);
+    [{ v: res.alvo_natal, cor: 'var(--pn-link)' }, { v: res.alvo_geral, cor: 'var(--pn-muted)' }].forEach((a) =>
+      g.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(a.v)).attr('y2', y(a.v)).attr('stroke', a.cor).attr('stroke-dasharray', '4 4').attr('opacity', 0.7));
+    for (const s of [{ k: 'g', cor: 'var(--pn-muted)', w: 1.5 }, { k: 'n', cor: 'var(--pn-link)', w: 2 }]) {
+      const line = d3.line().defined((p) => p[s.k] != null).x((p) => x(p.t)).y((p) => y(p[s.k]));
+      g.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', s.cor).attr('stroke-width', s.w).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+      g.selectAll(null).data(pts.filter((p) => p[s.k] != null)).join('circle').attr('cx', (p) => x(p.t)).attr('cy', (p) => y(p[s.k])).attr('r', 2.5).attr('fill', s.cor);
+    }
+    ends.forEach((e) => { e.y = y(e.v); });
+    if (ends.length === 2 && Math.abs(ends[0].y - ends[1].y) < 14) {
+      const mid = (ends[0].y + ends[1].y) / 2, cima = ends[0].v >= ends[1].v ? 0 : 1;
+      ends[cima].y = mid - 7; ends[1 - cima].y = mid + 7;
+    }
+    ends.forEach((e) => g.append('text').attr('x', x(last.t) + 8).attr('y', e.y).attr('dy', '0.32em').attr('fill', e.cor).attr('font-size', 'var(--cds-font-size-caption)').attr('font-weight', 600).text(e.txt));
+    const tip = document.createElement('div'); tip.className = 'pn-tip'; tip.hidden = true; el.append(tip);
+    const perto = (mx) => pts.reduce((a, b) => (Math.abs(x(b.t) - mx) < Math.abs(x(a.t) - mx) ? b : a));
+    svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(1, W - mr - ml)).attr('height', H).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev), p = perto(mx), k = el.clientWidth / W;
+        const lin = (a, b) => { const d = document.createElement('div'); const s = document.createElement('span'); s.className = 'k'; s.textContent = a; d.append(s, ' ' + b); return d; };
+        tip.replaceChildren(lin(fmt(p.q, 'quando'), ''), lin('Com Natal', fmt(p.n, 'brl')), lin('Mais barata', fmt(p.g, 'brl')));
+        tip.hidden = false;
+        tip.style.left = Math.max(0, Math.min(el.clientWidth - tip.offsetWidth, x(p.t) * k - tip.offsetWidth / 2)) + 'px';
+        tip.style.top = Math.max(0, y(p.n ?? p.g) * k - tip.offsetHeight - 10) + 'px';
+      })
+      .on('pointerleave', () => { tip.hidden = true; });
+  });
+</script>

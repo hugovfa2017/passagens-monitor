@@ -1,0 +1,45 @@
+name: Monitor de passagens
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # a cada 3h (UTC); o GitHub pode atrasar em horário de pico
+  workflow_dispatch:          # botão "Run workflow" para rodar na hora
+  push:                       # roda também quando o código muda (não quando só os dados mudam)
+    branches: [main]
+    paths: ['varredura.js', 'registrar.py', 'nuvem/**', '.github/workflows/**']
+
+permissions:
+  contents: write             # para guardar histórico e painel.json de volta no repositório
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  varredura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar navegador sem tela
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Varredura e alerta
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python nuvem/rodar.py
+      - name: Guardar resultado
+        if: always()
+        run: |
+          git config user.name "monitor-passagens"
+          git config user.email "monitor-passagens@users.noreply.github.com"
+          for f in historico.csv ultimo.md ultima.json painel.json alerta_estado.json; do [ -f "$f" ] && git add "$f"; done
+          git commit -m "Varredura $(date '+%d/%m %H:%M')" || echo "nada novo"
+          git push
