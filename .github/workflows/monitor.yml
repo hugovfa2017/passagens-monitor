@@ -6,7 +6,7 @@ on:
   workflow_dispatch:          # botão "Run workflow" para rodar na hora
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
-    paths: ['varredura.js', 'registrar.py', 'nuvem/**', '.github/workflows/**']
+    paths: ['varredura.js', 'registrar.py', 'nuvem/rodar.py', 'nuvem/vendedores.py', '.github/workflows/monitor.yml']
 
 permissions:
   contents: write             # para guardar histórico e painel.json de volta no repositório
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   varredura:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       TZ: America/Sao_Paulo
     steps:

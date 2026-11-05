@@ -72,7 +72,7 @@ def nome_vendedor(v):
 
 def trecho_compra(rotulo, sentido, data, t, pax):
     """Texto de um trecho com o link de compra e em qual vendedor clicar (o link direto ao pagamento expira em minutos)."""
-    link = link_compra(sentido, data, t.get('voos'), pax)
+    link = t.get('link') or link_compra(sentido, data, t.get('voos'), pax)
     acao = f"Comprar na {nome_vendedor(t['vend'])}, {brl(t['pp'])}: {link}" if link else \
         f"Ver na MaxMilhas: {link_mm(t['rota'], data, pax)}"
     return f"{rotulo} {dia(data)}: {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}\n{acao}"
@@ -182,7 +182,8 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
     status_wpp = ''
     if boas:
         msg = f"Passagem boa para o Nordeste ({pax} adultos, sem mala)\n\n" + '\n\n'.join(b[2] for b in boas) + \
-              f"\n\nCada link abre a tela de compra do voo no Google: clique em Continuar ao lado do vendedor indicado." \
+              f"\n\nCada link abre o vendedor indicado já com o voo (MaxMilhas e 123milhas: preço no Pix). " \
+              f"No link do Google, clique em Continuar ao lado do vendedor." \
               f"\nPreço muda rápido: confira e compre logo.\nPainel: {PAINEL_URL}"
         status_wpp = enviar(msg)
         saida.append(status_wpp)
@@ -203,7 +204,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
                         f'{prefixo}_{sentido}_chegada': t['chegada'], f'{prefixo}_{sentido}_tipo': t['tipo'],
                         f'{prefixo}_{sentido}_vend': t['vend'], f'{prefixo}_{sentido}_pp': t['pp'],
                         f'{prefixo}_{sentido}_pp_cia': t.get('ppCia') or t['pp'],
-                        f'{prefixo}_{sentido}_link': link_compra(sentido, d, t.get('voos'), pax),
+                        f'{prefixo}_{sentido}_link': t.get('link') or link_compra(sentido, d, t.get('voos'), pax),
                         f'{prefixo}_{sentido}_link_mm': link_mm(t['rota'], d, pax)})
         return out
 
@@ -224,7 +225,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
         rows.append({'tipo': 'data', 'chave': f"{t['s']} {t['d']}", 'sentido': t['s'], 'data': t['d'], 'dia': dia(t['d']),
                      'pp': t['pp'], 'vend': t['vend'], 'pp_cia': t.get('ppCia') or t['pp'], 'cia': t['cia'], 'orig': o, 'dest': de,
                      'saida': t['saida'], 'chegada': t['chegada'], 'tipo_voo': t['tipo'],
-                     'link': link_compra(t['s'], t['d'], t.get('voos'), pax) or link_mm(t['rota'], t['d'], pax),
+                     'link': t.get('link') or link_compra(t['s'], t['d'], t.get('voos'), pax) or link_mm(t['rota'], t['d'], pax),
                      'link_mm': link_mm(t['rota'], t['d'], pax)})
     # vendedores dos trechos que a varredura detalhou (os das combinações vencedoras)
     for chave, lista in scan.get('vend', {}).items():
@@ -238,7 +239,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
             return f"## {titulo}\n\nNenhuma combinação.\n"
         ti, tv = tre[('ida', c['ida'])], tre[('volta', c['volta'])]
         def compra(sentido, d, t):
-            link = link_compra(sentido, d, t.get('voos'), pax)
+            link = t.get('link') or link_compra(sentido, d, t.get('voos'), pax)
             return f"[comprar na {nome_vendedor(t['vend'])}]({link})" if link else f"[ver na MaxMilhas]({link_mm(t['rota'], d, pax)})"
         return (f"## {titulo}: {brl(c['pp'])}/pessoa ({c['dias']} dias)\n\n"
                 f"- **Ida {dia(c['ida'])}:** {texto_trecho(ti)} ({compra('ida', c['ida'], ti)})\n"
@@ -281,6 +282,10 @@ def _teste():
         assert 'R$1.430/pessoa' in enviados[0] and 'Ida sex 18/12: LATAM GRU-NAT' in enviados[0], enviados[0]
         assert 'Comprar na MaxMilhas, R$430: https://www.google.com/travel/flights/booking?tfs=' in enviados[0], enviados[0]
         assert 'Ver na MaxMilhas: https://www.maxmilhas.com.br/' in enviados[0], enviados[0]   # ida sem número de voo
+        s2 = scan(1000, 430)
+        s2['trechos'][1].update({'vend': '123milhas', 'link': 'https://123milhas.com/v2/busca?x'})
+        assert link_compra('volta', '2027-01-19', s2['trechos'][1]['voos'], 2) not in trecho_compra('Volta', 'volta', '2027-01-19', s2['trechos'][1], 2)
+        assert 'Comprar na 123milhas, R$430: https://123milhas.com/v2/busca?x' in trecho_compra('Volta', 'volta', '2027-01-19', s2['trechos'][1], 2)
         assert registrar(scan(1000, 420), d, fake)[1:] == [] and len(enviados) == 1              # caiu só R$10: não repete
         assert registrar(scan(950, 420), d, fake)[1] == 'TELEGRAM_ENVIADO'                       # caiu R$60: avisa de novo
         rows = json.load(open(os.path.join(d, 'painel.json')))
