@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-06 04:19 (2 adultos, preço por pessoa, sem mala despachada)
+# Última varredura: 2026-11-06 05:28 (2 adultos, preço por pessoa, sem mala despachada)
 
 Sem queda nova de preço.
 
@@ -22,10 +22,10 @@ Telegram: TELEGRAM_ENVIADO (alvos: geral R$1.400, com Natal R$1.450)
 ## Por data
 
 - ida sex 18/12: R$1.039/pessoa via Zupper | LATAM GRU-NAT 13:35-16:55 direto | na cia R$1.155
-- ida sáb 19/12: R$1.552/pessoa via Zupper | LATAM CGH-NAT 09:55-13:20 direto
+- ida sáb 19/12: R$1.552/pessoa via Zupper | LATAM CGH-NAT 09:55-13:20 direto | na cia R$1.725
 - ida dom 20/12: R$1.336/pessoa via Zupper | LATAM GRU-NAT 23:40-03:00 direto | na cia R$1.486
 - ida seg 21/12: R$1.271/pessoa via Zupper | Azul GRU-NAT 21:10-02:05 com escala
-- ida ter 22/12: R$1.336/pessoa via Zupper | LATAM GRU-NAT 13:35-16:55 direto | na cia R$1.486
+- ida ter 22/12: R$1.290/pessoa via Zupper | LATAM GRU-FOR 23:20-02:45 direto | na cia R$1.435
 - ida qua 23/12: R$1.400/pessoa via Zupper | LATAM GRU-FOR 23:20-02:45 direto | na cia R$1.558
 - ida qui 24/12: R$1.039/pessoa via Zupper | LATAM GRU-NAT 17:30-20:50 direto | na cia R$1.155
 - ida sex 25/12: R$1.230/pessoa via Zupper | LATAM GRU-JDO 20:10-23:15 direto | na cia R$1.368
@@ -35,7 +35,7 @@ Telegram: TELEGRAM_ENVIADO (alvos: geral R$1.400, com Natal R$1.450)
 - volta sáb 16/01: R$661/pessoa via Zupper | LATAM NAT-CGH 17:30-21:10 direto | na cia R$732
 - volta dom 17/01: R$711/pessoa via Zupper | LATAM FOR-GRU 13:05-16:35 direto | na cia R$786
 - volta seg 18/01: R$692/pessoa via CIA Azul | Azul FOR-GRU 00:50-07:15 escala 1h50
-- volta ter 19/01: R$732/pessoa via CIA Gol | Gol NAT-CGH 02:20-06:00 direto
+- volta ter 19/01: R$717/pessoa via Zupper | LATAM JDO-GRU 18:30-21:35 direto
 - volta qua 20/01: R$649/pessoa via Zupper | LATAM JDO-GRU 18:30-21:35 direto
 - volta qui 21/01: R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718
 - volta sex 22/01: R$678/pessoa via CIA Azul | Azul NAT-GRU 09:55-15:50 escala 1h40
