@@ -1,7 +1,7 @@
 <meta name="dash-one-writer">
 <style>
-  /* Painel de decisão: a grade ida x volta é a peça central; o itinerário escolhido fica ao lado com a compra.
-     Um destaque só (verde-mar) para seleção, botões e escala de preço; o resto vem dos tokens do tema. */
+  /* Painel de decisão: a ida dos extras no mesmo voo é a peça central; voos perto e a volta logo abaixo.
+     Um destaque só (verde-mar) para preço bom, botões e seleção; o resto vem dos tokens do tema. */
   .pn {
     --pn-acc: #17736c;
     --pn-acc-ink: #ffffff;
@@ -10,13 +10,15 @@
     --pn-line: var(--color-border-line);
     --pn-muted: var(--color-fg-muted);
     --pn-r: 10px;
-    display: grid; gap: calc(var(--cds-gap-xl) * 1.5);
+    display: grid; gap: calc(var(--cds-gap-xl) * 1.6);
     font-family: var(--font-anthropic-sans); font-variant-numeric: tabular-nums; color: var(--color-fg);
   }
   .pn ::selection { background: color-mix(in oklab, var(--pn-acc) 28%, transparent); }
-  .pn h1, .pn h2, .pn h3, .pn h4, .pn p { margin: 0; }
-  .pn h2 { font-size: var(--cds-font-size-heading); font-weight: 600; text-wrap: balance; }
+  .pn h1, .pn h2, .pn h3, .pn p { margin: 0; }
+  .pn h2 { font-size: calc(var(--cds-font-size-heading) * 1.12); font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; }
+  .pn h3 { font-size: var(--cds-font-size-body); font-weight: 600; }
   .pn-note { font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; line-height: 1.5; }
+  .pn-small { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
   .pn b { font-weight: 600; }
 
   /* topo */
@@ -24,89 +26,96 @@
   .pn-titles { display: grid; gap: 6px; min-width: 0; }
   .pn-head h1 { font-size: calc(var(--cds-font-size-title) * 1.1); font-weight: 650; letter-spacing: -0.015em; }
   .pn-meta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-picks { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); }
-  .pn-pick { font: inherit; text-align: left; cursor: pointer; display: grid; gap: 2px; min-width: 11.5rem;
-    padding: 10px 14px; border-radius: var(--pn-r); border: 1px solid var(--pn-line); background: var(--color-panel); color: var(--color-fg);
-    transition: border-color .15s ease, background-color .15s ease; }
-  .pn-pick:hover { border-color: color-mix(in oklab, var(--pn-acc) 45%, var(--pn-line)); }
-  .pn-pick[aria-pressed="true"] { border-color: var(--pn-acc); background: var(--pn-tint); box-shadow: inset 0 0 0 1px var(--pn-acc); }
-  .pn-pick-k { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-pick-v { font-size: var(--cds-font-size-heading); font-weight: 650; }
-  .pn-pick-s { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-pick-s.is-hit { color: var(--color-ok); font-weight: 600; }
-
-  /* grade + itinerário */
-  .pn-main { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(19rem, 1fr); gap: calc(var(--cds-gap-xl) * 1.25); align-items: start; }
-  @media (max-width: 900px) { .pn-main { grid-template-columns: minmax(0, 1fr); } }
-  .pn-gridcol { display: grid; gap: var(--cds-gap-md); min-width: 0; }
-  .pn-gridtop { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--cds-gap-sm); }
-  .pn-seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--pn-line); border-radius: 8px; }
+  .pn-seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--pn-line); border-radius: 8px; background: var(--color-panel); }
   .pn-seg button { font: inherit; font-size: var(--cds-font-size-caption); font-weight: 550; color: var(--pn-muted); background: transparent;
-    border: 0; border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+    border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
   .pn-seg button[aria-pressed="true"] { color: var(--color-fg); background: var(--pn-tint); box-shadow: inset 0 0 0 1px var(--pn-acc); }
-  .pn-seg button:focus-visible { outline: 2px solid var(--pn-link); outline-offset: 2px; }
-  .pn-scale { display: flex; align-items: center; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-scale i { display: block; width: 18px; height: 10px; border-radius: 2px; }
-  .pn-gridbox { overflow-x: auto; min-height: 320px; }
-  .pn-grid { border-collapse: separate; border-spacing: 3px; width: 100%; min-width: 34rem; font-size: var(--cds-font-size-caption); }
-  .pn-grid th { font-weight: 400; color: var(--pn-muted); padding: 0 2px; }
-  .pn-grid thead th { text-align: center; vertical-align: bottom; padding-bottom: 4px; }
-  .pn-grid .pn-axis { text-align: left; color: var(--color-fg); font-weight: 600; padding-bottom: 6px; }
-  .pn-grid tbody th { text-align: left; white-space: nowrap; padding-right: 8px; }
-  .pn-d { display: block; color: var(--color-fg); font-weight: 600; }
-  .pn-w, .pn-p { display: block; }
-  .pn-wi { font-weight: 400; color: var(--pn-muted); }
-  .pn-p { color: var(--pn-muted); }
-  .pn-grp th { text-align: left; color: var(--color-fg); font-weight: 600; padding: 12px 2px 4px; }
-  .pn-grid td { padding: 0; height: 2.6rem; }
-  .pn-cell { font: inherit; width: 100%; height: 100%; min-width: 3.1rem; border: 0; border-radius: 6px; cursor: pointer;
-    background: var(--c); color: var(--color-fg); font-weight: 500; transition: transform .15s ease, box-shadow .15s ease; }
-  .pn-cell:hover { box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--pn-acc) 55%, var(--color-fg)); }
-  .pn-cell.is-best { font-weight: 700; }
-  .pn-cell[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--color-fg), 0 0 0 2px var(--color-panel); font-weight: 700; }
-  .pn-cell:active { transform: scale(.97); }
-  .pn-off { background: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in oklab, var(--pn-line) 55%, transparent) 5px 6px); border-radius: 6px; }
-  .pn-cell:focus-visible, .pn-pick:focus-visible, .pn-buy:focus-visible, .pn-alt:focus-visible, .pn-vendors summary:focus-visible {
-    outline: 2px solid var(--pn-link); outline-offset: 2px; }
 
-  .pn-itin { display: grid; gap: var(--cds-gap-lg); padding: var(--cds-pad-lg); border-radius: var(--pn-r); background: var(--color-panel);
-    border: 1px solid var(--pn-line); box-shadow: 0 8px 24px -16px color-mix(in oklab, var(--color-fg) 35%, transparent); min-width: 0; }
-  .pn-when { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
-  .pn-price b { font-size: calc(var(--cds-font-size-title) * 1.3); font-weight: 650; letter-spacing: -0.02em; line-height: 1.05; }
-  .pn-price span { color: var(--pn-muted); }
-  .pn-leg { display: grid; gap: 10px; padding-top: var(--cds-pad-md); border-top: 1px solid var(--pn-line); }
-  .pn-leg h3 { font-size: var(--cds-font-size-body); font-weight: 600; display: flex; gap: 8px; align-items: baseline; }
-  .pn-leg h3 span { font-weight: 400; color: var(--pn-muted); font-size: var(--cds-font-size-caption); }
+  .pn-sec { display: grid; gap: var(--cds-gap-lg); }
+  .pn-sechead { display: grid; gap: 6px; }
+
+  /* mesmo voo: rota à esquerda, preço para 1, 2 e 3 pessoas à direita */
+  .pn-feature { display: grid; grid-template-columns: minmax(15rem, 0.9fr) minmax(0, 2fr); gap: calc(var(--cds-gap-xl) * 1.25);
+    padding: var(--cds-pad-lg); border-radius: var(--pn-r); background: var(--color-panel); border: 1px solid var(--pn-line);
+    box-shadow: 0 10px 28px -20px color-mix(in oklab, var(--color-fg) 40%, transparent); }
+  @media (max-width: 760px) { .pn-feature { grid-template-columns: minmax(0, 1fr); } }
+  .pn-flight { display: grid; gap: 14px; align-content: start; }
+  .pn-tag { justify-self: start; font-size: var(--cds-font-size-caption); font-weight: 600; color: var(--pn-link);
+    padding: 3px 9px; border-radius: 999px; background: var(--pn-tint); }
   .pn-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
   .pn-end { display: grid; gap: 2px; }
-  .pn-end b { font-size: var(--cds-font-size-heading); letter-spacing: .02em; }
+  .pn-end b { font-size: calc(var(--cds-font-size-heading) * 1.2); letter-spacing: .02em; }
   .pn-end span { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
   .pn-end--r { text-align: right; }
   .pn-path { position: relative; height: 1px; background: var(--pn-line); }
-  .pn-path::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--pn-muted); border-right: 1px solid var(--pn-muted); transform: rotate(45deg); }
-  .pn-legmeta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.5; }
-  .pn-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-  .pn-buy { display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 8px; background: var(--pn-acc); color: var(--pn-acc-ink);
-    font-weight: 600; font-size: var(--cds-font-size-caption); text-decoration: none; transition: background-color .15s ease; white-space: nowrap; }
+  .pn-path::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px;
+    border-top: 1px solid var(--pn-muted); border-right: 1px solid var(--pn-muted); transform: rotate(45deg); }
+  .pn-fmeta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.55; }
+  .pn-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cds-gap-md); }
+  @media (max-width: 520px) { .pn-tiles { grid-template-columns: minmax(0, 1fr); } }
+  .pn-tile { display: grid; gap: 4px; align-content: start; padding: 14px; border-radius: 8px; border: 1px solid var(--pn-line); min-width: 0; }
+  .pn-tile.is-hit { border-color: var(--pn-acc); background: var(--pn-tint); }
+  .pn-tile-k { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-tile-v { font-size: calc(var(--cds-font-size-title) * 1.05); font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
+  .pn-tile-s { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.45; }
+  .pn-tile-s.is-hit { color: var(--color-ok); font-weight: 600; }
+  .pn-tile .pn-buy { margin-top: 8px; justify-self: start; }
+  .pn-empty { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.5; padding: 14px; border: 1px dashed var(--pn-line); border-radius: 8px; }
+
+  .pn-buy { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 8px; background: var(--pn-acc); color: var(--pn-acc-ink);
+    font-weight: 600; font-size: var(--cds-font-size-caption); text-decoration: none; white-space: nowrap; transition: background-color .15s ease; }
   .pn-buy:hover { background: color-mix(in oklab, var(--pn-acc) 86%, #000); }
   .pn-buy:active { transform: translateY(1px); }
-  .pn-alt { color: var(--pn-link); font-size: var(--cds-font-size-caption); font-weight: 500; text-underline-offset: 3px; }
-  .pn-buy[aria-disabled="true"], .pn-alt[aria-disabled="true"] { opacity: .45; pointer-events: none; }
-  .pn-vendors { border-top: 1px solid var(--pn-line); padding-top: var(--cds-pad-md); }
-  .pn-vendors summary { cursor: pointer; font-size: var(--cds-font-size-caption); font-weight: 600; color: var(--pn-link); }
-  .pn-vcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); margin-top: var(--cds-gap-sm); }
-  .pn-vcols h4 { font-size: var(--cds-font-size-caption); font-weight: 600; margin: 0 0 4px; }
-  .pn-v { display: flex; justify-content: space-between; gap: 8px; font-size: var(--cds-font-size-caption); padding: 3px 0; color: var(--pn-muted); }
-  .pn-v.is-best { color: var(--color-fg); font-weight: 600; }
-  .pn-v.is-out { opacity: .55; }
-  .pn-small { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn a:focus-visible, .pn button:focus-visible { outline: 2px solid var(--pn-link); outline-offset: 2px; }
+
+  /* voos perto: um voo por linha, preço por pessoa para 1, 2 e 3 */
+  .pn-tbox { overflow-x: auto; }
+  .pn-table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: var(--cds-font-size-caption); }
+  .pn-table th { text-align: left; font-weight: 500; color: var(--pn-muted); padding: 0 10px 8px; border-bottom: 1px solid var(--pn-line); }
+  .pn-table th.n, .pn-table td.n { text-align: right; }
+  .pn-table td { padding: 10px; border-bottom: 1px solid var(--pn-line); vertical-align: top; }
+  .pn-table tr.is-mine td { background: var(--pn-tint); }
+  .pn-table tr.pn-day td { padding: 14px 10px 6px; border-bottom: 0; color: var(--color-fg); font-weight: 600; background: none; }
+  .pn-v1 { display: block; color: var(--color-fg); font-weight: 600; }
+  .pn-v2 { display: block; color: var(--pn-muted); margin-top: 2px; }
+  .pn-mine { color: var(--pn-link); font-weight: 600; }
+  .pn-price { color: var(--color-fg); text-decoration: none; font-weight: 500; white-space: nowrap; }
+  a.pn-price:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .pn-price.is-best { color: var(--pn-link); font-weight: 700; }
+  .pn-pv { display: block; color: var(--pn-muted); font-size: .75rem; margin-top: 2px; white-space: nowrap; }
+  .pn-dash { color: var(--pn-muted); }
+  @media (max-width: 560px) {   /* celular: o voo numa linha, os três preços embaixo */
+    .pn-table { min-width: 0; }
+    .pn-table thead { display: none; }
+    .pn-table tbody, .pn-table tr.pn-day, .pn-table tr.pn-day td { display: block; }
+    .pn-table tr:not(.pn-day) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--pn-line); padding: 6px 0; }
+    .pn-table tr:not(.pn-day) td { border: 0; padding: 4px 10px; }
+    .pn-table tr:not(.pn-day) td:first-child { grid-column: 1 / -1; }
+    .pn-table td.n { text-align: left; }
+    .pn-table td.n::before { content: attr(data-n); display: block; color: var(--pn-muted); font-size: .75rem; margin-bottom: 2px; }
+  }
+
+  /* volta: uma data por linha, com barra de preço */
+  .pn-list { display: grid; }
+  .pn-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) minmax(5rem, 9rem) 5.5rem auto; align-items: center; gap: 14px;
+    padding: 12px 4px; border-bottom: 1px solid var(--pn-line); font-size: var(--cds-font-size-caption); }
+  .pn-row.is-best { background: var(--pn-tint); border-radius: 8px; padding-inline: 10px; }
+  .pn-row .pn-v1 { font-size: var(--cds-font-size-body); }
+  .pn-bar { height: 6px; border-radius: 3px; background: color-mix(in oklab, var(--pn-line) 70%, transparent); overflow: hidden; }
+  .pn-bar i { display: block; height: 100%; border-radius: 3px; background: color-mix(in oklab, var(--pn-acc) 45%, var(--color-panel)); }
+  .pn-row.is-best .pn-bar i { background: var(--pn-acc); }
+  .pn-amt { text-align: right; font-size: var(--cds-font-size-body); font-weight: 600; }
+  .pn-buylink { color: var(--pn-link); font-weight: 600; text-underline-offset: 3px; white-space: nowrap; }
+  @media (max-width: 640px) {
+    .pn-row { grid-template-columns: 5.5rem minmax(0, 1fr) auto; }
+    .pn-row .pn-bar { display: none; }
+    .pn-row .pn-buylink { grid-column: 2 / -1; justify-self: start; }
+  }
 
   /* histórico */
-  .pn-history { display: grid; gap: var(--cds-gap-sm); }
   .pn-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
   .pn-legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .pn-legend i { display: block; width: 14px; height: 2px; background: var(--sw); }
+  .pn-legend i { display: block; width: 16px; height: 0; border-top: 2px var(--st, solid) var(--sw); }
   .pn-chart { position: relative; min-height: 220px; }
   .pn-tick { font-size: var(--cds-font-size-caption); fill: var(--pn-muted); }
   .pn-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius);
@@ -114,394 +123,230 @@
   .pn-tip .k { color: var(--cds-text-secondary); }
 
   .pn-foot { display: grid; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; padding-top: var(--cds-pad-md); border-top: 1px solid var(--pn-line); }
-
-  [data-dash-source-state=empty] { color: transparent; }
-  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  .dash-skeleton { color: transparent !important; }
   @media (prefers-reduced-motion: reduce) { .pn * { transition: none !important; } }
 </style>
 
 <div class="pn">
-  <header class="pn-head" id="topo">
+  <header class="pn-head">
     <div class="pn-titles">
       <h1>Passagens Nordeste</h1>
-      <p class="pn-meta">Ida e volta para <span data-draw="f" data-source="resumo" data-row="0" data-field="pax">—</span> adultos, preço por pessoa (sem mala despachada, a não ser na opção com mala). Atualizado em <span data-draw="f" data-source="resumo" data-row="0" data-field="quando" data-fmt="quando">—</span>.</p>
+      <p class="pn-meta" data-draw="meta">Carregando…</p>
     </div>
-    <div class="pn-picks" role="group" aria-label="Combinações em destaque">
-      <button type="button" class="pn-pick" id="pick-natal" data-pick="natal" aria-pressed="false">
-        <span class="pn-pick-k">Melhor com Natal</span>
-        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="natal_pp" data-fmt="brl">—</span>
-        <span class="pn-pick-s" data-draw="chip" data-grupo="natal" data-source="variacao">—</span>
-      </button>
-      <button type="button" class="pn-pick" id="pick-geral" data-pick="geral" aria-pressed="false">
-        <span class="pn-pick-k">Mais barata, qualquer data</span>
-        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="geral_pp" data-fmt="brl">—</span>
-        <span class="pn-pick-s" data-draw="chip" data-grupo="geral" data-source="variacao">—</span>
-      </button>
-      <button type="button" class="pn-pick" id="pick-mala" data-pick="mala" aria-pressed="false">
-        <span class="pn-pick-k">Mais barata com mala</span>
-        <span class="pn-pick-v" data-draw="f" data-source="resumo" data-row="0" data-field="mala_pp" data-fmt="brl">—</span>
-        <span class="pn-pick-s">1 mala de 23 kg por pessoa e trecho</span>
-      </button>
+    <div class="pn-seg" role="group" aria-label="Preço sem ou com mala despachada">
+      <button type="button" data-modo="sem" aria-pressed="true">Sem mala</button>
+      <button type="button" data-modo="com" aria-pressed="false">Com mala de 23 kg</button>
     </div>
   </header>
 
-  <section class="pn-main" id="escolha">
-    <div class="pn-gridcol" id="grade">
-      <div class="pn-gridtop">
-        <h2>Preço por par de datas</h2>
-        <div class="pn-seg" role="group" aria-label="Preço sem ou com mala despachada">
-          <button type="button" data-modo="sem" aria-pressed="true">Sem mala</button>
-          <button type="button" data-modo="com" aria-pressed="false">Com mala de 23 kg</button>
-        </div>
-        <div class="pn-scale" data-draw="escala" data-source="grade">—</div>
-      </div>
-      <p class="pn-note">Cada quadrado soma o voo de ida e o de volta mais baratos daquele par de dias, por pessoa, ou usa a ida e volta comprada junta quando ela sai mais barata. Quadrados riscados ficam fora da estadia de <span data-draw="f" data-source="resumo" data-row="0" data-field="min_dias">27</span> a <span data-draw="f" data-source="resumo" data-row="0" data-field="max_dias">39</span> dias. Clique num quadrado para ver os voos e comprar. Com mala: cada trecho já inclui 1 mala de 23 kg por pessoa; quando o vendedor não mostra a tarifa com mala, soma o valor da mala da companhia (estimado).</p>
-      <div class="pn-gridbox" data-draw="grade" data-source="grade dias resumo">—</div>
+  <section class="pn-sec" id="ida">
+    <div class="pn-sechead">
+      <h2>Ida dos extras</h2>
+      <p class="pn-note">Para quem ainda vai confirmar: até 3 adultos para Natal, de preferência no mesmo voo de vocês. O preço por pessoa muda com a quantidade de lugares, por isso cada quantidade é buscada à parte.</p>
     </div>
-
-    <aside class="pn-itin" id="selecionada" aria-live="polite">
-      <div>
-        <p class="pn-when" data-draw="sel" data-k="titulo" data-source="grade">—</p>
-        <p class="pn-price"><b data-draw="sel" data-k="pp" data-source="grade">—</b><span>por pessoa</span></p>
-        <p class="pn-small" data-draw="sel" data-k="total" data-source="grade resumo">—</p>
+    <article class="pn-feature" data-draw="mesmo" aria-live="polite">—</article>
+    <div class="pn-sec">
+      <div class="pn-sechead">
+        <h3>Voos perto do de vocês</h3>
+        <p class="pn-note">Todos os voos para Natal no dia anterior, no mesmo dia e no seguinte, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
       </div>
-
-      <div class="pn-leg">
-        <h3>Ida <span data-draw="sel" data-k="ida.dia" data-source="dias">—</span></h3>
-        <div class="pn-route">
-          <div class="pn-end"><b data-draw="sel" data-k="ida.orig" data-source="dias">—</b><span data-draw="sel" data-k="ida.saida" data-source="dias">—</span></div>
-          <div class="pn-path" aria-hidden="true"></div>
-          <div class="pn-end pn-end--r"><b data-draw="sel" data-k="ida.dest" data-source="dias">—</b><span data-draw="sel" data-k="ida.chegada" data-source="dias">—</span></div>
-        </div>
-        <p class="pn-legmeta" data-draw="sel" data-k="ida.meta" data-source="dias">—</p>
-        <div class="pn-actions">
-          <a class="pn-buy" data-draw="link" data-k="ida.link" data-label="Comprar ida" data-source="dias">—</a>
-          <a class="pn-alt" data-draw="link" data-k="ida.link_mm" data-label="Ver na MaxMilhas" data-source="dias">—</a>
-        </div>
-      </div>
-
-      <div class="pn-leg">
-        <h3>Volta <span data-draw="sel" data-k="volta.dia" data-source="dias">—</span></h3>
-        <div class="pn-route">
-          <div class="pn-end"><b data-draw="sel" data-k="volta.orig" data-source="dias">—</b><span data-draw="sel" data-k="volta.saida" data-source="dias">—</span></div>
-          <div class="pn-path" aria-hidden="true"></div>
-          <div class="pn-end pn-end--r"><b data-draw="sel" data-k="volta.dest" data-source="dias">—</b><span data-draw="sel" data-k="volta.chegada" data-source="dias">—</span></div>
-        </div>
-        <p class="pn-legmeta" data-draw="sel" data-k="volta.meta" data-source="dias">—</p>
-        <div class="pn-actions">
-          <a class="pn-buy" data-draw="link" data-k="volta.link" data-label="Comprar volta" data-source="dias">—</a>
-          <a class="pn-alt" data-draw="link" data-k="volta.link_mm" data-label="Ver na MaxMilhas" data-source="dias">—</a>
-        </div>
-      </div>
-
-      <details class="pn-vendors" id="vendedores">
-        <summary>Preço em cada vendedor</summary>
-        <div class="pn-vcols">
-          <div><h4>Ida</h4><div data-draw="vend" data-sentido="ida" data-source="vendedores">—</div></div>
-          <div><h4>Volta</h4><div data-draw="vend" data-sentido="volta" data-source="vendedores">—</div></div>
-        </div>
-      </details>
-      <p class="pn-small">MaxMilhas, 123milhas e Zupper: o botão abre a busca do vendedor já com esse voo entre os primeiros (na 123milhas, preço no Pix). Companhia aérea: abre a tela do Google com todos os vendedores; clique em Continuar ao lado dela.</p>
-    </aside>
+      <div class="pn-tbox" data-draw="perto">—</div>
+    </div>
   </section>
 
-  <section class="pn-history" id="historico">
-    <h2>Como o preço mudou</h2>
-    <p class="pn-note">Melhor preço por pessoa em cada varredura, feita de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram: <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_natal" data-fmt="brl">—</b> com Natal e <b data-draw="f" data-source="resumo" data-row="0" data-field="alvo_geral" data-fmt="brl">—</b> em qualquer data.</p>
-    <div class="pn-legend"><span><i style="--sw: var(--pn-link)"></i>Com Natal</span><span><i style="--sw: var(--pn-muted)"></i>Mais barata</span></div>
-    <div class="pn-chart" id="grafico-historico" data-draw="hist" data-source="historico resumo">—</div>
+  <section class="pn-sec" id="volta">
+    <div class="pn-sechead">
+      <h2>Volta de vocês dois</h2>
+      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa.</p>
+    </div>
+    <div class="pn-list" data-draw="volta">—</div>
   </section>
 
-  <footer class="pn-foot" id="notas">
-    <p>Preços sem mala despachada. Some de R$ 95 a R$ 220 por mala de 23 kg em cada trecho, conforme a companhia ou o vendedor.</p>
-    <p>Só entra o preço confirmado na tela de compra, porque a lista do Google às vezes mostra valor antigo. Mesmo assim o preço pode mudar até o pagamento.</p>
-    <p>Datas pesquisadas e alvos do alerta ficam no monitor do GitHub, que roda de hora em hora mesmo com o computador desligado. Peça ao Claude para mudar.</p>
+  <section class="pn-sec" id="historico">
+    <div class="pn-sechead">
+      <h2>Como o preço mudou</h2>
+      <p class="pn-note" data-draw="hist-nota">Preço por pessoa, sem mala, em cada busca, de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram.</p>
+    </div>
+    <div class="pn-legend">
+      <span><i style="--sw: var(--pn-acc)"></i>Mesmo voo, 3 pessoas</span>
+      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Mesmo voo, 1 pessoa</span>
+      <span><i style="--sw: var(--pn-muted)"></i>Volta de vocês dois</span>
+    </div>
+    <div class="pn-chart" data-draw="hist">—</div>
+  </section>
+
+  <footer class="pn-foot">
+    <p>Busca em MaxMilhas, 123milhas, Zupper e no Google Voos (preço das companhias, confirmado na tela de compra). O preço pode mudar até o pagamento.</p>
+    <p>Com mala: 1 mala de 23 kg por pessoa. Na Zupper é a tarifa com mala de verdade; nos outros, soma o valor da mala da companhia medido na busca (marcado como estimado).</p>
+    <p>O monitor roda no GitHub de hora em hora, mesmo com o computador desligado. Datas e alvos mudam pedindo ao Claude.</p>
   </footer>
 </div>
 
 <script>
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-  const NUM = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
-  const CONFIAVEIS = /^(CIA |maxmilhas|123milhas|zupper|decolar|booking)/i;
-  const estreito = window.matchMedia('(max-width: 900px)');
+  const EXTRAS = [1, 2, 3];
+  let modo = 'sem';
 
-  dash.calc('resumo', { inputs: ['painel'], title: 'Resumo da última varredura', description: 'Melhores combinações, alvos do alerta e regras de estadia.',
-    fn: (painel) => painel.filter((r) => r.tipo === 'resumo') });
-  dash.calc('historico', { inputs: ['painel'], title: 'Histórico de preços', description: 'Melhor preço por pessoa de cada varredura.',
-    fn: (painel) => painel.filter((r) => r.tipo === 'hist').map((r) => ({ quando: r.quando, geral_pp: r.geral_pp, natal_pp: r.natal_pp })) });
-  dash.calc('dias', { inputs: ['painel'], title: 'Melhor voo por data', description: 'Voo mais barato confirmado em cada data de ida e de volta.',
-    fn: (painel) => painel.filter((r) => r.tipo === 'data') });
-  dash.calc('vendedores', { inputs: ['painel'], title: 'Preço por vendedor', description: 'Preço por pessoa em cada vendedor nos trechos detalhados.',
-    fn: (painel) => painel.filter((r) => r.tipo === 'vend') });
-  dash.calc('pacotes', { inputs: ['painel'], title: 'Ida e volta compradas juntas', description: 'Preço por pessoa da ida e volta num pacote só, nas melhores combinações.',
-    fn: (painel) => painel.filter((r) => r.tipo === 'iv') });
-  dash.calc('grade', { inputs: ['dias', 'resumo', 'pacotes'], title: 'Preço por par de datas', description: 'Ida mais volta mais baratas de cada par de dias (ou a ida e volta junta, se sair mais barato), dentro da estadia aceita.',
-    fn: (dias, resumo, pacotes) => {
-      const cfg = resumo[0] || {};
-      const out = [];
-      for (const i of dias.filter((r) => r.sentido === 'ida')) for (const v of dias.filter((r) => r.sentido === 'volta')) {
-        const n = Math.round((Date.parse(v.data) - Date.parse(i.data)) / 864e5);
-        if (n < cfg.min_dias || n > cfg.max_dias) continue;
-        const p = pacotes.filter((x) => x.ida === i.data && x.volta === v.data).sort((a, b) => a.pp - b.pp)[0];
-        const iv = p && p.pp < i.pp + v.pp ? p : null;
-        // com 1 mala de 23 kg por pessoa: soma das opções com mala de cada data, ou o pacote com mala se sair mais barato
-        const pm = i.mala_pp != null && v.mala_pp != null ? i.mala_pp + v.mala_pp : null;
-        const pk = pacotes.filter((x) => x.ida === i.data && x.volta === v.data && x.pp_mala != null).sort((a, b) => a.pp_mala - b.pp_mala)[0];
-        const ivMala = pk && (pm == null || pk.pp_mala < pm) ? pk : null;
-        out.push({ chave: `${i.data} ${v.data}`, ida: i.data, volta: v.data, dias: n, pp: iv ? iv.pp : i.pp + v.pp, iv,
-          pp_mala: ivMala ? ivMala.pp_mala : pm, iv_mala: ivMala, natal: i.data <= cfg.natal_ate ? 'Sim' : 'Não' });
-      }
-      return out;
-    } });
-  dash.calc('variacao', { inputs: ['resumo'], title: 'Distância do alvo', description: 'Quanto falta para o alvo do alerta e a variação desde a varredura anterior.',
-    fn: (resumo) => resumo.map((r) => ({
-      natal_falta: r.natal_pp - r.alvo_natal, geral_falta: r.geral_pp - r.alvo_geral,
-      natal_delta: r.ant_natal == null ? null : r.natal_pp - r.ant_natal, geral_delta: r.ant_geral == null ? null : r.geral_pp - r.ant_geral,
-    })) });
+  const painel = () => { const d = dash.data('painel'); return d.status === 'ok' ? d.data : null; };
+  const tipo = (t) => (painel() || []).filter((r) => r.tipo === t);
+  const resumo = () => tipo('resumo')[0] || null;
+  const h = (tag, cls, ...filhos) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    for (const f of filhos) if (f != null) e.append(f);
+    return e;
+  };
+  const link = (cls, href, txt) => { const a = h('a', cls, txt); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
+  const pessoas = (n) => `${n} ${n === 1 ? 'pessoa' : 'pessoas'}`;
+  const vendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
+  const tipoVoo = (t) => (t === 'direto' ? 'direto' : t);
+  const numVoo = (v) => (v ? ' ' + v.split(' ').pop() : '');
+  // preço de um voo de ida para n pessoas, no modo atual (sem ou com mala)
+  const precoIda = (v, n) => {
+    const p = v.precos[String(n)];
+    if (!p) return null;
+    return modo === 'com' ? (p.mala_pp == null ? null : { pp: p.mala_pp, vend: p.mala_vend, link: p.mala_link || p.link, estimado: p.mala_estimado })
+      : { pp: p.pp, vend: p.vend, link: p.link };
+  };
+  const precoVolta = (r) => (modo === 'com' ? (r.mala_pp == null ? null : { pp: r.mala_pp, vend: r.mala_vend, link: r.mala_link, estimado: r.mala_estimado,
+    cia: r.mala_cia, orig: r.mala_orig, dest: r.mala_dest, saida: r.mala_saida, chegada: r.mala_chegada, tipo_voo: r.mala_tipo_voo })
+    : { pp: r.pp, vend: r.vend, link: r.link, cia: r.cia, orig: r.orig, dest: r.dest, saida: r.saida, chegada: r.chegada, tipo_voo: r.tipo_voo, pp_cia: r.pp_cia });
 
-  const fmt = (v, f) => {
-    if (v == null || v === '') return '—';
-    if (f === 'brl') return BRL.format(v);
-    if (f === 'quando') return `${v.slice(8, 10)}/${v.slice(5, 7)} às ${v.slice(11, 16)}`;
-    return String(v);
-  };
-  const linha = (id) => { const d = dash.data(id); return d.status === 'ok' && d.data.length ? d.data[0] : null; };
-  const rows = (id) => { const d = dash.data(id); return d.status === 'ok' ? d.data : null; };
-
-  // seleção atual: um par de datas da grade, sem ou com mala despachada
-  let sel = null, modo = 'sem';
-  const valor = (c) => (modo === 'com' ? c.pp_mala : c.pp);
-  const trocarModo = (m) => {
-    modo = m;
-    document.querySelectorAll('.pn-seg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
-    ['grade', 'escala', 'sel', 'link', 'vend'].forEach((n) => dash.draw(n));
-    sincronizarAtalhos();
-  };
-  document.querySelectorAll('.pn-seg button').forEach((b) => b.addEventListener('click', () => trocarModo(b.dataset.modo)));
-  const escolher = (ida, volta, rolar) => {
-    sel = { ida, volta };
-    ['grade', 'sel', 'link', 'vend'].forEach((n) => dash.draw(n));
-    sincronizarAtalhos();
-    if (rolar && estreito.matches) document.querySelectorAll('#selecionada').forEach((e) => e.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-  };
-  const atual = () => {
-    const g = rows('grade'), d = rows('dias'), res = linha('resumo');
-    if (!g || !d || !res) return null;
-    const existe = (s) => s && g.some((c) => c.ida === s.ida && c.volta === s.volta && valor(c) != null);
-    if (!existe(sel)) {
-      const pref = modo === 'com' ? [{ ida: res.mala_ida, volta: res.mala_volta }] :
-        [{ ida: res.natal_ida, volta: res.natal_volta }, { ida: res.geral_ida, volta: res.geral_volta }];
-      const livre = g.filter((c) => valor(c) != null);
-      sel = pref.find(existe) || (livre.length ? { ida: livre[0].ida, volta: livre[0].volta } : null);
-      if (!sel) return null;
-    }
-    const c = g.find((x) => x.ida === sel.ida && x.volta === sel.volta);
-    let ida = d.find((x) => x.sentido === 'ida' && x.data === sel.ida), volta = d.find((x) => x.sentido === 'volta' && x.data === sel.volta);
-    const iv = modo === 'com' ? c.iv_mala : c.iv;
-    if (iv) {   // ida e volta compradas juntas: os voos e o link são os do pacote; o preço só existe para o par
-      const junta = (base, perna) => ({ ...base, ...perna, pp: null, pp_cia: null, vend: iv.vend, link: iv.link, junto: true,
-        estimado: modo === 'com' && iv.mala_estimada });
-      ida = junta(ida, iv.pernas.ida); volta = junta(volta, iv.pernas.volta);
-    } else if (modo === 'com') {   // a melhor opção com mala de cada data (pode ser outro voo ou vendedor)
-      const m = (r) => ({ ...r, pp: r.mala_pp, vend: r.mala_vend, cia: r.mala_cia, orig: r.mala_orig, dest: r.mala_dest, saida: r.mala_saida,
-        chegada: r.mala_chegada, tipo_voo: r.mala_tipo_voo, link: r.mala_link, pp_cia: null, estimado: r.mala_estimado, mala: true });
-      ida = m(ida); volta = m(volta);
-    }
-    return { ...c, pp: valor(c), ida, volta, pax: res.pax };
-  };
-  const sincronizarAtalhos = () => {
-    const res = linha('resumo');
-    document.querySelectorAll('.pn-pick').forEach((b) => {
-      const g = b.dataset.pick;
-      const doModo = (g === 'mala') === (modo === 'com');
-      b.setAttribute('aria-pressed', String(!!(doModo && res && sel && res[g + '_ida'] === sel.ida && res[g + '_volta'] === sel.volta)));
-    });
-  };
-  document.querySelectorAll('.pn-pick').forEach((b) => b.addEventListener('click', () => {
-    const res = linha('resumo');
-    if (!res || !res[b.dataset.pick + '_ida']) return;
-    sel = { ida: res[b.dataset.pick + '_ida'], volta: res[b.dataset.pick + '_volta'] };
-    trocarModo(b.dataset.pick === 'mala' ? 'com' : 'sem');
-    escolher(sel.ida, sel.volta, true);
+  document.querySelectorAll('.pn-seg button').forEach((b) => b.addEventListener('click', () => {
+    modo = b.dataset.modo;
+    document.querySelectorAll('.pn-seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    ['mesmo', 'perto', 'volta'].forEach((n) => dash.draw(n));
   }));
-  dash.onData(() => { atual(); sincronizarAtalhos(); });
 
-  dash.draw('f', (el) => {
-    const d = dash.data(el.dataset.source);
-    const row = d.status === 'ok' ? d.data[+(el.dataset.row || 0)] : null;
-    el.classList.toggle('dash-skeleton', d.status === 'loading');
-    el.textContent = row ? fmt(row[el.dataset.field], el.dataset.fmt) : '—';
+  dash.draw('meta', (el) => {
+    const r = resumo();
+    if (!r) { el.textContent = dash.data('painel').status === 'error' ? 'Não consegui carregar os dados.' : 'Carregando…'; return; }
+    const q = r.quando;
+    el.textContent = `Preço por pessoa. Atualizado em ${q.slice(8, 10)}/${q.slice(5, 7)} às ${q.slice(11, 16)}; nova busca de hora em hora.`;
   });
 
-  dash.draw('chip', (el) => {
-    const r = linha('variacao');
-    const falta = r ? r[el.dataset.grupo + '_falta'] : null;
-    el.classList.toggle('is-hit', falta != null && falta <= 0);
-    el.textContent = falta == null ? '—' : falta <= 0 ? 'Abaixo do alvo: compre' : `${BRL.format(falta)} acima do alvo`;
-  });
-
-  dash.draw('escala', (el) => {
+  dash.draw('mesmo', (el) => {
     el.replaceChildren();
-    const g = rows('grade') && rows('grade').filter((c) => valor(c) != null);
-    if (!g || !g.length) { el.textContent = '—'; return; }
-    const [lo, hi] = d3.extent(g, valor);
-    const a = document.createElement('span'); a.textContent = BRL.format(lo);
-    const z = document.createElement('span'); z.textContent = BRL.format(hi);
-    el.append(a);
-    [46, 35, 24, 14, 4].forEach((p) => { const i = document.createElement('i'); i.style.background = `color-mix(in oklab, var(--pn-acc) ${p}%, var(--color-panel))`; el.append(i); });
-    el.append(z);
-  });
-
-  dash.draw('grade', (el) => {
-    el.replaceChildren();
-    const g = rows('grade'), d = rows('dias'), res = linha('resumo'), s = atual();
-    if (!g || !d || !res || !s) { el.textContent = '—'; return; }
-    const idas = d.filter((r) => r.sentido === 'ida').sort((a, b) => (a.data < b.data ? -1 : 1));
-    const voltas = d.filter((r) => r.sentido === 'volta').sort((a, b) => (a.data < b.data ? -1 : 1));
-    const mapa = new Map(g.filter((c) => valor(c) != null).map((c) => [c.ida + ' ' + c.volta, c]));
-    const [lo, hi] = d3.extent([...mapa.values()], valor);
-    const forca = (v) => (hi === lo ? 1 : (hi - v) / (hi - lo));
-    const destaque = new Set(modo === 'com' ? [res.mala_ida + ' ' + res.mala_volta] : [res.natal_ida + ' ' + res.natal_volta, res.geral_ida + ' ' + res.geral_volta]);
-    const mk = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
-    const rotulo = (r, umaLinha) => {
-      const f = document.createDocumentFragment();
-      if (umaLinha) { const d = mk('span', 'pn-d'); d.append(mk('span', 'pn-wi', r.dia.slice(0, 3) + ' '), r.dia.slice(4)); f.append(d); }
-      else f.append(mk('span', 'pn-w', r.dia.slice(0, 3)), mk('span', 'pn-d', r.dia.slice(4)));
-      const v = modo === 'com' ? r.mala_pp : r.pp;
-      f.append(mk('span', 'pn-p', v == null ? '—' : BRL.format(v)));
-      return f;
-    };
-
-    const t = mk('table', 'pn-grid');
-    t.setAttribute('aria-label', 'Preço por pessoa para cada par de datas de ida e volta');
-    const thead = mk('thead'), h1 = mk('tr'), h2 = mk('tr');
-    const canto = mk('th'); canto.setAttribute('aria-hidden', 'true'); h1.append(canto);
-    const eixo = mk('th', 'pn-axis', 'Volta, saindo do Nordeste'); eixo.colSpan = voltas.length; eixo.style.textAlign = 'center'; h1.append(eixo);
-    h2.append(mk('th', 'pn-axis', 'Ida, saindo de SP'));
-    voltas.forEach((v) => { const th = mk('th'); th.scope = 'col'; th.append(rotulo(v)); h2.append(th); });
-    thead.append(h1, h2); t.append(thead);
-
-    const tbody = mk('tbody');
-    const grupos = [['Chegando antes do Natal', idas.filter((i) => i.data <= res.natal_ate)], ['Chegando depois do Natal', idas.filter((i) => i.data > res.natal_ate)]];
-    for (const [nome, lista] of grupos) {
-      if (!lista.length) continue;
-      const gr = mk('tr', 'pn-grp'); const gth = mk('th', null, nome); gth.colSpan = voltas.length + 1; gth.scope = 'rowgroup'; gr.append(gth); tbody.append(gr);
-      for (const i of lista) {
-        const tr = mk('tr'); const th = mk('th'); th.scope = 'row'; th.append(rotulo(i, true)); tr.append(th);
-        for (const v of voltas) {
-          const td = mk('td'); const c = mapa.get(i.data + ' ' + v.data);
-          if (!c) { td.className = 'pn-off'; td.setAttribute('aria-hidden', 'true'); tr.append(td); continue; }
-          const b = mk('button', 'pn-cell' + (destaque.has(c.chave) ? ' is-best' : ''), NUM.format(valor(c)));
-          // escala suave o bastante para o texto padrão ficar legível em qualquer quadrado, nos dois temas
-          const p = 4 + Math.round(42 * Math.pow(forca(valor(c)), 1.2));
-          b.type = 'button';
-          b.style.setProperty('--c', `color-mix(in oklab, var(--pn-acc) ${p}%, var(--color-panel))`);
-          const on = c.ida === s.ida.data && c.volta === s.volta.data;
-          b.setAttribute('aria-pressed', String(on)); b.tabIndex = on ? 0 : -1;
-          b.dataset.ida = c.ida; b.dataset.volta = c.volta;
-          const ivc = modo === 'com' ? c.iv_mala : c.iv;
-          b.setAttribute('aria-label', `Ida ${i.dia}, volta ${v.dia}, ${c.dias} dias, ${BRL.format(valor(c))} por pessoa` +
-            (modo === 'com' ? ' com mala' : '') + (ivc ? `, ida e volta juntas na ${ivc.vend}` : ''));
-          if (ivc) b.title = `Ida e volta compradas juntas na ${ivc.vend}`;
-          b.addEventListener('click', () => escolher(c.ida, c.volta, true));
-          td.append(b); tr.append(td);
-        }
-        tbody.append(tr);
-      }
+    const r = resumo();
+    if (!r) { el.textContent = '—'; return; }
+    const a = r.voo_comprado, v = tipo('ida').find((x) => x.mesmo);
+    const fim = (cod, hora, dir) => h('div', 'pn-end' + (dir ? ' pn-end--r' : ''), h('b', null, cod), h('span', null, hora));
+    const voo = h('div', 'pn-flight',
+      h('span', 'pn-tag', 'Mesmo voo de vocês'),
+      h('div', 'pn-route', fim(a.orig, `sai ${a.saida}`), Object.assign(h('div', 'pn-path'), { ariaHidden: 'true' }),
+        fim(a.dest, v ? `chega ${v.chegada}` : '', true)),
+      h('p', 'pn-fmeta', `${a.dia} · ${a.cia}${numVoo(a.voo)} · ${v ? tipoVoo(v.tipo_voo) : 'direto'}`));
+    if (!v) {
+      el.append(voo, h('p', 'pn-empty', 'Este voo não apareceu à venda na última busca. Pode ter esgotado ou o vendedor não mostrou. Veja os voos perto logo abaixo.'));
+      return;
     }
-    t.append(tbody);
-    // setas do teclado andam pela grade
-    t.addEventListener('keydown', (ev) => {
-      const passo = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] }[ev.key];
-      if (!passo || !ev.target.classList.contains('pn-cell')) return;
-      ev.preventDefault();
-      const linhas = [...t.querySelectorAll('tbody tr:not(.pn-grp)')];
-      let r = linhas.indexOf(ev.target.closest('tr')), col = [...ev.target.closest('tr').children].indexOf(ev.target.closest('td'));
-      for (let k = 0; k < 40; k++) {
-        r += passo[0]; col += passo[1];
-        if (r < 0 || r >= linhas.length || col < 1 || col > voltas.length) return;
-        const alvo = linhas[r].children[col] && linhas[r].children[col].querySelector('.pn-cell');
-        if (alvo) { t.querySelectorAll('.pn-cell').forEach((x) => { x.tabIndex = -1; }); alvo.tabIndex = 0; alvo.focus(); return; }
-      }
-    });
+    const tiles = h('div', 'pn-tiles');
+    for (const n of EXTRAS) {
+      const p = precoIda(v, n);
+      if (!p) { tiles.append(h('div', 'pn-tile', h('span', 'pn-tile-k', pessoas(n)), h('span', 'pn-tile-v pn-dash', '—'),
+        h('span', 'pn-tile-s', modo === 'com' ? 'Sem preço com mala nesta busca.' : 'Sem lugares a esse preço nesta busca.'))); continue; }
+      const hit = modo === 'sem' && p.pp <= r.alvo_ida;
+      const menor = r.menor && r.menor['mesmo_' + n];
+      const status = hit ? 'Abaixo do alvo: compre' : modo === 'com' ? (p.estimado ? 'Mala à parte, valor estimado' : 'Tarifa com mala')
+        : menor != null && p.pp <= menor ? 'O menor já visto' : `${BRL.format(p.pp - r.alvo_ida)} acima do alvo`;
+      tiles.append(h('div', 'pn-tile' + (hit ? ' is-hit' : ''),
+        h('span', 'pn-tile-k', pessoas(n) + (n > 1 ? ', cada' : '')),
+        h('span', 'pn-tile-v', BRL.format(p.pp)),
+        h('span', 'pn-tile-s', `na ${vendedor(p.vend)}` + (n > 1 ? ` · total ${BRL.format(p.pp * n)}` : '')),
+        h('span', 'pn-tile-s' + (hit ? ' is-hit' : ''), status),
+        link('pn-buy', p.link, `Comprar para ${n}`)));
+    }
+    el.append(voo, tiles);
+  });
+
+  dash.draw('perto', (el) => {
+    el.replaceChildren();
+    const voos = tipo('ida');
+    if (!painel()) { el.textContent = '—'; return; }
+    if (!voos.length) { el.append(h('p', 'pn-empty', 'Nenhum voo encontrado na última busca.')); return; }
+    voos.sort((x, y) => (x.d + x.saida < y.d + y.saida ? -1 : 1));
+    const melhor = Object.fromEntries(EXTRAS.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
+    const t = h('table', 'pn-table');
+    t.setAttribute('aria-label', 'Voos de ida para Natal perto do voo de vocês, preço por pessoa');
+    const cab = h('tr', null, h('th', null, 'Voo'), ...EXTRAS.map((n) => h('th', 'n', pessoas(n))));
+    t.append(h('thead', null, cab));
+    const corpo = h('tbody');
+    let dia = '';
+    for (const v of voos) {
+      if (v.dia !== dia) { dia = v.dia; const td = h('td', null, dia); td.colSpan = EXTRAS.length + 1; corpo.append(h('tr', 'pn-day', td)); }
+      const nome = h('td', null,
+        h('span', 'pn-v1', `${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
+        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${v.dest} · ${tipoVoo(v.tipo_voo)}`));
+      const cols = EXTRAS.map((n) => {
+        const p = precoIda(v, n);
+        const td = h('td', 'n');
+        td.dataset.n = pessoas(n);
+        if (!p) { td.append(h('span', 'pn-dash', '—')); return td; }
+        const a = link('pn-price' + (p.pp === melhor[n] ? ' is-best' : ''), p.link, BRL.format(p.pp));
+        a.setAttribute('aria-label', `${BRL.format(p.pp)} por pessoa para ${pessoas(n)} na ${vendedor(p.vend)}`);
+        td.append(a, h('span', 'pn-pv', vendedor(p.vend) + (p.estimado ? ' · estimado' : '')));
+        return td;
+      });
+      corpo.append(h('tr', v.mesmo ? 'is-mine' : null, nome, ...cols));
+    }
+    t.append(corpo);
     el.append(t);
   });
 
-  dash.draw('sel', (el) => {
-    const s = atual();
-    el.classList.toggle('dash-skeleton', !s && dash.data('dias').status === 'loading');
-    if (!s || !s.ida || !s.volta) { el.textContent = '—'; return; }
-    const k = el.dataset.k;
-    const tipo = (t) => (t.tipo_voo === 'direto' ? 'voo direto' : t.tipo_voo.replace('escala ', 'escala de '));
-    const estim = (t) => (t.estimado ? ' Mala comprada à parte: valor estimado.' : '');
-    const trecho = (t) => t.junto ? `${t.cia}, ${tipo(t)}. Ida e volta compradas juntas na ${t.vend}, mais barato que separado.` + estim(t) :
-      t.mala ? `${t.cia}, ${tipo(t)}. ${BRL.format(t.pp)} com mala em ${t.vend.replace(/^CIA /, '')}.` + estim(t) :
-      `${t.cia}, ${tipo(t)}. ${BRL.format(t.pp)} em ${t.vend.replace(/^CIA /, '')}` + (t.pp_cia && t.pp_cia !== t.pp ? `; na companhia ${BRL.format(t.pp_cia)}.` : '.');
-    const v = {
-      titulo: `${s.ida.dia} a ${s.volta.dia}, ${s.dias} dias, ${s.natal === 'Sim' ? 'com Natal lá' : 'chegando depois do Natal'}`,
-      pp: BRL.format(s.pp),
-      total: `${BRL.format(s.pp * s.pax)} para ${s.pax} adultos, ` + (modo === 'com' ? 'com 1 mala de 23 kg por pessoa' : 'sem mala'),
-      'ida.dia': s.ida.dia, 'volta.dia': s.volta.dia,
-      'ida.orig': s.ida.orig, 'ida.dest': s.ida.dest, 'ida.saida': `sai ${s.ida.saida}`, 'ida.chegada': `chega ${s.ida.chegada}`, 'ida.meta': trecho(s.ida),
-      'volta.orig': s.volta.orig, 'volta.dest': s.volta.dest, 'volta.saida': `sai ${s.volta.saida}`, 'volta.chegada': `chega ${s.volta.chegada}`, 'volta.meta': trecho(s.volta),
-    }[k];
-    el.textContent = v ?? '—';
-  });
-
-  const nomeVendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
-  dash.draw('link', (el) => {
-    const s = atual();
-    const [lado, campo] = el.dataset.k.split('.');
-    const t = s && s[lado];
-    const href = t ? t[campo] : '';
-    if (href && /^https:\/\//.test(href)) {
-      // o botão de compra diz o vendedor e o preço: abre a busca dele já com o voo, ou a tela do Google
-      el.textContent = campo !== 'link' ? el.dataset.label :
-        (t.junto ? `Comprar ida e volta na ${nomeVendedor(t.vend)}, ${BRL.format(s.pp)}` : `Comprar na ${nomeVendedor(t.vend)}, ${BRL.format(t.pp)}`) +
-        (modo === 'com' ? ' com mala' : '');
-      el.href = href; el.target = '_blank'; el.rel = 'noopener'; el.removeAttribute('aria-disabled');
-    } else {
-      el.removeAttribute('href'); el.textContent = '—'; el.setAttribute('aria-disabled', 'true');
-    }
-  });
-
-  dash.draw('vend', (el) => {
+  dash.draw('volta', (el) => {
     el.replaceChildren();
-    const v = rows('vendedores'), s = atual();
-    if (!v || !s) { el.textContent = '—'; return; }
-    const lado = el.dataset.sentido, data = s[lado] && s[lado].data;
-    const lista = v.filter((r) => r.sentido === lado && r.data === data).sort((a, b) => a.pp - b.pp);
-    if (!lista.length) {
-      const p = document.createElement('p'); p.className = 'pn-small';
-      p.textContent = 'Este trecho não foi detalhado nesta varredura. O botão Comprar mostra todos os vendedores.';
-      el.append(p); return;
+    const r = resumo(), vs = tipo('volta');
+    if (!r) { el.textContent = '—'; return; }
+    const linhas = vs.map((x) => ({ x, p: precoVolta(x) })).filter((o) => o.p);
+    if (!linhas.length) { el.append(h('p', 'pn-empty', modo === 'com' ? 'Sem preço com mala na última busca.' : 'Nenhum voo de volta na última busca.')); return; }
+    const vals = linhas.map((o) => o.p.pp), lo = Math.min(...vals), hi = Math.max(...vals);
+    for (const { x, p } of linhas) {
+      const best = p.pp === lo;
+      const bar = h('div', 'pn-bar', h('i'));
+      bar.firstChild.style.width = (hi === lo ? 100 : 18 + 82 * (p.pp - lo) / (hi - lo)) + '%';
+      bar.setAttribute('aria-hidden', 'true');
+      const extra = modo === 'com' ? (p.estimado ? ' · mala estimada' : ' · tarifa com mala')
+        : p.pp_cia && p.pp_cia !== p.pp ? ` · na companhia ${BRL.format(p.pp_cia)}` : '';
+      el.append(h('div', 'pn-row' + (best ? ' is-best' : ''),
+        h('div', null, h('span', 'pn-v1', x.dia), h('span', 'pn-v2', `${x.dias} dias lá`)),
+        h('div', null, h('span', 'pn-v1', `${p.saida} → ${p.chegada}`),
+          h('span', 'pn-v2', `${p.orig} → ${p.dest} · ${p.cia} · ${tipoVoo(p.tipo_voo)} · ${vendedor(p.vend)}${extra}`)),
+        bar,
+        h('div', 'pn-amt', BRL.format(p.pp)),
+        link('pn-buylink', p.link, 'Comprar')));
     }
-    const melhor = lista.find((r) => CONFIAVEIS.test(r.vendedor));
-    for (const r of lista) {
-      const row = document.createElement('div');
-      row.className = 'pn-v' + (r === melhor ? ' is-best' : CONFIAVEIS.test(r.vendedor) ? '' : ' is-out');
-      const a = document.createElement('span'); a.textContent = r.vendedor.startsWith('CIA ') ? r.vendedor.slice(4) + ' (companhia)' : r.vendedor;
-      const b = document.createElement('span'); b.textContent = BRL.format(r.pp);
-      row.append(a, b); el.append(row);
-    }
+  });
+
+  dash.draw('volta-nota', (el) => {
+    const r = resumo();
+    if (!r) return;
+    el.textContent = `2 adultos, saindo de Natal, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
+  });
+
+  dash.draw('hist-nota', (el) => {
+    const r = resumo();
+    if (!r) return;
+    el.textContent = `Preço por pessoa, sem mala, em cada busca de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram: ${BRL.format(r.alvo_ida)} na ida dos extras e ${BRL.format(r.alvo_volta)} na volta.`;
   });
 
   dash.draw('hist', (el) => {
     el.replaceChildren();
-    const h = rows('historico'), res = linha('resumo');
-    if (!h || !res || !h.length) { el.textContent = '—'; return; }
-    const parseT = (q) => new Date(q.replace(' ', 'T') + ':00');
-    const pts = h.map((x) => ({ t: parseT(x.quando), q: x.quando, g: x.geral_pp == null ? null : +x.geral_pp, n: x.natal_pp == null ? null : +x.natal_pp }))
-      .filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
-    const W = Math.max(280, el.clientWidth), H = 220;
-    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Preço por pessoa em cada varredura');
-    const vals = pts.flatMap((p) => [p.g, p.n]).filter((v) => v != null).concat([res.alvo_geral, res.alvo_natal]);
-    const y = d3.scaleLinear([d3.min(vals) * 0.97, d3.max(vals) * 1.02], [H - 26, 10]).nice();
+    const hs = tipo('hist'), r = resumo();
+    if (!r || !hs.length) { el.textContent = '—'; return; }
+    const series = [{ k: 'mesmo_3', cor: 'var(--pn-acc)', w: 2, nome: 'Mesmo voo, 3 pessoas' },
+      { k: 'mesmo_1', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Mesmo voo, 1 pessoa' },
+      { k: 'volta_pp', cor: 'var(--pn-muted)', w: 1.75, nome: 'Volta' }];
+    const pts = hs.map((x) => ({ ...x, t: new Date(x.quando.replace(' ', 'T') + ':00') })).filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
+    const W = Math.max(280, el.clientWidth), H = 230;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', 'Preço por pessoa em cada busca: mesmo voo para 3 e para 1 pessoa, e a volta');
+    const vals = pts.flatMap((p) => series.map((s) => p[s.k])).filter((v) => v != null).concat([r.alvo_ida, r.alvo_volta]);
+    const y = d3.scaleLinear([d3.min(vals) * 0.95, d3.max(vals) * 1.03], [H - 26, 10]).nice();
     const ticks = y.ticks(4);
     const meas = (txt) => { const tx = svg.append('text').attr('class', 'pn-tick').text(txt); const w = tx.node().getComputedTextLength(); tx.remove(); return w; };
     const ml = d3.max(ticks, (v) => meas(BRL.format(v))) + 10;
     const last = pts[pts.length - 1];
-    const ends = [{ cor: 'var(--pn-link)', v: last.n }, { cor: 'var(--pn-muted)', v: last.g }].filter((e) => e.v != null).map((e) => ({ ...e, txt: BRL.format(e.v) }));
+    const ends = series.filter((s) => last[s.k] != null).map((s) => ({ cor: s.cor, v: last[s.k], txt: BRL.format(last[s.k]) }));
     const mr = (d3.max(ends, (e) => meas(e.txt)) || 0) + 14;
     let [t0, t1] = d3.extent(pts, (p) => p.t);
     if (+t0 === +t1) { t0 = new Date(+t0 - 3 * 36e5); t1 = new Date(+t1 + 3 * 36e5); }
@@ -512,29 +357,30 @@
     const tf = d3.timeFormat('%d/%m %Hh'), vistos = new Set();
     const xt = x.ticks(Math.max(2, Math.floor((W - ml - mr) / 110))).filter((d) => { const k = tf(d); if (vistos.has(k)) return false; vistos.add(k); return true; });
     g.selectAll('text.xt').data(xt).join('text').attr('class', 'pn-tick').attr('x', x).attr('y', H - 6).attr('text-anchor', 'middle').text(tf);
-    [{ v: res.alvo_natal, cor: 'var(--pn-link)' }, { v: res.alvo_geral, cor: 'var(--pn-muted)' }].forEach((a) =>
-      g.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(a.v)).attr('y2', y(a.v)).attr('stroke', a.cor).attr('stroke-dasharray', '4 4').attr('opacity', 0.7));
-    for (const s of [{ k: 'g', cor: 'var(--pn-muted)', w: 1.5 }, { k: 'n', cor: 'var(--pn-link)', w: 2 }]) {
+    [{ v: r.alvo_ida, cor: 'var(--pn-acc)' }, { v: r.alvo_volta, cor: 'var(--pn-muted)' }].forEach((a) =>
+      g.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(a.v)).attr('y2', y(a.v)).attr('stroke', a.cor).attr('stroke-dasharray', '4 4').attr('opacity', 0.6));
+    for (const s of series) {
       const line = d3.line().defined((p) => p[s.k] != null).x((p) => x(p.t)).y((p) => y(p[s.k]));
-      g.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', s.cor).attr('stroke-width', s.w).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+      g.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', s.cor).attr('stroke-width', s.w)
+        .attr('stroke-dasharray', s.dash || null).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
       g.selectAll(null).data(pts.filter((p) => p[s.k] != null)).join('circle').attr('cx', (p) => x(p.t)).attr('cy', (p) => y(p[s.k])).attr('r', 2.5).attr('fill', s.cor);
     }
     ends.forEach((e) => { e.y = y(e.v); });
-    if (ends.length === 2 && Math.abs(ends[0].y - ends[1].y) < 14) {
-      const mid = (ends[0].y + ends[1].y) / 2, cima = ends[0].v >= ends[1].v ? 0 : 1;
-      ends[cima].y = mid - 7; ends[1 - cima].y = mid + 7;
-    }
-    ends.forEach((e) => g.append('text').attr('x', x(last.t) + 8).attr('y', e.y).attr('dy', '0.32em').attr('fill', e.cor).attr('font-size', 'var(--cds-font-size-caption)').attr('font-weight', 600).text(e.txt));
-    const tip = document.createElement('div'); tip.className = 'pn-tip'; tip.hidden = true; el.append(tip);
+    ends.sort((a, b) => a.y - b.y).forEach((e, i, arr) => { if (i && e.y - arr[i - 1].y < 14) e.y = arr[i - 1].y + 14; });
+    ends.forEach((e) => g.append('text').attr('x', x(last.t) + 8).attr('y', e.y).attr('dy', '0.32em').attr('fill', e.cor)
+      .attr('font-size', 'var(--cds-font-size-caption)').attr('font-weight', 600).text(e.txt));
+    const tip = h('div', 'pn-tip'); tip.hidden = true; el.append(tip);
     const perto = (mx) => pts.reduce((a, b) => (Math.abs(x(b.t) - mx) < Math.abs(x(a.t) - mx) ? b : a));
     svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(1, W - mr - ml)).attr('height', H).attr('fill', 'transparent')
       .on('pointermove', (ev) => {
         const [mx] = d3.pointer(ev), p = perto(mx), k = el.clientWidth / W;
-        const lin = (a, b) => { const d = document.createElement('div'); const s = document.createElement('span'); s.className = 'k'; s.textContent = a; d.append(s, ' ' + b); return d; };
-        tip.replaceChildren(lin(fmt(p.q, 'quando'), ''), lin('Com Natal', fmt(p.n, 'brl')), lin('Mais barata', fmt(p.g, 'brl')));
+        const lin = (a, b) => h('div', null, h('span', 'k', a), ' ' + b);
+        tip.replaceChildren(lin(`${p.quando.slice(8, 10)}/${p.quando.slice(5, 7)} às ${p.quando.slice(11, 16)}`, ''),
+          ...series.map((s) => lin(s.nome, p[s.k] == null ? '—' : BRL.format(p[s.k]))));
         tip.hidden = false;
+        const yy = series.map((s) => p[s.k]).find((v) => v != null);
         tip.style.left = Math.max(0, Math.min(el.clientWidth - tip.offsetWidth, x(p.t) * k - tip.offsetWidth / 2)) + 'px';
-        tip.style.top = Math.max(0, y(p.n ?? p.g) * k - tip.offsetHeight - 10) + 'px';
+        tip.style.top = Math.max(0, (yy == null ? 20 : y(yy)) * k - tip.offsetHeight - 10) + 'px';
       })
       .on('pointerleave', () => { tip.hidden = true; });
   });

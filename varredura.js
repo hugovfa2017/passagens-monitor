@@ -1,4 +1,5 @@
-// Varredura de passagens SP <-> Nordeste no Google Voos.
+// Varredura de passagens no Google Voos: ida SP -> Natal dos extras (perto do voo que já foi comprado)
+// e volta Nordeste -> SP dos dois que já têm a ida.
 // Uso: numa aba em https://www.google.com/travel/flights, cole este arquivo inteiro no javascript_tool.
 // Roda em segundo plano (~2 min). Pronto quando window.__scan.status for 'ok' ou 'erro';
 // o resultado fica em window.__json (leia em pedaços: window.__json.slice(0,900), ...).
@@ -7,11 +8,14 @@
 // (já vimos R$592 na lista virar R$2.550 na compra). Só conta o preço da tela de compra.
 (() => {
   const CFG = {
-    pax: 2,                         // adultos (mude para 3 ou 4 se mais gente for)
-    ida: ['2026-12-18','2026-12-19','2026-12-20','2026-12-21','2026-12-22','2026-12-23','2026-12-24','2026-12-25','2026-12-26','2026-12-27'],
-    volta: ['2027-01-15','2027-01-16','2027-01-17','2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23','2027-01-24','2027-01-25','2027-01-26'],
-    minDias: 27, maxDias: 39,       // estadia aceitável (39 = ida 18/12, volta 26/01)
-    natalAte: '2026-12-24',         // ida até esta data = "com Natal"
+    // ida dos extras (1 a paxIda adultos, ainda a confirmar): o mesmo voo comprado e voos perto dele, para Natal
+    alvo: '2026-12-22 14:05 Gol GRU-NAT G3 1678',   // data, saída, companhia, rota, número do voo
+    paxIda: 3,                      // no Google, preço para o máximo de extras; os vendedores buscam 1, 2 e 3
+    ida: ['2026-12-21','2026-12-22','2026-12-23'],
+    idaDestinos: ['NAT'],
+    // volta dos dois que já têm a ida (estadia de 27 a 39 dias a partir de 22/12, até 26/01)
+    pax: 2,
+    volta: ['2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23','2027-01-24','2027-01-25','2027-01-26'],
     maxEscalaMin: 120,              // só direto ou 1 escala de até 2h
     candidatosPorData: 2,           // quantos voos da lista validar por data
     paralelo: 5,
@@ -21,12 +25,14 @@
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const hx = s => [...s].map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('');
   const ap = (tag, c) => tag + '0708011203' + hx(c);
+  const paxDe = dir => dir === 'ida' ? CFG.paxIda : CFG.pax;
+  const [aData, aSaida, aCia] = CFG.alvo.split(' ');
   const tfs = (dir, date) => {
     const O = dir === 'ida' ? ['GRU', 'CGH'] : ['FOR', 'NAT', 'JDO'];
-    const D = dir === 'ida' ? ['FOR', 'NAT', 'JDO'] : ['GRU', 'CGH'];
+    const D = dir === 'ida' ? CFG.idaDestinos : ['GRU', 'CGH'];
     const seg = '120a' + hx(date) + O.map(c => ap('6a', c)).join('') + D.map(c => ap('72', c)).join('');
     const h = '081c1002' + '1a' + (seg.length / 2).toString(16).padStart(2, '0') + seg +
-      '4001'.repeat(CFG.pax) + '4801700182010b08ffffffffffffffffff01980102';
+      '4001'.repeat(paxDe(dir)) + '4801700182010b08ffffffffffffffffff01980102';
     return btoa(h.match(/../g).map(x => String.fromCharCode(parseInt(x, 16))).join(''))
       .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   };
@@ -35,7 +41,7 @@
   const mins = s => { const h = s.match(/(\d+)h/), m = s.match(/(\d+) min/); return (h ? +h[1] * 60 : 0) + (m ? +m[1] : 0); };
 
   // voos da lista (preço pode estar velho), só diretos ou escala curta
-  const parse = doc => {
+  const parse = (doc, dir) => {
     const seen = new Set();
     return [...doc.querySelectorAll('[aria-label^="A partir de"]')].map(el => {
       const t = el.getAttribute('aria-label');
@@ -46,7 +52,7 @@
       const ok = !!a[1] || (lays.length === 1 && lays[0] <= CFG.maxEscalaMin);
       const tipo = a[1] ? 'direto' : `escala ${Math.floor(lays[0] / 60)}h${String(lays[0] % 60).padStart(2, '0')}`;
       const cia = a[2].replace(/ ?Operado.*/, '');
-      const v = { listaPP: +p[1].replace(/\./g, '') / CFG.pax, cia, rota: `${code(s[1])}-${code(s[3])}`, saida: s[2], chegada: s[4], tipo, ok };
+      const v = { listaPP: +p[1].replace(/\./g, '') / paxDe(dir), cia, rota: `${code(s[1])}-${code(s[3])}`, saida: s[2], chegada: s[4], tipo, ok };
       v.voo = `${cia} ${v.rota} ${v.saida}-${v.chegada} ${tipo}`;
       return v;
     }).filter(v => v && v.ok && !seen.has(v.voo) && seen.add(v.voo)).sort((x, y) => x.listaPP - y.listaPP);
@@ -85,7 +91,7 @@
         const mais = [...doc.querySelectorAll('div')].find(b => !b.children.length && /^Mais \d+ opç/.test((b.textContent || '').trim()));
         if (mais) mais.click();
         vend = [...doc.body.innerText.matchAll(/Reserve com a (.+?)(Companhia aérea)?\nR\$[\s\u00a0]([\d.]+)/g)]
-          .map(m => ({ vendedor: (m[2] ? 'CIA ' : '') + m[1], pp: Math.round(+m[3].replace(/\./g, '') / CFG.pax) }));
+          .map(m => ({ vendedor: (m[2] ? 'CIA ' : '') + m[1], pp: Math.round(+m[3].replace(/\./g, '') / paxDe(dir)) }));
         if (vend.length && vend.length === antes) break;
         antes = vend.length;
       }
@@ -115,41 +121,29 @@
       // 1) lista de cada data -> candidatos
       const cands = await pool(datas, async ([dir, d]) => {
         const f = await load(url(dir, d));
-        const c = parse(f.contentDocument).slice(0, CFG.candidatosPorData);
+        const todos = parse(f.contentDocument, dir), c = todos.slice(0, CFG.candidatosPorData);
+        // o voo que já foi comprado é sempre validado, mesmo que não esteja entre os mais baratos
+        const alvo = todos.find(v => dir === 'ida' && d === aData && v.saida === aSaida && v.cia.startsWith(aCia));
+        if (alvo && !c.includes(alvo)) c.push(alvo);
         f.remove();
         return c.map(v => [dir, d, v]);
       });
       // 2) valida cada candidato na tela de compra
       window.__scan.progresso = 'validando';
       const val = await pool(cands.flat(), ([dir, d, v]) => validar(dir, d, v).then(r => r && { dir, d, ...r }));
-      const best = { ida: {}, volta: {} };
-      for (const r of val.filter(r => r && r.melhor)) {
-        const cur = best[r.dir][r.d];
-        if (!cur || r.melhor.pp < cur.melhor.pp) best[r.dir][r.d] = r;
-      }
-      // 3) combinações ida+volta dentro da estadia
-      const combos = [];
-      for (const [di, vi] of Object.entries(best.ida)) for (const [dv, vv] of Object.entries(best.volta)) {
-        const dias = Math.round((Date.parse(dv) - Date.parse(di)) / 864e5);
-        if (dias < CFG.minDias || dias > CFG.maxDias) continue;
-        combos.push({ ida: di, volta: dv, dias, pp: vi.melhor.pp + vv.melhor.pp, natal: di <= CFG.natalAte, vi, vv });
-      }
-      combos.sort((x, y) => x.pp - y.pp);
-      const natal = combos.find(c => c.natal);
-      const sel = combos.slice(0, 5);
-      if (natal && !sel.includes(natal)) sel.push(natal);
-      // um trecho por data validada; vendedores só dos trechos das combinações vencedoras
-      const trechos = datas.filter(([dir, d]) => best[dir][d]).map(([dir, d]) => {
-        const r = best[dir][d];
-        return { s: dir, d, pp: r.melhor.pp, vend: r.melhor.vendedor, cia: r.cia, rota: r.rota, saida: r.saida, chegada: r.chegada, tipo: r.tipo, ppCia: r.naCia ? r.naCia.pp : null, voos: r.voos };
-      });
+      const ok = val.filter(r => r && r.melhor), best = {};
+      for (const r of ok.filter(r => r.dir === 'volta')) if (!best[r.d] || r.melhor.pp < best[r.d].melhor.pp) best[r.d] = r;
+      const linha = r => ({ d: r.d, pp: r.melhor.pp, vend: r.melhor.vendedor, cia: r.cia, rota: r.rota, saida: r.saida, chegada: r.chegada,
+        tipo: r.tipo, ppCia: r.naCia ? r.naCia.pp : null, voos: r.voos });
+      // volta: o melhor voo de cada data (2 adultos); ida: cada voo validado (paxIda adultos)
+      const trechos = CFG.volta.filter(d => best[d]).map(d => ({ s: 'volta', ...linha(best[d]) }));
+      const idas = ok.filter(r => r.dir === 'ida').map(linha);
       const vend = {};
-      for (const c of [combos[0], natal].filter(Boolean)) for (const r of [c.vi, c.vv]) vend[`${r.dir} ${r.d}`] = r.vendedores.slice(0, 8).map(v => [v.vendedor, v.pp]);
+      for (const r of Object.values(best)) vend[`volta ${r.d}`] = r.vendedores.slice(0, 8).map(v => [v.vendedor, v.pp]);
+      const achou = trechos.length + idas.length;
       window.__scan = {
-        status: combos.length ? 'ok' : 'erro', erro: combos.length ? undefined : 'nenhuma combinação validada',
-        inicio: window.__scan.inicio, fim: new Date().toISOString(), pax: CFG.pax,
-        cfg: { minDias: CFG.minDias, maxDias: CFG.maxDias, natalAte: CFG.natalAte },
-        combos: sel.map(c => ({ ida: c.ida, volta: c.volta, dias: c.dias, pp: c.pp, natal: c.natal })), trechos, vend,
+        status: achou ? 'ok' : 'erro', erro: achou ? undefined : 'nenhum voo validado',
+        inicio: window.__scan.inicio, fim: new Date().toISOString(), pax: CFG.pax, paxIda: CFG.paxIda, trechos, idas, vend,
       };
     } catch (e) { window.__scan = { status: 'erro', erro: String(e), progresso: window.__scan.progresso }; }
     // o javascript_tool corta respostas em ~1000 caracteres: leia window.__json em pedaços de 900

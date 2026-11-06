@@ -1,8 +1,11 @@
-"""Registra uma varredura (JSON de window.__scan): histórico, resumo, dados do painel e mensagem no Telegram.
+"""Registra uma varredura: histórico, resumo, dados do painel e mensagem no Telegram.
 
+A ida de 2 adultos já foi comprada (o voo fica em varredura.js, CFG.alvo). Agora o monitor acompanha:
+- a ida dos extras (1 a 3 adultos, a confirmar): o mesmo voo em destaque e os voos perto dele;
+- a volta dos dois que já têm a ida.
 Toda varredura vira uma mensagem no Telegram; ela toca só com preço abaixo do alvo ou novo menor preço.
 
-Uso:  python3 registrar.py ultima.json ["linha MaxMilhas" ...]
+Uso:  python3 registrar.py ultima.json
       python3 registrar.py --teste                -> auto-checagem (não envia nada)
       python3 registrar.py --configurar-telegram  -> acha o seu chat depois que você manda /start ao bot
       python3 registrar.py --teste-telegram       -> manda uma mensagem de teste
@@ -17,13 +20,15 @@ from datetime import datetime
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
 
-# "Algo muito bom" = preço por pessoa (ida + volta, sem mala) igual ou abaixo destes alvos.
-ALVO_GERAL = 1400
-ALVO_NATAL = 1450
-QUEDA_MIN = 20    # "novo menor preço" (Telegram com som) quando cai pelo menos isso abaixo do menor já visto
+# "Algo muito bom" = preço por pessoa, sem mala, igual ou abaixo destes alvos (Telegram com som).
+ALVO_IDA = 800     # ida dos extras, no mesmo voo ou num voo perto (a ida comprada saiu a R$480; o voo costuma ficar acima de R$1.200)
+ALVO_VOLTA = 450   # volta dos dois (já foi a R$424; costuma ficar perto de R$520)
+QUEDA_MIN = 20     # "novo menor preço" (Telegram com som) quando cai pelo menos isso abaixo do menor já visto
 
-CAMPOS = ['data_hora', 'pax', 'melhor_pp', 'melhor_ida', 'melhor_volta', 'melhor_dias', 'melhor_voo_ida', 'melhor_voo_volta',
-          'natal_pp', 'natal_ida', 'natal_volta', 'natal_voo_ida', 'natal_voo_volta']
+EXTRAS = (1, 2, 3)   # ponytail: colunas do histórico fixas para até 3 extras; se mudar CFG.paxIda, mude aqui
+CAMPOS = ['data_hora', *(f'mesmo_{n}' for n in EXTRAS), 'perto_pp', 'perto_voo', 'volta_pp', 'volta_voo', 'volta_mala_pp']
+ROTULO = {**{f'mesmo_{n}': f"o mesmo voo para {n} {'pessoa' if n == 1 else 'pessoas'}" for n in EXTRAS},
+          'perto_pp': 'o voo perto mais barato para 3 pessoas', 'volta_pp': 'a volta de vocês dois'}
 SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sáb', 'dom']
 
 
@@ -37,21 +42,8 @@ def brl(n):
 
 
 def texto_trecho(t):
-    if t.get('junto'):
-        return f"ida e volta juntas via {t['vend']} | {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}"
     return f"{brl(t['pp'])}/pessoa via {t['vend']} | {t['cia']} {t['rota']} {t['saida']}-{t['chegada']} {t['tipo']}" + \
         (f" | na cia {brl(t['ppCia'])}" if t.get('ppCia') and t['ppCia'] != t['pp'] else '')
-
-
-def pernas(c, tre, mala=False):
-    """Os dois voos de uma combinação (mala=True: as opções com mala de 23 kg de cada data). Se ela é ida e volta
-    comprada junta (c['iv']), voos e link são os do pacote, e o preço só existe para o par."""
-    if not c.get('iv'):
-        k = 'mala' if mala else None
-        return tuple(tre[(s, c[s])][k] if k else tre[(s, c[s])] for s in ('ida', 'volta'))
-    p = c['iv']
-    return tuple({**p['pernas'][s], 'rota': f"{p['pernas'][s]['orig']}-{p['pernas'][s]['dest']}", 'vend': p['vend'], 'link': p['link'],
-                  'pp': None, 'junto': True} for s in ('ida', 'volta'))
 
 
 def link_compra(sentido, data, voos, pax):
@@ -84,27 +76,24 @@ def nome_vendedor(v):
     return 'MaxMilhas' if v.lower() == 'maxmilhas' else v
 
 
-def bloco_tg(emoji, titulo, c, alvo, tre, pax, mala=False):
-    """Uma combinação na mensagem do Telegram -> (texto, botões de compra da ida e da volta).
-    mala=True: preços já com 1 mala de 23 kg por pessoa em cada trecho; sem alvo."""
-    voos, botoes = [], []
-    for (rotulo, s, seta), t in zip((('Ida', 'ida', '🛫'), ('Volta', 'volta', '🛬')), pernas(c, tre, mala)):
-        o, de = t['rota'].split('-')
-        preco = 'comprada junto' if t.get('junto') else \
-            f"{brl(t['pp'])}{' com mala' if mala else ''} na {html.escape(nome_vendedor(t['vend']))}{' (mala à parte)' if t.get('estimado') else ''}"
-        voos.append(f"{seta} <b>{dia(c[s])}</b> · {o} → {de}\n{html.escape(t['cia'])} {t['saida']}, {t['tipo']} · {preco}")
-        botoes.append({'text': f"{emoji} {rotulo} {brl(t['pp'] or 0)}",
-                       'url': t.get('link') or link_compra(s, c[s], t.get('voos'), pax) or link_mm(t['rota'], c[s], pax)})
-    if c.get('iv'):   # um botão só: ida e volta saem juntas, mais barato que separado
-        botoes = [{'text': f"{emoji} Ida e volta {brl(c['pp'])} na {c['iv']['vend']}", 'url': c['iv']['link']}]
-    if mala:
-        estimada = c['iv'].get('mala_estimada') if c.get('iv') else any(t.get('estimado') for t in pernas(c, tre, True))
-        meta = 'inclui 1 mala de 23 kg por pessoa em cada trecho' + ('\n<i>Mala à parte: valor estimado pela tarifa com mala da companhia.</i>' if estimada else '')
-    else:
-        meta = f"✅ abaixo do alvo de {brl(alvo)}" if c['pp'] <= alvo else f"faltam {brl(c['pp'] - alvo)} para o alvo de {brl(alvo)}"
-    junto = f"\n🤝 Ida e volta compradas juntas na {c['iv']['vend']}: mais barato que separado" if c.get('iv') else ''
-    return (f"{emoji} <b>{titulo} · {brl(c['pp'])}</b> por pessoa\n<blockquote>" + '\n\n'.join(voos) +
-            f"</blockquote>\n{c['dias']} dias · {meta}{junto}"), botoes
+def pessoas(n):
+    return f"{n} {'pessoa' if n == 1 else 'pessoas'}"
+
+
+def voo_txt(v):  # 'Gol 1678 · 14:05 → 17:25, direto'
+    num = f" {v['voo'].split(' ')[-1]}" if v.get('voo') else ''
+    return f"{v['cia']}{num} · {v['saida']} → {v['chegada']}, {v['tipo']}"
+
+
+def link_ida(v, n, mala=False):
+    """Link de compra do voo de ida para n adultos (nunca vazio: o Telegram recusa botão sem link)."""
+    p = v['precos'][n]
+    return p.get('mala_link' if mala else 'link') or link_mm(f"{v['orig']}-{v['dest']}", v['d'], n)
+
+
+def link_volta(t, pax, mala=False):
+    x = t['mala'] if mala else t
+    return x.get('link') or link_compra('volta', t['d'], x.get('voos'), pax) or link_mm(x['rota'], t['d'], pax)
 
 
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
@@ -176,167 +165,183 @@ def configurar_telegram():
     return f"TELEGRAM_CONFIGURADO chat de {chat.get('first_name', '')}"
 
 
-def registrar(scan, pasta=AQUI, enviar=telegram, maxmilhas=()):
+def registrar(scan, pasta=AQUI, enviar=telegram):
     hist, ultimo, painel = (os.path.join(pasta, f) for f in ('historico.csv', 'ultimo.md', 'painel.json'))
     # hora da varredura (não a do registro), no fuso do computador
     fim = scan.get('fim')
     agora = (datetime.fromisoformat(fim.replace('Z', '+00:00')).astimezone() if fim else datetime.now()).strftime('%Y-%m-%d %H:%M')
-    if scan.get('status') != 'ok' or not scan.get('combos'):
-        erro = scan.get('erro') or 'sem combinações válidas'
+    # quantidade de pessoas como número (no ultima.json, por ser JSON, ela vem como texto)
+    voos = [{**v, 'precos': {int(n): p for n, p in v['precos'].items()}} for v in scan.get('voos_ida') or []]
+    voltas = sorted(scan.get('trechos') or [], key=lambda t: t['d'])
+    if scan.get('status') != 'ok' or not (voos or voltas):
+        erro = scan.get('erro') or 'nenhum voo encontrado'
         with open(ultimo, 'a', encoding='utf-8') as f:
             f.write(f"\n\nVarredura de {agora} falhou: {erro}\n")
         aviso = (f"⚠️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)}</i>\n\nDesta vez não consegui ler os preços. "
                  f"Tento de novo daqui a 1 hora; o painel continua com a última busca boa.\n\n<i>{html.escape(erro[:120])}</i>")
         return [f"ERRO_VARREDURA {erro}", enviar(aviso, silencioso=True, botoes=[PAINEL_BOTAO])]
 
-    pax = scan['pax']
+    pax, n_max, alvo = scan['pax'], scan.get('paxIda', EXTRAS[-1]), scan['alvo']
+    mesmo = next((v for v in voos if v['mesmo']), None)
+    pm = {n: p for n, p in sorted(mesmo['precos'].items())} if mesmo else {}
+    perto = sorted((v for v in voos if not v['mesmo'] and n_max in v['precos']), key=lambda v: v['precos'][n_max]['pp'])
+    perto_dia = {}   # o voo perto mais barato de cada data
+    for v in perto:
+        perto_dia.setdefault(v['d'], v)
+    volta = min(voltas, key=lambda t: t['pp'], default=None)
+    volta_mala = min((t for t in voltas if t.get('mala')), key=lambda t: t['mala']['pp'], default=None)
+    estadia = lambda d: (datetime.strptime(d, '%Y-%m-%d') - datetime.strptime(alvo['d'], '%Y-%m-%d')).days
+
+    # histórico (o arquivo da época de ida e volta juntas, se ainda estiver aqui, é guardado com outro nome)
+    if os.path.exists(hist) and not open(hist, encoding='utf-8').readline().startswith(','.join(CAMPOS[:2])):
+        os.replace(hist, os.path.join(pasta, 'historico-ida-e-volta.csv'))
     linhas = list(csv.DictReader(open(hist, encoding='utf-8'))) if os.path.exists(hist) else []
-    linhas = [r for r in linhas if int(r.get('pax') or 0) == pax]
-    tre = {(t['s'], t['d']): t for t in scan['trechos']}
-    m = scan['combos'][0]
-    n = next((c for c in scan['combos'] if c['natal']), None)
-
-    def menor(campo):
-        vals = [float(r[campo]) for r in linhas if r.get(campo)]
-        return min(vals) if vals else None
-
-    ant_m, ant_n = menor('melhor_pp'), menor('natal_pp')
+    metricas = {**{f'mesmo_{n}': pm[n]['pp'] if n in pm else None for n in EXTRAS},
+                'perto_pp': perto[0]['precos'][n_max]['pp'] if perto else None, 'volta_pp': volta['pp'] if volta else None}
+    menor = lambda c: min((float(r[c]) for r in linhas if r.get(c)), default=None)
+    antes = {c: menor(c) for c in metricas}
     ult = linhas[-1] if linhas else {}
-    nova = {'data_hora': agora, 'pax': pax, 'melhor_pp': m['pp'], 'melhor_ida': m['ida'], 'melhor_volta': m['volta'], 'melhor_dias': m['dias'],
-            'melhor_voo_ida': texto_trecho(pernas(m, tre)[0]), 'melhor_voo_volta': texto_trecho(pernas(m, tre)[1]),
-            'natal_pp': n['pp'] if n else '', 'natal_ida': n['ida'] if n else '', 'natal_volta': n['volta'] if n else '',
-            'natal_voo_ida': texto_trecho(pernas(n, tre)[0]) if n else '', 'natal_voo_volta': texto_trecho(pernas(n, tre)[1]) if n else ''}
-    novo_arquivo = not os.path.exists(hist)
+    nova = {'data_hora': agora, **{c: '' if v is None else v for c, v in metricas.items()},
+            'perto_voo': f"{dia(perto[0]['d'])} {voo_txt(perto[0])} {perto[0]['orig']}-{perto[0]['dest']} via {perto[0]['precos'][n_max]['vend']}" if perto else '',
+            'volta_voo': f"{dia(volta['d'])} {texto_trecho(volta)}" if volta else '',
+            'volta_mala_pp': volta_mala['mala']['pp'] if volta_mala else ''}
     with open(hist, 'a', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS)
-        if novo_arquivo:
+        if not linhas and f.tell() == 0:
             w.writeheader()
         w.writerow(nova)
     linhas.append({k: str(v) for k, v in nova.items()})
 
-    saida = []
-    # recorde: caiu pelo menos QUEDA_MIN abaixo do menor preço já visto
-    alertas, recordes = [], []
-    for rotulo, c, ant in (('opção com Natal', n, ant_n), ('mais barata', m, ant_m)):
-        if c and ant is not None and c['pp'] <= ant - QUEDA_MIN and not any(r[1] is c for r in recordes):
-            alertas.append(f"{rotulo} caiu p/ {brl(c['pp'])}/pessoa (antes {brl(ant)}): {dia(c['ida'])} -> {dia(c['volta'])}")
-            recordes.append((rotulo, c, ant))
-    saida.append(('ALERTA ' + ' | '.join(alertas)) if alertas else f"SEM_NOVIDADE melhor {brl(m['pp'])}/pessoa")
+    alvo_de = lambda c: ALVO_VOLTA if c == 'volta_pp' else ALVO_IDA
+    recordes = [(c, v, antes[c]) for c, v in metricas.items() if v is not None and antes[c] is not None and v <= antes[c] - QUEDA_MIN]
+    abaixo = [(c, v) for c, v in metricas.items() if v is not None and v <= alvo_de(c)]
+    cap = lambda t: t[:1].upper() + t[1:]
+    saida = [('ALERTA ' + ' | '.join(f"{ROTULO[c]} caiu p/ {brl(v)}/pessoa (antes {brl(a)})" for c, v, a in recordes)) if recordes else
+             'SEM_NOVIDADE ' + ' | '.join(f"{c} {brl(v)}" for c, v in metricas.items() if v is not None)]
 
     # Telegram a cada varredura; com som só quando há recorde ou preço abaixo do alvo
-    abaixo = (n and n['pp'] <= ALVO_NATAL) or m['pp'] <= ALVO_GERAL
     if abaixo:
-        topo = "🔥 <b>Hora de comprar!</b> Achei passagem abaixo do seu alvo. Preço muda rápido, então confira e compre logo."
+        topo = ("🔥 <b>Hora de comprar!</b> " + cap('; '.join(f"{ROTULO[c]} sai a {brl(v)}" + ('' if c == 'mesmo_1' else ' cada') for c, v in abaixo)) +
+                ", abaixo do alvo. Preço muda rápido: confira e compre logo.")
     elif recordes:
         topo = "📉 <b>Novo menor preço!</b> " + ' '.join(
-            f"A {r} caiu {brl(ant - c['pp'])} e chegou a {brl(c['pp'])}, a menor desde que comecei." for r, c, ant in recordes)
+            f"{cap(ROTULO[c])} caiu {brl(a - v)} e chegou a {brl(v)}, o menor desde que comecei." for c, v, a in recordes)
     elif not ult:
-        topo = "👋 Primeira busca registrada. A partir de agora te conto cada uma."
+        topo = "👋 Primeira busca no plano novo: a ida dos extras no voo de vocês (ou perto dele) e a volta de vocês dois."
     else:
-        dif = m['pp'] - float(ult['melhor_pp'])
-        topo = ("😌 Tudo igual à última busca. Sigo de olho." if abs(dif) < 1 else
-                f"📈 A mais barata subiu {brl(dif)} desde a última busca. Sigo de olho." if dif > 0 else
-                f"↘️ A mais barata caiu {brl(-dif)} desde a última busca, mas ainda não é a menor que já vi.")
-    if n and (n['ida'], n['volta']) == (m['ida'], m['volta']):
-        blocos = [bloco_tg('🎄', 'Mais barata, e com Natal', n, ALVO_NATAL, tre, pax)]
+        mudou = [(c, metricas[c] - float(ult[c])) for c in (f'mesmo_{n_max}', 'volta_pp')
+                 if metricas.get(c) is not None and ult.get(c) and abs(metricas[c] - float(ult[c])) >= 1]
+        topo = ("😌 Tudo igual à última busca. Sigo de olho." if not mudou else
+                ('📈 ' if all(d > 0 for _, d in mudou) else '↘️ ' if all(d < 0 for _, d in mudou) else '🔄 ') +
+                cap('; '.join(f"{ROTULO[c]} {'subiu' if d > 0 else 'caiu'} {brl(abs(d))}" for c, d in mudou)) +
+                " desde a última busca. Sigo de olho.")
+
+    num = alvo['voo'].split(' ')[-1]
+    blocos, botoes = [], []
+    if mesmo:
+        precos = '\n'.join(f"{pessoas(n)}: <b>{brl(p['pp'])}</b>{' cada' if n > 1 else ''} na {html.escape(nome_vendedor(p['vend']))}"
+                           + (' ✅' if p['pp'] <= ALVO_IDA else '') for n, p in pm.items())
+        malas = [(n, p) for n, p in pm.items() if 'mala_pp' in p]
+        menor_pp = min(p['pp'] for p in pm.values())
+        meta = f"✅ abaixo do alvo de {brl(ALVO_IDA)}" if menor_pp <= ALVO_IDA else f"faltam {brl(menor_pp - ALVO_IDA)} para o alvo de {brl(ALVO_IDA)}"
+        blocos.append(f"🎯 <b>Ida dos extras · mesmo voo de vocês</b>\n<blockquote>🛫 <b>{dia(alvo['d'])}</b> · {alvo['orig']} → {alvo['dest']}\n"
+                      f"{html.escape(voo_txt(mesmo))}\n\n{precos}</blockquote>\n{meta}" +
+                      (f"\n🧳 Com mala, por pessoa: " + ' · '.join(f"{n}: {brl(p['mala_pp'])}" for n, p in malas) +
+                       (' <i>(mala à parte, estimada)</i>' if any(p['mala_estimado'] for _, p in malas) else '') if malas else ''))
+        botoes.append([{'text': f"🎯 {n}: {brl(p['pp'])}", 'url': link_ida(mesmo, n)} for n, p in pm.items()])
     else:
-        blocos = ([bloco_tg('🎄', 'Com Natal', n, ALVO_NATAL, tre, pax)] if n else []) + [bloco_tg('☀️', 'Mais barata', m, ALVO_GERAL, tre, pax)]
-    cm = (scan.get('combos_mala') or [None])[0]   # melhor combinação já com mala despachada
-    if cm:
-        blocos.append(bloco_tg('🧳', 'Com mala de 23 kg' + (', e com Natal' if cm['natal'] else ''), cm, None, tre, pax, mala=True))
-    msg = (f"✈️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)} · {pax} adultos · sem mala, exceto no 🧳</i>\n\n{topo}\n\n" +
-           '\n\n'.join(b[0] for b in blocos) + "\n\n<i>Os botões abrem o vendedor já com o voo.</i>")
-    status_wpp = enviar(msg, silencioso=not (abaixo or recordes), botoes=[b[1] for b in blocos] + [PAINEL_BOTAO])
-    saida.append(status_wpp)
+        blocos.append(f"🎯 <b>Ida dos extras · mesmo voo de vocês</b>\nNão achei o {alvo['cia']} {num} ({dia(alvo['d'])}, {alvo['saida']}) "
+                      "à venda nesta busca. Pode ter esgotado ou o vendedor não mostrou; veja os voos perto.")
+    if perto_dia:
+        linhas_p = [f"{dia(v['d'])} · {v['orig']} → {v['dest']} · {html.escape(voo_txt(v))}\n<b>{brl(v['precos'][n_max]['pp'])}</b> cada na "
+                    f"{html.escape(nome_vendedor(v['precos'][n_max]['vend']))}" for v in sorted(perto_dia.values(), key=lambda v: (v['d'], v['saida']))]
+        blocos.append(f"📍 <b>Voos perto · para {pessoas(n_max)}</b>\n<blockquote>" + '\n\n'.join(linhas_p) + "</blockquote>")
+        botoes.append([{'text': f"📍 Perto {brl(perto[0]['precos'][n_max]['pp'])} ({dia(perto[0]['d'])[4:]} {perto[0]['saida']})",
+                        'url': link_ida(perto[0], n_max)}])
+    if volta:
+        o, de = volta['rota'].split('-')
+        meta = f"✅ abaixo do alvo de {brl(ALVO_VOLTA)}" if volta['pp'] <= ALVO_VOLTA else f"faltam {brl(volta['pp'] - ALVO_VOLTA)} para o alvo de {brl(ALVO_VOLTA)}"
+        b = (f"🏠 <b>Volta de vocês dois · {brl(volta['pp'])}</b> por pessoa\n<blockquote>🛬 <b>{dia(volta['d'])}</b> · {o} → {de}\n"
+             f"{html.escape(voo_txt(volta))} · na {html.escape(nome_vendedor(volta['vend']))}</blockquote>\n{estadia(volta['d'])} dias lá · {meta}")
+        linha_b = [{'text': f"🏠 Volta {brl(volta['pp'])}", 'url': link_volta(volta, pax)}]
+        if volta_mala:
+            x = volta_mala['mala']
+            b += (f"\n🧳 Com mala: <b>{brl(x['pp'])}</b> na {html.escape(nome_vendedor(x['vend']))} · {dia(volta_mala['d'])}, {html.escape(x['cia'])} {x['saida']}"
+                  + (' <i>(mala à parte, estimada)</i>' if x['estimado'] else ''))
+            linha_b.append({'text': f"🧳 Com mala {brl(x['pp'])}", 'url': link_volta(volta_mala, pax, mala=True)})
+        blocos.append(b)
+        botoes.append(linha_b)
+    msg = (f"✈️ <b>Passagens Nordeste</b>\n<i>{quando_tg(agora)} · preço por pessoa, sem mala (exceto 🧳)</i>\n\n{topo}\n\n" +
+           '\n\n'.join(blocos) + "\n\n<i>Os botões abrem o vendedor já com o voo e a quantidade de pessoas.</i>")
+    status_tg = enviar(msg, silencioso=not (abaixo or recordes), botoes=botoes + [PAINEL_BOTAO])
+    saida.append(status_tg)
 
     # painel.json: uma tabela, cada linha com seu "tipo"
-    def grupo(prefixo, c, mala=False):
-        if not c:
-            return {}
-        out = {f'{prefixo}_pp': c['pp'], f'{prefixo}_dias': c['dias'], f'{prefixo}_total': c['pp'] * pax}
-        out[f'{prefixo}_iv'] = c['iv']['vend'] if c.get('iv') else ''
-        for (sentido, d), t in zip((('ida', c['ida']), ('volta', c['volta'])), pernas(c, tre, mala)):
-            o, de = t['rota'].split('-')
-            out.update({f'{prefixo}_{sentido}': d, f'{prefixo}_{sentido}_dia': dia(d), f'{prefixo}_{sentido}_cia': t['cia'],
-                        f'{prefixo}_{sentido}_orig': o, f'{prefixo}_{sentido}_dest': de, f'{prefixo}_{sentido}_saida': t['saida'],
-                        f'{prefixo}_{sentido}_chegada': t['chegada'], f'{prefixo}_{sentido}_tipo': t['tipo'],
-                        f'{prefixo}_{sentido}_vend': t['vend'], f'{prefixo}_{sentido}_pp': t['pp'],
-                        f'{prefixo}_{sentido}_pp_cia': t.get('ppCia') or t['pp'],
-                        f'{prefixo}_{sentido}_link': t.get('link') or link_compra(sentido, d, t.get('voos'), pax),
-                        f'{prefixo}_{sentido}_link_mm': link_mm(t['rota'], d, pax)})
-        return out
-
-    cfg = scan.get('cfg') or {'minDias': 27, 'maxDias': 36, 'natalAte': '2026-12-24'}
-    resumo = {'tipo': 'resumo', 'quando': agora, 'pax': pax, 'alvo_geral': ALVO_GERAL, 'alvo_natal': ALVO_NATAL,
-              'min_dias': cfg['minDias'], 'max_dias': cfg['maxDias'], 'natal_ate': cfg['natalAte'],
-              'menor_geral': min(float(r['melhor_pp']) for r in linhas),
-              'menor_natal': min((float(r['natal_pp']) for r in linhas if r.get('natal_pp')), default=None),
-              'ant_geral': float(ult['melhor_pp']) if ult.get('melhor_pp') else None,
-              'ant_natal': float(ult['natal_pp']) if ult.get('natal_pp') else None,
-              'alerta': status_wpp, **grupo('geral', m), **grupo('natal', n), **grupo('mala', cm, mala=True),
-              'mala_natal': bool(cm and cm['natal'])}
-    rows = [resumo]
-    rows += [{'tipo': 'hist', 'quando': r['data_hora'], 'geral_pp': float(r['melhor_pp']),
-              'natal_pp': float(r['natal_pp']) if r.get('natal_pp') else None} for r in linhas]
-    # um trecho por data: o painel monta a grade ida x volta somando estes preços
-    for t in scan['trechos']:
+    num_ou_nada = lambda v: float(v) if v not in (None, '') else None
+    rows = [{'tipo': 'resumo', 'quando': agora, 'pax': pax, 'pax_ida': n_max, 'alvo_ida': ALVO_IDA, 'alvo_volta': ALVO_VOLTA,
+             'voo_comprado': {**alvo, 'dia': dia(alvo['d'])}, 'alerta': status_tg,
+             'menor': {c: menor(c) for c in metricas},   # já com esta varredura
+             'anterior': {c: num_ou_nada(ult.get(c)) for c in metricas}, 'agora': metricas}]
+    rows += [{'tipo': 'hist', 'quando': r['data_hora'], **{c: num_ou_nada(r.get(c)) for c in metricas}} for r in linhas]
+    for v in voos:
+        rows.append({'tipo': 'ida', **{k: v[k] for k in ('d', 'cia', 'orig', 'dest', 'saida', 'chegada', 'voo', 'mesmo')},
+                     'dia': dia(v['d']), 'tipo_voo': v['tipo'],
+                     'precos': {str(n): {**p, 'link': link_ida(v, n), **({'mala_link': link_ida(v, n, True)} if 'mala_pp' in p else {})}
+                                for n, p in v['precos'].items()}})
+    for t in voltas:
         o, de = t['rota'].split('-')
-        rows.append({'tipo': 'data', 'chave': f"{t['s']} {t['d']}", 'sentido': t['s'], 'data': t['d'], 'dia': dia(t['d']),
-                     'pp': t['pp'], 'vend': t['vend'], 'pp_cia': t.get('ppCia') or t['pp'], 'cia': t['cia'], 'orig': o, 'dest': de,
-                     'saida': t['saida'], 'chegada': t['chegada'], 'tipo_voo': t['tipo'],
-                     'link': t.get('link') or link_compra(t['s'], t['d'], t.get('voos'), pax) or link_mm(t['rota'], t['d'], pax),
-                     'link_mm': link_mm(t['rota'], t['d'], pax),
+        rows.append({'tipo': 'volta', 'data': t['d'], 'dia': dia(t['d']), 'dias': estadia(t['d']), 'pp': t['pp'], 'vend': t['vend'],
+                     'pp_cia': t.get('ppCia') or t['pp'], 'cia': t['cia'], 'orig': o, 'dest': de, 'saida': t['saida'],
+                     'chegada': t['chegada'], 'tipo_voo': t['tipo'], 'link': link_volta(t, pax),
                      # melhor opção da data com 1 mala de 23 kg por pessoa (pode ser outro voo ou vendedor)
                      **({'mala_pp': x['pp'], 'mala_vend': x['vend'], 'mala_cia': x['cia'], 'mala_orig': x['rota'][:3],
                          'mala_dest': x['rota'][4:], 'mala_saida': x['saida'], 'mala_chegada': x['chegada'], 'mala_tipo_voo': x['tipo'],
-                         'mala_estimado': x['estimado'],
-                         'mala_link': x.get('link') or link_compra(t['s'], t['d'], x.get('voos'), pax) or link_mm(x['rota'], t['d'], pax)}
-                        if (x := t.get('mala')) else {})})
-    # vendedores dos trechos que a varredura detalhou (os das combinações vencedoras)
-    for chave, lista in scan.get('vend', {}).items():
-        sentido, d = chave.split(' ')
-        rows += [{'tipo': 'vend', 'chave': f'{chave} {v}', 'sentido': sentido, 'data': d, 'vendedor': v, 'pp': pp} for v, pp in lista]
-    # ida e volta compradas juntas (Zupper): o painel usa no quadrado do par quando sai mais barato que somar os trechos
-    for p in scan.get('pacotes', []):
-        rows.append({'tipo': 'iv', 'chave': f"{p['ida']} {p['volta']}", 'ida': p['ida'], 'volta': p['volta'], 'pp': p['pp'],
-                     'pp_mala': p.get('pp_mala'), 'mala_estimada': p.get('mala_estimada'), 'vend': p['vend'], 'link': p['link'],
-                     'pernas': {s: {'orig': x['orig'], 'dest': x['dest'], 'saida': x['saida'], 'chegada': x['chegada'], 'cia': x['cia'],
-                                    'tipo_voo': x['tipo']} for s, x in p['pernas'].items()}})
+                         'mala_estimado': x['estimado'], 'mala_link': link_volta(t, pax, mala=True)} if (x := t.get('mala')) else {})})
     json.dump(rows, open(painel, 'w', encoding='utf-8'), ensure_ascii=False)
 
     # ultimo.md
-    def bloco(titulo, c, mala=False):
-        if not c:
-            return f"## {titulo}\n\nNenhuma combinação.\n"
-        ti, tv = pernas(c, tre, mala)
-        def compra(sentido, d, t):
-            link = t.get('link') or link_compra(sentido, d, t.get('voos'), pax)
-            return f"[comprar na {nome_vendedor(t['vend'])}]({link})" if link else f"[ver na MaxMilhas]({link_mm(t['rota'], d, pax)})"
-        return (f"## {titulo}: {brl(c['pp'])}/pessoa ({c['dias']} dias)\n\n"
-                f"- **Ida {dia(c['ida'])}:** {texto_trecho(ti)} ({compra('ida', c['ida'], ti)})\n"
-                f"- **Volta {dia(c['volta'])}:** {texto_trecho(tv)} ({compra('volta', c['volta'], tv)})\n")
-    md = [f"# Última varredura: {agora} ({pax} adultos, preço por pessoa, sem mala despachada)\n",
-          ('**ALERTA:** ' + ' | '.join(alertas) + '\n') if alertas else 'Sem queda nova de preço.\n',
-          f"Telegram: {status_wpp} (alvos: geral {brl(ALVO_GERAL)}, com Natal {brl(ALVO_NATAL)})\n",
-          bloco('Melhor combinação', m), bloco('Melhor com Natal (ida até 24/12)', n),
-          bloco('Melhor com 1 mala de 23 kg por pessoa (preço já com mala)', cm, mala=True),
-          '## Por data\n\n' + '\n'.join(f"- {t['s']} {dia(t['d'])}: {texto_trecho(t)}" for t in scan['trechos']) + '\n']
-    if maxmilhas:
-        md.append('## MaxMilhas direto (site)\n\n' + '\n'.join(f'- {x}' for x in maxmilhas) + '\n')
-    md.append(f"Painel: {PAINEL_URL}\n")
+    md = [f"# Última varredura: {agora} (preço por pessoa, sem mala despachada salvo onde diz \"com mala\")\n",
+          ('**ALERTA:** ' + saida[0][7:] + '\n') if recordes else 'Sem queda nova de preço.\n',
+          f"Telegram: {status_tg} (alvos: ida dos extras {brl(ALVO_IDA)}, volta {brl(ALVO_VOLTA)})\n",
+          f"## Ida dos extras: mesmo voo ({alvo['cia']} {num}, {dia(alvo['d'])}, {alvo['saida']} {alvo['orig']} -> {alvo['dest']})\n",
+          '\n'.join(f"- {pessoas(n)}: {brl(p['pp'])}/pessoa via {nome_vendedor(p['vend'])} ([comprar]({link_ida(mesmo, n)}))"
+                    + (f" · com mala {brl(p['mala_pp'])}" if 'mala_pp' in p else '') for n, p in pm.items()) + '\n' if mesmo else
+          'Não encontrado à venda nesta busca.\n',
+          f"## Ida dos extras: voos perto (para {pessoas(n_max)})\n",
+          '\n'.join(f"- {dia(v['d'])} {voo_txt(v)} {v['orig']}-{v['dest']}: {brl(v['precos'][n_max]['pp'])}/pessoa via "
+                    f"{nome_vendedor(v['precos'][n_max]['vend'])} ([comprar]({link_ida(v, n_max)}))" for v in perto[:10]) + '\n' if perto else 'Nenhum.\n',
+          f"## Volta de vocês dois ({pax} adultos)\n",
+          '\n'.join(f"- {dia(t['d'])} ({estadia(t['d'])} dias): {texto_trecho(t)}" + (f" · com mala {brl(t['mala']['pp'])}" if t.get('mala') else '')
+                    for t in voltas) + '\n',
+          f"Painel: {PAINEL_URL}\n"]
     open(ultimo, 'w', encoding='utf-8').write('\n'.join(md))
     return saida
 
 
 def _teste():
-    def scan(pp_ida, pp_volta):
-        return {'status': 'ok', 'pax': 2,
-                'combos': [{'ida': '2026-12-18', 'volta': '2027-01-19', 'dias': 32, 'pp': pp_ida + pp_volta, 'natal': True}],
-                'trechos': [{'s': 'ida', 'd': '2026-12-18', 'pp': pp_ida, 'vend': 'CIA LATAM', 'cia': 'LATAM', 'rota': 'GRU-NAT',
-                             'saida': '07:05', 'chegada': '10:25', 'tipo': 'direto', 'ppCia': pp_ida},
-                            {'s': 'volta', 'd': '2027-01-19', 'pp': pp_volta, 'vend': 'maxmilhas', 'cia': 'Gol', 'rota': 'FOR-GRU',
-                             'saida': '12:50', 'chegada': '16:30', 'tipo': 'direto', 'ppCia': 725, 'voos': 'FOR>GRU 2027-01-19 G3 1555'}],
-                'vend': {'ida 2026-12-18': [['CIA LATAM', pp_ida]], 'volta 2027-01-19': [['maxmilhas', pp_volta], ['CIA Gol', 725]]}}
+    alvo = {'d': '2026-12-22', 'saida': '14:05', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'voo': 'G3 1678'}
+
+    def scan(m1=900, m3=1283, perto=1100, volta=469, mesmo=True):
+        p_m = {1: {'pp': m1, 'vend': '123milhas', 'link': 'https://123milhas.com/1', 'mala_pp': m1 + 119, 'mala_vend': '123milhas',
+                   'mala_link': 'https://123milhas.com/1', 'mala_estimado': True},
+               3: {'pp': m3, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/3', 'mala_pp': m3 + 100, 'mala_vend': 'Zupper',
+                   'mala_link': 'https://www.zupper.com.br/3', 'mala_estimado': False}}
+        voo = {'d': '2026-12-22', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'saida': '14:05', 'chegada': '17:25', 'tipo': 'direto',
+               'voo': 'G3 1678', 'mesmo': True, 'precos': p_m}
+        outros = [{'d': '2026-12-21', 'cia': 'LATAM', 'orig': 'GRU', 'dest': 'NAT', 'saida': '13:35', 'chegada': '16:55', 'tipo': 'direto',
+                   'voo': '', 'mesmo': False, 'precos': {3: {'pp': perto, 'vend': 'MaxMilhas', 'link': None}}},
+                  {'d': '2026-12-21', 'cia': 'Azul', 'orig': 'CGH', 'dest': 'NAT', 'saida': '21:10', 'chegada': '02:05', 'tipo': 'com escala',
+                   'voo': '', 'mesmo': False, 'precos': {3: {'pp': perto + 300, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/a'}}},
+                  {'d': '2026-12-23', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'saida': '06:00', 'chegada': '09:20', 'tipo': 'direto',
+                   'voo': '', 'mesmo': False, 'precos': {1: {'pp': 600, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/b'}}}]
+        voltas = [{'s': 'volta', 'd': '2027-01-25', 'pp': volta, 'vend': '123milhas', 'cia': 'LATAM', 'rota': 'NAT-GRU', 'saida': '05:05',
+                   'chegada': '08:40', 'tipo': 'direto', 'ppCia': None, 'link': 'https://123milhas.com/v',
+                   'mala': {'pp': volta + 150, 'estimado': True, 'vend': '123milhas', 'cia': 'LATAM', 'rota': 'NAT-GRU', 'saida': '05:05',
+                            'chegada': '08:40', 'tipo': 'direto', 'link': 'https://123milhas.com/v', 'voos': ''}},
+                  {'s': 'volta', 'd': '2027-01-19', 'pp': 725, 'vend': 'CIA Gol', 'cia': 'Gol', 'rota': 'FOR-GRU', 'saida': '12:50',
+                   'chegada': '16:30', 'tipo': 'direto', 'ppCia': 725, 'voos': 'FOR>GRU 2027-01-19 G3 1555'}]
+        return {'status': 'ok', 'pax': 2, 'paxIda': 3, 'alvo': alvo, 'voos_ida': ([voo] if mesmo else []) + outros, 'trechos': voltas}
+
     # link idêntico, byte a byte, ao que o Google gerou para o Gol 1555 FOR->GRU de 19/01 (2 adultos)
     esperado = (b'\x08\x1c\x10\x02\x1a\x5b\x12\x0a2027-01-19\x22\x20\x0a\x03FOR\x12\x0a2027-01-19\x1a\x03GRU\x2a\x02G3\x32\x041555'
                 + b''.join(bytes([0x6a, 7, 8, 1, 0x12, 3]) + c for c in (b'FOR', b'NAT', b'JDO'))
@@ -358,72 +363,60 @@ def _teste():
     enviados = []
     fake = lambda msg, silencioso=False, botoes=(): enviados.append((msg, silencioso, botoes)) or 'TELEGRAM_ENVIADO'
     with tempfile.TemporaryDirectory() as d:
-        # 1ª busca, acima do alvo: mensagem sem som, botões ida/volta + painel
-        assert registrar(scan(1155, 477), d, fake) == ['SEM_NOVIDADE melhor R$1.632/pessoa', 'TELEGRAM_ENVIADO']
+        # histórico antigo (ida e volta juntas) é guardado com outro nome; o novo começa do zero
+        open(os.path.join(d, 'historico.csv'), 'w').write('data_hora,pax,melhor_pp\n2026-11-05 01:00,2,1499\n')
+        r = registrar(scan(), d, fake)
+        assert r == ['SEM_NOVIDADE mesmo_1 R$900 | mesmo_3 R$1.283 | perto_pp R$1.100 | volta_pp R$469', 'TELEGRAM_ENVIADO'], r
+        assert os.path.exists(os.path.join(d, 'historico-ida-e-volta.csv'))
         msg, mudo, bt = enviados[-1]
-        assert mudo and 'Primeira busca' in msg and 'Mais barata, e com Natal · R$1.632' in msg and 'faltam R$182 para o alvo de R$1.450' in msg, msg
-        assert [x['text'] for x in bt[0]] == ['🎄 Ida R$1.155', '🎄 Volta R$477'] and bt[-1] == PAINEL_BOTAO, bt
-        # 1.430: recorde e abaixo do alvo com Natal: com som
-        r = registrar(scan(1000, 430), d, fake)
+        assert mudo and 'Primeira busca no plano novo' in msg and msg.count('<blockquote>') == msg.count('</blockquote>') == 3, msg
+        assert '🎯 <b>Ida dos extras · mesmo voo de vocês</b>' in msg and '🛫 <b>ter 22/12</b> · GRU → NAT\nGol 1678 · 14:05 → 17:25, direto' in msg, msg
+        assert '1 pessoa: <b>R$900</b> na 123milhas\n3 pessoas: <b>R$1.283</b> cada na Zupper</blockquote>\nfaltam R$100 para o alvo de R$800' in msg, msg
+        assert '🧳 Com mala, por pessoa: 1: R$1.019 · 3: R$1.383 <i>(mala à parte, estimada)</i>' in msg, msg
+        # perto: o mais barato de cada data, para 3 (o voo de 23/12 só tem preço para 1 e fica de fora)
+        assert '📍 <b>Voos perto · para 3 pessoas</b>' in msg and 'seg 21/12 · GRU → NAT · LATAM · 13:35 → 16:55, direto\n<b>R$1.100</b> cada na MaxMilhas' in msg, msg
+        assert 'Azul' not in msg and 'qua 23/12' not in msg, msg
+        assert '🏠 <b>Volta de vocês dois · R$469</b>' in msg and '34 dias lá · faltam R$19 para o alvo de R$450' in msg, msg
+        assert '🧳 Com mala: <b>R$619</b> na 123milhas · seg 25/01, LATAM 05:05 <i>(mala à parte, estimada)</i>' in msg, msg
+        assert [x['text'] for x in bt[0]] == ['🎯 1: R$900', '🎯 3: R$1.283'] and bt[0][1]['url'] == 'https://www.zupper.com.br/3', bt
+        assert bt[1][0]['text'] == '📍 Perto R$1.100 (21/12 13:35)' and bt[1][0]['url'].startswith('https://www.maxmilhas.com.br/'), bt
+        assert '/OW/GRU/NAT/2026-12-21/3/' in bt[1][0]['url'] and [x['text'] for x in bt[2]] == ['🏠 Volta R$469', '🧳 Com mala R$619'], bt
+        assert bt[-1] == PAINEL_BOTAO and all(x['url'] for linha in bt for x in linha), bt
+        # o mesmo voo para 3 cai R$83: recorde, com som (ainda acima do alvo)
+        r = registrar(scan(m3=1200), d, fake)
         msg, mudo, bt = enviados[-1]
-        assert r[0].startswith('ALERTA') and r[1] == 'TELEGRAM_ENVIADO' and not mudo, r
-        assert 'Hora de comprar' in msg and '✅ abaixo do alvo de R$1.450' in msg and '🛫 <b>sex 18/12</b> · GRU → NAT' in msg, msg
-        assert 'Gol 12:50, direto · R$430 na MaxMilhas' in msg and msg.count('<blockquote>') == msg.count('</blockquote>') == 1, msg
-        assert bt[0][1]['url'].startswith('https://www.google.com/travel/flights/booking?tfs=') and '&hl=pt-BR' in bt[0][1]['url'], bt
-        assert bt[0][0]['url'].startswith('https://www.maxmilhas.com.br/'), bt   # ida sem número de voo
-        # subiu: sem som
-        registrar(scan(1100, 430), d, fake)
-        assert enviados[-1][1] and 'subiu R$100 desde a última busca' in enviados[-1][0], enviados[-1]
-        # vendedor com link próprio (123milhas) vence o link do Google
-        s2 = scan(1000, 430)
-        s2['trechos'][1].update({'vend': '123milhas', 'link': 'https://123milhas.com/v2/busca?x&y'})
-        texto, bt = bloco_tg('t', 'T', s2['combos'][0], 1450, {(t['s'], t['d']): t for t in s2['trechos']}, 2)
-        assert 'R$430 na 123milhas' in texto and bt[1]['url'] == 'https://123milhas.com/v2/busca?x&y', bt
-        assert registrar(scan(950, 420), d, fake)[0].startswith('ALERTA') and not enviados[-1][1]  # novo recorde: com som
-        assert len(enviados) == 4
+        assert r[0] == 'ALERTA o mesmo voo para 3 pessoas caiu p/ R$1.200/pessoa (antes R$1.283)' and not mudo, r
+        assert '📉 <b>Novo menor preço!</b> O mesmo voo para 3 pessoas caiu R$83 e chegou a R$1.200' in msg, msg
+        # subiu, sem recorde nem alvo: sem som
+        registrar(scan(m1=900, m3=1250, volta=480), d, fake)
+        msg, mudo, _ = enviados[-1]
+        assert mudo and '📈 O mesmo voo para 3 pessoas subiu R$50; a volta de vocês dois subiu R$11 desde a última busca' in msg, msg
+        registrar(scan(m1=900, m3=1250, volta=480), d, fake)
+        assert enviados[-1][1] and '😌 Tudo igual à última busca' in enviados[-1][0]
+        # abaixo do alvo na ida para 1 e na volta: hora de comprar, com som
+        registrar(scan(m1=780, m3=1250, volta=440), d, fake)
+        msg, mudo, _ = enviados[-1]
+        assert not mudo and ('🔥 <b>Hora de comprar!</b> O mesmo voo para 1 pessoa sai a R$780; a volta de vocês dois sai a R$440 cada, '
+                             'abaixo do alvo') in msg and '1 pessoa: <b>R$780</b> na 123milhas ✅' in msg, msg
+        # voo comprado sumiu da venda: avisa e mostra os voos perto
+        registrar(scan(m1=900, m3=1250, volta=480, mesmo=False), d, fake)
+        msg, _, bt = enviados[-1]
+        assert 'Não achei o Gol 1678 (ter 22/12, 14:05) à venda nesta busca' in msg and bt[0][0]['text'].startswith('📍'), msg
+        linhas = list(csv.DictReader(open(os.path.join(d, 'historico.csv'), encoding='utf-8')))
+        assert len(linhas) == 6 and linhas[0]['mesmo_1'] == '900' and linhas[-1]['mesmo_3'] == '' and linhas[0]['volta_mala_pp'] == '619', linhas
         rows = json.load(open(os.path.join(d, 'painel.json')))
-        res = [x for x in rows if x['tipo'] == 'resumo'][0]
-        assert res['natal_ida_orig'] == 'GRU' and res['natal_total'] == 2740 and len([x for x in rows if x['tipo'] == 'hist']) == 4
-        dias = [x for x in rows if x['tipo'] == 'data']
-        assert dias[1]['orig'] == 'FOR' and dias[1]['link'].startswith('https://www.google.com/travel/flights/booking?tfs=')
-        assert dias[0]['link'].startswith('https://www.maxmilhas.com.br/') and res['max_dias'] == 36
-        assert len([x for x in rows if x['tipo'] == 'vend']) == 3
-        # ida e volta comprada junta: voos do pacote, um botão só, linha no painel
-        perna = {'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True, 'tipo': 'direto', 'dur': 170}
-        pac = {'vend': 'Zupper', 'pp': 1300, 'link': 'https://www.zupper.com.br/resultados?x', 'pernas': {'ida': perna,
-               'volta': {**perna, 'cia': 'LATAM', 'orig': 'JDO', 'dest': 'GRU', 'saida': '03:20', 'chegada': '06:25'}}}
-        s3 = scan(1000, 430)
-        s3['combos'][0] = {**s3['combos'][0], 'pp': 1300, 'iv': pac}
-        s3['pacotes'] = [{'ida': '2026-12-18', 'volta': '2027-01-19', **pac}]
-        with tempfile.TemporaryDirectory() as d2:
-            registrar(s3, d2, fake)
-            msg, mudo, bt = enviados[-1]
-            assert bt[0] == [{'text': '🎄 Ida e volta R$1.300 na Zupper', 'url': pac['link']}] and '🤝 Ida e volta compradas juntas' in msg, bt
-            assert 'Gol 22:10, direto · comprada junto' in msg and 'LATAM 03:20, direto · comprada junto' in msg, msg
-            linhas2 = json.load(open(os.path.join(d2, 'painel.json')))
-            ivr = [x for x in linhas2 if x['tipo'] == 'iv'][0]
-            res2 = [x for x in linhas2 if x['tipo'] == 'resumo'][0]
-            assert ivr['ida'] == '2026-12-18' and ivr['pp'] == 1300 and ivr['pernas']['volta']['cia'] == 'LATAM' and res2['natal_iv'] == 'Zupper', (ivr, res2)
-            assert res2['natal_ida_link'] == pac['link'] and 'ida e volta juntas via Zupper' in open(os.path.join(d2, 'ultimo.md')).read()
-        # com mala: bloco 🧳 com os preços já com mala, linha do painel e resumo
-        s4 = scan(1000, 430)
-        s4['trechos'][0]['mala'] = {'pp': 1119, 'estimado': True, 'vend': 'CIA LATAM', 'cia': 'LATAM', 'rota': 'GRU-NAT', 'saida': '07:05',
-                                    'chegada': '10:25', 'tipo': 'direto', 'link': None, 'voos': ''}
-        s4['trechos'][1]['mala'] = {'pp': 549, 'estimado': False, 'vend': 'Zupper', 'cia': 'Gol', 'rota': 'FOR-GRU', 'saida': '12:50',
-                                    'chegada': '16:30', 'tipo': 'direto', 'link': 'https://www.zupper.com.br/resultados?m', 'voos': ''}
-        s4['combos_mala'] = [{**s4['combos'][0], 'pp': 1668}]
-        with tempfile.TemporaryDirectory() as d3:
-            registrar(s4, d3, fake)
-            msg, mudo, bt = enviados[-1]
-            assert '🧳 <b>Com mala de 23 kg, e com Natal · R$1.668</b>' in msg and 'R$549 com mala na Zupper' in msg, msg
-            assert 'R$1.119 com mala na LATAM (mala à parte)' in msg and 'Mala à parte: valor estimado' in msg, msg
-            assert bt[1][1]['url'] == 'https://www.zupper.com.br/resultados?m' and bt[1][0]['url'].startswith('https://www.maxmilhas'), bt
-            linhas3 = json.load(open(os.path.join(d3, 'painel.json')))
-            res3 = [x for x in linhas3 if x['tipo'] == 'resumo'][0]
-            d0 = [x for x in linhas3 if x['tipo'] == 'data'][1]
-            assert res3['mala_pp'] == 1668 and res3['mala_natal'] and res3['mala_volta_vend'] == 'Zupper', res3
-            assert d0['mala_pp'] == 549 and d0['mala_estimado'] is False and d0['mala_link'].endswith('?m'), d0
-            assert 'Melhor com 1 mala de 23 kg por pessoa (preço já com mala): R$1.668' in open(os.path.join(d3, 'ultimo.md')).read()
+        res = rows[0]
+        assert res['tipo'] == 'resumo' and res['voo_comprado']['dia'] == 'ter 22/12' and res['menor']['mesmo_3'] == 1200, res
+        assert res['anterior']['volta_pp'] == 440 and res['agora']['mesmo_3'] is None and len([x for x in rows if x['tipo'] == 'hist']) == 6
+        idas = [x for x in rows if x['tipo'] == 'ida']
+        assert idas[0]['precos']['3']['link'].startswith('https://www.maxmilhas.com.br/') and idas[0]['dia'] == 'seg 21/12', idas[0]
+        vs = [x for x in rows if x['tipo'] == 'volta']
+        assert [x['data'] for x in vs] == ['2027-01-19', '2027-01-25'] and vs[0]['link'].startswith('https://www.google.com/travel/flights/booking'), vs
+        assert vs[1]['mala_pp'] == 630 and vs[1]['dias'] == 34 and 'mala_pp' not in vs[0], vs
+        md = open(os.path.join(d, 'ultimo.md'), encoding='utf-8').read()
+        assert 'Não encontrado à venda' in md and '- seg 25/01 (34 dias): R$480/pessoa via 123milhas' in md, md
+        s9 = json.loads(json.dumps(scan(m3=1100)))   # lido do ultima.json: chaves de texto
+        assert registrar(s9, d, fake)[0].startswith('ALERTA o mesmo voo para 3 pessoas caiu p/ R$1.100'), enviados[-1]
         assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
         assert enviados[-1][1] and 'não consegui ler os preços' in enviados[-1][0] and '<i>x&lt;y</i>' in enviados[-1][0], enviados[-1]
     print('ok')
@@ -437,4 +430,4 @@ if __name__ == '__main__':
     elif sys.argv[1:] == ['--teste-telegram']:
         print(telegram(f'Teste do monitor de passagens: o alerta está funcionando. Painel: {PAINEL_URL}'))
     else:
-        print('\n'.join(registrar(json.load(open(sys.argv[1], encoding='utf-8')), maxmilhas=sys.argv[2:])))
+        print('\n'.join(registrar(json.load(open(sys.argv[1], encoding='utf-8')))))

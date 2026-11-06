@@ -1,13 +1,15 @@
 """Varredura completa no GitHub Actions: Google Voos (preço das companhias, confirmado na tela de compra)
-+ busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil)
-(MaxMilhas nos três aeroportos do Nordeste; 123milhas e Zupper, uma busca por vez, no mais barato de cada data)
-e, nas melhores combinações, ida e volta comprada junta na Zupper.
++ busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil).
+
+Ida dos extras: SP -> Natal nas datas perto do voo já comprado, para 1, 2 e 3 adultos (o preço por pessoa muda
+com a quantidade de lugares). Volta dos dois que já têm a ida: Nordeste -> SP, como antes
+(MaxMilhas nos três aeroportos; 123milhas e Zupper, uma busca por vez, no mais barato de cada data).
 
 Uso: python nuvem/rodar.py          (roda tudo e registra)
      python nuvem/rodar.py --teste  (auto-checagem da junção, sem navegador)
 """
 import asyncio, json, os, re, sys
-from datetime import date
+from datetime import datetime, timezone
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, RAIZ)
@@ -21,23 +23,23 @@ BLOQUEIO = r'unusual traffic|tráfego incomum|captcha|not a robot|Antes de conti
 
 
 def cfg_js(codigo):
-    """Datas e regras da estadia lidas do CFG de varredura.js (fonte única), para não depender do Google
+    """Datas, passageiros e o voo comprado, lidos do CFG de varredura.js (fonte única), para não depender do Google
     devolver todas as datas."""
-    lista = lambda k: re.findall(r"'(\d{4}-\d\d-\d\d)'", re.search(k + r':\s*\[([^\]]*)\]', codigo)[1])
-    num = lambda k: int(re.search(k + r':\s*(\d+)', codigo)[1])
-    return {'ida': lista('ida'), 'volta': lista('volta'), 'pax': num('pax'), 'minDias': num('minDias'),
-            'maxDias': num('maxDias'), 'natalAte': re.search(r"natalAte:\s*'([\d-]+)'", codigo)[1]}
+    lista = lambda k: re.findall(r"'([\w-]+)'", re.search(r'\b' + k + r':\s*\[([^\]]*)\]', codigo)[1])
+    num = lambda k: int(re.search(r'\b' + k + r':\s*(\d+)', codigo)[1])
+    d, saida, cia, rota, *voo = re.search(r"alvo:\s*'([^']+)'", codigo)[1].split(' ')
+    return {'ida': lista('ida'), 'volta': lista('volta'), 'pax': num('pax'), 'paxIda': num('paxIda'), 'idaDestinos': lista('idaDestinos'),
+            'alvo': {'d': d, 'saida': saida, 'cia': cia, 'orig': rota[:3], 'dest': rota[4:], 'voo': ' '.join(voo)}}
 
 
 def completar(scan, cfg):
-    """Garante uma linha para cada data configurada. Data que o Google não validou entra vazia (sem preço) e só
+    """Garante uma linha para cada data de volta. Data que o Google não validou entra vazia (sem preço) e só
     fica se algum vendedor tiver voo nela."""
-    tem = {(t['s'], t['d']) for t in scan.get('trechos', [])}
-    vazias = [{'s': s, 'd': d, 'pp': SEM_PRECO, 'vend': '', 'cia': '', 'rota': 'SAO-JDO' if s == 'ida' else 'JDO-SAO',
-               'saida': '', 'chegada': '', 'tipo': '', 'ppCia': None, 'voos': '', 'vazio': True}
-              for s in ('ida', 'volta') for d in cfg[s] if (s, d) not in tem]
-    return {**scan, 'pax': scan.get('pax') or cfg['pax'], 'trechos': scan.get('trechos', []) + vazias,
-            'cfg': scan.get('cfg') or {k: cfg[k] for k in ('minDias', 'maxDias', 'natalAte')}}, len(vazias)
+    tem = {t['d'] for t in scan.get('trechos', [])}
+    vazias = [{'s': 'volta', 'd': d, 'pp': SEM_PRECO, 'vend': '', 'cia': '', 'rota': 'JDO-SAO', 'saida': '', 'chegada': '', 'tipo': '',
+               'ppCia': None, 'voos': '', 'vazio': True} for d in cfg['volta'] if d not in tem]
+    return {**scan, 'pax': cfg['pax'], 'paxIda': cfg['paxIda'], 'alvo': cfg['alvo'], 'idas': scan.get('idas', []),
+            'trechos': scan.get('trechos', []) + vazias}, len(vazias)
 
 
 SEM_PRECO = 10 ** 9
@@ -76,18 +78,9 @@ def melhor_com_mala(t, lista, taxa, geral):
             'chegada': x['chegada'], 'tipo': x['tipo'], 'link': x.get('link'), 'voos': t.get('voos') if x.get('google') else ''}
 
 
-def _selecao(combos, n):
-    """As n melhores combinações e, se ficou de fora, a melhor com Natal."""
-    combos.sort(key=lambda c: c['pp'])
-    sel = combos[:n]
-    natal = next((c for c in combos if c['natal']), None)
-    return sel + [natal] if natal and natal not in sel else sel
-
-
 def juntar(scan, ofertas):
-    """Põe as ofertas dos vendedores em cada data, fica com a mais barata e refaz as combinações.
-    ofertas: {('ida'|'volta', 'AAAA-MM-DD'): [oferta de vendedores.buscar, ...]}"""
-    cfg = scan.get('cfg') or {'minDias': 27, 'maxDias': 36, 'natalAte': '2026-12-24'}
+    """Volta: põe as ofertas dos vendedores em cada data e fica com a mais barata (sem e com mala).
+    ofertas: {('volta', 'AAAA-MM-DD'): [oferta de vendedores.buscar, ...]}"""
     vend_google = scan.get('vend', {})
     taxa, geral = taxas_mala(ofertas)
     trechos, vend = [], {}
@@ -118,43 +111,37 @@ def juntar(scan, ofertas):
         if mala:
             novo['mala'] = mala
         trechos.append(novo)
-    idas = [t for t in trechos if t['s'] == 'ida']
-    voltas = [t for t in trechos if t['s'] == 'volta']
-    combos, combos_mala = [], []
-    for i in idas:
-        for v in voltas:
-            dias = (date.fromisoformat(v['d']) - date.fromisoformat(i['d'])).days
-            if cfg['minDias'] <= dias <= cfg['maxDias']:
-                c = {'ida': i['d'], 'volta': v['d'], 'dias': dias, 'pp': i['pp'] + v['pp'], 'natal': i['d'] <= cfg['natalAte']}
-                combos.append(c)
-                if 'mala' in i and 'mala' in v:
-                    combos_mala.append({**c, 'pp': i['mala']['pp'] + v['mala']['pp']})
-    sel = _selecao(combos, 8)   # as 8 melhores (+ a melhor com Natal) também são buscadas como ida e volta na Zupper
-    return {**scan, 'trechos': trechos, 'vend': vend, 'combos': sel, 'combos_mala': _selecao(combos_mala, 3),
-            'taxa_mala': {'cias': taxa, 'geral': geral},
-            'status': 'ok' if sel else 'erro', 'erro': None if sel else 'nenhuma combinação dentro da estadia'}
+    return {**scan, 'trechos': trechos, 'vend': vend, 'taxa_mala': {'cias': taxa, 'geral': geral}}
 
 
-def com_pacotes(scan, pacotes):
-    """Ida e volta compradas juntas: se sai mais barato que somar os trechos, a combinação passa a ser o pacote.
-    pacotes: {(ida, volta): oferta de vendedores.buscar_iv}"""
-    tx = scan.get('taxa_mala') or {}
-    taxa, geral = tx.get('cias', {}), tx.get('geral')
-    for p in pacotes.values():   # com mala: tarifa com mala do pacote (real) ou mala das companhias (estimada)
-        custos = [taxa.get(p['pernas'][s]['cia'], geral) for s in ('ida', 'volta')]
-        p['pp_mala'], p['mala_estimada'] = ((p['pp'] + p['mala'], False) if p.get('mala') is not None else
-                                            (p['pp'] + sum(custos), True) if None not in custos else (None, True))
-    combos, combos_mala = [], []
-    for c in scan['combos']:
-        p = pacotes.get((c['ida'], c['volta']))
-        combos.append({**c, 'pp': p['pp'], 'iv': p} if p and p['pp'] < c['pp'] else c)
-    for c in scan.get('combos_mala', []):
-        p = pacotes.get((c['ida'], c['volta']))
-        combos_mala.append({**c, 'pp': p['pp_mala'], 'iv': p} if p and p['pp_mala'] is not None and p['pp_mala'] < c['pp'] else c)
-    combos.sort(key=lambda c: c['pp'])
-    combos_mala.sort(key=lambda c: c['pp'])
-    return {**scan, 'combos': combos, 'combos_mala': combos_mala,
-            'pacotes': [{'ida': i, 'volta': v, **p} for (i, v), p in pacotes.items()]}
+def juntar_ida(ofertas, alvo, taxa, geral):
+    """Voos de ida dos extras: cada voo com o melhor preço por pessoa para 1, 2 e 3 adultos, sem e com 1 mala de
+    23 kg (tarifa com mala real da Zupper ou mala da companhia somada, estimada). O voo comprado vem primeiro,
+    depois os outros do mais barato ao mais caro para o máximo de extras.
+    ofertas: {n adultos: [oferta de vendedores.buscar com 'd' (data)]}"""
+    voos = {}
+    for n, lista in ofertas.items():
+        for x in lista:
+            v = voos.setdefault((x['d'], x['cia'], x['orig'], x['saida']), {
+                **{k: x[k] for k in ('d', 'cia', 'orig', 'dest', 'saida', 'chegada', 'tipo')}, 'voo': '', 'precos': {}})
+            v['voo'] = v['voo'] or (' '.join(x['voo']) if x.get('voo') else '')
+            p = v['precos'].setdefault(n, {})
+            if x['pp'] < p.get('pp', SEM_PRECO):
+                p.update(pp=x['pp'], vend=x['vend'], link=x['link'])
+            custo = x['mala'] if x.get('mala') is not None else taxa.get(x['cia'], geral)
+            if custo is not None and x['pp'] + custo < p.get('mala_pp', SEM_PRECO):
+                p.update(mala_pp=x['pp'] + custo, mala_vend=x['vend'], mala_link=x['link'], mala_estimado=x.get('mala') is None)
+    n_max = max(ofertas, default=1)
+    for v in voos.values():
+        v['mesmo'] = (v['d'], v['cia'], v['orig'], v['saida']) == (alvo['d'], alvo['cia'], alvo['orig'], alvo['saida'])
+    return sorted(voos.values(), key=lambda v: (not v['mesmo'], v['precos'].get(n_max, {}).get('pp', SEM_PRECO), v['d'], v['saida']))
+
+
+def ofertas_google_ida(idas, pax):
+    """Voos de ida validados no Google (preço para o máximo de extras) no formato das ofertas dos vendedores."""
+    return [{'d': t['d'], 'vend': t['vend'], 'cia': t['cia'], 'orig': t['rota'][:3], 'dest': t['rota'][4:], 'saida': t['saida'],
+             'chegada': t['chegada'], 'tipo': t['tipo'], 'pp': t['pp'], 'voo': tuple(t['voos'].split(' ')[2:4]) if t.get('voos') else None,
+             'link': registrar.link_compra('ida', t['d'], t.get('voos'), pax)} for t in idas]
 
 
 async def varrer():
@@ -178,110 +165,99 @@ async def varrer():
                 await asyncio.sleep(10)
             scan = json.loads(await pg.evaluate('() => window.__json || JSON.stringify(window.__scan || {status: "erro", erro: "varredura não terminou"})'))
         await pg.close()
-        scan, faltaram = completar(scan, cfg_js(codigo))
-        print('GOOGLE:', scan.get('status'), scan.get('erro') or '', '| datas validadas:', len(scan['trechos']) - faltaram,
-              '| sem Google (só vendedores):', faltaram)
-        if scan['trechos']:
-            pax, ofertas = scan['pax'], {}
-            # 1) MaxMilhas: cada data nos três aeroportos, várias buscas juntas
-            sem = asyncio.Semaphore(6)
-            pedidos = [((t['s'], t['d']), vendedores.buscar(nav, 'MaxMilhas', t['s'], t['d'], ne, pax, sem))
-                       for t in scan['trechos'] for ne in NORDESTE]
-            res = await asyncio.gather(*(c for _, c in pedidos))
-            for (chave, _), r in zip(pedidos, res):
-                ofertas.setdefault(chave, []).extend(r)
-            print(f'MAXMILHAS: {sum(1 for r in res if r)} de {len(res)} buscas com voo')
-            # 2) 123milhas e Zupper: a 123milhas devolve vazio se recebe muitas buscas juntas; então cada uma faz
-            #    uma busca por vez (as duas em paralelo), só no aeroporto mais barato de cada data até aqui
-            alvo = {}
-            for t in scan['trechos']:
-                rota = min(ofertas.get((t['s'], t['d']), []) + [{'pp': t['pp'], 'orig': t['rota'][:3], 'dest': t['rota'][4:]}],
-                           key=lambda x: x['pp'])
-                alvo[(t['s'], t['d'])] = rota['dest'] if t['s'] == 'ida' else rota['orig']
+        cfg = cfg_js(codigo)
+        scan, faltaram = completar(scan, cfg)
+        print('GOOGLE:', scan.get('status'), scan.get('erro') or '', '| voltas validadas:', len(scan['trechos']) - faltaram,
+              '| idas validadas:', len(scan['idas']))
+        pax, ofertas, ida = scan['pax'], {}, {}   # ofertas: volta por data; ida: {n adultos: [ofertas]}
+        com_data = lambda r, d: [{**x, 'd': d} for x in r]
+        # 1) MaxMilhas, várias buscas juntas: ida para Natal com 1, 2 e 3 adultos; volta nos três aeroportos
+        sem = asyncio.Semaphore(6)
+        pedidos = [((n, d), vendedores.buscar(nav, 'MaxMilhas', 'ida', d, ne, n, sem))
+                   for d in cfg['ida'] for ne in cfg['idaDestinos'] for n in range(1, cfg['paxIda'] + 1)]
+        pedidos += [(('volta', t['d']), vendedores.buscar(nav, 'MaxMilhas', 'volta', t['d'], ne, pax, sem))
+                    for t in scan['trechos'] for ne in NORDESTE]
+        res = await asyncio.gather(*(c for _, c in pedidos))
+        for ((a, d), _), r in zip(pedidos, res):
+            (ofertas.setdefault((a, d), []) if a == 'volta' else ida.setdefault(a, [])).extend(com_data(r, d))
+        print(f'MAXMILHAS: {sum(1 for r in res if r)} de {len(res)} buscas com voo')
+        # 2) 123milhas e Zupper: a 123milhas devolve vazio se recebe muitas buscas juntas; então cada uma faz
+        #    uma busca por vez (as duas em paralelo); a volta só no aeroporto mais barato de cada data até aqui
+        fila = [('ida', d, ne, n) for d in cfg['ida'] for ne in cfg['idaDestinos'] for n in range(1, cfg['paxIda'] + 1)]
+        for t in scan['trechos']:
+            rota = min(ofertas.get(('volta', t['d']), []) + [{'pp': t['pp'], 'orig': t['rota'][:3]}], key=lambda x: x['pp'])
+            fila.append(('volta', t['d'], rota['orig'], pax))
 
-            async def uma_por_vez(vendedor):
-                achou, um = 0, asyncio.Semaphore(1)
-                for (s, d), ne in alvo.items():
-                    r = await vendedores.buscar(nav, vendedor, s, d, ne, pax, um)
-                    ofertas.setdefault((s, d), []).extend(r)
-                    achou += bool(r)
-                    await asyncio.sleep(2)
-                print(f'{vendedor.upper()}: {achou} de {len(alvo)} buscas com voo')
+        async def uma_por_vez(vendedor):
+            achou, um = 0, asyncio.Semaphore(1)
+            for s, d, ne, n in fila:
+                r = com_data(await vendedores.buscar(nav, vendedor, s, d, ne, n, um), d)
+                (ofertas.setdefault(('volta', d), []) if s == 'volta' else ida.setdefault(n, [])).extend(r)
+                achou += bool(r)
+                await asyncio.sleep(2)
+            print(f'{vendedor.upper()}: {achou} de {len(fila)} buscas com voo')
 
-            await asyncio.gather(uma_por_vez('123milhas'), uma_por_vez('Zupper'))
-            scan = juntar(scan, ofertas)
-            # 3) Zupper ida e volta juntas nas melhores combinações (às vezes sai mais barato que somar os trechos)
-            if scan['status'] == 'ok':
-                tre, um, pacotes = {(t['s'], t['d']): t for t in scan['trechos']}, asyncio.Semaphore(1), {}
-                for c in scan['combos']:
-                    r = await vendedores.buscar_iv(nav, c['ida'], c['volta'], tre[('ida', c['ida'])]['rota'][4:],
-                                                   tre[('volta', c['volta'])]['rota'][:3], pax, um)
-                    if r:
-                        pacotes[(c['ida'], c['volta'])] = min(r, key=lambda x: x['pp'])
-                    await asyncio.sleep(2)
-                scan = com_pacotes(scan, pacotes)
-                print(f"ZUPPER IDA E VOLTA: {len(pacotes)} pacotes; {sum(1 for c in scan['combos'] if c.get('iv'))} mais baratos que separado")
+        await asyncio.gather(uma_por_vez('123milhas'), uma_por_vez('Zupper'))
+        ida.setdefault(cfg['paxIda'], []).extend(ofertas_google_ida(scan['idas'], cfg['paxIda']))
+        # as ofertas da ida entram só para medir a mala de cada companhia (juntar usa as chaves da volta)
+        scan = juntar(scan, {**ofertas, **{('ida', n): v for n, v in ida.items()}})
+        tx = scan['taxa_mala']
+        scan['voos_ida'] = juntar_ida(ida, cfg['alvo'], tx['cias'], tx['geral'])
+        mesmo = next((v for v in scan['voos_ida'] if v['mesmo']), None)
+        print(f"IDA: {len(scan['voos_ida'])} voos; mesmo voo: " +
+              (', '.join(f"{n}: R${p['pp']} {p['vend']}" for n, p in sorted(mesmo['precos'].items())) if mesmo else 'não achado'),
+              f"| VOLTA: {len(scan['trechos'])} datas | mala: {tx}")
+        achou = bool(scan['voos_ida'] or scan['trechos'])
+        scan.update(status='ok' if achou else 'erro', erro=None if achou else (scan.get('erro') or 'nenhum voo encontrado'))
         await nav.close()
     return scan
 
 
 def _teste():
-    t_ida = {'s': 'ida', 'd': '2026-12-27', 'pp': 927, 'vend': 'CIA Gol', 'cia': 'Gol', 'rota': 'GRU-JDO', 'saida': '22:10',
-             'chegada': '01:00', 'tipo': 'direto', 'ppCia': 927, 'voos': 'GRU>JDO 2026-12-27 G3 1580'}
     t_volta = {'s': 'volta', 'd': '2027-01-23', 'pp': 718, 'vend': 'CIA LATAM', 'cia': 'LATAM', 'rota': 'JDO-GRU', 'saida': '03:20',
                'chegada': '06:25', 'tipo': 'direto', 'ppCia': 718, 'voos': 'JDO>GRU 2027-01-23 LA 3000'}
-    scan = {'status': 'ok', 'pax': 2, 'cfg': {'minDias': 27, 'maxDias': 36, 'natalAte': '2026-12-24'},
-            'trechos': [t_ida, t_volta], 'vend': {'ida 2026-12-27': [['CIA Gol', 927], ['Booking.com', 965]]}}
-    of = {('ida', '2026-12-27'): [
-        {'vend': '123milhas', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True,
-         'tipo': 'direto', 'voo': ('G3', '1580'), 'pp': 857, 'link': 'https://123milhas.com/x'},
-        {'vend': 'MaxMilhas', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True,
-         'tipo': 'direto', 'voo': None, 'pp': 894, 'link': 'https://maxmilhas.com.br/x'}]}
-    r = juntar(scan, of)
-    assert 'mala' not in r['trechos'][0] and r['combos_mala'] == []   # sem tarifa com mala na Zupper: nada a estimar
-    ida = [t for t in r['trechos'] if t['s'] == 'ida'][0]
-    assert ida['pp'] == 857 and ida['vend'] == '123milhas' and ida['link'] == 'https://123milhas.com/x' and ida['ppCia'] == 927, ida
-    assert r['vend']['ida 2026-12-27'] == [['123milhas', 857], ['MaxMilhas', 894], ['CIA Gol', 927], ['Booking.com', 965]], r['vend']
-    assert r['combos'][0] == {'ida': '2026-12-27', 'volta': '2027-01-23', 'dias': 27, 'pp': 857 + 718, 'natal': False}, r['combos']
-    volta = [t for t in r['trechos'] if t['s'] == 'volta'][0]
-    assert volta == t_volta and r['vend']['volta 2027-01-23'] == [['CIA LATAM', 718]]
-    # ida e volta junta mais barata vira a combinação; mais cara é ignorada
-    perna = {'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True, 'tipo': 'direto', 'dur': 170}
-    pac = {'vend': 'Zupper', 'pp': 1488, 'link': 'https://www.zupper.com.br/x', 'pernas': {'ida': perna, 'volta': {**perna, 'orig': 'JDO', 'dest': 'GRU'}}}
-    r2 = com_pacotes(r, {('2026-12-27', '2027-01-23'): pac})
-    assert r2['combos'][0]['pp'] == 1488 and r2['combos'][0]['iv'] is pac and r2['pacotes'][0]['ida'] == '2026-12-27' and r2['pacotes'][0]['pernas']['ida'] == perna, r2['combos']
-    r3 = com_pacotes(r, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})
-    assert r3['combos'][0]['pp'] == 1575 and 'iv' not in r3['combos'][0] and len(r3['pacotes']) == 1
-    # com mala: Zupper mostra Gol Classic +119 (real); 123milhas Gol 857 + 119 estimado = 976 é a melhor ida com mala.
-    # Volta: LATAM da Zupper 760 + 150 real = 910; Google LATAM 718 + 150 estimado = 868 fica.
-    zup = {'vend': 'Zupper', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'JDO', 'saida': '22:10', 'chegada': '01:00', 'direto': True,
-           'tipo': 'direto', 'voo': None, 'pp': 928, 'mala': 119, 'link': 'https://www.zupper.com.br/x'}
-    zv = {**zup, 'cia': 'LATAM', 'orig': 'JDO', 'dest': 'GRU', 'saida': '03:20', 'chegada': '06:25', 'pp': 760, 'mala': 150}
-    of2 = {k: list(v) for k, v in of.items()}
-    of2[('ida', '2026-12-27')].append(zup)
-    of2[('volta', '2027-01-23')] = [zv]
-    r4 = juntar(scan, of2)
-    mi, mv = r4['trechos'][0]['mala'], r4['trechos'][1]['mala']
-    assert (mi['pp'], mi['vend'], mi['estimado']) == (976, '123milhas', True), mi
-    assert (mv['pp'], mv['vend'], mv['estimado'], mv['voos']) == (868, 'CIA LATAM', True, 'JDO>GRU 2027-01-23 LA 3000'), mv
-    assert r4['combos_mala'][0]['pp'] == 976 + 868 and r4['taxa_mala'] == {'cias': {'Gol': 119, 'LATAM': 150}, 'geral': 150}, r4['taxa_mala']
-    # pacote com tarifa com mala (real) mais barato que os trechos com mala vira a combinação com mala
-    r5 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1500, 'mala': 200}})
-    assert r5['combos_mala'][0]['pp'] == 1700 and r5['combos_mala'][0]['iv']['mala_estimada'] is False, r5['combos_mala']
-    # sem tarifa com mala no pacote: estima Gol 119 + Gol 119 = 1838, ainda abaixo dos trechos com mala (976 + 868 = 1844)
-    r6 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1600}})
-    assert r6['pacotes'][0]['pp_mala'] == 1838 and r6['combos_mala'][0]['pp'] == 1838 and r6['combos_mala'][0]['iv']['mala_estimada'], r6
-    r7 = com_pacotes(r4, {('2026-12-27', '2027-01-23'): {**pac, 'pp': 1700}})   # 1700 + 238 = 1938: trechos separados ficam
-    assert r7['combos_mala'][0]['pp'] == 1844 and 'iv' not in r7['combos_mala'][0], r7['combos_mala']
-    # datas que o Google não validou: entram vazias e só ficam se um vendedor tiver voo
+    scan = {'status': 'ok', 'pax': 2, 'trechos': [t_volta], 'vend': {'volta 2027-01-23': [['CIA LATAM', 718], ['Booking.com', 760]]}}
+    v123 = {'vend': '123milhas', 'cia': 'LATAM', 'orig': 'JDO', 'dest': 'GRU', 'saida': '03:20', 'chegada': '06:25', 'direto': True,
+            'tipo': 'direto', 'voo': ('LA', '3000'), 'pp': 650, 'link': 'https://123milhas.com/v'}
+    r = juntar(scan, {('volta', '2027-01-23'): [v123]})
+    v = r['trechos'][0]
+    assert (v['pp'], v['vend'], v['ppCia'], v['link']) == (650, '123milhas', 718, 'https://123milhas.com/v') and 'mala' not in v, v
+    assert r['vend']['volta 2027-01-23'] == [['123milhas', 650], ['CIA LATAM', 718], ['Booking.com', 760]], r['vend']
+    # mala medida na ida (Zupper Gol +119 e LATAM +150) vale para a volta: 123milhas LATAM 650 + 150 estimado
+    zi = {'d': '2026-12-22', 'vend': 'Zupper', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'saida': '14:05', 'chegada': '17:25', 'direto': True,
+          'tipo': 'direto', 'voo': None, 'pp': 900, 'mala': 119, 'link': 'https://www.zupper.com.br/1'}
+    zl = {**zi, 'cia': 'LATAM', 'saida': '13:35', 'chegada': '16:55', 'pp': 1000, 'mala': 150}
+    r2 = juntar(scan, {('volta', '2027-01-23'): [v123], ('ida', 1): [zi, zl]})
+    assert r2['trechos'][0]['mala']['pp'] == 800 and r2['trechos'][0]['mala']['estimado'], r2['trechos'][0]
+    assert r2['taxa_mala'] == {'cias': {'Gol': 119, 'LATAM': 150}, 'geral': 150}, r2['taxa_mala']
+    # ida dos extras: o voo comprado vem primeiro, com preço por pessoa para 1, 2 e 3; mala real (Zupper) ou estimada
+    alvo = {'d': '2026-12-22', 'saida': '14:05', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'voo': 'G3 1678'}
+    m1 = {**zi, 'vend': '123milhas', 'voo': ('G3', '1678'), 'pp': 480, 'mala': None, 'link': 'https://123milhas.com/1'}
+    m3 = {**m1, 'pp': 1283, 'link': 'https://123milhas.com/3'}
+    perto = {**zl, 'd': '2026-12-21', 'vend': 'MaxMilhas', 'pp': 700, 'mala': None, 'link': 'https://maxmilhas/3'}
+    vi = juntar_ida({1: [zi, m1], 3: [m3, {**zi, 'pp': 1300, 'link': 'https://www.zupper.com.br/3'}, perto]}, alvo, {'Gol': 119, 'LATAM': 150}, 150)
+    assert [(x['d'], x['cia'], x['mesmo']) for x in vi] == [('2026-12-22', 'Gol', True), ('2026-12-21', 'LATAM', False)], vi
+    p1, p3 = vi[0]['precos'][1], vi[0]['precos'][3]
+    assert (p1['pp'], p1['vend'], p1['mala_pp'], p1['mala_vend'], p1['mala_estimado']) == (480, '123milhas', 599, '123milhas', True), p1
+    assert (p3['pp'], p3['link'], p3['mala_pp'], p3['mala_vend'], p3['mala_estimado']) == (1283, 'https://123milhas.com/3', 1402, '123milhas', True), p3
+    assert vi[0]['voo'] == 'G3 1678' and 2 not in vi[0]['precos'] and vi[1]['precos'][3]['mala_pp'] == 850, vi
+    # Zupper com mala real mais barata que a estimada fica como a opção com mala
+    vz = juntar_ida({1: [{**m1, 'pp': 500}, {**zi, 'pp': 520, 'mala': 60}]}, alvo, {'Gol': 119}, 119)[0]['precos'][1]
+    assert (vz['pp'], vz['mala_pp'], vz['mala_vend'], vz['mala_estimado']) == (500, 580, 'Zupper', False), vz
+    # Google: voo validado vira oferta para o máximo de extras, com link da tela de compra
+    g = ofertas_google_ida([{'d': '2026-12-22', 'pp': 1315, 'vend': 'CIA Gol', 'cia': 'Gol', 'rota': 'GRU-NAT', 'saida': '14:05',
+                             'chegada': '17:25', 'tipo': 'direto', 'ppCia': 1315, 'voos': 'GRU>NAT 2026-12-22 G3 1678'}], 3)[0]
+    assert g['voo'] == ('G3', '1678') and g['link'].startswith('https://www.google.com/travel/flights/booking?tfs=') and g['orig'] == 'GRU', g
+    assert juntar_ida({3: [g]}, alvo, {}, None)[0]['mesmo']
+    # configuração lida de varredura.js; datas de volta que o Google não validou entram vazias
     cfg = cfg_js(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
-    assert len(cfg['ida']) == 10 and cfg['volta'][-1] == '2027-01-26' and (cfg['pax'], cfg['minDias'], cfg['maxDias']) == (2, 27, 39), cfg
+    assert cfg['ida'] == ['2026-12-21', '2026-12-22', '2026-12-23'] and cfg['idaDestinos'] == ['NAT'], cfg
+    assert (cfg['pax'], cfg['paxIda'], cfg['volta'][0], cfg['volta'][-1]) == (2, 3, '2027-01-18', '2027-01-26'), cfg
+    assert cfg['alvo'] == alvo, cfg['alvo']
     s8, faltaram = completar({'status': 'erro', 'erro': 'Google pediu verificação'}, cfg)
-    assert faltaram == 22 and s8['cfg']['maxDias'] == 39 and s8['pax'] == 2
-    of8 = {('ida', '2026-12-27'): of[('ida', '2026-12-27')], ('volta', '2027-01-23'): [zv]}
-    r8 = juntar(s8, of8)
-    assert [(t['s'], t['d'], t['pp'], t['vend']) for t in r8['trechos']] == [('ida', '2026-12-27', 857, '123milhas'), ('volta', '2027-01-23', 760, 'Zupper')], r8['trechos']
-    assert r8['status'] == 'ok' and r8['combos'][0]['pp'] == 857 + 760 and 'vazio' not in r8['trechos'][0] and r8['erro'] is None
+    assert faltaram == 9 and s8['pax'] == 2 and s8['paxIda'] == 3 and s8['idas'] == [] and s8['alvo'] == alvo
+    r8 = juntar(s8, {('volta', '2027-01-23'): [v123]})
+    assert [(t['d'], t['pp']) for t in r8['trechos']] == [('2027-01-23', 650)] and 'vazio' not in r8['trechos'][0], r8['trechos']
     print('ok')
 
 
@@ -291,7 +267,9 @@ if __name__ == '__main__':
         sys.exit(0)
     scan = asyncio.run(varrer())
     json.dump(scan, open(os.path.join(RAIZ, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
-    print('STATUS:', scan.get('status'), scan.get('erro') or '', '| combinações:', len(scan.get('combos', [])))
+    scan.setdefault('fim', datetime.now(timezone.utc).isoformat())   # o workflow usa para não rodar duas vezes seguidas
+    print('STATUS:', scan.get('status'), scan.get('erro') or '', '| voos de ida:', len(scan.get('voos_ida', [])),
+          '| datas de volta:', len(scan.get('trechos', [])))
     for linha in registrar.registrar(scan):
         print(linha)
     sys.exit(0 if scan.get('status') == 'ok' else 1)
