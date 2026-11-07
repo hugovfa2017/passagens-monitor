@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-07 03:19 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-07 04:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -7,7 +7,7 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 ## Ida dos extras: mesmo voo (Gol 1678, ter 22/12, 14:05 GRU -> NAT)
 
 - 1 pessoa: R$1.461/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=NAT&adultos=1&criancas=0&bebes=0&ida=22-12-2026&classe=3)) · com mala R$1.586
-- 2 pessoas: R$1.505/pessoa via MaxMilhas ([comprar](https://www.maxmilhas.com.br/busca-passagens-aereas/OW/GRU/NAT/2026-12-22/2/0/0/EC)) · com mala R$1.630
+- 2 pessoas: R$1.458/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=NAT&adultos=2&criancas=0&bebes=0&ida=22-12-2026&classe=3)) · com mala R$1.583
 - 3 pessoas: R$1.458/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=NAT&adultos=3&criancas=0&bebes=0&ida=22-12-2026&classe=3)) · com mala R$1.583
 
 ## Ida dos extras: voos perto (para 3 pessoas)
@@ -25,14 +25,14 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$727
-- ter 19/01 (28 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto · com mala R$480
-- qua 20/01 (29 dias): R$424/pessoa via Zupper | LATAM JDO-GRU 18:30-21:35 direto · com mala R$492
+- seg 18/01 (27 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$718
+- ter 19/01 (28 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto | na cia R$425 · com mala R$480
+- qua 20/01 (29 dias): R$424/pessoa via Zupper | LATAM JDO-GRU 18:30-21:35 direto | na cia R$467 · com mala R$517
 - qui 21/01 (30 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$425 · com mala R$480
-- sex 22/01 (31 dias): R$381/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$425 · com mala R$449
+- sex 22/01 (31 dias): R$385/pessoa via MaxMilhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$425 · com mala R$453
 - sáb 23/01 (32 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto | na cia R$425 · com mala R$480
 - dom 24/01 (33 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$425 · com mala R$480
-- seg 25/01 (34 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto · com mala R$742
-- ter 26/01 (35 dias): R$386/pessoa via 123milhas | LATAM JDO-GRU 18:30-21:35 direto · com mala R$454
+- seg 25/01 (34 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
+- ter 26/01 (35 dias): R$387/pessoa via Zupper | LATAM JDO-GRU 18:30-21:35 direto | na cia R$425 · com mala R$480
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
