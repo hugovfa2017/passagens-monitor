@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-07 15:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-07 16:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -10,7 +10,7 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 ## Ida dos extras: voos perto (para 3 pessoas)
 
-- seg 21/12 Azul · 21:10 → 02:05, com escala GRU-NAT: R$1.317/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
+- seg 21/12 Azul 2881;CNF>NAT · 21:10 → 02:05, com escala GRU-NAT: R$1.317/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
 - seg 21/12 Gol 1400 · 06:05 → 11:25, com escala CGH-NAT: R$1.376/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=CGH&para=NAT&adultos=3&criancas=0&bebes=0&ida=21-12-2026&classe=3))
 - ter 22/12 LATAM 3440 · 13:35 → 16:55, direto GRU-NAT: R$1.474/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=NAT&adultos=3&criancas=0&bebes=0&ida=22-12-2026&classe=3))
 - qua 23/12 LATAM 3444 · 23:35 → 02:55, direto GRU-NAT: R$1.523/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=NAT&adultos=3&criancas=0&bebes=0&ida=23-12-2026&classe=3))
@@ -23,14 +23,14 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$746
-- ter 19/01 (28 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$520
-- qua 20/01 (29 dias): R$752/pessoa via MaxMilhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$855
-- qui 21/01 (30 dias): R$441/pessoa via 123milhas | LATAM NAT-CGH 04:45-08:25 direto | na cia R$487 · com mala R$537
-- sex 22/01 (31 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$520
-- sáb 23/01 (32 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$520
-- dom 24/01 (33 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto | na cia R$425 · com mala R$520
-- seg 25/01 (34 dias): R$690/pessoa via 123milhas | Gol FOR-GRU 03:40-07:25 direto | na cia R$750 · com mala R$815
-- ter 26/01 (35 dias): R$652/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$777
+- seg 18/01 (27 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$744
+- ter 19/01 (28 dias): R$467/pessoa via CIA LATAM | LATAM JDO-GRU 11:30-14:30 direto · com mala R$561
+- qua 20/01 (29 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$850
+- qui 21/01 (30 dias): R$441/pessoa via 123milhas | LATAM NAT-CGH 04:45-08:25 direto | na cia R$487 · com mala R$535
+- sex 22/01 (31 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$518
+- sáb 23/01 (32 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto · com mala R$518
+- dom 24/01 (33 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto | na cia R$425 · com mala R$518
+- seg 25/01 (34 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto · com mala R$744
+- ter 26/01 (35 dias): R$659/pessoa via MaxMilhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$784
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
