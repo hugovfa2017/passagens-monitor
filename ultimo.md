@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-07 16:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-07 17:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -24,13 +24,13 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 ## Volta de vocês dois (2 adultos)
 
 - seg 18/01 (27 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$744
-- ter 19/01 (28 dias): R$467/pessoa via CIA LATAM | LATAM JDO-GRU 11:30-14:30 direto · com mala R$561
+- ter 19/01 (28 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$518
 - qua 20/01 (29 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$850
 - qui 21/01 (30 dias): R$441/pessoa via 123milhas | LATAM NAT-CGH 04:45-08:25 direto | na cia R$487 · com mala R$535
 - sex 22/01 (31 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$518
-- sáb 23/01 (32 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 11:30-14:30 direto · com mala R$518
+- sáb 23/01 (32 dias): R$429/pessoa via MaxMilhas | LATAM JDO-GRU 11:30-14:30 direto | na cia R$467 · com mala R$523
 - dom 24/01 (33 dias): R$424/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto | na cia R$425 · com mala R$518
-- seg 25/01 (34 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto · com mala R$744
-- ter 26/01 (35 dias): R$659/pessoa via MaxMilhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$784
+- seg 25/01 (34 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$744
+- ter 26/01 (35 dias): R$652/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$777
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
