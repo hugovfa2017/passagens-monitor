@@ -1,8 +1,8 @@
-# Última varredura: 2026-11-08 05:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-08 06:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
-Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
+Telegram: TELEGRAM_FALHOU TimeoutError (alvos: ida dos extras R$800, volta R$450)
 
 ## Ida dos extras: mesmo voo (Gol 1678, ter 22/12, 14:05 GRU -> NAT)
 
@@ -11,26 +11,26 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 ## Ida dos extras: voos perto (para 3 pessoas)
 
 - seg 21/12 Azul 2881;CNF>NAT · 21:10 → 02:05, com escala GRU-NAT: R$1.208/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
-- ter 22/12 Gol 1400 · 06:05 → 11:25, com escala CGH-NAT: R$1.376/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=CGH&para=NAT&adultos=3&criancas=0&bebes=0&ida=22-12-2026&classe=3))
-- ter 22/12 LATAM 3440 · 13:35 → 16:55, direto GRU-NAT: R$1.395/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D))
-- seg 21/12 LATAM 9014 · 21:25 → 00:50, direto CGH-NAT: R$1.401/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
+- ter 22/12 Gol 1400 · 06:05 → 11:25, com escala CGH-NAT: R$1.392/pessoa via MaxMilhas ([comprar](https://www.maxmilhas.com.br/busca-passagens-aereas/OW/CGH/NAT/2026-12-22/3/0/0/EC))
 - qua 23/12 Azul · 14:10 → 19:00, com escala GRU-NAT: R$1.418/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D))
 - seg 21/12 Azul 2959 · 14:10 → 19:00, com escala GRU-NAT: R$1.430/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
-- ter 22/12 Azul 2881;CNF>NAT · 21:25 → 02:05, com escala GRU-NAT: R$1.464/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D))
-- seg 21/12 LATAM 3406 · 17:30 → 20:50, direto GRU-NAT: R$1.465/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
-- qua 23/12 LATAM 9014 · 21:25 → 00:50, direto CGH-NAT: R$1.508/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D))
-- qua 23/12 LATAM 3444 · 23:35 → 02:55, direto GRU-NAT: R$1.566/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D))
+- ter 22/12 Azul · 21:25 → 02:05, com escala GRU-NAT: R$1.464/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D))
+- ter 22/12 LATAM 3440 · 13:35 → 16:55, direto GRU-NAT: R$1.552/pessoa via LATAM ([comprar](https://www.google.com/travel/flights/booking?tfs=CBwQAhpbEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDTkFUKgJMQTIEMzQ0MGoHCAESA0dSVWoHCAESA0NHSHIHCAESA0ZPUnIHCAESA05BVHIHCAESA0pET0ABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL))
+- seg 21/12 LATAM 9014 · 21:25 → 00:50, direto CGH-NAT: R$1.555/pessoa via LATAM ([comprar](https://www.google.com/travel/flights/booking?tfs=CBwQAhpbEgoyMDI2LTEyLTIxIiAKA0NHSBIKMjAyNi0xMi0yMRoDTkFUKgJMQTIEOTAxNGoHCAESA0dSVWoHCAESA0NHSHIHCAESA0ZPUnIHCAESA05BVHIHCAESA0pET0ABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL))
+- seg 21/12 Azul · 21:35 → 00:55, direto CGH-NAT: R$1.603/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
+- seg 21/12 LATAM 3406 · 17:30 → 20:50, direto GRU-NAT: R$1.631/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=3&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
+- seg 21/12 Gol 1446 · 11:10 → 16:05, com escala CGH-NAT: R$1.664/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=CGH&para=NAT&adultos=3&criancas=0&bebes=0&ida=21-12-2026&classe=3))
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$698/pessoa via CIA LATAM | LATAM NAT-CGH 09:20-15:10 escala 1h15 · com mala R$767
-- ter 19/01 (28 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 19:05-22:15 direto | na cia R$784 · com mala R$869
+- seg 18/01 (27 dias): R$698/pessoa via CIA LATAM | LATAM NAT-CGH 09:20-15:10 escala 1h15 · com mala R$775
+- ter 19/01 (28 dias): R$784/pessoa via CIA Gol | Gol JDO-GRU 19:05-22:15 direto · com mala R$909
 - qua 20/01 (29 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$869
-- qui 21/01 (30 dias): R$442/pessoa via Zupper | LATAM NAT-CGH 05:15-08:55 direto | na cia R$487 · com mala R$540
-- sex 22/01 (31 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto · com mala R$742
-- sáb 23/01 (32 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
-- dom 24/01 (33 dias): R$424/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$467 · com mala R$517
-- seg 25/01 (34 dias): R$690/pessoa via 123milhas | Gol FOR-GRU 03:40-07:25 direto · com mala R$787
+- qui 21/01 (30 dias): R$487/pessoa via CIA LATAM | LATAM NAT-CGH 05:15-08:55 direto · com mala R$564
+- sex 22/01 (31 dias): R$652/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$708 · com mala R$777
+- sáb 23/01 (32 dias): R$718/pessoa via CIA LATAM | LATAM JDO-GRU 03:20-06:25 direto · com mala R$795
+- dom 24/01 (33 dias): R$467/pessoa via CIA LATAM | LATAM JDO-GRU 03:20-06:25 direto · com mala R$544
+- seg 25/01 (34 dias): R$718/pessoa via CIA LATAM | LATAM JDO-GRU 02:45-05:50 direto · com mala R$795
 - ter 26/01 (35 dias): R$652/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$777
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
