@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-08 11:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-08 12:13 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -23,14 +23,14 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$718/pessoa via CIA LATAM | LATAM JDO-GRU 11:25-14:30 direto · com mala R$795
-- ter 19/01 (28 dias): R$555/pessoa via CIA LATAM | LATAM NAT-CGH 04:50-13:25 escala 0h00 · com mala R$632
-- qua 20/01 (29 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$869
+- seg 18/01 (27 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$848
+- ter 19/01 (28 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 19:05-22:15 direto · com mala R$869
+- qua 20/01 (29 dias): R$714/pessoa via 123milhas | LATAM FOR-GRU 21:05-00:40 direto · com mala R$791
 - qui 21/01 (30 dias): R$441/pessoa via 123milhas | LATAM NAT-CGH 05:15-08:55 direto | na cia R$487 · com mala R$518
 - sex 22/01 (31 dias): R$644/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$699 · com mala R$727
-- sáb 23/01 (32 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 03:20-06:25 direto · com mala R$727
-- dom 24/01 (33 dias): R$693/pessoa via MaxMilhas | LATAM JDO-GRU 11:20-14:25 direto | na cia R$718 · com mala R$770
+- sáb 23/01 (32 dias): R$659/pessoa via MaxMilhas | LATAM JDO-GRU 03:20-06:25 direto · com mala R$736
+- dom 24/01 (33 dias): R$650/pessoa via 123milhas | LATAM JDO-GRU 11:20-14:25 direto · com mala R$727
 - seg 25/01 (34 dias): R$684/pessoa via 123milhas | LATAM JDO-GRU 02:45-05:50 direto | na cia R$718 · com mala R$761
-- ter 26/01 (35 dias): R$635/pessoa via 123milhas | Gol FOR-GRU 02:20-06:05 direto | na cia R$688 · com mala R$760
+- ter 26/01 (35 dias): R$644/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$769
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
