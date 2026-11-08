@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-08 01:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-08 02:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -24,8 +24,8 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 ## Volta de vocês dois (2 adultos)
 
 - seg 18/01 (27 dias): R$698/pessoa via CIA LATAM | LATAM NAT-CGH 09:20-15:10 escala 1h15 · com mala R$767
-- ter 19/01 (28 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 11:30-14:30 direto | na cia R$718 · com mala R$742
-- qua 20/01 (29 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$869
+- ter 19/01 (28 dias): R$744/pessoa via 123milhas | Gol JDO-GRU 19:05-22:15 direto | na cia R$784 · com mala R$869
+- qua 20/01 (29 dias): R$752/pessoa via MaxMilhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$784 · com mala R$877
 - qui 21/01 (30 dias): R$442/pessoa via Zupper | LATAM NAT-CGH 05:15-08:55 direto | na cia R$487 · com mala R$540
 - sex 22/01 (31 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto · com mala R$742
 - sáb 23/01 (32 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
