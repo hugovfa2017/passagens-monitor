@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-09 03:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-09 04:19 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -25,11 +25,11 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 - seg 18/01 (27 dias): R$731/pessoa via Zupper | LATAM JDO-GRU 11:25-14:30 direto · com mala R$826
 - ter 19/01 (28 dias): R$763/pessoa via 123milhas | Gol JDO-GRU 19:05-22:15 direto | na cia R$794 · com mala R$888
-- qua 20/01 (29 dias): R$772/pessoa via MaxMilhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$856
-- qui 21/01 (30 dias): R$664/pessoa via CIA LATAM | LATAM NAT-CGH 08:40-15:10 escala 0h55 · com mala R$734
+- qua 20/01 (29 dias): R$763/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$856
+- qui 21/01 (30 dias): R$664/pessoa via CIA LATAM | LATAM NAT-CGH 08:40-15:10 escala 1h55 · com mala R$734
 - sex 22/01 (31 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
 - sáb 23/01 (32 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
-- dom 24/01 (33 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 11:20-14:25 direto · com mala R$742
+- dom 24/01 (33 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 11:20-14:25 direto | na cia R$837 · com mala R$742
 - seg 25/01 (34 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 02:45-05:50 direto | na cia R$718 · com mala R$742
 - ter 26/01 (35 dias): R$670/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$795
 
