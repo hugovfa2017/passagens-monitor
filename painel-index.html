@@ -147,8 +147,8 @@
     <article class="pn-feature" data-draw="mesmo" aria-live="polite">—</article>
     <div class="pn-sec">
       <div class="pn-sechead">
-        <h3>Voos perto do de vocês</h3>
-        <p class="pn-note">Todos os voos para Natal no dia anterior, no mesmo dia e no seguinte, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
+        <h3>Outras opções</h3>
+        <p class="pn-note">As 20 mais baratas de 19 a 24/12 para Natal, João Pessoa (2h30 de carro até Natal), Recife (4h), Fortaleza e Juazeiro do Norte, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
       </div>
       <div class="pn-tbox" data-draw="perto">—</div>
     </div>
@@ -157,7 +157,7 @@
   <section class="pn-sec" id="volta">
     <div class="pn-sechead">
       <h2>Volta de vocês dois</h2>
-      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa.</p>
+      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, João Pessoa, Recife, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa.</p>
     </div>
     <div class="pn-list" data-draw="volta">—</div>
   </section>
@@ -169,15 +169,16 @@
     </div>
     <div class="pn-legend">
       <span><i style="--sw: var(--pn-acc)"></i>Mesmo voo de vocês</span>
-      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Voo perto mais barato</span>
+      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Outra opção mais barata</span>
       <span><i style="--sw: var(--pn-muted)"></i>Volta de vocês dois</span>
     </div>
     <div class="pn-chart" data-draw="hist">—</div>
   </section>
 
   <footer class="pn-foot">
-    <p>Busca em MaxMilhas, 123milhas, Zupper e no Google Voos (preço das companhias, confirmado na tela de compra). O preço pode mudar até o pagamento.</p>
+    <p>Busca em MaxMilhas, 123milhas, Zupper, Viaza, Vai de Promo e no Google Voos (preço das companhias, confirmado na tela de compra). O preço pode mudar até o pagamento.</p>
     <p>Com mala: 1 mala de 23 kg por pessoa. Na Zupper é a tarifa com mala de verdade; nos outros, soma o valor da mala da companhia medido na busca (marcado como estimado).</p>
+    <p>Viu preço bom, compre: com 7 dias ou mais de antecedência, a ANAC garante desistir sem custo em até 24 h. Prefira emissão imediata (nada de "promo" ou "data flexível") e confira o localizador no site da companhia.</p>
     <p>O monitor roda no GitHub de hora em hora, mesmo com o computador desligado. Datas e alvos mudam pedindo ao Claude.</p>
   </footer>
 </div>
@@ -199,6 +200,8 @@
   };
   const link = (cls, href, txt) => { const a = h('a', cls, txt); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
   const pessoas = (n) => `${n} ${n === 1 ? 'pessoa' : 'pessoas'}`;
+  const CIDADE = { NAT: 'Natal', JPA: 'João Pessoa', REC: 'Recife', FOR: 'Fortaleza', JDO: 'Juazeiro do Norte' };
+  const cidade = (c) => CIDADE[c] || c;
   const vendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
   const tipoVoo = (t) => (t === 'direto' ? 'direto' : t);
   const numVoo = (v) => (v ? ' ' + v.split(' ').pop() : '');
@@ -238,7 +241,7 @@
         fim(a.dest, v ? `chega ${v.chegada}` : '', true)),
       h('p', 'pn-fmeta', `${a.dia} · ${a.cia}${numVoo(a.voo)} · ${v ? tipoVoo(v.tipo_voo) : 'direto'}`));
     if (!v) {
-      el.append(voo, h('p', 'pn-empty', 'Este voo não apareceu à venda na última busca. Pode ter esgotado ou o vendedor não mostrou. Veja os voos perto logo abaixo.'));
+      el.append(voo, h('p', 'pn-empty', 'Este voo não apareceu à venda na última busca. Pode ter esgotado ou o vendedor não mostrou. Veja as outras opções logo abaixo.'));
       return;
     }
     const tiles = h('div', 'pn-tiles');
@@ -264,11 +267,14 @@
 
   dash.draw('perto', (el) => {
     el.replaceChildren();
-    const voos = tipo('ida');
+    let voos = tipo('ida');
     if (!painel()) { el.textContent = '—'; return; }
     if (!voos.length) { el.append(h('p', 'pn-empty', 'Nenhum voo encontrado na última busca.')); return; }
-    voos.sort((x, y) => (x.d + x.saida < y.d + y.saida ? -1 : 1));
     const ns = extras();
+    // o voo de vocês e as 20 opções mais baratas, em ordem de data e hora
+    const preco1 = (v) => (precoIda(v, ns[ns.length - 1]) || { pp: Infinity }).pp;
+    const baratos = new Set(voos.filter((v) => !v.mesmo).sort((a, b) => preco1(a) - preco1(b)).slice(0, 20));
+    voos = voos.filter((v) => v.mesmo || baratos.has(v)).sort((x, y) => (x.d + x.saida < y.d + y.saida ? -1 : 1));
     const melhor = Object.fromEntries(ns.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
     const t = h('table', 'pn-table');
     t.setAttribute('aria-label', 'Voos de ida para Natal perto do voo de vocês, preço por pessoa');
@@ -281,7 +287,7 @@
       if (v.dia !== dia) { dia = v.dia; const td = h('td', null, dia); td.colSpan = ns.length + 1; corpo.append(h('tr', 'pn-day', td)); }
       const nome = h('td', null,
         h('span', 'pn-v1', `${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
-        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${v.dest} · ${tipoVoo(v.tipo_voo)}`));
+        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${cidade(v.dest)} · ${tipoVoo(v.tipo_voo)}`));
       const cols = ns.map((n) => {
         const p = precoIda(v, n);
         const td = h('td', 'n');
@@ -315,7 +321,7 @@
       el.append(h('div', 'pn-row' + (best ? ' is-best' : ''),
         h('div', null, h('span', 'pn-v1', x.dia), h('span', 'pn-v2', `${x.dias} dias lá`)),
         h('div', null, h('span', 'pn-v1', `${p.saida} → ${p.chegada}`),
-          h('span', 'pn-v2', `${p.orig} → ${p.dest} · ${p.cia} · ${tipoVoo(p.tipo_voo)} · ${vendedor(p.vend)}${extra}`)),
+          h('span', 'pn-v2', `${cidade(p.orig)} → ${p.dest} · ${p.cia} · ${tipoVoo(p.tipo_voo)} · ${vendedor(p.vend)}${extra}`)),
         bar,
         h('div', 'pn-amt', BRL.format(p.pp)),
         link('pn-buylink', p.link, 'Comprar')));
@@ -325,7 +331,7 @@
   dash.draw('volta-nota', (el) => {
     const r = resumo();
     if (!r) return;
-    el.textContent = `2 adultos, saindo de Natal, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
+    el.textContent = `2 adultos, saindo de Natal, João Pessoa, Recife, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
   });
 
   dash.draw('hist-nota', (el) => {
@@ -339,7 +345,7 @@
     const hs = tipo('hist'), r = resumo();
     if (!r || !hs.length) { el.textContent = '—'; return; }
     const series = [{ k: 'mesmo_1', cor: 'var(--pn-acc)', w: 2, nome: 'Mesmo voo de vocês' },
-      { k: 'perto_pp', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Voo perto mais barato' },
+      { k: 'perto_pp', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Outra opção mais barata' },
       { k: 'volta_pp', cor: 'var(--pn-muted)', w: 1.75, nome: 'Volta' }];
     const pts = hs.map((x) => ({ ...x, t: new Date(x.quando.replace(' ', 'T') + ':00') })).filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
     const W = Math.max(280, el.clientWidth), H = 230;

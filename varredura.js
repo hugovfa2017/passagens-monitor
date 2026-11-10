@@ -8,11 +8,12 @@
 // (já vimos R$592 na lista virar R$2.550 na compra). Só conta o preço da tela de compra.
 (() => {
   const CFG = {
-    // ida dos extras (ainda a confirmar): o mesmo voo comprado e voos perto dele, para Natal
+    // ida dos extras (ainda a confirmar): o mesmo voo comprado e outras opções perto, em Natal e região
     alvo: '2026-12-22 14:05 Gol GRU-NAT G3 1678',   // data, saída, companhia, rota, número do voo
     paxIda: 1,                      // compra individual: cada extra compra a sua (busca para 1 adulto; 3 = busca 1, 2 e 3)
-    ida: ['2026-12-21','2026-12-22','2026-12-23'],
-    idaDestinos: ['NAT'],
+    ida: ['2026-12-19','2026-12-20','2026-12-21','2026-12-22','2026-12-23','2026-12-24'],
+    // aeroportos do Nordeste: chegada dos extras e saída da volta (João Pessoa e Recife ficam a 2h30 e 4h de carro de Natal)
+    nordeste: ['NAT','JPA','REC','FOR','JDO'],
     // volta dos dois que já têm a ida (estadia de 27 a 39 dias a partir de 22/12, até 26/01)
     pax: 2,
     volta: ['2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23','2027-01-24','2027-01-25','2027-01-26'],
@@ -28,8 +29,8 @@
   const paxDe = dir => dir === 'ida' ? CFG.paxIda : CFG.pax;
   const [aData, aSaida, aCia] = CFG.alvo.split(' ');
   const tfs = (dir, date) => {
-    const O = dir === 'ida' ? ['GRU', 'CGH'] : ['FOR', 'NAT', 'JDO'];
-    const D = dir === 'ida' ? CFG.idaDestinos : ['GRU', 'CGH'];
+    const O = dir === 'ida' ? ['GRU', 'CGH'] : CFG.nordeste;
+    const D = dir === 'ida' ? CFG.nordeste : ['GRU', 'CGH'];
     const seg = '120a' + hx(date) + O.map(c => ap('6a', c)).join('') + D.map(c => ap('72', c)).join('');
     const h = '081c1002' + '1a' + (seg.length / 2).toString(16).padStart(2, '0') + seg +
       '4001'.repeat(paxDe(dir)) + '4801700182010b08ffffffffffffffffff01980102';
@@ -37,7 +38,8 @@
       .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   };
   const url = (dir, d) => `https://www.google.com/travel/flights/search?tfs=${tfs(dir, d)}&tfu=EgoIABAAGAAgAigB&hl=pt-BR&gl=BR&curr=BRL`;
-  const code = s => /Natal/.test(s) ? 'NAT' : /Fortaleza/.test(s) ? 'FOR' : /Juazeiro/.test(s) ? 'JDO' : /Guarulhos/.test(s) ? 'GRU' : /Congonhas/.test(s) ? 'CGH' : s.slice(0, 12);
+  const code = s => /Natal/.test(s) ? 'NAT' : /Fortaleza/.test(s) ? 'FOR' : /Juazeiro/.test(s) ? 'JDO' : /Jo[aã]o Pessoa|Castro Pinto/.test(s) ? 'JPA' :
+    /Recife|Guararapes/.test(s) ? 'REC' : /Guarulhos/.test(s) ? 'GRU' : /Congonhas/.test(s) ? 'CGH' : s.slice(0, 12);
   const mins = s => { const h = s.match(/(\d+)h/), m = s.match(/(\d+) min/); return (h ? +h[1] * 60 : 0) + (m ? +m[1] : 0); };
 
   // voos da lista (preço pode estar velho), só diretos ou escala curta

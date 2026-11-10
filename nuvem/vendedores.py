@@ -1,4 +1,5 @@
-"""Busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil).
+"""Busca direta na MaxMilhas, na 123milhas, na Zupper, na Viaza e na Vai de Promo (que o Google não mostra para
+servidores fora do Brasil).
 
 Abre a página de resultados de cada vendedor e lê os cartões de voo. Só aceita voo direto
 ou com 1 parada e duração total de até 5h30 (aproximação de "escala de até 2h": o cartão não
@@ -49,6 +50,35 @@ def ler_123milhas(cartoes, pax):
             out.append({'vend': '123milhas', 'cia': CIAS[m[1].lower()], 'voo': (m[2], m[3]), 'saida': m[4], 'orig': m[5],
                         'direto': m[6].lower() == 'direto', 'dur': _min(m[7], m[8]), 'chegada': m[9], 'dest': m[10],
                         'pp': round(int(m[11].replace('.', '')) / pax)})
+    return out
+
+
+def _reais(inteiro, centavos):
+    return int(inteiro.replace('.', '')) + int(centavos) / 100
+
+
+def ler_viaza(cartoes, pax):
+    """'GRU | São Paulo | NAT | Natal | LATAM | 23:35 | Direto | 03:20 | 02:55 | ... | Total no Pix | R$ 1.456,59' (total dos adultos)"""
+    out = []
+    for t in cartoes:
+        m = re.search(r'\|\s*([A-Z]{3})\s*\|[^|]*\|\s*([A-Z]{3})\s*\|[^|]*\|\s*(Gol|Latam|Azul)\s*\|\s*(\d\d:\d\d)\s*\|\s*(Direto|\d+ paradas?)\s*\|'
+                      r'\s*(\d+):(\d\d)\s*\|\s*(\d\d:\d\d)[\s\S]*?Total no Pix\s*\|\s*R\$\s*([\d.]+),(\d\d)', t, re.I)
+        if m:
+            out.append({'vend': 'Viaza', 'cia': CIAS[m[3].lower()], 'orig': m[1], 'dest': m[2], 'saida': m[4], 'direto': m[5].lower() == 'direto',
+                        'dur': _min(m[6], m[7]), 'chegada': m[8], 'voo': None, 'pp': round(_reais(m[9], m[10]) / pax)})
+    return out
+
+
+def ler_vaidepromo(cartoes, pax):
+    """'LATAM | 08:15 | CGH | 7h 5m | 2 paradas | 15:20 | NAT | ... | Preço total | R$ 1.363,18' (total dos adultos, no Pix)"""
+    out = []
+    for t in cartoes:
+        m = re.search(r'\|\s*(Gol|Latam|Azul)\s*\|\s*(\d\d:\d\d)\s*\|\s*([A-Z]{3})\s*\|\s*(\d+)h\s*(\d*)m?\s*\|\s*([^|]*?)\s*\|'
+                      r'\s*(\d\d:\d\d)\s*\|\s*([A-Z]{3})[\s\S]*?Preço total\s*\|\s*R\$\s*([\d.]+),(\d\d)', t, re.I)
+        if m:
+            out.append({'vend': 'Vai de Promo', 'cia': CIAS[m[1].lower()], 'saida': m[2], 'orig': m[3], 'dur': _min(m[4], m[5]),
+                        'direto': not re.search(r'\d+\s*parada', m[6], re.I), 'chegada': m[7], 'dest': m[8], 'voo': None,
+                        'pp': round(_reais(m[9], m[10]) / pax)})
     return out
 
 
@@ -136,17 +166,29 @@ def url_zupper_iv(ne_ida, ne_volta, ida, volta, pax):
             f'&onlyBusinessClass=false&slices={urllib.parse.quote(json.dumps(trechos, separators=(",", ":")))}')
 
 
-URL = {'MaxMilhas': url_maxmilhas, '123milhas': url_123milhas, 'Zupper': url_zupper}
-LER = {'MaxMilhas': ler_maxmilhas, '123milhas': ler_123milhas, 'Zupper': ler_zupper}
+def url_viaza(o, d, data, pax):
+    return f'https://www.viaza.com.br/busca/passagens/ow/{o.lower()}/{d.lower()}?p={pax}-0-0&dd={data}'
 
 
-async def _cartoes(navegador, url, sem):
+def url_vaidepromo(o, d, data, pax):
+    return f'https://www.vaidepromo.com.br/passagens-aereas/pesquisa/{o}{d}{data[2:4]}{data[5:7]}{data[8:10]}/{pax}/0/0/Y/'
+
+
+URL = {'MaxMilhas': url_maxmilhas, '123milhas': url_123milhas, 'Zupper': url_zupper, 'Viaza': url_viaza, 'Vai de Promo': url_vaidepromo}
+LER = {'MaxMilhas': ler_maxmilhas, '123milhas': ler_123milhas, 'Zupper': ler_zupper, 'Viaza': ler_viaza, 'Vai de Promo': ler_vaidepromo}
+CASA = {'Viaza': 'https://www.viaza.com.br/'}   # a Viaza só abre a busca depois da página inicial (senão: "upstream connect error")
+
+
+async def _cartoes(navegador, url, sem, casa=None):
     """Abre a página de resultados e devolve o texto de cada cartão de voo ([] se não carregar)."""
     async with sem:
         # uma sessão por busca: a 123milhas não devolve nada a duas buscas abertas na mesma sessão
         ctx = await navegador.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
         pg = await ctx.new_page()
         try:
+            if casa:
+                await pg.goto(casa, wait_until='domcontentloaded', timeout=60000)
+                await pg.wait_for_timeout(3000)
             await pg.goto(url, wait_until='domcontentloaded', timeout=60000)
             try:
                 await pg.wait_for_function(f'() => ({LER_CARTOES})().length > 0', timeout=45000)
@@ -178,7 +220,7 @@ def _aceita(x):
 async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
     """Ofertas de um vendedor para SAO <-> aeroporto do Nordeste numa data."""
     o, d = ('SAO', ne) if sentido == 'ida' else (ne, 'SAO')
-    validas = [x for x in LER[vendedor](await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem), pax) if _aceita(x)]
+    validas = [x for x in LER[vendedor](await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem, CASA.get(vendedor)), pax) if _aceita(x)]
     for x in validas:
         # link da busca do vendedor já no aeroporto exato do voo (poucos voos na lista, o certo no topo)
         x['link'] = URL[vendedor](x['orig'], x['dest'], data, pax)
@@ -240,6 +282,23 @@ def _teste():
     assert ler_zupper([zm], 2)[0]['mala'] == 119 and ler_zupper(zp[:1], 2)[0]['mala'] is None
     assert _mala_zupper('x | TARIFAS:M=1.000,00;M+50,00', 2) == 0 and _mala_zupper('x | TARIFAS:S=900,00;S+10,00', 2) is None
     assert ler_zupper_iv([iv[0] + ' | TARIFAS:S=2.975,00;M+476,04'], 2)[0]['mala'] == 238
+    # Viaza e Vai de Promo (textos reais, 1 adulto)
+    vz = ['Ida | 22 dez 2026 | GRU | São Paulo | NAT | Natal | LATAM | 23:35 | Direto | 03:20 | 02:55 | R$ | 1.291 | NO PIX | Por adulto e sem taxas'
+          ' | 1 Adulto | R$ 1.291,67 | Taxas e encargos | R$ 164,92 | Total no Pix | R$ 1.456,59 | Comprar | ou em até | 12x no cartão  | LOGO:x.png',
+          'Ida | 22 dez 2026 | CGH | São Paulo | NAT | Natal | LATAM | 09:50 | 1 parada | 14:05 | 23:55 | LATAM | 12:05 | 1 parada | 11:50 | 23:55'
+          ' | R$ | 1.454 | NO PIX | 1 Adulto | R$ 1.454,47 | Taxas e encargos | R$ 207,59 | Total no Pix | R$ 1.662,06 | Comprar']
+    r = ler_viaza(vz, 1)
+    assert [(x['orig'], x['dest'], x['cia'], x['saida'], x['chegada'], x['direto'], x['dur'], x['pp']) for x in r] == \
+        [('GRU', 'NAT', 'LATAM', '23:35', '02:55', True, 200, 1457), ('CGH', 'NAT', 'LATAM', '09:50', '23:55', False, 845, 1662)], r
+    assert _aceita(r[0]) and not _aceita(r[1]) and url_viaza('SAO', 'NAT', '2026-12-22', 1).endswith('/ow/sao/nat?p=1-0-0&dd=2026-12-22')
+    vp = ['Ida | Ter. 22/12 | Azul | 21:25 | GRU | 4h 40m | 1 parada | 02:05 | NAT | Econômica | Item pessoal | Até 10kg | Preço por adulto'
+          ' | R$ 1.403,56 | No PIX | Adultos | (1x) R$ 1.403,56 | Taxa de embarque | R$ 35,75 | Taxa de Serviço | R$ 84,21 | Desconto | - R$ 67,37'
+          ' | Preço total | R$ 1.456,15 | Comprar | Essa promo expira em | 15:00s | LOGO:co.png',
+          'Ida | Ter. 22/12 | Gol | 14:05 | GRU | 3h 20m | Direto | 17:25 | NAT | Econômica | Preço total | R$ 2.960,00 | Comprar']
+    r = ler_vaidepromo(vp, 2)
+    assert [(x['cia'], x['orig'], x['dest'], x['saida'], x['chegada'], x['direto'], x['dur'], x['pp']) for x in r] == \
+        [('Azul', 'GRU', 'NAT', '21:25', '02:05', False, 280, 728), ('Gol', 'GRU', 'NAT', '14:05', '17:25', True, 200, 1480)], r
+    assert url_vaidepromo('SAO', 'NAT', '2026-12-22', 1).endswith('/pesquisa/SAONAT261222/1/0/0/Y/') and LER['Vai de Promo'] is ler_vaidepromo
     u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2)
     assert 'type=roundTrip' in u and '%22originAirport%22%3A%22JDO%22' in u and '%22destinationAirport%22%3A%22FOR%22' in u
     print('ok')

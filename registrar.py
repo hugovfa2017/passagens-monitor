@@ -1,7 +1,7 @@
 """Registra uma varredura: histórico, resumo, dados do painel e mensagem no Telegram.
 
 A ida de 2 adultos já foi comprada (o voo fica em varredura.js, CFG.alvo). Agora o monitor acompanha:
-- a ida dos extras (1 a 3 adultos, a confirmar): o mesmo voo em destaque e os voos perto dele;
+- a ida dos extras (1 a 3 adultos, a confirmar): o mesmo voo em destaque e outras opções perto (19 a 24/12, Natal e região);
 - a volta dos dois que já têm a ida.
 Toda varredura vira uma mensagem no Telegram; ela toca só com preço abaixo do alvo ou novo menor preço.
 
@@ -23,14 +23,17 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
 
 # "Algo muito bom" = preço por pessoa, sem mala, igual ou abaixo destes alvos (Telegram com som).
-ALVO_IDA = 800     # ida dos extras (compra individual), no mesmo voo ou num voo perto (a ida comprada saiu a R$480)
+ALVO_IDA = 1000    # ida dos extras (compra individual), no mesmo voo ou noutra opção (a ida comprada saiu a R$480; já houve R$882)
 ALVO_VOLTA = 450   # volta dos dois (já foi a R$424; costuma ficar perto de R$520)
 QUEDA_MIN = 20     # "novo menor preço" (Telegram com som) quando cai pelo menos isso abaixo do menor já visto
 
 EXTRAS = (1, 2, 3)   # ponytail: colunas do histórico fixas para até 3 extras (hoje só a compra individual, mesmo_1, é buscada)
 CAMPOS = ['data_hora', *(f'mesmo_{n}' for n in EXTRAS), 'perto_pp', 'perto_voo', 'volta_pp', 'volta_voo', 'volta_mala_pp']
 ROTULO = {**{f'mesmo_{n}': f"o mesmo voo para {n} {'pessoa' if n == 1 else 'pessoas'}" for n in EXTRAS},
-          'perto_pp': 'o voo perto mais barato', 'volta_pp': 'a volta de vocês dois'}
+          'perto_pp': 'a outra opção mais barata', 'volta_pp': 'a volta de vocês dois'}
+CIDADE = {'NAT': 'Natal', 'JPA': 'João Pessoa', 'REC': 'Recife', 'FOR': 'Fortaleza', 'JDO': 'Juazeiro do Norte'}
+DICA_24H = ("Comprando com 7 dias ou mais de antecedência, dá para desistir sem custo em até 24 h (regra da ANAC). "
+            "Prefira emissão imediata e confira o localizador no site da companhia.")
 SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sáb', 'dom']
 
 
@@ -61,7 +64,9 @@ def link_compra(sentido, data, voos, pax):
         o, de = od.split('>')
         m = s(0x0a, o) + s(0x12, d) + s(0x1a, de) + s(0x2a, cod) + s(0x32, num)
         trechos += b'\x22' + tam(len(m)) + m
-    O, D = (['GRU', 'CGH'], ['FOR', 'NAT', 'JDO']) if sentido == 'ida' else (['FOR', 'NAT', 'JDO'], ['GRU', 'CGH'])
+    # aeroportos da busca: os de sempre e, se o voo for de João Pessoa ou Recife, também o dele
+    ne = ['FOR', 'NAT', 'JDO'] + sorted({a for v in voos.split(';') for a in v.split(' ')[0].split('>')} - {'FOR', 'NAT', 'JDO', 'GRU', 'CGH'})
+    O, D = (['GRU', 'CGH'], ne) if sentido == 'ida' else (ne, ['GRU', 'CGH'])
     ap = lambda tag, c: bytes([tag, 7, 8, 1, 0x12, 3]) + c.encode()
     seg = s(0x12, data) + trechos + b''.join(ap(0x6a, c) for c in O) + b''.join(ap(0x72, c) for c in D)
     h = b'\x08\x1c\x10\x02\x1a' + tam(len(seg)) + seg + b'\x40\x01' * pax + bytes.fromhex('4801700182010b08ffffffffffffffffff01980102')
@@ -221,9 +226,6 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
     mesmo = next((v for v in voos if v['mesmo']), None)
     pm = {n: p for n, p in sorted(mesmo['precos'].items())} if mesmo else {}
     perto = sorted((v for v in voos if not v['mesmo'] and n_max in v['precos']), key=lambda v: v['precos'][n_max]['pp'])
-    perto_dia = {}   # o voo perto mais barato de cada data
-    for v in perto:
-        perto_dia.setdefault(v['d'], v)
     volta = min(voltas, key=lambda t: t['pp'], default=None)
     volta_mala = min((t for t in voltas if t.get('mala')), key=lambda t: t['mala']['pp'], default=None)
     estadia = lambda d: (datetime.strptime(d, '%Y-%m-%d') - datetime.strptime(alvo['d'], '%Y-%m-%d')).days
@@ -257,8 +259,8 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
 
     # Telegram a cada varredura; com som só quando há recorde ou preço abaixo do alvo
     if abaixo:
-        topo = ("🔥 <b>Hora de comprar!</b> " + cap('; '.join(f"{ROTULO[c]} sai a {brl(v)}" + ('' if c == 'mesmo_1' else ' cada') for c, v in abaixo)) +
-                ", abaixo do alvo. Preço muda rápido: confira e compre logo.")
+        topo = ("🔥 <b>Hora de comprar!</b> " + cap('; '.join(f"{ROTULO[c]} sai a {brl(v)}" + (' cada' if c == 'volta_pp' or (c == 'perto_pp' and n_max > 1) else '') for c, v in abaixo)) +
+                ", abaixo do alvo. Preço muda rápido: confira e compre logo.\n<i>" + DICA_24H + "</i>")
     elif recordes:
         topo = "📉 <b>Novo menor preço!</b> " + ' '.join(
             f"{cap(ROTULO[c])} caiu {brl(a - v)} e chegou a {brl(v)}, o menor desde que comecei." for c, v, a in recordes)
@@ -294,13 +296,17 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
                        for n, p in pm.items()])
     else:
         blocos.append(f"🎯 <b>Ida dos extras · mesmo voo de vocês</b>\nNão achei o {alvo['cia']} {num} ({dia(alvo['d'])}, {alvo['saida']}) "
-                      "à venda nesta busca. Pode ter esgotado ou o vendedor não mostrou; veja os voos perto.")
-    if perto_dia:
-        cada = ' cada' if n_max > 1 else ''
-        linhas_p = [f"{dia(v['d'])} · {v['orig']} → {v['dest']} · {html.escape(voo_txt(v))}\n<b>{brl(v['precos'][n_max]['pp'])}</b>{cada} na "
-                    f"{html.escape(nome_vendedor(v['precos'][n_max]['vend']))}" for v in sorted(perto_dia.values(), key=lambda v: (v['d'], v['saida']))]
-        blocos.append(f"📍 <b>Voos perto · {'compra individual' if n_max == 1 else 'para ' + pessoas(n_max)}</b>\n<blockquote>" + '\n\n'.join(linhas_p) + "</blockquote>")
-        botoes.append([{'text': f"📍 Perto {brl(perto[0]['precos'][n_max]['pp'])} ({dia(perto[0]['d'])[4:]} {perto[0]['saida']})",
+                      "à venda nesta busca. Pode ter esgotado ou o vendedor não mostrou; veja as outras opções.")
+    if perto:   # as 5 outras opções mais baratas, em qualquer data, até 2 por cidade (para não ficar tudo num lugar só)
+        cada, por_cidade, top = ' cada' if n_max > 1 else '', {}, []
+        for v in perto:
+            if por_cidade.get(v['dest'], 0) < 2 and len(top) < 5:
+                por_cidade[v['dest']] = por_cidade.get(v['dest'], 0) + 1
+                top.append(v)
+        linhas_p = [f"{dia(v['d'])} · {v['orig']} → {CIDADE.get(v['dest'], v['dest'])} · {html.escape(voo_txt(v))}\n<b>{brl(v['precos'][n_max]['pp'])}</b>{cada} na "
+                    f"{html.escape(nome_vendedor(v['precos'][n_max]['vend']))}" for v in top]
+        blocos.append(f"📍 <b>Outras opções · {'compra individual' if n_max == 1 else 'para ' + pessoas(n_max)}</b>\n<blockquote>" + '\n\n'.join(linhas_p) + "</blockquote>")
+        botoes.append([{'text': f"📍 {CIDADE.get(perto[0]['dest'], perto[0]['dest'])} {brl(perto[0]['precos'][n_max]['pp'])} ({dia(perto[0]['d'])[4:]} {perto[0]['saida']})",
                         'url': link_ida(perto[0], n_max)}])
     if volta:
         o, de = volta['rota'].split('-')
@@ -351,7 +357,7 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
           '\n'.join(f"- {pessoas(n)}: {brl(p['pp'])}/pessoa via {nome_vendedor(p['vend'])} ([comprar]({link_ida(mesmo, n)}))"
                     + (f" · com mala {brl(p['mala_pp'])}" if 'mala_pp' in p else '') for n, p in pm.items()) + '\n' if mesmo else
           'Não encontrado à venda nesta busca.\n',
-          f"## Ida dos extras: voos perto (para {pessoas(n_max)})\n",
+          f"## Ida dos extras: outras opções ({'compra individual' if n_max == 1 else 'para ' + pessoas(n_max)})\n",
           '\n'.join(f"- {dia(v['d'])} {voo_txt(v)} {v['orig']}-{v['dest']}: {brl(v['precos'][n_max]['pp'])}/pessoa via "
                     f"{nome_vendedor(v['precos'][n_max]['vend'])} ([comprar]({link_ida(v, n_max)}))" for v in perto[:10]) + '\n' if perto else 'Nenhum.\n',
           f"## Volta de vocês dois ({pax} adultos)\n",
@@ -363,6 +369,16 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
 
 
 def _teste():
+    global ALVO_IDA
+    ALVO_IDA, alvo_real = 800, ALVO_IDA   # o teste usa um alvo fixo (os textos abaixo dependem dele)
+    try:
+        _teste_registro()
+    finally:
+        ALVO_IDA = alvo_real
+    print('ok')
+
+
+def _teste_registro():
     alvo = {'d': '2026-12-22', 'saida': '14:05', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'voo': 'G3 1678'}
 
     def scan(m1=900, m3=1283, perto=1100, volta=469, mesmo=True):
@@ -394,6 +410,10 @@ def _teste():
     tfs = urllib.parse.parse_qs(urllib.parse.urlparse(link_compra('volta', '2027-01-19', 'FOR>GRU 2027-01-19 G3 1555', 2)).query)['tfs'][0]
     assert base64.urlsafe_b64decode(tfs + '=' * (-len(tfs) % 4)) == esperado
     assert link_compra('ida', '2026-12-18', '', 2) == ''
+    # voo para João Pessoa: o aeroporto dele entra na lista da busca, depois dos três de sempre
+    t2 = urllib.parse.parse_qs(urllib.parse.urlparse(link_compra('ida', '2026-12-20', 'GRU>JPA 2026-12-20 G3 1234', 1)).query)['tfs'][0]
+    b2 = base64.urlsafe_b64decode(t2 + '=' * (-len(t2) % 4))
+    assert b2.count(b'JPA') == 2 and b2.index(b'\x72\x07\x08\x01\x12\x03JDO') < b2.index(b'\x72\x07\x08\x01\x12\x03JPA'), b2
     # token colado com texto/espaço em volta: fica só o token; sem token válido, não tenta enviar
     antes = os.environ.get('TELEGRAM_TOKEN')
     try:
@@ -425,13 +445,13 @@ def _teste():
         assert '🎯 <b>Ida dos extras · mesmo voo de vocês</b>' in msg and '🛫 <b>ter 22/12</b> · GRU → NAT\nGol 1678 · 14:05 → 17:25, direto' in msg, msg
         assert '1 pessoa: <b>R$900</b> na 123milhas\n3 pessoas: <b>R$1.283</b> cada na Zupper</blockquote>\nfaltam R$100 para o alvo de R$800' in msg, msg
         assert '🧳 Com mala, por pessoa: 1: R$1.019 · 3: R$1.383 <i>(mala à parte, estimada)</i>' in msg, msg
-        # perto: o mais barato de cada data, para 3 (o voo de 23/12 só tem preço para 1 e fica de fora)
-        assert '📍 <b>Voos perto · para 3 pessoas</b>' in msg and 'seg 21/12 · GRU → NAT · LATAM · 13:35 → 16:55, direto\n<b>R$1.100</b> cada na MaxMilhas' in msg, msg
-        assert 'Azul' not in msg and 'qua 23/12' not in msg, msg
+        # outras opções: as mais baratas para 3, com o nome da cidade (o voo de 23/12 só tem preço para 1 e fica de fora)
+        assert '📍 <b>Outras opções · para 3 pessoas</b>' in msg and 'seg 21/12 · GRU → Natal · LATAM · 13:35 → 16:55, direto\n<b>R$1.100</b> cada na MaxMilhas' in msg, msg
+        assert msg.index('LATAM · 13:35') < msg.index('Azul · 21:10') and 'qua 23/12' not in msg, msg
         assert '🏠 <b>Volta de vocês dois · R$469</b>' in msg and '34 dias lá · faltam R$19 para o alvo de R$450' in msg, msg
         assert '🧳 Com mala: <b>R$619</b> na 123milhas · seg 25/01, LATAM 05:05 <i>(mala à parte, estimada)</i>' in msg, msg
         assert [x['text'] for x in bt[0]] == ['🎯 1: R$900', '🎯 3: R$1.283'] and bt[0][1]['url'] == 'https://www.zupper.com.br/3', bt
-        assert bt[1][0]['text'] == '📍 Perto R$1.100 (21/12 13:35)' and bt[1][0]['url'].startswith('https://www.maxmilhas.com.br/'), bt
+        assert bt[1][0]['text'] == '📍 Natal R$1.100 (21/12 13:35)' and bt[1][0]['url'].startswith('https://www.maxmilhas.com.br/'), bt
         assert '/OW/GRU/NAT/2026-12-21/3/' in bt[1][0]['url'] and [x['text'] for x in bt[2]] == ['🏠 Volta R$469', '🧳 Com mala R$619'], bt
         assert bt[-1] == PAINEL_BOTAO and all(x['url'] for linha in bt for x in linha), bt
         # o mesmo voo para 3 cai R$83: recorde, com som (ainda acima do alvo)
@@ -449,7 +469,7 @@ def _teste():
         registrar(scan(m1=780, m3=1250, volta=440), d, fake)
         msg, mudo, _ = enviados[-1]
         assert not mudo and ('🔥 <b>Hora de comprar!</b> O mesmo voo para 1 pessoa sai a R$780; a volta de vocês dois sai a R$440 cada, '
-                             'abaixo do alvo') in msg and '1 pessoa: <b>R$780</b> na 123milhas ✅' in msg, msg
+                             'abaixo do alvo') in msg and '1 pessoa: <b>R$780</b> na 123milhas ✅' in msg and 'regra da ANAC' in msg, msg
         # voo comprado sumiu da venda: avisa e mostra os voos perto
         registrar(scan(m1=900, m3=1250, volta=480, mesmo=False), d, fake)
         msg, _, bt = enviados[-1]
@@ -478,11 +498,10 @@ def _teste():
             registrar(s10, d4, fake)
             msg, _, bt = enviados[-1]
             assert 'Por pessoa, comprando uma passagem por vez: <b>R$900</b> na 123milhas\n<i>Se forem 3, cada um compra a sua (até R$2.700' in msg, msg
-            assert '📍 <b>Voos perto · compra individual</b>' in msg and '<b>R$600</b> na Zupper' in msg and ' cada na' not in msg, msg
-            assert bt[0] == [{'text': '🎯 Mesmo voo R$900', 'url': 'https://123milhas.com/1'}] and bt[1][0]['text'] == '📍 Perto R$600 (23/12 06:00)', bt
+            assert '📍 <b>Outras opções · compra individual</b>' in msg and '<b>R$600</b> na Zupper' in msg and ' cada na' not in msg, msg
+            assert bt[0] == [{'text': '🎯 Mesmo voo R$900', 'url': 'https://123milhas.com/1'}] and bt[1][0]['text'] == '📍 Natal R$600 (23/12 06:00)', bt
         assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
         assert enviados[-1][1] and 'não consegui ler os preços' in enviados[-1][0] and '<i>x&lt;y</i>' in enviados[-1][0], enviados[-1]
-    print('ok')
 
 
 if __name__ == '__main__':

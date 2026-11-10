@@ -1,9 +1,10 @@
 """Varredura completa no GitHub Actions: Google Voos (preço das companhias, confirmado na tela de compra)
 + busca direta na MaxMilhas, na 123milhas e na Zupper (que o Google não mostra para servidores fora do Brasil).
 
-Ida dos extras: SP -> Natal nas datas perto do voo já comprado, para 1, 2 e 3 adultos (o preço por pessoa muda
-com a quantidade de lugares). Volta dos dois que já têm a ida: Nordeste -> SP, como antes
-(MaxMilhas nos três aeroportos; 123milhas e Zupper, uma busca por vez, no mais barato de cada data).
+Ida dos extras: SP -> Nordeste (Natal, João Pessoa, Recife, Fortaleza, Juazeiro) nas datas perto do voo já comprado,
+em compra individual (CFG.paxIda). Volta dos dois que já têm a ida: Nordeste -> SP, como antes.
+MaxMilhas em todos os aeroportos; 123milhas e Zupper, uma busca por vez: na ida, Natal e o outro aeroporto mais barato
+de cada data; na volta, o aeroporto mais barato de cada data.
 
 Uso: python nuvem/rodar.py          (roda tudo e registra)
      python nuvem/rodar.py --teste  (auto-checagem da junção, sem navegador)
@@ -18,7 +19,6 @@ import registrar  # noqa: E402
 import vendedores  # noqa: E402
 
 GOOGLE = 'https://www.google.com/travel/flights?hl=pt-BR&gl=BR&curr=BRL'
-NORDESTE = ('NAT', 'FOR', 'JDO')   # na MaxMilhas, cada data é buscada nos três
 BLOQUEIO = r'unusual traffic|tráfego incomum|captcha|not a robot|Antes de continuar|Before you continue'
 
 
@@ -28,7 +28,7 @@ def cfg_js(codigo):
     lista = lambda k: re.findall(r"'([\w-]+)'", re.search(r'\b' + k + r':\s*\[([^\]]*)\]', codigo)[1])
     num = lambda k: int(re.search(r'\b' + k + r':\s*(\d+)', codigo)[1])
     d, saida, cia, rota, *voo = re.search(r"alvo:\s*'([^']+)'", codigo)[1].split(' ')
-    return {'ida': lista('ida'), 'volta': lista('volta'), 'pax': num('pax'), 'paxIda': num('paxIda'), 'idaDestinos': lista('idaDestinos'),
+    return {'ida': lista('ida'), 'volta': lista('volta'), 'pax': num('pax'), 'paxIda': num('paxIda'), 'nordeste': lista('nordeste'),
             'alvo': {'d': d, 'saida': saida, 'cia': cia, 'orig': rota[:3], 'dest': rota[4:], 'voo': ' '.join(voo)}}
 
 
@@ -137,6 +137,12 @@ def juntar_ida(ofertas, alvo, taxa, geral):
     return sorted(voos.values(), key=lambda v: (not v['mesmo'], v['precos'].get(n_max, {}).get('pp', SEM_PRECO), v['d'], v['saida']))
 
 
+def destinos_ida(d, ofertas, cfg):
+    """Aeroportos da ida a buscar um por vez numa data: o do voo comprado e o outro mais barato visto até aqui."""
+    outros = sorted((x for x in ofertas if x['d'] == d and x['dest'] != cfg['alvo']['dest']), key=lambda x: x['pp'])
+    return [cfg['alvo']['dest']] + ([outros[0]['dest']] if outros else [])
+
+
 def ofertas_google_ida(idas, pax):
     """Voos de ida validados no Google (preço para o máximo de extras) no formato das ofertas dos vendedores."""
     return [{'d': t['d'], 'vend': t['vend'], 'cia': t['cia'], 'orig': t['rota'][:3], 'dest': t['rota'][4:], 'saida': t['saida'],
@@ -174,30 +180,36 @@ async def varrer():
         # 1) MaxMilhas, várias buscas juntas: ida para Natal com 1, 2 e 3 adultos; volta nos três aeroportos
         sem = asyncio.Semaphore(6)
         pedidos = [((n, d), vendedores.buscar(nav, 'MaxMilhas', 'ida', d, ne, n, sem))
-                   for d in cfg['ida'] for ne in cfg['idaDestinos'] for n in range(1, cfg['paxIda'] + 1)]
+                   for d in cfg['ida'] for ne in cfg['nordeste'] for n in range(1, cfg['paxIda'] + 1)]
         pedidos += [(('volta', t['d']), vendedores.buscar(nav, 'MaxMilhas', 'volta', t['d'], ne, pax, sem))
-                    for t in scan['trechos'] for ne in NORDESTE]
+                    for t in scan['trechos'] for ne in cfg['nordeste']]
         res = await asyncio.gather(*(c for _, c in pedidos))
         for ((a, d), _), r in zip(pedidos, res):
             (ofertas.setdefault((a, d), []) if a == 'volta' else ida.setdefault(a, [])).extend(com_data(r, d))
         print(f'MAXMILHAS: {sum(1 for r in res if r)} de {len(res)} buscas com voo')
         # 2) 123milhas e Zupper: a 123milhas devolve vazio se recebe muitas buscas juntas; então cada uma faz
-        #    uma busca por vez (as duas em paralelo); a volta só no aeroporto mais barato de cada data até aqui
-        fila = [('ida', d, ne, n) for d in cfg['ida'] for ne in cfg['idaDestinos'] for n in range(1, cfg['paxIda'] + 1)]
+        #    uma busca por vez (as duas em paralelo). Ida: o aeroporto do voo comprado e o outro mais barato de cada data
+        #    até aqui (MaxMilhas e Google); volta: o aeroporto mais barato de cada data
+        ate_aqui = [x for v in ida.values() for x in v] + ofertas_google_ida(scan['idas'], cfg['paxIda'])
+        fila = [('ida', d, ne, n) for d in cfg['ida'] for ne in destinos_ida(d, ate_aqui, cfg)
+                for n in range(1, cfg['paxIda'] + 1)]
         for t in scan['trechos']:
             rota = min(ofertas.get(('volta', t['d']), []) + [{'pp': t['pp'], 'orig': t['rota'][:3]}], key=lambda x: x['pp'])
             fila.append(('volta', t['d'], rota['orig'], pax))
 
         async def uma_por_vez(vendedor):
             achou, um = 0, asyncio.Semaphore(1)
-            for s, d, ne, n in fila:
+            for k, (s, d, ne, n) in enumerate(fila):
+                if k == 4 and not achou:   # nada nas 4 primeiras: o site bloqueou o servidor; não gasta a rodada com ele
+                    print(f'{vendedor.upper()}: nada nas 4 primeiras buscas, parece bloqueado; pulando')
+                    return
                 r = com_data(await vendedores.buscar(nav, vendedor, s, d, ne, n, um), d)
                 (ofertas.setdefault(('volta', d), []) if s == 'volta' else ida.setdefault(n, [])).extend(r)
                 achou += bool(r)
                 await asyncio.sleep(2)
             print(f'{vendedor.upper()}: {achou} de {len(fila)} buscas com voo')
 
-        await asyncio.gather(uma_por_vez('123milhas'), uma_por_vez('Zupper'))
+        await asyncio.gather(*(uma_por_vez(v) for v in ('123milhas', 'Zupper', 'Viaza', 'Vai de Promo')))
         ida.setdefault(cfg['paxIda'], []).extend(ofertas_google_ida(scan['idas'], cfg['paxIda']))
         # as ofertas da ida entram só para medir a mala de cada companhia (juntar usa as chaves da volta)
         scan = juntar(scan, {**ofertas, **{('ida', n): v for n, v in ida.items()}})
@@ -251,7 +263,10 @@ def _teste():
     assert juntar_ida({3: [g]}, alvo, {}, None)[0]['mesmo']
     # configuração lida de varredura.js; datas de volta que o Google não validou entram vazias
     cfg = cfg_js(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
-    assert cfg['ida'] == ['2026-12-21', '2026-12-22', '2026-12-23'] and cfg['idaDestinos'] == ['NAT'], cfg
+    assert cfg['ida'][0] == '2026-12-19' and cfg['ida'][-1] == '2026-12-24' and cfg['nordeste'] == ['NAT', 'JPA', 'REC', 'FOR', 'JDO'], cfg
+    of_d = [{'d': '2026-12-19', 'dest': 'NAT', 'pp': 900}, {'d': '2026-12-19', 'dest': 'REC', 'pp': 950}, {'d': '2026-12-19', 'dest': 'JPA', 'pp': 990},
+            {'d': '2026-12-20', 'dest': 'NAT', 'pp': 900}]
+    assert destinos_ida('2026-12-19', of_d, cfg) == ['NAT', 'REC'] and destinos_ida('2026-12-20', of_d, cfg) == ['NAT'], destinos_ida('2026-12-19', of_d, cfg)
     assert (cfg['pax'], cfg['paxIda'], cfg['volta'][0], cfg['volta'][-1]) == (2, 1, '2027-01-18', '2027-01-26'), cfg
     assert cfg['alvo'] == alvo, cfg['alvo']
     s8, faltaram = completar({'status': 'erro', 'erro': 'Google pediu verificação'}, cfg)
