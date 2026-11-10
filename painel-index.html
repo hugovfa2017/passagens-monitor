@@ -51,7 +51,7 @@
   .pn-path::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px;
     border-top: 1px solid var(--pn-muted); border-right: 1px solid var(--pn-muted); transform: rotate(45deg); }
   .pn-fmeta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.55; }
-  .pn-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cds-gap-md); }
+  .pn-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--cds-gap-md); }
   @media (max-width: 520px) { .pn-tiles { grid-template-columns: minmax(0, 1fr); } }
   .pn-tile { display: grid; gap: 4px; align-content: start; padding: 14px; border-radius: 8px; border: 1px solid var(--pn-line); min-width: 0; }
   .pn-tile.is-hit { border-color: var(--pn-acc); background: var(--pn-tint); }
@@ -142,7 +142,7 @@
   <section class="pn-sec" id="ida">
     <div class="pn-sechead">
       <h2>Ida dos extras</h2>
-      <p class="pn-note">Para quem ainda vai confirmar: até 3 adultos para Natal, de preferência no mesmo voo de vocês. O preço por pessoa muda com a quantidade de lugares, por isso cada quantidade é buscada à parte.</p>
+      <p class="pn-note">Para quem ainda vai confirmar: até 3 adultos para Natal, de preferência no mesmo voo de vocês. Cada um compra a sua passagem (compra individual), então o preço é sempre para 1 pessoa. Se o voo tiver só um lugar barato, a segunda compra pode sair mais cara.</p>
     </div>
     <article class="pn-feature" data-draw="mesmo" aria-live="polite">—</article>
     <div class="pn-sec">
@@ -168,8 +168,8 @@
       <p class="pn-note" data-draw="hist-nota">Preço por pessoa, sem mala, em cada busca, de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram.</p>
     </div>
     <div class="pn-legend">
-      <span><i style="--sw: var(--pn-acc)"></i>Mesmo voo, 3 pessoas</span>
-      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Mesmo voo, 1 pessoa</span>
+      <span><i style="--sw: var(--pn-acc)"></i>Mesmo voo de vocês</span>
+      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Voo perto mais barato</span>
       <span><i style="--sw: var(--pn-muted)"></i>Volta de vocês dois</span>
     </div>
     <div class="pn-chart" data-draw="hist">—</div>
@@ -184,7 +184,8 @@
 
 <script>
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-  const EXTRAS = [1, 2, 3];
+  // quantidades de pessoas buscadas na ida (1 = compra individual)
+  const extras = () => Array.from({ length: (resumo() || {}).pax_ida || 1 }, (_, i) => i + 1);
   let modo = 'sem';
 
   const painel = () => { const d = dash.data('painel'); return d.status === 'ok' ? d.data : null; };
@@ -241,7 +242,8 @@
       return;
     }
     const tiles = h('div', 'pn-tiles');
-    for (const n of EXTRAS) {
+    const ns = extras(), individual = ns.length === 1;
+    for (const n of ns) {
       const p = precoIda(v, n);
       if (!p) { tiles.append(h('div', 'pn-tile', h('span', 'pn-tile-k', pessoas(n)), h('span', 'pn-tile-v pn-dash', '—'),
         h('span', 'pn-tile-s', modo === 'com' ? 'Sem preço com mala nesta busca.' : 'Sem lugares a esse preço nesta busca.'))); continue; }
@@ -250,11 +252,12 @@
       const status = hit ? 'Abaixo do alvo: compre' : modo === 'com' ? (p.estimado ? 'Mala à parte, valor estimado' : 'Tarifa com mala')
         : menor != null && p.pp <= menor ? 'O menor já visto' : `${BRL.format(p.pp - r.alvo_ida)} acima do alvo`;
       tiles.append(h('div', 'pn-tile' + (hit ? ' is-hit' : ''),
-        h('span', 'pn-tile-k', pessoas(n) + (n > 1 ? ', cada' : '')),
+        h('span', 'pn-tile-k', individual ? 'Por pessoa, compra individual' : pessoas(n) + (n > 1 ? ', cada' : '')),
         h('span', 'pn-tile-v', BRL.format(p.pp)),
-        h('span', 'pn-tile-s', `na ${vendedor(p.vend)}` + (n > 1 ? ` · total ${BRL.format(p.pp * n)}` : '')),
+        h('span', 'pn-tile-s', `na ${vendedor(p.vend)}` + (n > 1 ? ` · total ${BRL.format(p.pp * n)}` : '') +
+          (individual ? ` · se forem 3, até ${BRL.format(3 * p.pp)}` : '')),
         h('span', 'pn-tile-s' + (hit ? ' is-hit' : ''), status),
-        link('pn-buy', p.link, `Comprar para ${n}`)));
+        link('pn-buy', p.link, individual ? 'Comprar 1 passagem' : `Comprar para ${n}`)));
     }
     el.append(voo, tiles);
   });
@@ -265,25 +268,27 @@
     if (!painel()) { el.textContent = '—'; return; }
     if (!voos.length) { el.append(h('p', 'pn-empty', 'Nenhum voo encontrado na última busca.')); return; }
     voos.sort((x, y) => (x.d + x.saida < y.d + y.saida ? -1 : 1));
-    const melhor = Object.fromEntries(EXTRAS.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
+    const ns = extras();
+    const melhor = Object.fromEntries(ns.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
     const t = h('table', 'pn-table');
     t.setAttribute('aria-label', 'Voos de ida para Natal perto do voo de vocês, preço por pessoa');
-    const cab = h('tr', null, h('th', null, 'Voo'), ...EXTRAS.map((n) => h('th', 'n', pessoas(n))));
+    const rotulo = (n) => (ns.length === 1 ? 'Por pessoa' : pessoas(n));
+    const cab = h('tr', null, h('th', null, 'Voo'), ...ns.map((n) => h('th', 'n', rotulo(n))));
     t.append(h('thead', null, cab));
     const corpo = h('tbody');
     let dia = '';
     for (const v of voos) {
-      if (v.dia !== dia) { dia = v.dia; const td = h('td', null, dia); td.colSpan = EXTRAS.length + 1; corpo.append(h('tr', 'pn-day', td)); }
+      if (v.dia !== dia) { dia = v.dia; const td = h('td', null, dia); td.colSpan = ns.length + 1; corpo.append(h('tr', 'pn-day', td)); }
       const nome = h('td', null,
         h('span', 'pn-v1', `${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
         h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${v.dest} · ${tipoVoo(v.tipo_voo)}`));
-      const cols = EXTRAS.map((n) => {
+      const cols = ns.map((n) => {
         const p = precoIda(v, n);
         const td = h('td', 'n');
-        td.dataset.n = pessoas(n);
+        td.dataset.n = rotulo(n);
         if (!p) { td.append(h('span', 'pn-dash', '—')); return td; }
         const a = link('pn-price' + (p.pp === melhor[n] ? ' is-best' : ''), p.link, BRL.format(p.pp));
-        a.setAttribute('aria-label', `${BRL.format(p.pp)} por pessoa para ${pessoas(n)} na ${vendedor(p.vend)}`);
+        a.setAttribute('aria-label', `${BRL.format(p.pp)} por pessoa ${ns.length === 1 ? 'em compra individual' : 'para ' + pessoas(n)} na ${vendedor(p.vend)}`);
         td.append(a, h('span', 'pn-pv', vendedor(p.vend) + (p.estimado ? ' · estimado' : '')));
         return td;
       });
@@ -333,13 +338,13 @@
     el.replaceChildren();
     const hs = tipo('hist'), r = resumo();
     if (!r || !hs.length) { el.textContent = '—'; return; }
-    const series = [{ k: 'mesmo_3', cor: 'var(--pn-acc)', w: 2, nome: 'Mesmo voo, 3 pessoas' },
-      { k: 'mesmo_1', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Mesmo voo, 1 pessoa' },
+    const series = [{ k: 'mesmo_1', cor: 'var(--pn-acc)', w: 2, nome: 'Mesmo voo de vocês' },
+      { k: 'perto_pp', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Voo perto mais barato' },
       { k: 'volta_pp', cor: 'var(--pn-muted)', w: 1.75, nome: 'Volta' }];
     const pts = hs.map((x) => ({ ...x, t: new Date(x.quando.replace(' ', 'T') + ':00') })).filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
     const W = Math.max(280, el.clientWidth), H = 230;
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
-      .attr('aria-label', 'Preço por pessoa em cada busca: mesmo voo para 3 e para 1 pessoa, e a volta');
+      .attr('aria-label', 'Preço por pessoa em cada busca: mesmo voo de vocês, voo perto mais barato e a volta');
     const vals = pts.flatMap((p) => series.map((s) => p[s.k])).filter((v) => v != null).concat([r.alvo_ida, r.alvo_volta]);
     const y = d3.scaleLinear([d3.min(vals) * 0.95, d3.max(vals) * 1.03], [H - 26, 10]).nice();
     const ticks = y.ticks(4);

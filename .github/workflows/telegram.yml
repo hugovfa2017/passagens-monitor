@@ -20,8 +20,7 @@ jobs:
           python3 -c "
           import os, json, urllib.request, registrar
           me = json.load(urllib.request.urlopen(f'https://api.telegram.org/bot{registrar._token()}/getMe', timeout=30))['result']['username']
-          c = os.environ.get('TELEGRAM_CHAT_ID', '').strip()
-          print('bot: @' + me, '| chat id:', len(c), 'caracteres,', 'só número' if c.lstrip('-').isdigit() else 'NÃO é só número')
+          print('bot: @' + me, '| destinatários:', len(registrar._chats()))
           " || echo "token não aceito pelo Telegram"
           r=$(python3 registrar.py --teste-telegram)
           echo "$r"

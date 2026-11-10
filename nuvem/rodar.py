@@ -252,10 +252,10 @@ def _teste():
     # configuração lida de varredura.js; datas de volta que o Google não validou entram vazias
     cfg = cfg_js(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
     assert cfg['ida'] == ['2026-12-21', '2026-12-22', '2026-12-23'] and cfg['idaDestinos'] == ['NAT'], cfg
-    assert (cfg['pax'], cfg['paxIda'], cfg['volta'][0], cfg['volta'][-1]) == (2, 3, '2027-01-18', '2027-01-26'), cfg
+    assert (cfg['pax'], cfg['paxIda'], cfg['volta'][0], cfg['volta'][-1]) == (2, 1, '2027-01-18', '2027-01-26'), cfg
     assert cfg['alvo'] == alvo, cfg['alvo']
     s8, faltaram = completar({'status': 'erro', 'erro': 'Google pediu verificação'}, cfg)
-    assert faltaram == 9 and s8['pax'] == 2 and s8['paxIda'] == 3 and s8['idas'] == [] and s8['alvo'] == alvo
+    assert faltaram == 9 and s8['pax'] == 2 and s8['paxIda'] == 1 and s8['idas'] == [] and s8['alvo'] == alvo
     r8 = juntar(s8, {('volta', '2027-01-23'): [v123]})
     assert [(t['d'], t['pp']) for t in r8['trechos']] == [('2027-01-23', 650)] and 'vazio' not in r8['trechos'][0], r8['trechos']
     print('ok')

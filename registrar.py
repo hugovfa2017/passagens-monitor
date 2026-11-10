@@ -9,8 +9,10 @@ Uso:  python3 registrar.py ultima.json
       python3 registrar.py --teste                -> auto-checagem (não envia nada)
       python3 registrar.py --configurar-telegram  -> acha o seu chat depois que você manda /start ao bot
       python3 registrar.py --teste-telegram       -> manda uma mensagem de teste
+      python3 registrar.py --novo-chat            -> mostra quem mais abriu o bot (para receber os alertas também)
 
 O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em telegram_chat.txt.
+No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (vários chats separados por vírgula).
 Saídas na pasta: historico.csv, ultimo.md, painel.json (o que o painel mostra).
 Imprime uma linha por evento: ALERTA ..., SEM_NOVIDADE ..., ERRO_VARREDURA ..., TELEGRAM_* ...
 """
@@ -21,14 +23,14 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
 
 # "Algo muito bom" = preço por pessoa, sem mala, igual ou abaixo destes alvos (Telegram com som).
-ALVO_IDA = 800     # ida dos extras, no mesmo voo ou num voo perto (a ida comprada saiu a R$480; o voo costuma ficar acima de R$1.200)
+ALVO_IDA = 800     # ida dos extras (compra individual), no mesmo voo ou num voo perto (a ida comprada saiu a R$480)
 ALVO_VOLTA = 450   # volta dos dois (já foi a R$424; costuma ficar perto de R$520)
 QUEDA_MIN = 20     # "novo menor preço" (Telegram com som) quando cai pelo menos isso abaixo do menor já visto
 
-EXTRAS = (1, 2, 3)   # ponytail: colunas do histórico fixas para até 3 extras; se mudar CFG.paxIda, mude aqui
+EXTRAS = (1, 2, 3)   # ponytail: colunas do histórico fixas para até 3 extras (hoje só a compra individual, mesmo_1, é buscada)
 CAMPOS = ['data_hora', *(f'mesmo_{n}' for n in EXTRAS), 'perto_pp', 'perto_voo', 'volta_pp', 'volta_voo', 'volta_mala_pp']
 ROTULO = {**{f'mesmo_{n}': f"o mesmo voo para {n} {'pessoa' if n == 1 else 'pessoas'}" for n in EXTRAS},
-          'perto_pp': 'o voo perto mais barato para 3 pessoas', 'volta_pp': 'a volta de vocês dois'}
+          'perto_pp': 'o voo perto mais barato', 'volta_pp': 'a volta de vocês dois'}
 SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sáb', 'dom']
 
 
@@ -126,27 +128,43 @@ def _api(token, metodo, campos=None):
         return json.loads(r.read().decode())
 
 
-def telegram(texto, silencioso=False, botoes=()):
-    """botoes: linhas de botões com link, ex. [[{'text': 'Abrir', 'url': 'https://...'}]]"""
-    token = _token()
-    chat = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
-    if not token or not chat:
-        return 'TELEGRAM_NAO_CONFIGURADO'
-    campos = {'chat_id': chat, 'text': texto, 'parse_mode': 'HTML', 'disable_web_page_preview': 'true',
-              'disable_notification': 'true' if silencioso else 'false'}
-    if botoes:
-        campos['reply_markup'] = json.dumps({'inline_keyboard': list(botoes)})
+def _chats():
+    """Quem recebe os alertas: um ou mais ids de chat (separados por vírgula ou espaço)."""
+    bruto = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
+    return re.findall(r'-?\d{5,}', bruto)
+
+
+def _enviar_um(token, campos):
+    """None se foi; senão o motivo. O Telegram nunca derruba a varredura; sem str(e), que pode trazer o token na URL."""
     try:
         r = _api(token, 'sendMessage', campos)
-        return 'TELEGRAM_ENVIADO' if r.get('ok') else f"TELEGRAM_FALHOU {r.get('description', '')[:150]}"
-    except Exception as e:  # o Telegram nunca derruba a varredura; sem str(e), que pode trazer o token na URL
+        return None if r.get('ok') else r.get('description', '')[:150]
+    except Exception as e:
         desc = ''
         if hasattr(e, 'read'):   # erro HTTP: o Telegram explica no corpo ("Unauthorized", "chat not found"...)
             try:
                 desc = json.loads(e.read()).get('description', '')[:150]
             except Exception:
                 pass
-        return f"TELEGRAM_FALHOU {type(e).__name__} {getattr(e, 'code', '')} {desc}".strip()
+        return f"{type(e).__name__} {getattr(e, 'code', '')} {desc}".strip()
+
+
+def telegram(texto, silencioso=False, botoes=(), _envio=_enviar_um):
+    """Manda para todos os chats. botoes: linhas de botões com link, ex. [[{'text': 'Abrir', 'url': 'https://...'}]]
+    O resultado vai para arquivos públicos (ultimo.md, painel.json): nunca põe o id do chat nele."""
+    token, chats = _token(), _chats()
+    if not token or not chats:
+        return 'TELEGRAM_NAO_CONFIGURADO'
+    falhas = []
+    for i, chat in enumerate(chats, 1):
+        campos = {'chat_id': chat, 'text': texto, 'parse_mode': 'HTML', 'disable_web_page_preview': 'true',
+                  'disable_notification': 'true' if silencioso else 'false'}
+        if botoes:
+            campos['reply_markup'] = json.dumps({'inline_keyboard': list(botoes)})
+        erro = _envio(token, campos)
+        if erro is not None:
+            falhas.append(f"destinatário {i} de {len(chats)}: {erro}" if len(chats) > 1 else erro)
+    return 'TELEGRAM_ENVIADO' if not falhas else 'TELEGRAM_FALHOU ' + ' | '.join(falhas)
 
 
 def configurar_telegram():
@@ -163,6 +181,24 @@ def configurar_telegram():
     chat = msgs[-1]['chat']
     open(CHAT_FILE, 'w').write(str(chat['id']))
     return f"TELEGRAM_CONFIGURADO chat de {chat.get('first_name', '')}"
+
+
+def novos_chats():
+    """Quem abriu o bot e ainda não recebe os alertas (nome e id do chat), para pôr no segredo TELEGRAM_CHAT_ID."""
+    token = _token()
+    if not token:
+        return 'TELEGRAM_SEM_TOKEN salve o token no Keychain primeiro'
+    try:
+        msgs = [u['message'] for u in _api(token, 'getUpdates').get('result', []) if 'message' in u]
+    except Exception as e:
+        return f'TELEGRAM_FALHOU {type(e).__name__}'
+    ja = set(_chats())
+    novos = {str(m['chat']['id']): ' '.join(filter(None, (m['chat'].get('first_name'), m['chat'].get('last_name')))) or m['chat'].get('title', '')
+             for m in msgs if str(m['chat']['id']) not in ja}
+    if not novos:
+        return 'NENHUM_NOVO a pessoa precisa abrir o bot no Telegram, tocar em Iniciar e mandar qualquer mensagem (vale por 24 h)'
+    return '\n'.join(f'NOVO {nome}: {chat}' for chat, nome in novos.items()) + \
+        f"\nSegredo TELEGRAM_CHAT_ID com todos: {','.join([*ja, *novos])}"
 
 
 def registrar(scan, pasta=AQUI, enviar=telegram):
@@ -239,8 +275,14 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
     num = alvo['voo'].split(' ')[-1]
     blocos, botoes = [], []
     if mesmo:
-        precos = '\n'.join(f"{pessoas(n)}: <b>{brl(p['pp'])}</b>{' cada' if n > 1 else ''} na {html.escape(nome_vendedor(p['vend']))}"
-                           + (' ✅' if p['pp'] <= ALVO_IDA else '') for n, p in pm.items())
+        ok = lambda p: ' ✅' if p['pp'] <= ALVO_IDA else ''
+        if list(pm) == [1]:   # compra individual: cada extra compra a sua passagem
+            p = pm[1]
+            precos = (f"Por pessoa, comprando uma passagem por vez: <b>{brl(p['pp'])}</b> na {html.escape(nome_vendedor(p['vend']))}{ok(p)}\n"
+                      f"<i>Se forem 3, cada um compra a sua (até {brl(3 * p['pp'])} no total, se o preço não subir no meio).</i>")
+        else:
+            precos = '\n'.join(f"{pessoas(n)}: <b>{brl(p['pp'])}</b>{' cada' if n > 1 else ''} na {html.escape(nome_vendedor(p['vend']))}{ok(p)}"
+                               for n, p in pm.items())
         malas = [(n, p) for n, p in pm.items() if 'mala_pp' in p]
         menor_pp = min(p['pp'] for p in pm.values())
         meta = f"✅ abaixo do alvo de {brl(ALVO_IDA)}" if menor_pp <= ALVO_IDA else f"faltam {brl(menor_pp - ALVO_IDA)} para o alvo de {brl(ALVO_IDA)}"
@@ -248,14 +290,16 @@ def registrar(scan, pasta=AQUI, enviar=telegram):
                       f"{html.escape(voo_txt(mesmo))}\n\n{precos}</blockquote>\n{meta}" +
                       (f"\n🧳 Com mala, por pessoa: " + ' · '.join(f"{n}: {brl(p['mala_pp'])}" for n, p in malas) +
                        (' <i>(mala à parte, estimada)</i>' if any(p['mala_estimado'] for _, p in malas) else '') if malas else ''))
-        botoes.append([{'text': f"🎯 {n}: {brl(p['pp'])}", 'url': link_ida(mesmo, n)} for n, p in pm.items()])
+        botoes.append([{'text': f"🎯 Mesmo voo {brl(p['pp'])}" if len(pm) == 1 else f"🎯 {n}: {brl(p['pp'])}", 'url': link_ida(mesmo, n)}
+                       for n, p in pm.items()])
     else:
         blocos.append(f"🎯 <b>Ida dos extras · mesmo voo de vocês</b>\nNão achei o {alvo['cia']} {num} ({dia(alvo['d'])}, {alvo['saida']}) "
                       "à venda nesta busca. Pode ter esgotado ou o vendedor não mostrou; veja os voos perto.")
     if perto_dia:
-        linhas_p = [f"{dia(v['d'])} · {v['orig']} → {v['dest']} · {html.escape(voo_txt(v))}\n<b>{brl(v['precos'][n_max]['pp'])}</b> cada na "
+        cada = ' cada' if n_max > 1 else ''
+        linhas_p = [f"{dia(v['d'])} · {v['orig']} → {v['dest']} · {html.escape(voo_txt(v))}\n<b>{brl(v['precos'][n_max]['pp'])}</b>{cada} na "
                     f"{html.escape(nome_vendedor(v['precos'][n_max]['vend']))}" for v in sorted(perto_dia.values(), key=lambda v: (v['d'], v['saida']))]
-        blocos.append(f"📍 <b>Voos perto · para {pessoas(n_max)}</b>\n<blockquote>" + '\n\n'.join(linhas_p) + "</blockquote>")
+        blocos.append(f"📍 <b>Voos perto · {'compra individual' if n_max == 1 else 'para ' + pessoas(n_max)}</b>\n<blockquote>" + '\n\n'.join(linhas_p) + "</blockquote>")
         botoes.append([{'text': f"📍 Perto {brl(perto[0]['precos'][n_max]['pp'])} ({dia(perto[0]['d'])[4:]} {perto[0]['saida']})",
                         'url': link_ida(perto[0], n_max)}])
     if volta:
@@ -358,7 +402,15 @@ def _teste():
         assert _token() == tk, _token()
         os.environ['TELEGRAM_TOKEN'] = 'sem token aqui'
         assert _token() == '' and telegram('x') == 'TELEGRAM_NAO_CONFIGURADO'
+        # vários destinatários: manda para cada um; o resultado diz quem falhou, sem mostrar o id
+        os.environ.update(TELEGRAM_TOKEN=tk, TELEGRAM_CHAT_ID=' 111111111, 222222222 ')
+        foram = []
+        envio = lambda token, campos: foram.append(campos['chat_id']) or (None if campos['chat_id'] == '111111111' else 'Forbidden: bot was blocked')
+        r = telegram('oi', _envio=envio)
+        assert foram == ['111111111', '222222222'] and r == 'TELEGRAM_FALHOU destinatário 2 de 2: Forbidden: bot was blocked', r
+        assert telegram('oi', _envio=lambda t, c: None) == 'TELEGRAM_ENVIADO' and '2222' not in r
     finally:
+        os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
     enviados = []
     fake = lambda msg, silencioso=False, botoes=(): enviados.append((msg, silencioso, botoes)) or 'TELEGRAM_ENVIADO'
@@ -417,6 +469,17 @@ def _teste():
         assert 'Não encontrado à venda' in md and '- seg 25/01 (34 dias): R$480/pessoa via 123milhas' in md, md
         s9 = json.loads(json.dumps(scan(m3=1100)))   # lido do ultima.json: chaves de texto
         assert registrar(s9, d, fake)[0].startswith('ALERTA o mesmo voo para 3 pessoas caiu p/ R$1.100'), enviados[-1]
+        # compra individual (CFG.paxIda = 1): texto e botão próprios, sem "cada"
+        s10 = scan()
+        s10['paxIda'] = 1
+        for v in s10['voos_ida']:
+            v['precos'] = {1: v['precos'].get(1) or {**v['precos'][3], 'pp': v['precos'][3]['pp'] - 50}}
+        with tempfile.TemporaryDirectory() as d4:
+            registrar(s10, d4, fake)
+            msg, _, bt = enviados[-1]
+            assert 'Por pessoa, comprando uma passagem por vez: <b>R$900</b> na 123milhas\n<i>Se forem 3, cada um compra a sua (até R$2.700' in msg, msg
+            assert '📍 <b>Voos perto · compra individual</b>' in msg and '<b>R$600</b> na Zupper' in msg and ' cada na' not in msg, msg
+            assert bt[0] == [{'text': '🎯 Mesmo voo R$900', 'url': 'https://123milhas.com/1'}] and bt[1][0]['text'] == '📍 Perto R$600 (23/12 06:00)', bt
         assert registrar({'status': 'erro', 'erro': 'x<y'}, d, fake) == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO']
         assert enviados[-1][1] and 'não consegui ler os preços' in enviados[-1][0] and '<i>x&lt;y</i>' in enviados[-1][0], enviados[-1]
     print('ok')
@@ -427,6 +490,8 @@ if __name__ == '__main__':
         _teste()
     elif sys.argv[1:] == ['--configurar-telegram']:
         print(configurar_telegram())
+    elif sys.argv[1:] == ['--novo-chat']:
+        print(novos_chats())
     elif sys.argv[1:] == ['--teste-telegram']:
         print(telegram(f'Teste do monitor de passagens: o alerta está funcionando. Painel: {PAINEL_URL}'))
     else:

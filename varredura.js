@@ -8,9 +8,9 @@
 // (já vimos R$592 na lista virar R$2.550 na compra). Só conta o preço da tela de compra.
 (() => {
   const CFG = {
-    // ida dos extras (1 a paxIda adultos, ainda a confirmar): o mesmo voo comprado e voos perto dele, para Natal
+    // ida dos extras (ainda a confirmar): o mesmo voo comprado e voos perto dele, para Natal
     alvo: '2026-12-22 14:05 Gol GRU-NAT G3 1678',   // data, saída, companhia, rota, número do voo
-    paxIda: 3,                      // no Google, preço para o máximo de extras; os vendedores buscam 1, 2 e 3
+    paxIda: 1,                      // compra individual: cada extra compra a sua (busca para 1 adulto; 3 = busca 1, 2 e 3)
     ida: ['2026-12-21','2026-12-22','2026-12-23'],
     idaDestinos: ['NAT'],
     // volta dos dois que já têm a ida (estadia de 27 a 39 dias a partir de 22/12, até 26/01)
@@ -135,7 +135,7 @@
       for (const r of ok.filter(r => r.dir === 'volta')) if (!best[r.d] || r.melhor.pp < best[r.d].melhor.pp) best[r.d] = r;
       const linha = r => ({ d: r.d, pp: r.melhor.pp, vend: r.melhor.vendedor, cia: r.cia, rota: r.rota, saida: r.saida, chegada: r.chegada,
         tipo: r.tipo, ppCia: r.naCia ? r.naCia.pp : null, voos: r.voos });
-      // volta: o melhor voo de cada data (2 adultos); ida: cada voo validado (paxIda adultos)
+      // volta: o melhor voo de cada data (2 adultos); ida: cada voo validado (preço para paxIda adultos)
       const trechos = CFG.volta.filter(d => best[d]).map(d => ({ s: 'volta', ...linha(best[d]) }));
       const idas = ok.filter(r => r.dir === 'ida').map(linha);
       const vend = {};
