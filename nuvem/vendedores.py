@@ -209,9 +209,12 @@ async def _cartoes(navegador, url, sem, casa=None):
             await ctx.close()
 
 
+SP = {'GRU', 'CGH'}   # em São Paulo, só Guarulhos ou Congonhas (Viracopos e São José dos Campos ficam longe)
+
+
 def _aceita(x):
-    """Sem Viracopos (longe para o Hugo); escala só se a viagem toda couber em MAX_MIN_COM_ESCALA."""
-    if 'VCP' in (x['orig'], x['dest']) or (not x['direto'] and x['dur'] > MAX_MIN_COM_ESCALA):
+    """Lado de São Paulo em GRU ou CGH; escala só se a viagem toda couber em MAX_MIN_COM_ESCALA."""
+    if not SP & {x['orig'], x['dest']} or (not x['direto'] and x['dur'] > MAX_MIN_COM_ESCALA):
         return False
     x['tipo'] = 'direto' if x['direto'] else 'com escala'
     return True
@@ -298,6 +301,7 @@ def _teste():
     r = ler_vaidepromo(vp, 2)
     assert [(x['cia'], x['orig'], x['dest'], x['saida'], x['chegada'], x['direto'], x['dur'], x['pp']) for x in r] == \
         [('Azul', 'GRU', 'NAT', '21:25', '02:05', False, 280, 728), ('Gol', 'GRU', 'NAT', '14:05', '17:25', True, 200, 1480)], r
+    assert not _aceita({**r[1], 'orig': 'SJK', 'direto': True}) and not _aceita({**r[1], 'orig': 'VCP', 'direto': True})   # busca "São Paulo" traz SJK e VCP
     assert url_vaidepromo('SAO', 'NAT', '2026-12-22', 1).endswith('/pesquisa/SAONAT261222/1/0/0/Y/') and LER['Vai de Promo'] is ler_vaidepromo
     u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2)
     assert 'type=roundTrip' in u and '%22originAirport%22%3A%22JDO%22' in u and '%22destinationAirport%22%3A%22FOR%22' in u

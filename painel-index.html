@@ -148,7 +148,7 @@
     <div class="pn-sec">
       <div class="pn-sechead">
         <h3>Outras opções</h3>
-        <p class="pn-note">As 20 mais baratas de 19 a 24/12 para Natal, João Pessoa (2h30 de carro até Natal), Recife (4h), Fortaleza e Juazeiro do Norte, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
+        <p class="pn-note">De 19 a 24/12, por cidade, na ordem de preferência: as 5 mais baratas de cada uma, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
       </div>
       <div class="pn-tbox" data-draw="perto">—</div>
     </div>
@@ -157,7 +157,7 @@
   <section class="pn-sec" id="volta">
     <div class="pn-sechead">
       <h2>Volta de vocês dois</h2>
-      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, João Pessoa, Recife, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa.</p>
+      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, Fortaleza, Juazeiro do Norte, João Pessoa ou Recife para São Paulo. O melhor voo de cada data, por pessoa.</p>
     </div>
     <div class="pn-list" data-draw="volta">—</div>
   </section>
@@ -200,7 +200,7 @@
   };
   const link = (cls, href, txt) => { const a = h('a', cls, txt); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
   const pessoas = (n) => `${n} ${n === 1 ? 'pessoa' : 'pessoas'}`;
-  const CIDADE = { NAT: 'Natal', JPA: 'João Pessoa', REC: 'Recife', FOR: 'Fortaleza', JDO: 'Juazeiro do Norte' };
+  const CIDADE = { NAT: 'Natal', FOR: 'Fortaleza', JDO: 'Juazeiro do Norte', JPA: 'João Pessoa', REC: 'Recife' };   // ordem de preferência
   const cidade = (c) => CIDADE[c] || c;
   const vendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
   const tipoVoo = (t) => (t === 'direto' ? 'direto' : t);
@@ -271,23 +271,25 @@
     if (!painel()) { el.textContent = '—'; return; }
     if (!voos.length) { el.append(h('p', 'pn-empty', 'Nenhum voo encontrado na última busca.')); return; }
     const ns = extras();
-    // o voo de vocês e as 20 opções mais baratas, em ordem de data e hora
+    // por cidade, na ordem de preferência: o voo de vocês e as 5 opções mais baratas de cada uma
     const preco1 = (v) => (precoIda(v, ns[ns.length - 1]) || { pp: Infinity }).pp;
-    const baratos = new Set(voos.filter((v) => !v.mesmo).sort((a, b) => preco1(a) - preco1(b)).slice(0, 20));
-    voos = voos.filter((v) => v.mesmo || baratos.has(v)).sort((x, y) => (x.d + x.saida < y.d + y.saida ? -1 : 1));
+    const ordem = (resumo() || {}).nordeste || Object.keys(CIDADE);
+    const grupos = ordem.map((c) => [c, [...voos.filter((v) => v.dest === c && v.mesmo),
+      ...voos.filter((v) => v.dest === c && !v.mesmo && preco1(v) < Infinity).sort((a, b) => preco1(a) - preco1(b)).slice(0, 5)]]).filter(([, l]) => l.length);
+    voos = grupos.flatMap(([, l]) => l);
     const melhor = Object.fromEntries(ns.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
     const t = h('table', 'pn-table');
-    t.setAttribute('aria-label', 'Voos de ida para Natal perto do voo de vocês, preço por pessoa');
+    t.setAttribute('aria-label', 'Voos de ida dos extras por cidade, preço por pessoa');
     const rotulo = (n) => (ns.length === 1 ? 'Por pessoa' : pessoas(n));
     const cab = h('tr', null, h('th', null, 'Voo'), ...ns.map((n) => h('th', 'n', rotulo(n))));
     t.append(h('thead', null, cab));
     const corpo = h('tbody');
-    let dia = '';
-    for (const v of voos) {
-      if (v.dia !== dia) { dia = v.dia; const td = h('td', null, dia); td.colSpan = ns.length + 1; corpo.append(h('tr', 'pn-day', td)); }
+    for (const [c, lista] of grupos) {
+      const td = h('td', null, cidade(c)); td.colSpan = ns.length + 1; corpo.append(h('tr', 'pn-day', td));
+      for (const v of lista) {
       const nome = h('td', null,
-        h('span', 'pn-v1', `${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
-        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${cidade(v.dest)} · ${tipoVoo(v.tipo_voo)}`));
+        h('span', 'pn-v1', `${v.dia} · ${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
+        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${v.dest} · ${tipoVoo(v.tipo_voo)}`));
       const cols = ns.map((n) => {
         const p = precoIda(v, n);
         const td = h('td', 'n');
@@ -299,6 +301,7 @@
         return td;
       });
       corpo.append(h('tr', v.mesmo ? 'is-mine' : null, nome, ...cols));
+      }
     }
     t.append(corpo);
     el.append(t);
@@ -331,7 +334,7 @@
   dash.draw('volta-nota', (el) => {
     const r = resumo();
     if (!r) return;
-    el.textContent = `2 adultos, saindo de Natal, João Pessoa, Recife, Fortaleza ou Juazeiro do Norte para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
+    el.textContent = `2 adultos, saindo de Natal, Fortaleza, Juazeiro do Norte, João Pessoa ou Recife para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
   });
 
   dash.draw('hist-nota', (el) => {

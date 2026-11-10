@@ -12,8 +12,8 @@
     alvo: '2026-12-22 14:05 Gol GRU-NAT G3 1678',   // data, saída, companhia, rota, número do voo
     paxIda: 1,                      // compra individual: cada extra compra a sua (busca para 1 adulto; 3 = busca 1, 2 e 3)
     ida: ['2026-12-19','2026-12-20','2026-12-21','2026-12-22','2026-12-23','2026-12-24'],
-    // aeroportos do Nordeste: chegada dos extras e saída da volta (João Pessoa e Recife ficam a 2h30 e 4h de carro de Natal)
-    nordeste: ['NAT','JPA','REC','FOR','JDO'],
+    // aeroportos do Nordeste, em ordem de preferência: chegada dos extras e saída da volta
+    nordeste: ['NAT','FOR','JDO','JPA','REC'],
     // volta dos dois que já têm a ida (estadia de 27 a 39 dias a partir de 22/12, até 26/01)
     pax: 2,
     volta: ['2027-01-18','2027-01-19','2027-01-20','2027-01-21','2027-01-22','2027-01-23','2027-01-24','2027-01-25','2027-01-26'],

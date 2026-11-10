@@ -38,7 +38,7 @@ def completar(scan, cfg):
     tem = {t['d'] for t in scan.get('trechos', [])}
     vazias = [{'s': 'volta', 'd': d, 'pp': SEM_PRECO, 'vend': '', 'cia': '', 'rota': 'JDO-SAO', 'saida': '', 'chegada': '', 'tipo': '',
                'ppCia': None, 'voos': '', 'vazio': True} for d in cfg['volta'] if d not in tem]
-    return {**scan, 'pax': cfg['pax'], 'paxIda': cfg['paxIda'], 'alvo': cfg['alvo'], 'idas': scan.get('idas', []),
+    return {**scan, 'pax': cfg['pax'], 'paxIda': cfg['paxIda'], 'alvo': cfg['alvo'], 'nordeste': cfg['nordeste'], 'idas': scan.get('idas', []),
             'trechos': scan.get('trechos', []) + vazias}, len(vazias)
 
 
@@ -263,14 +263,14 @@ def _teste():
     assert juntar_ida({3: [g]}, alvo, {}, None)[0]['mesmo']
     # configuração lida de varredura.js; datas de volta que o Google não validou entram vazias
     cfg = cfg_js(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
-    assert cfg['ida'][0] == '2026-12-19' and cfg['ida'][-1] == '2026-12-24' and cfg['nordeste'] == ['NAT', 'JPA', 'REC', 'FOR', 'JDO'], cfg
+    assert cfg['ida'][0] == '2026-12-19' and cfg['ida'][-1] == '2026-12-24' and cfg['nordeste'] == ['NAT', 'FOR', 'JDO', 'JPA', 'REC'], cfg
     of_d = [{'d': '2026-12-19', 'dest': 'NAT', 'pp': 900}, {'d': '2026-12-19', 'dest': 'REC', 'pp': 950}, {'d': '2026-12-19', 'dest': 'JPA', 'pp': 990},
             {'d': '2026-12-20', 'dest': 'NAT', 'pp': 900}]
     assert destinos_ida('2026-12-19', of_d, cfg) == ['NAT', 'REC'] and destinos_ida('2026-12-20', of_d, cfg) == ['NAT'], destinos_ida('2026-12-19', of_d, cfg)
     assert (cfg['pax'], cfg['paxIda'], cfg['volta'][0], cfg['volta'][-1]) == (2, 1, '2027-01-18', '2027-01-26'), cfg
     assert cfg['alvo'] == alvo, cfg['alvo']
     s8, faltaram = completar({'status': 'erro', 'erro': 'Google pediu verificação'}, cfg)
-    assert faltaram == 9 and s8['pax'] == 2 and s8['paxIda'] == 1 and s8['idas'] == [] and s8['alvo'] == alvo
+    assert faltaram == 9 and s8['nordeste'][0] == 'NAT' and s8['pax'] == 2 and s8['paxIda'] == 1 and s8['idas'] == [] and s8['alvo'] == alvo
     r8 = juntar(s8, {('volta', '2027-01-23'): [v123]})
     assert [(t['d'], t['pp']) for t in r8['trechos']] == [('2027-01-23', 650)] and 'vazio' not in r8['trechos'][0], r8['trechos']
     print('ok')
