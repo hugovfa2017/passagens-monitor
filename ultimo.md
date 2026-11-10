@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-10 03:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-10 04:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -23,14 +23,14 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$800, volta R$450)
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$664/pessoa via CIA Gol | Gol NAT-CGH 02:20-06:00 direto · com mala R$757
+- seg 18/01 (27 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 02:45-05:50 direto | na cia R$718 · com mala R$742
 - ter 19/01 (28 dias): R$787/pessoa via CIA Azul | Azul FOR-GRU 05:40-12:10 escala 1h55 · com mala R$893
 - qua 20/01 (29 dias): R$711/pessoa via Zupper | LATAM FOR-GRU 03:20-06:55 direto · com mala R$809
 - qui 21/01 (30 dias): R$670/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$795
 - sex 22/01 (31 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
-- sáb 23/01 (32 dias): R$487/pessoa via CIA Gol | Gol NAT-CGH 04:55-08:20 direto · com mala R$612
+- sáb 23/01 (32 dias): R$666/pessoa via 123milhas | Gol FOR-GRU 02:40-06:20 direto · com mala R$791
 - dom 24/01 (33 dias): R$670/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto · com mala R$795
-- seg 25/01 (34 dias): R$666/pessoa via 123milhas | Gol FOR-GRU 02:20-06:05 direto · com mala R$791
-- ter 26/01 (35 dias): R$480/pessoa via MaxMilhas | Gol FOR-GRU 03:40-07:25 direto | na cia R$712 · com mala R$605
+- seg 25/01 (34 dias): R$666/pessoa via 123milhas | Gol FOR-GRU 02:20-06:05 direto | na cia R$712 · com mala R$791
+- ter 26/01 (35 dias): R$474/pessoa via 123milhas | Gol FOR-GRU 03:40-07:25 direto | na cia R$505 · com mala R$599
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
