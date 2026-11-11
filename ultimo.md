@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-11 09:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-11 10:20 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -11,26 +11,26 @@ Não encontrado à venda nesta busca.
 ## Ida dos extras: outras opções (compra individual)
 
 - seg 21/12 Azul 4152 · 23:00 → 02:00, direto GRU-REC: R$739/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261221/1/0/0/Y/))
-- qui 24/12 Azul 2959 · 13:00 → 16:05, direto GRU-REC: R$739/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261224/1/0/0/Y/))
-- qua 23/12 Azul 6084 · 15:55 → 19:00, direto CGH-REC: R$765/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/1/0/0/Y/))
-- qui 24/12 Azul · 17:20 → 20:25, direto CGH-REC: R$765/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261224/1/0/0/Y/))
-- qui 24/12 Azul · 16:40 → 19:40, direto GRU-REC: R$794/pessoa via MaxMilhas ([comprar](https://www.maxmilhas.com.br/busca-passagens-aereas/OW/GRU/REC/2026-12-24/1/0/0/EC))
-- ter 22/12 LATAM 3376 · 17:35 → 20:40, direto GRU-REC: R$845/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=REC&adultos=1&criancas=0&bebes=0&ida=22-12-2026&classe=3))
-- dom 20/12 LATAM 3378 · 21:00 → 00:05, direto GRU-REC: R$968/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261220/1/0/0/Y/))
-- qua 23/12 LATAM 3676 · 15:40 → 18:45, direto GRU-REC: R$1.000/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=REC&adultos=1&criancas=0&bebes=0&ida=23-12-2026&classe=3))
-- ter 22/12 LATAM 3614 · 13:15 → 16:25, direto CGH-REC: R$1.031/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D))
-- ter 22/12 LATAM 3414 · 10:45 → 13:55, direto CGH-REC: R$1.038/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D))
+- ter 22/12 Azul 2959 · 14:10 → 17:15, direto GRU-REC: R$739/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/1/0/0/Y/))
+- qui 24/12 Azul 5092 · 16:40 → 19:40, direto GRU-REC: R$742/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261224/1/0/0/Y/))
+- ter 22/12 Gol 1452 · 23:05 → 02:15, direto GRU-REC: R$792/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/1/0/0/Y/))
+- qua 23/12 Gol 1640 · 22:05 → 01:15, direto CGH-REC: R$813/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/1/0/0/Y/))
+- seg 21/12 Gol 1336 · 21:20 → 00:30, direto CGH-REC: R$832/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/1/0/0/Y/))
+- seg 21/12 Gol · 22:05 → 01:15, direto CGH-REC: R$853/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/1/0/0/Y/))
+- sáb 19/12 Gol 1580 · 22:10 → 01:00, direto GRU-JDO: R$881/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261219/1/0/0/Y/))
+- dom 20/12 Gol 1580 · 22:10 → 01:00, direto GRU-JDO: R$881/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261220/1/0/0/Y/))
+- dom 20/12 Gol 1680 · 22:50 → 02:10, direto GRU-NAT: R$915/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUNAT261220/1/0/0/Y/))
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$672/pessoa via 123milhas | LATAM JDO-GRU 02:45-05:50 direto | na cia R$718 · com mala R$779
-- ter 19/01 (28 dias): R$577/pessoa via Vai de Promo | Azul REC-GRU 04:35-07:50 direto | na cia R$655 · com mala R$670
-- qua 20/01 (29 dias): R$736/pessoa via 123milhas | LATAM FOR-GRU 21:05-00:40 direto | na cia R$786 · com mala R$843
-- qui 21/01 (30 dias): R$577/pessoa via Vai de Promo | Azul REC-GRU 08:55-12:10 direto · com mala R$670
-- sex 22/01 (31 dias): R$577/pessoa via Vai de Promo | Azul REC-GRU 02:50-06:05 direto · com mala R$670
-- sáb 23/01 (32 dias): R$660/pessoa via Vai de Promo | Gol FOR-GRU 02:40-06:20 direto | na cia R$712 · com mala R$782
+- seg 18/01 (27 dias): R$700/pessoa via Vai de Promo | Azul REC-GRU 15:15-18:30 direto · com mala R$801
+- ter 19/01 (28 dias): R$614/pessoa via Vai de Promo | Gol NAT-CGH 02:20-06:00 direto · com mala R$739
+- qua 20/01 (29 dias): R$756/pessoa via Vai de Promo | Gol JDO-GRU 04:05-07:15 direto · com mala R$881
+- qui 21/01 (30 dias): R$453/pessoa via MaxMilhas | Gol NAT-CGH 02:20-06:00 direto · com mala R$578
+- sex 22/01 (31 dias): R$641/pessoa via Vai de Promo | Gol JPA-CGH 04:35-08:00 direto · com mala R$745
+- sáb 23/01 (32 dias): R$453/pessoa via MaxMilhas | Gol NAT-CGH 04:55-08:20 direto · com mala R$578
 - dom 24/01 (33 dias): R$577/pessoa via Vai de Promo | Azul REC-GRU 03:00-06:20 direto · com mala R$670
-- seg 25/01 (34 dias): R$577/pessoa via Vai de Promo | Azul REC-GRU 04:00-07:15 direto · com mala R$670
-- ter 26/01 (35 dias): R$567/pessoa via Vai de Promo | Gol JPA-GRU 02:45-06:20 direto · com mala R$710
+- seg 25/01 (34 dias): R$463/pessoa via MaxMilhas | Gol REC-CGH 05:45-09:10 direto · com mala R$588
+- ter 26/01 (35 dias): R$463/pessoa via MaxMilhas | Gol REC-CGH 05:45-09:10 direto · com mala R$588
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
