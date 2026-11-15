@@ -13,12 +13,12 @@ Com cupom:
 Mercado Livre, Magazine Luiza, Casas Bahia, Carrefour e Pelando barram robôs; não tentamos contornar (as ofertas deles
 chegam pelo Promobit e pelo Zoom).
 """
-import html, json, re, time, urllib.error, urllib.parse, urllib.request
+import gzip, html, json, re, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'
 CABECALHOS = {'User-Agent': UA, 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-              'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.5'}
+              'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.5', 'Accept-Encoding': 'gzip'}
 BLOQUEIO = re.compile(r'captcha|account-verification|acesso bloqueado|access denied|verifica[çc][ãa]o de seguran[çc]a', re.I)
 BRT = timezone(timedelta(hours=-3))
 
@@ -32,7 +32,11 @@ def baixar(url, json_api=False, tentativas=3):
     for i in range(tentativas):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=cab), timeout=40) as r:
-                texto = r.read().decode('utf-8', 'replace')
+                corpo = r.read()
+                # a KaBuM! às vezes manda gzip mesmo sem pedir; pedimos sempre e descompactamos
+                if r.headers.get('Content-Encoding', '').lower() == 'gzip' or corpo[:2] == b'\x1f\x8b':
+                    corpo = gzip.decompress(corpo)
+                texto = corpo.decode('utf-8', 'replace')
                 if not json_api and BLOQUEIO.search(r.url + texto[:3000]):
                     raise Bloqueado(f'pediu verificação anti-robô ({urllib.parse.urlsplit(r.url).netloc})')
                 return texto
