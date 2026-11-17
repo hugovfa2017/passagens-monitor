@@ -207,7 +207,7 @@ const DADOS = /*DADOS*/null;
   };
   const linhaCupom = o => {
     if (!o.cupom) return el('span', { class: 'badge', text: 'sem cupom' });
-    if (o.cupom_origem === 'loja' && /^cupom/.test(o.cupom)) return el('span', { class: 'cupom' }, el('span', { class: 'badge bom', text: o.cupom }));
+    if (/^cupom/.test(o.cupom)) return el('span', { class: 'cupom' }, el('span', { class: 'badge bom', text: o.cupom }));
     return el('span', { class: 'cupom' }, el('span', { text: 'cupom' }), el('span', { class: 'codigo', text: o.cupom }), copiar(o.cupom));
   };
 
@@ -335,7 +335,7 @@ const DADOS = /*DADOS*/null;
     const tb = el('tbody');
     for (const o of m.ofertas) {
       const cup = !o.cupom ? el('span', { class: 'vazio', text: '—' })
-        : (o.cupom_origem === 'loja' && /^cupom/.test(o.cupom)) ? el('span', { text: o.cupom }) : el('span', { class: 'codigo', text: o.cupom });
+        : /^cupom/.test(o.cupom) ? el('span', { text: o.cupom }) : el('span', { class: 'codigo', text: o.cupom });
       const extra = [o.obs, o.detalhes, o.idade_h != null ? `postado há ${Math.round(o.idade_h)}h` : ''].filter(Boolean).join(' · ');
       const prod = el('td', {}, seguro(o.link) ? el('a', { href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: o.loja }) : el('span', { class: 'loja', text: o.loja }),
         el('span', { class: 'tit', text: o.titulo }), extra ? el('span', { class: 'tit', text: extra }) : null);

@@ -199,11 +199,10 @@ def descricao(o, html_=True):
     cod = (lambda c: f'<code>{html.escape(c)}</code>') if html_ else (lambda c: c)
     partes = [f"{brl(o['preco'])} {na(o['loja'])} {o['loja']}"]
     if o['cupom']:
-        partes.append(f"com cupom {cod(o['cupom'])}" if o['cupom_origem'] == 'postado' or not o['cupom'].startswith('cupom')
-                      else f"com {o['cupom']}")
+        partes.append(f"com {o['cupom']}" if o['cupom'].startswith('cupom') else f"com cupom {cod(o['cupom'])}")
         if o.get('preco_sem_cupom'):
             partes.append(f"(sem cupom {brl(o['preco_sem_cupom'])})")
-    extra = [x for x in (o.get('obs', '').split(' · ')[0] if o['fonte'] != 'Promobit' else '',
+    extra = [x for x in (o.get('obs', '').split(' · ')[0] if o['fonte'] != 'Promobit' or ':' in o.get('obs', '') else '',
                          f"postado há {o['idade_h']:.0f}h" if o.get('idade_h') is not None else '') if x]
     return ' '.join(partes) + (f" · {', '.join(extra)}" if extra else '')
 
@@ -495,6 +494,18 @@ def _teste():
     assert fontes.desconto({'pct': 30, 'minimo': 2699, 'teto': 300}, 4000) == 300
     assert fontes.desconto({'pct': 30, 'minimo': 2699, 'teto': 300}, 2000) == 0
     assert fontes.desconto({'pct': 5}, 4000) == 200
+
+    pagina = {'props': {'pageProps': {'serverOffers': {'offers': [
+        {'offerId': i, 'offerTitle': 'PlayStation 5 Slim Digital 825GB', 'offerPrice': 3800 + i, 'offerPriceType': 'NORMAL',
+         'offerStatusName': 'APPROVED', 'storeName': 'X', 'offerSlug': f's-{i}', 'offerPublished': '2026-11-17T07:20:41-0300',
+         'offerCoupon': c} for i, c in enumerate(['AEMEGA19', 'R$300 OFF', 'Lojas Físicas / Parcelado', None])]}}}}
+    baixar, fontes.baixar = fontes.baixar, lambda url, **kw: f'<script id="__NEXT_DATA__">{json.dumps(pagina)}</script>'
+    try:
+        p = fontes.promobit()
+    finally:
+        fontes.baixar = baixar
+    assert [(x['cupom'], x['obs']) for x in p] == [('AEMEGA19', 'postado no Promobit'), ('cupom R$300 OFF (na página)', 'postado no Promobit'),
+                                                  (None, 'postado no Promobit: Lojas Físicas / Parcelado'), (None, 'postado no Promobit')], p
 
     agora = datetime(2026, 11, 13, 10, 0, tzinfo=fontes.BRT)
 

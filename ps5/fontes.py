@@ -195,8 +195,13 @@ def promobit():
         o = oferta('Promobit', p.get('storeName') or '?', p['offerTitle'], float(p['offerPrice']),
                    f"{PROMOBIT}/oferta/{p['offerSlug']}/", id=f"promobit-{p['offerId']}", publicado=p.get('offerPublished'),
                    obs='postado no Promobit')
-        if p.get('offerCoupon'):
-            o.update(cupom=p['offerCoupon'].strip(), cupom_origem='postado')
+        c = re.sub(r'\s+', ' ', p.get('offerCoupon') or '').strip()
+        if re.fullmatch(r'[A-Za-z0-9_-]{3,30}', c):          # código: AEMEGA19
+            o.update(cupom=c, cupom_origem='postado')
+        elif re.search(r'R\$|%|\bOFF\b|cupom', c, re.I):    # cupom da página, sem código: "R$300 OFF"
+            o.update(cupom=f'cupom {c} (na página)', cupom_origem='postado')
+        elif c:                                             # observação: "Lojas Físicas / Parcelado"
+            o['obs'] = f'postado no Promobit: {c}'
         out.append(o)
     return out
 
