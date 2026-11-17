@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-16 20:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-16 21:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -6,7 +6,7 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$1.000, volta R$450)
 
 ## Ida dos extras: mesmo voo (Gol 1678, ter 22/12, 14:05 GRU -> NAT)
 
-- 1 pessoa: R$3.630/pessoa via MaxMilhas ([comprar](https://www.maxmilhas.com.br/busca-passagens-aereas/OW/GRU/NAT/2026-12-22/1/0/0/EC)) · com mala R$3.766
+Não encontrado à venda nesta busca.
 
 ## Ida dos extras: outras opções (compra individual)
 
@@ -23,14 +23,14 @@ Telegram: TELEGRAM_ENVIADO (alvos: ida dos extras R$1.000, volta R$450)
 
 ## Volta de vocês dois (2 adultos)
 
-- seg 18/01 (27 dias): R$691/pessoa via Vai de Promo | Gol FOR-GRU 02:20-06:05 direto | na cia R$711 · com mala R$827
-- ter 19/01 (28 dias): R$595/pessoa via MaxMilhas | Gol JPA-GRU 22:00-01:20 direto | na cia R$690 · com mala R$731
-- qua 20/01 (29 dias): R$595/pessoa via MaxMilhas | Gol JPA-GRU 22:00-01:20 direto · com mala R$731
-- qui 21/01 (30 dias): R$595/pessoa via Vai de Promo | Gol JPA-GRU 22:00-01:20 direto · com mala R$731
+- seg 18/01 (27 dias): R$685/pessoa via Vai de Promo | Gol FOR-GRU 02:20-06:05 direto | na cia R$711 · com mala R$821
+- ter 19/01 (28 dias): R$595/pessoa via Vai de Promo | Gol JPA-GRU 22:00-01:20 direto · com mala R$731
+- qua 20/01 (29 dias): R$636/pessoa via Vai de Promo | LATAM FOR-CGH 17:55-21:30 direto | na cia R$666 · com mala R$737
+- qui 21/01 (30 dias): R$589/pessoa via Vai de Promo | Gol JPA-GRU 22:00-01:20 direto · com mala R$725
 - sex 22/01 (31 dias): R$557/pessoa via Zupper | Azul REC-GRU 02:50-06:05 direto · com mala R$636
-- sáb 23/01 (32 dias): R$691/pessoa via MaxMilhas | Gol FOR-GRU 02:40-06:20 direto · com mala R$827
+- sáb 23/01 (32 dias): R$691/pessoa via MaxMilhas | Gol FOR-GRU 02:40-06:20 direto | na cia R$711 · com mala R$827
 - dom 24/01 (33 dias): R$636/pessoa via Zupper | Azul REC-GRU 08:55-12:10 direto · com mala R$728
 - seg 25/01 (34 dias): R$656/pessoa via Zupper | Azul REC-GRU 04:00-07:15 direto · com mala R$751
-- ter 26/01 (35 dias): R$378/pessoa via Zupper | Azul REC-GRU 20:35-23:50 direto | na cia R$456 · com mala R$457
+- ter 26/01 (35 dias): R$426/pessoa via Zupper | Azul REC-GRU 10:00-13:15 direto | na cia R$515 · com mala R$517
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
