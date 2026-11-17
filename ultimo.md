@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-17 19:19 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-17 20:20 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -10,27 +10,27 @@ Não encontrado à venda nesta busca.
 
 ## Ida dos extras: outras opções (compra individual)
 
-- qui 24/12 Gol 1542 · 17:55 → 21:10, direto CGH-JPA: R$1.158/pessoa via Viaza ([comprar](https://www.viaza.com.br/busca/passagens/ow/cgh/jpa?p=1-0-0&dd=2026-12-24))
-- seg 21/12 Gol 1400 · 06:05 → 11:25, com escala CGH-JPA: R$1.179/pessoa via Viaza ([comprar](https://www.viaza.com.br/busca/passagens/ow/cgh/jpa?p=1-0-0&dd=2026-12-21))
-- seg 21/12 Gol 9110 · 02:40 → 05:55, direto GRU-JPA: R$1.259/pessoa via Viaza ([comprar](https://www.viaza.com.br/busca/passagens/ow/gru/jpa?p=1-0-0&dd=2026-12-21))
-- qua 23/12 Gol 9110 · 02:40 → 05:55, direto GRU-JPA: R$1.259/pessoa via Viaza ([comprar](https://www.viaza.com.br/busca/passagens/ow/gru/jpa?p=1-0-0&dd=2026-12-23))
-- qui 24/12 Gol 9110 · 01:10 → 04:25, direto GRU-JPA: R$1.259/pessoa via Viaza ([comprar](https://www.viaza.com.br/busca/passagens/ow/gru/jpa?p=1-0-0&dd=2026-12-24))
-- seg 21/12 Gol · 06:00 → 11:25, com escala GRU-JPA: R$1.280/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261221/1/0/0/Y/))
-- seg 21/12 Gol · 23:10 → 02:20, direto GRU-JPA: R$1.280/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261221/1/0/0/Y/))
-- ter 22/12 LATAM 3000;BSB>REC · 06:00 → 11:05, com escala CGH-JPA: R$1.283/pessoa via LATAM ([comprar](https://www.google.com/travel/flights/booking?tfs=CBwQAhqPARIKMjAyNi0xMi0yMiIgCgNDR0gSCjIwMjYtMTItMjIaA0JTQioCTEEyBDMwMDAiIAoDQlNCEgoyMDI2LTEyLTIyGgNSRUMqAkxBMgQzNDAxagcIARIDR1JVagcIARIDQ0dIcgcIARIDRk9ScgcIARIDTkFUcgcIARIDSkRPcgcIARIDQlNCcgcIARIDUkVDQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL))
-- ter 22/12 Gol · 23:10 → 02:20, direto GRU-JPA: R$1.287/pessoa via MaxMilhas ([comprar](https://www.maxmilhas.com.br/busca-passagens-aereas/OW/GRU/JPA/2026-12-22/1/0/0/EC))
-- ter 22/12 Gol 9110 · 01:10 → 04:25, direto GRU-JPA: R$1.299/pessoa via Gol ([comprar](https://www.google.com/travel/flights/booking?tfs=CBwQAhpkEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDSlBBKgJHMzIEOTExMGoHCAESA0dSVWoHCAESA0NHSHIHCAESA0ZPUnIHCAESA05BVHIHCAESA0pET3IHCAESA0pQQUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL))
+- qui 24/12 Gol 1542 · 17:55 → 21:10, direto CGH-JPA: R$1.164/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHJPA261224/1/0/0/Y/))
+- seg 21/12 Gol 1400;BSB>JPA · 06:05 → 11:25, com escala CGH-JPA: R$1.185/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHJPA261221/1/0/0/Y/))
+- seg 21/12 Gol · 06:00 → 11:25, com escala GRU-JPA: R$1.267/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261221/1/0/0/Y/))
+- seg 21/12 Gol · 23:10 → 02:20, direto GRU-JPA: R$1.267/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261221/1/0/0/Y/))
+- ter 22/12 Gol · 23:10 → 02:20, direto GRU-JPA: R$1.267/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261222/1/0/0/Y/))
+- qua 23/12 Gol 9110 · 02:40 → 05:55, direto GRU-JPA: R$1.267/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261223/1/0/0/Y/))
+- qui 24/12 Gol 9110 · 01:10 → 04:25, direto GRU-JPA: R$1.267/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJPA261224/1/0/0/Y/))
+- ter 22/12 Gol 9110 · 01:10 → 04:25, direto GRU-JPA: R$1.276/pessoa via 123milhas ([comprar](https://123milhas.com/v2/busca?de=GRU&para=JPA&adultos=1&criancas=0&bebes=0&ida=22-12-2026&classe=3))
+- ter 22/12 Gol 1362 · 22:10 → 01:25, direto CGH-JPA: R$1.325/pessoa via Vai de Promo ([comprar](https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHJPA261222/1/0/0/Y/))
+- seg 21/12 LATAM · 06:45 → 10:00, direto GRU-JPA: R$1.352/pessoa via Zupper ([comprar](https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JPA%22%2C%22departureDate%22%3A%222026-12-21%22%7D%5D))
 
 ## Volta de vocês dois (2 adultos)
 
 - seg 18/01 (27 dias): R$772/pessoa via Zupper | Azul REC-GRU 20:35-23:50 direto · com mala R$875
-- ter 19/01 (28 dias): R$436/pessoa via 123milhas | Gol REC-GRU 04:20-07:45 direto | na cia R$456 · com mala R$572
-- qua 20/01 (29 dias): R$694/pessoa via CIA LATAM | LATAM REC-CGH 11:10-17:15 escala 1h40 · com mala R$790
-- qui 21/01 (30 dias): R$436/pessoa via 123milhas | Gol REC-GRU 03:30-06:55 direto | na cia R$456 · com mala R$572
-- sex 22/01 (31 dias): R$666/pessoa via MaxMilhas | Gol JPA-CGH 04:35-08:00 direto | na cia R$688 · com mala R$783
-- sáb 23/01 (32 dias): R$436/pessoa via 123milhas | Gol REC-GRU 03:40-07:00 direto | na cia R$456 · com mala R$572
-- dom 24/01 (33 dias): R$684/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$718 · com mala R$820
-- seg 25/01 (34 dias): R$709/pessoa via Zupper | Azul REC-GRU 20:35-23:50 direto · com mala R$805
-- ter 26/01 (35 dias): R$633/pessoa via 123milhas | Gol FOR-CGH 05:20-08:45 direto · com mala R$769
+- ter 19/01 (28 dias): R$673/pessoa via 123milhas | LATAM REC-CGH 05:30-08:55 direto · com mala R$761
+- qua 20/01 (29 dias): R$729/pessoa via Zupper | Azul REC-CGH 02:45-06:05 direto · com mala R$808
+- qui 21/01 (30 dias): R$434/pessoa via Vai de Promo | Gol REC-GRU 03:30-06:55 direto | na cia R$456 · com mala R$570
+- sex 22/01 (31 dias): R$666/pessoa via MaxMilhas | Gol JPA-CGH 04:35-08:00 direto · com mala R$775
+- sáb 23/01 (32 dias): R$434/pessoa via Vai de Promo | Gol REC-GRU 03:40-07:00 direto · com mala R$570
+- dom 24/01 (33 dias): R$681/pessoa via Vai de Promo | Gol JDO-GRU 04:05-07:15 direto · com mala R$817
+- seg 25/01 (34 dias): R$775/pessoa via Vai de Promo | Gol JDO-GRU 04:05-07:15 direto · com mala R$878
+- ter 26/01 (35 dias): R$631/pessoa via Vai de Promo | Gol FOR-CGH 05:20-08:45 direto · com mala R$767
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
