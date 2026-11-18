@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-18 04:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-18 05:18 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -25,11 +25,11 @@ Não encontrado à venda nesta busca.
 
 - seg 18/01 (27 dias): R$881/pessoa via Zupper | LATAM JDO-GRU 02:45-05:50 direto · com mala R$949
 - ter 19/01 (28 dias): R$645/pessoa via Zupper | LATAM REC-CGH 05:30-08:55 direto | na cia R$712 · com mala R$741
-- qua 20/01 (29 dias): R$694/pessoa via CIA LATAM | LATAM REC-CGH 11:10-17:15 escala 1h40 · com mala R$773
-- qui 21/01 (30 dias): R$712/pessoa via CIA LATAM | LATAM REC-CGH 03:35-09:50 escala 1h50 · com mala R$791
+- qua 20/01 (29 dias): R$694/pessoa via CIA LATAM | LATAM REC-CGH 11:10-17:15 escala 1h40 · com mala R$780
+- qui 21/01 (30 dias): R$712/pessoa via CIA LATAM | LATAM REC-CGH 03:35-09:50 escala 1h50 · com mala R$798
 - sex 22/01 (31 dias): R$649/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto | na cia R$718 · com mala R$742
-- sáb 23/01 (32 dias): R$711/pessoa via Zupper | LATAM FOR-GRU 03:15-06:50 direto | na cia R$786 · com mala R$809
-- dom 24/01 (33 dias): R$688/pessoa via Vai de Promo | Gol JDO-GRU 04:05-07:15 direto | na cia R$718 · com mala R$824
+- sáb 23/01 (32 dias): R$676/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto · com mala R$763
+- dom 24/01 (33 dias): R$684/pessoa via 123milhas | Gol JDO-GRU 04:05-07:15 direto | na cia R$718 · com mala R$820
 - seg 25/01 (34 dias): R$711/pessoa via Zupper | LATAM REC-CGH 03:00-06:25 direto | na cia R$786 · com mala R$807
 - ter 26/01 (35 dias): R$633/pessoa via 123milhas | Gol FOR-CGH 05:20-08:45 direto | na cia R$666 · com mala R$769
 
