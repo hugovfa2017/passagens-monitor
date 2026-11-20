@@ -20,16 +20,11 @@ Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 f
 
 1. **Enviar a branch.** Feito em 20/11. O workflow "Buscador PS5" rodou nela sem erro e sem mandar Telegram; a partir
    dos servidores do GitHub responderam todas as fontes, menos a Amazon (falhou nessa rodada).
-2. **Token do bot novo.** O dono já criou o bot no @BotFather. O token nunca deve ser colado em chat nem em arquivo.
-   Ele disse que salvou o segredo com o nome `PS5_TOKEN`; os workflows aceitam esse nome e `TELEGRAM_TOKEN_PS5`.
-   Em 20/11 às 18:28 o teste ainda respondia "não" para os dois nomes, como segredo e como variável: o token foi
-   salvo em outro lugar (segredo de ambiente, Codespaces, Dependabot ou outro repositório). Tem que aparecer em
-   github.com → Settings → Secrets and variables → Actions → **Repository secrets**, ao lado de `TELEGRAM_TOKEN`.
-   Pelo terminal dele: `gh secret set PS5_TOKEN --repo hugovfa2017/passagens-monitor` (pede o valor sem mostrar).
-3. **Testar o bot.** Actions → "Teste do Telegram (PS5)" → Run workflow. Tem que chegar uma mensagem pelo bot novo.
-   O primeiro passo do teste diz, com sim ou não, se o segredo foi encontrado. O botão só aparece depois que o
-   arquivo chega à `main`. O gatilho provisório de push na branch já foi retirado.
-4. **Juntar na `main`** (só com o OK do dono): pull request da branch para a `main`. O agendamento só roda a partir dela.
+2. **Token do bot novo.** Feito em 20/11. O dono salvou o token em "Repository secrets" com o nome `PS5_BOT`; os
+   workflows aceitam `PS5_BOT`, `TELEGRAM_TOKEN_PS5` e `PS5_TOKEN`. O token nunca deve ser colado em chat nem em arquivo.
+3. **Testar o bot.** Feito em 20/11: Actions → "Teste do Telegram (PS5)" → Run workflow mandou a mensagem pelo bot
+   novo. O primeiro passo do teste diz, com sim ou não, se o segredo foi encontrado.
+4. **Juntar na `main`.** Feito em 20/11 (pull request #1, com o OK do dono). O buscador roda a partir dela.
 5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
    para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
 6. **Sondar a partir do computador.** `python3 ps5/sondar.py`. Internet residencial no Brasil costuma ser aceita por

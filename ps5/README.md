@@ -36,8 +36,8 @@ O buscador usa um bot só dele (nada sai pelo bot das passagens).
 
 1. No Telegram, fale com o **@BotFather**, mande `/newbot` e guarde o token.
 2. Abra a conversa com o bot novo e mande `/start`.
-3. No GitHub: Settings → Secrets and variables → Actions → **New repository secret**, nome **`PS5_TOKEN`**
-   (ou `TELEGRAM_TOKEN_PS5`; vale qualquer um dos dois). Tem que aparecer na lista "Repository secrets": em
+3. No GitHub: Settings → Secrets and variables → Actions → **New repository secret**, nome **`PS5_BOT`**
+   (também valem `TELEGRAM_TOKEN_PS5` e `PS5_TOKEN`). Tem que aparecer na lista "Repository secrets": em
    "Variables", em segredo de ambiente, de Codespaces ou de Dependabot, o buscador não enxerga.
 4. Teste: Actions → **Teste do Telegram (PS5)** → Run workflow. O primeiro passo diz, com sim ou não, se o segredo
    foi encontrado.
