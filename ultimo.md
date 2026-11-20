@@ -1,4 +1,4 @@
-# Última varredura: 2026-11-20 03:20 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
+# Última varredura: 2026-11-20 04:20 (preço por pessoa, sem mala despachada salvo onde diz "com mala")
 
 Sem queda nova de preço.
 
@@ -24,13 +24,13 @@ Não encontrado à venda nesta busca.
 ## Volta de vocês dois (2 adultos)
 
 - seg 18/01 (27 dias): R$696/pessoa via Vai de Promo | Gol FOR-CGH 03:25-08:35 com escala | na cia R$725 · com mala R$832
-- ter 19/01 (28 dias): R$751/pessoa via CIA Gol | Gol NAT-GRU 04:30-10:40 escala 1h15 · com mala R$887
+- ter 19/01 (28 dias): R$797/pessoa via Vai de Promo | Gol JPA-GRU 22:00-01:20 direto · com mala R$933
 - qua 20/01 (29 dias): R$729/pessoa via Zupper | Azul REC-CGH 02:45-06:05 direto · com mala R$808
-- qui 21/01 (30 dias): R$717/pessoa via Zupper | LATAM JDO-GRU 03:20-06:25 direto · com mala R$810
-- sex 22/01 (31 dias): R$711/pessoa via Zupper | LATAM FOR-GRU 02:10-05:30 direto | na cia R$786 · com mala R$809
-- sáb 23/01 (32 dias): R$711/pessoa via Zupper | LATAM FOR-GRU 03:15-06:50 direto | na cia R$786 · com mala R$809
+- qui 21/01 (30 dias): R$781/pessoa via Vai de Promo | Gol REC-CGH 07:05-12:30 com escala | na cia R$786 · com mala R$879
+- sex 22/01 (31 dias): R$711/pessoa via Zupper | LATAM FOR-GRU 02:10-05:30 direto · com mala R$809
+- sáb 23/01 (32 dias): R$754/pessoa via Vai de Promo | Gol REC-CGH 07:10-12:30 com escala · com mala R$861
 - dom 24/01 (33 dias): R$690/pessoa via Vai de Promo | Gol JDO-GRU 04:05-07:15 direto · com mala R$826
 - seg 25/01 (34 dias): R$696/pessoa via Zupper | Azul REC-CGH 02:45-06:05 direto | na cia R$852 · com mala R$775
-- ter 26/01 (35 dias): R$683/pessoa via Vai de Promo | Gol FOR-GRU 02:20-06:05 direto · com mala R$798
+- ter 26/01 (35 dias): R$674/pessoa via Zupper | LATAM JPA-GRU 03:05-06:30 direto · com mala R$770
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
