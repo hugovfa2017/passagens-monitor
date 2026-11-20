@@ -10,13 +10,16 @@ Uso:  python3 registrar.py ultima.json
       python3 registrar.py --configurar-telegram  -> acha o seu chat depois que você manda /start ao bot
       python3 registrar.py --teste-telegram       -> manda uma mensagem de teste
       python3 registrar.py --novo-chat            -> mostra quem mais abriu o bot (para receber os alertas também)
+      python3 registrar.py --atender              -> responde a quem escreveu para o bot e avisa o dono de pedidos novos
 
 O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em telegram_chat.txt.
-No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (vários chats separados por vírgula).
+No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (vários chats separados por vírgula; o primeiro é o dono).
+Para incluir outro celular: a pessoa abre o bot e toca em Iniciar; na rodada seguinte o bot responde a ela e manda ao
+dono o valor novo do segredo TELEGRAM_CHAT_ID, pronto para colar (ver atendimento.py).
 Saídas na pasta: historico.csv, ultimo.md, painel.json (o que o painel mostra).
 Imprime uma linha por evento: ALERTA ..., SEM_NOVIDADE ..., ERRO_VARREDURA ..., TELEGRAM_* ...
 """
-import base64, csv, html, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
+import base64, csv, html, json, os, re, subprocess, sys, tempfile, time, urllib.parse, urllib.request
 from datetime import datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -139,19 +142,25 @@ def _chats():
     return re.findall(r'-?\d{5,}', bruto)
 
 
-def _enviar_um(token, campos):
-    """None se foi; senão o motivo. O Telegram nunca derruba a varredura; sem str(e), que pode trazer o token na URL."""
-    try:
-        r = _api(token, 'sendMessage', campos)
-        return None if r.get('ok') else r.get('description', '')[:150]
-    except Exception as e:
-        desc = ''
-        if hasattr(e, 'read'):   # erro HTTP: o Telegram explica no corpo ("Unauthorized", "chat not found"...)
-            try:
-                desc = json.loads(e.read()).get('description', '')[:150]
-            except Exception:
-                pass
-        return f"{type(e).__name__} {getattr(e, 'code', '')} {desc}".strip()
+def _enviar_um(token, campos, api=None, espera=5):
+    """None se foi; senão o motivo. O Telegram nunca derruba a varredura; sem str(e), que pode trazer o token na URL.
+    Rede fora do ar ou resposta que não chega (já houve TimeoutError): espera e tenta mais uma vez."""
+    api = api or _api
+    for tentativa in (1, 2):
+        try:
+            r = api(token, 'sendMessage', campos)
+            return None if r.get('ok') else r.get('description', '')[:150]
+        except Exception as e:
+            desc = ''
+            if hasattr(e, 'read'):   # erro HTTP: o Telegram explica no corpo ("Unauthorized", "chat not found"...)
+                try:
+                    desc = json.loads(e.read()).get('description', '')[:150]
+                except Exception:
+                    pass
+            elif tentativa == 1:     # sem resposta do Telegram: vale tentar de novo
+                time.sleep(espera)
+                continue
+            return f"{type(e).__name__} {getattr(e, 'code', '')} {desc}".strip()
 
 
 def telegram(texto, silencioso=False, botoes=(), _envio=_enviar_um):
@@ -204,6 +213,18 @@ def novos_chats():
         return 'NENHUM_NOVO a pessoa precisa abrir o bot no Telegram, tocar em Iniciar e mandar qualquer mensagem (vale por 24 h)'
     return '\n'.join(f'NOVO {nome}: {chat}' for chat, nome in novos.items()) + \
         f"\nSegredo TELEGRAM_CHAT_ID com todos: {','.join([*ja, *novos])}"
+
+
+def atender():
+    """Responde a quem escreveu para o bot desde a última rodada e avisa o dono de pedidos novos (atendimento.py).
+    A linha devolvida vai para o log público: só contagens."""
+    token = _token()
+    if not token:
+        return 'ATENDER sem token'
+    import atendimento
+    return atendimento.atender(lambda metodo, campos=None: _api(token, metodo, campos), _chats(), nome='monitor de passagens',
+                               sobre='Chega uma mensagem por hora; ela só toca quando um preço fica abaixo do alvo ou bate o menor já visto.',
+                               segredo='TELEGRAM_CHAT_ID')
 
 
 def registrar(scan, pasta=AQUI, enviar=telegram):
@@ -422,6 +443,32 @@ def _teste_registro():
         r = telegram('oi', _envio=envio)
         assert foram == ['111111111', '222222222'] and r == 'TELEGRAM_FALHOU destinatário 2 de 2: Forbidden: bot was blocked', r
         assert telegram('oi', _envio=lambda t, c: None) == 'TELEGRAM_ENVIADO' and '2222' not in r
+        # sem resposta do Telegram: tenta mais uma vez; recusa do Telegram (erro HTTP) não se repete
+        chamadas = []
+
+        def instavel(token, metodo, campos):
+            chamadas.append(metodo)
+            if len(chamadas) == 1:
+                raise TimeoutError(f'https://api.telegram.org/bot{token}/sendMessage')
+            return {'ok': True}
+        assert _enviar_um(tk, {}, api=instavel, espera=0) is None and len(chamadas) == 2
+
+        def fora(token, metodo, campos):
+            chamadas.append(metodo)
+            raise TimeoutError(f'https://api.telegram.org/bot{token}/sendMessage')
+        assert _enviar_um(tk, {}, api=fora, espera=0) == 'TimeoutError' and len(chamadas) == 4
+
+        class Recusa(Exception):
+            code = 403
+            read = lambda self: b'{"description": "Forbidden: bot was blocked by the user"}'
+
+        def recusado(token, metodo, campos):
+            chamadas.append(metodo)
+            raise Recusa()
+        assert _enviar_um(tk, {}, api=recusado, espera=0) == 'Recusa 403 Forbidden: bot was blocked by the user' and len(chamadas) == 5
+        # atendimento sem token: não tenta nada
+        os.environ['TELEGRAM_TOKEN'] = 'sem token aqui'
+        assert atender() == 'ATENDER sem token'
     finally:
         os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
@@ -489,6 +536,8 @@ if __name__ == '__main__':
         print(configurar_telegram())
     elif sys.argv[1:] == ['--novo-chat']:
         print(novos_chats())
+    elif sys.argv[1:] == ['--atender']:
+        print(atender())
     elif sys.argv[1:] == ['--teste-telegram']:
         print(telegram(f'Teste do monitor de passagens: o alerta está funcionando. Painel: {PAINEL_URL}'))
     else:

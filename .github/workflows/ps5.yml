@@ -1,0 +1,88 @@
+name: Buscador PS5
+
+on:
+  schedule:
+    - cron: '11,41 * * * *'   # de 30 em 30 minutos (reserva: o agendamento do GitHub atrasa e pula execuções)
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (a cada 30 min, com origem=cron)
+    inputs:
+      origem:
+        description: 'Quem disparou (cron = cron-job.org)'
+        required: false
+        default: 'manual'
+  push:                       # roda também quando o código do buscador muda (não quando só os dados mudam)
+    branches: [main]
+    paths: ['ps5/*.py', 'ps5/painel.html', '.github/workflows/ps5.yml']
+
+permissions:
+  contents: write             # para guardar histórico e painel de volta no repositório
+
+concurrency:
+  group: ps5
+  cancel-in-progress: false
+
+jobs:
+  varredura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # a versão mais nova da branch (com os dados da rodada anterior)
+      - name: Responder a quem escreveu para o bot do PS5
+        # quem toca em "Iniciar" recebe resposta e o dono é avisado de pedidos novos (atendimento.py).
+        # Roda em todo disparo, mesmo quando a rodada é pulada; se falhar, a rodada segue.
+        continue-on-error: true
+        env:
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_TOKEN }}
+          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}
+        run: python3 atendimento.py --teste && python3 ps5/monitor.py --atender
+      - name: Pular se outra rodada acabou de terminar
+        id: guarda
+        env:
+          EVENTO: ${{ github.event_name }}
+          ORIGEM: ${{ inputs.origem }}
+        # agendamento do GitHub e cron-job.org podem cair juntos: a segunda é pulada (sem mensagem dobrada)
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'FIM'
+          import json, os, datetime as dt
+          pular = False
+          if os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
+              try:
+                  ultima = dt.datetime.fromisoformat(json.load(open('ps5/estado.json'))['ultima'])
+                  pular = (dt.datetime.now(ultima.tzinfo) - ultima).total_seconds() < 20 * 60
+              except Exception:
+                  pass
+          print('pular=' + str(pular).lower())
+          FIM
+      - uses: actions/setup-python@v5
+        if: steps.guarda.outputs.pular != 'true'
+        with:
+          python-version: '3.12'
+      - name: Auto-checagem
+        if: steps.guarda.outputs.pular != 'true'
+        run: python ps5/monitor.py --teste
+      - name: Varredura e alerta
+        if: steps.guarda.outputs.pular != 'true'
+        env:
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_TOKEN }}   # bot próprio do PS5; o segredo pode ter um dos dois nomes
+          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}   # opcional
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}           # sem o de cima, vale o primeiro chat daqui
+          PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram
+        run: python ps5/monitor.py
+      - name: Guardar resultado
+        if: always() && steps.guarda.outputs.pular != 'true'
+        run: |
+          git config user.name "buscador-ps5"
+          git config user.email "buscador-ps5@users.noreply.github.com"
+          git add ps5/historico.csv ps5/estado.json ps5/ultimo.md docs/ps5 2>/dev/null || true
+          git commit -q -m "PS5 $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
+          # o monitor de passagens também grava na main: junta e tenta de novo se alguém gravou antes
+          for i in 1 2 3 4; do
+            git pull -q --rebase origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && exit 0
+            sleep $((i * 7))
+          done
+          exit 1

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Preço do PS5</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f6f6f4; --panel: #ffffff; --ink: #141413; --ink-2: #52514e; --ink-3: #75746f;
+    --line: #e3e2dd; --grid: #ecebe7; --chip: #f0efec;
+    --acc: #1c5cab; --acc-ink: #ffffff; --good: #0b7a0b; --good-bg: #e6f4e6; --warn: #8a5a00;
+    --s1: #2a78d6; --s2: #eb6834; --ref: #8c8b85;
+    --shadow: 0 1px 2px rgba(20, 20, 19, .06), 0 8px 24px -16px rgba(20, 20, 19, .25);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #121211; --panel: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #9a998f;
+      --line: #2e2e2b; --grid: #262624; --chip: #262624;
+      --acc: #6da7ec; --acc-ink: #0d1520; --good: #5ccb5c; --good-bg: #183418; --warn: #e3a640;
+      --s1: #3987e5; --s2: #d95926; --ref: #7d7c75;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #121211; --panel: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #9a998f;
+    --line: #2e2e2b; --grid: #262624; --chip: #262624;
+    --acc: #6da7ec; --acc-ink: #0d1520; --good: #5ccb5c; --good-bg: #183418; --warn: #e3a640;
+    --s1: #3987e5; --s2: #d95926; --ref: #7d7c75;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.45 ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+  main { max-width: 1120px; margin: 0 auto; padding: 28px 16px 56px; display: grid; gap: 28px; }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-size: 26px; letter-spacing: -0.015em; font-weight: 680; }
+  h2 { font-size: 18px; font-weight: 650; letter-spacing: -0.01em; }
+  a { color: var(--acc); }
+  .muted { color: var(--ink-2); }
+  .small { font-size: 13px; color: var(--ink-2); }
+  .head { display: grid; gap: 6px; }
+  .head p { max-width: 75ch; }
+
+  /* cartões dos modelos */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 18px; display: grid; gap: 12px; align-content: start; min-width: 0;
+  }
+  .card-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .card h2 { font-size: 16px; }
+  .alvo { font-size: 12.5px; color: var(--ink-2); }
+  .preco { font-size: 34px; font-weight: 720; letter-spacing: -0.02em; line-height: 1.05; }
+  .onde { color: var(--ink-2); font-size: 14px; }
+  .onde b { color: var(--ink); font-weight: 600; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600;
+    padding: 3px 9px; border-radius: 999px; background: var(--chip); color: var(--ink-2); width: fit-content;
+  }
+  .badge.bom { background: var(--good-bg); color: var(--good); }
+  .cupom {
+    display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  .codigo {
+    font: 600 13px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .02em;
+    color: var(--ink); background: var(--chip); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 5px 8px;
+  }
+  button.copiar, .btn {
+    font: inherit; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 0 12px;
+  }
+  button.copiar { background: transparent; color: var(--acc); border: 1px solid var(--line); min-height: 30px; padding: 0 9px; }
+  .btn { background: var(--acc); color: var(--acc-ink); border: 0; width: 100%; }
+  .btn:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  .linhas { display: grid; gap: 6px; font-size: 13.5px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .linhas div { display: flex; justify-content: space-between; gap: 12px; }
+  .linhas span:first-child { color: var(--ink-2); }
+  .linhas span:last-child { text-align: right; }
+  .vazio { color: var(--ink-3); }
+
+  /* seção por modelo */
+  .secao { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 18px; display: grid; gap: 16px; min-width: 0; }
+  .abas { display: flex; gap: 6px; flex-wrap: wrap; }
+  .abas button {
+    font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: transparent; color: var(--ink-2); min-height: 36px;
+  }
+  .abas button[aria-selected="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+  .legenda { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
+  .legenda span { display: inline-flex; align-items: center; gap: 7px; }
+  .legenda i { display: inline-block; width: 16px; height: 2px; border-radius: 2px; }
+  .legenda i.ref { background: none; border-top: 1.5px dashed var(--ref); height: 0; }
+  .grafico { position: relative; }
+  .grafico svg { display: block; width: 100%; height: 240px; overflow: visible; touch-action: pan-y; }
+  .grafico .eixo { font-size: 11px; fill: var(--ink-3); }
+  .dica {
+    position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    box-shadow: var(--shadow); padding: 8px 10px; font-size: 12.5px; min-width: 150px; display: none; z-index: 2;
+  }
+  .dica .data { color: var(--ink-2); margin-bottom: 4px; }
+  .dica .lin { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+  .dica .lin span { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); }
+  .dica .lin i { width: 12px; height: 2px; border-radius: 2px; display: inline-block; }
+  .dica .lin b { color: var(--ink); }
+
+  .tabela { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 12.5px; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  td .tit { color: var(--ink-2); font-size: 12.5px; display: block; max-width: 52ch; }
+  tr:last-child td { border-bottom: 0; }
+  .loja { font-weight: 600; }
+
+  .cupons { display: grid; gap: 14px; }
+  .cupons-loja { display: grid; gap: 8px; }
+  .cupons-loja ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .cupons-loja li { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 13.5px; }
+  .fontes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fonte { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: var(--chip); color: var(--ink-2); }
+  .fonte.falhou { color: var(--warn); }
+  details summary { cursor: pointer; color: var(--acc); font-size: 13.5px; font-weight: 600; }
+  footer { display: grid; gap: 8px; }
+  @media (max-width: 560px) {
+    main { padding-top: 20px; gap: 22px; }
+    h1 { font-size: 22px; }
+    .preco { font-size: 30px; }
+    .col-fonte { display: none; }
+  }
+</style>
+</head>
+<body>
+<main id="app">
+  <header class="head">
+    <h1>Preço do PS5 no Brasil</h1>
+    <p class="muted" id="sub">Carregando…</p>
+  </header>
+  <section class="cards" id="cards" aria-label="Melhor preço de cada modelo"></section>
+  <section class="secao" aria-labelledby="t-hist">
+    <h2 id="t-hist">Histórico e ofertas</h2>
+    <div class="abas" role="tablist" id="abas"></div>
+    <div class="legenda" aria-hidden="true">
+      <span><i style="background:var(--s1)"></i>Sem cupom</span>
+      <span><i style="background:var(--s2)"></i>Com cupom</span>
+      <span><i class="ref"></i>Alvo do alerta</span>
+    </div>
+    <div class="grafico" id="grafico"></div>
+    <details id="hist-tabela"><summary>Ver o histórico em tabela</summary><div class="tabela"></div></details>
+    <div class="tabela" id="ofertas"></div>
+  </section>
+  <section class="secao" aria-labelledby="t-cup">
+    <div>
+      <h2 id="t-cup">Cupons das lojas para testar no carrinho</h2>
+      <p class="small">Cupons gerais ativos (lista do Promobit e cupons anunciados nos grupos) que podem valer para console. Não há garantia:
+        por isso ficam fora do "melhor preço com cupom". Ao lado, quanto ficaria a oferta sem cupom mais barata da loja se o cupom valer.</p>
+    </div>
+    <div class="cupons" id="cupons"></div>
+  </section>
+  <section class="secao" aria-labelledby="t-aparte">
+    <div>
+      <h2 id="t-aparte">À parte: open box, importados e leilões</h2>
+      <p class="small">Mais baratos, com mais risco. Nunca entram no melhor preço de console novo nem nos alertas com som.</p>
+    </div>
+    <div class="cupons" id="aparte"></div>
+  </section>
+  <footer class="small">
+    <div class="fontes" id="fontes"></div>
+    <p id="como"></p>
+  </footer>
+</main>
+<script>
+const DADOS = /*DADOS*/null;
+(async () => {
+  let d = DADOS;
+  if (!d) {
+    try { d = await (await fetch('painel.json', { cache: 'no-store' })).json(); }
+    catch (e) { document.getElementById('sub').textContent = 'Não consegui carregar os dados.'; return; }
+  }
+  const $ = id => document.getElementById(id);
+  const el = (tag, attrs = {}, ...filhos) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v);
+    }
+    for (const f of filhos) if (f != null) e.append(f);
+    return e;
+  };
+  const brl = n => n == null || n === '' ? '—' : 'R$ ' + Number(n).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/,00$/, '');
+  const seguro = u => /^https:\/\//.test(u || '') ? u : null;
+  const SEM = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+  const quando = s => { const [dt, h] = s.split(' '); const [a, m, di] = dt.split('-').map(Number);
+    return `${SEM[new Date(a, m - 1, di).getDay()]} ${String(di).padStart(2, '0')}/${String(m).padStart(2, '0')}${h ? ' às ' + h : ''}`; };
+  const no = loja => /^(Mercado Livre|Carrefour|Ponto|Extra|Submarino|Zoom)/.test(loja) ? 'no' : 'na';
+
+  const mb = d.mais_barato, nomeDe = id => (d.modelos.find(m => m.id === id) || {}).nome || 'PS5';
+  $('sub').textContent = (mb ? `Mais barato agora: ${nomeDe(mb.modelo)} por ${brl(mb.preco)} ${no(mb.loja)} ${mb.loja}. ` : '') +
+    `Lojas, comparador, Promobit, Gatry e grupos do Telegram, a cada 30 minutos. Atualizado ${quando(d.atualizado)}.`;
+
+  const copiar = codigo => {
+    const b = el('button', { class: 'copiar', type: 'button', text: 'Copiar' });
+    b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(codigo); b.textContent = 'Copiado'; }
+      catch { b.textContent = 'Selecione e copie'; }
+      setTimeout(() => (b.textContent = 'Copiar'), 1800);
+    });
+    return b;
+  };
+  const linhaCupom = o => {
+    if (!o.cupom) return el('span', { class: 'badge', text: 'sem cupom' });
+    if (/^cupom/.test(o.cupom)) return el('span', { class: 'cupom' }, el('span', { class: 'badge bom', text: o.cupom }));
+    return el('span', { class: 'cupom' }, el('span', { text: 'cupom' }), el('span', { class: 'codigo', text: o.cupom }), copiar(o.cupom));
+  };
+
+  // cartões
+  for (const m of d.modelos) {
+    const o = m.melhor;
+    const card = el('article', { class: 'card', 'aria-labelledby': 'c-' + m.id });
+    card.append(el('div', { class: 'card-top' }, el('h2', { id: 'c-' + m.id, text: m.nome }),
+      el('span', { class: 'alvo', text: m.alerta ? `alerta em ${brl(m.alvo)}` : 'sem alerta' })));
+    if (!o) { card.append(el('p', { class: 'vazio', text: 'Nenhuma oferta encontrada nesta varredura.' })); $('cards').append(card); continue; }
+    const abaixo = m.alvo && o.preco <= m.alvo;
+    card.append(el('div', {}, el('div', { class: 'preco', text: brl(o.preco) }),
+      el('div', { class: 'onde' }, `${no(o.loja)} `, el('b', { text: o.loja }), o.idade_h != null ? ` · postado há ${Math.round(o.idade_h)}h` : '')));
+    card.append(linhaCupom(o));
+    if (abaixo) card.append(el('span', { class: 'badge bom', text: '✓ abaixo do alvo' }));
+    if ((o.ressalvas || []).length) card.append(el('span', { class: 'badge', text: '⚠ ' + o.ressalvas.join(' · ') }));
+    if (o.cupom_citado) card.append(el('span', { class: 'cupom' }, el('span', { text: 'grupos citam o cupom' }), el('span', { class: 'codigo', text: o.cupom_citado }), copiar(o.cupom_citado)));
+    const linhas = el('div', { class: 'linhas' });
+    const lin = (rot, val) => linhas.append(el('div', {}, el('span', { text: rot }), el('span', {}, val)));
+    lin('Sem cupom', m.sem ? `${brl(m.sem.preco)} ${no(m.sem.loja)} ${m.sem.loja}` : '—');
+    lin('Com cupom', m.com ? `${brl(m.com.preco)} ${no(m.com.loja)} ${m.com.loja}` : 'nenhum confirmado agora');
+    if (m.nao_confirmada) lin('Não confirmada (1 grupo só)', `${brl(m.nao_confirmada.preco)} ${no(m.nao_confirmada.loja)} ${m.nao_confirmada.loja}`);
+    if ((o.n_vistos || 1) > 1) lin('Visto em', `${o.n_vistos} lugares`);
+    if (m.recorde) lin('Menor já visto', `${brl(m.recorde.preco)} em ${quando(m.recorde.quando).split(' às ')[0]}`);
+    card.append(linhas);
+    card.append(el('p', { class: 'small', text: o.titulo + (o.detalhes ? ` (${o.detalhes})` : '') }));
+    const rotulo = o.fonte === 'Promobit' ? `Ver a oferta (post no Promobit) ↗` : o.fonte === 'Gatry' ? `Ver a oferta (post no Gatry) ↗`
+      : o.fonte === 'Telegram' ? `Ver o post no Telegram ↗` : o.fonte === 'Zoom' ? `Ver lojas no Zoom ↗` : `Ver oferta ${no(o.loja)} ${o.loja.split(' · ')[0]} ↗`;
+    if (seguro(o.link)) card.append(el('a', { class: 'btn', href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', text: rotulo }));
+    $('cards').append(card);
+  }
+
+  // histórico: por dia (menor preço do dia) quando há mais de 4 dias; senão, cada varredura
+  const serie = id => {
+    const h = d.historico.filter(x => x[id] !== '' || x[id + '_cupom'] !== '');
+    const dias = new Set(h.map(x => x.data_hora.slice(0, 10)));
+    const num = v => v === '' || v == null ? null : Number(v);
+    if (dias.size <= 4) return h.map(x => ({ t: x.data_hora, sem: num(x[id]), com: num(x[id + '_cupom']) }));
+    const por = new Map();
+    for (const x of h) {
+      const k = x.data_hora.slice(0, 10), p = por.get(k) || { t: k, sem: null, com: null };
+      const s = num(x[id]), c = num(x[id + '_cupom']);
+      if (s != null && (p.sem == null || s < p.sem)) p.sem = s;
+      if (c != null && (p.com == null || c < p.com)) p.com = c;
+      por.set(k, p);
+    }
+    return [...por.values()];
+  };
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const sv = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); return e; };
+
+  const desenhar = m => {
+    const box = $('grafico'); box.replaceChildren();
+    const pts = serie(m.id);
+    if (pts.length < 2) { box.append(el('p', { class: 'small', text: 'O gráfico aparece depois de algumas varreduras.' })); return; }
+    const W = Math.max(box.clientWidth, 300), H = 240, ml = 64, mr = 12, mt = 12, mb = 26;
+    const vals = pts.flatMap(p => [p.sem, p.com]).filter(v => v != null).concat(m.alvo ? [m.alvo] : []);
+    let lo = Math.min(...vals), hi = Math.max(...vals);
+    const pad = Math.max((hi - lo) * 0.12, 50); lo -= pad; hi += pad;
+    const passo = [50, 100, 200, 250, 500, 1000].find(s => (hi - lo) / s <= 5) || 1000;
+    const x = i => ml + (pts.length === 1 ? 0 : i * (W - ml - mr) / (pts.length - 1));
+    const y = v => mt + (hi - v) * (H - mt - mb) / (hi - lo);
+    const svg = sv('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `Histórico de preço do ${m.nome}, sem cupom e com cupom` });
+    for (let v = Math.ceil(lo / passo) * passo; v <= hi; v += passo) {
+      svg.append(sv('line', { x1: ml, x2: W - mr, y1: y(v), y2: y(v), stroke: 'var(--grid)', 'stroke-width': 1 }));
+      const t = sv('text', { x: ml - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'eixo' }); t.textContent = brl(v); svg.append(t);
+    }
+    const marcas = [0, Math.floor((pts.length - 1) / 2), pts.length - 1].filter((v, i, a) => a.indexOf(v) === i);
+    for (const i of marcas) {
+      const t = sv('text', { x: x(i), y: H - 6, 'text-anchor': i === 0 ? 'start' : i === pts.length - 1 ? 'end' : 'middle', class: 'eixo' });
+      t.textContent = quando(pts[i].t); svg.append(t);
+    }
+    if (m.alvo && m.alvo >= lo && m.alvo <= hi) {
+      svg.append(sv('line', { x1: ml, x2: W - mr, y1: y(m.alvo), y2: y(m.alvo), stroke: 'var(--ref)', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }));
+      const t = sv('text', { x: W - mr, y: y(m.alvo) - 6, 'text-anchor': 'end', class: 'eixo' }); t.textContent = `alvo ${brl(m.alvo)}`; svg.append(t);
+    }
+    for (const [k, cor] of [['sem', 'var(--s1)'], ['com', 'var(--s2)']]) {
+      let dpath = '', aberto = false;
+      pts.forEach((p, i) => { if (p[k] == null) { aberto = false; return; } dpath += `${aberto ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`; aberto = true; });
+      if (dpath) svg.append(sv('path', { d: dpath, fill: 'none', stroke: cor, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+      const ult = [...pts.keys()].reverse().find(i => pts[i][k] != null);
+      if (ult != null) svg.append(sv('circle', { cx: x(ult), cy: y(pts[ult][k]), r: 4, fill: cor, stroke: 'var(--panel)', 'stroke-width': 2 }));
+    }
+    // camada de hover: linha vertical que acha a data mais próxima + dica com as duas séries
+    const cruz = sv('line', { y1: mt, y2: H - mb, stroke: 'var(--ink-3)', 'stroke-width': 1, visibility: 'hidden' });
+    const pontos = { sem: sv('circle', { r: 4, fill: 'var(--s1)', stroke: 'var(--panel)', 'stroke-width': 2, visibility: 'hidden' }),
+                     com: sv('circle', { r: 4, fill: 'var(--s2)', stroke: 'var(--panel)', 'stroke-width': 2, visibility: 'hidden' }) };
+    svg.append(cruz, pontos.sem, pontos.com);
+    const alvoHit = sv('rect', { x: ml, y: mt, width: W - ml - mr, height: H - mt - mb, fill: 'transparent', tabindex: 0 });
+    svg.append(alvoHit);
+    const dica = el('div', { class: 'dica', role: 'status' });
+    box.append(svg, dica);
+    let atual = pts.length - 1;
+    const mostrar = i => {
+      atual = i; const p = pts[i];
+      cruz.setAttribute('x1', x(i)); cruz.setAttribute('x2', x(i)); cruz.setAttribute('visibility', 'visible');
+      for (const k of ['sem', 'com']) {
+        if (p[k] == null) { pontos[k].setAttribute('visibility', 'hidden'); continue; }
+        pontos[k].setAttribute('cx', x(i)); pontos[k].setAttribute('cy', y(p[k])); pontos[k].setAttribute('visibility', 'visible');
+      }
+      dica.replaceChildren(el('div', { class: 'data', text: quando(p.t) }),
+        ...[['sem', 'Sem cupom', 'var(--s1)'], ['com', 'Com cupom', 'var(--s2)']].map(([k, nome, cor]) =>
+          el('div', { class: 'lin' }, el('span', {}, el('i', { style: `background:${cor}` }), nome), el('b', { text: brl(p[k]) }))));
+      dica.style.display = 'block';
+      const esc = box.clientWidth / W, px = x(i) * esc;
+      dica.style.left = Math.min(Math.max(px - dica.offsetWidth / 2, 0), box.clientWidth - dica.offsetWidth) + 'px';
+      dica.style.top = '-8px';
+    };
+    const esconder = () => { cruz.setAttribute('visibility', 'hidden'); pontos.sem.setAttribute('visibility', 'hidden'); pontos.com.setAttribute('visibility', 'hidden'); dica.style.display = 'none'; };
+    const perto = ev => { const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) * W / r.width;
+      return Math.max(0, Math.min(pts.length - 1, Math.round((px - ml) * (pts.length - 1) / (W - ml - mr)))); };
+    alvoHit.addEventListener('pointermove', ev => mostrar(perto(ev)));
+    alvoHit.addEventListener('pointerleave', esconder);
+    alvoHit.addEventListener('focus', () => mostrar(atual));
+    alvoHit.addEventListener('blur', esconder);
+    alvoHit.addEventListener('keydown', ev => {
+      if (ev.key === 'ArrowLeft') { mostrar(Math.max(0, atual - 1)); ev.preventDefault(); }
+      if (ev.key === 'ArrowRight') { mostrar(Math.min(pts.length - 1, atual + 1)); ev.preventDefault(); }
+    });
+
+    // tabela do histórico (o mesmo dado do gráfico, sem precisar do mouse)
+    const tb = el('tbody');
+    for (const p of [...pts].reverse()) tb.append(el('tr', {}, el('td', { text: quando(p.t) }), el('td', { class: 'num', text: brl(p.sem) }), el('td', { class: 'num', text: brl(p.com) })));
+    $('hist-tabela').querySelector('.tabela').replaceChildren(el('table', {},
+      el('thead', {}, el('tr', {}, el('th', { text: 'Quando' }), el('th', { class: 'num', text: 'Sem cupom' }), el('th', { class: 'num', text: 'Com cupom' }))), tb));
+  };
+
+  const tabela = m => {
+    const tb = el('tbody');
+    for (const o of m.ofertas) {
+      const cup = !o.cupom ? el('span', { class: 'vazio', text: '—' })
+        : /^cupom/.test(o.cupom) ? el('span', { text: o.cupom }) : el('span', { class: 'codigo', text: o.cupom });
+      const nivel = { A: 'preço lido na loja', B: 'oferta postada e confirmada', C: 'não confirmada (1 grupo só)' }[o.confianca] || '';
+      const extra = [nivel, ...(o.ressalvas || []), o.obs, o.detalhes, (o.n_vistos || 1) > 1 ? `visto em ${o.n_vistos} lugares` : '',
+        o.cupom_citado ? `grupos citam o cupom ${o.cupom_citado}` : '', o.idade_h != null ? `postado há ${Math.round(o.idade_h)}h` : ''].filter(Boolean).join(' · ');
+      const prod = el('td', {}, seguro(o.link) ? el('a', { href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: o.loja }) : el('span', { class: 'loja', text: o.loja }),
+        el('span', { class: 'tit', text: o.titulo }), extra ? el('span', { class: 'tit', text: extra }) : null);
+      tb.append(el('tr', {}, prod,
+        el('td', { class: 'num' }, el('b', { text: brl(o.preco) }), o.preco_sem_cupom ? el('span', { class: 'tit', text: `sem cupom ${brl(o.preco_sem_cupom)}` }) : null),
+        el('td', {}, cup), el('td', { class: 'col-fonte small', text: o.fonte })));
+    }
+    $('ofertas').replaceChildren(m.ofertas.length ? el('table', {},
+      el('thead', {}, el('tr', {}, el('th', { text: 'Loja e produto' }), el('th', { class: 'num', text: 'Preço' }), el('th', { text: 'Cupom' }), el('th', { class: 'col-fonte', text: 'Fonte' }))), tb)
+      : el('p', { class: 'small', text: 'Nenhuma oferta deste modelo agora.' }));
+  };
+
+  let escolhido = d.modelos[0];
+  const abas = d.modelos.map(m => {
+    const b = el('button', { type: 'button', role: 'tab', 'aria-selected': String(m === escolhido), text: m.nome.replace('PS5 ', '').replace(/^c/, 'C') });
+    b.addEventListener('click', () => { escolhido = m; abas.forEach((x, i) => x.setAttribute('aria-selected', String(d.modelos[i] === m))); desenhar(m); tabela(m); });
+    return b;
+  });
+  $('abas').append(...abas);
+  desenhar(escolhido); tabela(escolhido);
+  let larg = window.innerWidth;
+  window.addEventListener('resize', () => { if (window.innerWidth !== larg) { larg = window.innerWidth; desenhar(escolhido); } });
+
+  // cupons para testar
+  const cupons = Object.entries(d.cupons_teste || {});
+  if (!cupons.length) $('cupons').append(el('p', { class: 'small', text: 'Nenhum cupom geral ativo nessas lojas agora.' }));
+  for (const [loja, v] of cupons) {
+    const ul = el('ul'), cs = v.cupons || [];
+    if (!cs.length) ul.append(el('li', { class: 'muted', text: 'Nenhum cupom de games, eletrônicos ou site todo agora.' }));
+    for (const c of cs) ul.append(el('li', {}, el('span', { class: 'codigo', text: c.codigo }), copiar(c.codigo),
+      el('span', { text: `${c.titulo}` }), el('span', { class: 'muted', text: c.preco_estimado != null
+        ? `→ ${c.modelo} de ${brl(c.preco_base)} por ~${brl(c.preco_estimado)}` : '→ o buscador não lê o preço dessa loja; teste no carrinho' })));
+    $('cupons').append(el('div', { class: 'cupons-loja' }, el('h3', { text: loja }), ul,
+      seguro(v.pagina) ? el('a', { href: seguro(v.pagina), target: '_blank', rel: 'noopener noreferrer', class: 'small', text: `Todos os cupons ${no(loja)} ${loja} no Promobit ↗` }) : null));
+  }
+
+  // à parte: open box, importados e leilões (nunca entram no melhor preço de console novo)
+  const NOMES = { openbox: 'Open box / reembalado (vendido por loja)', importados: 'Importados (sem garantia da Sony Brasil)', usados: 'Usados' };
+  const itemOferta = o => el('li', {}, seguro(o.link) ? el('a', { href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: `${brl(o.preco)} ${no(o.loja)} ${o.loja}` }) : el('b', { text: `${brl(o.preco)} ${no(o.loja)} ${o.loja}` }),
+    el('span', { class: 'muted', text: o.titulo }));
+  for (const [chave, lista] of Object.entries(d.secoes || {})) {
+    if (!lista.length) continue;
+    const ul = el('ul');
+    for (const o of lista) ul.append(itemOferta(o));
+    $('aparte').append(el('div', { class: 'cupons-loja' }, el('h3', { text: NOMES[chave] || chave }), ul));
+  }
+  if ((d.leiloes || []).length) {
+    const ul = el('ul');
+    for (const l of d.leiloes) ul.append(el('li', {}, seguro(l.link) ? el('a', { href: seguro(l.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: l.origem }) : el('b', { text: l.origem }),
+      el('span', { text: l.descricao }), el('span', { class: 'muted', text: [l.lance != null ? `${l.lance_tipo} ${brl(l.lance)}` : '', l.encerra, l.local].filter(Boolean).join(' · ') })));
+    $('aparte').append(el('div', { class: 'cupons-loja' }, el('h3', { text: 'Leilões (lance não é preço final: há taxas, retirada e nenhum teste)' }), ul));
+  }
+  if (!$('aparte').children.length) $('aparte').append(el('p', { class: 'small', text: 'Nada de open box, importado ou leilão com PS5 nesta rodada.' }));
+
+  // fontes
+  for (const [nome, s] of Object.entries(d.fontes)) {
+    $('fontes').append(el('span', { class: 'fonte' + (s.ok ? '' : ' falhou'), title: s.erro || s.detalhe || '',
+      text: s.ok ? `✓ ${nome}${s.detalhe ? ' (' + s.detalhe.split(' (')[0] + ')' : ''}` : `⚠ ${nome}: ${/Bloqueado|403|503|pausada/.test(s.erro || '') ? 'barrou o robô' : 'falhou'}` }));
+  }
+  $('como').textContent = 'O melhor preço usa só o que está confirmado: preço lido na loja ou no comparador, oferta postada no Promobit ou no Gatry ' +
+    `(vale ${d.config.horas_promobit}h) e oferta vista em dois ou mais grupos independentes do Telegram (vale ${d.config.horas_grupo || 12}h). ` +
+    'Oferta vista num grupo só aparece como "não confirmada". Acessórios e usados ficam de fora. ' +
+    'Os alvos dos alertas mudam no arquivo ps5/config.py do repositório.';
+})();
+</script>
+</body>
+</html>
