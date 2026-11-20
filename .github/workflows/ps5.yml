@@ -1,10 +1,15 @@
-name: Monitor PS5
+name: Buscador PS5
 
 on:
   schedule:
-    - cron: '41 * * * *'      # de hora em hora (o agendamento do GitHub às vezes atrasa ou pula uma)
-  workflow_dispatch:          # botão "Run workflow" para rodar na hora
-  push:                       # roda também quando o código do monitor muda (não quando só os dados mudam)
+    - cron: '11,41 * * * *'   # de 30 em 30 minutos (reserva: o agendamento do GitHub atrasa e pula execuções)
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (a cada 30 min, com origem=cron)
+    inputs:
+      origem:
+        description: 'Quem disparou (cron = cron-job.org)'
+        required: false
+        default: 'manual'
+  push:                       # roda também quando o código do buscador muda (não quando só os dados mudam)
     branches: [main, claude/ps5-price-monitor-brazil-cqvxiw]
     paths: ['ps5/*.py', 'ps5/painel.html', '.github/workflows/ps5.yml']
 
@@ -23,23 +28,46 @@ jobs:
       TZ: America/Sao_Paulo
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # a versão mais nova da branch (com os dados da rodada anterior)
+      - name: Pular se outra rodada acabou de terminar
+        id: guarda
+        env:
+          EVENTO: ${{ github.event_name }}
+          ORIGEM: ${{ inputs.origem }}
+        # agendamento do GitHub e cron-job.org podem cair juntos: a segunda é pulada (sem mensagem dobrada)
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'FIM'
+          import json, os, datetime as dt
+          pular = False
+          if os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
+              try:
+                  ultima = dt.datetime.fromisoformat(json.load(open('ps5/estado.json'))['ultima'])
+                  pular = (dt.datetime.now(ultima.tzinfo) - ultima).total_seconds() < 20 * 60
+              except Exception:
+                  pass
+          print('pular=' + str(pular).lower())
+          FIM
       - uses: actions/setup-python@v5
+        if: steps.guarda.outputs.pular != 'true'
         with:
           python-version: '3.12'
       - name: Auto-checagem
+        if: steps.guarda.outputs.pular != 'true'
         run: python ps5/monitor.py --teste
       - name: Varredura e alerta
+        if: steps.guarda.outputs.pular != 'true'
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 }}       # bot próprio do PS5 (não usa o bot das passagens)
+          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}   # opcional
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}           # sem o de cima, vale o primeiro chat daqui
           PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram
         run: python ps5/monitor.py
       - name: Guardar resultado
-        if: always()
+        if: always() && steps.guarda.outputs.pular != 'true'
         run: |
-          git config user.name "monitor-ps5"
-          git config user.email "monitor-ps5@users.noreply.github.com"
+          git config user.name "buscador-ps5"
+          git config user.email "buscador-ps5@users.noreply.github.com"
           git add ps5/historico.csv ps5/estado.json ps5/ultimo.md docs/ps5 2>/dev/null || true
           git commit -q -m "PS5 $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
           # o monitor de passagens também grava na main: junta e tenta de novo se alguém gravou antes

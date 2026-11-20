@@ -1,54 +1,55 @@
-# Monitor de preço do PS5
+# Buscador de preço do PS5
 
-Procura o PS5 de hora em hora em lojas brasileiras e avisa no Telegram (o mesmo bot das passagens) quando o preço fica bom,
-com cupom ou sem.
+Procura o PS5 a cada 30 minutos em lojas, comparador, comunidades de oferta e grupos do Telegram, e avisa por um bot
+próprio no Telegram quando o preço fica bom, com cupom ou sem.
 
 **Painel:** https://hugovfa2017.github.io/passagens-monitor/ps5/
 
 ## O que ele acompanha
 
-Três modelos, cada um com o melhor preço **sem cupom** e **com cupom**:
+Três modelos (com leitor de disco, Digital e Pro), cada um com o melhor preço **sem cupom** e **com cupom**, e no topo o
+**PS5 novo mais barato agora**, seja qual for o modelo. Bundles com jogo contam; acessórios e PlayStation Portal não.
 
-- **PS5 com leitor de disco** (Slim ou Standard, mídia física)
-- **PS5 Digital**
-- **PS5 Pro**
+| Tipo | Fontes | Como conta |
+|---|---|---|
+| Lojas | KaBuM!, Amazon, Americanas, Fast Shop, Webcontinental, Bemol | preço lido na loja (nível A) |
+| Comparador | Zoom (Magazine Luiza, Amazon, KaBuM!...) | nível A |
+| Ofertas postadas | Promobit, Gatry | preço final já com cupom (nível B) |
+| Grupos do Telegram | 22 canais públicos (Jogo Barato, MeuPlayStation, Pelando, PromoTop, Xet, Pechinchou, Nerd Ofertas, Tecnoblog, Canaltech...) | nível B se vista em 2+ redes independentes; senão "não confirmada" (nível C) |
+| Cupons | páginas de cupom do Promobit e cupons anunciados nos grupos | "para testar no carrinho" |
+| À parte | open box, importados e leilões de logística reversa (Lance360, HISA, Bolsa de Leilões) | nunca entram no melhor preço |
 
-Bundles com jogo contam. Usados, acessórios, PlayStation Portal e versões importadas (Oriente Médio, KSA, "International")
-ficam de fora.
-
-| Fonte | O que traz |
-|---|---|
-| KaBuM! | preço à vista no Pix; o selo "CUPOM X" do produto vira preço com cupom |
-| Amazon | preço da busca; o selo "Economize R$ X com cupom" vira preço com cupom (às vezes a Amazon barra o robô) |
-| Americanas | catálogo da loja, inclusive vendedores parceiros (Magazine Luiza) |
-| Zoom | comparador: Magazine Luiza, Fast Shop, Webcontinental, Amazon, KaBuM!... |
-| Promobit | ofertas de PS5 postadas pela comunidade, já com o preço final usando o cupom (Mercado Livre, Shopee, AliExpress, Magalu...), e os cupons ativos de cada loja |
-
-Mercado Livre, Magazine Luiza (direto), Casas Bahia, Carrefour e Pelando bloqueiam robôs; as ofertas deles chegam pelo
-Promobit e pelo Zoom.
-
-"Com cupom" só conta preço confirmado. Cupons gerais da loja (de games, eletrônicos ou site todo) aparecem no painel como
-**"para testar no carrinho"**, com quanto ficaria se valerem, mas não entram na conta.
+A mesma oferta vista em várias fontes vira uma só, com "visto em N lugares". Mercado Livre, Magazine Luiza (direto),
+Casas Bahia, Carrefour, Shopee e outras bloqueiam robôs: as ofertas delas chegam pelos grupos e pelo Promobit.
+A lista de lojas, canais e sites fica em [`lojas.py`](lojas.py); acrescentar um é acrescentar uma linha.
+`python3 ps5/sondar.py` mostra quem responde.
 
 ## Quando chega mensagem
 
-- **Com som:** o melhor preço de um modelo chegou ao alvo, ou é o menor preço já visto (pelo menos R$ 50 abaixo do recorde).
-  A mesma oferta no mesmo preço não é repetida por 24 h.
-- **Sem som:** um resumo por dia, às 9h, com o melhor preço de cada modelo.
+- **Com som:** o melhor preço confirmado de um modelo chegou ao alvo, ou é o menor já visto (pelo menos R$ 50 abaixo
+  do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca.
+- **Sem som:** oferta de grupo ainda não confirmada que parece muito boa; lote novo de leilão com PS5; resumo diário às 9h.
 
-As mensagens vão só para o **primeiro** chat do segredo `TELEGRAM_CHAT_ID` (não para os outros viajantes). Para mandar para
-outro(s) chat(s), crie o segredo `TELEGRAM_CHAT_ID_PS5` (Settings → Secrets and variables → Actions), com os ids separados
-por vírgula.
+## Telegram: bot próprio
 
-## Mudar os alvos
+O buscador usa um bot só dele (nada sai pelo bot das passagens).
 
-Edite [`config.py`](config.py) direto no GitHub (ícone de lápis) e salve. Ali estão os alvos de cada modelo, quais modelos
-podem alertar, a hora do resumo diário e se versões importadas entram.
+1. No Telegram, fale com o **@BotFather**, mande `/newbot` e guarde o token.
+2. Abra a conversa com o bot novo e mande `/start`.
+3. No GitHub: Settings → Secrets and variables → Actions → New repository secret, nome **`TELEGRAM_TOKEN_PS5`**.
+4. Teste: Actions → **Teste do Telegram (PS5)** → Run workflow.
 
-## Rodar na mão
+As mensagens vão para `TELEGRAM_CHAT_ID_PS5`, se existir; senão, para o primeiro chat de `TELEGRAM_CHAT_ID`.
 
-- No GitHub: Actions → **Monitor PS5** → Run workflow.
-- No computador: `python3 ps5/monitor.py` (varredura) ou `python3 ps5/monitor.py --teste` (auto-checagem, sem internet).
+## Rodada de 30 em 30 minutos
 
-Arquivos gerados: `ps5/historico.csv` (melhor preço de cada varredura), `ps5/ultimo.md` (resumo da última),
-`ps5/estado.json` (recordes e alertas já mandados) e `docs/ps5/` (painel).
+O agendamento do GitHub atrasa e pula execuções. Para valer de verdade, duplique no cron-job.org o gatilho que já existe
+para as passagens, apontando para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
+
+## Ajustes e uso
+
+- Alvos, seções ligadas e prazos: [`config.py`](config.py) (dá para editar direto no GitHub).
+- Rodar na mão: Actions → **Buscador PS5** → Run workflow; ou `python3 ps5/monitor.py` no computador.
+- Auto-checagem sem internet: `python3 ps5/monitor.py --teste`.
+
+Arquivos gerados: `ps5/historico.csv`, `ps5/ultimo.md`, `ps5/estado.json` e `docs/ps5/` (painel).

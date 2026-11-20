@@ -1,0 +1,18 @@
+name: Teste do Telegram (PS5)
+
+on:
+  workflow_dispatch:          # botão "Run workflow": manda uma mensagem de teste pelo bot do PS5
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mandar mensagem de teste pelo bot do PS5
+        env:
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 }}
+          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        # o resultado diz o que falta (segredo ausente, /start não enviado...) sem mostrar token nem id de chat
+        run: python3 ps5/monitor.py --teste-telegram

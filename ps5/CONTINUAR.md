@@ -1,0 +1,61 @@
+# Continuar o buscador do PS5 no computador
+
+Este arquivo passa o bastão de uma sessão do Claude na nuvem para uma sessão no computador do dono do repositório.
+Lá na nuvem o envio ao GitHub era recusado (erro 403), então o trabalho chegou aqui por um patch.
+Apague este arquivo quando tudo abaixo estiver feito.
+
+## Onde estamos
+
+Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 fontes em menos de 30 s):
+
+- Fontes novas: lojas VTEX genéricas (Americanas, Fast Shop, Webcontinental, Bemol), Gatry, 22 canais do Telegram
+  (prévia pública `t.me/s/<canal>?q=PS5`), leilões de logística reversa (Lance360, HISA, Bolsa de Leilões).
+- `texto.py`: leitor de oferta em texto livre, calibrado em 821 posts reais.
+- `monitor.py`: junção da mesma oferta entre fontes (`fundir`), níveis de confiança A/B/C, "não confirmada",
+  seções à parte (open box, importados, leilões), saúde das fontes, cupons anunciados nos grupos.
+- Telegram por bot próprio: lê só `TELEGRAM_TOKEN_PS5`.
+- Workflow `ps5.yml` de 30 em 30 minutos e `ps5-telegram.yml` para testar o bot.
+- `sondar.py`: mostra quais fontes e candidatas respondem.
+
+## O que falta, em ordem
+
+1. **Enviar a branch.** `git push -u origin claude/ps5-price-monitor-brazil-cqvxiw`. O push dispara o workflow nessa
+   branch sem mandar Telegram; confira o log para ver quais fontes respondem a partir dos servidores do GitHub.
+2. **Token do bot novo.** O dono já criou o bot no @BotFather. O token nunca deve ser colado em chat nem em arquivo.
+   Peça para ele rodar, num terminal dele: `gh secret set TELEGRAM_TOKEN_PS5 --repo hugovfa2017/passagens-monitor`
+   (o `gh` pede o valor sem mostrar na tela). Sem `gh`: github.com → Settings → Secrets and variables → Actions →
+   New repository secret. Ele também precisa mandar `/start` para o bot novo.
+3. **Testar o bot.** Actions → "Teste do Telegram (PS5)" → Run workflow. Tem que chegar uma mensagem pelo bot novo.
+4. **Juntar na `main`** (só com o OK do dono): pull request da branch para a `main`. O agendamento só roda a partir dela.
+5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
+   para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
+6. **Sondar a partir do computador.** `python3 ps5/sondar.py`. Internet residencial no Brasil costuma ser aceita por
+   lojas que barram servidores (Mercado Livre, Magazine Luiza, Casas Bahia, Shopee). Se alguma abrir, vale escrever um
+   leitor para ela; se barrar, fica de fora. Não tentar contornar bloqueio.
+
+## Pendências do plano (ainda não feitas)
+
+- **Preço possível por modelo**: preço da loja (nível A, sem cupom) menos um cupom geral plausível, mostrado ao lado do
+  confirmado, com aviso sem som quando ficar `config.MARGEM_POSSIVEL` abaixo do alvo. Hoje existe só a lista
+  "cupons para testar" (`cupons_para_testar`), que já calcula o preço estimado por loja.
+- **Cashback**: `fontes.zoom()` já anota `cashback` na oferta da loja mais barata; falta usar no preço possível.
+- **Painel**: está funcional com os campos novos, mas merece uma passada (filtro por nível, cartão do "mais barato").
+- **Preço do Zoom desatualizado**: em 20/11 o Zoom dava R$ 4.049,91 na Amazon para um produto que a própria Amazon
+  mostrava a R$ 4.499,90. Ideia: quando a loja respondeu direto nesta rodada, preferir o preço dela ao do comparador.
+- **Leilões da Receita Federal, Superbid e Kwara**: páginas montadas por JavaScript; precisariam de navegador.
+- **Kalunga e Colombo**: respondem, mas precisam de leitor próprio.
+
+## Decisões do dono (não mudar sem perguntar)
+
+- Quer o PS5 novo mais barato, de qualquer modelo; os três modelos seguem monitorados.
+- Seções ligadas: open box, importados, leilões. Usado de pessoa física fica de fora.
+- Telegram por bot novo, separado do bot das passagens.
+- Rodada de 30 em 30 minutos.
+
+## O que a sondagem de 20/11/2026 mostrou
+
+- Ofertas que só apareceram nos grupos: PS5 Digital a R$ 3.759 no Mercado Livre (cupom MP500PS, cartão Mercado Pago,
+  18/11), a R$ 3.578 na Shopee (15/11) e PS5 com leitor a R$ 3.644 na Vivo (18/11).
+- Barram robô a partir de servidor: Mercado Livre, Magazine Luiza, Casas Bahia, Ponto, Extra, Carrefour, Shopee,
+  TikTok Shop, Gazin, Casa & Vídeo, Pichau, Terabyte, Trocafy, Hardmob, Pelando (site), Nosso Leilão, Tudo Leilão.
+- Google Shopping exige navegador. A Amazon barra de vez em quando.

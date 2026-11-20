@@ -160,10 +160,17 @@
   <section class="secao" aria-labelledby="t-cup">
     <div>
       <h2 id="t-cup">Cupons das lojas para testar no carrinho</h2>
-      <p class="small">Cupons gerais ativos (lista do Promobit) nas lojas das melhores ofertas sem cupom. Não há garantia de que valem para console:
+      <p class="small">Cupons gerais ativos (lista do Promobit e cupons anunciados nos grupos) que podem valer para console. Não há garantia:
         por isso ficam fora do "melhor preço com cupom". Ao lado, quanto ficaria a oferta sem cupom mais barata da loja se o cupom valer.</p>
     </div>
     <div class="cupons" id="cupons"></div>
+  </section>
+  <section class="secao" aria-labelledby="t-aparte">
+    <div>
+      <h2 id="t-aparte">À parte: open box, importados e leilões</h2>
+      <p class="small">Mais baratos, com mais risco. Nunca entram no melhor preço de console novo nem nos alertas com som.</p>
+    </div>
+    <div class="cupons" id="aparte"></div>
   </section>
   <footer class="small">
     <div class="fontes" id="fontes"></div>
@@ -194,7 +201,9 @@ const DADOS = /*DADOS*/null;
     return `${SEM[new Date(a, m - 1, di).getDay()]} ${String(di).padStart(2, '0')}/${String(m).padStart(2, '0')}${h ? ' às ' + h : ''}`; };
   const no = loja => /^(Mercado Livre|Carrefour|Ponto|Extra|Submarino|Zoom)/.test(loja) ? 'no' : 'na';
 
-  $('sub').textContent = `Melhor preço com e sem cupom em lojas brasileiras, de hora em hora. Atualizado ${quando(d.atualizado)}.`;
+  const mb = d.mais_barato, nomeDe = id => (d.modelos.find(m => m.id === id) || {}).nome || 'PS5';
+  $('sub').textContent = (mb ? `Mais barato agora: ${nomeDe(mb.modelo)} por ${brl(mb.preco)} ${no(mb.loja)} ${mb.loja}. ` : '') +
+    `Lojas, comparador, Promobit, Gatry e grupos do Telegram, a cada 30 minutos. Atualizado ${quando(d.atualizado)}.`;
 
   const copiar = codigo => {
     const b = el('button', { class: 'copiar', type: 'button', text: 'Copiar' });
@@ -223,14 +232,19 @@ const DADOS = /*DADOS*/null;
       el('div', { class: 'onde' }, `${no(o.loja)} `, el('b', { text: o.loja }), o.idade_h != null ? ` · postado há ${Math.round(o.idade_h)}h` : '')));
     card.append(linhaCupom(o));
     if (abaixo) card.append(el('span', { class: 'badge bom', text: '✓ abaixo do alvo' }));
+    if ((o.ressalvas || []).length) card.append(el('span', { class: 'badge', text: '⚠ ' + o.ressalvas.join(' · ') }));
+    if (o.cupom_citado) card.append(el('span', { class: 'cupom' }, el('span', { text: 'grupos citam o cupom' }), el('span', { class: 'codigo', text: o.cupom_citado }), copiar(o.cupom_citado)));
     const linhas = el('div', { class: 'linhas' });
     const lin = (rot, val) => linhas.append(el('div', {}, el('span', { text: rot }), el('span', {}, val)));
     lin('Sem cupom', m.sem ? `${brl(m.sem.preco)} ${no(m.sem.loja)} ${m.sem.loja}` : '—');
     lin('Com cupom', m.com ? `${brl(m.com.preco)} ${no(m.com.loja)} ${m.com.loja}` : 'nenhum confirmado agora');
+    if (m.nao_confirmada) lin('Não confirmada (1 grupo só)', `${brl(m.nao_confirmada.preco)} ${no(m.nao_confirmada.loja)} ${m.nao_confirmada.loja}`);
+    if ((o.n_vistos || 1) > 1) lin('Visto em', `${o.n_vistos} lugares`);
     if (m.recorde) lin('Menor já visto', `${brl(m.recorde.preco)} em ${quando(m.recorde.quando).split(' às ')[0]}`);
     card.append(linhas);
     card.append(el('p', { class: 'small', text: o.titulo + (o.detalhes ? ` (${o.detalhes})` : '') }));
-    const rotulo = o.fonte === 'Promobit' ? `Ver a oferta (post no Promobit) ↗` : o.fonte === 'Zoom' ? `Ver lojas no Zoom ↗` : `Ver oferta ${no(o.loja)} ${o.loja.split(' · ')[0]} ↗`;
+    const rotulo = o.fonte === 'Promobit' ? `Ver a oferta (post no Promobit) ↗` : o.fonte === 'Gatry' ? `Ver a oferta (post no Gatry) ↗`
+      : o.fonte === 'Telegram' ? `Ver o post no Telegram ↗` : o.fonte === 'Zoom' ? `Ver lojas no Zoom ↗` : `Ver oferta ${no(o.loja)} ${o.loja.split(' · ')[0]} ↗`;
     if (seguro(o.link)) card.append(el('a', { class: 'btn', href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', text: rotulo }));
     $('cards').append(card);
   }
@@ -336,7 +350,9 @@ const DADOS = /*DADOS*/null;
     for (const o of m.ofertas) {
       const cup = !o.cupom ? el('span', { class: 'vazio', text: '—' })
         : /^cupom/.test(o.cupom) ? el('span', { text: o.cupom }) : el('span', { class: 'codigo', text: o.cupom });
-      const extra = [o.obs, o.detalhes, o.idade_h != null ? `postado há ${Math.round(o.idade_h)}h` : ''].filter(Boolean).join(' · ');
+      const nivel = { A: 'preço lido na loja', B: 'oferta postada e confirmada', C: 'não confirmada (1 grupo só)' }[o.confianca] || '';
+      const extra = [nivel, ...(o.ressalvas || []), o.obs, o.detalhes, (o.n_vistos || 1) > 1 ? `visto em ${o.n_vistos} lugares` : '',
+        o.cupom_citado ? `grupos citam o cupom ${o.cupom_citado}` : '', o.idade_h != null ? `postado há ${Math.round(o.idade_h)}h` : ''].filter(Boolean).join(' · ');
       const prod = el('td', {}, seguro(o.link) ? el('a', { href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: o.loja }) : el('span', { class: 'loja', text: o.loja }),
         el('span', { class: 'tit', text: o.titulo }), extra ? el('span', { class: 'tit', text: extra }) : null);
       tb.append(el('tr', {}, prod,
@@ -366,18 +382,38 @@ const DADOS = /*DADOS*/null;
     const ul = el('ul'), cs = v.cupons || [];
     if (!cs.length) ul.append(el('li', { class: 'muted', text: 'Nenhum cupom de games, eletrônicos ou site todo agora.' }));
     for (const c of cs) ul.append(el('li', {}, el('span', { class: 'codigo', text: c.codigo }), copiar(c.codigo),
-      el('span', { text: `${c.titulo}` }), el('span', { class: 'muted', text: `→ ${c.modelo} de ${brl(c.preco_base)} por ~${brl(c.preco_estimado)}` })));
+      el('span', { text: `${c.titulo}` }), el('span', { class: 'muted', text: c.preco_estimado != null
+        ? `→ ${c.modelo} de ${brl(c.preco_base)} por ~${brl(c.preco_estimado)}` : '→ o buscador não lê o preço dessa loja; teste no carrinho' })));
     $('cupons').append(el('div', { class: 'cupons-loja' }, el('h3', { text: loja }), ul,
       seguro(v.pagina) ? el('a', { href: seguro(v.pagina), target: '_blank', rel: 'noopener noreferrer', class: 'small', text: `Todos os cupons ${no(loja)} ${loja} no Promobit ↗` }) : null));
   }
 
+  // à parte: open box, importados e leilões (nunca entram no melhor preço de console novo)
+  const NOMES = { openbox: 'Open box / reembalado (vendido por loja)', importados: 'Importados (sem garantia da Sony Brasil)', usados: 'Usados' };
+  const itemOferta = o => el('li', {}, seguro(o.link) ? el('a', { href: seguro(o.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: `${brl(o.preco)} ${no(o.loja)} ${o.loja}` }) : el('b', { text: `${brl(o.preco)} ${no(o.loja)} ${o.loja}` }),
+    el('span', { class: 'muted', text: o.titulo }));
+  for (const [chave, lista] of Object.entries(d.secoes || {})) {
+    if (!lista.length) continue;
+    const ul = el('ul');
+    for (const o of lista) ul.append(itemOferta(o));
+    $('aparte').append(el('div', { class: 'cupons-loja' }, el('h3', { text: NOMES[chave] || chave }), ul));
+  }
+  if ((d.leiloes || []).length) {
+    const ul = el('ul');
+    for (const l of d.leiloes) ul.append(el('li', {}, seguro(l.link) ? el('a', { href: seguro(l.link), target: '_blank', rel: 'noopener noreferrer', class: 'loja', text: l.origem }) : el('b', { text: l.origem }),
+      el('span', { text: l.descricao }), el('span', { class: 'muted', text: [l.lance != null ? `${l.lance_tipo} ${brl(l.lance)}` : '', l.encerra, l.local].filter(Boolean).join(' · ') })));
+    $('aparte').append(el('div', { class: 'cupons-loja' }, el('h3', { text: 'Leilões (lance não é preço final: há taxas, retirada e nenhum teste)' }), ul));
+  }
+  if (!$('aparte').children.length) $('aparte').append(el('p', { class: 'small', text: 'Nada de open box, importado ou leilão com PS5 nesta rodada.' }));
+
   // fontes
   for (const [nome, s] of Object.entries(d.fontes)) {
-    $('fontes').append(el('span', { class: 'fonte' + (s.ok ? '' : ' falhou'), title: s.erro || '',
-      text: s.ok ? `✓ ${nome}` : `⚠ ${nome}: ${/Bloqueado|403|503/.test(s.erro || '') ? 'barrou o robô' : 'falhou'}` }));
+    $('fontes').append(el('span', { class: 'fonte' + (s.ok ? '' : ' falhou'), title: s.erro || s.detalhe || '',
+      text: s.ok ? `✓ ${nome}${s.detalhe ? ' (' + s.detalhe.split(' (')[0] + ')' : ''}` : `⚠ ${nome}: ${/Bloqueado|403|503|pausada/.test(s.erro || '') ? 'barrou o robô' : 'falhou'}` }));
   }
-  $('como').textContent = `Com cupom só entra preço confirmado: oferta postada no Promobit com o preço final (vale ${d.config.horas_promobit}h), ` +
-    'selo de cupom no próprio produto (KaBuM!) ou cupom da página da Amazon. Usados, acessórios e versões importadas ficam de fora. ' +
+  $('como').textContent = 'O melhor preço usa só o que está confirmado: preço lido na loja ou no comparador, oferta postada no Promobit ou no Gatry ' +
+    `(vale ${d.config.horas_promobit}h) e oferta vista em dois ou mais grupos independentes do Telegram (vale ${d.config.horas_grupo || 12}h). ` +
+    'Oferta vista num grupo só aparece como "não confirmada". Acessórios e usados ficam de fora. ' +
     'Os alvos dos alertas mudam no arquivo ps5/config.py do repositório.';
 })();
 </script>
