@@ -1,10 +1,9 @@
-# PS5 — última varredura: 2026-11-20 20:17 (hora de Brasília)
+# PS5 — última varredura: 2026-11-20 20:28 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.905 na KaBuM! com cupom JOGAMUITO · visto em 2 lugares, postado há 1h
+**Mais barato agora:** PS5 Digital por R$ 3.905,07 na Amazon · visto em 3 lugares, postado há 4h
 
 - **PS5 com leitor de disco**: R$ 4.049,91 na Amazon · à vista
-- **PS5 Digital**: R$ 3.905 na KaBuM! com cupom JOGAMUITO · visto em 2 lugares, postado há 1h
-   sem cupom: R$ 3.905,07 na Amazon
+- **PS5 Digital**: R$ 3.905,07 na Amazon · visto em 3 lugares, postado há 4h
 - **PS5 Pro**: R$ 7.699 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas

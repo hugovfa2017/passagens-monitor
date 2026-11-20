@@ -1,37 +1,43 @@
 {
- "atualizado": "2026-11-20 20:17",
+ "atualizado": "2026-11-20 20:28",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
-  "loja": "KaBuM!",
-  "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-  "preco": 3905.0,
+  "loja": "Amazon",
+  "titulo": "Console PlayStation 5 Slim Digital + 2 Jogos",
+  "preco": 3905.07,
   "preco_sem_cupom": null,
-  "cupom": "JOGAMUITO",
-  "cupom_origem": "postado",
-  "link": "https://t.me/cupons_desconto/84689",
-  "obs": "postado no canal Promobit (Telegram)",
+  "cupom": null,
+  "cupom_origem": null,
+  "link": "https://t.me/meups4/55591",
+  "obs": "postado no canal MeuPlayStation",
   "detalhes": "com jogo/extra",
-  "idade_h": 0.6,
+  "idade_h": 4.4,
   "tipo": "grupo",
   "condicao": "novo",
   "confianca": "B",
   "ressalvas": [],
   "visto_em": [
    {
-    "fonte": "Promobit (Telegram)",
-    "link": "https://t.me/cupons_desconto/84689",
-    "idade_h": 0.6,
+    "fonte": "MeuPlayStation",
+    "link": "https://t.me/meups4/55591",
+    "idade_h": 4.4,
     "tipo": "grupo"
    },
    {
-    "fonte": "Jogo Barato",
-    "link": "https://t.me/jogobarato/110256",
-    "idade_h": 9.0,
+    "fonte": "Xet das Promoções",
+    "link": "https://t.me/xetdaspromocoes/94379",
+    "idade_h": 6.3,
+    "tipo": "grupo"
+   },
+   {
+    "fonte": "Pechinchou",
+    "link": "https://t.me/pechinchou/239200",
+    "idade_h": 7.1,
     "tipo": "grupo"
    }
   ],
-  "n_vistos": 2,
+  "n_vistos": 3,
   "cupom_citado": null
  },
  "modelos": [
@@ -147,7 +153,7 @@
      "link": "https://t.me/jogobarato/110230",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 10.9,
+     "idade_h": 11.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -156,7 +162,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110230",
-       "idade_h": 10.9,
+       "idade_h": 11.1,
        "tipo": "grupo"
       }
      ],
@@ -237,7 +243,7 @@
      "link": "https://t.me/jogobarato/110256",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 9.0,
+     "idade_h": 9.2,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -246,7 +252,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 9.0,
+       "idade_h": 9.2,
        "tipo": "grupo"
       }
      ],
@@ -689,35 +695,41 @@
    "melhor": {
     "modelo": "digital",
     "fonte": "Telegram",
-    "loja": "KaBuM!",
-    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-    "preco": 3905.0,
+    "loja": "Amazon",
+    "titulo": "Console PlayStation 5 Slim Digital + 2 Jogos",
+    "preco": 3905.07,
     "preco_sem_cupom": null,
-    "cupom": "JOGAMUITO",
-    "cupom_origem": "postado",
-    "link": "https://t.me/cupons_desconto/84689",
-    "obs": "postado no canal Promobit (Telegram)",
+    "cupom": null,
+    "cupom_origem": null,
+    "link": "https://t.me/meups4/55591",
+    "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 0.6,
+    "idade_h": 4.4,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
     "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Promobit (Telegram)",
-      "link": "https://t.me/cupons_desconto/84689",
-      "idade_h": 0.6,
+      "fonte": "MeuPlayStation",
+      "link": "https://t.me/meups4/55591",
+      "idade_h": 4.4,
       "tipo": "grupo"
      },
      {
-      "fonte": "Jogo Barato",
-      "link": "https://t.me/jogobarato/110256",
-      "idade_h": 9.0,
+      "fonte": "Xet das Promoções",
+      "link": "https://t.me/xetdaspromocoes/94379",
+      "idade_h": 6.3,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Pechinchou",
+      "link": "https://t.me/pechinchou/239200",
+      "idade_h": 7.1,
       "tipo": "grupo"
      }
     ],
-    "n_vistos": 2,
+    "n_vistos": 3,
     "cupom_citado": null
    },
    "sem": {
@@ -732,7 +744,7 @@
     "link": "https://t.me/meups4/55591",
     "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 4.2,
+    "idade_h": 4.4,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -741,19 +753,19 @@
      {
       "fonte": "MeuPlayStation",
       "link": "https://t.me/meups4/55591",
-      "idade_h": 4.2,
+      "idade_h": 4.4,
       "tipo": "grupo"
      },
      {
       "fonte": "Xet das Promoções",
       "link": "https://t.me/xetdaspromocoes/94379",
-      "idade_h": 6.1,
+      "idade_h": 6.3,
       "tipo": "grupo"
      },
      {
       "fonte": "Pechinchou",
       "link": "https://t.me/pechinchou/239200",
-      "idade_h": 6.9,
+      "idade_h": 7.1,
       "tipo": "grupo"
      }
     ],
@@ -772,7 +784,7 @@
     "link": "https://t.me/cupons_desconto/84689",
     "obs": "postado no canal Promobit (Telegram)",
     "detalhes": "com jogo/extra",
-    "idade_h": 0.6,
+    "idade_h": 0.8,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -781,13 +793,13 @@
      {
       "fonte": "Promobit (Telegram)",
       "link": "https://t.me/cupons_desconto/84689",
-      "idade_h": 0.6,
+      "idade_h": 0.8,
       "tipo": "grupo"
      },
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/110256",
-      "idade_h": 9.0,
+      "idade_h": 9.2,
       "tipo": "grupo"
      }
     ],
@@ -816,7 +828,7 @@
      "link": "https://t.me/cupons_desconto/84689",
      "obs": "postado no canal Promobit (Telegram)",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.6,
+     "idade_h": 0.8,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -825,13 +837,13 @@
       {
        "fonte": "Promobit (Telegram)",
        "link": "https://t.me/cupons_desconto/84689",
-       "idade_h": 0.6,
+       "idade_h": 0.8,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 9.0,
+       "idade_h": 9.2,
        "tipo": "grupo"
       }
      ],
@@ -850,7 +862,7 @@
      "link": "https://t.me/meups4/55591",
      "obs": "postado no canal MeuPlayStation",
      "detalhes": "com jogo/extra",
-     "idade_h": 4.2,
+     "idade_h": 4.4,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -859,19 +871,19 @@
       {
        "fonte": "MeuPlayStation",
        "link": "https://t.me/meups4/55591",
-       "idade_h": 4.2,
+       "idade_h": 4.4,
        "tipo": "grupo"
       },
       {
        "fonte": "Xet das Promoções",
        "link": "https://t.me/xetdaspromocoes/94379",
-       "idade_h": 6.1,
+       "idade_h": 6.3,
        "tipo": "grupo"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239200",
-       "idade_h": 6.9,
+       "idade_h": 7.1,
        "tipo": "grupo"
       }
      ],
@@ -890,7 +902,7 @@
      "link": "https://t.me/jogobarato/110230",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 10.9,
+     "idade_h": 11.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -901,7 +913,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110230",
-       "idade_h": 10.9,
+       "idade_h": 11.1,
        "tipo": "grupo"
       }
      ],
@@ -1302,7 +1314,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
      "obs": "postado no Promobit",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 3.7,
+     "idade_h": 3.9,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1311,31 +1323,31 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 3.8,
+       "idade_h": 4.0,
        "tipo": "postada"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239244",
-       "idade_h": 3.7,
+       "idade_h": 3.9,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110305",
-       "idade_h": 3.8,
+       "idade_h": 4.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/154060",
-       "idade_h": 3.9,
+       "idade_h": 4.1,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/13834",
-       "idade_h": 3.9,
+       "idade_h": 4.1,
        "tipo": "grupo"
       }
      ],
@@ -1679,6 +1691,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-20 20:28",
+   "leitor": "4049.91",
+   "leitor_cupom": "",
+   "leitor_loja": "Amazon",
+   "digital": "3905.07",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -1799,7 +1823,7 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.5,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0
@@ -1807,48 +1831,48 @@
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.2,
+   "segundos": 0.3,
    "tipo": "loja",
-   "falhas_seguidas": 8
+   "falhas_seguidas": 9
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.9,
+   "segundos": 1.0,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.7,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 1.7,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.7,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.0,
+   "segundos": 5.3,
    "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.1,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
@@ -1863,7 +1887,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 17.7,
+   "segundos": 20.8,
    "ofertas": 31,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -1871,7 +1895,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.9,
+   "segundos": 4.6,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
