@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20 18:34",
+ "atualizado": "2026-11-20 18:37",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -12,7 +12,7 @@
   "link": "https://t.me/meups4/55591",
   "obs": "postado no canal MeuPlayStation",
   "detalhes": "com jogo/extra",
-  "idade_h": 2.5,
+  "idade_h": 2.6,
   "tipo": "grupo",
   "condicao": "novo",
   "confianca": "B",
@@ -21,7 +21,7 @@
    {
     "fonte": "MeuPlayStation",
     "link": "https://t.me/meups4/55591",
-    "idade_h": 2.5,
+    "idade_h": 2.6,
     "tipo": "grupo"
    },
    {
@@ -33,7 +33,7 @@
    {
     "fonte": "Pechinchou",
     "link": "https://t.me/pechinchou/239200",
-    "idade_h": 5.2,
+    "idade_h": 5.3,
     "tipo": "grupo"
    }
   ],
@@ -706,7 +706,7 @@
     "link": "https://t.me/meups4/55591",
     "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 2.5,
+    "idade_h": 2.6,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -715,7 +715,7 @@
      {
       "fonte": "MeuPlayStation",
       "link": "https://t.me/meups4/55591",
-      "idade_h": 2.5,
+      "idade_h": 2.6,
       "tipo": "grupo"
      },
      {
@@ -727,7 +727,7 @@
      {
       "fonte": "Pechinchou",
       "link": "https://t.me/pechinchou/239200",
-      "idade_h": 5.2,
+      "idade_h": 5.3,
       "tipo": "grupo"
      }
     ],
@@ -746,7 +746,7 @@
     "link": "https://t.me/meups4/55591",
     "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 2.5,
+    "idade_h": 2.6,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -755,7 +755,7 @@
      {
       "fonte": "MeuPlayStation",
       "link": "https://t.me/meups4/55591",
-      "idade_h": 2.5,
+      "idade_h": 2.6,
       "tipo": "grupo"
      },
      {
@@ -767,7 +767,7 @@
      {
       "fonte": "Pechinchou",
       "link": "https://t.me/pechinchou/239200",
-      "idade_h": 5.2,
+      "idade_h": 5.3,
       "tipo": "grupo"
      }
     ],
@@ -797,7 +797,7 @@
      "link": "https://t.me/meups4/55591",
      "obs": "postado no canal MeuPlayStation",
      "detalhes": "com jogo/extra",
-     "idade_h": 2.5,
+     "idade_h": 2.6,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -806,7 +806,7 @@
       {
        "fonte": "MeuPlayStation",
        "link": "https://t.me/meups4/55591",
-       "idade_h": 2.5,
+       "idade_h": 2.6,
        "tipo": "grupo"
       },
       {
@@ -818,7 +818,7 @@
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239200",
-       "idade_h": 5.2,
+       "idade_h": 5.3,
        "tipo": "grupo"
       }
      ],
@@ -878,34 +878,6 @@
        "link": "https://t.me/jogobarato/110230",
        "idade_h": 9.2,
        "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "Zoom",
-     "loja": "Magazine Luiza",
-     "titulo": "Console PlayStation 5 Slim Digital 825GB com controle Dualsense - Sony",
-     "preco": 4179.05,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
-       "idade_h": null,
-       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -1305,7 +1277,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
      "obs": "postado no Promobit",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 2.0,
+     "idade_h": 2.1,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1314,13 +1286,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 2.1,
+       "idade_h": 2.2,
        "tipo": "postada"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239244",
-       "idade_h": 2.0,
+       "idade_h": 2.1,
        "tipo": "grupo"
       },
       {
@@ -1634,6 +1606,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-20 18:37",
+   "leitor": "4049.91",
+   "leitor_cupom": "",
+   "leitor_loja": "Amazon",
+   "digital": "3905.07",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -1653,10 +1637,6 @@
      "preco_base": 4049.91
     }
    ]
-  },
-  "Magazine Luiza": {
-   "pagina": "https://www.promobit.com.br/cupons/loja/magazine-luiza/",
-   "cupons": []
   },
   "KaBuM!": {
    "pagina": "https://www.promobit.com.br/cupons/loja/kabum/",
@@ -1681,6 +1661,10 @@
   },
   "Fast Shop": {
    "pagina": "https://www.promobit.com.br/cupons/loja/fast-shop/",
+   "cupons": []
+  },
+  "Magazine Luiza": {
+   "pagina": "https://www.promobit.com.br/cupons/loja/magazine-luiza/",
    "cupons": []
   },
   "Americanas": {
@@ -1754,7 +1738,7 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 0.6,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0
@@ -1764,53 +1748,53 @@
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
    "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 4
+   "falhas_seguidas": 5
   },
   "Americanas": {
    "ok": true,
-   "segundos": 3.0,
+   "segundos": 0.6,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.9,
+   "segundos": 0.5,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 2.5,
+   "segundos": 1.0,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 2.7,
+   "segundos": 0.9,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 7.7,
-   "ofertas": 30,
+   "segundos": 5.6,
+   "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 4.8,
+   "segundos": 1.4,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.1,
+   "segundos": 0.2,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
@@ -1818,7 +1802,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 27.2,
+   "segundos": 22.0,
    "ofertas": 33,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -1826,7 +1810,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 6.8,
+   "segundos": 3.9,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",

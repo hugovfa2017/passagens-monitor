@@ -15,7 +15,7 @@
    "ressalvas": [],
    "id": "promobit-3236153",
    "publicado": "2026-11-20T16:58:03-0300",
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3236134": {
    "fonte": "Promobit",
@@ -49,7 +49,7 @@
    "ressalvas": [],
    "id": "promobit-3236025",
    "publicado": "2026-11-20T16:28:12-0300",
-   "idade_h": 2.1
+   "idade_h": 2.2
   },
   "promobit-3236020": {
    "fonte": "Promobit",
@@ -100,7 +100,7 @@
    "ressalvas": [],
    "id": "promobit-3235921",
    "publicado": "2026-11-20T15:51:30-0300",
-   "idade_h": 2.7
+   "idade_h": 2.8
   },
   "promobit-3235890": {
    "fonte": "Promobit",
@@ -185,7 +185,7 @@
    "ressalvas": [],
    "id": "promobit-3235862",
    "publicado": "2026-11-20T15:34:26-0300",
-   "idade_h": 3.0
+   "idade_h": 3.1
   },
   "promobit-3235812": {
    "fonte": "Promobit",
@@ -318,7 +318,7 @@
    "publicado": "2026-11-20T16:03:22-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 2.5
+   "idade_h": 2.6
   },
   "tg-pechinchou/239120-0": {
    "fonte": "Telegram",
@@ -358,7 +358,7 @@
    "publicado": "2026-11-20T13:22:04-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 5.2
+   "idade_h": 5.3
   },
   "tg-pechinchou/239244-0": {
    "fonte": "Telegram",
@@ -377,7 +377,7 @@
    "publicado": "2026-11-20T16:32:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 2.0
+   "idade_h": 2.1
   },
   "tg-xetdaspromocoes/94379-0": {
    "fonte": "Telegram",
@@ -468,7 +468,7 @@
    "ressalvas": [],
    "id": "promobit-3236315",
    "publicado": "2026-11-20T17:46:08-0300",
-   "idade_h": 0.8
+   "idade_h": 0.9
   },
   "promobit-3236228": {
    "fonte": "Promobit",
@@ -523,7 +523,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 5,
    "ja_funcionou": false
   },
   "Americanas": {
@@ -563,7 +563,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-20T18:34:15-03:00",
+ "ultima": "2026-11-20T18:37:35-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
