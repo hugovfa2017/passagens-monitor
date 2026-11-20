@@ -42,13 +42,16 @@ O buscador usa um bot só dele (nada sai pelo bot das passagens).
 4. Teste: Actions → **Teste do Telegram (PS5)** → Run workflow. O primeiro passo diz, com sim ou não, se o segredo
    foi encontrado.
 
-As mensagens vão para `TELEGRAM_CHAT_ID_PS5`, se existir; senão, para o primeiro chat de `TELEGRAM_CHAT_ID`.
+As mensagens vão para a lista fixa do dono (`TELEGRAM_CHAT_ID_PS5`, se existir; senão, o primeiro chat de
+`TELEGRAM_CHAT_ID`) e para quem se inscreveu no bot.
 
-**O bot responde ao `/start`** na rodada seguinte (até 30 minutos depois; na hora, se você rodar o teste acima). Quem
-já recebe os alertas ganha uma confirmação. Se for um chat novo (outro celular, um grupo onde o bot entrou), o bot
-avisa a pessoa que o pedido foi enviado e manda a você, em particular, quem pediu e o valor pronto para colar no
-segredo `TELEGRAM_CHAT_ID_PS5`. Enquanto o número não entra no segredo, a pessoa não recebe nada. O mesmo vale para o
-bot das passagens, com o segredo `TELEGRAM_CHAT_ID` (ver [`../atendimento.py`](../atendimento.py)).
+**Inscrição pelo `/start`.** Qualquer pessoa que abrir o bot e mandar `/start` passa a receber os alertas; `/sair`
+cancela. Ninguém precisa cadastrar número de chat. Um grupo onde o bot entra também é inscrito. O workflow
+**Atendimento dos bots** ([`../atendimento.py`](../atendimento.py)) lê as mensagens de 5 em 5 minutos, então a
+confirmação chega em poucos minutos (na hora, com Actions → Atendimento dos bots → Run workflow). O dono recebe um aviso
+sem som de cada inscrição, com o comando para remover (`/remover número`); `/inscritos` mostra a lista. A lista fica em
+`ps5/assinantes.cif`, cifrada com o token do bot: o repositório é público e o arquivo só abre com o token. O bot das
+passagens funciona do mesmo jeito, com `assinantes.cif` na raiz.
 
 ## Rodada de 30 em 30 minutos
 
