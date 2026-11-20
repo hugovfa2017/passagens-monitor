@@ -2,9 +2,6 @@ name: Teste do Telegram (PS5)
 
 on:
   workflow_dispatch:          # botão "Run workflow": manda uma mensagem de teste pelo bot do PS5
-  push:                       # provisório: o botão só existe depois que o arquivo chega à main; até lá, mexer aqui roda o teste
-    branches: [claude/ps5-price-monitor-brazil-cqvxiw]
-    paths: ['.github/workflows/ps5-telegram.yml']
 
 jobs:
   teste:

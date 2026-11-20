@@ -10,7 +10,7 @@ on:
         required: false
         default: 'manual'
   push:                       # roda também quando o código do buscador muda (não quando só os dados mudam)
-    branches: [main, claude/ps5-price-monitor-brazil-cqvxiw]
+    branches: [main]
     paths: ['ps5/*.py', 'ps5/painel.html', '.github/workflows/ps5.yml']
 
 permissions:

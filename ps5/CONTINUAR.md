@@ -28,8 +28,7 @@ Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 f
    Pelo terminal dele: `gh secret set PS5_TOKEN --repo hugovfa2017/passagens-monitor` (pede o valor sem mostrar).
 3. **Testar o bot.** Actions → "Teste do Telegram (PS5)" → Run workflow. Tem que chegar uma mensagem pelo bot novo.
    O primeiro passo do teste diz, com sim ou não, se o segredo foi encontrado. O botão só aparece depois que o
-   arquivo chega à `main`; até lá, `ps5-telegram.yml` tem um gatilho provisório de push na branch (em Actions, abra a
-   última execução do teste e use "Re-run all jobs"). Tirar o gatilho provisório ao juntar na `main`.
+   arquivo chega à `main`. O gatilho provisório de push na branch já foi retirado.
 4. **Juntar na `main`** (só com o OK do dono): pull request da branch para a `main`. O agendamento só roda a partir dela.
 5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
    para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
