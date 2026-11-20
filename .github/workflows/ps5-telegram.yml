@@ -12,6 +12,17 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - name: Onde está o token do bot (só sim ou não, nunca o valor)
+        env:
+          SEGREDO_TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 != '' }}
+          SEGREDO_PS5_TOKEN: ${{ secrets.PS5_TOKEN != '' }}
+          SEGREDO_TOKEN_PS5: ${{ secrets.TOKEN_PS5 != '' }}
+          SEGREDO_PS5_BOT_TOKEN: ${{ secrets.PS5_BOT_TOKEN != '' }}
+          VARIAVEL_TELEGRAM_TOKEN_PS5: ${{ vars.TELEGRAM_TOKEN_PS5 != '' }}
+          VARIAVEL_PS5_TOKEN: ${{ vars.PS5_TOKEN != '' }}
+          VARIAVEL_TOKEN_PS5: ${{ vars.TOKEN_PS5 != '' }}
+        # token salvo em "Variables" não serve: variável aparece no log, e este repositório é público
+        run: env | grep -E '^(SEGREDO|VARIAVEL)_' | sort
       - name: Mandar mensagem de teste pelo bot do PS5
         env:
           TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_TOKEN }}   # o segredo pode ter um dos dois nomes
