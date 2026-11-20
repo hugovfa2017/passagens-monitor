@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20 17:16",
+ "atualizado": "2026-11-20 18:27",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -12,7 +12,7 @@
   "link": "https://t.me/meups4/55591",
   "obs": "postado no canal MeuPlayStation",
   "detalhes": "com jogo/extra",
-  "idade_h": 1.2,
+  "idade_h": 2.4,
   "tipo": "grupo",
   "condicao": "novo",
   "confianca": "B",
@@ -21,19 +21,19 @@
    {
     "fonte": "MeuPlayStation",
     "link": "https://t.me/meups4/55591",
-    "idade_h": 1.2,
+    "idade_h": 2.4,
     "tipo": "grupo"
    },
    {
     "fonte": "Xet das Promoções",
     "link": "https://t.me/xetdaspromocoes/94379",
-    "idade_h": 3.1,
+    "idade_h": 4.3,
     "tipo": "grupo"
    },
    {
     "fonte": "Pechinchou",
     "link": "https://t.me/pechinchou/239200",
-    "idade_h": 3.9,
+    "idade_h": 5.1,
     "tipo": "grupo"
    }
   ],
@@ -153,7 +153,7 @@
      "link": "https://t.me/jogobarato/110230",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 7.9,
+     "idade_h": 9.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -162,7 +162,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110230",
-       "idade_h": 7.9,
+       "idade_h": 9.1,
        "tipo": "grupo"
       }
      ],
@@ -205,6 +205,34 @@
     },
     {
      "modelo": "leitor",
+     "fonte": "Fast Shop",
+     "loja": "Fast Shop · Negociun",
+     "titulo": "Console PlayStation 5 Slim Disc 1TB com Controle DualSense",
+     "preco": 4394.32,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://site.fastshop.com.br/console-playstation-5-slim-disk-1tb---so-187040/p",
+     "obs": "à vista no Pix",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Fast Shop",
+       "link": "https://site.fastshop.com.br/console-playstation-5-slim-disk-1tb---so-187040/p",
+       "idade_h": null,
+       "tipo": "loja"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
      "fonte": "Telegram",
      "loja": "KaBuM!",
      "titulo": "Bundle Console PlayStation 5 Slim + ASTRO BOT + Gran Turismo 7 — Modelo com Leitor",
@@ -215,7 +243,7 @@
      "link": "https://t.me/jogobarato/110256",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 6.0,
+     "idade_h": 7.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -224,7 +252,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 6.0,
+       "idade_h": 7.1,
        "tipo": "grupo"
       }
      ],
@@ -243,7 +271,7 @@
      "link": "https://t.me/pechinchou/239120",
      "obs": "postado no canal Pechinchou",
      "detalhes": "com jogo/extra",
-     "idade_h": 9.2,
+     "idade_h": 10.4,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -254,8 +282,36 @@
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239120",
-       "idade_h": 9.2,
+       "idade_h": 10.4,
        "tipo": "grupo"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Magazine Luiza",
+     "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Bran",
+     "preco": 4530.55,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
+       "idade_h": null,
+       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -630,62 +686,6 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "Console PlayStation 5",
-     "preco": 5999.9,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "Console PlayStation 5",
-     "preco": 5999.9,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
     }
    ]
   },
@@ -706,7 +706,7 @@
     "link": "https://t.me/meups4/55591",
     "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 1.2,
+    "idade_h": 2.4,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -715,19 +715,19 @@
      {
       "fonte": "MeuPlayStation",
       "link": "https://t.me/meups4/55591",
-      "idade_h": 1.2,
+      "idade_h": 2.4,
       "tipo": "grupo"
      },
      {
       "fonte": "Xet das Promoções",
       "link": "https://t.me/xetdaspromocoes/94379",
-      "idade_h": 3.1,
+      "idade_h": 4.3,
       "tipo": "grupo"
      },
      {
       "fonte": "Pechinchou",
       "link": "https://t.me/pechinchou/239200",
-      "idade_h": 3.9,
+      "idade_h": 5.1,
       "tipo": "grupo"
      }
     ],
@@ -746,7 +746,7 @@
     "link": "https://t.me/meups4/55591",
     "obs": "postado no canal MeuPlayStation",
     "detalhes": "com jogo/extra",
-    "idade_h": 1.2,
+    "idade_h": 2.4,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -755,19 +755,19 @@
      {
       "fonte": "MeuPlayStation",
       "link": "https://t.me/meups4/55591",
-      "idade_h": 1.2,
+      "idade_h": 2.4,
       "tipo": "grupo"
      },
      {
       "fonte": "Xet das Promoções",
       "link": "https://t.me/xetdaspromocoes/94379",
-      "idade_h": 3.1,
+      "idade_h": 4.3,
       "tipo": "grupo"
      },
      {
       "fonte": "Pechinchou",
       "link": "https://t.me/pechinchou/239200",
-      "idade_h": 3.9,
+      "idade_h": 5.1,
       "tipo": "grupo"
      }
     ],
@@ -797,7 +797,7 @@
      "link": "https://t.me/meups4/55591",
      "obs": "postado no canal MeuPlayStation",
      "detalhes": "com jogo/extra",
-     "idade_h": 1.2,
+     "idade_h": 2.4,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -806,19 +806,19 @@
       {
        "fonte": "MeuPlayStation",
        "link": "https://t.me/meups4/55591",
-       "idade_h": 1.2,
+       "idade_h": 2.4,
        "tipo": "grupo"
       },
       {
        "fonte": "Xet das Promoções",
        "link": "https://t.me/xetdaspromocoes/94379",
-       "idade_h": 3.1,
+       "idade_h": 4.3,
        "tipo": "grupo"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239200",
-       "idade_h": 3.9,
+       "idade_h": 5.1,
        "tipo": "grupo"
       }
      ],
@@ -837,7 +837,7 @@
      "link": "https://t.me/jogobarato/110256",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 6.0,
+     "idade_h": 7.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -846,7 +846,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 6.0,
+       "idade_h": 7.1,
        "tipo": "grupo"
       }
      ],
@@ -865,7 +865,7 @@
      "link": "https://t.me/jogobarato/110230",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 7.9,
+     "idade_h": 9.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -876,7 +876,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110230",
-       "idade_h": 7.9,
+       "idade_h": 9.1,
        "tipo": "grupo"
       }
      ],
@@ -947,34 +947,6 @@
     },
     {
      "modelo": "digital",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 Slim Digital 825GB – Pacote ASTRO BOT e Gran Turismo 7",
-     "preco": 4199,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-     "obs": "à vista",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
      "fonte": "KaBuM!",
      "loja": "KaBuM!",
      "titulo": "Console Sony PlayStation 5 Edição Digital Slim, SSD 825GB, Controle DualSense, Astro's Playroom, Branco - CFI 2114B",
@@ -1006,6 +978,34 @@
      "fonte": "Zoom",
      "loja": "Magazine Luiza",
      "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2",
+     "preco": 4499,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+     "obs": "à vista",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation®5 Slim Digital 825GB – Pacote ASTRO BOT e Gran Turismo 7",
      "preco": 4499,
      "preco_sem_cupom": null,
      "cupom": null,
@@ -1149,34 +1149,6 @@
     },
     {
      "modelo": "digital",
-     "fonte": "Zoom",
-     "loja": "Magazine Luiza",
-     "titulo": "PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony, Branco",
-     "preco": 4593.72,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
      "fonte": "Americanas",
      "loja": "Americanas · Magazine Luiza",
      "titulo": "Console PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony",
@@ -1295,60 +1267,82 @@
     },
     {
      "modelo": "digital",
-     "fonte": "KaBuM!",
+     "fonte": "Zoom",
+     "loja": "Magazine Luiza",
+     "titulo": "PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony, Branco",
+     "preco": 4703.53,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Promobit",
      "loja": "KaBuM!",
      "titulo": "Console PlayStation 5 Sony Edição Digital Marvel's Wolverine Pacote de Edição Limitada, 825 GB, Amarelo - 1000056865",
      "preco": 4742.07,
      "preco_sem_cupom": null,
      "cupom": null,
      "cupom_origem": null,
-     "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
-     "obs": "à vista no Pix",
+     "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
+     "obs": "postado no Promobit",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 0.7,
-     "tipo": "loja",
+     "idade_h": 1.9,
+     "tipo": "postada",
      "condicao": "novo",
-     "confianca": "A",
+     "confianca": "B",
      "ressalvas": [],
      "visto_em": [
       {
-       "fonte": "KaBuM!",
-       "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
-       "idade_h": null,
-       "tipo": "loja"
-      },
-      {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 0.8,
+       "idade_h": 2.0,
        "tipo": "postada"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/239244",
-       "idade_h": 0.7,
+       "idade_h": 1.9,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110305",
-       "idade_h": 0.8,
+       "idade_h": 2.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/154060",
-       "idade_h": 0.9,
+       "idade_h": 2.1,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/13834",
-       "idade_h": 0.9,
+       "idade_h": 2.1,
        "tipo": "grupo"
       }
      ],
-     "n_vistos": 6,
+     "n_vistos": 5,
      "cupom_citado": null
     },
     {
@@ -1383,6 +1377,34 @@
       }
      ],
      "n_vistos": 2,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Fast Shop",
+     "loja": "Fast Shop · Webcontinental Marketplace",
+     "titulo": "Console Playstation 5 Slim Edição Digital 825GB com 2 Jogos Branco",
+     "preco": 5085.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+     "obs": "à vista no Pix",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Fast Shop",
+       "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+       "idade_h": null,
+       "tipo": "loja"
+      }
+     ],
+     "n_vistos": 1,
      "cupom_citado": null
     }
    ]
@@ -1576,6 +1598,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-20 18:27",
+   "leitor": "4049.91",
+   "leitor_cupom": "",
+   "leitor_loja": "Amazon",
+   "digital": "3905.07",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -1619,6 +1653,10 @@
   },
   "Webcontinental": {
    "pagina": null,
+   "cupons": []
+  },
+  "Fast Shop": {
+   "pagina": "https://www.promobit.com.br/cupons/loja/fast-shop/",
    "cupons": []
   },
   "Americanas": {
@@ -1692,17 +1730,17 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.6,
-   "ofertas": 38,
+   "segundos": 0.3,
+   "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
+   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
    "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 1
+   "falhas_seguidas": 2
   },
   "Americanas": {
    "ok": true,
@@ -1713,14 +1751,14 @@
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 1.0,
-   "ofertas": 6,
+   "segundos": 0.9,
+   "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 3.1,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
@@ -1734,14 +1772,14 @@
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.0,
-   "ofertas": 30,
+   "segundos": 5.5,
+   "ofertas": 31,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 2.4,
+   "segundos": 1.4,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
@@ -1751,13 +1789,13 @@
    "segundos": 0.1,
    "ofertas": 0,
    "tipo": "postada",
-   "detalhe": "40 ofertas no feed",
+   "detalhe": "39 ofertas no feed",
    "falhas_seguidas": 0
   },
   "Telegram": {
    "ok": true,
-   "segundos": 26.4,
-   "ofertas": 34,
+   "segundos": 30.3,
+   "ofertas": 33,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0
@@ -1777,7 +1815,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 107
+  "não é console PS5": 110
  },
  "config": {
   "queda_minima": 50,
