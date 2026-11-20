@@ -26,6 +26,11 @@ A lista de lojas, canais e sites fica em [`lojas.py`](lojas.py); acrescentar um 
 
 ## Quando chega mensagem
 
+Toda mensagem começa pelo preço, que é o que aparece na notificação do celular: no alerta, a oferta que disparou o aviso;
+no resumo, o PS5 novo mais barato agora. Depois vem um bloco curto por modelo (preço, cupom, distância do alvo), com o
+nome da loja como link e um botão por oferta. Para receber o resumo na hora: Actions → **Buscador PS5** → Run workflow,
+marcando "Mandar o resumo no Telegram agora".
+
 - **Com som:** o melhor preço confirmado de um modelo chegou ao alvo, ou é o menor já visto (pelo menos R$ 50 abaixo
   do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca.
 - **Sem som:** oferta de grupo ainda não confirmada que parece muito boa; lote novo de leilão com PS5; resumo diário às 9h.
