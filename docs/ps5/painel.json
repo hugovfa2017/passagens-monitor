@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20 18:32",
+ "atualizado": "2026-11-20 18:34",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -27,7 +27,7 @@
    {
     "fonte": "Xet das Promoções",
     "link": "https://t.me/xetdaspromocoes/94379",
-    "idade_h": 4.3,
+    "idade_h": 4.4,
     "tipo": "grupo"
    },
    {
@@ -243,7 +243,7 @@
      "link": "https://t.me/jogobarato/110256",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 7.2,
+     "idade_h": 7.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -252,7 +252,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 7.2,
+       "idade_h": 7.3,
        "tipo": "grupo"
       }
      ],
@@ -284,34 +284,6 @@
        "link": "https://t.me/pechinchou/239120",
        "idade_h": 10.5,
        "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Magazine Luiza",
-     "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Bran",
-     "preco": 4530.55,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
-       "idade_h": null,
-       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -686,6 +658,34 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "Console PlayStation 5",
+     "preco": 5999.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
     }
    ]
   },
@@ -721,7 +721,7 @@
      {
       "fonte": "Xet das Promoções",
       "link": "https://t.me/xetdaspromocoes/94379",
-      "idade_h": 4.3,
+      "idade_h": 4.4,
       "tipo": "grupo"
      },
      {
@@ -761,7 +761,7 @@
      {
       "fonte": "Xet das Promoções",
       "link": "https://t.me/xetdaspromocoes/94379",
-      "idade_h": 4.3,
+      "idade_h": 4.4,
       "tipo": "grupo"
      },
      {
@@ -812,7 +812,7 @@
       {
        "fonte": "Xet das Promoções",
        "link": "https://t.me/xetdaspromocoes/94379",
-       "idade_h": 4.3,
+       "idade_h": 4.4,
        "tipo": "grupo"
       },
       {
@@ -837,7 +837,7 @@
      "link": "https://t.me/jogobarato/110256",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 7.2,
+     "idade_h": 7.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -846,7 +846,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110256",
-       "idade_h": 7.2,
+       "idade_h": 7.3,
        "tipo": "grupo"
       }
      ],
@@ -1622,6 +1622,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-20 18:34",
+   "leitor": "4049.91",
+   "leitor_cupom": "",
+   "leitor_loja": "Amazon",
+   "digital": "3905.07",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -1749,49 +1761,49 @@
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
+   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
    "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 3
+   "falhas_seguidas": 4
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 3.0,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.9,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 2.5,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 2.7,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.5,
-   "ofertas": 31,
+   "segundos": 7.7,
+   "ofertas": 30,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.2,
+   "segundos": 4.8,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
@@ -1806,7 +1818,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 18.9,
+   "segundos": 27.2,
    "ofertas": 33,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -1814,7 +1826,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.0,
+   "segundos": 6.8,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",

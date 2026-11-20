@@ -32,7 +32,7 @@
    "ressalvas": [],
    "id": "promobit-3236134",
    "publicado": "2026-11-20T16:54:45-0300",
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3236025": {
    "fonte": "Promobit",
@@ -83,7 +83,7 @@
    "ressalvas": [],
    "id": "promobit-3235866",
    "publicado": "2026-11-20T15:35:37-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3235921": {
    "fonte": "Promobit",
@@ -117,7 +117,7 @@
    "ressalvas": [],
    "id": "promobit-3235890",
    "publicado": "2026-11-20T15:42:05-0300",
-   "idade_h": 2.8
+   "idade_h": 2.9
   },
   "promobit-3235870": {
    "fonte": "Promobit",
@@ -134,7 +134,7 @@
    "ressalvas": [],
    "id": "promobit-3235870",
    "publicado": "2026-11-20T15:37:13-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3235867": {
    "fonte": "Promobit",
@@ -168,7 +168,7 @@
    "ressalvas": [],
    "id": "promobit-3235869",
    "publicado": "2026-11-20T15:36:35-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3235862": {
    "fonte": "Promobit",
@@ -261,7 +261,7 @@
    "publicado": "2026-11-20T11:18:10-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 7.2
+   "idade_h": 7.3
   },
   "tg-jogobarato/110256-1": {
    "fonte": "Telegram",
@@ -280,7 +280,7 @@
    "publicado": "2026-11-20T11:18:10-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 7.2
+   "idade_h": 7.3
   },
   "tg-jogobarato/110305-0": {
    "fonte": "Telegram",
@@ -396,7 +396,7 @@
    "publicado": "2026-11-20T14:11:26-0300",
    "canal": "Xet das Promoções",
    "preco_de": null,
-   "idade_h": 4.3
+   "idade_h": 4.4
   },
   "tg-nerdofertas/154060-0": {
    "fonte": "Telegram",
@@ -451,7 +451,7 @@
    "ressalvas": [],
    "id": "promobit-3236456",
    "publicado": "2026-11-20T18:18:04-0300",
-   "idade_h": 0.2
+   "idade_h": 0.3
   },
   "promobit-3236315": {
    "fonte": "Promobit",
@@ -485,7 +485,7 @@
    "ressalvas": [],
    "id": "promobit-3236228",
    "publicado": "2026-11-20T17:24:09-0300",
-   "idade_h": 1.1
+   "idade_h": 1.2
   }
  },
  "alertados": {},
@@ -523,7 +523,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 4,
    "ja_funcionou": false
   },
   "Americanas": {
@@ -563,6 +563,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-20T18:32:03-03:00",
- "pular": []
+ "ultima": "2026-11-20T18:34:15-03:00",
+ "pular": [],
+ "resumo_dia": "2026-11-20"
 }
