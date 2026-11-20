@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20 20:28",
+ "atualizado": "2026-11-20 20:29",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -1703,6 +1703,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-20 20:29",
+   "leitor": "4049.91",
+   "leitor_cupom": "",
+   "leitor_loja": "Amazon",
+   "digital": "3905.07",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -1823,7 +1835,7 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 0.6,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0
@@ -1831,48 +1843,48 @@
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.3,
+   "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 9
+   "falhas_seguidas": 10
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 0.9,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 0.9,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.7,
+   "segundos": 1.1,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 1.0,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.3,
+   "segundos": 6.3,
    "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 1.5,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
@@ -1887,7 +1899,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 20.8,
+   "segundos": 25.1,
    "ofertas": 31,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -1895,7 +1907,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.6,
+   "segundos": 5.3,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",

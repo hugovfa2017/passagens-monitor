@@ -589,7 +589,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 9,
+   "falhas": 10,
    "ja_funcionou": false
   },
   "Americanas": {
@@ -629,7 +629,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-20T20:28:18-03:00",
+ "ultima": "2026-11-20T20:29:06-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
