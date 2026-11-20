@@ -47,16 +47,24 @@ As mensagens vão para a lista fixa do dono (`TELEGRAM_CHAT_ID_PS5`, se existir;
 
 **Inscrição pelo `/start`.** Qualquer pessoa que abrir o bot e mandar `/start` passa a receber os alertas; `/sair`
 cancela. Ninguém precisa cadastrar número de chat. Um grupo onde o bot entra também é inscrito. O workflow
-**Atendimento dos bots** ([`../atendimento.py`](../atendimento.py)) lê as mensagens de 5 em 5 minutos, então a
-confirmação chega em poucos minutos (na hora, com Actions → Atendimento dos bots → Run workflow). O dono recebe um aviso
+**Atendimento dos bots** ([`../atendimento.py`](../atendimento.py)) lê as mensagens toda vez que roda (veja "Quando
+roda", abaixo); para atender na hora, Actions → Atendimento dos bots → Run workflow. O dono recebe um aviso
 sem som de cada inscrição, com o comando para remover (`/remover número`); `/inscritos` mostra a lista. A lista fica em
 `ps5/assinantes.cif`, cifrada com o token do bot: o repositório é público e o arquivo só abre com o token. O bot das
 passagens funciona do mesmo jeito, com `assinantes.cif` na raiz.
 
-## Rodada de 30 em 30 minutos
+## Quando roda
 
-O agendamento do GitHub atrasa e pula execuções. Para valer de verdade, duplique no cron-job.org o gatilho que já existe
-para as passagens, apontando para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
+Neste repositório o agendamento do próprio GitHub dispara poucas vezes por dia, então ele é só reserva. O que vale:
+
+- **Sem configurar nada:** o buscador e o atendimento pegam carona no monitor de passagens, que o cron-job.org já
+  dispara de hora em hora. Rodam quando ele começa e quando termina, ou seja, umas duas vezes por hora.
+- **Para 30 em 30 minutos (buscador) e 5 em 5 minutos (atendimento):** duplique no cron-job.org o gatilho das passagens
+  duas vezes, trocando só o nome do arquivo na URL (`monitor.yml` → `ps5.yml` e `monitor.yml` → `atendimento.yml`) e o
+  intervalo. O corpo continua `{"ref":"main","inputs":{"origem":"cron"}}`.
+
+Resposta instantânea ao `/start` não dá para ter só com o GitHub Actions: seria preciso um endereço sempre ligado
+recebendo as mensagens do Telegram (webhook).
 
 ## Ajustes e uso
 

@@ -5,8 +5,11 @@ name: Atendimento dos bots
 
 on:
   schedule:
-    - cron: '*/5 * * * *'     # o mais frequente que o GitHub aceita; ele costuma atrasar alguns minutos
-  workflow_dispatch:          # botão "Run workflow" (atende na hora) e, se quiser pontualidade, o cron-job.org
+    - cron: '*/5 * * * *'     # reserva: neste repositório o agendamento do GitHub dispara poucas vezes por dia
+  workflow_run:               # carona no monitor de passagens, que o cron-job.org dispara de hora em hora:
+    workflows: ['Monitor de passagens']   # roda quando ele começa e quando termina (o agendamento acima falha muito)
+    types: [requested, completed]
+  workflow_dispatch:          # botão "Run workflow" (atende na hora) e o cron-job.org (de 5 em 5 min, com origem=cron)
     inputs:
       origem:
         description: 'Quem disparou (cron = cron-job.org)'
