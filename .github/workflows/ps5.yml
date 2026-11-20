@@ -30,16 +30,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}   # a versão mais nova da branch (com os dados da rodada anterior)
-      - name: Responder a quem escreveu para o bot do PS5
-        # quem toca em "Iniciar" recebe resposta e o dono é avisado de pedidos novos (atendimento.py).
-        # Roda em todo disparo, mesmo quando a rodada é pulada; se falhar, a rodada segue.
-        continue-on-error: true
-        env:
-          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}
-          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}
-        run: python3 atendimento.py --teste && python3 ps5/monitor.py --atender
       - name: Pular se outra rodada acabou de terminar
         id: guarda
         env:
@@ -68,7 +58,7 @@ jobs:
       - name: Varredura e alerta
         if: steps.guarda.outputs.pular != 'true'
         env:
-          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}   # bot próprio do PS5; o segredo pode ter um destes nomes
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}   # bot próprio do PS5; o segredo do dono se chama PS5_BOT
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}   # opcional
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}           # sem o de cima, vale o primeiro chat daqui
           PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram

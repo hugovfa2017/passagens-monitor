@@ -20,10 +20,8 @@ jobs:
         run: env | grep -E '^(SEGREDO|VARIAVEL)_' | sort
       - name: Mandar mensagem de teste pelo bot do PS5
         env:
-          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}   # o segredo pode ter um destes nomes
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}   # o segredo do dono se chama PS5_BOT
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # o resultado diz o que falta (segredo ausente, /start não enviado...) sem mostrar token nem id de chat
-        run: |
-          python3 ps5/monitor.py --atender || true   # responde a quem escreveu para o bot (só contagens no log)
-          python3 ps5/monitor.py --teste-telegram
+        run: python3 ps5/monitor.py --teste-telegram
