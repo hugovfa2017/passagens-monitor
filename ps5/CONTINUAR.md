@@ -26,8 +26,10 @@ Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 f
    novo. O primeiro passo do teste diz, com sim ou não, se o segredo foi encontrado.
 4. **Juntar na `main`.** Feito em 20/11 (pull request #1, com o OK do dono). O buscador roda a partir dela.
    Desde então, quem manda `/start` a um dos bots é inscrito sozinho (workflow "Atendimento dos bots").
-5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
-   para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
+5. **Gatilho confiável.** O agendamento do GitHub quase não dispara neste repositório. Hoje o buscador e o atendimento
+   rodam de carona no monitor de passagens (quando ele começa e quando termina, de hora em hora). Para 30 e 5 minutos,
+   o dono precisa duplicar no cron-job.org o gatilho das passagens para `ps5.yml` e para `atendimento.yml`, com
+   `origem=cron`.
 6. **Sondar a partir do computador.** `python3 ps5/sondar.py`. Internet residencial no Brasil costuma ser aceita por
    lojas que barram servidores (Mercado Livre, Magazine Luiza, Casas Bahia, Shopee). Se alguma abrir, vale escrever um
    leitor para ela; se barrar, fica de fora. Não tentar contornar bloqueio.
