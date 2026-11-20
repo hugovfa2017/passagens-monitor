@@ -1,8 +1,7 @@
-# Continuar o buscador do PS5 no computador
+# Continuar o buscador do PS5
 
-Este arquivo passa o bastão de uma sessão do Claude na nuvem para uma sessão no computador do dono do repositório.
-Lá na nuvem o envio ao GitHub era recusado (erro 403), então o trabalho chegou aqui por um patch.
-Apague este arquivo quando tudo abaixo estiver feito.
+Roteiro do que falta para o buscador entrar em produção. A branch `claude/ps5-price-monitor-brazil-cqvxiw` já está no
+GitHub (enviada em 20/11/2026). Apague este arquivo quando tudo abaixo estiver feito.
 
 ## Onde estamos
 
@@ -19,13 +18,18 @@ Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 f
 
 ## O que falta, em ordem
 
-1. **Enviar a branch.** `git push -u origin claude/ps5-price-monitor-brazil-cqvxiw`. O push dispara o workflow nessa
-   branch sem mandar Telegram; confira o log para ver quais fontes respondem a partir dos servidores do GitHub.
+1. **Enviar a branch.** Feito em 20/11. O workflow "Buscador PS5" rodou nela sem erro e sem mandar Telegram; a partir
+   dos servidores do GitHub responderam todas as fontes, menos a Amazon (falhou nessa rodada).
 2. **Token do bot novo.** O dono já criou o bot no @BotFather. O token nunca deve ser colado em chat nem em arquivo.
    Peça para ele rodar, num terminal dele: `gh secret set TELEGRAM_TOKEN_PS5 --repo hugovfa2017/passagens-monitor`
    (o `gh` pede o valor sem mostrar na tela). Sem `gh`: github.com → Settings → Secrets and variables → Actions →
    New repository secret. Ele também precisa mandar `/start` para o bot novo.
+   Em 20/11 às 17:24 o segredo ainda não chegava aos workflows (`TELEGRAM_TOKEN_PS5` vazio no log): conferir se ele
+   aparece em "Repository secrets" com esse nome exato (não em "Variables" nem em segredo de ambiente).
 3. **Testar o bot.** Actions → "Teste do Telegram (PS5)" → Run workflow. Tem que chegar uma mensagem pelo bot novo.
+   O botão só aparece depois que o arquivo chega à `main`; até lá, `ps5-telegram.yml` tem um gatilho provisório de
+   push na branch: em Actions, abra a última execução do teste e use "Re-run all jobs". Em 20/11 o teste falhou por
+   falta do segredo. Tirar o gatilho provisório depois que o teste passar.
 4. **Juntar na `main`** (só com o OK do dono): pull request da branch para a `main`. O agendamento só roda a partir dela.
 5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
    para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
