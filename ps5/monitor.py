@@ -305,7 +305,9 @@ def resumir(ofertas):
         firmes = [o for o in dom if o['confianca'] in 'AB']
         sem = next((o for o in firmes if not o['cupom']), None)
         com = next((o for o in firmes if o['cupom']), None)
-        melhor = min((x for x in (sem, com) if x), key=lambda o: o['preco'], default=None)
+        # cupom que economiza quase nada só dá trabalho: fica valendo a oferta sem cupom
+        vale = com and (not sem or com['preco'] <= sem['preco'] - config.ECONOMIA_MINIMA_CUPOM)
+        melhor = com if vale else sem or com
         duvidosa = next((o for o in dom if o['confianca'] == 'C' and (not melhor or o['preco'] < melhor['preco'])), None)
         r[m] = {'sem': sem, 'com': com, 'melhor': melhor, 'nao_confirmada': duvidosa}
     return r
@@ -329,6 +331,25 @@ def na(loja):
     return 'no' if re.match(r'(Mercado Livre|Carrefour|Ponto|Extra|Submarino|Zoom)', loja) else 'na'
 
 
+def _extras(o, html_=True):
+    """Ressalvas e sinais de confiança de uma oferta, em pedaços curtos: 'à vista no Pix', 'visto em 3 lugares', 'postado há 1h'."""
+    esc = html.escape if html_ else (lambda s: s)
+    cod = (lambda c: f'<code>{html.escape(c)}</code>') if html_ else (lambda c: c)
+    postada = o.get('tipo') in ('postada', 'grupo')
+    extra = [esc(x) for x in (o.get('ressalvas') or [])]
+    if not postada and o.get('obs'):
+        extra.append(esc(o['obs'].split(' · ')[0]))
+    elif o.get('fonte') == 'Promobit' and ':' in o.get('obs', ''):
+        extra.append(esc(o['obs']))
+    if o.get('cupom_citado'):
+        extra.append(f"grupos citam o cupom {cod(o['cupom_citado'])}")
+    if o.get('n_vistos', 1) > 1:
+        extra.append(f"visto em {o['n_vistos']} lugares")
+    if postada and o.get('idade_h') is not None:
+        extra.append(f"postado há {o['idade_h']:.0f}h")
+    return extra
+
+
 def descricao(o, html_=True):
     """'R$ 3.759 no Mercado Livre com cupom MP500PS · cartão Mercado Pago · visto em 6 lugares, há 1h'"""
     esc = html.escape if html_ else (lambda s: s)
@@ -338,19 +359,8 @@ def descricao(o, html_=True):
         partes.append(f"com {esc(o['cupom'])}" if o['cupom'].startswith('cupom') else f"com cupom {cod(o['cupom'])}")
         if o.get('preco_sem_cupom'):
             partes.append(f"(sem cupom {brl(o['preco_sem_cupom'])})")
-    postada = o.get('tipo') in ('postada', 'grupo')
-    extra = list(o.get('ressalvas') or [])
-    if not postada and o.get('obs'):
-        extra.append(o['obs'].split(' · ')[0])
-    elif o.get('fonte') == 'Promobit' and ':' in o.get('obs', ''):
-        extra.append(o['obs'])
-    if o.get('cupom_citado'):
-        extra.append(f"grupos citam o cupom {cod(o['cupom_citado'])}")
-    if o.get('n_vistos', 1) > 1:
-        extra.append(f"visto em {o['n_vistos']} lugares")
-    if postada and o.get('idade_h') is not None:
-        extra.append(f"postado há {o['idade_h']:.0f}h")
-    return ' '.join(partes) + (f" · {', '.join(esc(x) if not x.startswith('grupos citam') else x for x in extra)}" if extra else '')
+    extra = _extras(o, html_)
+    return ' '.join(partes) + (f" · {', '.join(extra)}" if extra else '')
 
 
 def linha_modelo(m, r, html_=True):
@@ -363,6 +373,112 @@ def linha_modelo(m, r, html_=True):
     if r.get('nao_confirmada'):
         s += f"\n   não confirmada: {descricao(r['nao_confirmada'], html_)}"
     return s
+
+
+# ---------------------------------------------------------------- mensagens do Telegram
+# Toda mensagem de preço começa pelo valor: é o começo do texto que aparece na notificação do celular.
+ICONE = {'leitor': '💿', 'digital': '🎮', 'pro': '🚀'}
+CURTO = {'leitor': 'Com leitor', 'digital': 'Digital', 'pro': 'Pro'}
+
+
+def dia_mes(quando_):
+    """'2026-11-18 14:30' -> '18/11'"""
+    return f"{quando_[8:10]}/{quando_[5:7]}"
+
+
+def loja_link(o):
+    """Nome da loja como link para a oferta (texto simples quando não há link)."""
+    nome = html.escape(o['loja'])
+    return f'<a href="{html.escape(o["link"], quote=True)}">{nome}</a>' if o.get('link') else nome
+
+
+def manchete(o, icone):
+    """Primeira linha: valor, modelo e loja. '🔥 R$ 3.450 · PS5 Digital na Shopee'"""
+    return f"{icone} <b>{brl(o['preco'])} · {MODELOS[o['modelo']]}</b> {na(o['loja'])} {loja_link(o)}"
+
+
+def linhas_oferta(o, sem=None):
+    """Cupom e ressalvas de uma oferta, uma linha para cada. sem: a melhor oferta sem cupom do modelo, para comparar."""
+    linhas = []
+    if o['cupom']:
+        cupom = html.escape(o['cupom']) if o['cupom'].startswith('cupom') else f"cupom <code>{html.escape(o['cupom'])}</code>"
+        if sem and sem is not o:
+            cupom += f" · sem cupom: {brl(sem['preco'])} {na(sem['loja'])} {loja_link(sem)}"
+        elif o.get('preco_sem_cupom'):
+            cupom += f" · sem ele: {brl(o['preco_sem_cupom'])}"
+        linhas.append(f"🏷 {cupom}")
+    extras = _extras(o)
+    if extras:
+        linhas.append('ℹ️ ' + ' · '.join(extras))
+    return linhas
+
+
+def bloco_modelo(m, r, recorde=None):
+    """Um modelo no resumo: preço e loja na primeira linha; depois cupom, ressalvas, distância do alvo e menor preço já visto."""
+    o = r['melhor']
+    if not o:
+        linhas = [f"{ICONE[m]} <b>{CURTO[m]}</b> — nenhuma oferta confirmada"]
+    else:
+        linhas = [f"{ICONE[m]} <b>{CURTO[m]}</b> — <b>{brl(o['preco'])}</b> {na(o['loja'])} {loja_link(o)}"] + linhas_oferta(o, r['sem'])
+        metas = []
+        alvo = config.ALVOS.get(m)
+        if alvo and m in config.MODELOS_COM_ALERTA:
+            metas.append(f"✅ no alvo de {brl(alvo)}" if o['preco'] <= alvo else f"🎯 alvo {brl(alvo)} (faltam {brl(round(o['preco'] - alvo))})")
+        if recorde and recorde['preco'] <= o['preco'] - 10:   # recorde centavos abaixo do preço de agora é ruído
+            metas.append(f"📉 recorde {brl(recorde['preco'])} em {dia_mes(recorde['quando'])}")
+        if metas:
+            linhas.append(' · '.join(metas))
+    d = r.get('nao_confirmada')
+    if d:
+        idade = f", postado há {d['idade_h']:.0f}h" if d.get('idade_h') is not None else ''
+        linhas.append(f"👀 só num grupo: {brl(d['preco'])} {na(d['loja'])} {loja_link(d)} (não confirmada{idade})")
+    return linhas
+
+
+def texto_alerta(alertas, agora, resumo=None):
+    """Começa pela oferta que disparou o aviso (primeiro as que tocam, da mais barata para a mais cara).
+    No fim, uma linha com o melhor preço dos outros modelos."""
+    linhas = []
+    for a in sorted(alertas, key=lambda a: (not a['som'], a['oferta']['preco'])):
+        o = a['oferta']
+        sinal = '🎯' if a['motivo'].startswith('abaixo') else '📉' if a['motivo'].startswith('menor') else '⚠️'
+        linhas += [manchete(o, '🔥' if a['som'] else '👀'), f"{sinal} {a['motivo'][:1].upper()}{a['motivo'][1:]}", *linhas_oferta(o),
+                   f"<i>{html.escape(o['titulo'][:90])}</i>" + (f" ({o['detalhes']})" if o['detalhes'] else ''), '']
+    avisados = {a['modelo'] for a in alertas}
+    outros = [f"{ICONE[m]} {CURTO[m]} {brl(r['melhor']['preco'])} ({loja_link(r['melhor'])})"
+              for m, r in (resumo or {}).items() if m not in avisados and r['melhor']]
+    if outros:
+        linhas += ['Outros modelos: ' + ' · '.join(outros), '']
+    linhas.append('Confira o preço final no carrinho antes de pagar.')
+    return '\n'.join(linhas)
+
+
+def texto_resumo(resumo, agora, primeira=False, recordes=None):
+    """Começa pelo PS5 novo mais barato agora; depois, um bloco por modelo."""
+    barato = mais_barato(resumo)
+    linhas = [manchete(barato, '🏆'), f"O PS5 novo mais barato agora · {quando(agora)}"] if barato else \
+        [f"🎮 <b>PS5 hoje</b> · {quando(agora)}"]
+    if primeira:
+        linhas.append('Buscador do PS5 ligado! Este resumo chega uma vez por dia, sem som.')
+    for m, r in resumo.items():
+        linhas += [''] + bloco_modelo(m, r, (recordes or {}).get(m))
+    linhas += ['', '🔔 Toca quando um modelo chega ao alvo ou ao menor preço já visto.']
+    return '\n'.join(linhas)
+
+
+def texto_leiloes(lotes):
+    """Lotes novos de leilão. Começa pelo menor lance."""
+    ordem = sorted(lotes, key=lambda l: (not l.get('lance'), l.get('lance') or 0))
+    p = ordem[0]
+    topo = f"🔨 <b>{brl(p['lance'])} · PS5 em leilão</b> ({html.escape(p.get('lance_tipo') or 'lance')})" if p.get('lance') else \
+        '🔨 <b>PS5 em leilão</b>'
+    linhas = [topo, 'Lance não é preço final: há taxas, retirada e nenhum teste.', '']
+    for l in ordem[:5]:
+        casa = html.escape(l['origem'])
+        casa = f'<a href="{html.escape(l["link"], quote=True)}">{casa}</a>' if l.get('link') else casa
+        linhas.append(f"• {casa}: {html.escape(l['descricao'][:100])}" +
+                      (f" — {html.escape(l.get('lance_tipo') or 'lance')} {brl(l['lance'])}" if l.get('lance') else ''))
+    return '\n'.join(linhas)
 
 
 # ---------------------------------------------------------------- Telegram (bot próprio do PS5)
@@ -419,8 +535,8 @@ def telegram(texto_, silencioso=False, botoes=()):
 
 
 def botao(o):
-    via = {'Promobit': ' (Promobit)', 'Zoom': ' (Zoom)', 'Gatry': ' (Gatry)', 'Telegram': ' (post)'}.get(o['fonte'], '')
-    return [{'text': f"🛒 {MODELOS[o['modelo']].removeprefix('PS5 ')}: {o['loja'].split(' · ')[0]}{via}"[:60], 'url': o['link']}]
+    """'💿 Com leitor · R$ 4.530,55 · Magazine Luiza' -> abre a oferta."""
+    return [{'text': f"{ICONE[o['modelo']]} {CURTO[o['modelo']]} · {brl(o['preco'])} · {o['loja'].split(' · ')[0]}"[:60], 'url': o['link']}]
 
 
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel do PS5', 'url': PAINEL_URL}]
@@ -444,7 +560,7 @@ def decidir_alertas(resumo, estado, agora):
                 if o['preco'] <= config.ALVOS.get(m, 0):
                     motivo = f"abaixo do alvo de {brl(config.ALVOS[m])}"
                 elif recorde and o['preco'] <= recorde['preco'] - config.QUEDA_MINIMA:
-                    motivo = f"menor preço já visto (antes: {brl(recorde['preco'])} em {recorde['quando'][:10]})"
+                    motivo = f"menor preço já visto (antes: {brl(recorde['preco'])} em {dia_mes(recorde['quando'])})"
             if motivo:
                 alertas.append({'modelo': m, 'motivo': motivo, 'oferta': o, 'som': True})
                 ja[o['chave']] = agora.isoformat(timespec='seconds')
@@ -459,27 +575,6 @@ def decidir_alertas(resumo, estado, agora):
             ja['nc|' + d['chave']] = agora.isoformat(timespec='seconds')
     estado['alertados'] = {k: v for k, v in ja.items() if agora - datetime.fromisoformat(v) < timedelta(days=7)}
     return alertas
-
-
-def texto_alerta(alertas, agora):
-    com_som = any(a['som'] for a in alertas)
-    linhas = [f"🎮 <b>{'PS5: preço bom!' if com_som else 'PS5: oferta para conferir'}</b> ({quando(agora)})", '']
-    for a in sorted(alertas, key=lambda a: not a['som']):
-        o = a['oferta']
-        linhas += [f"<b>{MODELOS[a['modelo']]}</b> — {a['motivo']}", descricao(o),
-                   f"<i>{html.escape(o['titulo'][:120])}</i>" + (f" ({o['detalhes']})" if o['detalhes'] else ''), '']
-    linhas.append('Confira o preço final no carrinho antes de pagar.')
-    return '\n'.join(linhas)
-
-
-def texto_resumo(resumo, agora, primeira=False):
-    topo = '🎮 <b>Buscador do PS5 ligado!</b>' if primeira else f"🎮 <b>PS5 hoje</b> ({quando(agora)})"
-    barato = mais_barato(resumo)
-    destaque = f"Mais barato agora: <b>{MODELOS[barato['modelo']]}</b> por {descricao(barato)}\n\n" if barato else ''
-    corpo = '\n'.join(linha_modelo(m, r) for m, r in resumo.items())
-    alvos = ' · '.join(f"{MODELOS[m].removeprefix('PS5 ')} {brl(v)}" for m, v in config.ALVOS.items() if m in config.MODELOS_COM_ALERTA)
-    fim = f"\n\nAviso com som quando chegar ao alvo ({alvos}) ou ao menor preço já visto."
-    return f"{topo}\n\n{destaque}{corpo}{fim}"
 
 
 # ---------------------------------------------------------------- arquivos
@@ -566,7 +661,7 @@ def gerar_painel(dados, destino=DOCS):
 
 
 # ---------------------------------------------------------------- varredura
-def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=None, painel=None):
+def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=None, painel=None, resumo_agora=False):
     agora = agora or datetime.now(fontes.BRT)
     painel = (pasta == AQUI) if painel is None else painel
     fontes.ORCAMENTO_S = config.ORCAMENTO_S
@@ -595,15 +690,16 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     status = []
     if alertas:
         botoes = [botao(a['oferta']) for a in alertas][:3] + [PAINEL_BOTAO]
-        status.append(enviar(texto_alerta(alertas, agora), silencioso=not any(a['som'] for a in alertas), botoes=botoes))
+        status.append(enviar(texto_alerta(alertas, agora, resumo), silencioso=not any(a['som'] for a in alertas), botoes=botoes))
     hora = config.RESUMO_DIARIO_HORA
     hoje = agora.strftime('%Y-%m-%d')
     primeira = 'resumo_dia' not in estado
-    if any(r['melhor'] for r in resumo.values()) and (primeira or (hora is not None and agora.hour >= hora and estado['resumo_dia'] != hoje)):
+    devido = primeira or (hora is not None and agora.hour >= hora and estado['resumo_dia'] != hoje)
+    if any(r['melhor'] for r in resumo.values()) and (devido or resumo_agora):   # resumo_agora: pedido pelo botão "Run workflow"
         botoes = [botao(r['melhor']) for r in resumo.values() if r['melhor']] + [PAINEL_BOTAO]
-        st = enviar(texto_resumo(resumo, agora, primeira), silencioso=True, botoes=botoes)
+        st = enviar(texto_resumo(resumo, agora, primeira, estado['menor']), silencioso=True, botoes=botoes)
         status.append(st)
-        if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):   # desligado ou falha: tenta de novo depois
+        if devido and (st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO')):   # desligado ou falha: tenta de novo depois
             estado['resumo_dia'] = hoje
 
     # lotes de leilão: avisa (sem som) uma vez por lote novo
@@ -613,10 +709,7 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
         conhecidos[l['lote']] = hoje
     estado['lotes'] = {k: v for k, v in conhecidos.items() if v >= (agora - timedelta(days=30)).strftime('%Y-%m-%d')}
     if novos_lotes and not primeira:
-        linhas = ['🔨 <b>PS5 em leilão</b> (lance não é preço final: há taxas, retirada e nenhum teste)', '']
-        linhas += [f"{html.escape(l['origem'])}: {html.escape(l['descricao'][:100])}" +
-                   (f" — {html.escape(l['lance_tipo'])} {brl(l['lance'])}" if l.get('lance') else '') for l in novos_lotes[:5]]
-        status.append(enviar('\n'.join(linhas), silencioso=True,
+        status.append(enviar(texto_leiloes(novos_lotes), silencioso=True,
                              botoes=[[{'text': f"🔨 {l['origem']}"[:40], 'url': l['link']}] for l in novos_lotes[:3]]))
 
     # aviso se todas as fontes falharem por 6 varreduras seguidas (o site mudou ou barrou)
@@ -872,7 +965,24 @@ def _teste():
 
     enviadas = []
 
+    def html_do_telegram(t):
+        """O Telegram recusa a mensagem inteira se o HTML tiver tag fora da lista ou mal fechada."""
+        abertas = []
+        for fecha, nome in re.findall(r'<(/?)([a-z]+)[^>]*>', t):
+            assert nome in ('b', 'i', 'a', 'code'), f'tag que o Telegram não aceita: {nome}'
+            if fecha:
+                assert abertas and abertas.pop() == nome, f'tag fechada fora de ordem: {nome}'
+            else:
+                abertas.append(nome)
+        assert not abertas, f'tag sem fechar: {abertas}'
+        assert '<' not in re.sub(r'</?(?:b|i|code|a(?: href="[^"<>]*")?)>', '', t), 'sinal < sem escapar'
+
     def enviar(texto_, silencioso=False, botoes=()):
+        html_do_telegram(texto_)
+        assert len(texto_) < 4096, 'o Telegram corta mensagem com mais de 4096 caracteres'
+        if 'R$' in texto_ and not texto_.startswith('⚠️'):
+            primeira_ = re.sub(r'<[^>]+>', '', texto_.split('\n')[0])
+            assert re.match(r'^\W+ R\$ [\d.,]+ · ', primeira_), f'a notificação tem que começar pelo preço: {primeira_}'
         enviadas.append((texto_, silencioso, botoes))
         return 'TELEGRAM_ENVIADO'
 
@@ -895,6 +1005,8 @@ def _teste():
         assert teste == {'Magazine Luiza': ['GAMES10'], 'KaBuM!': ['MAGALUPS5'], 'Mercado Livre': ['MP500PS']}, teste   # JBL25 e LU300 ficam fora
         assert d['cupons_teste']['Magazine Luiza']['cupons'][0]['preco_estimado'] == 3718.4
         assert len(enviadas) == 1 and enviadas[0][1] and 'ligado' in enviadas[0][0], 'primeira varredura: só o resumo, sem som'
+        assert enviadas[0][0].startswith('🏆 <b>R$ 3.991,88 · PS5 Digital</b> na <a href="'), 'resumo começa pelo mais barato'
+        assert [b[0]['text'] for b in enviadas[0][2]][0] == '💿 Com leitor · R$ 4.530,55 · Magazine Luiza', enviadas[0][2]
         assert not d['alertas']
 
         # 2ª varredura, 1h depois: Digital cai para o alvo -> alerta com som
@@ -902,6 +1014,8 @@ def _teste():
         d = rodar(coleta(cupom_shopee=3450), cupons, enviar, pasta, agora + timedelta(hours=1))
         assert [a['modelo'] for a in d['alertas']] == ['digital'] and 'alvo' in d['alertas'][0]['motivo'], d['alertas']
         assert len(enviadas) == 1 and not enviadas[0][1] and '11DO11TECH' in enviadas[0][0]
+        assert enviadas[0][0].startswith('🔥 <b>R$ 3.450 · PS5 Digital</b> na '), 'alerta começa pelo preço que disparou'
+        assert 'Outros modelos: 💿 Com leitor R$ 4.530,55' in enviadas[0][0], enviadas[0][0]
 
         # 3ª: mesmo preço -> não repete
         enviadas.clear()
@@ -918,7 +1032,8 @@ def _teste():
         # dia seguinte, 9h: resumo diário sem som
         enviadas.clear()
         rodar(coleta(cupom_shopee=3450), cupons, enviar, pasta, agora + timedelta(hours=23))
-        assert len(enviadas) == 1 and enviadas[0][1] and 'PS5 hoje' in enviadas[0][0], enviadas
+        assert len(enviadas) == 1 and enviadas[0][1] and enviadas[0][0].startswith('🏆 <b>R$ 3.450 · PS5 Digital</b>'), enviadas
+        assert '📉 recorde R$ 7.299 em ' in enviadas[0][0] and '🎯 alvo R$ 3.799 (faltam R$ 732)' in enviadas[0][0], enviadas[0][0]
         with open(os.path.join(pasta, 'historico.csv')) as f:
             assert len(f.read().strip().splitlines()) == 6
 
@@ -975,6 +1090,26 @@ def _teste():
         os.environ.clear()
         os.environ.update(amb)
     assert '&lt;b&gt;' in descricao({'preco': 1, 'loja': '<b>x', 'cupom': None, 'tipo': 'loja', 'obs': ''})
+    base = {'modelo': 'digital', 'confianca': 'A', 'loja': 'Amazon', 'link': 'https://x'}
+    r = resumir([dict(base, preco=3905, cupom='JOGAMUITO'), dict(base, preco=3905.07, cupom=None)])['digital']
+    assert r['melhor']['cupom'] is None, 'cupom que economiza R$ 0,07 não vira o melhor preço'
+    r = resumir([dict(base, preco=3800, cupom='JOGAMUITO'), dict(base, preco=3905.07, cupom=None)])['digital']
+    assert r['melhor']['cupom'] == 'JOGAMUITO'
+    lotes_ = [{'origem': 'HISA', 'descricao': 'Lote <PS5>', 'lance': 1500, 'lance_tipo': 'lance atual', 'link': 'https://x/2'},
+              {'origem': 'Lance360', 'descricao': 'VIDEO GAME PS5', 'lance': 980, 'lance_tipo': 'lance inicial', 'link': 'https://x/1'},
+              {'origem': 'Bolsa', 'descricao': 'PS5 sem lance', 'link': ''}]
+    t = texto_leiloes(lotes_)
+    html_do_telegram(t)
+    assert t.startswith('🔨 <b>R$ 980 · PS5 em leilão</b>') and t.index('Lance360') < t.index('HISA') < t.index('Bolsa'), t
+    with tempfile.TemporaryDirectory() as pasta:
+        enviadas.clear()
+        rodar(coleta(), cupons, enviar, pasta, agora)                                  # 1ª: resumo "ligado"
+        enviadas.clear()
+        rodar(coleta(), cupons, enviar, pasta, agora + timedelta(minutes=30), resumo_agora=True)
+        assert len(enviadas) == 1 and enviadas[0][0].startswith('🏆') and 'ligado' not in enviadas[0][0], 'resumo pedido na hora'
+        enviadas.clear()
+        rodar(coleta(), cupons, enviar, pasta, agora + timedelta(hours=24))           # dia seguinte: o resumo do dia sai
+        assert len(enviadas) == 1 and enviadas[0][0].startswith('🏆'), 'o pedido avulso não conta como resumo do dia'
     print('OK: auto-checagem passou')
 
 
@@ -986,4 +1121,4 @@ if __name__ == '__main__':
         print(r)
         sys.exit(0 if r == 'TELEGRAM_ENVIADO' else 1)
     else:
-        rodar()
+        rodar(resumo_agora='--resumo' in sys.argv or os.environ.get('PS5_RESUMO') == '1')

@@ -9,6 +9,11 @@ on:
         description: 'Quem disparou (cron = cron-job.org)'
         required: false
         default: 'manual'
+      resumo:
+        description: 'Mandar o resumo no Telegram agora (além dos alertas)'
+        type: boolean
+        required: false
+        default: false
   push:                       # roda também quando o código do buscador muda (não quando só os dados mudam)
     branches: [main]
     paths: ['ps5/*.py', 'ps5/painel.html', '.github/workflows/ps5.yml']
@@ -62,6 +67,7 @@ jobs:
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}   # opcional
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}           # sem o de cima, vale o primeiro chat daqui
           PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram
+          PS5_RESUMO: ${{ inputs.resumo && '1' || '0' }}               # pedido pelo botão "Run workflow"
         run: python ps5/monitor.py
       - name: Guardar resultado
         if: always() && steps.guarda.outputs.pular != 'true'

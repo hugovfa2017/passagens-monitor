@@ -12,6 +12,9 @@ ALVOS = {
 # Também avisa (com som) quando aparecer o menor preço já visto de um modelo, se cair pelo menos isto abaixo do recorde.
 QUEDA_MINIMA = 50
 
+# Cupom que economiza menos que isto não vale o trabalho: o melhor preço passa a ser a oferta sem cupom.
+ECONOMIA_MINIMA_CUPOM = 10
+
 # Modelos que podem disparar alerta (tire da lista o que não interessa; o painel continua mostrando todos).
 MODELOS_COM_ALERTA = ['leitor', 'digital', 'pro']
 
