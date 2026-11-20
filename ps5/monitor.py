@@ -10,7 +10,7 @@ Open box, importados e leilões ficam em seções à parte (config.SECOES), nunc
 Cupons gerais da loja aparecem como "para testar no carrinho", sem entrar na conta.
 
 Alerta com som: melhor preço igual ou abaixo do alvo (config.py) ou menor preço já visto. Resumo diário sem som.
-Telegram: bot próprio do PS5. Segredos: TELEGRAM_TOKEN_PS5 (token do bot novo) e, opcional, TELEGRAM_CHAT_ID_PS5;
+Telegram: bot próprio do PS5. Segredos: TELEGRAM_TOKEN_PS5 ou PS5_TOKEN (token do bot novo) e, opcional, TELEGRAM_CHAT_ID_PS5;
 sem o segundo, vai para o primeiro chat de TELEGRAM_CHAT_ID. PS5_ENVIAR=0 não manda nada (usado fora da branch main).
 
 Uso:  python ps5/monitor.py                    -> varredura completa (fontes.py), grava e alerta
@@ -383,7 +383,7 @@ def telegram(texto_, silencioso=False, botoes=()):
         return 'TELEGRAM_DESLIGADO'
     token, chats = _token(), _chats()
     if not token:
-        return 'TELEGRAM_NAO_CONFIGURADO (falta o segredo TELEGRAM_TOKEN_PS5 com o token do bot do PS5)'
+        return 'TELEGRAM_NAO_CONFIGURADO (falta o segredo com o token do bot do PS5: TELEGRAM_TOKEN_PS5 ou PS5_TOKEN)'
     if not chats:
         return 'TELEGRAM_NAO_CONFIGURADO (falta TELEGRAM_CHAT_ID_PS5 ou TELEGRAM_CHAT_ID)'
     falhas = []

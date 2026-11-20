@@ -58,7 +58,7 @@ jobs:
       - name: Varredura e alerta
         if: steps.guarda.outputs.pular != 'true'
         env:
-          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 }}       # bot próprio do PS5 (não usa o bot das passagens)
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_TOKEN }}   # bot próprio do PS5; o segredo pode ter um dos dois nomes
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}   # opcional
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}           # sem o de cima, vale o primeiro chat daqui
           PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram
