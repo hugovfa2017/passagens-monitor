@@ -12,6 +12,7 @@ jobs:
       - name: Onde está o token do bot (só sim ou não, nunca o valor)
         env:
           SEGREDO_TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 != '' }}
+          SEGREDO_PS5_BOT: ${{ secrets.PS5_BOT != '' }}
           SEGREDO_PS5_TOKEN: ${{ secrets.PS5_TOKEN != '' }}
           VARIAVEL_TELEGRAM_TOKEN_PS5: ${{ vars.TELEGRAM_TOKEN_PS5 != '' }}
           VARIAVEL_PS5_TOKEN: ${{ vars.PS5_TOKEN != '' }}
@@ -19,7 +20,7 @@ jobs:
         run: env | grep -E '^(SEGREDO|VARIAVEL)_' | sort
       - name: Mandar mensagem de teste pelo bot do PS5
         env:
-          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_TOKEN }}   # o segredo pode ter um dos dois nomes
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}   # o segredo pode ter um destes nomes
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # o resultado diz o que falta (segredo ausente, /start não enviado...) sem mostrar token nem id de chat
