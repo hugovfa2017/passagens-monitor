@@ -1,0 +1,54 @@
+name: Atendimento dos bots
+
+# Quem manda /start a um dos bots (passagens ou PS5) passa a receber os alertas; /sair cancela (atendimento.py).
+# Só este workflow lê as mensagens dos bots, e uma rodada de cada vez: dois leitores juntos respondem em dobro.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'     # o mais frequente que o GitHub aceita; ele costuma atrasar alguns minutos
+  workflow_dispatch:          # botão "Run workflow" (atende na hora) e, se quiser pontualidade, o cron-job.org
+    inputs:
+      origem:
+        description: 'Quem disparou (cron = cron-job.org)'
+        required: false
+        default: 'manual'
+
+permissions:
+  contents: write             # para guardar a lista de inscritos (cifrada) no repositório
+
+concurrency:
+  group: atendimento
+  cancel-in-progress: false
+
+jobs:
+  atender:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}
+      TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Responder e inscrever quem escreveu
+        # no log ficam só contagens: nome e número de chat nunca aparecem
+        run: python3 atendimento.py --teste && python3 atendimento.py
+      - name: Guardar a lista de inscritos (cifrada)
+        run: |
+          for f in assinantes.cif ps5/assinantes.cif; do [ -f "$f" ] && git add "$f"; done
+          if git diff --cached --quiet; then echo "lista igual"; exit 0; fi
+          git config user.name "atendimento-bots"
+          git config user.email "atendimento-bots@users.noreply.github.com"
+          git commit -q -m "Inscritos $(TZ=America/Sao_Paulo date '+%d/%m %H:%M')"
+          # os monitores também gravam na main: junta e tenta de novo se alguém gravou antes
+          for i in 1 2 3 4; do
+            git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
+      - name: Confirmar a leitura no Telegram
+        # só depois de a lista estar guardada; se o passo acima falhar, a próxima rodada atende de novo
+        run: python3 atendimento.py --confirmar

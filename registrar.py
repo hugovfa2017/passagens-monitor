@@ -10,12 +10,11 @@ Uso:  python3 registrar.py ultima.json
       python3 registrar.py --configurar-telegram  -> acha o seu chat depois que você manda /start ao bot
       python3 registrar.py --teste-telegram       -> manda uma mensagem de teste
       python3 registrar.py --novo-chat            -> mostra quem mais abriu o bot (para receber os alertas também)
-      python3 registrar.py --atender              -> responde a quem escreveu para o bot e avisa o dono de pedidos novos
 
 O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em telegram_chat.txt.
-No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (vários chats separados por vírgula; o primeiro é o dono).
-Para incluir outro celular: a pessoa abre o bot e toca em Iniciar; na rodada seguinte o bot responde a ela e manda ao
-dono o valor novo do segredo TELEGRAM_CHAT_ID, pronto para colar (ver atendimento.py).
+No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (a lista fixa do dono; o primeiro chat é o dono).
+Para outro celular receber, basta abrir o bot e mandar /start: o workflow "Atendimento dos bots" inscreve o chat em
+poucos minutos e guarda a lista em assinantes.cif, cifrada (ver atendimento.py). /sair cancela.
 Saídas na pasta: historico.csv, ultimo.md, painel.json (o que o painel mostra).
 Imprime uma linha por evento: ALERTA ..., SEM_NOVIDADE ..., ERRO_VARREDURA ..., TELEGRAM_* ...
 """
@@ -137,9 +136,16 @@ def _api(token, metodo, campos=None):
 
 
 def _chats():
-    """Quem recebe os alertas: um ou mais ids de chat (separados por vírgula ou espaço)."""
+    """Quem recebe os alertas: a lista fixa do dono (segredo TELEGRAM_CHAT_ID ou telegram_chat.txt) e, depois dela,
+    quem se inscreveu mandando /start ao bot (assinantes.cif, mantido por atendimento.py)."""
     bruto = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
-    return re.findall(r'-?\d{5,}', bruto)
+    fixos = re.findall(r'-?\d{5,}', bruto)
+    try:
+        import atendimento
+        pelo_start = atendimento.inscritos(_token(), os.path.join(AQUI, 'assinantes.cif'))
+    except Exception:
+        pelo_start = []
+    return list(dict.fromkeys(fixos + pelo_start))
 
 
 def _enviar_um(token, campos, api=None, espera=5):
@@ -213,18 +219,6 @@ def novos_chats():
         return 'NENHUM_NOVO a pessoa precisa abrir o bot no Telegram, tocar em Iniciar e mandar qualquer mensagem (vale por 24 h)'
     return '\n'.join(f'NOVO {nome}: {chat}' for chat, nome in novos.items()) + \
         f"\nSegredo TELEGRAM_CHAT_ID com todos: {','.join([*ja, *novos])}"
-
-
-def atender():
-    """Responde a quem escreveu para o bot desde a última rodada e avisa o dono de pedidos novos (atendimento.py).
-    A linha devolvida vai para o log público: só contagens."""
-    token = _token()
-    if not token:
-        return 'ATENDER sem token'
-    import atendimento
-    return atendimento.atender(lambda metodo, campos=None: _api(token, metodo, campos), _chats(), nome='monitor de passagens',
-                               sobre='Chega uma mensagem por hora; ela só toca quando um preço fica abaixo do alvo ou bate o menor já visto.',
-                               segredo='TELEGRAM_CHAT_ID')
 
 
 def registrar(scan, pasta=AQUI, enviar=telegram):
@@ -466,9 +460,20 @@ def _teste_registro():
             chamadas.append(metodo)
             raise Recusa()
         assert _enviar_um(tk, {}, api=recusado, espera=0) == 'Recusa 403 Forbidden: bot was blocked by the user' and len(chamadas) == 5
-        # atendimento sem token: não tenta nada
-        os.environ['TELEGRAM_TOKEN'] = 'sem token aqui'
-        assert atender() == 'ATENDER sem token'
+        # quem se inscreveu pelo /start entra depois da lista fixa, sem repetir; arquivo de outro bot não abre
+        import atendimento
+        global AQUI
+        aqui_real = AQUI
+        with tempfile.TemporaryDirectory() as d:
+            AQUI = d
+            try:
+                assert _chats() == ['111111111', '222222222']
+                atendimento.gravar_inscritos(tk, os.path.join(d, 'assinantes.cif'), ['222222222', '333333333'])
+                assert _chats() == ['111111111', '222222222', '333333333'], _chats()
+                os.environ['TELEGRAM_TOKEN'] = '987654321:' + 'Z' * 35
+                assert _chats() == ['111111111', '222222222']
+            finally:
+                AQUI = aqui_real
     finally:
         os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
@@ -536,8 +541,6 @@ if __name__ == '__main__':
         print(configurar_telegram())
     elif sys.argv[1:] == ['--novo-chat']:
         print(novos_chats())
-    elif sys.argv[1:] == ['--atender']:
-        print(atender())
     elif sys.argv[1:] == ['--teste-telegram']:
         print(telegram(f'Teste do monitor de passagens: o alerta está funcionando. Painel: {PAINEL_URL}'))
     else:

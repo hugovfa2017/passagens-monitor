@@ -25,6 +25,7 @@ Feito e testado (`python3 ps5/monitor.py --teste` passa; varredura real com 11 f
 3. **Testar o bot.** Feito em 20/11: Actions → "Teste do Telegram (PS5)" → Run workflow mandou a mensagem pelo bot
    novo. O primeiro passo do teste diz, com sim ou não, se o segredo foi encontrado.
 4. **Juntar na `main`.** Feito em 20/11 (pull request #1, com o OK do dono). O buscador roda a partir dela.
+   Desde então, quem manda `/start` a um dos bots é inscrito sozinho (workflow "Atendimento dos bots").
 5. **Gatilho confiável de 30 minutos.** Pedir ao dono para duplicar no cron-job.org o gatilho das passagens, apontando
    para o workflow `ps5.yml`, a cada 30 minutos, com `origem=cron`.
 6. **Sondar a partir do computador.** `python3 ps5/sondar.py`. Internet residencial no Brasil costuma ser aceita por
