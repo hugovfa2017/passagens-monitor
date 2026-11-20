@@ -22,6 +22,7 @@ jobs:
           me = json.load(urllib.request.urlopen(f'https://api.telegram.org/bot{registrar._token()}/getMe', timeout=30))['result']['username']
           print('bot: @' + me, '| destinatários:', len(registrar._chats()))
           " || echo "token não aceito pelo Telegram"
+          python3 registrar.py --atender || true   # responde a quem escreveu para o bot (só contagens no log)
           r=$(python3 registrar.py --teste-telegram)
           echo "$r"
           [ "$r" = "TELEGRAM_ENVIADO" ]

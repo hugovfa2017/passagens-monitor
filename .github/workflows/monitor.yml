@@ -11,7 +11,7 @@ on:
         default: 'manual'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
-    paths: ['varredura.js', 'registrar.py', 'painel-index.html', 'nuvem/rodar.py', 'nuvem/vendedores.py', 'nuvem/pagina.py', '.github/workflows/monitor.yml']
+    paths: ['varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/rodar.py', 'nuvem/vendedores.py', 'nuvem/pagina.py', '.github/workflows/monitor.yml']
 
 permissions:
   contents: write             # para guardar histórico e painel.json de volta no repositório
@@ -30,6 +30,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main                 # a versão mais nova (com os dados da varredura anterior), não a do momento em que entrou na fila
+      - name: Responder a quem escreveu para o bot
+        # quem toca em "Iniciar" recebe resposta e o dono é avisado de pedidos novos (atendimento.py).
+        # Roda em todo disparo, mesmo quando a varredura é pulada; se falhar, a varredura segue.
+        continue-on-error: true
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 atendimento.py --teste && python3 registrar.py --atender
       - name: Pular se outra varredura acabou de rodar
         id: guarda
         env:

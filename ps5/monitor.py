@@ -16,6 +16,7 @@ sem o segundo, vai para o primeiro chat de TELEGRAM_CHAT_ID. PS5_ENVIAR=0 não m
 Uso:  python ps5/monitor.py                    -> varredura completa (fontes.py), grava e alerta
       python ps5/monitor.py --teste            -> auto-checagem sem internet
       python ps5/monitor.py --teste-telegram   -> manda uma mensagem de teste pelo bot do PS5
+      python ps5/monitor.py --atender          -> responde a quem escreveu para o bot do PS5 (ex.: /start) e avisa o dono
 Saídas: ps5/historico.csv, ps5/estado.json, ps5/ultimo.md, docs/ps5/index.html e docs/ps5/painel.json.
 """
 import csv, html, json, os, re, sys, urllib.parse, urllib.request
@@ -377,6 +378,28 @@ def _chats():
     return proprio or re.findall(r'-?\d{5,}', os.environ.get('TELEGRAM_CHAT_ID', ''))[:1]
 
 
+def _api(token, metodo, campos=None):
+    dados = urllib.parse.urlencode(campos).encode() if campos else None
+    with urllib.request.urlopen(urllib.request.Request(f'https://api.telegram.org/bot{token}/{metodo}', data=dados), timeout=30) as r:
+        return json.loads(r.read())
+
+
+def atender():
+    """Responde a quem escreveu para o bot do PS5 desde a última rodada e avisa o dono de pedidos novos
+    (atendimento.py, na raiz do repositório). A linha devolvida vai para o log público: só contagens."""
+    if os.environ.get('PS5_ENVIAR', '1') == '0':
+        return 'ATENDER desligado'
+    token = _token()
+    if not token:
+        return 'ATENDER sem token (falta o segredo TELEGRAM_TOKEN_PS5 ou PS5_TOKEN)'
+    sys.path.append(RAIZ)
+    import atendimento
+    return atendimento.atender(lambda metodo, campos=None: _api(token, metodo, campos), _chats(), nome='buscador de PS5',
+                               sobre='A busca roda de 30 em 30 minutos. O aviso toca quando um PS5 fica abaixo do alvo ou bate '
+                                     'o menor preço já visto; uma vez por dia chega um resumo sem som.',
+                               segredo='TELEGRAM_CHAT_ID_PS5')
+
+
 def telegram(texto_, silencioso=False, botoes=()):
     """Nunca derruba a varredura nem escreve token ou id de chat em lugar nenhum."""
     if os.environ.get('PS5_ENVIAR', '1') == '0':
@@ -393,10 +416,8 @@ def telegram(texto_, silencioso=False, botoes=()):
         if botoes:
             campos['reply_markup'] = json.dumps({'inline_keyboard': list(botoes)})
         try:
-            req = urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage', data=urllib.parse.urlencode(campos).encode())
-            with urllib.request.urlopen(req, timeout=30) as r:
-                if not json.loads(r.read()).get('ok'):
-                    falhas.append('recusado')
+            if not _api(token, 'sendMessage', campos).get('ok'):
+                falhas.append('recusado')
         except Exception as e:   # sem str(e): pode trazer o token na URL
             codigo = getattr(e, 'code', '')
             falhas.append('o bot não pode te escrever: mande /start para o bot do PS5' if codigo in (400, 403)
@@ -947,8 +968,11 @@ def _teste():
         os.environ.pop('TELEGRAM_TOKEN_PS5', None)
         os.environ.pop('TELEGRAM_CHAT_ID_PS5', None)
         assert telegram('x').startswith('TELEGRAM_NAO_CONFIGURADO') and _token() == '' and _chats() == ['11111111']
+        assert atender().startswith('ATENDER sem token')
         os.environ['TELEGRAM_TOKEN_PS5'] = ' token: 654321:' + 'B' * 35 + ' '
         assert _token() == '654321:' + 'B' * 35
+        os.environ['PS5_ENVIAR'] = '0'   # fora da main: o bot não responde nem envia
+        assert atender() == 'ATENDER desligado' and telegram('x') == 'TELEGRAM_DESLIGADO'
     finally:
         os.environ.clear()
         os.environ.update(amb)
@@ -959,6 +983,8 @@ def _teste():
 if __name__ == '__main__':
     if '--teste' in sys.argv:
         _teste()
+    elif '--atender' in sys.argv:
+        print(atender())
     elif '--teste-telegram' in sys.argv:
         r = telegram('✅ Teste do buscador do PS5: este é o bot novo, separado do bot das passagens.', botoes=[PAINEL_BOTAO])
         print(r)

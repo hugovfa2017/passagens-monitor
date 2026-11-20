@@ -36,10 +36,19 @@ O buscador usa um bot só dele (nada sai pelo bot das passagens).
 
 1. No Telegram, fale com o **@BotFather**, mande `/newbot` e guarde o token.
 2. Abra a conversa com o bot novo e mande `/start`.
-3. No GitHub: Settings → Secrets and variables → Actions → New repository secret, nome **`TELEGRAM_TOKEN_PS5`**.
-4. Teste: Actions → **Teste do Telegram (PS5)** → Run workflow.
+3. No GitHub: Settings → Secrets and variables → Actions → **New repository secret**, nome **`PS5_TOKEN`**
+   (ou `TELEGRAM_TOKEN_PS5`; vale qualquer um dos dois). Tem que aparecer na lista "Repository secrets": em
+   "Variables", em segredo de ambiente, de Codespaces ou de Dependabot, o buscador não enxerga.
+4. Teste: Actions → **Teste do Telegram (PS5)** → Run workflow. O primeiro passo diz, com sim ou não, se o segredo
+   foi encontrado.
 
 As mensagens vão para `TELEGRAM_CHAT_ID_PS5`, se existir; senão, para o primeiro chat de `TELEGRAM_CHAT_ID`.
+
+**O bot responde ao `/start`** na rodada seguinte (até 30 minutos depois; na hora, se você rodar o teste acima). Quem
+já recebe os alertas ganha uma confirmação. Se for um chat novo (outro celular, um grupo onde o bot entrou), o bot
+avisa a pessoa que o pedido foi enviado e manda a você, em particular, quem pediu e o valor pronto para colar no
+segredo `TELEGRAM_CHAT_ID_PS5`. Enquanto o número não entra no segredo, a pessoa não recebe nada. O mesmo vale para o
+bot das passagens, com o segredo `TELEGRAM_CHAT_ID` (ver [`../atendimento.py`](../atendimento.py)).
 
 ## Rodada de 30 em 30 minutos
 

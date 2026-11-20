@@ -16,11 +16,8 @@ jobs:
         env:
           SEGREDO_TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 != '' }}
           SEGREDO_PS5_TOKEN: ${{ secrets.PS5_TOKEN != '' }}
-          SEGREDO_TOKEN_PS5: ${{ secrets.TOKEN_PS5 != '' }}
-          SEGREDO_PS5_BOT_TOKEN: ${{ secrets.PS5_BOT_TOKEN != '' }}
           VARIAVEL_TELEGRAM_TOKEN_PS5: ${{ vars.TELEGRAM_TOKEN_PS5 != '' }}
           VARIAVEL_PS5_TOKEN: ${{ vars.PS5_TOKEN != '' }}
-          VARIAVEL_TOKEN_PS5: ${{ vars.TOKEN_PS5 != '' }}
         # token salvo em "Variables" não serve: variável aparece no log, e este repositório é público
         run: env | grep -E '^(SEGREDO|VARIAVEL)_' | sort
       - name: Mandar mensagem de teste pelo bot do PS5
@@ -29,4 +26,6 @@ jobs:
           TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # o resultado diz o que falta (segredo ausente, /start não enviado...) sem mostrar token nem id de chat
-        run: python3 ps5/monitor.py --teste-telegram
+        run: |
+          python3 ps5/monitor.py --atender || true   # responde a quem escreveu para o bot (só contagens no log)
+          python3 ps5/monitor.py --teste-telegram
