@@ -6,7 +6,7 @@ on:
   workflow_run:               # carona no monitor de passagens, que o cron-job.org dispara de hora em hora:
     workflows: ['Monitor de passagens']   # roda quando ele começa e quando termina (o agendamento acima falha muito)
     types: [requested, completed]
-  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (a cada 30 min, com origem=cron)
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (a cada 10 min, com origem=cron)
     inputs:
       origem:
         description: 'Quem disparou (cron = cron-job.org)'
@@ -46,12 +46,15 @@ jobs:
         # agendamento, cron-job.org e a carona no monitor de passagens podem cair juntos: a segunda é pulada
         run: |
           python3 - >> "$GITHUB_OUTPUT" <<'FIM'
-          import json, os, datetime as dt
+          import json, os, sys, datetime as dt
+          sys.path.insert(0, 'ps5')
+          import monitor   # guarda_min: 7 min no modo caçador (gatilho de 10 min), 25 fora dele (uma rodada a cada 30)
           pular = False
           if os.environ['EVENTO'] in ('schedule', 'workflow_run') or os.environ.get('ORIGEM') == 'cron':
               try:
                   ultima = dt.datetime.fromisoformat(json.load(open('ps5/estado.json'))['ultima'])
-                  pular = (dt.datetime.now(ultima.tzinfo) - ultima).total_seconds() < 12 * 60
+                  agora = dt.datetime.now(ultima.tzinfo)
+                  pular = (agora - ultima).total_seconds() < monitor.guarda_min(agora) * 60
               except Exception:
                   pass
           print('pular=' + str(pular).lower())
