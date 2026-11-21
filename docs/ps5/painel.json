@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21 06:48",
+ "atualizado": "2026-11-21 07:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "KaBuM!",
@@ -779,7 +779,7 @@
     "link": "https://t.me/cupons_desconto/84689",
     "obs": "postado no canal Promobit (Telegram)",
     "detalhes": "com jogo/extra",
-    "idade_h": 11.1,
+    "idade_h": 11.3,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -788,7 +788,7 @@
      {
       "fonte": "Promobit (Telegram)",
       "link": "https://t.me/cupons_desconto/84689",
-      "idade_h": 11.1,
+      "idade_h": 11.3,
       "tipo": "grupo"
      }
     ],
@@ -816,7 +816,7 @@
      "link": "https://t.me/cupons_desconto/84689",
      "obs": "postado no canal Promobit (Telegram)",
      "detalhes": "com jogo/extra",
-     "idade_h": 11.1,
+     "idade_h": 11.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -825,7 +825,7 @@
       {
        "fonte": "Promobit (Telegram)",
        "link": "https://t.me/cupons_desconto/84689",
-       "idade_h": 11.1,
+       "idade_h": 11.3,
        "tipo": "grupo"
       }
      ],
@@ -906,7 +906,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 3.7,
+     "idade_h": 3.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -921,7 +921,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
-       "idade_h": 3.7,
+       "idade_h": 3.9,
        "tipo": "postada"
       }
      ],
@@ -1176,7 +1176,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
      "obs": "à vista",
      "detalhes": "",
-     "idade_h": 3.7,
+     "idade_h": 3.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1191,7 +1191,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3237252/",
-       "idade_h": 3.7,
+       "idade_h": 3.9,
        "tipo": "postada"
       }
      ],
@@ -1238,7 +1238,7 @@
      "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
      "obs": "à vista no Pix",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 14.3,
+     "idade_h": 14.5,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -1253,7 +1253,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 14.3,
+       "idade_h": 14.5,
        "tipo": "postada"
       }
      ],
@@ -2377,6 +2377,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -2500,56 +2512,56 @@
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
-   "segundos": 0.3,
+   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
+   "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 10
+   "falhas_seguidas": 11
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 0.7,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.6,
+   "segundos": 0.4,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 0.9,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 0.7,
    "ofertas": 4,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 6.8,
+   "segundos": 5.2,
    "ofertas": 30,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.6,
+   "segundos": 1.0,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.2,
+   "segundos": 0.1,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
@@ -2557,7 +2569,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 22.9,
+   "segundos": 17.7,
    "ofertas": 20,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -2565,7 +2577,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.4,
+   "segundos": 4.0,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
