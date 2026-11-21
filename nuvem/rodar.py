@@ -720,6 +720,11 @@ if __name__ == '__main__':
     viagem = plano.carregar()
     estado_ = registrar.ler_estado()
     if sys.argv[1:] == ['--rapida']:
+        # se o Google barrou a última rodada completa, a rápida não insiste
+        anterior = (registrar.ler_json(os.path.join(RAIZ, 'ultima.json'), {}).get('fontes') or {}).get('Google') or {}
+        if anterior.get('bloqueio') or anterior.get('erro'):
+            print('RAPIDA_PULADA o Google não respondeu bem na última rodada completa')
+            sys.exit(0)
         scan_ = asyncio.run(varrer_rapido(viagem, estado_, datetime.now()))
         for linha in registrar.registrar_rapida(scan_, viagem):
             print(linha)
