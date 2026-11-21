@@ -4,6 +4,7 @@
 // Uso (nuvem/rodar.py injeta este arquivo numa aba já aberta em https://www.google.com/travel/flights):
 //   window.__gv.listar(enderecos, paralelo)  -> [{rotulos: [...]}]   texto de cada voo da lista de resultados
 //   window.__gv.validar(itens, paralelo)     -> [{texto, href}]      tela de compra do voo cujo rótulo contém item.chave
+//   window.__gv.comprar(enderecos, paralelo) -> [{texto, href}]      tela de compra aberta direto pelo endereço dos voos exatos
 // Por que valida na tela de compra: o preço da lista pode estar velho (já vimos R$592 na lista virar R$2.550 na
 // compra). Só conta o preço da tela de compra.
 // Se o Google pedir verificação em qualquer quadro, tudo para ({bloqueio: ...}); não tentamos contornar.
@@ -50,7 +51,28 @@ window.__gv = (() => {
     try { return parou ? { bloqueio: parou } : { rotulos: rotulos(f.contentDocument) }; } finally { f.remove(); }
   });
 
-  // clica no voo e lê a tela de compra: o texto com "Reserve com a ..." e o endereço (que traz o número de cada voo)
+  // espera a tela de compra mostrar os vendedores ("Reserve com a ...") e devolve o texto e o endereço (que traz o número de cada voo)
+  const lerCompra = async f => {
+    let antes = -1, n = 0, texto = '';
+    for (let i = 0; i < 30; i++) {
+      await sleep(1000);
+      const doc = f.contentDocument;
+      if (!doc || !doc.body) continue;
+      const mais = [...doc.querySelectorAll('div')].find(b => !b.children.length && /^Mais \d+ opç/.test((b.textContent || '').trim()));
+      if (mais) mais.click();
+      texto = doc.body.innerText || '';
+      if (i >= 2 && BLOQUEIO.test(texto.slice(0, 3000))) { parou = texto.slice(0, 200); return { bloqueio: parou }; }
+      n = (texto.match(/Reserve com a /g) || []).length;
+      if (n && n === antes) break;
+      if (!n && i >= 14) break;   // 15 segundos sem nenhum vendedor: a tela não vai abrir
+      antes = n;
+    }
+    const ini = texto.indexOf('Reserve com a ');
+    return n ? { texto: texto.slice(ini, ini + 6000), href: f.contentWindow.location.href }
+             : { erro: 'tela de compra sem vendedores', inicio: texto.slice(0, 300) };
+  };
+
+  // clica no voo da lista e lê a tela de compra
   const validar = (itens, paralelo) => fila(itens, paralelo, async it => {
     const f = await abrir(it.url, 12);
     try {
@@ -61,22 +83,17 @@ window.__gv = (() => {
       for (let i = 0; i < 8 && !el; i++) { await sleep(1000); el = achar(); }
       if (!el) return { erro: 'voo não está mais na lista' };
       el.click();
-      let antes = -1, n = 0, texto = '';
-      for (let i = 0; i < 30; i++) {
-        await sleep(1000);
-        const doc = f.contentDocument;
-        if (!doc || !doc.body) continue;
-        const mais = [...doc.querySelectorAll('div')].find(b => !b.children.length && /^Mais \d+ opç/.test((b.textContent || '').trim()));
-        if (mais) mais.click();
-        texto = doc.body.innerText || '';
-        n = (texto.match(/Reserve com a /g) || []).length;
-        if (n && n === antes) break;
-        antes = n;
-      }
-      const ini = texto.indexOf('Reserve com a ');
-      return n ? { texto: texto.slice(ini, ini + 6000), href: f.contentWindow.location.href } : { erro: 'tela de compra sem vendedores' };
+      return await lerCompra(f);
     } finally { f.remove(); }
   });
 
-  return { listar, validar, bloqueio: () => parou };
+  // abre direto a tela de compra de voos exatos (endereço de gvoos.url_compra): outro número de lugares, ou ida e volta juntas
+  const comprar = (enderecos, paralelo) => fila(enderecos, paralelo, async u => {
+    const f = document.createElement('iframe');
+    f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
+    f.src = u; document.body.appendChild(f);
+    try { return await lerCompra(f); } finally { f.remove(); }
+  });
+
+  return { listar, validar, comprar, bloqueio: () => parou };
 })();
