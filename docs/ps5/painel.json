@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21 05:50",
+ "atualizado": "2026-11-21 06:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "KaBuM!",
@@ -301,6 +301,34 @@
     },
     {
      "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation 5 Standard (Slim)",
+     "preco": 4999.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
      "fonte": "Americanas",
      "loja": "Americanas · Magazine Luiza",
      "titulo": "Console PlayStation 5 Slim Disk 1TB 1 Controle Branco Sony com 2 Jogos",
@@ -322,34 +350,6 @@
        "link": "https://www.americanas.com.br/playstation-5-slim-disk-1tb-1-controle-branco-sony-com-2-jogos-8299908/p",
        "idade_h": null,
        "tipo": "loja"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "PlayStation 5 Standard (Slim)",
-     "preco": 5099,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-       "idade_h": null,
-       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -779,7 +779,7 @@
     "link": "https://t.me/cupons_desconto/84689",
     "obs": "postado no canal Promobit (Telegram)",
     "detalhes": "com jogo/extra",
-    "idade_h": 10.2,
+    "idade_h": 10.3,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -788,7 +788,7 @@
      {
       "fonte": "Promobit (Telegram)",
       "link": "https://t.me/cupons_desconto/84689",
-      "idade_h": 10.2,
+      "idade_h": 10.3,
       "tipo": "grupo"
      }
     ],
@@ -816,7 +816,7 @@
      "link": "https://t.me/cupons_desconto/84689",
      "obs": "postado no canal Promobit (Telegram)",
      "detalhes": "com jogo/extra",
-     "idade_h": 10.2,
+     "idade_h": 10.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -825,7 +825,7 @@
       {
        "fonte": "Promobit (Telegram)",
        "link": "https://t.me/cupons_desconto/84689",
-       "idade_h": 10.2,
+       "idade_h": 10.3,
        "tipo": "grupo"
       }
      ],
@@ -906,7 +906,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 2.8,
+     "idade_h": 2.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -921,7 +921,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
-       "idade_h": 2.8,
+       "idade_h": 2.9,
        "tipo": "postada"
       }
      ],
@@ -1176,7 +1176,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
      "obs": "à vista",
      "detalhes": "",
-     "idade_h": 2.7,
+     "idade_h": 2.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1191,7 +1191,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3237252/",
-       "idade_h": 2.7,
+       "idade_h": 2.9,
        "tipo": "postada"
       }
      ],
@@ -1238,7 +1238,7 @@
      "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
      "obs": "à vista no Pix",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 13.4,
+     "idade_h": 13.5,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -1253,7 +1253,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 13.4,
+       "idade_h": 13.5,
        "tipo": "postada"
       }
      ],
@@ -1292,6 +1292,34 @@
       }
      ],
      "n_vistos": 2,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Fast Shop",
+     "loja": "Fast Shop · Webcontinental Marketplace",
+     "titulo": "Console Playstation 5 Slim Edição Digital 825GB com 2 Jogos Branco",
+     "preco": 5085.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+     "obs": "à vista no Pix",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Fast Shop",
+       "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+       "idade_h": null,
+       "tipo": "loja"
+      }
+     ],
+     "n_vistos": 1,
      "cupom_citado": null
     }
    ]
@@ -2277,6 +2305,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -2393,7 +2433,7 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 0.4,
    "ofertas": 38,
    "tipo": "loja",
    "falhas_seguidas": 0
@@ -2403,46 +2443,46 @@
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
    "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 4
+   "falhas_seguidas": 5
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 0.9,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.3,
-   "ofertas": 6,
+   "segundos": 0.5,
+   "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.7,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 4.0,
    "ofertas": 4,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 4.8,
+   "segundos": 5.0,
    "ofertas": 30,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.5,
+   "segundos": 2.9,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
@@ -2457,7 +2497,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 17.6,
+   "segundos": 17.7,
    "ofertas": 20,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -2465,7 +2505,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.7,
+   "segundos": 3.8,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
