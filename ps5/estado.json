@@ -457,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3237135",
    "publicado": "2026-11-20T23:44:04-0300",
-   "idade_h": 9.6
+   "idade_h": 9.8
   },
   "promobit-3237251": {
    "fonte": "Promobit",
@@ -474,7 +474,7 @@
    "ressalvas": [],
    "id": "promobit-3237251",
    "publicado": "2026-11-21T03:04:27-0300",
-   "idade_h": 6.3
+   "idade_h": 6.4
   },
   "promobit-3237252": {
    "fonte": "Promobit",
@@ -491,7 +491,7 @@
    "ressalvas": [],
    "id": "promobit-3237252",
    "publicado": "2026-11-21T03:06:32-0300",
-   "idade_h": 6.2
+   "idade_h": 6.4
   },
   "promobit-3237281": {
    "fonte": "Promobit",
@@ -508,7 +508,7 @@
    "ressalvas": [],
    "id": "promobit-3237281",
    "publicado": "2026-11-21T07:16:23-0300",
-   "idade_h": 2.1
+   "idade_h": 2.2
   },
   "promobit-3237282": {
    "fonte": "Promobit",
@@ -525,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3237282",
    "publicado": "2026-11-21T07:16:37-0300",
-   "idade_h": 2.1
+   "idade_h": 2.2
   },
   "promobit-3237275": {
    "fonte": "Promobit",
@@ -542,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3237275",
    "publicado": "2026-11-21T07:12:25-0300",
-   "idade_h": 2.1
+   "idade_h": 2.3
   },
   "promobit-3237284": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3237284",
    "publicado": "2026-11-21T07:18:18-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "promobit-3237285": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3237285",
    "publicado": "2026-11-21T07:18:43-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "tg-hardmob_promo/472969-0": {
    "fonte": "Telegram",
@@ -595,7 +595,7 @@
    "publicado": "2026-11-21T08:51:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "tg-OfertasDoDia/483210-0": {
    "fonte": "Telegram",
@@ -614,7 +614,75 @@
    "publicado": "2026-11-21T08:50:50-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 0.5
+   "idade_h": 0.7
+  },
+  "promobit-3237512": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle PlayStation PS5 gray camuflado",
+   "preco": 291.27,
+   "link": "https://www.promobit.com.br/oferta/controle-playstation-ps5-gray-camuflado-3237512/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237512",
+   "publicado": "2026-11-21T09:20:08-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237510": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Rockstar Games GTA VI PS5 Edição Padrão Física",
+   "preco": 311.0,
+   "link": "https://www.promobit.com.br/oferta/rockstar-games-gta-vi-ps5-edicao-padrao-fisica-3237510/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237510",
+   "publicado": "2026-11-21T09:19:19-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237492": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sem Fio Sony Dualsense Blue, Playstation 5",
+   "preco": 269.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-sony-dualsense-blue-playstation-5-3237492/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237492",
+   "publicado": "2026-11-21T09:16:05-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237486": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Marvel's Wolverine PS5",
+   "preco": 384.07,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-marvels-wolverine-ps5-3237486/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237486",
+   "publicado": "2026-11-21T09:15:05-0300",
+   "idade_h": 0.3
   }
  },
  "alertados": {},
@@ -652,7 +720,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -692,7 +760,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T09:20:26-03:00",
+ "ultima": "2026-11-21T09:30:23-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
