@@ -24,6 +24,7 @@ from datetime import datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(AQUI, 'nuvem'))
+import momento  # noqa: E402
 import plano    # noqa: E402
 import selecao  # noqa: E402
 
@@ -34,6 +35,7 @@ CAMPOS = ['quando', 'serie', 'd', 'ne', 'pax', 'pp', 'conf']   # precos.csv
 LIMITE_MENSAGEM = 3900          # o Telegram aceita 4.096 caracteres
 HORAS_ENTRE_TOQUES = 6          # o mesmo trecho não toca de novo antes disso, a não ser que caia mais
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
+SINAL = {'bom': '🟢 Bom momento', 'acompanhar': '🟡 Acompanhar', 'esperar': '⏳ Esperar'}   # nuvem/momento.py
 
 
 def dia(d):  # '2026-12-18' -> 'sex 18/12'
@@ -257,6 +259,7 @@ def atualizar_estado(estado, scan, ts, v, agora):
             if toca:
                 e['tocou'] = {'pp': rec['pp'], 'quando': agora}
         e['min'] = min(menor, rec['pp']) if menor else rec['pp']
+        momento.anotar(e.setdefault('hist', []), agora, rec['pp'])
         e['rec'] = {'ident': list(selecao.ident(rec)), 'd': rec['d'], 'ne': selecao.nordeste(rec, v), 'pp': rec['pp'], 'vend': rec['vend']}
         barata = r.get('mais_barata')   # a próxima rodada confere de novo a mais barata, mesmo que ela não seja a recomendada
         e['barata'] = {'d': barata['d'], 'ne': selecao.nordeste(barata, v), 'pp': barata['pp']} if barata else None
@@ -290,7 +293,60 @@ def linhas_oferta(prefixo, o, v, alvo=None, cada='', nota=''):
             f"└ {horarios(o, v)} · {html.escape(nome_vendedor(o['vend']))}")
 
 
-def bloco_do_grupo(g, ts, scan, v, estado, nomes):
+def linhas_lugares(difs, pax):
+    """O que muda no preço por pessoa com outro número de lugares no mesmo voo (difs: selecao.lugares)."""
+    linhas, mais = [], [x for x in difs if x['n'] > pax]
+    if mais and not any(x['dif'] for x in mais):
+        linhas.append(f"👥 Nesse voo, {' ou '.join(str(x['n']) for x in mais)} lugares juntos saem pelo mesmo preço por pessoa")
+    elif mais:
+        linhas.append('👥 Nesse voo, comprando juntos: ' + ' · '.join(
+            f"{x['n']} lugares, " + (f"{'+' if x['dif'] > 0 else '−'}{brl(abs(x['dif']))} por pessoa" if x['dif'] else 'mesmo preço por pessoa') for x in mais))
+    um = next((x for x in difs if x['n'] == 1 and pax > 1 and x['dif'] < 0), None)
+    if um:   # só o primeiro lugar pega o preço menor: o seguinte tende a sair pelo preço de quem compra junto
+        linhas.append(f"✂️ Nesse voo, 1 lugar sozinho sai {brl(-um['dif'])} mais barato: comprando um de cada vez, em reservas separadas, "
+                      f"dá para economizar {brl(-um['dif'])} no total")
+    return linhas
+
+
+def pacotes_do_grupo(g, ts, scan, v):
+    """Os pacotes (ida + volta) de um grupo; em cada um, 'juntas' é a compra única de ida e volta que sai mais barata que
+    as duas recomendadas separadas (selecao.juntas), ou None."""
+    pacs = selecao.pacotes(selecao.com_apelidos(scan['series'], ts, g['id']), g)
+    for p in pacs:
+        p['juntas'] = selecao.juntas(p, (scan.get('juntas') or {}).get(f"{g['id']}.{p['id']}") or [], v['selecao'].get('margem_juntas', 30))
+    return pacs
+
+
+def linhas_juntas(p, g, v, varios):
+    """As linhas da compra única de um pacote: os mesmos voos numa compra só, ou outros voos (aí com as duas pernas descritas)."""
+    j = p['juntas']
+    cada = ' por pessoa' if g['assentos'] > 1 else ''
+    preco = f"<b>{brl(j['pp'])}</b>{cada} ({brl(j['economia'])} a menos)" + (f" · {brl(j['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else '')
+    onde = html.escape(nome_vendedor(j['vend']))
+    prefixo = f"{p['nome'][0].upper()}{p['nome'][1:]}, " if varios else ''
+    if j['mesmos']:
+        return [f"🔁 {prefixo}{'os' if varios else 'Os'} mesmos voos numa compra só na {onde}: {preco}"]
+    perna = lambda rotulo, o: f"└ {rotulo}: {dia(o['d'])} · {voo_txt(o)} · {horarios(o, v)}"
+    return [f"🔁 {prefixo}{'ida' if varios else 'Ida'} e volta numa compra só na {onde}, em outros voos: {preco}", perna('ida', j['ida']), perna('volta', j['volta'])]
+
+
+def de_fora(r, v):
+    """A agência de fora do Brasil que vende o voo recomendado bem mais barato (viagem.json: margem_fora), ou None."""
+    rec, fora = r.get('recomendada'), r.get('fora')
+    return fora if rec and fora and fora['pp'] <= rec['pp'] - v['selecao'].get('margem_fora', 50) else None
+
+
+def momento_do_trecho(t, r, estado, agora):
+    """O veredito de compra da recomendada de um trecho (nuvem/momento.py), ou None se não há sinal."""
+    rec = r.get('recomendada')
+    if not rec:
+        return None
+    hist = estado.get('series', {}).get(t['serie'], {}).get('hist') or []
+    faltam = (datetime.strptime(rec['d'], '%Y-%m-%d') - datetime.strptime(agora[:10], '%Y-%m-%d')).days
+    return momento.veredito(rec['pp'], t['alvo'], momento.semana(hist, agora), r.get('aviso'), faltam)
+
+
+def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
     """As linhas de um grupo: [(texto, nível)]. Nível 0 fica sempre; 1 e 2 saem primeiro quando a mensagem não cabe.
     Só entra preço conferido nesta busca (tela de compra ou página do vendedor); o que não foi conferido vem avisado."""
     series, meus = scan['series'], [t for t in ts if t['grupo'] == g['id']]
@@ -326,6 +382,14 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
         elif t['voo_comprado'] and comprado['d'] in t['datas'] and not eh_o_comprado:
             linhas.append((f"🎯 Voo já comprado ({comprado['cia']} {comprado['voo'].split(' ')[-1]}, {dia(comprado['d'])} "
                            f"{comprado['saida'].replace(':', 'h')}): sem lugar à venda nesta busca", 0))
+        difs = selecao.lugares({x['n']: x['pp'] for x in r.get('lugares') or []}, t['pax'], v['selecao'].get('margem_lugares', 15))
+        linhas += [(l, 1) for l in linhas_lugares(difs, t['pax'])]
+        ver = momento_do_trecho(t, r, estado, agora)
+        if ver:
+            linhas.append((f"{SINAL[ver['sinal']]}: {' · '.join(ver['motivos'])}", 1))
+        fora = de_fora(r, v)
+        if fora:
+            linhas.append((f"🌐 Na {html.escape(fora['vend'])}, agência de fora do Brasil, esse voo aparece por {brl(fora['pp'])} (não entra na escolha)", 2))
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
             # só datas cujo preço ainda é o da lista do Google; as já conferidas aparecem nas linhas de cima
@@ -338,13 +402,16 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
     if len(voltas) == 2 and precos[voltas[0]['id']] != precos[voltas[1]['id']]:
         a, b = sorted(voltas, key=lambda t: precos[t['id']])
         linhas.append((f"↔️ {a['nome']} sai {brl(precos[b['id']] - precos[a['id']])} mais barato que {b['nome'].lower()}", 1))
-    pacs = selecao.pacotes({**series, **{f"{g['id']}.{t['id']}": series.get(t['igual_a']) for t in meus if t['igual_a']}}, g)
+    pacs = pacotes_do_grupo(g, ts, scan, v)
     if len(pacs) == 1:
         total = f" · {brl(pacs[0]['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else ''
         linhas.append((f"📦 Ida + volta: <b>{brl(pacs[0]['pp'])}</b>{cada}{total}", 0))
     elif pacs:
         melhor = min(p['pp'] for p in pacs)
         linhas.append(('📦 Ida + volta: ' + ' · '.join(f"{p['nome']} " + (f"<b>{brl(p['pp'])}</b>" if p['pp'] == melhor else brl(p['pp'])) for p in pacs), 0))
+    for p in pacs:
+        if p['juntas']:
+            linhas += [(l, 0) for l in linhas_juntas(p, g, v, len(g.get('cenarios', [])) > 1)]
     return linhas
 
 
@@ -405,7 +472,8 @@ def montar_rodape(scan, v):
 
 
 def montar_botoes(v, ts, scan):
-    """Uma linha de botões por grupo, um botão por trecho com recomendada (o Telegram recusa botão sem link)."""
+    """Uma linha de botões por grupo, um botão por trecho com recomendada (o Telegram recusa botão sem link); embaixo,
+    quando há, a compra única de ida e volta que sai mais barata."""
     linhas = []
     for g in v['grupos']:
         linha = []
@@ -416,6 +484,10 @@ def montar_botoes(v, ts, scan):
                 linha.append({'text': f"{g.get('emoji', '')} {t['curto']} {dia(rec['d'])[4:]} · {brl(rec['pp'])}".strip(), 'url': url})
         if linha:
             linhas.append(linha[:3])
+        juntas = [{'text': f"{g.get('emoji', '')} 🔁 {dia(p['ida']['d'])[4:]} + {dia(p['volta']['d'])[4:]} · {brl(p['juntas']['pp'])}".strip(), 'url': p['juntas']['link']}
+                  for p in pacotes_do_grupo(g, ts, scan, v) if p['juntas']]
+        if juntas:
+            linhas.append(juntas[:2])
     return linhas + [PAINEL_BOTAO]
 
 
@@ -424,7 +496,7 @@ def _opcao(o):
     return o and {k: o.get(k) for k in ('d', 'orig', 'dest', 'cia', 'saida', 'chegada', 'tipo', 'pp', 'vend', 'link')} | {'dia': dia(o['d'])}
 
 
-def linhas_do_painel(scan, v, ts, agora, alerta):
+def linhas_do_painel(scan, v, ts, agora, alerta, estado=None):
     rows = [{'tipo': 'resumo', 'versao': 2, 'quando': agora, 'alerta': alerta, 'ordem': v['volta_origens'], 'sp': v['sp'],
              'aeroportos': {c: {'curto': a['curto'], 'selo': a.get('selo'), 'ultimo_caso': bool(a.get('ultimo_caso'))} for c, a in v['aeroportos'].items()},
              'fontes': scan.get('fontes'), 'mossoro': scan.get('mossoro'), 'taxa_mala': scan.get('taxa_mala'),
@@ -433,26 +505,98 @@ def linhas_do_painel(scan, v, ts, agora, alerta):
         r = scan['series'].get(t['igual_a'] or t['serie']) or {}
         rows.append({'tipo': 'trecho', 'serie': t['serie'], 'grupo': t['grupo'], 'nome': t['nome'], 'sentido': t['sentido'], 'janela': janela(t['datas']),
                      'pax': t['pax'], 'alvo': t['alvo'], 'igual_a': t['igual_a'], 'recomendada': _opcao(r.get('recomendada')),
-                     'mais_barata': None if t['igual_a'] else _opcao(r.get('mais_barata')), 'comprado': None if t['igual_a'] else _opcao(r.get('comprado'))})
+                     'mais_barata': None if t['igual_a'] else _opcao(r.get('mais_barata')), 'comprado': None if t['igual_a'] else _opcao(r.get('comprado')),
+                     'lugares': [] if t['igual_a'] else selecao.lugares({x['n']: x['pp'] for x in r.get('lugares') or []}, t['pax'], v['selecao'].get('margem_lugares', 15)),
+                     'momento': None if t['igual_a'] else momento_do_trecho(t, r, estado or {}, agora), 'fora': None if t['igual_a'] else de_fora(r, v),
+                     'historico': [] if t['igual_a'] else (estado or {}).get('series', {}).get(t['serie'], {}).get('hist') or []})
         if not t['igual_a']:
             rows += [{'tipo': 'celula', 'serie': t['serie'], 'd': d, 'dia': dia(d), 'ne': ne, 'pp': c['pp'], 'conf': c['conf']}
                      for d, cel in sorted(r.get('celulas', {}).items()) for ne, c in cel.items()]
+    perna = lambda o: {k: o.get(k) for k in ('d', 'orig', 'dest', 'cia', 'saida', 'chegada', 'tipo')} | {'dia': dia(o['d'])}
     for g in v['grupos']:
-        apelidos = {f"{g['id']}.{t['id']}": scan['series'].get(t['igual_a']) for t in ts if t['grupo'] == g['id'] and t['igual_a']}
-        rows += [{'tipo': 'pacote', 'grupo': g['id'], 'id': p['id'], 'pp': p['pp'], 'ida': _opcao(p['ida']), 'volta': _opcao(p['volta'])}
-                 for p in selecao.pacotes({**scan['series'], **apelidos}, g)]
+        for p in pacotes_do_grupo(g, ts, scan, v):
+            j = p['juntas']
+            rows.append({'tipo': 'pacote', 'grupo': g['id'], 'id': p['id'], 'nome': p['nome'], 'pp': p['pp'], 'ida': _opcao(p['ida']), 'volta': _opcao(p['volta']),
+                         'juntas': j and {'pp': j['pp'], 'vend': j['vend'], 'link': j['link'], 'economia': j['economia'], 'mesmos': j['mesmos'],
+                                          'ida': perna(j['ida']), 'volta': perna(j['volta'])}})
     return rows
 
 
 # ---------------------------------------------------------------- registro da rodada
+def envio_padrao():
+    """Como mandar a mensagem, pelo modo de PASSAGENS_ENVIAR: 1 = todos; teste = só o dono, sem som, marcado; 0 = ninguém."""
+    modo = os.environ.get('PASSAGENS_ENVIAR', '1')
+    if modo == '0':
+        return lambda *a, **k: 'TELEGRAM_DESLIGADO'
+    return lambda t, silencioso=False, botoes=(): telegram('🧪 <b>[TESTE]</b> ' + t if modo == 'teste' else t, silencioso or modo == 'teste', botoes,
+                                                           so_dono=modo == 'teste')
+
+
+def hora_do_scan(scan):
+    fim = scan.get('fim')
+    return (datetime.fromisoformat(fim.replace('Z', '+00:00')).astimezone() if fim else datetime.now()).strftime('%Y-%m-%d %H:%M')
+
+
+# ---------------------------------------------------------------- rodada rápida (só o Google, entre duas completas)
+def quedas_rapidas(scan, v, ts, estado, agora):
+    """Os trechos em que a rodada rápida conferiu um preço melhor que o guardado: [(trecho, recomendada guardada, oferta nova)].
+    Melhor = pelo menos selecao.queda_rapida mais barato depois do peso dos aeroportos, ou abaixo do alvo quando o guardado
+    estava acima. O mesmo preço não é avisado duas vezes em HORAS_ENTRE_TOQUES (anota em estado[series][serie]['rapida'])."""
+    sel, achados = v['selecao'], []
+    queda = sel.get('queda_rapida', sel['queda_min'])
+    for t in ts:
+        e = estado.get('series', {}).get(t['serie']) or {}
+        antes, rec = e.get('rec'), (scan['series'].get(t['serie']) or {}).get('recomendada')
+        if t['igual_a'] or not antes or not rec:
+            continue
+        d, cia, orig, dest, hora = antes['ident']
+        referencia = antes['pp'] + selecao.peso({'d': d, 'cia': cia, 'orig': orig, 'dest': dest, 'saida': hora}, v, t)
+        caiu = rec['pp'] + selecao.peso(rec, v, t) <= referencia - queda
+        no_alvo = bool(t['alvo']) and rec['pp'] <= t['alvo'] < antes['pp']
+        ja = e.get('rapida')
+        repetido = ja and rec['pp'] > ja['pp'] - sel['queda_min'] and _horas(ja['quando'], agora) < HORAS_ENTRE_TOQUES
+        if (caiu or no_alvo) and not repetido:
+            e['rapida'] = {'pp': rec['pp'], 'quando': agora}
+            achados.append((t, antes, rec))
+    return achados
+
+
+def registrar_rapida(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
+    """Rodada rápida: se algum preço caiu, manda um aviso curto (com som, menos de madrugada) e anota no estado; senão, não manda nem grava nada.
+    Histórico, painel e resumo ficam por conta da rodada completa. Devolve as linhas para o log (sem nomes)."""
+    enviar = enviar or envio_padrao()
+    agora = agora or hora_do_scan(scan)
+    if scan.get('status') != 'ok':
+        return ['RAPIDA_SEM_GOOGLE ' + str((scan.get('fontes') or {}).get('Google', {}).get('bloqueio') or 'o Google não respondeu')[:80]]
+    ts = plano.trechos(v, agora[:10])
+    nomes = nomes or plano.nomes(v, os.environ.get('NOMES_VIAGEM'))
+    estado = ler_estado(pasta)
+    achados = quedas_rapidas(scan, v, ts, estado, agora)
+    if not achados:
+        return ['RAPIDA_SEM_QUEDA']
+    grupos = {g['id']: g for g in v['grupos']}
+    blocos, botoes = [], []
+    for t, antes, rec in achados:
+        g = grupos[t['grupo']]
+        juntos = [nomes[x['grupo']] for x in ts if x['igual_a'] == t['serie']]      # quem usa o mesmo trecho (volta junto)
+        tambem = f" (vale também para {' e '.join(html.escape(n) for n in juntos)})" if juntos else ''
+        l1, l2 = linhas_oferta('', rec, v, t['alvo'], ' por pessoa' if g['assentos'] > 1 else '', f" · era {brl(antes['pp'])}")
+        blocos.append(f"{g.get('emoji', '•')} <b>{html.escape(nomes[g['id']])}</b> · {t['nome']}{tambem}\n{l1}\n{l2}")
+        botoes.append([{'text': f"{g.get('emoji', '')} {t['curto']} {dia(rec['d'])[4:]} · {brl(rec['pp'])}".strip(),
+                        'url': rec.get('link') or link_mm(rec['orig'], rec['dest'], rec['d'], t['pax'])}])
+    texto = (f"⚡ <b>Queda agora</b> · {quando_tg(agora)}\n<i>Busca rápida, só no Google. Preço por pessoa, sem mala, conferido agora.</i>\n\n"
+             + '\n\n'.join(blocos) + f"\n\n<i>{DICA_24H}</i>")
+    # de madrugada (até as 7h) o aviso chega sem som, a não ser que algum trecho tenha batido o alvo
+    no_alvo = any(t['alvo'] and rec['pp'] <= t['alvo'] for t, _, rec in achados)
+    st = enviar(texto, agora[11:13] < '07' and not no_alvo, botoes + [PAINEL_BOTAO])
+    gravar_json(os.path.join(pasta, 'estado.json'), estado)
+    return ['RAPIDA_QUEDA ' + ' | '.join(f"{t['serie']} {brl(rec['pp'])} (era {brl(antes['pp'])})" for t, antes, rec in achados), st]
+
+
 def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
     """Grava histórico, estado, painel e resumo de uma rodada e manda a mensagem. Devolve as linhas para o log (sem nomes)."""
-    modo = os.environ.get('PASSAGENS_ENVIAR', '1')
-    if enviar is None:
-        enviar = (lambda *a, **k: 'TELEGRAM_DESLIGADO') if modo == '0' else (lambda t, silencioso=False, botoes=(): telegram(
-            '🧪 <b>[TESTE]</b> ' + t if modo == 'teste' else t, silencioso or modo == 'teste', botoes, so_dono=modo == 'teste'))
-    fim = scan.get('fim')
-    agora = agora or (datetime.fromisoformat(fim.replace('Z', '+00:00')).astimezone() if fim else datetime.now()).strftime('%Y-%m-%d %H:%M')
+    enviar = enviar or envio_padrao()
+    agora = agora or hora_do_scan(scan)
     ultimo, painel, precos = (os.path.join(pasta, f) for f in ('ultimo.md', 'painel.json', 'precos.csv'))
     cabecalho = f"✈️ <b>Passagens</b> · {quando_tg(agora)}\n<i>Preço por pessoa, sem mala, conferido nesta busca.</i>"
     if scan.get('status') != 'ok':
@@ -476,13 +620,13 @@ def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
         w.writerows(linhas_csv)
 
     def mensagem(n):
-        blocos = [bloco_do_grupo(g, ts, scan, v, estado, n) for g in v['grupos']]
+        blocos = [bloco_do_grupo(g, ts, scan, v, estado, n, agora) for g in v['grupos']]
         return montar_mensagem(cabecalho, montar_topo(alertas, mudancas, primeira, ts, n), blocos, montar_rodape(scan, v))
 
     toca = any(a['toca'] for a in alertas)
     st = enviar(mensagem(nomes), not toca, montar_botoes(v, ts, scan))
     alerta_publico = montar_topo(alertas, mudancas, primeira, ts, publico) if alertas else None
-    gravar_json(painel, linhas_do_painel(scan, v, ts, agora, alerta_publico and re.sub(r'<[^>]+>', '', alerta_publico)))
+    gravar_json(painel, linhas_do_painel(scan, v, ts, agora, alerta_publico and re.sub(r'<[^>]+>', '', alerta_publico), estado))
     gravar_json(os.path.join(pasta, 'estado.json'), estado)
     with open(ultimo, 'w', encoding='utf-8') as f:
         f.write(f"# Passagens: última busca em {agora}\n\n" + html.unescape(re.sub(r'<[^>]+>', '', mensagem(publico))) + f"\n\nTelegram: {st}\n\nPainel: {PAINEL_URL}\n")
@@ -559,6 +703,12 @@ def _teste_registro():
     assert janela(['2026-12-30', '2027-01-02', '2027-01-03']) == '30/12 e 02 a 03/01' and brl(1234.4) == 'R$1.234'
 
     v = plano.carregar()
+    # os alvos do teste são fixos: mudar um alvo no arquivo da viagem não muda o que este teste confere
+    alvos = {'v.volta': 450, 'g.ida_dez': 1000, 'wk.ida': 1000, 'wk.volta': 450}
+    for g in v['grupos']:
+        for t in g['trechos']:
+            if f"{g['id']}.{t['id']}" in alvos:
+                t['alvo'] = alvos[f"{g['id']}.{t['id']}"]
     nomes = {'v': 'Ana', 'h': 'Beto', 'g': 'Caio', 'wk': 'Duda + Eva'}
 
     def of(d, orig, dest, saida, pp, cia='Gol', vend='CIA Gol', pax=1, sentido='volta', tipo='direto', chegada='16:30', voos=''):
@@ -652,6 +802,86 @@ def _teste_registro():
         assert estado['series']['v.volta']['barata'] == {'d': '2027-01-18', 'ne': 'REC', 'pp': 540} and estado['series']['wk.volta']['barata'] is None
         assert estado['series']['v.volta']['datas']['2027-01-21'] == {'pp': None, 'visto': '2026-11-20 20:17'} and estado['series']['v.volta']['min'] == 612
 
+    # ---- lugares e ida e volta numa compra só: linhas a mais só quando há o que dizer
+    with tempfile.TemporaryDirectory() as d:
+        s = scan()
+        ser = s['series']
+        ser['v.volta']['lugares'] = [{'n': 1, 'pp': 786}, {'n': 2, 'pp': 786}, {'n': 3, 'pp': 830}]
+        ser['wk.volta']['lugares'] = [{'n': 1, 'pp': 480}, {'n': 2, 'pp': 540}]
+        ser['wk.ida']['lugares'] = [{'n': 1, 'pp': 1150}, {'n': 2, 'pp': 1155}]          # R$5 de diferença: não vale uma linha
+        ser['h.depois']['fora'] = {'vend': 'Kiwi.com', 'pp': 300}        # R$89 mais barata que a recomendada: é citada, sem entrar na escolha
+        ser['wk.ida']['fora'] = {'vend': 'Gotogate', 'pp': 1120}         # só R$30 mais barata: não vale uma linha
+        outra_ida = of('2026-12-29', 'CGH', 'FOR', '06:10', 0, 'LATAM', 'Zupper', sentido='ida', tipo='com escala', chegada='11:40')
+        s['juntas'] = {'wk.U': [{'pp': 1600, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-wk', 'ida': ser['wk.ida']['recomendada'], 'volta': ser['wk.volta']['recomendada']}],
+                       'g.A': [{'pp': 1700, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-g', 'ida': outra_ida, 'volta': ser['v.volta']['recomendada']}],
+                       'g.B': [{'pp': 1290, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-b', 'ida': ser['g.ida_jan']['recomendada'], 'volta': ser['v.volta']['recomendada']}]}
+        registrar(s, v, d, fake, nomes, '2026-11-20 20:17')
+        msg, _, bt = enviados[-1]
+        # quem volta junto sabe quanto custa: 2 lugares no mesmo preço, 3 lugares mais caro por pessoa
+        assert ('└ 05h05 Recife → 08h40 Congonhas · Zupper\n'
+                '👥 Nesse voo, comprando juntos: 2 lugares, mesmo preço por pessoa · 3 lugares, +R$44 por pessoa\n\n') in msg, msg
+        # dupla: 1 lugar sozinho mais barato vira aviso de comprar um de cada vez; diferença pequena (na ida) não aparece
+        assert ('└ 03h20 Juazeiro → 06h50 Guarulhos · MaxMilhas\n'
+                '✂️ Nesse voo, 1 lugar sozinho sai R$60 mais barato: comprando um de cada vez, em reservas separadas, dá para economizar R$60 no total\n'
+                '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total\n'
+                '🔁 Os mesmos voos numa compra só na Zupper: <b>R$1.600</b> por pessoa (R$90 a menos) · R$3.200 no total\n\n') in msg, msg
+        assert msg.count('✂️') == 1 and msg.count('👥') == 1
+        assert ('└ 13h10 Fortaleza → 16h30 Guarulhos · 123milhas\n'
+                '🌐 Na Kiwi.com, agência de fora do Brasil, esse voo aparece por R$300 (não entra na escolha)\n') in msg and msg.count('🌐') == 1, msg
+        # dois cenários: a linha diz qual; outros voos vêm descritos, perna por perna; economia abaixo da margem (janeiro, R$12) não aparece
+        assert ('📦 Ida + volta: indo em dezembro R$1.792 · indo em janeiro <b>R$1.302</b>\n'
+                '🔁 Indo em dezembro, ida e volta numa compra só na Zupper, em outros voos: <b>R$1.700</b> (R$92 a menos)\n'
+                '└ ida: ter 29/12 · LATAM, 1 conexão · 06h10 Congonhas → 11h40 Fortaleza\n'
+                '└ volta: qua 20/01 · Gol 1555, direto · 12h50 Fortaleza → 16h30 Guarulhos\n\n') in msg, msg
+        assert msg.count('🔁') == 2 and len(msg) < 3200, len(msg)
+        assert [[x['text'] for x in l] for l in bt][2:6] == [['🧑 Ida dez 29/12 · R$1.180', '🧑 Ida jan 06/01 · R$690'], ['🧑 🔁 29/12 + 20/01 · R$1.700'],
+                                                               ['👭 Ida 28/12 · R$1.150', '👭 Volta 11/01 · R$540'], ['👭 🔁 28/12 + 11/01 · R$1.600']], bt
+        assert bt[3][0]['url'] == 'https://www.zupper.com.br/par-g'
+        painel = json.load(open(os.path.join(d, 'painel.json'), encoding='utf-8'))
+        pac = {(x['grupo'], x['id']): x for x in painel if x['tipo'] == 'pacote'}
+        assert pac[('wk', 'U')]['juntas']['pp'] == 1600 and pac[('wk', 'U')]['juntas']['mesmos'] and pac[('wk', 'U')]['juntas']['economia'] == 90
+        assert pac[('g', 'A')]['juntas']['ida'] == {'d': '2026-12-29', 'orig': 'CGH', 'dest': 'FOR', 'cia': 'LATAM', 'saida': '06:10', 'chegada': '11:40',
+                                                    'tipo': 'com escala', 'dia': 'ter 29/12'} and not pac[('g', 'A')]['juntas']['mesmos']
+        assert pac[('g', 'B')]['juntas'] is None and pac[('g', 'A')]['nome'] == 'indo em dezembro'
+        trs = {x['serie']: x for x in painel if x['tipo'] == 'trecho'}
+        assert trs['v.volta']['lugares'] == [{'n': 2, 'dif': 0}, {'n': 3, 'dif': 44}] and trs['wk.volta']['lugares'] == [{'n': 1, 'dif': -60}]
+        assert trs['h.junto']['lugares'] == [] and trs['h.depois']['lugares'] == []
+        assert trs['h.depois']['fora'] == {'vend': 'Kiwi.com', 'pp': 300} and trs['wk.ida']['fora'] is None and trs['h.junto']['fora'] is None
+        # tudo no mesmo preço: uma linha curta
+        ser['v.volta']['lugares'] = [{'n': 1, 'pp': 786}, {'n': 2, 'pp': 790}, {'n': 3, 'pp': 786}]
+        registrar(s, v, d, fake, nomes, '2026-11-20 21:17')
+        assert '👥 Nesse voo, 2 ou 3 lugares juntos saem pelo mesmo preço por pessoa\n' in enviados[-1][0]
+    assert linhas_lugares([], 1) == [] and linhas_lugares([{'n': 1, 'dif': 0}], 2) == [] and linhas_lugares([{'n': 1, 'dif': 25}], 2) == []
+    assert linhas_lugares([{'n': 2, 'dif': -20}], 1) == ['👥 Nesse voo, comprando juntos: 2 lugares, −R$20 por pessoa']
+
+    # ---- momento de compra: uma linha por trecho, só quando há sinal (aviso do Google, 3 dias de histórico ou voo próximo)
+    with tempfile.TemporaryDirectory() as d:
+        def com_aviso(**precos):
+            s = scan(**precos)
+            s['series']['v.volta']['aviso'] = {'nivel': 'baixo', 'de': 1250, 'ate': 3250}
+            s['series']['wk.volta']['aviso'] = {'nivel': 'normal', 'de': None, 'ate': None}
+            return s
+        registrar(com_aviso(volta=700), v, d, fake, nomes, '2026-11-20 20:17')
+        msg = enviados[-1][0]
+        # sem histórico ainda: vale o que o Google diz, com a faixa normal da rota; trecho sem sinal nenhum não ganha linha
+        # (V tem alvo de R$450 e está acima dele: o "preço baixo" do Google vira acompanhar, com o quanto falta)
+        assert ('└ 05h05 Recife → 08h40 Congonhas · Zupper\n🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250) · R$250 acima do alvo (R$450)\n\n') in msg, msg
+        assert '└ 03h20 Juazeiro → 06h50 Guarulhos · MaxMilhas\n🟡 Acompanhar: para o Google, preço normal · R$90 acima do alvo (R$450)\n' in msg and msg.count('🟡') == 2 and '⏳' not in msg
+        registrar(com_aviso(volta=640), v, d, fake, nomes, '2026-11-22 20:17')
+        registrar(com_aviso(volta=760), v, d, fake, nomes, '2026-11-24 20:17')
+        msg = enviados[-1][0]
+        # 4 dias de histórico (2 a R$700, 2 a R$640): R$760 está acima da média; com o Google dizendo "baixo", os sinais se anulam
+        assert '🟡 Acompanhar: R$90 acima da média de 4 dias (R$670) · para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250) · R$310 acima do alvo (R$450)\n' in msg, msg
+        # os outros trechos não mudaram de preço nesses 4 dias: nem bom nem ruim
+        assert '└ 13h10 Fortaleza → 16h30 Guarulhos · 123milhas\n🟡 Acompanhar: preço parado há 4 dias\n' in msg, msg
+        painel = json.load(open(os.path.join(d, 'painel.json'), encoding='utf-8'))
+        trs = {x['serie']: x for x in painel if x['tipo'] == 'trecho'}
+        assert trs['v.volta']['momento']['sinal'] == 'acompanhar' and trs['h.junto']['momento'] is None and trs['h.depois']['momento']['sinal'] == 'acompanhar'
+        assert trs['v.volta']['historico'] == [['2026-11-20 20:17', 700], ['2026-11-22 20:17', 640], ['2026-11-24 20:17', 760]] and trs['h.junto']['historico'] == []
+        # a 3 semanas ou menos do voo, o prazo entra como motivo (ida de 28/12 vista em 10/12)
+        registrar(com_aviso(volta=760), v, d, fake, nomes, '2026-12-10 09:00')
+        assert 'faltam 18 dias para o voo' in enviados[-1][0] and 'faltam 19 dias para o voo' in enviados[-1][0]
+
     with tempfile.TemporaryDirectory() as d:
         enviados.clear()
         rodar = lambda s, quando: registrar(s, v, d, fake, nomes, quando)
@@ -708,6 +938,43 @@ def _teste_registro():
         # ---- rodada com erro: aviso sem som, nada mais muda
         r = registrar({'status': 'erro', 'erro': 'x<y'}, v, d, fake, nomes, '2026-11-24 11:17')
         assert r == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO'] and enviados[-1][1] and '<i>x&lt;y</i>' in enviados[-1][0]
+
+    # ---- rodada rápida: avisa só o que caiu de verdade (R$40 ou mais, já com o peso dos aeroportos), com som, e não repete
+    with tempfile.TemporaryDirectory() as d:
+        enviados.clear()
+        registrar(scan(), v, d, fake, nomes, '2026-11-20 20:17')
+        completa = len(enviados)
+        rapida = lambda quando, **series: registrar_rapida({'status': 'ok', 'series': {k: {'recomendada': o} for k, o in series.items()}}, v, d, fake, nomes, quando)
+        # nada conferido, ou preço igual, ou queda pequena: não manda nada e não mexe em arquivo nenhum
+        antes_ = open(os.path.join(d, 'estado.json')).read()
+        assert rapida('2026-11-20 20:47') == ['RAPIDA_SEM_QUEDA']
+        assert rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-20', 'FOR', 'GRU', '12:50', 580)}) == ['RAPIDA_SEM_QUEDA']
+        # Juazeiro R$70 mais barato que Fortaleza não é queda: com o peso de R$80, não é melhor que a guardada (R$612)
+        assert rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-21', 'JDO', 'GRU', '09:00', 542)}) == ['RAPIDA_SEM_QUEDA']
+        assert len(enviados) == completa and open(os.path.join(d, 'estado.json')).read() == antes_
+        # queda de verdade: aviso curto, com som, dizendo quem mais usa o trecho, o preço de antes e onde comprar
+        r = rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 560, 'LATAM', 'CIA LATAM', chegada='11:35', voos='FOR>CGH 2027-01-19 LA 3301'),
+                                           'wk.volta': of('2027-01-11', 'JDO', 'GRU', '03:20', 530, 'LATAM', 'maxmilhas', pax=2, chegada='06:50')})
+        assert r == ['RAPIDA_QUEDA v.volta R$560 (era R$612)', 'TELEGRAM_ENVIADO'], r
+        msg, mudo, bt = enviados[-1]
+        assert not mudo and msg == ('⚡ <b>Queda agora</b> · sex 20/11, 20:47\n<i>Busca rápida, só no Google. Preço por pessoa, sem mala, conferido agora.</i>\n\n'
+                                    '👩 <b>Ana</b> · Volta (vale também para Beto e Caio)\n<b>R$560</b> · ter 19/01 · LATAM 3301, direto · era R$612\n'
+                                    '└ 08h00 Fortaleza → 11h35 Congonhas · LATAM\n\n<i>' + DICA_24H + '</i>'), msg
+        assert [[x['text'] for x in l] for l in bt] == [['👩 Volta 19/01 · R$560'], ['📊 Abrir o painel']]
+        # histórico, recomendada guardada e resumo continuam os da rodada completa; só fica anotado o aviso
+        e = ler_estado(d)['series']['v.volta']
+        assert e['rec']['pp'] == 612 and e['rapida'] == {'pp': 560, 'quando': '2026-11-20 20:47'} and 'R$612' in open(os.path.join(d, 'ultimo.md')).read()
+        # o mesmo preço meia hora depois não avisa de novo; R$20 mais barato, sim; passadas 6 horas, também
+        assert rapida('2026-11-20 21:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 555, 'LATAM')}) == ['RAPIDA_SEM_QUEDA']
+        assert rapida('2026-11-20 21:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 538, 'LATAM')})[0] == 'RAPIDA_QUEDA v.volta R$538 (era R$612)'
+        assert rapida('2026-11-21 04:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 540, 'LATAM')})[0].startswith('RAPIDA_QUEDA')
+        assert enviados[-1][1]                                       # de madrugada, sem som
+        # bateu o alvo (R$450) vindo de cima: avisa com a marca do alvo; dupla: preço por pessoa
+        r = rapida('2026-11-21 05:47', **{'wk.volta': of('2027-01-11', 'JDO', 'GRU', '03:20', 445, 'LATAM', 'maxmilhas', pax=2, chegada='06:50')})
+        assert r[0] == 'RAPIDA_QUEDA wk.volta R$445 (era R$540)' and '👭 <b>Duda + Eva</b> · Volta\n✅ <b>R$445</b> por pessoa · seg 11/01 · LATAM, direto · era R$540' in enviados[-1][0]
+        assert not enviados[-1][1]                                   # bateu o alvo: toca mesmo de madrugada
+        # Google fora do ar ou pedindo verificação: não manda nada
+        assert registrar_rapida({'status': 'erro', 'fontes': {'Google': {'bloqueio': 'tráfego incomum'}}}, v, d, fake, nomes, '2026-11-21 06:47') == ['RAPIDA_SEM_GOOGLE tráfego incomum']
 
     # ---- mensagem grande demais: sai primeiro o rodapé, depois as linhas extras; nunca passa do limite
     blocos = [[('linha fixa ' * 20, 0), ('extra nível 1 ' * 20, 1), ('extra nível 2 ' * 20, 2)] for _ in range(4)]

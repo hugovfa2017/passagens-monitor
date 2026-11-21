@@ -3,12 +3,16 @@ name: Monitor de passagens
 on:
   schedule:
     - cron: '17 * * * *'     # reserva: o agendamento do GitHub atrasa e descarta muitas execuções
-  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (de hora em hora, com origem=cron)
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (de hora em hora, com origem=cron; opcional: modo=rapida no meio da hora)
     inputs:
       origem:
         description: 'Quem disparou (cron = cron-job.org)'
         required: false
         default: 'manual'
+      modo:
+        description: 'completa = rodada inteira; rapida = só o Google, avisa se algum preço caiu (para o meio da hora)'
+        required: false
+        default: 'completa'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
     paths: ['viagem.json', 'varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/*.py', '.github/workflows/monitor.yml']
@@ -26,6 +30,9 @@ jobs:
     timeout-minutes: 45
     env:
       TZ: America/Sao_Paulo
+    outputs:
+      rapida: ${{ steps.guarda.outputs.rapida }}     # 'true' na semana de promoções (viagem.json: rapida), depois de uma rodada completa
+      espera: ${{ steps.guarda.outputs.espera }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,19 +42,26 @@ jobs:
         env:
           EVENTO: ${{ github.event_name }}
           ORIGEM: ${{ inputs.origem }}
-        # agendamento do GitHub e cron-job.org podem cair na mesma hora: a segunda é pulada (sem mensagem dobrada)
+          MODO: ${{ inputs.modo }}
+        # agendamento do GitHub e cron-job.org podem cair na mesma hora: a segunda é pulada (sem mensagem dobrada);
+        # a rodada rápida só é pulada se uma completa acabou de terminar (menos de 15 minutos)
         run: |
           python3 - >> "$GITHUB_OUTPUT" <<'FIM'
           import json, os, datetime as dt
-          pular = False
-          if os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
+          pular, rapida = False, os.environ.get('MODO') == 'rapida'
+          if rapida or os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
               try:
                   fim = json.load(open('ultima.json'))['fim']
                   idade = dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(fim.replace('Z', '+00:00'))
-                  pular = idade.total_seconds() < 40 * 60
+                  pular = idade.total_seconds() < (15 if rapida else 40) * 60
               except Exception:
                   pass
           print('pular=' + str(pular).lower())
+          # semana de promoções: depois de cada rodada completa vem uma rápida (o trabalho "rapida", mais abaixo)
+          r = json.load(open('viagem.json')).get('rapida') or {}
+          ativa = not pular and not rapida and r.get('de', '9') <= dt.date.today().isoformat() <= r.get('ate', '')
+          print('rapida=' + str(ativa).lower())
+          print('espera=' + str(int(r.get('espera_min', 25)) * 60))
           FIM
       - uses: actions/setup-python@v5
         if: steps.guarda.outputs.pular != 'true'
@@ -61,7 +75,7 @@ jobs:
       - name: Auto-checagem
         if: steps.guarda.outputs.pular != 'true'
         run: |
-          for f in nuvem/plano.py nuvem/gvoos.py nuvem/selecao.py nuvem/rodar.py registrar.py atendimento.py; do python "$f" --teste; done
+          for f in nuvem/plano.py nuvem/gvoos.py nuvem/selecao.py nuvem/momento.py nuvem/rodar.py registrar.py atendimento.py; do python "$f" --teste; done
           python nuvem/vendedores.py
       - name: Varredura e alerta
         if: steps.guarda.outputs.pular != 'true'
@@ -70,7 +84,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NOMES_VIAGEM: ${{ secrets.NOMES_VIAGEM }}                    # opcional: nomes das pessoas, só para o Telegram (o repositório é público)
           PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}   # fora da main: só o dono recebe, sem som, marcado [TESTE]
-        run: python nuvem/rodar.py
+        run: python nuvem/rodar.py ${{ inputs.modo == 'rapida' && '--rapida' || '' }}
       - name: Gerar a página (GitHub Pages)
         if: always() && steps.guarda.outputs.pular != 'true'
         run: python nuvem/pagina.py
@@ -82,5 +96,43 @@ jobs:
           for f in precos.csv estado.json ultimo.md ultima.json painel.json docs/index.html docs/painel.json docs/.nojekyll; do [ -f "$f" ] && git add "$f"; done
           git commit -m "Varredura $(date '+%d/%m %H:%M')" || echo "nada novo"
           # o código pode ter mudado durante a varredura; se os arquivos de dados se chocarem, vale o desta varredura (a mais nova)
+          git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+  rapida:
+    # Semana de promoções (viagem.json: rapida): meia hora depois da rodada completa, uma rodada rápida só no Google.
+    # Se algum preço caiu, avisa na hora; senão, não manda nada. Fora dessa semana, este trabalho nem começa.
+    needs: varredura
+    if: needs.varredura.outputs.rapida == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - name: Esperar o meio do intervalo
+        run: sleep ${{ needs.varredura.outputs.espera }}
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # com o estado que a rodada completa acabou de guardar
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar navegador sem tela
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Rodada rápida
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NOMES_VIAGEM: ${{ secrets.NOMES_VIAGEM }}
+          PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}
+        run: python nuvem/rodar.py --rapida
+      - name: Guardar o aviso (só muda quando houve queda)
+        run: |
+          git config user.name "monitor-passagens"
+          git config user.email "monitor-passagens@users.noreply.github.com"
+          git add estado.json
+          git commit -m "Rodada rápida $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
           git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"

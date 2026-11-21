@@ -135,6 +135,45 @@ def pacotes(series, grupo):
     return saida
 
 
+def com_apelidos(series, ts, grupo_id):
+    """As séries com os trechos igual_a do grupo apontando para o resultado do trecho de origem (para montar pacotes)."""
+    return {**series, **{t['serie']: series.get(t['igual_a']) for t in ts if t['grupo'] == grupo_id and t['igual_a']}}
+
+
+def lugares(precos, pax, margem):
+    """O que muda no preço por pessoa quando o mesmo voo é comprado com outro número de lugares.
+    precos: {lugares: preço por pessoa}, lidos na mesma fonte e na mesma hora; pax: os lugares do trecho.
+    Devolve [{'n', 'dif'}], um por número de lugares diferente de pax (dif = quanto a mais, por pessoa, em relação a
+    comprar pax lugares; diferença menor que a margem vale 0). Sem o preço de pax lugares não há com o que comparar: []."""
+    base = precos.get(pax)
+    if not base:
+        return []
+    return [{'n': n, 'dif': (pp - base) if abs(pp - base) >= margem else 0} for n, pp in sorted(precos.items()) if n != pax and pp]
+
+
+def mesmo_voo(a, b):
+    """Dois registros são o mesmo voo (mesmo dia, companhia, aeroportos e hora de saída)."""
+    return ident(a) == ident(b)
+
+
+def juntas(pacote, opcoes, margem):
+    """A melhor forma de comprar ida e volta numa compra só, quando ela economiza pelo menos `margem` por pessoa sobre o
+    pacote (as duas recomendadas, cada uma comprada no seu vendedor). opcoes: [{'pp', 'vend', 'link', 'ida', 'volta'}],
+    com ida e volta no formato de oferta e pp = preço do par por pessoa. Devolve a opção com 'economia' e 'mesmos'
+    (True se são exatamente os voos do pacote), ou None. Com preços a menos de `margem` um do outro, ganha a opção
+    que mantém os voos do pacote."""
+    boas = []
+    for o in opcoes:
+        economia = pacote['pp'] - o['pp']
+        if economia >= margem:
+            mesmos = mesmo_voo(o['ida'], pacote['ida']) and mesmo_voo(o['volta'], pacote['volta'])
+            boas.append({**o, 'economia': economia, 'mesmos': mesmos})
+    if not boas:
+        return None
+    menor = min(o['pp'] for o in boas)
+    return min(boas, key=lambda o: (not (o['mesmos'] and o['pp'] - menor < margem), o['pp']))
+
+
 def _teste():
     v = {'sp': ['GRU', 'CGH', 'VCP'],
          'aeroportos': {'GRU': {}, 'CGH': {}, 'VCP': {'peso': 60}, 'FOR': {'peso': 0}, 'MVF': {'peso': 40}, 'JDO': {'peso': 80},
@@ -214,6 +253,30 @@ def _teste():
     grupo = {'id': 'g', 'cenarios': [{'id': 'A', 'ida': 'ida_dez', 'volta': 'volta'}, {'id': 'B', 'ida': 'ida_jan', 'volta': 'volta'}]}
     series = {'g.ida_dez': {'recomendada': {'pp': 1180}}, 'g.ida_jan': {'recomendada': None}, 'g.volta': {'recomendada': {'pp': 410}}}
     assert [(p['id'], p['pp']) for p in pacotes(series, grupo)] == [('A', 1590)] and pacotes(series, {'id': 'v'}) == []
+
+    ts = [{'serie': 'g.volta', 'grupo': 'g', 'igual_a': 'v.volta'}, {'serie': 'h.junto', 'grupo': 'h', 'igual_a': 'v.volta'}, {'serie': 'v.volta', 'grupo': 'v', 'igual_a': None}]
+    assert com_apelidos({'v.volta': {'recomendada': 1}}, ts, 'g') == {'v.volta': {'recomendada': 1}, 'g.volta': {'recomendada': 1}}
+
+    # ---- lugares: quanto muda por pessoa com outro número de lugares no mesmo voo; diferença pequena vale zero
+    assert lugares({1: 756, 2: 760, 3: 799}, 1, 15) == [{'n': 2, 'dif': 0}, {'n': 3, 'dif': 43}]
+    assert lugares({1: 747, 2: 807}, 2, 15) == [{'n': 1, 'dif': -60}]
+    # sem o preço dos lugares do próprio trecho, ou sem o do outro número de lugares, não há o que dizer
+    assert lugares({2: 760}, 1, 15) == [] and lugares({1: 756, 2: None}, 1, 15) == [] and lugares({}, 2, 15) == []
+
+    # ---- ida e volta numa compra só: só aparece se economiza a margem; os mesmos voos ganham de outros voos quase no mesmo preço
+    i, vt = voo('2026-12-26', 'GRU', 'JDO', '14:50', 1357, cia='LATAM', sentido='ida'), voo('2027-01-08', 'FOR', 'GRU', '21:05', 807, cia='LATAM')
+    pacote = {'ida': i, 'volta': vt, 'pp': 2164}
+    outra_ida = voo('2026-12-26', 'GRU', 'JDO', '07:00', 0, cia='Gol', sentido='ida')
+    par = lambda pp, ida=i, vend='CIA LATAM': {'pp': pp, 'vend': vend, 'link': 'https://x', 'ida': ida, 'volta': vt}
+    assert juntas(pacote, [par(2150)], 30) is None and juntas(pacote, [], 30) is None
+    j = juntas(pacote, [par(2050), par(2100, vend='Zupper')], 30)
+    assert (j['pp'], j['vend'], j['economia'], j['mesmos']) == (2050, 'CIA LATAM', 114, True), j
+    # outros voos R$20 mais baratos que os mesmos voos comprados juntos: ficam os mesmos voos
+    j = juntas(pacote, [par(2030, outra_ida, 'Zupper'), par(2050)], 30)
+    assert (j['pp'], j['mesmos']) == (2050, True), j
+    # outros voos bem mais baratos: ganham, e a mensagem precisa dizer que são outros voos
+    j = juntas(pacote, [par(1900, outra_ida, 'Zupper'), par(2050)], 30)
+    assert (j['pp'], j['mesmos'], j['economia'], j['ida']['saida']) == (1900, False, 264, '07:00'), j
     print('ok')
 
 

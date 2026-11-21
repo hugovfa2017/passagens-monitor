@@ -36,6 +36,8 @@ def conferir(v):
                 raise ValueError(f"{s}: igual_a precisa apontar para um trecho de verdade com os mesmos lugares")
         elif t.get('sentido') not in ('ida', 'volta') or not datas(t['datas']):
             raise ValueError(f'{s}: falta sentido (ida ou volta) ou datas')
+        if any(not isinstance(n, int) or n < 1 or n == g['assentos'] for n in t.get('lugares', [])):
+            raise ValueError(f"{s}: lugares precisa ser uma lista de números diferentes dos assentos do grupo")
         for c in g.get('cenarios', []):
             if not {c['ida'], c['volta']} <= {x['id'] for x in g['trechos']}:
                 raise ValueError(f"{g['id']}: cenário {c['id']} cita trecho que não existe")
@@ -54,7 +56,7 @@ def aeroportos(v, sentido):
 
 def trechos(v, hoje):
     """Um dicionário por trecho de cada grupo: {serie, grupo, id, nome, sentido, datas, pax, alvo, rodizio, voo_comprado,
-    igual_a}. serie = 'grupo.trecho'. Datas que já passaram saem. Trecho com igual_a herda sentido e datas do outro."""
+    igual_a, lugares}. serie = 'grupo.trecho'. Datas que já passaram saem. Trecho com igual_a herda sentido e datas do outro."""
     saida, por_serie = [], {}
     for g in v['grupos']:
         for t in g['trechos']:
@@ -62,7 +64,7 @@ def trechos(v, hoje):
             x = {'serie': serie, 'grupo': g['id'], 'id': t['id'], 'nome': t.get('nome', t['id']), 'curto': t.get('curto', t.get('nome', t['id'])),
                  'pax': g['assentos'],
                  'alvo': t.get('alvo'), 'rodizio': t.get('rodizio'), 'voo_comprado': bool(t.get('voo_comprado')),
-                 'igual_a': t.get('igual_a'), 'sentido': t.get('sentido'),
+                 'igual_a': t.get('igual_a'), 'sentido': t.get('sentido'), 'lugares': t.get('lugares', []),
                  'datas': [d for d in datas(t['datas']) if d > hoje] if 'datas' in t else []}
             saida.append(x)
             por_serie[serie] = x
@@ -119,6 +121,8 @@ def _teste():
     ts = {t['serie']: t for t in trechos(v, '2026-11-20')}
     assert list(ts) == ['v.volta', 'h.junto', 'h.depois', 'g.ida_dez', 'g.ida_jan', 'g.volta', 'wk.ida', 'wk.volta'], list(ts)
     assert ts['v.volta']['datas'] == ['2027-01-18', '2027-01-19', '2027-01-20', '2027-01-21', '2027-01-22'] and ts['v.volta']['pax'] == 1
+    # o voo de V é conferido também para 2 e 3 lugares (quem volta junto); os de W + K, para 1 lugar (comprar um de cada vez)
+    assert ts['v.volta']['lugares'] == [2, 3] and ts['wk.ida']['lugares'] == ts['wk.volta']['lugares'] == [1] and ts['h.depois']['lugares'] == []
     # quem volta junto usa a busca de V: mesmas datas, mesmo sentido, sem busca própria
     assert ts['h.junto']['datas'] == ts['g.volta']['datas'] == ts['v.volta']['datas'] and ts['g.volta']['sentido'] == 'volta'
     assert len(ts['h.depois']['datas']) == 68 and ts['h.depois']['datas'][0] == '2027-01-23' and ts['h.depois']['datas'][-1] == '2027-03-31'
@@ -173,7 +177,8 @@ def _teste():
     for estrago, erro in ((lambda x: x['ida_destinos'].append('XXX'), 'sem cadastro'),
                           (lambda x: x['grupos'][1]['trechos'][0].update(igual_a='nada.aqui'), 'igual_a'),
                           (lambda x: x['grupos'][0]['trechos'][0].pop('sentido'), 'sentido'),
-                          (lambda x: x['grupos'][2]['cenarios'][0].update(ida='sumiu'), 'cenário')):
+                          (lambda x: x['grupos'][2]['cenarios'][0].update(ida='sumiu'), 'cenário'),
+                          (lambda x: x['grupos'][0]['trechos'][0].update(lugares=[1, 2]), 'lugares')):
         ruim = json.loads(json.dumps(v))
         estrago(ruim)
         try:

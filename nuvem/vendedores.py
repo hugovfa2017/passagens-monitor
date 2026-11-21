@@ -91,13 +91,18 @@ OPCAO_Z = re.compile(r'Saída\s*\|\s*(\d\d:\d\d)\s*\|\s*Chegada\s*\|\s*(\d\d:\d\
 TOTAL_Z = re.compile(r'TOTAL A PAGAR\s*\|\s*R\$\s*([\d.]+),(\d\d)')
 
 
-def _perna_zupper(parte, cia):
-    """Um trecho do cartão da Zupper (pode listar vários horários pelo mesmo preço): fica com o melhor aceitável."""
+def _opcoes_zupper(parte, cia):
+    """Os horários de um trecho do cartão da Zupper (um cartão pode listar vários pelo mesmo preço)."""
     m = re.search(r'De:\s*([A-Z]{3})[\s\S]*?Para:\s*([A-Z]{3})', parte)
     if not m or not cia:
-        return None
-    ops = [{'cia': cia, 'orig': m[1], 'dest': m[2], 'saida': o[1], 'chegada': o[2], 'dur': _min(o[3], o[4]),
-            'direto': o[5] == 'Direto', 'voo': None} for o in OPCAO_Z.finditer(parte)]
+        return []
+    return [{'cia': cia, 'orig': m[1], 'dest': m[2], 'saida': o[1], 'chegada': o[2], 'dur': _min(o[3], o[4]),
+             'direto': o[5] == 'Direto', 'voo': None} for o in OPCAO_Z.finditer(parte)]
+
+
+def _perna_zupper(parte, cia):
+    """De um trecho do cartão, fica o melhor horário aceitável (direto primeiro, depois o mais curto)."""
+    ops = _opcoes_zupper(parte, cia)
     boas = [x for x in ops if x['direto'] or x['dur'] <= MAX_MIN_COM_ESCALA]
     return min(boas or ops, key=lambda x: (not x['direto'], x['dur']), default=None)   # nenhuma boa: o filtro descarta depois
 
@@ -131,16 +136,19 @@ def ler_zupper(cartoes, pax):
 
 
 def ler_zupper_iv(cartoes, pax):
-    """Cartões da busca de ida e volta: o preço é do par; cada trecho com seu voo (logos na ordem ida, volta)."""
+    """Cartões da busca de ida e volta: o preço é do par; cada trecho com seu voo (logos na ordem ida, volta).
+    pernas = o melhor horário de cada trecho; idas e voltas = todos os horários que o cartão oferece por esse preço."""
     out = []
     for t in cartoes:
         if ' | Volta | ' not in t:
             continue
         a, b = t.split(' | Volta | ', 1)
         lg = _logos(t)
-        ida, volta, pp = _perna_zupper(a, _cia_logo(lg[0])), _perna_zupper(b, _cia_logo(lg[-1])), _total(t, pax)
+        cia_ida, cia_volta = _cia_logo(lg[0]), _cia_logo(lg[-1])
+        ida, volta, pp = _perna_zupper(a, cia_ida), _perna_zupper(b, cia_volta), _total(t, pax)
         if ida and volta and pp:
-            out.append({'vend': 'Zupper', 'pp': pp, 'mala': _mala_zupper(t, pax), 'pernas': {'ida': ida, 'volta': volta}})
+            out.append({'vend': 'Zupper', 'pp': pp, 'mala': _mala_zupper(t, pax), 'pernas': {'ida': ida, 'volta': volta},
+                        'idas': _opcoes_zupper(a, cia_ida), 'voltas': _opcoes_zupper(b, cia_volta)})
     return out
 
 
@@ -159,9 +167,10 @@ def url_zupper(o, d, data, pax):
             f'&onlyBusinessClass=false&slices={trecho}')
 
 
-def url_zupper_iv(ne_ida, ne_volta, ida, volta, pax):
-    trechos = [{'originAirport': 'SAO', 'destinationAirport': ne_ida, 'departureDate': ida},
-               {'originAirport': ne_volta, 'destinationAirport': 'SAO', 'departureDate': volta}]
+def url_zupper_iv(ne_ida, ne_volta, ida, volta, pax, sp_ida='SAO', sp_volta='SAO'):
+    """Ida e volta na Zupper; os dois trechos podem usar aeroportos diferentes (vai por um, volta por outro)."""
+    trechos = [{'originAirport': sp_ida, 'destinationAirport': ne_ida, 'departureDate': ida},
+               {'originAirport': ne_volta, 'destinationAirport': sp_volta, 'departureDate': volta}]
     return (f'https://www.zupper.com.br/resultados?type=roundTrip&adultQty={pax}&childrenQty=0&infantQty=0'
             f'&onlyBusinessClass=false&slices={urllib.parse.quote(json.dumps(trechos, separators=(",", ":")))}')
 
@@ -177,9 +186,12 @@ def url_vaidepromo(o, d, data, pax):
 URL = {'MaxMilhas': url_maxmilhas, '123milhas': url_123milhas, 'Zupper': url_zupper, 'Viaza': url_viaza, 'Vai de Promo': url_vaidepromo}
 LER = {'MaxMilhas': ler_maxmilhas, '123milhas': ler_123milhas, 'Zupper': ler_zupper, 'Viaza': ler_viaza, 'Vai de Promo': ler_vaidepromo}
 CASA = {'Viaza': 'https://www.viaza.com.br/'}   # a Viaza só abre a busca depois da página inicial (senão: "upstream connect error")
+# Quantas vezes rolar a página lendo os cartões (medido na sondagem de 21/11/2026): MaxMilhas, Zupper e Vai de Promo
+# trazem voos novos a cada rolagem; a 123milhas mostra tudo de uma vez, e rolar só gasta tempo.
+ROLAGENS = {'123milhas': 0}
 
 
-async def _cartoes(navegador, url, sem, casa=None):
+async def _cartoes(navegador, url, sem, casa=None, rolagens=5):
     """Abre a página de resultados e devolve o texto de cada cartão de voo ([] se não carregar)."""
     async with sem:
         # uma sessão por busca: a 123milhas não devolve nada a duas buscas abertas na mesma sessão
@@ -196,12 +208,12 @@ async def _cartoes(navegador, url, sem, casa=None):
                 return []          # sem voos ou página não carregou: o Google continua valendo
             await pg.wait_for_timeout(3000)   # deixa os preços chegarem
             # a MaxMilhas só desenha os cartões visíveis e apaga os que saem da tela: lê a cada rolagem e junta
-            vistos = {}
-            for _ in range(5):
-                for t in await pg.evaluate(LER_CARTOES):
-                    vistos[t] = True
+            vistos = {t: True for t in await pg.evaluate(LER_CARTOES)}
+            for _ in range(rolagens):
                 await pg.mouse.wheel(0, 1500)
                 await pg.wait_for_timeout(1200)
+                for t in await pg.evaluate(LER_CARTOES):
+                    vistos[t] = True
             return list(vistos)
         except Exception:
             return []
@@ -238,7 +250,8 @@ def _aceita(x):
 async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
     """Ofertas de um vendedor para SAO <-> aeroporto do Nordeste numa data."""
     o, d = ('SAO', ne) if sentido == 'ida' else (ne, 'SAO')
-    validas = [x for x in LER[vendedor](await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem, CASA.get(vendedor)), pax) if _aceita(x)]
+    cartoes = await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem, CASA.get(vendedor), ROLAGENS.get(vendedor, 5))
+    validas = [x for x in LER[vendedor](cartoes, pax) if _aceita(x)]
     for x in validas:
         # link da busca do vendedor já no aeroporto exato do voo (poucos voos na lista, o certo no topo)
         x['link'] = URL[vendedor](x['orig'], x['dest'], data, pax)
@@ -246,12 +259,15 @@ async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
 
 
 async def buscar_iv(navegador, ida, volta, ne_ida, ne_volta, pax, sem):
-    """Ida e volta compradas juntas na Zupper (às vezes sai mais barato que dois trechos separados)."""
+    """Ida e volta compradas juntas na Zupper (às vezes sai mais barato que dois trechos separados).
+    Devolve os pares em que há pelo menos um horário aceitável em cada trecho: [{pp, link, idas, voltas}] (pp por pessoa, do par)."""
     url = url_zupper_iv(ne_ida, ne_volta, ida, volta, pax)
-    validas = [x for x in ler_zupper_iv(await _cartoes(navegador, url, sem), pax) if _aceita(x['pernas']['ida']) and _aceita(x['pernas']['volta'])]
-    for x in validas:
-        x['link'] = url
-    return validas
+    pares = []
+    for x in ler_zupper_iv(await _cartoes(navegador, url, sem), pax):
+        idas, voltas = [o for o in x['idas'] if _aceita(o)], [o for o in x['voltas'] if _aceita(o)]
+        if idas and voltas:
+            pares.append({'vend': 'Zupper', 'pp': x['pp'], 'link': url, 'idas': idas, 'voltas': voltas})
+    return pares
 
 
 def _teste():
@@ -294,6 +310,8 @@ def _teste():
     assert (ri['cia'], ri['orig'], ri['dest'], ri['saida']) == ('LATAM', 'GRU', 'FOR', '07:00'), r[0]
     assert (rv['cia'], rv['saida'], rv['direto']) == ('Gol', '04:05', True), r[0]
     assert _aceita(ri) and _aceita(rv) and _aceita(r[1]['pernas']['ida'])   # ida por Viracopos vale (aparece marcada como Campinas)
+    # o cartão guarda todos os horários de cada trecho: o par vale para qualquer combinação deles
+    assert [x['saida'] for x in r[0]['idas']] == ['07:00'] and [(x['saida'], x['direto']) for x in r[0]['voltas']] == [('15:10', False), ('04:05', True)], r[0]
     assert ler_zupper([iv[0].split(' | Volta | ')[0] + ' | TOTAL A PAGAR | R$ 900,00 | LOGO:G3x.png'], 2)[0]['cia'] == 'Gol'
     # tarifas com mala (valores reais da Zupper, 2 adultos): Light sem mala; Classic +R$238,02 e Flex +R$450,04 com mala
     zm = zp[0] + ' | TARIFAS:S=1.855,44;M+238,02;M+450,04'
@@ -330,6 +348,8 @@ def _teste():
     assert url_vaidepromo('SAO', 'NAT', '2026-12-22', 1).endswith('/pesquisa/SAONAT261222/1/0/0/Y/') and LER['Vai de Promo'] is ler_vaidepromo
     u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2)
     assert 'type=roundTrip' in u and '%22originAirport%22%3A%22JDO%22' in u and '%22destinationAirport%22%3A%22FOR%22' in u
+    u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2, 'GRU', 'CGH')
+    assert '%22originAirport%22%3A%22GRU%22' in u and '%22destinationAirport%22%3A%22CGH%22' in u and 'SAO' not in u
     print('ok')
 
 
