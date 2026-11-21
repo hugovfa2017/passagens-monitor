@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21 07:50",
+ "atualizado": "2026-11-21 08:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Zoom",
@@ -187,7 +187,7 @@
      "link": "https://www.amazon.com.br/dp/B0F8R9NDXC",
      "obs": "",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.6,
+     "idade_h": 0.7,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -202,7 +202,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
-       "idade_h": 0.6,
+       "idade_h": 0.7,
        "tipo": "postada"
       }
      ],
@@ -833,7 +833,7 @@
      "link": "https://www.amazon.com.br/dp/B0FPGF9J2J",
      "obs": "",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.6,
+     "idade_h": 0.7,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -848,7 +848,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-       "idade_h": 0.6,
+       "idade_h": 0.7,
        "tipo": "postada"
       }
      ],
@@ -957,7 +957,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 4.8,
+     "idade_h": 4.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -972,7 +972,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
-       "idade_h": 4.8,
+       "idade_h": 4.9,
        "tipo": "postada"
       }
      ],
@@ -1227,7 +1227,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
      "obs": "à vista",
      "detalhes": "",
-     "idade_h": 4.7,
+     "idade_h": 4.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1242,7 +1242,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3237252/",
-       "idade_h": 4.7,
+       "idade_h": 4.9,
        "tipo": "postada"
       }
      ],
@@ -1279,36 +1279,30 @@
     },
     {
      "modelo": "digital",
-     "fonte": "KaBuM!",
+     "fonte": "Promobit",
      "loja": "KaBuM!",
      "titulo": "Console PlayStation 5 Sony Edição Digital Marvel's Wolverine Pacote de Edição Limitada, 825 GB, Amarelo - 1000056865",
      "preco": 4742.07,
      "preco_sem_cupom": null,
      "cupom": null,
      "cupom_origem": null,
-     "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
-     "obs": "à vista no Pix",
+     "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
+     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 15.4,
-     "tipo": "loja",
+     "idade_h": 15.5,
+     "tipo": "postada",
      "condicao": "novo",
-     "confianca": "A",
+     "confianca": "B",
      "ressalvas": [],
      "visto_em": [
       {
-       "fonte": "KaBuM!",
-       "link": "https://www.kabum.com.br/produto/1065184/console-playstation-5-sony-edicao-digital-marvel-s-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865",
-       "idade_h": null,
-       "tipo": "loja"
-      },
-      {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 15.4,
+       "idade_h": 15.5,
        "tipo": "postada"
       }
      ],
-     "n_vistos": 2,
+     "n_vistos": 1,
      "cupom_citado": null
     },
     {
@@ -2506,6 +2500,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -2734,63 +2740,63 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.6,
-   "ofertas": 38,
+   "segundos": 0.3,
+   "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Amazon": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 0.8,
    "ofertas": 42,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 0.9,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 0.3,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.9,
-   "ofertas": 50,
+   "segundos": 0.8,
+   "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 0.7,
    "ofertas": 4,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 6.0,
+   "segundos": 6.1,
    "ofertas": 31,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 1.2,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.2,
+   "segundos": 0.1,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
@@ -2798,7 +2804,7 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 20.9,
+   "segundos": 17.1,
    "ofertas": 19,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
@@ -2806,7 +2812,7 @@
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.7,
+   "segundos": 3.4,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
@@ -2819,8 +2825,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 143,
-  "preço fora da faixa de PS5 com leitor de disco": 1
+  "não é console PS5": 143
  },
  "config": {
   "queda_minima": 50,
