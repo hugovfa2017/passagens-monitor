@@ -75,195 +75,54 @@
 <div id="dash-root">
 
 <style>
-  /* Painel de decisão: a ida dos extras no mesmo voo é a peça central; voos perto e a volta logo abaixo.
-     Um destaque só (verde-mar) para preço bom, botões e seleção; o resto vem dos tokens do tema. */
+  /* Painel por grupo de viajantes: a opção recomendada de cada trecho em destaque e, abaixo, a tabela data x aeroporto.
+     Um destaque só (verde-mar) para a recomendada e os links; o resto vem dos tokens do tema. */
   .pn {
     --pn-acc: #17736c;
-    --pn-acc-ink: #ffffff;
     --pn-link: color-mix(in oklab, var(--pn-acc) 72%, var(--color-fg));
     --pn-tint: color-mix(in oklab, var(--pn-acc) 9%, var(--color-panel));
     --pn-line: var(--color-border-line);
     --pn-muted: var(--color-fg-muted);
-    --pn-r: 10px;
-    display: grid; gap: calc(var(--cds-gap-xl) * 1.6);
+    display: grid; gap: calc(var(--cds-gap-xl) * 1.4);
     font-family: var(--font-anthropic-sans); font-variant-numeric: tabular-nums; color: var(--color-fg);
   }
-  .pn ::selection { background: color-mix(in oklab, var(--pn-acc) 28%, transparent); }
   .pn h1, .pn h2, .pn h3, .pn p { margin: 0; }
-  .pn h2 { font-size: calc(var(--cds-font-size-heading) * 1.12); font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; }
+  .pn h1 { font-size: var(--cds-font-size-title); font-weight: 650; letter-spacing: -0.015em; }
+  .pn h2 { font-size: calc(var(--cds-font-size-heading) * 1.12); font-weight: 650; letter-spacing: -0.01em; }
   .pn h3 { font-size: var(--cds-font-size-body); font-weight: 600; }
-  .pn-note { font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; line-height: 1.5; }
-  .pn-small { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn b { font-weight: 600; }
-
-  /* topo */
-  .pn-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--cds-gap-lg); }
-  .pn-titles { display: grid; gap: 6px; min-width: 0; }
-  .pn-head h1 { font-size: calc(var(--cds-font-size-title) * 1.1); font-weight: 650; letter-spacing: -0.015em; }
-  .pn-meta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--pn-line); border-radius: 8px; background: var(--color-panel); }
-  .pn-seg button { font: inherit; font-size: var(--cds-font-size-caption); font-weight: 550; color: var(--pn-muted); background: transparent;
-    border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
-  .pn-seg button[aria-pressed="true"] { color: var(--color-fg); background: var(--pn-tint); box-shadow: inset 0 0 0 1px var(--pn-acc); }
-
-  .pn-sec { display: grid; gap: var(--cds-gap-lg); }
-  .pn-sechead { display: grid; gap: 6px; }
-
-  /* mesmo voo: rota à esquerda, preço para 1, 2 e 3 pessoas à direita */
-  .pn-feature { display: grid; grid-template-columns: minmax(15rem, 0.9fr) minmax(0, 2fr); gap: calc(var(--cds-gap-xl) * 1.25);
-    padding: var(--cds-pad-lg); border-radius: var(--pn-r); background: var(--color-panel); border: 1px solid var(--pn-line);
-    box-shadow: 0 10px 28px -20px color-mix(in oklab, var(--color-fg) 40%, transparent); }
-  @media (max-width: 760px) { .pn-feature { grid-template-columns: minmax(0, 1fr); } }
-  .pn-flight { display: grid; gap: 14px; align-content: start; }
-  .pn-tag { justify-self: start; font-size: var(--cds-font-size-caption); font-weight: 600; color: var(--pn-link);
-    padding: 3px 9px; border-radius: 999px; background: var(--pn-tint); }
-  .pn-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
-  .pn-end { display: grid; gap: 2px; }
-  .pn-end b { font-size: calc(var(--cds-font-size-heading) * 1.2); letter-spacing: .02em; }
-  .pn-end span { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-end--r { text-align: right; }
-  .pn-path { position: relative; height: 1px; background: var(--pn-line); }
-  .pn-path::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px;
-    border-top: 1px solid var(--pn-muted); border-right: 1px solid var(--pn-muted); transform: rotate(45deg); }
-  .pn-fmeta { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.55; }
-  .pn-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--cds-gap-md); }
-  @media (max-width: 520px) { .pn-tiles { grid-template-columns: minmax(0, 1fr); } }
-  .pn-tile { display: grid; gap: 4px; align-content: start; padding: 14px; border-radius: 8px; border: 1px solid var(--pn-line); min-width: 0; }
-  .pn-tile.is-hit { border-color: var(--pn-acc); background: var(--pn-tint); }
-  .pn-tile-k { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-tile-v { font-size: calc(var(--cds-font-size-title) * 1.05); font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
-  .pn-tile-s { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.45; }
-  .pn-tile-s.is-hit { color: var(--color-ok); font-weight: 600; }
-  .pn-tile .pn-buy { margin-top: 8px; justify-self: start; }
-  .pn-empty { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.5; padding: 14px; border: 1px dashed var(--pn-line); border-radius: 8px; }
-
-  .pn-buy { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 8px; background: var(--pn-acc); color: var(--pn-acc-ink);
-    font-weight: 600; font-size: var(--cds-font-size-caption); text-decoration: none; white-space: nowrap; transition: background-color .15s ease; }
-  .pn-buy:hover { background: color-mix(in oklab, var(--pn-acc) 86%, #000); }
-  .pn-buy:active { transform: translateY(1px); }
-  .pn a:focus-visible, .pn button:focus-visible { outline: 2px solid var(--pn-link); outline-offset: 2px; }
-
-  /* voos perto: um voo por linha, preço por pessoa para 1, 2 e 3 */
-  .pn-tbox { overflow-x: auto; }
-  .pn-table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: var(--cds-font-size-caption); }
-  .pn-table th { text-align: left; font-weight: 500; color: var(--pn-muted); padding: 0 10px 8px; border-bottom: 1px solid var(--pn-line); }
-  .pn-table th.n, .pn-table td.n { text-align: right; }
-  .pn-table td { padding: 10px; border-bottom: 1px solid var(--pn-line); vertical-align: top; }
-  .pn-table tr.is-mine td { background: var(--pn-tint); }
-  .pn-table tr.pn-day td { padding: 14px 10px 6px; border-bottom: 0; color: var(--color-fg); font-weight: 600; background: none; }
-  .pn-v1 { display: block; color: var(--color-fg); font-weight: 600; }
-  .pn-v2 { display: block; color: var(--pn-muted); margin-top: 2px; }
-  .pn-mine { color: var(--pn-link); font-weight: 600; }
-  .pn-price { color: var(--color-fg); text-decoration: none; font-weight: 500; white-space: nowrap; }
-  a.pn-price:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .pn-price.is-best { color: var(--pn-link); font-weight: 700; }
-  .pn-pv { display: block; color: var(--pn-muted); font-size: .75rem; margin-top: 2px; white-space: nowrap; }
-  .pn-dash { color: var(--pn-muted); }
-  @media (max-width: 560px) {   /* celular: o voo numa linha, os três preços embaixo */
-    .pn-table { min-width: 0; }
-    .pn-table thead { display: none; }
-    .pn-table tbody, .pn-table tr.pn-day, .pn-table tr.pn-day td { display: block; }
-    .pn-table tr:not(.pn-day) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--pn-line); padding: 6px 0; }
-    .pn-table tr:not(.pn-day) td { border: 0; padding: 4px 10px; }
-    .pn-table tr:not(.pn-day) td:first-child { grid-column: 1 / -1; }
-    .pn-table td.n { text-align: left; }
-    .pn-table td.n::before { content: attr(data-n); display: block; color: var(--pn-muted); font-size: .75rem; margin-bottom: 2px; }
-  }
-
-  /* volta: uma data por linha, com barra de preço */
-  .pn-list { display: grid; }
-  .pn-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) minmax(5rem, 9rem) 5.5rem auto; align-items: center; gap: 14px;
-    padding: 12px 4px; border-bottom: 1px solid var(--pn-line); font-size: var(--cds-font-size-caption); }
-  .pn-row.is-best { background: var(--pn-tint); border-radius: 8px; padding-inline: 10px; }
-  .pn-row .pn-v1 { font-size: var(--cds-font-size-body); }
-  .pn-bar { height: 6px; border-radius: 3px; background: color-mix(in oklab, var(--pn-line) 70%, transparent); overflow: hidden; }
-  .pn-bar i { display: block; height: 100%; border-radius: 3px; background: color-mix(in oklab, var(--pn-acc) 45%, var(--color-panel)); }
-  .pn-row.is-best .pn-bar i { background: var(--pn-acc); }
-  .pn-amt { text-align: right; font-size: var(--cds-font-size-body); font-weight: 600; }
-  .pn-buylink { color: var(--pn-link); font-weight: 600; text-underline-offset: 3px; white-space: nowrap; }
-  @media (max-width: 640px) {
-    .pn-row { grid-template-columns: 5.5rem minmax(0, 1fr) auto; }
-    .pn-row .pn-bar { display: none; }
-    .pn-row .pn-buylink { grid-column: 2 / -1; justify-self: start; }
-  }
-
-  /* histórico */
-  .pn-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
-  .pn-legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .pn-legend i { display: block; width: 16px; height: 0; border-top: 2px var(--st, solid) var(--sw); }
-  .pn-chart { position: relative; min-height: 220px; }
-  .pn-tick { font-size: var(--cds-font-size-caption); fill: var(--pn-muted); }
-  .pn-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius);
-    box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); z-index: 2; white-space: nowrap; }
-  .pn-tip .k { color: var(--cds-text-secondary); }
-
-  .pn-foot { display: grid; gap: 6px; font-size: var(--cds-font-size-caption); color: var(--pn-muted); max-width: 72ch; padding-top: var(--cds-pad-md); border-top: 1px solid var(--pn-line); }
-  .dash-skeleton { color: transparent !important; }
-  @media (prefers-reduced-motion: reduce) { .pn * { transition: none !important; } }
+  .pn a { color: var(--pn-link); text-underline-offset: 2px; }
+  .pn-meta, .pn-note { font-size: var(--cds-font-size-caption); color: var(--pn-muted); line-height: 1.5; max-width: 80ch; }
+  .pn-alerta { padding: var(--cds-pad-md) var(--cds-pad-lg); border-radius: 10px; background: var(--pn-tint); border: 1px solid var(--pn-line); font-weight: 550; }
+  .pn-grupos { display: grid; gap: var(--cds-gap-xl); }
+  .pn-grupo { display: grid; gap: var(--cds-gap-lg); padding: var(--cds-pad-lg); border-radius: 12px; background: var(--color-panel); border: 1px solid var(--pn-line); min-width: 0; }
+  .pn-trecho { display: grid; gap: var(--cds-gap-sm); min-width: 0; }
+  .pn-op { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; font-size: var(--cds-font-size-body); }
+  .pn-op b { font-size: 1.15em; }
+  .pn-op.rec b { color: var(--pn-acc); }
+  .pn-selo { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
+  .pn-rola { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pn table { border-collapse: collapse; font-size: var(--cds-font-size-caption); min-width: 100%; }
+  .pn th, .pn td { padding: 5px 9px; text-align: right; border-bottom: 1px solid var(--pn-line); white-space: nowrap; }
+  .pn th:first-child, .pn td:first-child { text-align: left; position: sticky; left: 0; background: var(--color-panel); }
+  .pn th { font-weight: 600; color: var(--pn-muted); }
+  .pn td.conf { font-weight: 650; }
+  .pn td.lista { color: var(--pn-muted); }
+  .pn td.melhor { background: var(--pn-tint); color: var(--pn-acc); }
+  .pn-pacote { font-size: var(--cds-font-size-body); }
 </style>
 
 <div class="pn">
-  <header class="pn-head">
-    <div class="pn-titles">
-      <h1>Passagens Nordeste</h1>
-      <p class="pn-meta" data-draw="meta">Carregando…</p>
-    </div>
-    <div class="pn-seg" role="group" aria-label="Preço sem ou com mala despachada">
-      <button type="button" data-modo="sem" aria-pressed="true">Sem mala</button>
-      <button type="button" data-modo="com" aria-pressed="false">Com mala de 23 kg</button>
-    </div>
+  <header>
+    <h1>Passagens Nordeste</h1>
+    <p class="pn-meta" data-draw="meta">Carregando…</p>
   </header>
-
-  <section class="pn-sec" id="ida">
-    <div class="pn-sechead">
-      <h2>Ida dos extras</h2>
-      <p class="pn-note">Para quem ainda vai confirmar: até 3 adultos para Natal, de preferência no mesmo voo de vocês. Cada um compra a sua passagem (compra individual), então o preço é sempre para 1 pessoa. Se o voo tiver só um lugar barato, a segunda compra pode sair mais cara.</p>
-    </div>
-    <article class="pn-feature" data-draw="mesmo" aria-live="polite">—</article>
-    <div class="pn-sec">
-      <div class="pn-sechead">
-        <h3>Outras opções</h3>
-        <p class="pn-note">De 19 a 24/12, por cidade, na ordem de preferência: as 5 mais baratas de cada uma, só diretos ou com escala curta. Preço por pessoa; clique no preço para comprar.</p>
-      </div>
-      <div class="pn-tbox" data-draw="perto">—</div>
-    </div>
-  </section>
-
-  <section class="pn-sec" id="volta">
-    <div class="pn-sechead">
-      <h2>Volta de vocês dois</h2>
-      <p class="pn-note" data-draw="volta-nota">2 adultos, saindo de Natal, Fortaleza, Juazeiro do Norte, João Pessoa ou Recife para São Paulo. O melhor voo de cada data, por pessoa.</p>
-    </div>
-    <div class="pn-list" data-draw="volta">—</div>
-  </section>
-
-  <section class="pn-sec" id="historico">
-    <div class="pn-sechead">
-      <h2>Como o preço mudou</h2>
-      <p class="pn-note" data-draw="hist-nota">Preço por pessoa, sem mala, em cada busca, de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram.</p>
-    </div>
-    <div class="pn-legend">
-      <span><i style="--sw: var(--pn-acc)"></i>Mesmo voo de vocês</span>
-      <span><i style="--sw: var(--pn-acc); --st: dotted"></i>Outra opção mais barata</span>
-      <span><i style="--sw: var(--pn-muted)"></i>Volta de vocês dois</span>
-    </div>
-    <div class="pn-chart" data-draw="hist">—</div>
-  </section>
-
-  <footer class="pn-foot">
-    <p>Busca em MaxMilhas, 123milhas, Zupper, Viaza, Vai de Promo e no Google Voos (preço das companhias, confirmado na tela de compra). O preço pode mudar até o pagamento.</p>
-    <p>Com mala: 1 mala de 23 kg por pessoa. Na Zupper é a tarifa com mala de verdade; nos outros, soma o valor da mala da companhia medido na busca (marcado como estimado).</p>
-    <p>Viu preço bom, compre: com 7 dias ou mais de antecedência, a ANAC garante desistir sem custo em até 24 h. Prefira emissão imediata (nada de "promo" ou "data flexível") e confira o localizador no site da companhia.</p>
-    <p>O monitor roda no GitHub de hora em hora, mesmo com o computador desligado. Datas e alvos mudam pedindo ao Claude.</p>
-  </footer>
+  <div data-draw="alerta"></div>
+  <div class="pn-grupos" data-draw="grupos"></div>
+  <p class="pn-note" data-draw="rodape"></p>
 </div>
 
 <script>
   const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-  // quantidades de pessoas buscadas na ida (1 = compra individual)
-  const extras = () => Array.from({ length: (resumo() || {}).pax_ida || 1 }, (_, i) => i + 1);
-  let modo = 'sem';
-
   const painel = () => { const d = dash.data('painel'); return d.status === 'ok' ? d.data : null; };
   const tipo = (t) => (painel() || []).filter((r) => r.tipo === t);
   const resumo = () => tipo('resumo')[0] || null;
@@ -273,205 +132,91 @@
     for (const f of filhos) if (f != null) e.append(f);
     return e;
   };
-  const link = (cls, href, txt) => { const a = h('a', cls, txt); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
-  const pessoas = (n) => `${n} ${n === 1 ? 'pessoa' : 'pessoas'}`;
-  const CIDADE = { NAT: 'Natal', FOR: 'Fortaleza', JDO: 'Juazeiro do Norte', JPA: 'João Pessoa', REC: 'Recife' };   // ordem de preferência
-  const cidade = (c) => CIDADE[c] || c;
+  // só aceita link http(s): o texto vem de sites de terceiros
+  const seguro = (u) => (/^https?:\/\//.test(u || '') ? u : null);
+  const link = (href, txt) => { const u = seguro(href); if (!u) return h('span', null, txt); const a = h('a', null, txt); a.href = u; a.target = '_blank'; a.rel = 'noopener'; return a; };
+  const lugar = (c) => ((resumo().aeroportos[c] || {}).curto || c);
   const vendedor = (v) => (v || '').replace(/^CIA /, '').replace(/^maxmilhas$/i, 'MaxMilhas');
-  const tipoVoo = (t) => (t === 'direto' ? 'direto' : t);
-  const numVoo = (v) => (v ? ' ' + v.split(' ').pop() : '');
-  // preço de um voo de ida para n pessoas, no modo atual (sem ou com mala)
-  const precoIda = (v, n) => {
-    const p = v.precos[String(n)];
-    if (!p) return null;
-    return modo === 'com' ? (p.mala_pp == null ? null : { pp: p.mala_pp, vend: p.mala_vend, link: p.mala_link || p.link, estimado: p.mala_estimado })
-      : { pp: p.pp, vend: p.vend, link: p.link };
-  };
-  const precoVolta = (r) => (modo === 'com' ? (r.mala_pp == null ? null : { pp: r.mala_pp, vend: r.mala_vend, link: r.mala_link, estimado: r.mala_estimado,
-    cia: r.mala_cia, orig: r.mala_orig, dest: r.mala_dest, saida: r.mala_saida, chegada: r.mala_chegada, tipo_voo: r.mala_tipo_voo })
-    : { pp: r.pp, vend: r.vend, link: r.link, cia: r.cia, orig: r.orig, dest: r.dest, saida: r.saida, chegada: r.chegada, tipo_voo: r.tipo_voo, pp_cia: r.pp_cia });
+  const hora = (s) => (s || '').replace(':', 'h');
 
-  document.querySelectorAll('.pn-seg button').forEach((b) => b.addEventListener('click', () => {
-    modo = b.dataset.modo;
-    document.querySelectorAll('.pn-seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    ['mesmo', 'perto', 'volta'].forEach((n) => dash.draw(n));
-  }));
+  const opcao = (o, cls, rotulo, alvo) => h('div', 'pn-op ' + cls,
+    h('span', null, rotulo),
+    h('b', null, (alvo && o.pp <= alvo ? '✅ ' : '') + BRL.format(o.pp)),
+    h('span', null, `${o.dia} ${hora(o.saida)} · ${lugar(o.orig)} → ${lugar(o.dest)} · ${o.cia} ${o.tipo}`),
+    link(o.link, 'comprar na ' + vendedor(o.vend)));
+
+  // tabela data x aeroporto do Nordeste; negrito = preço confirmado, cinza = preço da lista do Google (pode mudar)
+  const tabela = (serie, ordem) => {
+    const cel = tipo('celula').filter((c) => c.serie === serie);
+    if (!cel.length) return null;
+    const datas = [...new Set(cel.map((c) => c.d))].sort(), aps = ordem.filter((a) => cel.some((c) => c.ne === a));
+    const confirmados = cel.filter((c) => c.conf).map((c) => c.pp), menor = confirmados.length ? Math.min(...confirmados) : null;
+    const t = h('table', null, h('thead', null, h('tr', null, h('th', null, 'Data'), ...aps.map((a) => h('th', null, lugar(a))))));
+    const corpo = h('tbody');
+    for (const d of datas) {
+      const tr = h('tr', null, h('td', null, cel.find((c) => c.d === d).dia));
+      for (const a of aps) {
+        const c = cel.find((x) => x.d === d && x.ne === a);
+        tr.append(h('td', c ? (c.conf ? 'conf' : 'lista') + (c.conf && c.pp === menor ? ' melhor' : '') : null, c ? BRL.format(c.pp) : '·'));
+      }
+      corpo.append(tr);
+    }
+    t.append(corpo);
+    return h('div', 'pn-rola', t);
+  };
 
   dash.draw('meta', (el) => {
     const r = resumo();
     if (!r) { el.textContent = dash.data('painel').status === 'error' ? 'Não consegui carregar os dados.' : 'Carregando…'; return; }
     const q = r.quando;
-    el.textContent = `Preço por pessoa. Atualizado em ${q.slice(8, 10)}/${q.slice(5, 7)} às ${q.slice(11, 16)}; nova busca de hora em hora.`;
+    el.textContent = `Preço por pessoa, sem mala. Atualizado em ${q.slice(8, 10)}/${q.slice(5, 7)} às ${q.slice(11, 16)}; nova busca de hora em hora.`;
   });
 
-  dash.draw('mesmo', (el) => {
-    el.replaceChildren();
+  dash.draw('alerta', (el) => {
     const r = resumo();
-    if (!r) { el.textContent = '—'; return; }
-    const a = r.voo_comprado, v = tipo('ida').find((x) => x.mesmo);
-    const fim = (cod, hora, dir) => h('div', 'pn-end' + (dir ? ' pn-end--r' : ''), h('b', null, cod), h('span', null, hora));
-    const voo = h('div', 'pn-flight',
-      h('span', 'pn-tag', 'Mesmo voo de vocês'),
-      h('div', 'pn-route', fim(a.orig, `sai ${a.saida}`), Object.assign(h('div', 'pn-path'), { ariaHidden: 'true' }),
-        fim(a.dest, v ? `chega ${v.chegada}` : '', true)),
-      h('p', 'pn-fmeta', `${a.dia} · ${a.cia}${numVoo(a.voo)} · ${v ? tipoVoo(v.tipo_voo) : 'direto'}`));
-    if (!v) {
-      el.append(voo, h('p', 'pn-empty', 'Este voo não apareceu à venda na última busca. Pode ter esgotado ou o vendedor não mostrou. Veja as outras opções logo abaixo.'));
-      return;
-    }
-    const tiles = h('div', 'pn-tiles');
-    const ns = extras(), individual = ns.length === 1;
-    for (const n of ns) {
-      const p = precoIda(v, n);
-      if (!p) { tiles.append(h('div', 'pn-tile', h('span', 'pn-tile-k', pessoas(n)), h('span', 'pn-tile-v pn-dash', '—'),
-        h('span', 'pn-tile-s', modo === 'com' ? 'Sem preço com mala nesta busca.' : 'Sem lugares a esse preço nesta busca.'))); continue; }
-      const hit = modo === 'sem' && p.pp <= r.alvo_ida;
-      const menor = r.menor && r.menor['mesmo_' + n];
-      const status = hit ? 'Abaixo do alvo: compre' : modo === 'com' ? (p.estimado ? 'Mala à parte, valor estimado' : 'Tarifa com mala')
-        : menor != null && p.pp <= menor ? 'O menor já visto' : `${BRL.format(p.pp - r.alvo_ida)} acima do alvo`;
-      tiles.append(h('div', 'pn-tile' + (hit ? ' is-hit' : ''),
-        h('span', 'pn-tile-k', individual ? 'Por pessoa, compra individual' : pessoas(n) + (n > 1 ? ', cada' : '')),
-        h('span', 'pn-tile-v', BRL.format(p.pp)),
-        h('span', 'pn-tile-s', `na ${vendedor(p.vend)}` + (n > 1 ? ` · total ${BRL.format(p.pp * n)}` : '') +
-          (individual ? ` · se forem 3, até ${BRL.format(3 * p.pp)}` : '')),
-        h('span', 'pn-tile-s' + (hit ? ' is-hit' : ''), status),
-        link('pn-buy', p.link, individual ? 'Comprar 1 passagem' : `Comprar para ${n}`)));
-    }
-    el.append(voo, tiles);
+    el.replaceChildren(...(r && r.alerta ? [h('p', 'pn-alerta', r.alerta)] : []));
   });
 
-  dash.draw('perto', (el) => {
-    el.replaceChildren();
-    let voos = tipo('ida');
-    if (!painel()) { el.textContent = '—'; return; }
-    if (!voos.length) { el.append(h('p', 'pn-empty', 'Nenhum voo encontrado na última busca.')); return; }
-    const ns = extras();
-    // por cidade, na ordem de preferência: o voo de vocês e as 5 opções mais baratas de cada uma
-    const preco1 = (v) => (precoIda(v, ns[ns.length - 1]) || { pp: Infinity }).pp;
-    const ordem = (resumo() || {}).nordeste || Object.keys(CIDADE);
-    const grupos = ordem.map((c) => [c, [...voos.filter((v) => v.dest === c && v.mesmo),
-      ...voos.filter((v) => v.dest === c && !v.mesmo && preco1(v) < Infinity).sort((a, b) => preco1(a) - preco1(b)).slice(0, 5)]]).filter(([, l]) => l.length);
-    voos = grupos.flatMap(([, l]) => l);
-    const melhor = Object.fromEntries(ns.map((n) => [n, Math.min(...voos.map((v) => (precoIda(v, n) || { pp: Infinity }).pp))]));
-    const t = h('table', 'pn-table');
-    t.setAttribute('aria-label', 'Voos de ida dos extras por cidade, preço por pessoa');
-    const rotulo = (n) => (ns.length === 1 ? 'Por pessoa' : pessoas(n));
-    const cab = h('tr', null, h('th', null, 'Voo'), ...ns.map((n) => h('th', 'n', rotulo(n))));
-    t.append(h('thead', null, cab));
-    const corpo = h('tbody');
-    for (const [c, lista] of grupos) {
-      const td = h('td', null, cidade(c)); td.colSpan = ns.length + 1; corpo.append(h('tr', 'pn-day', td));
-      for (const v of lista) {
-      const nome = h('td', null,
-        h('span', 'pn-v1', `${v.dia} · ${v.saida} → ${v.chegada}`, v.mesmo ? h('span', 'pn-mine', ' · o de vocês') : null),
-        h('span', 'pn-v2', `${v.cia}${numVoo(v.voo)} · ${v.orig} → ${v.dest} · ${tipoVoo(v.tipo_voo)}`));
-      const cols = ns.map((n) => {
-        const p = precoIda(v, n);
-        const td = h('td', 'n');
-        td.dataset.n = rotulo(n);
-        if (!p) { td.append(h('span', 'pn-dash', '—')); return td; }
-        const a = link('pn-price' + (p.pp === melhor[n] ? ' is-best' : ''), p.link, BRL.format(p.pp));
-        a.setAttribute('aria-label', `${BRL.format(p.pp)} por pessoa ${ns.length === 1 ? 'em compra individual' : 'para ' + pessoas(n)} na ${vendedor(p.vend)}`);
-        td.append(a, h('span', 'pn-pv', vendedor(p.vend) + (p.estimado ? ' · estimado' : '')));
-        return td;
-      });
-      corpo.append(h('tr', v.mesmo ? 'is-mine' : null, nome, ...cols));
+  dash.draw('grupos', (el) => {
+    const r = resumo();
+    if (!r) { el.replaceChildren(); return; }
+    const trechos = tipo('trecho'), pacotes = tipo('pacote'), sigla = Object.fromEntries(r.grupos.map((g) => [g.id, g.rotulo]));
+    el.replaceChildren(...r.grupos.map((g) => {
+      const sec = h('section', 'pn-grupo', h('h2', null, `${g.emoji} ${g.rotulo}` + (g.assentos > 1 ? ` · ${g.assentos} lugares juntos` : '')));
+      for (const t of trechos.filter((x) => x.grupo === g.id)) {
+        const bloco = h('div', 'pn-trecho', h('h3', null, `${t.nome} · ${t.janela}`));
+        if (t.igual_a) {
+          bloco.append(t.recomendada ? opcao(t.recomendada, '', `no voo de ${sigla[t.igual_a.split('.')[0]]}`, t.alvo) : h('p', 'pn-note', 'Sem preço confirmado.'));
+        } else {
+          bloco.append(t.recomendada ? opcao(t.recomendada, 'rec', '⭐ recomendada', t.alvo) : h('p', 'pn-note', 'Sem preço confirmado na última busca.'));
+          if (t.mais_barata) bloco.append(opcao(t.mais_barata, '', '💸 mais barata', t.alvo));
+          if (t.comprado) bloco.append(opcao(t.comprado, '', '🎯 no voo já comprado', t.alvo));
+          if (t.alvo) bloco.append(h('p', 'pn-selo', `Alvo: ${BRL.format(t.alvo)} por pessoa`));
+          const tab = tabela(t.serie, r.ordem);
+          if (tab) bloco.append(tab);
+        }
+        sec.append(bloco);
       }
-    }
-    t.append(corpo);
-    el.append(t);
+      const meus = pacotes.filter((p) => p.grupo === g.id);
+      if (meus.length) {
+        const menor = Math.min(...meus.map((p) => p.pp));
+        sec.append(h('p', 'pn-pacote', '📦 ida + volta: ', ...meus.flatMap((p, i) => [i ? ' · ' : '',
+          meus.length > 1 ? `${p.id} ` : '', p.pp === menor ? h('b', null, BRL.format(p.pp)) : BRL.format(p.pp)]),
+          g.assentos > 1 ? ` por pessoa (${BRL.format(menor * g.assentos)} no total)` : ''));
+      }
+      return sec;
+    }));
   });
 
-  dash.draw('volta', (el) => {
-    el.replaceChildren();
-    const r = resumo(), vs = tipo('volta');
-    if (!r) { el.textContent = '—'; return; }
-    const linhas = vs.map((x) => ({ x, p: precoVolta(x) })).filter((o) => o.p);
-    if (!linhas.length) { el.append(h('p', 'pn-empty', modo === 'com' ? 'Sem preço com mala na última busca.' : 'Nenhum voo de volta na última busca.')); return; }
-    const vals = linhas.map((o) => o.p.pp), lo = Math.min(...vals), hi = Math.max(...vals);
-    for (const { x, p } of linhas) {
-      const best = p.pp === lo;
-      const bar = h('div', 'pn-bar', h('i'));
-      bar.firstChild.style.width = (hi === lo ? 100 : 18 + 82 * (p.pp - lo) / (hi - lo)) + '%';
-      bar.setAttribute('aria-hidden', 'true');
-      const extra = modo === 'com' ? (p.estimado ? ' · mala estimada' : ' · tarifa com mala')
-        : p.pp_cia && p.pp_cia !== p.pp ? ` · na companhia ${BRL.format(p.pp_cia)}` : '';
-      el.append(h('div', 'pn-row' + (best ? ' is-best' : ''),
-        h('div', null, h('span', 'pn-v1', x.dia), h('span', 'pn-v2', `${x.dias} dias lá`)),
-        h('div', null, h('span', 'pn-v1', `${p.saida} → ${p.chegada}`),
-          h('span', 'pn-v2', `${cidade(p.orig)} → ${p.dest} · ${p.cia} · ${tipoVoo(p.tipo_voo)} · ${vendedor(p.vend)}${extra}`)),
-        bar,
-        h('div', 'pn-amt', BRL.format(p.pp)),
-        link('pn-buylink', p.link, 'Comprar')));
-    }
-  });
-
-  dash.draw('volta-nota', (el) => {
+  dash.draw('rodape', (el) => {
     const r = resumo();
-    if (!r) return;
-    el.textContent = `2 adultos, saindo de Natal, Fortaleza, Juazeiro do Norte, João Pessoa ou Recife para São Paulo. O melhor voo de cada data, por pessoa. Alvo do alerta: ${BRL.format(r.alvo_volta)}.`;
-  });
-
-  dash.draw('hist-nota', (el) => {
-    const r = resumo();
-    if (!r) return;
-    el.textContent = `Preço por pessoa, sem mala, em cada busca de hora em hora. As linhas tracejadas são os alvos do alerta no Telegram: ${BRL.format(r.alvo_ida)} na ida dos extras e ${BRL.format(r.alvo_volta)} na volta.`;
-  });
-
-  dash.draw('hist', (el) => {
-    el.replaceChildren();
-    const hs = tipo('hist'), r = resumo();
-    if (!r || !hs.length) { el.textContent = '—'; return; }
-    const series = [{ k: 'mesmo_1', cor: 'var(--pn-acc)', w: 2, nome: 'Mesmo voo de vocês' },
-      { k: 'perto_pp', cor: 'var(--pn-acc)', w: 1.5, dash: '1 4', nome: 'Outra opção mais barata' },
-      { k: 'volta_pp', cor: 'var(--pn-muted)', w: 1.75, nome: 'Volta' }];
-    const pts = hs.map((x) => ({ ...x, t: new Date(x.quando.replace(' ', 'T') + ':00') })).filter((p) => !isNaN(p.t)).sort((a, b) => a.t - b.t);
-    const W = Math.max(280, el.clientWidth), H = 230;
-    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
-      .attr('aria-label', 'Preço por pessoa em cada busca: mesmo voo de vocês, voo perto mais barato e a volta');
-    const vals = pts.flatMap((p) => series.map((s) => p[s.k])).filter((v) => v != null).concat([r.alvo_ida, r.alvo_volta]);
-    const y = d3.scaleLinear([d3.min(vals) * 0.95, d3.max(vals) * 1.03], [H - 26, 10]).nice();
-    const ticks = y.ticks(4);
-    const meas = (txt) => { const tx = svg.append('text').attr('class', 'pn-tick').text(txt); const w = tx.node().getComputedTextLength(); tx.remove(); return w; };
-    const ml = d3.max(ticks, (v) => meas(BRL.format(v))) + 10;
-    const last = pts[pts.length - 1];
-    const ends = series.filter((s) => last[s.k] != null).map((s) => ({ cor: s.cor, v: last[s.k], txt: BRL.format(last[s.k]) }));
-    const mr = (d3.max(ends, (e) => meas(e.txt)) || 0) + 14;
-    let [t0, t1] = d3.extent(pts, (p) => p.t);
-    if (+t0 === +t1) { t0 = new Date(+t0 - 3 * 36e5); t1 = new Date(+t1 + 3 * 36e5); }
-    const x = d3.scaleTime([t0, t1], [ml, W - mr]);
-    const g = svg.append('g');
-    g.selectAll('line.grid').data(ticks).join('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
-    g.selectAll('text.yt').data(ticks).join('text').attr('class', 'pn-tick').attr('x', ml - 8).attr('y', (v) => y(v)).attr('dy', '0.32em').attr('text-anchor', 'end').text((v) => BRL.format(v));
-    const tf = d3.timeFormat('%d/%m %Hh'), vistos = new Set();
-    const xt = x.ticks(Math.max(2, Math.floor((W - ml - mr) / 110))).filter((d) => { const k = tf(d); if (vistos.has(k)) return false; vistos.add(k); return true; });
-    g.selectAll('text.xt').data(xt).join('text').attr('class', 'pn-tick').attr('x', x).attr('y', H - 6).attr('text-anchor', 'middle').text(tf);
-    [{ v: r.alvo_ida, cor: 'var(--pn-acc)' }, { v: r.alvo_volta, cor: 'var(--pn-muted)' }].forEach((a) =>
-      g.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(a.v)).attr('y2', y(a.v)).attr('stroke', a.cor).attr('stroke-dasharray', '4 4').attr('opacity', 0.6));
-    for (const s of series) {
-      const line = d3.line().defined((p) => p[s.k] != null).x((p) => x(p.t)).y((p) => y(p[s.k]));
-      g.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', s.cor).attr('stroke-width', s.w)
-        .attr('stroke-dasharray', s.dash || null).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
-      g.selectAll(null).data(pts.filter((p) => p[s.k] != null)).join('circle').attr('cx', (p) => x(p.t)).attr('cy', (p) => y(p[s.k])).attr('r', 2.5).attr('fill', s.cor);
-    }
-    ends.forEach((e) => { e.y = y(e.v); });
-    ends.sort((a, b) => a.y - b.y).forEach((e, i, arr) => { if (i && e.y - arr[i - 1].y < 14) e.y = arr[i - 1].y + 14; });
-    ends.forEach((e) => g.append('text').attr('x', x(last.t) + 8).attr('y', e.y).attr('dy', '0.32em').attr('fill', e.cor)
-      .attr('font-size', 'var(--cds-font-size-caption)').attr('font-weight', 600).text(e.txt));
-    const tip = h('div', 'pn-tip'); tip.hidden = true; el.append(tip);
-    const perto = (mx) => pts.reduce((a, b) => (Math.abs(x(b.t) - mx) < Math.abs(x(a.t) - mx) ? b : a));
-    svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(1, W - mr - ml)).attr('height', H).attr('fill', 'transparent')
-      .on('pointermove', (ev) => {
-        const [mx] = d3.pointer(ev), p = perto(mx), k = el.clientWidth / W;
-        const lin = (a, b) => h('div', null, h('span', 'k', a), ' ' + b);
-        tip.replaceChildren(lin(`${p.quando.slice(8, 10)}/${p.quando.slice(5, 7)} às ${p.quando.slice(11, 16)}`, ''),
-          ...series.map((s) => lin(s.nome, p[s.k] == null ? '—' : BRL.format(p[s.k]))));
-        tip.hidden = false;
-        const yy = series.map((s) => p[s.k]).find((v) => v != null);
-        tip.style.left = Math.max(0, Math.min(el.clientWidth - tip.offsetWidth, x(p.t) * k - tip.offsetWidth / 2)) + 'px';
-        tip.style.top = Math.max(0, (yy == null ? 20 : y(yy)) * k - tip.offsetHeight - 10) + 'px';
-      })
-      .on('pointerleave', () => { tip.hidden = true; });
+    if (!r) { el.textContent = ''; return; }
+    const partes = ['⭐ = a mais barata levando em conta a ordem de preferência: ' + r.ordem.map(lugar).join(', ') + '.',
+      'Na tabela, negrito é preço confirmado na tela de compra; cinza é o preço da lista do Google, que pode mudar.'];
+    if (r.mossoro && r.mossoro.buscas && !r.mossoro.voos) partes.push('Mossoró: nenhum voo à venda nas datas buscadas.');
+    const mala = Object.entries(r.taxa_mala || {});
+    if (mala.length) partes.push('Mala de 23 kg, por trecho: ' + mala.map(([c, v]) => `${c} +${BRL.format(v)}`).join(', ') + '.');
+    el.textContent = partes.join(' ');
   });
 </script>
 
