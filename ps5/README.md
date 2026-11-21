@@ -34,6 +34,10 @@ marcando "Mandar o resumo no Telegram agora".
 - **Com som:** o melhor preço confirmado de um modelo chegou ao alvo, ou é o menor já visto (pelo menos R$ 50 abaixo
   do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca.
 - **Sem som:** oferta de grupo ainda não confirmada que parece muito boa; lote novo de leilão com PS5; resumo diário às 9h.
+- **Só para o dono (raro):** nenhuma oferta em 6 varreduras seguidas; uma fonte quebrou (6 falhas seguidas por erro
+  que não é bloqueio, sem som); ou uma fonte passou um dia inteiro barrando todas as buscas (sem som). No máximo um aviso por fonte a cada 3 dias. Bloqueio que vai e volta não gera
+  mensagem: a Amazon, por exemplo, barra o servidor do GitHub em boa parte das buscas e volta sozinha. A proporção de
+  buscas barradas no dia aparece em [`ultimo.md`](ultimo.md), na lista de fontes.
 
 ## Telegram: bot próprio
 
