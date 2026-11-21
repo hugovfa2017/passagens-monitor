@@ -5,7 +5,7 @@
   "ida_destinos": ["FOR", "MVF", "JDO", "NAT"],
   "volta_origens": ["FOR", "MVF", "JDO", "NAT", "JPA", "REC"],
 
-  "_aeroportos": "peso = quanto a opção precisa ser mais barata, por pessoa, para ganhar de um aeroporto acima na ordem de prioridade. google = como o Google Voos escreve o nome do aeroporto. selo = aviso que sempre acompanha o aeroporto.",
+  "_aeroportos": "peso = quanto a opção precisa ser mais barata, por pessoa, para ganhar de um aeroporto acima na ordem de prioridade. ultimo_caso = só vira a recomendada quando nenhum outro aeroporto tem preço conferido (aparece como a mais barata, para comparar). google = como o Google Voos escreve o nome do aeroporto. selo = aviso que sempre acompanha o aeroporto.",
   "aeroportos": {
     "GRU": {"cidade": "Guarulhos", "curto": "Guarulhos", "google": "Guarulhos"},
     "CGH": {"cidade": "Congonhas", "curto": "Congonhas", "google": "Congonhas"},
@@ -14,8 +14,8 @@
     "MVF": {"cidade": "Mossoró", "curto": "Mossoró", "google": "Mossor|Dix-Sept", "peso": 40, "escala_max": 360, "duracao_max": 660},
     "JDO": {"cidade": "Juazeiro do Norte", "curto": "Juazeiro", "google": "Juazeiro", "peso": 80},
     "NAT": {"cidade": "Natal", "curto": "Natal", "google": "Natal", "peso": 120},
-    "JPA": {"cidade": "João Pessoa", "curto": "J. Pessoa", "google": "Jo[aã]o Pessoa|Castro Pinto", "peso": 160},
-    "REC": {"cidade": "Recife", "curto": "Recife", "google": "Recife|Guararapes", "peso": 200}
+    "JPA": {"cidade": "João Pessoa", "curto": "J. Pessoa", "google": "Jo[aã]o Pessoa|Castro Pinto", "peso": 200},
+    "REC": {"cidade": "Recife", "curto": "Recife", "google": "Recife|Guararapes", "peso": 400, "ultimo_caso": true}
   },
 
   "_limites": "Só voo direto ou com 1 conexão. escala_max = minutos de espera na conexão (Google). duracao_max = minutos da viagem inteira (vendedores, que não mostram a espera). Mossoró tem limites próprios, acima.",

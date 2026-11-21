@@ -382,7 +382,9 @@ def montar_topo(alertas, mudancas, primeira, ts, nomes):
 
 
 def montar_rodape(scan, v):
-    partes = ['⭐ = melhor opção pela ordem ' + ', '.join(lugar(c, v) for c in v['volta_origens'])]
+    ultimos = [c for c in v['volta_origens'] if v['aeroportos'][c].get('ultimo_caso')]
+    partes = ['⭐ = melhor opção pela ordem ' + ', '.join(lugar(c, v) for c in v['volta_origens'] if c not in ultimos)
+              + (f"; {' e '.join(lugar(c, v) for c in ultimos)} só em último caso" if ultimos else '')]
     m = scan.get('mossoro') or {}
     if m.get('buscas') and not m.get('voos'):
         partes.append('Mossoró: nenhum voo à venda')
@@ -420,7 +422,7 @@ def _opcao(o):
 
 def linhas_do_painel(scan, v, ts, agora, alerta):
     rows = [{'tipo': 'resumo', 'versao': 2, 'quando': agora, 'alerta': alerta, 'ordem': v['volta_origens'], 'sp': v['sp'],
-             'aeroportos': {c: {'curto': a['curto'], 'selo': a.get('selo')} for c, a in v['aeroportos'].items()},
+             'aeroportos': {c: {'curto': a['curto'], 'selo': a.get('selo'), 'ultimo_caso': bool(a.get('ultimo_caso'))} for c, a in v['aeroportos'].items()},
              'fontes': scan.get('fontes'), 'mossoro': scan.get('mossoro'), 'taxa_mala': scan.get('taxa_mala'),
              'grupos': [{'id': g['id'], 'rotulo': g['rotulo'], 'emoji': g.get('emoji', ''), 'assentos': g['assentos']} for g in v['grupos']]}]
     for t in ts:
@@ -614,7 +616,7 @@ def _teste_registro():
                 '🎯 Voo já comprado (Gol 1678, ter 22/12 14h05): sem lugar à venda nesta busca\n'
                 '<u>Volta · 07 a 12/01</u>\n⭐ <b>R$540</b> por pessoa · seg 11/01 · LATAM, direto\n└ 03h20 Juazeiro → 06h50 Guarulhos · MaxMilhas\n'
                 '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total\n\n') in msg, msg
-        assert msg.endswith('<i>⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa, Recife · Mossoró: nenhum voo à venda · '
+        assert msg.endswith('<i>⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · '
                             '🧳 mala de 23 kg: +R$93 a R$136 por trecho · 123milhas não respondeu</i>'), msg[-260:]
         assert len(msg) < 2600, len(msg)
         assert [[x['text'] for x in l] for l in bt] == [['👩 Volta 20/01 · R$612'], ['🧍 Volta depois 09/02 · R$389'], ['🧑 Ida dez 29/12 · R$1.180', '🧑 Ida jan 06/01 · R$690'],

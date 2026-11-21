@@ -136,7 +136,9 @@
   dash.draw('rodape', (el) => {
     const r = resumo();
     if (!r) { el.textContent = ''; return; }
-    const partes = ['⭐ = a mais barata levando em conta a ordem de preferência: ' + r.ordem.map(lugar).join(', ') + '.',
+    const ultimos = r.ordem.filter((c) => (r.aeroportos[c] || {}).ultimo_caso);
+    const partes = ['⭐ = a mais barata levando em conta a ordem de preferência: ' + r.ordem.filter((c) => !ultimos.includes(c)).map(lugar).join(', ')
+      + (ultimos.length ? `; ${ultimos.map(lugar).join(' e ')} só em último caso.` : '.'),
       'Na tabela, negrito é preço confirmado na tela de compra; cinza é o preço da lista do Google, que pode mudar.'];
     if (r.mossoro && r.mossoro.buscas && !r.mossoro.voos) partes.push('Mossoró: nenhum voo à venda nas datas buscadas.');
     const mala = Object.entries(r.taxa_mala || {});

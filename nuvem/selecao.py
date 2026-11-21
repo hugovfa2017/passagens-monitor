@@ -33,6 +33,11 @@ def peso(x, v, t):
     return total - (v['comprado'].get('bonus', 0) if t.get('voo_comprado') and eh_comprado(x, v) else 0)
 
 
+def ultimo_caso(x, v):
+    """Aeroporto que só serve quando não há outro (viagem.json: ultimo_caso)."""
+    return bool(v['aeroportos'][nordeste(x, v)].get('ultimo_caso'))
+
+
 def do_trecho(itens, t):
     """Os voos ou ofertas que servem a um trecho: mesmo sentido, data na janela, mesmos lugares."""
     return [x for x in itens if x['sentido'] == t['sentido'] and x['pax'] == t['pax'] and x['d'] in t['datas']]
@@ -80,6 +85,10 @@ def chaves_lupa(lista, v, t):
     c = v['comprado']
     if t.get('voo_comprado') and c['d'] in t['datas'] and (c['d'], c['dest']) not in saida:
         saida.append((c['d'], c['dest']))
+    # por último (é o que sai primeiro se o tempo acabar): a mais barata de todas, para a mensagem poder comparar
+    barata = min(ordenados, key=lambda x: (x['lista_pp'], x['d'], x['saida']), default=None)
+    if barata and (barata['d'], nordeste(barata, v)) not in saida:
+        saida.append((barata['d'], nordeste(barata, v)))
     return saida
 
 
@@ -101,9 +110,11 @@ def recomendar(ofertas, v, t, anterior=None):
     if not meus:
         return {'recomendada': None, 'mais_barata': None}
     ajustado = lambda o: o['pp'] + peso(o, v, t)
-    rec = min(meus, key=lambda o: (ajustado(o), o['d'], o['saida']))
+    # aeroporto de último caso só concorre a recomendada quando é o único com preço; como "mais barata" ele aparece sempre
+    concorrem = [o for o in meus if not ultimo_caso(o, v)] or meus
+    rec = min(concorrem, key=lambda o: (ajustado(o), o['d'], o['saida']))
     if anterior:
-        fica = next((o for o in meus if ident(o) == tuple(anterior)), None)
+        fica = next((o for o in concorrem if ident(o) == tuple(anterior)), None)
         if fica and ajustado(fica) - ajustado(rec) <= 15:
             rec = fica
     barata = min(meus, key=lambda o: (o['pp'], o['d'], o['saida']))
@@ -127,7 +138,7 @@ def pacotes(series, grupo):
 def _teste():
     v = {'sp': ['GRU', 'CGH', 'VCP'],
          'aeroportos': {'GRU': {}, 'CGH': {}, 'VCP': {'peso': 60}, 'FOR': {'peso': 0}, 'MVF': {'peso': 40}, 'JDO': {'peso': 80},
-                        'NAT': {'peso': 120}, 'JPA': {'peso': 160}, 'REC': {'peso': 200}},
+                        'NAT': {'peso': 120}, 'JPA': {'peso': 200}, 'REC': {'peso': 400, 'ultimo_caso': True}},
          'comprado': {'d': '2026-12-22', 'saida': '14:05', 'cia': 'Gol', 'orig': 'GRU', 'dest': 'NAT', 'voo': 'G3 1678', 'bonus': 150},
          'selecao': {'validar_por_trecho': 3, 'lupa_por_trecho': 2, 'margem_mais_barata': 30}}
     volta = {'serie': 'v.volta', 'sentido': 'volta', 'pax': 1, 'datas': ['2027-01-19', '2027-01-20'], 'voo_comprado': False}
@@ -139,7 +150,7 @@ def _teste():
 
     # ---- peso: Fortaleza 0, Recife 200, Campinas +60; o voo comprado ganha o bônus só no trecho que pede
     assert peso(voo('2027-01-19', 'FOR', 'GRU', '10:00', 1), v, volta) == 0
-    assert peso(voo('2027-01-19', 'REC', 'VCP', '10:00', 1), v, volta) == 260
+    assert peso(voo('2027-01-19', 'REC', 'VCP', '10:00', 1), v, volta) == 460
     comprado = voo('2026-12-22', 'GRU', 'NAT', '14:05', 1650, pax=2, sentido='ida')
     assert eh_comprado(comprado, v) and peso(comprado, v, ida) == 120 - 150 and peso(comprado, v, volta) == 120
     assert not eh_comprado(voo('2026-12-22', 'CGH', 'NAT', '14:05', 1, sentido='ida'), v)
@@ -148,11 +159,11 @@ def _teste():
     lista = [voo('2027-01-19', 'REC', 'CGH', '03:00', 400), voo('2027-01-19', 'FOR', 'GRU', '12:50', 520), voo('2027-01-20', 'FOR', 'GRU', '06:00', 540),
              voo('2027-01-20', 'JDO', 'GRU', '09:00', 700), voo('2027-01-21', 'FOR', 'GRU', '06:00', 100),      # fora da janela
              voo('2027-01-19', 'FOR', 'GRU', '12:50', 500, pax=2)]                                               # outros lugares
-    # um voo por aeroporto: Fortaleza (520) e Recife (400 + 200 de peso); Recife é também o mais barato de todos
+    # um voo por aeroporto: Fortaleza (520) e Juazeiro (700 + 80 de peso); Recife (400 + 400) entra por ser o mais barato de todos
     c = candidatos(lista, v, volta)
-    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('REC', '03:00')], c
-    c = candidatos(lista, v, volta, anterior=('2027-01-20', 'Gol', 'JDO', 'GRU', '09:00'))
-    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('REC', '03:00'), ('JDO', '09:00')], c
+    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('JDO', '09:00'), ('REC', '03:00')], c
+    c = candidatos(lista, v, volta, anterior=('2027-01-20', 'Gol', 'FOR', 'GRU', '06:00'))
+    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('JDO', '09:00'), ('REC', '03:00'), ('FOR', '06:00')], c
     # só um aeroporto na lista: completa com o próximo voo da ordem
     so_for = [x for x in lista if x['orig'] == 'FOR' and x['pax'] == 1]
     assert [x['saida'] for x in candidatos(so_for, v, volta)] == ['12:50', '06:00']
@@ -163,7 +174,8 @@ def _teste():
     # Fortaleza por Campinas (1.100 + 60) e Natal no voo comprado (1.650 + 120 - 150); o mais barato puro já está na lista
     assert [(x['orig'], x['dest'], x['saida']) for x in c] == [('VCP', 'FOR', '09:00'), ('GRU', 'NAT', '14:05')], c
     # vendedores: a melhor data de cada aeroporto; o voo já comprado entra sempre, mesmo que não esteja entre os melhores
-    assert chaves_lupa(lista, v, volta) == [('2027-01-19', 'FOR'), ('2027-01-19', 'REC')]
+    # (a mais barata de todas vai por último: Recife, para a mensagem poder mostrar a diferença)
+    assert chaves_lupa(lista, v, volta) == [('2027-01-19', 'FOR'), ('2027-01-20', 'JDO'), ('2027-01-19', 'REC')]
     assert chaves_lupa(lista_ida, v, ida) == [('2026-12-23', 'FOR'), ('2026-12-22', 'NAT')]
     assert chaves_lupa(lista_ida[1:], v, ida) == [('2026-12-23', 'FOR'), ('2026-12-22', 'FOR'), ('2026-12-22', 'NAT')]
     assert chaves_lupa(lista_ida[1:], v, {**ida, 'voo_comprado': False}) == [('2026-12-23', 'FOR'), ('2026-12-22', 'FOR')]
@@ -174,9 +186,15 @@ def _teste():
     r = recomendar(ofertas, v, volta)
     assert (r['recomendada']['orig'], r['recomendada']['pp'], r['recomendada']['vend']) == ('FOR', 505, 'MaxMilhas'), r
     assert (r['mais_barata']['orig'], r['mais_barata']['pp']) == ('REC', 400)
-    # Recife barato o bastante para vencer o peso: vira a recomendada e não há "mais barata"
-    r = recomendar([voo('2027-01-19', 'REC', 'CGH', '03:00', 290), *ofertas[1:]], v, volta)
-    assert r['recomendada']['orig'] == 'REC' and r['mais_barata'] is None
+    # Recife é o último caso: por mais barato que esteja, não vira a recomendada enquanto outro aeroporto tiver preço...
+    r = recomendar([voo('2027-01-19', 'REC', 'CGH', '03:00', 90), *ofertas[1:]], v, volta)
+    assert r['recomendada']['orig'] == 'FOR' and (r['mais_barata']['orig'], r['mais_barata']['pp']) == ('REC', 90)
+    # ...e só é recomendado quando é o único com preço conferido
+    r = recomendar([voo('2027-01-19', 'REC', 'CGH', '03:00', 290), voo('2027-01-20', 'REC', 'CGH', '08:00', 310)], v, volta)
+    assert (r['recomendada']['orig'], r['recomendada']['pp']) == ('REC', 290) and r['mais_barata'] is None
+    # Juazeiro barato o bastante para vencer o peso de R$80: vira a recomendada e não há "mais barata"
+    r = recomendar([voo('2027-01-20', 'JDO', 'GRU', '09:00', 400), *ofertas[1:3]], v, volta)
+    assert r['recomendada']['orig'] == 'JDO' and r['mais_barata'] is None
     # diferença pequena para a mais barata: não polui a mensagem
     r = recomendar([voo('2027-01-19', 'FOR', 'GRU', '12:50', 505), voo('2027-01-20', 'JDO', 'GRU', '09:00', 480)], v, volta)
     assert r['recomendada']['orig'] == 'FOR' and r['mais_barata'] is None
