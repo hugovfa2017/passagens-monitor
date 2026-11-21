@@ -543,6 +543,21 @@ PAINEL_BOTAO = [{'text': '📊 Abrir o painel do PS5', 'url': PAINEL_URL}]
 
 
 # ---------------------------------------------------------------- alertas e estado
+def cacador(agora):
+    """Modo caçador ligado? (até config.CACADOR_ATE, exclusiva, no fuso de agora)"""
+    return bool(config.CACADOR_ATE) and agora.date() < config.CACADOR_ATE
+
+
+def guarda_min(agora):
+    """Minutos que o workflow espera desde a última rodada: 7 no modo caçador (gatilho de 10 min), 25 fora dele (rodada de 30 em 30)."""
+    return 7 if cacador(agora) else 25
+
+
+def limite(m):
+    """Preço que faz um modelo tocar: o alvo dele ou config.AVISAR_ABAIXO, o que for maior."""
+    return max(config.ALVOS.get(m, 0), config.AVISAR_ABAIXO or 0)
+
+
 def decidir_alertas(resumo, estado, agora):
     """Com som: melhor preço confirmado abaixo do alvo ou menor já visto. Sem som: oferta de grupo ainda não confirmada.
     Não repete a mesma oferta (mesma loja, mesmo preço) por 24 h. Oferta só vista em post antigo não toca nem vira recorde."""
@@ -559,6 +574,8 @@ def decidir_alertas(resumo, estado, agora):
             if m in config.MODELOS_COM_ALERTA and not velha and not recente(o['chave']):
                 if o['preco'] <= config.ALVOS.get(m, 0):
                     motivo = f"abaixo do alvo de {brl(config.ALVOS[m])}"
+                elif o['preco'] <= (config.AVISAR_ABAIXO or 0):
+                    motivo = f"abaixo de {brl(config.AVISAR_ABAIXO)}"
                 elif recorde and o['preco'] <= recorde['preco'] - config.QUEDA_MINIMA:
                     motivo = f"menor preço já visto (antes: {brl(recorde['preco'])} em {dia_mes(recorde['quando'])})"
             if motivo:
@@ -569,9 +586,10 @@ def decidir_alertas(resumo, estado, agora):
                                       'cupom': o['cupom'], 'titulo': o['titulo'], 'link': o['link']}
         d = r.get('nao_confirmada')
         if d and m in config.MODELOS_COM_ALERTA and (d.get('idade_h') or 0) <= 3 and not recente('nc|' + d['chave']) \
-                and (d['preco'] <= config.ALVOS.get(m, 0) or (o and d['preco'] <= o['preco'] - 150)):
+                and (d['preco'] <= limite(m) or (o and d['preco'] <= o['preco'] - 150)):
             alertas.append({'modelo': m, 'motivo': 'oferta de grupo ainda NÃO confirmada (confira antes de se animar)', 'oferta': d,
-                            'som': False})
+                            'som': cacador(agora) and d['preco'] <= limite(m)
+                                   and 'o post não diz o modelo' not in (d.get('ressalvas') or [])})
             ja['nc|' + d['chave']] = agora.isoformat(timespec='seconds')
     estado['alertados'] = {k: v for k, v in ja.items() if agora - datetime.fromisoformat(v) < timedelta(days=7)}
     return alertas
@@ -784,6 +802,9 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
 # ---------------------------------------------------------------- auto-checagem
 def _teste():
     import tempfile
+    # a auto-checagem não depende dos valores que o dono ajusta no config.py (alvos, aviso)
+    config.ALVOS = {'leitor': 3799, 'digital': 3499, 'pro': 6299}
+    config.AVISAR_ABAIXO = None
     casos = [
         ('Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital', 4364, 'digital'),
         ('Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB, Controle Sem Fio DualSense + 2 Jogos Digitais', 5114, 'leitor'),
@@ -1022,20 +1043,30 @@ def _teste():
         d = rodar(coleta(cupom_shopee=3450), cupons, enviar, pasta, agora + timedelta(hours=2))
         assert not d['alertas'] and not enviadas
 
-        # 4ª: Pro cai R$100 (recorde, acima do alvo) -> alerta de menor preço
-        def coleta_pro():
-            ofs, sit = coleta(cupom_shopee=3450)()
-            return [dict(o, preco=7299) if '636960' in o.get('id', '') else o for o in ofs if o.get('id') != 'zoom-1'], sit
-        d = rodar(coleta_pro, cupons, enviar, pasta, agora + timedelta(hours=3))
+        # 4ª: Pro cai R$100 (recorde, acima do alvo) -> alerta de menor preço (com o Pro ligado nos alertas)
+        def coleta_pro(preco):
+            def c():
+                ofs, sit = coleta(cupom_shopee=3450)()
+                return [dict(o, preco=preco) if '636960' in o.get('id', '') else o for o in ofs if o.get('id') != 'zoom-1'], sit
+            return c
+        com_alerta = config.MODELOS_COM_ALERTA
+        try:
+            config.MODELOS_COM_ALERTA = com_alerta + ['pro']
+            d = rodar(coleta_pro(7299), cupons, enviar, pasta, agora + timedelta(hours=3))
+        finally:
+            config.MODELOS_COM_ALERTA = com_alerta
         assert [a['modelo'] for a in d['alertas']] == ['pro'] and 'menor preço' in d['alertas'][0]['motivo'], d['alertas']
+        # com a configuração do dono (Pro fora do orçamento), novo recorde do Pro não toca
+        d = rodar(coleta_pro(7199), cupons, enviar, pasta, agora + timedelta(hours=4))
+        assert not d['alertas'], d['alertas']
 
         # dia seguinte, 9h: resumo diário sem som
         enviadas.clear()
         rodar(coleta(cupom_shopee=3450), cupons, enviar, pasta, agora + timedelta(hours=23))
         assert len(enviadas) == 1 and enviadas[0][1] and enviadas[0][0].startswith('🏆 <b>R$ 3.450 · PS5 Digital</b>'), enviadas
-        assert '📉 recorde R$ 7.299 em ' in enviadas[0][0] and '🎯 alvo R$ 3.799 (faltam R$ 732)' in enviadas[0][0], enviadas[0][0]
+        assert '📉 recorde R$ 7.199 em ' in enviadas[0][0] and '🎯 alvo R$ 3.799 (faltam R$ 732)' in enviadas[0][0], enviadas[0][0]
         with open(os.path.join(pasta, 'historico.csv')) as f:
-            assert len(f.read().strip().splitlines()) == 6
+            assert len(f.read().strip().splitlines()) == 7   # uma linha a mais: a rodada do Pro fora dos alertas
 
     # ---- grupos do Telegram: um canal sozinho não confirma; dois canais independentes confirmam e tocam uma vez
     with tempfile.TemporaryDirectory() as pasta:
@@ -1048,7 +1079,8 @@ def _teste():
         lei = d['modelos'][0]
         assert lei['melhor']['preco'] == 4530.55 and lei['nao_confirmada']['preco'] == 3700 and lei['nao_confirmada']['confianca'] == 'C'
         assert lei['nao_confirmada']['n_vistos'] == 2, 'o post sem loja entra no mesmo grupo'
-        assert [(a['modelo'], a['som']) for a in d['alertas']] == [('leitor', False)] and enviadas[-1][1], 'não confirmada: só aviso sem som'
+        # modo caçador (até config.CACADOR_ATE): não confirmada abaixo do alvo toca com som
+        assert [(a['modelo'], a['som']) for a in d['alertas']] == [('leitor', True)] and not enviadas[-1][1], 'caçador: não confirmada toca'
         dois = so_um + [grupo('jogobarato', 'Mercado Livre', leitor, 3700, 55, cupom='MP500PS', cupom_origem='postado')]
         enviadas.clear()
         d = rodar(coleta(extras=dois), cupons, enviar, pasta, agora + timedelta(hours=1, minutes=30))
@@ -1063,11 +1095,49 @@ def _teste():
                  grupo('xet', 'Shopee', 'Console PlayStation 5 Slim Digital', 1999, 62), grupo('cj', 'Shopee', 'Console PlayStation 5 Slim Digital', 1999, 63)]
         d = rodar(coleta(extras=vagos), cupons, enviar, pasta, agora + timedelta(hours=2, minutes=10))
         assert all(o['confianca'] == 'C' for m in d['modelos'] for o in m['ofertas'] if o['preco'] in (3600, 1999))
+        # caçador: post que não diz o modelo ("PS5 Slim") não toca com som, só chega como aviso
+        vago = lambda a: 'o post não diz o modelo' in (a['oferta'].get('ressalvas') or [])
+        assert any(vago(a) and not a['som'] for a in d['alertas']) and not any(vago(a) and a['som'] for a in d['alertas']), d['alertas']
         # estado antigo (chave 'promobit') ainda carrega
         gravar_json(os.path.join(pasta, 'estado.json'), {'promobit': {'promobit-9': of('Promobit', 'Havan', 'PlayStation 5 Slim Digital 825GB',
                     3799.99, 'promobit-9', publicado='2026-11-13T09:00:00-0300')}, 'resumo_dia': '2026-11-13'})
         d = rodar(lambda: ([], {}), cupons, enviar, pasta, agora + timedelta(hours=3))
         assert d['modelos'][1]['melhor']['preco'] == 3799.99 and 'pode ter acabado' in d['modelos'][1]['melhor']['obs']
+
+    # ---- aviso abaixo de um preço fixo (config.AVISAR_ABAIXO), além do alvo de cada modelo
+    def oferta_t(preco, tipo='loja', **kw):
+        return {'preco': preco, 'tipo': tipo, 'chave': f'k{preco}', 'loja': 'X', 'cupom': None, 'titulo': 't', 'link': 'l',
+                'idade_h': 0, 'ressalvas': [], **kw}
+    alvos = config.ALVOS
+    try:
+        config.ALVOS, config.AVISAR_ABAIXO = {'digital': 3299, 'leitor': 3699}, 3600
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3550), 'nao_confirmada': None}}, {}, agora)
+        assert [(x['modelo'], x['som']) for x in a] == [('digital', True)] and 'abaixo de R$ 3.600' in a[0]['motivo'], a
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3250), 'nao_confirmada': None}}, {}, agora)
+        assert 'abaixo do alvo de R$ 3.299' in a[0]['motivo'], a
+        assert not decidir_alertas({'digital': {'melhor': oferta_t(3650), 'nao_confirmada': None}}, {}, agora)
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3905), 'nao_confirmada': oferta_t(3550, 'grupo')}}, {}, agora)
+        assert [(x['modelo'], x['som']) for x in a] == [('digital', True)] and 'NÃO confirmada' in a[0]['motivo'], a
+        config.AVISAR_ABAIXO = None   # desligado: só o alvo vale
+        assert not decidir_alertas({'digital': {'melhor': oferta_t(3550), 'nao_confirmada': None}}, {}, agora)
+    finally:
+        config.ALVOS, config.AVISAR_ABAIXO = alvos, None
+
+    # ---- fora do modo caçador: a mesma não confirmada volta a chegar sem som; guarda do workflow de 7 para 25 min
+    assert cacador(datetime(2026, 11, 30, 23, 59, tzinfo=fontes.BRT)) and not cacador(datetime(2026, 12, 1, 0, 0, tzinfo=fontes.BRT))
+    assert guarda_min(datetime(2026, 11, 27, tzinfo=fontes.BRT)) == 7 and guarda_min(datetime(2026, 12, 2, tzinfo=fontes.BRT)) == 25
+    ate = config.CACADOR_ATE
+    try:
+        config.CACADOR_ATE = None   # desligado no config.py: sem modo caçador, sem erro
+        assert not cacador(agora) and guarda_min(agora) == 25
+        config.CACADOR_ATE = datetime(2026, 11, 1).date()
+        with tempfile.TemporaryDirectory() as pasta:
+            rodar(coleta(), cupons, enviar, pasta, agora)
+            enviadas.clear()
+            d = rodar(coleta(extras=so_um), cupons, enviar, pasta, agora + timedelta(hours=1))
+            assert [(a['modelo'], a['som']) for a in d['alertas']] == [('leitor', False)] and enviadas[-1][1], 'fora do caçador: sem som'
+    finally:
+        config.CACADOR_ATE = ate
 
     # ---- Telegram: só o bot do PS5; sem o segredo dele, nada é enviado (nem pelo bot das passagens)
     amb = dict(os.environ)

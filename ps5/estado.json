@@ -15,7 +15,7 @@
    "ressalvas": [],
    "id": "promobit-3236153",
    "publicado": "2026-11-20T16:58:03-0300",
-   "idade_h": 3.5
+   "idade_h": 6.5
   },
   "promobit-3236134": {
    "fonte": "Promobit",
@@ -49,7 +49,7 @@
    "ressalvas": [],
    "id": "promobit-3236025",
    "publicado": "2026-11-20T16:28:12-0300",
-   "idade_h": 4.0
+   "idade_h": 7.0
   },
   "promobit-3236020": {
    "fonte": "Promobit",
@@ -83,7 +83,7 @@
    "ressalvas": [],
    "id": "promobit-3235866",
    "publicado": "2026-11-20T15:35:37-0300",
-   "idade_h": 4.9
+   "idade_h": 7.9
   },
   "promobit-3235921": {
    "fonte": "Promobit",
@@ -100,7 +100,7 @@
    "ressalvas": [],
    "id": "promobit-3235921",
    "publicado": "2026-11-20T15:51:30-0300",
-   "idade_h": 2.9
+   "idade_h": 7.6
   },
   "promobit-3235890": {
    "fonte": "Promobit",
@@ -168,7 +168,7 @@
    "ressalvas": [],
    "id": "promobit-3235869",
    "publicado": "2026-11-20T15:36:35-0300",
-   "idade_h": 4.9
+   "idade_h": 7.9
   },
   "promobit-3235862": {
    "fonte": "Promobit",
@@ -185,7 +185,7 @@
    "ressalvas": [],
    "id": "promobit-3235862",
    "publicado": "2026-11-20T15:34:26-0300",
-   "idade_h": 4.9
+   "idade_h": 7.9
   },
   "promobit-3235812": {
    "fonte": "Promobit",
@@ -204,84 +204,6 @@
    "publicado": "2026-11-20T15:23:09-0300",
    "idade_h": 1.9
   },
-  "tg-jogobarato/110230-0": {
-   "fonte": "Telegram",
-   "loja": "Amazon",
-   "titulo": "Bundle Console PlayStation 5 Slim + 2 Jogos — Modelo sem leitor",
-   "preco": 3999.9,
-   "link": "https://t.me/jogobarato/110230",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [
-    "parcelado"
-   ],
-   "id": "tg-jogobarato/110230-0",
-   "publicado": "2026-11-20T09:22:51-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 11.1
-  },
-  "tg-jogobarato/110230-1": {
-   "fonte": "Telegram",
-   "loja": "Amazon",
-   "titulo": "Bundle Console PlayStation 5 Slim + 2 Jogos — Modelo com leitor",
-   "preco": 4274.9,
-   "link": "https://t.me/jogobarato/110230",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [],
-   "id": "tg-jogobarato/110230-1",
-   "publicado": "2026-11-20T09:22:51-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 11.1
-  },
-  "tg-jogobarato/110256-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Bundle Console PlayStation 5 Slim + ASTRO BOT + Gran Turismo 7 — Modelo Digital",
-   "preco": 3905.07,
-   "link": "https://t.me/jogobarato/110256",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": "JOGAMUITO",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [],
-   "id": "tg-jogobarato/110256-0",
-   "publicado": "2026-11-20T11:18:10-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 9.2
-  },
-  "tg-jogobarato/110256-1": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Bundle Console PlayStation 5 Slim + ASTRO BOT + Gran Turismo 7 — Modelo com Leitor",
-   "preco": 4463.07,
-   "link": "https://t.me/jogobarato/110256",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": "JOGAMUITO",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [],
-   "id": "tg-jogobarato/110256-1",
-   "publicado": "2026-11-20T11:18:10-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 9.2
-  },
   "tg-jogobarato/110305-0": {
    "fonte": "Telegram",
    "loja": "KaBuM!",
@@ -299,7 +221,7 @@
    "publicado": "2026-11-20T16:28:37-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.0
+   "idade_h": 7.0
   },
   "tg-meups4/55591-0": {
    "fonte": "Telegram",
@@ -318,7 +240,7 @@
    "publicado": "2026-11-20T16:03:22-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 4.4
+   "idade_h": 7.5
   },
   "tg-pechinchou/239200-0": {
    "fonte": "Telegram",
@@ -337,7 +259,7 @@
    "publicado": "2026-11-20T13:22:04-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 7.1
+   "idade_h": 10.1
   },
   "tg-pechinchou/239244-0": {
    "fonte": "Telegram",
@@ -356,7 +278,7 @@
    "publicado": "2026-11-20T16:32:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 3.9
+   "idade_h": 7.0
   },
   "tg-xetdaspromocoes/94379-0": {
    "fonte": "Telegram",
@@ -375,7 +297,7 @@
    "publicado": "2026-11-20T14:11:26-0300",
    "canal": "Xet das Promoções",
    "preco_de": null,
-   "idade_h": 6.3
+   "idade_h": 9.3
   },
   "tg-nerdofertas/154060-0": {
    "fonte": "Telegram",
@@ -394,7 +316,7 @@
    "publicado": "2026-11-20T16:22:43-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 4.1
+   "idade_h": 7.1
   },
   "tg-superofertasbr/13834-0": {
    "fonte": "Telegram",
@@ -413,7 +335,7 @@
    "publicado": "2026-11-20T16:22:46-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 4.1
+   "idade_h": 7.1
   },
   "promobit-3236456": {
    "fonte": "Promobit",
@@ -430,7 +352,7 @@
    "ressalvas": [],
    "id": "promobit-3236456",
    "publicado": "2026-11-20T18:18:04-0300",
-   "idade_h": 2.2
+   "idade_h": 5.2
   },
   "promobit-3236315": {
    "fonte": "Promobit",
@@ -447,7 +369,7 @@
    "ressalvas": [],
    "id": "promobit-3236315",
    "publicado": "2026-11-20T17:46:08-0300",
-   "idade_h": 2.7
+   "idade_h": 5.7
   },
   "promobit-3236228": {
    "fonte": "Promobit",
@@ -464,7 +386,7 @@
    "ressalvas": [],
    "id": "promobit-3236228",
    "publicado": "2026-11-20T17:24:09-0300",
-   "idade_h": 3.1
+   "idade_h": 6.1
   },
   "promobit-3236541": {
    "fonte": "Promobit",
@@ -481,7 +403,7 @@
    "ressalvas": [],
    "id": "promobit-3236541",
    "publicado": "2026-11-20T18:39:19-0300",
-   "idade_h": 1.8
+   "idade_h": 2.6
   },
   "promobit-3236618": {
    "fonte": "Promobit",
@@ -498,7 +420,7 @@
    "ressalvas": [],
    "id": "promobit-3236618",
    "publicado": "2026-11-20T19:10:05-0300",
-   "idade_h": 1.3
+   "idade_h": 4.3
   },
   "promobit-3236619": {
    "fonte": "Promobit",
@@ -515,7 +437,7 @@
    "ressalvas": [],
    "id": "promobit-3236619",
    "publicado": "2026-11-20T19:10:07-0300",
-   "idade_h": 1.3
+   "idade_h": 4.3
   },
   "promobit-3236565": {
    "fonte": "Promobit",
@@ -532,7 +454,7 @@
    "ressalvas": [],
    "id": "promobit-3236565",
    "publicado": "2026-11-20T18:48:05-0300",
-   "idade_h": 1.7
+   "idade_h": 2.5
   },
   "tg-cupons_desconto/84689-0": {
    "fonte": "Telegram",
@@ -551,7 +473,24 @@
    "publicado": "2026-11-20T19:40:17-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 0.8
+   "idade_h": 3.8
+  },
+  "promobit-3236887": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Silent Hill 2 PS5 Midia Fisica",
+   "preco": 175.98,
+   "link": "https://www.promobit.com.br/oferta/silent-hill-2-ps5-midia-fisica-3236887/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "INFLUNOAPP",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3236887",
+   "publicado": "2026-11-20T21:12:11-0300",
+   "idade_h": 2.3
   }
  },
  "alertados": {},
@@ -589,8 +528,8 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 10,
-   "ja_funcionou": false
+   "falhas": 1,
+   "ja_funcionou": true
   },
   "Americanas": {
    "falhas": 0,
@@ -629,7 +568,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-20T20:29:06-03:00",
+ "ultima": "2026-11-20T23:30:24-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }

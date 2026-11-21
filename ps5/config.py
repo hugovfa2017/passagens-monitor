@@ -1,13 +1,17 @@
 """Ajustes do buscador do PS5. Dá para editar direto no GitHub (lápis no canto do arquivo) e salvar: vale na próxima rodada."""
+from datetime import date
 
 # Alerta com som no Telegram quando o melhor preço confirmado de um modelo ficar igual ou abaixo destes valores.
 # Referência em 20/11/2026: Digital ~R$3.900 (já houve R$3.578 na Shopee e R$3.759 no Mercado Livre com cupom);
 # com leitor ~R$4.275 (já houve R$3.644 na Vivo); Pro ~R$7.700.
 ALVOS = {
-    'leitor': 3799,    # PS5 com leitor de disco (mídia física), Slim ou Standard
-    'digital': 3499,   # PS5 Edição Digital
+    'leitor': 3699,    # PS5 com leitor de disco (mídia física), Slim ou Standard
+    'digital': 3299,   # PS5 Edição Digital (Black Friday 2026: ~28% abaixo do sugerido de R$ 4.599,90)
     'pro': 6299,       # PS5 Pro
 }
+
+# Avisa (com som) qualquer console novo igual ou abaixo deste preço, mesmo acima do alvo. None desliga.
+AVISAR_ABAIXO = 3600
 
 # Também avisa (com som) quando aparecer o menor preço já visto de um modelo, se cair pelo menos isto abaixo do recorde.
 QUEDA_MINIMA = 50
@@ -16,7 +20,11 @@ QUEDA_MINIMA = 50
 ECONOMIA_MINIMA_CUPOM = 10
 
 # Modelos que podem disparar alerta (tire da lista o que não interessa; o painel continua mostrando todos).
-MODELOS_COM_ALERTA = ['leitor', 'digital', 'pro']
+MODELOS_COM_ALERTA = ['leitor', 'digital']   # Pro fora do orçamento (20/11/2026)
+
+# Modo caçador (Black Friday): até esta data (exclusiva), oferta de grupo ainda não confirmada que esteja no alvo toca com
+# som, e o workflow roda de 10 em 10 minutos (guarda de 7 min). Depois volta sozinho: sem som e uma rodada a cada 30 min.
+CACADOR_ATE = date(2026, 12, 1)   # None desliga na hora
 
 # Resumo diário, sem som, com o melhor preço de cada modelo (hora de Brasília). None desliga.
 RESUMO_DIARIO_HORA = 9
