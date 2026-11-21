@@ -10,6 +10,7 @@
 // Se o Google pedir verificação em qualquer quadro, tudo para ({bloqueio: ...}); não tentamos contornar.
 window.__gv = (() => {
   const BLOQUEIO = /unusual traffic|tráfego incomum|captcha|not a robot|Antes de continuar|Before you continue/i;
+  const FALHOU = /Algo deu errado|não está mais disponível/;
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   let parou = null;
   const rotulos = doc => [...doc.querySelectorAll('[aria-label^="A partir de"]')].map(e => e.getAttribute('aria-label'));
@@ -64,7 +65,8 @@ window.__gv = (() => {
       if (i >= 2 && BLOQUEIO.test(texto.slice(0, 3000))) { parou = texto.slice(0, 200); return { bloqueio: parou }; }
       n = (texto.match(/Reserve com a /g) || []).length;
       if (n && n === antes) break;
-      if (!n && i >= 14) break;   // 15 segundos sem nenhum vendedor: a tela não vai abrir
+      // sem vendedor nenhum: desiste logo se a página avisou que falhou; senão, depois de 15 segundos
+      if (!n && (i >= 14 || (i >= 2 && FALHOU.test(texto)))) break;
       antes = n;
     }
     const ini = texto.indexOf('Reserve com a ');
@@ -88,11 +90,18 @@ window.__gv = (() => {
   });
 
   // abre direto a tela de compra de voos exatos (endereço de gvoos.url_compra): outro número de lugares, ou ida e volta juntas
+  // (às vezes a tela responde "Algo deu errado" e abre normalmente na segunda vez: tenta até três)
   const comprar = (enderecos, paralelo) => fila(enderecos, paralelo, async u => {
-    const f = document.createElement('iframe');
-    f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
-    f.src = u; document.body.appendChild(f);
-    try { return await lerCompra(f); } finally { f.remove(); }
+    let r;
+    for (let tentativa = 0; tentativa < 3; tentativa++) {
+      const f = document.createElement('iframe');
+      f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
+      f.src = u; document.body.appendChild(f);
+      try { r = await lerCompra(f); } finally { f.remove(); }
+      if (parou || !r.erro || !/Algo deu errado/.test(r.inicio || '')) break;
+      await sleep(1500);
+    }
+    return r;
   });
 
   return { listar, validar, comprar, bloqueio: () => parou };

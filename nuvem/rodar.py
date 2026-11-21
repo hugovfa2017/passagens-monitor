@@ -4,6 +4,8 @@
 2. Conferência: os candidatos de cada trecho (nuvem/selecao.py) são abertos na tela de compra. Só esse preço vale.
 3. Lupa: MaxMilhas, 123milhas, Zupper, Viaza e Vai de Promo nas melhores (data, aeroporto) de cada trecho, com prazo.
 4. Escolha: a recomendada e a mais barata de cada trecho. O registrador (registrar.py) monta a mensagem por pessoa.
+5. Extras, depois da escolha: o voo recomendado com outro número de lugares (tela de compra do Google, aberta direto
+   pelo número do voo) e as duas recomendadas de cada cenário numa compra só de ida e volta (Zupper).
 
 Nada aqui tenta contornar bloqueio: se o Google pedir verificação, a rodada segue só com os vendedores.
 
@@ -26,6 +28,8 @@ GOOGLE = 'https://www.google.com/travel/flights?hl=pt-BR&gl=BR&curr=BRL'
 BLOQUEIO = r'unusual traffic|tráfego incomum|captcha|not a robot|Antes de continuar|Before you continue'
 PARALELO = 5              # buscas do Google abertas ao mesmo tempo
 PRAZO_LUPA_S = 300        # tempo máximo dos vendedores numa rodada; o que não couber fica para a próxima
+PRAZO_EXTRAS_S = 120      # lugares e ida e volta numa compra só: o que não couber não aparece na mensagem
+PARALELO_COMPRA = 3       # telas de compra abertas direto ao mesmo tempo (mais que isso, o Google responde "Algo deu errado")
 UM_POR_VEZ = ('123milhas', 'Zupper', 'Viaza', 'Vai de Promo')   # devolvem vazio se recebem várias buscas juntas
 
 
@@ -161,21 +165,103 @@ def montar(v, ts, lista, ofertas, estado, olhadas):
     return series
 
 
+def plano_dos_extras(v, ts, series):
+    """O que conferir depois da escolha das recomendadas. Devolve (telas, pares):
+    telas: [{serie, pax, n, url}] -> tela de compra do Google do voo recomendado com n lugares, para os trechos que
+           pedem (viagem.json: lugares); só dá para abrir quando o número do voo é conhecido;
+    pares: [{chave, pax, ida, volta}] -> as duas recomendadas de cada cenário dos grupos com ida_e_volta, para buscar
+           numa compra só. chave = 'grupo.cenário'."""
+    telas, pares = [], []
+    for t in ts:
+        rec = (series.get(t['serie']) or {}).get('recomendada')
+        if t['igual_a'] or not t['lugares'] or not rec or not rec.get('voos'):
+            continue
+        de, para = plano.aeroportos(v, t['sentido'])
+        telas += [{'serie': t['serie'], 'pax': t['pax'], 'n': n, 'url': gvoos.url_compra([(rec['d'], de, para, rec['voos'])], n)}
+                  for n in sorted({t['pax'], *t['lugares']})]
+    for g in v['grupos']:
+        if g.get('ida_e_volta'):
+            pares += [{'chave': f"{g['id']}.{p['id']}", 'pax': g['assentos'], 'ida': p['ida'], 'volta': p['volta']}
+                      for p in selecao.pacotes(selecao.com_apelidos(series, ts, g['id']), g)]
+    return telas, pares
+
+
+def lugares_lidos(telas, respostas):
+    """{serie: [{n, pp}]}: preço por pessoa do mesmo voo com cada número de lugares, sempre no mesmo vendedor, para a
+    diferença ser só dos lugares: o mais barato que conta entre os que aparecem em todas as telas lidas (em geral a
+    própria companhia); se nenhum aparece em todas, o mais barato da tela dos lugares do próprio trecho.
+    Sem a tela do próprio trecho, a série fica de fora."""
+    por_serie = {}
+    for t, r in zip(telas, respostas):
+        vend = gvoos.ler_compra((r or {}).get('texto') or '', t['n'])
+        if vend:
+            por_serie.setdefault(t['serie'], {'pax': t['pax'], 'telas': {}})['telas'][t['n']] = vend
+    saida = {}
+    for serie, x in por_serie.items():
+        base = x['telas'].get(x['pax']) or []
+        em_todas = set.intersection(*({q['vend'] for q in vend} for vend in x['telas'].values()))
+        escolhido = gvoos.melhor_vendedor([q for q in base if q['vend'] in em_todas]) or gvoos.melhor_vendedor(base)
+        if not escolhido:
+            continue
+        precos = [{'n': n, 'pp': next((q['pp'] for q in vend if q['vend'] == escolhido['vend']), None)} for n, vend in sorted(x['telas'].items())]
+        saida[serie] = [q for q in precos if q['pp']]
+    return saida
+
+
+def opcoes_juntas(par, achados):
+    """Opções de comprar ida e volta numa compra só (formato de selecao.juntas), a partir do que a Zupper devolveu para
+    as datas e os aeroportos do par (vendedores.buscar_iv): os mesmos voos do pacote, quando algum cartão os oferece, e
+    o par mais barato de todos (que pode ser em outros horários)."""
+    ida, volta = par['ida'], par['volta']
+    igual = lambda o, x: (o['cia'], o['orig'], o['dest'], o['saida']) == (x['cia'], x['orig'], x['dest'], x['saida'])
+    melhor = lambda ops: min(ops, key=lambda o: (not o['direto'], o['dur']))
+    perna = lambda o, x: {'sentido': x['sentido'], 'd': x['d'], 'pax': par['pax'], 'orig': o['orig'], 'dest': o['dest'], 'cia': o['cia'],
+                          'saida': o['saida'], 'chegada': o['chegada'], 'tipo': o['tipo'], 'voos': ''}
+
+    def opcao(c, mesmos):
+        i = ida if mesmos else next((perna(o, ida) for o in c['idas'] if igual(o, ida)), None) or perna(melhor(c['idas']), ida)
+        vt = volta if mesmos else next((perna(o, volta) for o in c['voltas'] if igual(o, volta)), None) or perna(melhor(c['voltas']), volta)
+        link = vendedores.url_zupper_iv(i['dest'], vt['orig'], i['d'], vt['d'], par['pax'], i['orig'], vt['dest'])
+        return {'pp': c['pp'], 'vend': c['vend'], 'link': link, 'ida': i, 'volta': vt}
+
+    iguais = [c for c in achados if any(igual(o, ida) for o in c['idas']) and any(igual(o, volta) for o in c['voltas'])]
+    saida = [opcao(min(iguais, key=lambda c: c['pp']), True)] if iguais else []
+    barato = min(achados, key=lambda c: c['pp'], default=None)
+    if barato and barato not in iguais:
+        saida.append(opcao(barato, False))
+    return saida
+
+
 # ---------------------------------------------------------------- etapas com navegador
-async def radar_e_conferencia(nav, v, ts, bs, estado):
-    """Google Voos: lista de cada busca e tela de compra dos candidatos. Devolve (lista, ofertas, resumo da fonte)."""
-    codigo = open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read()
+async def abrir_google(nav):
+    """Abre o Google Voos numa sessão nova. Devolve (sessão, página, texto do bloqueio ou None)."""
     ctx = await nav.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
     pg = await ctx.new_page()
-    info = {'buscas': len(bs), 'voos': 0, 'conferidos': 0, 'ofertas': 0, 'bloqueio': None}
     try:
         await pg.goto(GOOGLE, wait_until='domcontentloaded', timeout=60000)
         await pg.wait_for_timeout(3000)
         inicio = (await pg.inner_text('body'))[:3000]
         if re.search(BLOQUEIO, inicio, re.I):
-            info['bloqueio'] = inicio[:200].replace('\n', ' | ')
+            return ctx, pg, inicio[:200].replace('\n', ' | ')
+        await pg.evaluate(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
+        return ctx, pg, None
+    except Exception:
+        await ctx.close()
+        raise
+
+
+async def radar_e_conferencia(nav, v, ts, bs, estado):
+    """Google Voos: lista de cada busca e tela de compra dos candidatos. Devolve (lista, ofertas, resumo da fonte)."""
+    info = {'buscas': len(bs), 'voos': 0, 'conferidos': 0, 'ofertas': 0, 'bloqueio': None}
+    try:
+        ctx, pg, bloqueio = await abrir_google(nav)
+    except Exception as e:   # o Google nem abriu: a rodada segue com os vendedores
+        info['erro'] = f'{type(e).__name__}: {str(e)[:120]}'
+        return [], [], info
+    try:
+        if bloqueio:
+            info['bloqueio'] = bloqueio
             return [], [], info
-        await pg.evaluate(codigo)
         chamar = lambda fn, itens: asyncio.wait_for(pg.evaluate(f'(a) => window.__gv.{fn}(a.itens, a.paralelo)',
                                                                 {'itens': itens, 'paralelo': PARALELO}), timeout=600)
         respostas = await chamar('listar', [b['url'] for b in bs])
@@ -237,6 +323,53 @@ async def lupa(nav, fila, prazo_s=PRAZO_LUPA_S):
     return ofertas, fontes
 
 
+async def extras(nav, v, ts, series, google_ok, prazo_s=PRAZO_EXTRAS_S):
+    """Depois da escolha: lugares (Google) e ida e volta numa compra só (Zupper), ao mesmo tempo e com prazo.
+    Grava series[serie]['lugares'] e devolve ({chave do cenário: opções de compra junta}, resumo). Nada aqui derruba a rodada."""
+    telas, pares = plano_dos_extras(v, ts, series)
+    fim, juntas = time.monotonic() + prazo_s, {}
+    resumo = {'telas': len(telas), 'telas_lidas': 0, 'pares': len(pares), 'pares_lidos': 0}
+
+    async def lugares():
+        if not telas or not google_ok:
+            return
+        try:
+            ctx, pg, bloqueio = await abrir_google(nav)
+        except Exception as e:
+            resumo['erro_google'] = type(e).__name__
+            return
+        try:
+            if bloqueio:
+                resumo['bloqueio'] = bloqueio
+                return
+            respostas = await asyncio.wait_for(pg.evaluate('(a) => window.__gv.comprar(a.itens, a.paralelo)',
+                                                           {'itens': [t['url'] for t in telas], 'paralelo': PARALELO_COMPRA}), timeout=prazo_s)
+            resumo['telas_lidas'] = sum(1 for r in respostas if (r or {}).get('texto'))
+            for serie, precos in lugares_lidos(telas, respostas).items():
+                series[serie]['lugares'] = precos
+        except Exception as e:
+            resumo['erro_google'] = type(e).__name__
+        finally:
+            await ctx.close()
+
+    async def ida_e_volta():
+        sem = asyncio.Semaphore(1)
+        for par in pares:
+            if time.monotonic() > fim:
+                return
+            try:
+                achados = await vendedores.buscar_iv(nav, par['ida']['d'], par['volta']['d'], selecao.nordeste(par['ida'], v),
+                                                     selecao.nordeste(par['volta'], v), par['pax'], sem)
+            except Exception:
+                achados = []
+            resumo['pares_lidos'] += bool(achados)
+            juntas[par['chave']] = opcoes_juntas(par, achados)
+            await asyncio.sleep(2)
+
+    await asyncio.gather(lugares(), ida_e_volta())
+    return juntas, resumo
+
+
 async def varrer(v, estado, agora):
     """Uma rodada inteira. agora: datetime no fuso de Brasília. Devolve o scan (versão 2) para o registrador."""
     from playwright.async_api import async_playwright
@@ -266,14 +399,18 @@ async def varrer(v, estado, agora):
         fila = fila_da_lupa(lista, ts, v, estado, agora.hour)
         do_vendedor, fontes = await lupa(nav, fila)
         print(f'VENDEDORES: {len(fila)} chaves em {round(time.monotonic() - t0)}s |', json.dumps(fontes, ensure_ascii=False))
+        ofertas = completar_numeros(ofertas + do_vendedor)
+        series = montar(v, ts, lista, ofertas, estado, olhadas)
+        t0 = time.monotonic()
+        juntas, resumo = await extras(nav, v, ts, series, not (google.get('bloqueio') or google.get('erro')))
+        resumo['seg'] = round(time.monotonic() - t0)
+        print('EXTRAS:', json.dumps(resumo, ensure_ascii=False))
         await nav.close()
-    ofertas = completar_numeros(ofertas + do_vendedor)
     mossoro = [o for o in do_vendedor if 'MVF' in (o['orig'], o['dest'])]
-    series = montar(v, ts, lista, ofertas, estado, olhadas)
     achou = any(s['recomendada'] for s in series.values())
     scan.update(status='ok' if achou else 'erro', fim=datetime.now(timezone.utc).isoformat(),
                 erro=None if achou else ('Google pediu verificação e nenhum vendedor respondeu' if google.get('bloqueio') else 'nenhum voo com preço confirmado'),
-                fontes={'Google': google, **fontes}, series=series, taxa_mala=taxas_mala(do_vendedor),
+                fontes={'Google': google, **fontes}, series=series, juntas=juntas, extras=resumo, taxa_mala=taxas_mala(do_vendedor),
                 mossoro={'buscas': sum(1 for c in fila if c[2] == 'MVF'), 'voos': len(mossoro)})
     return scan
 
@@ -364,6 +501,60 @@ def _teste():
     # o voo comprado (Natal, R$1.650) perde para Fortaleza R$1.250 mesmo com o bônus, mas fica registrado à parte
     assert sw['recomendada']['dest'] == 'FOR' and sw['comprado']['pp'] == 1650 and sw['mais_barata'] is None
     assert series['g.ida_dez']['recomendada'] is None and series['g.ida_dez']['comprado'] is None and series['h.depois']['celulas'] == {}
+
+    # ---- extras: o voo recomendado com outro número de lugares (só com o número do voo) e os pares de ida e volta
+    rec = lambda d, orig, dest, saida, pp, cia, sentido, pax=1, voos='': {
+        'sentido': sentido, 'd': d, 'pax': pax, 'orig': orig, 'dest': dest, 'cia': cia, 'saida': saida, 'chegada': '23:00', 'tipo': 'direto',
+        'pp': pp, 'vend': 'Viaza', 'voos': voos, 'fonte': 'vendedor', 'link': 'https://x'}
+    escolhidas = {'v.volta': {'recomendada': rec('2027-01-22', 'FOR', 'GRU', '02:10', 756, 'LATAM', 'volta', voos='FOR>GRU 2027-01-22 LA 4777')},
+                  'h.depois': {'recomendada': rec('2027-02-21', 'FOR', 'CGH', '08:55', 364, 'Gol', 'volta', voos='FOR>CGH 2027-02-21 G3 1511')},
+                  'g.ida_dez': {'recomendada': rec('2026-12-29', 'GRU', 'JDO', '21:25', 1326, 'Gol', 'ida', voos='GRU>JDO 2026-12-29 G3 1580')},
+                  'g.ida_jan': {'recomendada': None},
+                  'wk.ida': {'recomendada': rec('2026-12-26', 'GRU', 'JDO', '14:50', 1357, 'LATAM', 'ida', 2)},          # vendedor sem número do voo
+                  'wk.volta': {'recomendada': rec('2027-01-08', 'FOR', 'GRU', '21:05', 807, 'LATAM', 'volta', 2, 'FOR>GRU 2027-01-08 LA 3361')}}
+    telas, pares = plano_dos_extras(v, ts, escolhidas)
+    # V: 1, 2 e 3 lugares; W + K na volta: 1 e 2; a ida de W + K fica de fora (sem número do voo não há endereço); H não pede
+    assert [(t['serie'], t['pax'], t['n']) for t in telas] == [('v.volta', 1, 1), ('v.volta', 1, 2), ('v.volta', 1, 3), ('wk.volta', 2, 1), ('wk.volta', 2, 2)], telas
+    assert all(t['url'].startswith('https://www.google.com/travel/flights/booking?tfs=') for t in telas) and len({t['url'] for t in telas}) == 5
+    assert gvoos.voos_do_tfs(telas[1]['url']) == 'FOR>GRU 2027-01-22 LA 4777'
+    # cenário sem uma das recomendadas (G indo em janeiro) não gera par; a volta de G é a de V
+    assert [(x['chave'], x['pax'], x['ida']['d'], x['volta']['d']) for x in pares] == [('g.A', 1, '2026-12-29', '2027-01-22'), ('wk.U', 2, '2026-12-26', '2027-01-08')], pares
+    tela = lambda *vend: {'texto': ''.join(f'Reserve com a {n}\nR$ {p}\nContinuar\n' for n, p in vend)}
+    respostas = [tela(('LATAMCompanhia aérea', '786'), ('MaxMilhas', '760')), tela(('LATAMCompanhia aérea', '1.572'), ('MaxMilhas', '1.530')),
+                 tela(('LATAMCompanhia aérea', '2.490')),      # com 3 lugares a MaxMilhas não aparece
+                 {'erro': 'tela de compra sem vendedores'}, tela(('LATAMCompanhia aérea', '1.714'))]
+    lidos = lugares_lidos(telas, respostas)
+    # V: o mesmo vendedor nas três telas (a LATAM, a única que aparece em todas), e não o mais barato de cada uma;
+    # W + K: a tela de 1 lugar falhou, sobra só a dos 2 (sem comparação possível)
+    assert lidos == {'v.volta': [{'n': 1, 'pp': 786}, {'n': 2, 'pp': 786}, {'n': 3, 'pp': 830}], 'wk.volta': [{'n': 2, 'pp': 857}]}, lidos
+    # só as telas de 1 e 2 lugares: a MaxMilhas está nas duas e é a mais barata, então vale ela
+    assert lugares_lidos(telas[:2], respostas[:2]) == {'v.volta': [{'n': 1, 'pp': 760}, {'n': 2, 'pp': 765}]}
+    assert lugares_lidos(telas[:3], [None, respostas[1], respostas[2]]) == {}          # sem a tela dos lugares do próprio trecho, nada
+    # vendedor que não conta (Kiwi) não vira a referência, mesmo aparecendo em todas
+    assert lugares_lidos(telas[:2], [tela(('Kiwi.com', '500'), ('GolCompanhia aérea', '600')), tela(('Kiwi.com', '900'), ('GolCompanhia aérea', '1.300'))]) == {
+        'v.volta': [{'n': 1, 'pp': 600}, {'n': 2, 'pp': 650}]}
+
+    # ---- ida e volta numa compra só: os mesmos voos do pacote e o par mais barato (cartões como os da Zupper)
+    hora = lambda cia, orig, dest, saida, direto=True, dur=200: {'cia': cia, 'orig': orig, 'dest': dest, 'saida': saida, 'chegada': '23:59', 'dur': dur,
+                                                                 'direto': direto, 'voo': None, 'tipo': 'direto' if direto else 'com escala'}
+    cartao = lambda pp, idas, voltas: {'vend': 'Zupper', 'pp': pp, 'link': 'https://zupper/par', 'idas': idas, 'voltas': voltas}
+    par = pares[1]
+    achados = [cartao(2203, [hora('LATAM', 'GRU', 'JDO', '14:50')], [hora('Gol', 'FOR', 'GRU', '12:50')]),
+               cartao(2021, [hora('LATAM', 'GRU', 'JDO', '14:50')], [hora('LATAM', 'FOR', 'CGH', '04:10'), hora('LATAM', 'FOR', 'GRU', '21:05')]),
+               cartao(2100, [hora('LATAM', 'GRU', 'JDO', '14:50')], [hora('LATAM', 'FOR', 'GRU', '21:05')])]
+    ops = opcoes_juntas(par, achados)
+    # os mesmos voos existem (no cartão de R$2.021, entre os horários da volta): uma opção só, com as pernas do próprio pacote
+    assert len(ops) == 1 and ops[0]['pp'] == 2021 and ops[0]['ida'] is par['ida'] and ops[0]['volta'] is par['volta'], ops
+    assert 'type=roundTrip' in ops[0]['link'] and '%22originAirport%22%3A%22GRU%22' in ops[0]['link'] and 'SAO' not in ops[0]['link']
+    assert selecao.juntas({'ida': par['ida'], 'volta': par['volta'], 'pp': 2164}, ops, 30)['economia'] == 143
+    # um par mais barato em outros horários entra como segunda opção, com as pernas descritas (o melhor horário de cada trecho)
+    outro = cartao(1900, [hora('Gol', 'CGH', 'JDO', '06:00', False, 300), hora('Gol', 'GRU', 'JDO', '07:00')], [hora('LATAM', 'FOR', 'GRU', '21:05')])
+    ops = opcoes_juntas(par, achados + [outro])
+    assert [(o['pp'], o['ida']['saida'], o['ida']['cia'], o['volta']['saida'], o['ida']['d'], o['ida']['pax']) for o in ops] == [
+        (2021, '14:50', 'LATAM', '21:05', '2026-12-26', 2), (1900, '07:00', 'Gol', '21:05', '2026-12-26', 2)], ops
+    assert ops[1]['volta']['voos'] == '' and ops[1]['ida']['sentido'] == 'ida' and ops[1]['ida']['tipo'] == 'direto'
+    # sem os mesmos voos: só o mais barato; sem nada lido: nenhuma opção
+    assert [o['pp'] for o in opcoes_juntas(par, achados[:1])] == [2203] and opcoes_juntas(par, []) == []
     print('ok')
 
 

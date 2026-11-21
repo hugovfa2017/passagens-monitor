@@ -290,6 +290,43 @@ def linhas_oferta(prefixo, o, v, alvo=None, cada='', nota=''):
             f"└ {horarios(o, v)} · {html.escape(nome_vendedor(o['vend']))}")
 
 
+def linhas_lugares(difs, pax):
+    """O que muda no preço por pessoa com outro número de lugares no mesmo voo (difs: selecao.lugares)."""
+    linhas, mais = [], [x for x in difs if x['n'] > pax]
+    if mais and not any(x['dif'] for x in mais):
+        linhas.append(f"👥 Nesse voo, {' ou '.join(str(x['n']) for x in mais)} lugares juntos saem pelo mesmo preço por pessoa")
+    elif mais:
+        linhas.append('👥 Nesse voo, comprando juntos: ' + ' · '.join(
+            f"{x['n']} lugares, " + (f"{'+' if x['dif'] > 0 else '−'}{brl(abs(x['dif']))} por pessoa" if x['dif'] else 'mesmo preço por pessoa') for x in mais))
+    um = next((x for x in difs if x['n'] == 1 and pax > 1 and x['dif'] < 0), None)
+    if um:   # só o primeiro lugar pega o preço menor: o seguinte tende a sair pelo preço de quem compra junto
+        linhas.append(f"✂️ Nesse voo, 1 lugar sozinho sai {brl(-um['dif'])} mais barato: comprando um de cada vez, em reservas separadas, "
+                      f"dá para economizar {brl(-um['dif'])} no total")
+    return linhas
+
+
+def pacotes_do_grupo(g, ts, scan, v):
+    """Os pacotes (ida + volta) de um grupo; em cada um, 'juntas' é a compra única de ida e volta que sai mais barata que
+    as duas recomendadas separadas (selecao.juntas), ou None."""
+    pacs = selecao.pacotes(selecao.com_apelidos(scan['series'], ts, g['id']), g)
+    for p in pacs:
+        p['juntas'] = selecao.juntas(p, (scan.get('juntas') or {}).get(f"{g['id']}.{p['id']}") or [], v['selecao'].get('margem_juntas', 30))
+    return pacs
+
+
+def linhas_juntas(p, g, v, varios):
+    """As linhas da compra única de um pacote: os mesmos voos numa compra só, ou outros voos (aí com as duas pernas descritas)."""
+    j = p['juntas']
+    cada = ' por pessoa' if g['assentos'] > 1 else ''
+    preco = f"<b>{brl(j['pp'])}</b>{cada} ({brl(j['economia'])} a menos)" + (f" · {brl(j['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else '')
+    onde = html.escape(nome_vendedor(j['vend']))
+    prefixo = f"{p['nome'][0].upper()}{p['nome'][1:]}, " if varios else ''
+    if j['mesmos']:
+        return [f"🔁 {prefixo}{'os' if varios else 'Os'} mesmos voos numa compra só na {onde}: {preco}"]
+    perna = lambda rotulo, o: f"└ {rotulo}: {dia(o['d'])} · {voo_txt(o)} · {horarios(o, v)}"
+    return [f"🔁 {prefixo}{'ida' if varios else 'Ida'} e volta numa compra só na {onde}, em outros voos: {preco}", perna('ida', j['ida']), perna('volta', j['volta'])]
+
+
 def bloco_do_grupo(g, ts, scan, v, estado, nomes):
     """As linhas de um grupo: [(texto, nível)]. Nível 0 fica sempre; 1 e 2 saem primeiro quando a mensagem não cabe.
     Só entra preço conferido nesta busca (tela de compra ou página do vendedor); o que não foi conferido vem avisado."""
@@ -326,6 +363,8 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
         elif t['voo_comprado'] and comprado['d'] in t['datas'] and not eh_o_comprado:
             linhas.append((f"🎯 Voo já comprado ({comprado['cia']} {comprado['voo'].split(' ')[-1]}, {dia(comprado['d'])} "
                            f"{comprado['saida'].replace(':', 'h')}): sem lugar à venda nesta busca", 0))
+        difs = selecao.lugares({x['n']: x['pp'] for x in r.get('lugares') or []}, t['pax'], v['selecao'].get('margem_lugares', 15))
+        linhas += [(l, 1) for l in linhas_lugares(difs, t['pax'])]
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
             # só datas cujo preço ainda é o da lista do Google; as já conferidas aparecem nas linhas de cima
@@ -338,13 +377,16 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
     if len(voltas) == 2 and precos[voltas[0]['id']] != precos[voltas[1]['id']]:
         a, b = sorted(voltas, key=lambda t: precos[t['id']])
         linhas.append((f"↔️ {a['nome']} sai {brl(precos[b['id']] - precos[a['id']])} mais barato que {b['nome'].lower()}", 1))
-    pacs = selecao.pacotes({**series, **{f"{g['id']}.{t['id']}": series.get(t['igual_a']) for t in meus if t['igual_a']}}, g)
+    pacs = pacotes_do_grupo(g, ts, scan, v)
     if len(pacs) == 1:
         total = f" · {brl(pacs[0]['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else ''
         linhas.append((f"📦 Ida + volta: <b>{brl(pacs[0]['pp'])}</b>{cada}{total}", 0))
     elif pacs:
         melhor = min(p['pp'] for p in pacs)
         linhas.append(('📦 Ida + volta: ' + ' · '.join(f"{p['nome']} " + (f"<b>{brl(p['pp'])}</b>" if p['pp'] == melhor else brl(p['pp'])) for p in pacs), 0))
+    for p in pacs:
+        if p['juntas']:
+            linhas += [(l, 0) for l in linhas_juntas(p, g, v, len(g.get('cenarios', [])) > 1)]
     return linhas
 
 
@@ -405,7 +447,8 @@ def montar_rodape(scan, v):
 
 
 def montar_botoes(v, ts, scan):
-    """Uma linha de botões por grupo, um botão por trecho com recomendada (o Telegram recusa botão sem link)."""
+    """Uma linha de botões por grupo, um botão por trecho com recomendada (o Telegram recusa botão sem link); embaixo,
+    quando há, a compra única de ida e volta que sai mais barata."""
     linhas = []
     for g in v['grupos']:
         linha = []
@@ -416,6 +459,10 @@ def montar_botoes(v, ts, scan):
                 linha.append({'text': f"{g.get('emoji', '')} {t['curto']} {dia(rec['d'])[4:]} · {brl(rec['pp'])}".strip(), 'url': url})
         if linha:
             linhas.append(linha[:3])
+        juntas = [{'text': f"{g.get('emoji', '')} 🔁 {dia(p['ida']['d'])[4:]} + {dia(p['volta']['d'])[4:]} · {brl(p['juntas']['pp'])}".strip(), 'url': p['juntas']['link']}
+                  for p in pacotes_do_grupo(g, ts, scan, v) if p['juntas']]
+        if juntas:
+            linhas.append(juntas[:2])
     return linhas + [PAINEL_BOTAO]
 
 
@@ -433,14 +480,18 @@ def linhas_do_painel(scan, v, ts, agora, alerta):
         r = scan['series'].get(t['igual_a'] or t['serie']) or {}
         rows.append({'tipo': 'trecho', 'serie': t['serie'], 'grupo': t['grupo'], 'nome': t['nome'], 'sentido': t['sentido'], 'janela': janela(t['datas']),
                      'pax': t['pax'], 'alvo': t['alvo'], 'igual_a': t['igual_a'], 'recomendada': _opcao(r.get('recomendada')),
-                     'mais_barata': None if t['igual_a'] else _opcao(r.get('mais_barata')), 'comprado': None if t['igual_a'] else _opcao(r.get('comprado'))})
+                     'mais_barata': None if t['igual_a'] else _opcao(r.get('mais_barata')), 'comprado': None if t['igual_a'] else _opcao(r.get('comprado')),
+                     'lugares': [] if t['igual_a'] else selecao.lugares({x['n']: x['pp'] for x in r.get('lugares') or []}, t['pax'], v['selecao'].get('margem_lugares', 15))})
         if not t['igual_a']:
             rows += [{'tipo': 'celula', 'serie': t['serie'], 'd': d, 'dia': dia(d), 'ne': ne, 'pp': c['pp'], 'conf': c['conf']}
                      for d, cel in sorted(r.get('celulas', {}).items()) for ne, c in cel.items()]
+    perna = lambda o: {k: o.get(k) for k in ('d', 'orig', 'dest', 'cia', 'saida', 'chegada', 'tipo')} | {'dia': dia(o['d'])}
     for g in v['grupos']:
-        apelidos = {f"{g['id']}.{t['id']}": scan['series'].get(t['igual_a']) for t in ts if t['grupo'] == g['id'] and t['igual_a']}
-        rows += [{'tipo': 'pacote', 'grupo': g['id'], 'id': p['id'], 'pp': p['pp'], 'ida': _opcao(p['ida']), 'volta': _opcao(p['volta'])}
-                 for p in selecao.pacotes({**scan['series'], **apelidos}, g)]
+        for p in pacotes_do_grupo(g, ts, scan, v):
+            j = p['juntas']
+            rows.append({'tipo': 'pacote', 'grupo': g['id'], 'id': p['id'], 'nome': p['nome'], 'pp': p['pp'], 'ida': _opcao(p['ida']), 'volta': _opcao(p['volta']),
+                         'juntas': j and {'pp': j['pp'], 'vend': j['vend'], 'link': j['link'], 'economia': j['economia'], 'mesmos': j['mesmos'],
+                                          'ida': perna(j['ida']), 'volta': perna(j['volta'])}})
     return rows
 
 
@@ -651,6 +702,53 @@ def _teste_registro():
         assert estado['series']['v.volta']['rec'] == {'ident': ['2027-01-20', 'Gol', 'FOR', 'GRU', '12:50'], 'd': '2027-01-20', 'ne': 'FOR', 'pp': 612, 'vend': 'maxmilhas'}
         assert estado['series']['v.volta']['barata'] == {'d': '2027-01-18', 'ne': 'REC', 'pp': 540} and estado['series']['wk.volta']['barata'] is None
         assert estado['series']['v.volta']['datas']['2027-01-21'] == {'pp': None, 'visto': '2026-11-20 20:17'} and estado['series']['v.volta']['min'] == 612
+
+    # ---- lugares e ida e volta numa compra só: linhas a mais só quando há o que dizer
+    with tempfile.TemporaryDirectory() as d:
+        s = scan()
+        ser = s['series']
+        ser['v.volta']['lugares'] = [{'n': 1, 'pp': 786}, {'n': 2, 'pp': 786}, {'n': 3, 'pp': 830}]
+        ser['wk.volta']['lugares'] = [{'n': 1, 'pp': 480}, {'n': 2, 'pp': 540}]
+        ser['wk.ida']['lugares'] = [{'n': 1, 'pp': 1150}, {'n': 2, 'pp': 1155}]          # R$5 de diferença: não vale uma linha
+        outra_ida = of('2026-12-29', 'CGH', 'FOR', '06:10', 0, 'LATAM', 'Zupper', sentido='ida', tipo='com escala', chegada='11:40')
+        s['juntas'] = {'wk.U': [{'pp': 1600, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-wk', 'ida': ser['wk.ida']['recomendada'], 'volta': ser['wk.volta']['recomendada']}],
+                       'g.A': [{'pp': 1700, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-g', 'ida': outra_ida, 'volta': ser['v.volta']['recomendada']}],
+                       'g.B': [{'pp': 1290, 'vend': 'Zupper', 'link': 'https://www.zupper.com.br/par-b', 'ida': ser['g.ida_jan']['recomendada'], 'volta': ser['v.volta']['recomendada']}]}
+        registrar(s, v, d, fake, nomes, '2026-11-20 20:17')
+        msg, _, bt = enviados[-1]
+        # quem volta junto sabe quanto custa: 2 lugares no mesmo preço, 3 lugares mais caro por pessoa
+        assert ('└ 05h05 Recife → 08h40 Congonhas · Zupper\n'
+                '👥 Nesse voo, comprando juntos: 2 lugares, mesmo preço por pessoa · 3 lugares, +R$44 por pessoa\n\n') in msg, msg
+        # dupla: 1 lugar sozinho mais barato vira aviso de comprar um de cada vez; diferença pequena (na ida) não aparece
+        assert ('└ 03h20 Juazeiro → 06h50 Guarulhos · MaxMilhas\n'
+                '✂️ Nesse voo, 1 lugar sozinho sai R$60 mais barato: comprando um de cada vez, em reservas separadas, dá para economizar R$60 no total\n'
+                '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total\n'
+                '🔁 Os mesmos voos numa compra só na Zupper: <b>R$1.600</b> por pessoa (R$90 a menos) · R$3.200 no total\n\n') in msg, msg
+        assert msg.count('✂️') == 1 and msg.count('👥') == 1
+        # dois cenários: a linha diz qual; outros voos vêm descritos, perna por perna; economia abaixo da margem (janeiro, R$12) não aparece
+        assert ('📦 Ida + volta: indo em dezembro R$1.792 · indo em janeiro <b>R$1.302</b>\n'
+                '🔁 Indo em dezembro, ida e volta numa compra só na Zupper, em outros voos: <b>R$1.700</b> (R$92 a menos)\n'
+                '└ ida: ter 29/12 · LATAM, 1 conexão · 06h10 Congonhas → 11h40 Fortaleza\n'
+                '└ volta: qua 20/01 · Gol 1555, direto · 12h50 Fortaleza → 16h30 Guarulhos\n\n') in msg, msg
+        assert msg.count('🔁') == 2 and len(msg) < 3200, len(msg)
+        assert [[x['text'] for x in l] for l in bt][2:6] == [['🧑 Ida dez 29/12 · R$1.180', '🧑 Ida jan 06/01 · R$690'], ['🧑 🔁 29/12 + 20/01 · R$1.700'],
+                                                               ['👭 Ida 28/12 · R$1.150', '👭 Volta 11/01 · R$540'], ['👭 🔁 28/12 + 11/01 · R$1.600']], bt
+        assert bt[3][0]['url'] == 'https://www.zupper.com.br/par-g'
+        painel = json.load(open(os.path.join(d, 'painel.json'), encoding='utf-8'))
+        pac = {(x['grupo'], x['id']): x for x in painel if x['tipo'] == 'pacote'}
+        assert pac[('wk', 'U')]['juntas']['pp'] == 1600 and pac[('wk', 'U')]['juntas']['mesmos'] and pac[('wk', 'U')]['juntas']['economia'] == 90
+        assert pac[('g', 'A')]['juntas']['ida'] == {'d': '2026-12-29', 'orig': 'CGH', 'dest': 'FOR', 'cia': 'LATAM', 'saida': '06:10', 'chegada': '11:40',
+                                                    'tipo': 'com escala', 'dia': 'ter 29/12'} and not pac[('g', 'A')]['juntas']['mesmos']
+        assert pac[('g', 'B')]['juntas'] is None and pac[('g', 'A')]['nome'] == 'indo em dezembro'
+        trs = {x['serie']: x for x in painel if x['tipo'] == 'trecho'}
+        assert trs['v.volta']['lugares'] == [{'n': 2, 'dif': 0}, {'n': 3, 'dif': 44}] and trs['wk.volta']['lugares'] == [{'n': 1, 'dif': -60}]
+        assert trs['h.junto']['lugares'] == [] and trs['h.depois']['lugares'] == []
+        # tudo no mesmo preço: uma linha curta
+        ser['v.volta']['lugares'] = [{'n': 1, 'pp': 786}, {'n': 2, 'pp': 790}, {'n': 3, 'pp': 786}]
+        registrar(s, v, d, fake, nomes, '2026-11-20 21:17')
+        assert '👥 Nesse voo, 2 ou 3 lugares juntos saem pelo mesmo preço por pessoa\n' in enviados[-1][0]
+    assert linhas_lugares([], 1) == [] and linhas_lugares([{'n': 1, 'dif': 0}], 2) == [] and linhas_lugares([{'n': 1, 'dif': 25}], 2) == []
+    assert linhas_lugares([{'n': 2, 'dif': -20}], 1) == ['👥 Nesse voo, comprando juntos: 2 lugares, −R$20 por pessoa']
 
     with tempfile.TemporaryDirectory() as d:
         enviados.clear()

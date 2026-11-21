@@ -24,7 +24,13 @@ import vendedores  # noqa: E402
 # não têm mais endereço. Viaza e Vai de Promo já estão em produção (nuvem/vendedores.py).
 # Sondagem do Google Voos no mesmo dia: Viracopos aparece normalmente; a busca de ida e volta (dois trechos) abre;
 # não há nenhum voo para Mossoró (MVF), nem com conexão, nem saindo do Recife.
-# Resultado da rodada 4: ver o registro da execução (anotar aqui depois).
+# Resultado da rodada 4 (21/11/2026):
+#   - tela de compra aberta direto pelo número do voo: funciona com 1, 2 e 3 lugares; às vezes responde "Algo deu errado"
+#     e abre na tentativa seguinte (varredura.js tenta até três vezes);
+#   - ida e volta juntas no Google: não serve. Mesma companhia, voltando por outro aeroporto: saiu mais cara que os dois
+#     trechos separados e só "ligue para reservar"; companhias diferentes: "itinerário não está mais disponível";
+#   - Zupper ida e volta: responde (15 cartões por busca) e o par dos mesmos voos saiu R$126 a R$143 por pessoa mais
+#     barato que os dois trechos comprados separados nos outros vendedores.
 GOOGLE = 'https://www.google.com/travel/flights?hl=pt-BR&gl=BR&curr=BRL'
 
 

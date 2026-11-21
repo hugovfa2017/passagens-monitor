@@ -24,13 +24,14 @@
   "_comprado": "O voo que já foi comprado. Nos trechos com voo_comprado, ele é conferido toda rodada e ganha um bônus na escolha (vale como se fosse 'bonus' reais mais barato por pessoa).",
   "comprado": {"d": "2026-12-22", "saida": "14:05", "cia": "Gol", "orig": "GRU", "dest": "NAT", "voo": "G3 1678", "bonus": 150},
 
-  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72},
+  "_selecao": "margem_lugares = diferença por pessoa, em reais, a partir da qual vale avisar que outro número de lugares muda o preço. margem_juntas = quanto a ida e volta numa compra só precisa economizar, por pessoa, para aparecer.",
+  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30},
 
-  "_grupos": "assentos = lugares no mesmo voo. alvo = preço por pessoa que faz o alerta tocar (trecho sem alvo só toca quando bate o menor preço já visto). igual_a = usa o resultado de outro trecho (mesmas datas e lugares). rodizio = janela longa: a cada rodada olha as 'fixas' datas mais baratas já vistas e as 'giro' que estão há mais tempo sem olhar.",
+  "_grupos": "assentos = lugares no mesmo voo. alvo = preço por pessoa que faz o alerta tocar (trecho sem alvo só toca quando bate o menor preço já visto). igual_a = usa o resultado de outro trecho (mesmas datas e lugares). rodizio = janela longa: a cada rodada olha as 'fixas' datas mais baratas já vistas e as 'giro' que estão há mais tempo sem olhar. lugares = confere o voo recomendado também com esses números de lugares (quanto custa ir junto, ou comprar um lugar de cada vez). ida_e_volta = confere se as duas recomendadas de cada cenário saem mais baratas numa compra só.",
   "grupos": [
     {"id": "v", "rotulo": "V", "emoji": "👩", "assentos": 1,
      "trechos": [
-       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-18", "ate": "2027-01-22"}, "alvo": 450}
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-18", "ate": "2027-01-22"}, "alvo": 450, "lugares": [2, 3]}
      ]},
     {"id": "h", "rotulo": "H", "emoji": "🧍", "assentos": 1,
      "trechos": [
@@ -48,9 +49,9 @@
      "cenarios": [{"id": "A", "nome": "indo em dezembro", "ida": "ida_dez", "volta": "volta"}, {"id": "B", "nome": "indo em janeiro", "ida": "ida_jan", "volta": "volta"}]},
     {"id": "wk", "rotulo": "W + K", "emoji": "👭", "assentos": 2, "ida_e_volta": true,
      "trechos": [
-       {"id": "ida", "sentido": "ida", "nome": "Ida", "alvo": 1000, "voo_comprado": true,
+       {"id": "ida", "sentido": "ida", "nome": "Ida", "alvo": 1000, "voo_comprado": true, "lugares": [1],
         "datas": ["2026-12-22", "2026-12-23", "2026-12-26", "2026-12-27", "2026-12-28", "2026-12-29", "2026-12-30"]},
-       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-07", "ate": "2027-01-12"}, "alvo": 450}
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-07", "ate": "2027-01-12"}, "alvo": 450, "lugares": [1]}
      ],
      "cenarios": [{"id": "U", "ida": "ida", "volta": "volta"}]}
   ]
