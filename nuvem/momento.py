@@ -77,7 +77,7 @@ def veredito(pp, alvo=None, sem=None, aviso=None, faltam=None):
     nivel = (aviso or {}).get('nivel')
     if nivel:
         pontos += {'baixo': 1, 'alto': -1}.get(nivel, 0)
-        faixa = f" (o normal é {brl(aviso['de'])} a {brl(aviso['ate'])})" if aviso.get('de') and aviso.get('ate') else ''
+        faixa = f" (a rota costuma ficar entre {brl(aviso['de'])} e {brl(aviso['ate'])})" if aviso.get('de') and aviso.get('ate') else ''
         motivos.append(f'para o Google, preço {nivel}{faixa}')
     perto = faltam is not None and faltam <= PRAZO_DIAS
     if perto:
@@ -122,10 +122,10 @@ def _teste():
     pouco = {'min': 700, 'media': 720, 'horas': 30}
     assert veredito(700, sem=pouco) is None
     v = veredito(857, sem=pouco, aviso={'nivel': 'baixo', 'de': 1250, 'ate': 3250}, faltam=48)
-    assert v == {'sinal': 'bom', 'motivos': ['para o Google, preço baixo (o normal é R$1.250 a R$3.250)']}, v
+    assert v == {'sinal': 'bom', 'motivos': ['para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250)']}, v
     # trecho com alvo, ainda acima dele: o sinal bom vira "acompanhar" e a linha diz quanto falta; perto do voo, o prazo manda
     v = veredito(857, alvo=450, sem=pouco, aviso={'nivel': 'baixo', 'de': 1250, 'ate': 3250}, faltam=48)
-    assert v == {'sinal': 'acompanhar', 'motivos': ['para o Google, preço baixo (o normal é R$1.250 a R$3.250)', 'R$407 acima do alvo (R$450)']}, v
+    assert v == {'sinal': 'acompanhar', 'motivos': ['para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250)', 'R$407 acima do alvo (R$450)']}, v
     v = veredito(857, alvo=450, aviso={'nivel': 'baixo', 'de': None, 'ate': None}, faltam=20)
     assert v == {'sinal': 'bom', 'motivos': ['para o Google, preço baixo', 'faltam 20 dias para o voo', 'R$407 acima do alvo (R$450)']}, v
     assert veredito(857, alvo=450, aviso={'nivel': 'alto'})['sinal'] == 'esperar' and veredito(857, alvo=450) is None   # só o alvo não gera linha
@@ -142,7 +142,7 @@ def _teste():
     assert veredito(700, sem={'min': 700, 'media': 700, 'horas': 100}, aviso={'nivel': 'baixo'})['sinal'] == 'bom'
     # sinais que se anulam: acompanhar, com os dois motivos escritos
     v = veredito(830, sem=cheia, aviso={'nivel': 'baixo', 'de': 1000, 'ate': 2000})
-    assert v == {'sinal': 'acompanhar', 'motivos': ['R$70 acima da média de 7 dias (R$760)', 'para o Google, preço baixo (o normal é R$1.000 a R$2.000)']}, v
+    assert v == {'sinal': 'acompanhar', 'motivos': ['R$70 acima da média de 7 dias (R$760)', 'para o Google, preço baixo (a rota costuma ficar entre R$1.000 e R$2.000)']}, v
     # perto do voo pesa a favor de comprar
     assert veredito(740, sem=cheia, faltam=20) == {'sinal': 'bom', 'motivos': ['R$40 acima do menor de 7 dias (R$700)', 'faltam 20 dias para o voo']}
     assert veredito(830, sem=cheia, faltam=1) == {'sinal': 'acompanhar', 'motivos': ['R$70 acima da média de 7 dias (R$760)', 'falta 1 dia para o voo']}

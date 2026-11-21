@@ -186,9 +186,12 @@ def url_vaidepromo(o, d, data, pax):
 URL = {'MaxMilhas': url_maxmilhas, '123milhas': url_123milhas, 'Zupper': url_zupper, 'Viaza': url_viaza, 'Vai de Promo': url_vaidepromo}
 LER = {'MaxMilhas': ler_maxmilhas, '123milhas': ler_123milhas, 'Zupper': ler_zupper, 'Viaza': ler_viaza, 'Vai de Promo': ler_vaidepromo}
 CASA = {'Viaza': 'https://www.viaza.com.br/'}   # a Viaza só abre a busca depois da página inicial (senão: "upstream connect error")
+# Quantas vezes rolar a página lendo os cartões (medido na sondagem de 21/11/2026): MaxMilhas, Zupper e Vai de Promo
+# trazem voos novos a cada rolagem; a 123milhas mostra tudo de uma vez, e rolar só gasta tempo.
+ROLAGENS = {'123milhas': 0}
 
 
-async def _cartoes(navegador, url, sem, casa=None):
+async def _cartoes(navegador, url, sem, casa=None, rolagens=5):
     """Abre a página de resultados e devolve o texto de cada cartão de voo ([] se não carregar)."""
     async with sem:
         # uma sessão por busca: a 123milhas não devolve nada a duas buscas abertas na mesma sessão
@@ -205,12 +208,12 @@ async def _cartoes(navegador, url, sem, casa=None):
                 return []          # sem voos ou página não carregou: o Google continua valendo
             await pg.wait_for_timeout(3000)   # deixa os preços chegarem
             # a MaxMilhas só desenha os cartões visíveis e apaga os que saem da tela: lê a cada rolagem e junta
-            vistos = {}
-            for _ in range(5):
-                for t in await pg.evaluate(LER_CARTOES):
-                    vistos[t] = True
+            vistos = {t: True for t in await pg.evaluate(LER_CARTOES)}
+            for _ in range(rolagens):
                 await pg.mouse.wheel(0, 1500)
                 await pg.wait_for_timeout(1200)
+                for t in await pg.evaluate(LER_CARTOES):
+                    vistos[t] = True
             return list(vistos)
         except Exception:
             return []
@@ -247,7 +250,8 @@ def _aceita(x):
 async def buscar(navegador, vendedor, sentido, data, ne, pax, sem):
     """Ofertas de um vendedor para SAO <-> aeroporto do Nordeste numa data."""
     o, d = ('SAO', ne) if sentido == 'ida' else (ne, 'SAO')
-    validas = [x for x in LER[vendedor](await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem, CASA.get(vendedor)), pax) if _aceita(x)]
+    cartoes = await _cartoes(navegador, URL[vendedor](o, d, data, pax), sem, CASA.get(vendedor), ROLAGENS.get(vendedor, 5))
+    validas = [x for x in LER[vendedor](cartoes, pax) if _aceita(x)]
     for x in validas:
         # link da busca do vendedor já no aeroporto exato do voo (poucos voos na lista, o certo no topo)
         x['link'] = URL[vendedor](x['orig'], x['dest'], data, pax)

@@ -9,8 +9,13 @@
 
 Nada aqui tenta contornar bloqueio: se o Google pedir verificação, a rodada segue só com os vendedores.
 
-Uso: python nuvem/rodar.py          (roda tudo e registra)
-     python nuvem/rodar.py --teste  (auto-checagem das etapas, sem navegador)
+Rodada rápida (--rapida), para o intervalo entre duas completas: só as listas do Google e, onde a lista mostrar um voo
+mais barato que a recomendada guardada, a tela de compra desse voo. Se a queda se confirma, avisa na hora; senão, não
+manda nada e não mexe no histórico.
+
+Uso: python nuvem/rodar.py           (roda tudo e registra)
+     python nuvem/rodar.py --rapida  (só o Google; avisa se algum preço caiu)
+     python nuvem/rodar.py --teste   (auto-checagem das etapas, sem navegador)
 """
 import asyncio, json, os, re, sys, time
 from datetime import datetime, timezone
@@ -55,6 +60,24 @@ def a_conferir(lista, ts, v, estado):
             if k not in vistos:
                 vistos.add(k)
                 saida.append(x)
+    return saida
+
+
+def quedas_possiveis(lista, ts, v, estado):
+    """As séries em que a lista do Google mostra um voo que, depois do peso dos aeroportos, sairia pelo menos
+    selecao.queda_min mais barato que a recomendada guardada no estado. Numa rodada rápida só essas vão para a tela de
+    compra (o preço da lista pode estar velho). Trecho sem recomendada guardada fica de fora: quem estabelece o preço é
+    a rodada completa. Aeroporto de último caso não conta."""
+    saida = set()
+    for t in ts:
+        antes = estado.get('series', {}).get(t['serie'], {}).get('rec')
+        if t['igual_a'] or not antes:
+            continue
+        d, cia, orig, dest, hora = antes['ident']
+        referencia = antes['pp'] + selecao.peso({'d': d, 'cia': cia, 'orig': orig, 'dest': dest, 'saida': hora}, v, t)
+        melhor = min((x['lista_pp'] + selecao.peso(x, v, t) for x in selecao.do_trecho(lista, t) if not selecao.ultimo_caso(x, v)), default=None)
+        if melhor is not None and melhor <= referencia - v['selecao']['queda_min']:
+            saida.add(t['serie'])
     return saida
 
 
@@ -301,8 +324,9 @@ async def abrir_google(nav):
         raise
 
 
-async def radar_e_conferencia(nav, v, ts, bs, estado):
-    """Google Voos: lista de cada busca e tela de compra dos candidatos. Devolve (lista, ofertas, resumo da fonte)."""
+async def radar_e_conferencia(nav, v, ts, bs, estado, rapida=False):
+    """Google Voos: lista de cada busca e tela de compra dos candidatos. Devolve (lista, ofertas, resumo da fonte).
+    rapida: só vão para a tela de compra os trechos em que a lista mostra queda (quedas_possiveis)."""
     info = {'buscas': len(bs), 'voos': 0, 'conferidos': 0, 'ofertas': 0, 'bloqueio': None}
     try:
         ctx, pg, bloqueio = await abrir_google(nav)
@@ -317,7 +341,10 @@ async def radar_e_conferencia(nav, v, ts, bs, estado):
                                                                 {'itens': itens, 'paralelo': PARALELO}), timeout=600)
         respostas = await chamar('listar', [b['url'] for b in bs])
         lista = voos_da_lista(bs, respostas, v)
-        cands = a_conferir(lista, ts, v, estado)
+        if rapida:
+            com_queda = quedas_possiveis(lista, ts, v, estado)
+            info['com_queda'] = sorted(com_queda)
+        cands = a_conferir(lista, [t for t in ts if not rapida or t['serie'] in com_queda], v, estado)
         info.update(voos=len(lista), conferidos=len(cands), bloqueio=next((r['bloqueio'] for r in respostas if (r or {}).get('bloqueio')), None))
         if info['bloqueio']:
             return lista, [], info
@@ -331,7 +358,7 @@ async def radar_e_conferencia(nav, v, ts, bs, estado):
                 motivos['nenhum vendedor que conta'] = motivos.get('nenhum vendedor que conta', 0) + 1
         info.update(ofertas=len(ofertas), sem_preco=motivos, bloqueio=next((r['bloqueio'] for r in validados if (r or {}).get('bloqueio')), None))
         # o voo já comprado, direto pelo número: mesmo fora da lista do Google, a tela de compra diz se há lugar à venda
-        telas = [] if info['bloqueio'] else telas_do_comprado(v, ts, ofertas)
+        telas = [] if info['bloqueio'] or rapida else telas_do_comprado(v, ts, ofertas)
         if telas:
             abertas = await asyncio.wait_for(pg.evaluate('(a) => window.__gv.comprar(a.itens, a.paralelo)',
                                                          {'itens': [t['url'] for t in telas], 'paralelo': PARALELO_COMPRA}), timeout=120)
@@ -433,27 +460,53 @@ async def extras(nav, v, ts, series, google_ok, prazo_s=PRAZO_EXTRAS_S):
     return juntas, resumo
 
 
-async def varrer(v, estado, agora):
-    """Uma rodada inteira. agora: datetime no fuso de Brasília. Devolve o scan (versão 2) para o registrador."""
-    from playwright.async_api import async_playwright
+def preparar(v, estado, agora):
+    """(trechos, buscas do Google com endereço, {serie: datas olhadas}) de uma rodada. agora: datetime no fuso de Brasília."""
     hoje = agora.strftime('%Y-%m-%d')
     ts = plano.trechos(v, hoje)
     bs = plano.buscas(v, hoje, estado)
-    for b in bs:
-        b['url'] = gvoos.url_busca([(b['d'], b['de'], b['para'], '')], b['pax'])
     olhadas = {}
     for b in bs:
+        b['url'] = gvoos.url_busca([(b['d'], b['de'], b['para'], '')], b['pax'])
         for s in b['series']:
             olhadas.setdefault(s, []).append(b['d'])
+    return ts, bs, olhadas
+
+
+def opcoes_do_navegador():
+    opcoes = {'headless': True}
+    if os.environ.get('PASSAGENS_CHROMIUM'):          # navegador já instalado na máquina (uso fora do GitHub)
+        opcoes['executable_path'] = os.environ['PASSAGENS_CHROMIUM']
+    if os.environ.get('HTTPS_PROXY'):
+        opcoes['proxy'] = {'server': os.environ['HTTPS_PROXY']}
+    return opcoes
+
+
+async def varrer_rapido(v, estado, agora):
+    """Rodada rápida: só o Google. Devolve um scan só com as recomendadas dos trechos em que a queda foi conferida."""
+    from playwright.async_api import async_playwright
+    ts, bs, olhadas = preparar(v, estado, agora)
+    scan = {'versao': 2, 'modo': 'rapida', 'inicio': datetime.now(timezone.utc).isoformat()}
+    async with async_playwright() as p:
+        nav = await p.chromium.launch(**opcoes_do_navegador())
+        t0 = time.monotonic()
+        lista, ofertas, google = await radar_e_conferencia(nav, v, ts, bs, estado, rapida=True)
+        google['seg'] = round(time.monotonic() - t0)
+        print('GOOGLE:', json.dumps(google, ensure_ascii=False))
+        await nav.close()
+    scan.update(status='erro' if google.get('bloqueio') or google.get('erro') else 'ok', fim=datetime.now(timezone.utc).isoformat(),
+                fontes={'Google': google}, series=montar(v, ts, lista, ofertas, estado, olhadas))
+    return scan
+
+
+async def varrer(v, estado, agora):
+    """Uma rodada inteira. agora: datetime no fuso de Brasília. Devolve o scan (versão 2) para o registrador."""
+    from playwright.async_api import async_playwright
+    ts, bs, olhadas = preparar(v, estado, agora)
     vendedores.configurar(v)
     scan = {'versao': 2, 'inicio': datetime.now(timezone.utc).isoformat()}
     async with async_playwright() as p:
-        opcoes = {'headless': True}
-        if os.environ.get('PASSAGENS_CHROMIUM'):          # navegador já instalado na máquina (uso fora do GitHub)
-            opcoes['executable_path'] = os.environ['PASSAGENS_CHROMIUM']
-        if os.environ.get('HTTPS_PROXY'):
-            opcoes['proxy'] = {'server': os.environ['HTTPS_PROXY']}
-        nav = await p.chromium.launch(**opcoes)
+        nav = await p.chromium.launch(**opcoes_do_navegador())
         t0 = time.monotonic()
         lista, ofertas, google = await radar_e_conferencia(nav, v, ts, bs, estado)
         google['seg'] = round(time.monotonic() - t0)
@@ -565,6 +618,15 @@ def _teste():
     velho = {'series': {'v.volta': {'rec': {'d': '2027-01-05', 'ne': 'FOR'}}}}
     assert ('volta', '2027-01-05', 'FOR', 1) not in fila_da_lupa(lista, ts, v, velho, 0)
 
+    # ---- rodada rápida: só vale conferir o trecho em que a lista mostra um voo R$20 ou mais abaixo da recomendada guardada, já com o peso
+    guardado = lambda pp, orig='FOR': {'series': {'v.volta': {'rec': {'ident': ['2027-01-19', 'Gol', orig, 'GRU', '12:50'], 'pp': pp}}}}
+    # na lista: Fortaleza a R$520, Natal a R$900 (+120 de peso), Recife a R$400 (último caso: não conta)
+    assert quedas_possiveis(lista, ts, v, guardado(545)) == {'v.volta'} and quedas_possiveis(lista, ts, v, guardado(530)) == set()
+    # a recomendada guardada era por Natal (R$500 + 120 de peso): Fortaleza a R$520 já é melhor
+    assert quedas_possiveis(lista, ts, v, guardado(500, 'NAT')) == {'v.volta'}
+    # trecho sem recomendada guardada, ou sem voo na lista, fica de fora
+    assert quedas_possiveis(lista, ts, v, {}) == set() and quedas_possiveis([], ts, v, guardado(900)) == set()
+
     # ---- montagem: recomendada com peso, mais barata, voo comprado, células por data e aeroporto
     olhadas = {'v.volta': ['2027-01-19'], 'wk.ida': ['2026-12-22']}
     series = montar(v, ts, lista, og + [ov], {}, olhadas)
@@ -657,6 +719,11 @@ if __name__ == '__main__':
         sys.exit(0)
     viagem = plano.carregar()
     estado_ = registrar.ler_estado()
+    if sys.argv[1:] == ['--rapida']:
+        scan_ = asyncio.run(varrer_rapido(viagem, estado_, datetime.now()))
+        for linha in registrar.registrar_rapida(scan_, viagem):
+            print(linha)
+        sys.exit(0)
     scan_ = asyncio.run(varrer(viagem, estado_, datetime.now()))
     json.dump(scan_, open(os.path.join(RAIZ, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
     print('STATUS:', scan_['status'], scan_.get('erro') or '', '| trechos com preço:', sum(1 for s in scan_['series'].values() if s['recomendada']))

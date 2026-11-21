@@ -30,7 +30,13 @@ import vendedores  # noqa: E402
 #     trechos separados e só "ligue para reservar"; companhias diferentes: "itinerário não está mais disponível";
 #   - Zupper ida e volta: responde (15 cartões por busca) e o par dos mesmos voos saiu R$126 a R$143 por pessoa mais
 #     barato que os dois trechos comprados separados nos outros vendedores.
-# Resultado da rodada 5: ver o registro da execução (anotar aqui depois).
+# Resultado da rodada 5 (21/11/2026):
+#   - MaxMilhas, Zupper e Vai de Promo trazem voos novos a cada rolagem (o menor preço já aparece 1 s depois do primeiro
+#     cartão); a 123milhas mostra os mesmos 10 cartões do começo ao fim: não precisa rolar (vendedores.ROLAGENS);
+#   - bloquear as imagens não vale: na MaxMilhas a leitura passou a achar menos voos;
+#   - fontes novas: Momondo responde com a página "o que é um bot", eDestinos com 403 e a CVC com a verificação da
+#     Cloudflare (ficam de fora: não contornamos bloqueio); Voopter e Gotogate abrem só a página inicial, a busca é por
+#     formulário, e o que venderiam já chega por outro caminho (os mesmos vendedores, ou agência de fora).
 DATA, NE, PAX = '2026-12-28', 'FOR', 1
 PESADOS = re.compile(r'\.(png|jpe?g|gif|webp|svg|ico|woff2?|ttf|otf|mp4|webm)(\?|$)', re.I)
 BLOQUEIO = r'captcha|datadome|access denied|acesso negado|forbidden|blocked|bloquead|verify you are|verifique|robot|robô|cloudflare|press & hold|pressione e segure|humano'

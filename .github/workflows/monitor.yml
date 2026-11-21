@@ -3,12 +3,16 @@ name: Monitor de passagens
 on:
   schedule:
     - cron: '17 * * * *'     # reserva: o agendamento do GitHub atrasa e descarta muitas execuções
-  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (de hora em hora, com origem=cron)
+  workflow_dispatch:          # botão "Run workflow" e o cron-job.org (de hora em hora, com origem=cron; opcional: modo=rapida no meio da hora)
     inputs:
       origem:
         description: 'Quem disparou (cron = cron-job.org)'
         required: false
         default: 'manual'
+      modo:
+        description: 'completa = rodada inteira; rapida = só o Google, avisa se algum preço caiu (para o meio da hora)'
+        required: false
+        default: 'completa'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
     paths: ['viagem.json', 'varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/*.py', '.github/workflows/monitor.yml']
@@ -35,16 +39,18 @@ jobs:
         env:
           EVENTO: ${{ github.event_name }}
           ORIGEM: ${{ inputs.origem }}
-        # agendamento do GitHub e cron-job.org podem cair na mesma hora: a segunda é pulada (sem mensagem dobrada)
+          MODO: ${{ inputs.modo }}
+        # agendamento do GitHub e cron-job.org podem cair na mesma hora: a segunda é pulada (sem mensagem dobrada);
+        # a rodada rápida só é pulada se uma completa acabou de terminar (menos de 15 minutos)
         run: |
           python3 - >> "$GITHUB_OUTPUT" <<'FIM'
           import json, os, datetime as dt
-          pular = False
-          if os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
+          pular, rapida = False, os.environ.get('MODO') == 'rapida'
+          if rapida or os.environ['EVENTO'] == 'schedule' or os.environ.get('ORIGEM') == 'cron':
               try:
                   fim = json.load(open('ultima.json'))['fim']
                   idade = dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(fim.replace('Z', '+00:00'))
-                  pular = idade.total_seconds() < 40 * 60
+                  pular = idade.total_seconds() < (15 if rapida else 40) * 60
               except Exception:
                   pass
           print('pular=' + str(pular).lower())
@@ -70,7 +76,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NOMES_VIAGEM: ${{ secrets.NOMES_VIAGEM }}                    # opcional: nomes das pessoas, só para o Telegram (o repositório é público)
           PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}   # fora da main: só o dono recebe, sem som, marcado [TESTE]
-        run: python nuvem/rodar.py
+        run: python nuvem/rodar.py ${{ inputs.modo == 'rapida' && '--rapida' || '' }}
       - name: Gerar a página (GitHub Pages)
         if: always() && steps.guarda.outputs.pular != 'true'
         run: python nuvem/pagina.py
