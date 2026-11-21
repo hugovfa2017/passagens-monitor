@@ -389,7 +389,7 @@
    "ressalvas": [],
    "id": "promobit-3237119",
    "publicado": "2026-11-20T23:29:03-0300",
-   "idade_h": 14.5
+   "idade_h": 14.7
   },
   "promobit-3237137": {
    "fonte": "Promobit",
@@ -595,7 +595,7 @@
    "publicado": "2026-11-21T08:51:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 5.2
+   "idade_h": 5.3
   },
   "tg-OfertasDoDia/483210-0": {
    "fonte": "Telegram",
@@ -614,7 +614,7 @@
    "publicado": "2026-11-21T08:50:50-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 5.2
+   "idade_h": 5.3
   },
   "promobit-3237512": {
    "fonte": "Promobit",
@@ -750,7 +750,7 @@
    "ressalvas": [],
    "id": "promobit-3237635",
    "publicado": "2026-11-21T09:50:15-0300",
-   "idade_h": 4.2
+   "idade_h": 4.3
   },
   "promobit-3237620": {
    "fonte": "Promobit",
@@ -767,7 +767,7 @@
    "ressalvas": [],
    "id": "promobit-3237620",
    "publicado": "2026-11-21T09:43:54-0300",
-   "idade_h": 4.3
+   "idade_h": 4.4
   },
   "promobit-3235528": {
    "fonte": "Promobit",
@@ -784,7 +784,7 @@
    "ressalvas": [],
    "id": "promobit-3235528",
    "publicado": "2026-11-20T13:13:15-0300",
-   "idade_h": 24.8
+   "idade_h": 25.0
   },
   "promobit-3235318": {
    "fonte": "Promobit",
@@ -818,7 +818,7 @@
    "ressalvas": [],
    "id": "promobit-3237656",
    "publicado": "2026-11-21T09:57:17-0300",
-   "idade_h": 4.1
+   "idade_h": 4.2
   },
   "promobit-3237729": {
    "fonte": "Promobit",
@@ -835,7 +835,7 @@
    "ressalvas": [],
    "id": "promobit-3237729",
    "publicado": "2026-11-21T10:22:05-0300",
-   "idade_h": 3.6
+   "idade_h": 3.8
   },
   "promobit-3237780": {
    "fonte": "Promobit",
@@ -852,7 +852,7 @@
    "ressalvas": [],
    "id": "promobit-3237780",
    "publicado": "2026-11-21T10:36:30-0300",
-   "idade_h": 3.4
+   "idade_h": 3.6
   },
   "promobit-3238002": {
    "fonte": "Promobit",
@@ -869,7 +869,24 @@
    "ressalvas": [],
    "id": "promobit-3238002",
    "publicado": "2026-11-21T12:17:59-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
+  },
+  "promobit-3238212": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Warhammer 40,000: Space Marine 2 - Ultima Limited Edition - PS5",
+   "preco": 513.96,
+   "link": "https://www.promobit.com.br/oferta/warhammer-40000-space-marine-2-ultima-limited-edition-ps5-3238212/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3238212",
+   "publicado": "2026-11-21T13:56:12-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -907,7 +924,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 5,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -947,7 +964,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T14:00:27-03:00",
+ "ultima": "2026-11-21T14:10:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
