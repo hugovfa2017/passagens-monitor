@@ -326,7 +326,9 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
                            f"{comprado['saida'].replace(':', 'h')}): sem lugar à venda nesta busca", 0))
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
-            outras = sorted(((x['pp'], d) for d, x in vistas.items() if x.get('pp') and d != rec['d']))[:2]
+            # só datas cujo preço ainda é o da lista do Google; as já conferidas aparecem nas linhas de cima
+            mostradas = {rec['d']} | ({r['mais_barata']['d']} if r.get('mais_barata') else set())
+            outras = sorted(((x['pp'], d) for d, x in vistas.items() if x.get('pp') and not x.get('conf') and d not in mostradas))[:2]
             if outras:
                 linhas.append(('Outras datas, preço ainda não conferido: ' + ' · '.join(f"{dia(d)} {brl(pp)}" for pp, d in outras), 2))
     # quem tem duas formas de voltar: quanto uma sai mais barata que a outra
@@ -571,8 +573,8 @@ def _teste_registro():
                          olhadas=['2027-01-18', '2027-01-19', '2027-01-20', '2027-01-21', '2027-01-22']),
             'h.depois': s(of('2027-02-09', 'FOR', 'GRU', '13:10', depois, 'LATAM', '123milhas'),
                           celulas={'2027-02-09': {'FOR': {'pp': depois, 'conf': True}}, '2027-02-23': {'FOR': {'pp': 402, 'conf': False}},
-                                   '2027-03-10': {'JDO': {'pp': 415, 'conf': False}}},
-                          olhadas=['2027-02-09', '2027-02-23', '2027-03-10']),
+                                   '2027-03-10': {'JDO': {'pp': 415, 'conf': False}}, '2027-02-01': {'REC': {'pp': 366, 'conf': True}}},
+                          olhadas=['2027-02-01', '2027-02-09', '2027-02-23', '2027-03-10']),
             'g.ida_dez': s(of('2026-12-29', 'GRU', 'FOR', '07:00', ida_dez, vend='Viaza', sentido='ida', chegada='10:30'),
                            comprado=of('2026-12-22', 'GRU', 'NAT', '14:05', comprado, sentido='ida', chegada='17:25')),
             'g.ida_jan': s(of('2027-01-06', 'VCP', 'JDO', '22:40', ida_jan, 'Azul', 'CIA Azul', sentido='ida', tipo='escala 1h10', chegada='03:05')),
@@ -642,7 +644,7 @@ def _teste_registro():
         do_v = [(x['d'], x['ne'], x['pp'], x['conf']) for x in linhas if x['serie'] == 'v.volta']
         # de cada data olhada fica o melhor (confirmado antes de preço de lista); data olhada sem voo não gera linha na primeira vez
         assert do_v == [('2027-01-18', 'REC', '540', '1'), ('2027-01-19', 'JDO', '880', '0'), ('2027-01-20', 'FOR', '612', '1')], do_v
-        assert [(x['d'], x['pp']) for x in linhas if x['serie'] == 'v.volta#rec'] == [('2027-01-20', '612')] and len(linhas) == 3 + 3 + 6
+        assert [(x['d'], x['pp']) for x in linhas if x['serie'] == 'v.volta#rec'] == [('2027-01-20', '612')] and len(linhas) == 3 + 4 + 6
         estado = ler_estado(d)
         assert estado['series']['v.volta']['rec'] == {'ident': ['2027-01-20', 'Gol', 'FOR', 'GRU', '12:50'], 'd': '2027-01-20', 'ne': 'FOR', 'pp': 612, 'vend': 'maxmilhas'}
         assert estado['series']['v.volta']['datas']['2027-01-21'] == {'pp': None, 'visto': '2026-11-20 20:17'} and estado['series']['v.volta']['min'] == 612
