@@ -509,11 +509,13 @@ def _api(token, metodo, campos=None):
         return json.loads(r.read())
 
 
-def telegram(texto_, silencioso=False, botoes=()):
-    """Nunca derruba a varredura nem escreve token ou id de chat em lugar nenhum."""
+def telegram(texto_, silencioso=False, botoes=(), so_dono=False):
+    """Nunca derruba a varredura nem escreve token ou id de chat em lugar nenhum.
+    so_dono: só o primeiro chat da lista (o dono) recebe; é para aviso de manutenção, que não interessa a quem assina."""
     if os.environ.get('PS5_ENVIAR', '1') == '0':
         return 'TELEGRAM_DESLIGADO'
     token, chats = _token(), _chats()
+    chats = chats[:1] if so_dono else chats
     if not token:
         return 'TELEGRAM_NAO_CONFIGURADO (falta o segredo com o token do bot do PS5: PS5_BOT)'
     if not chats:
@@ -657,8 +659,9 @@ def resumo_md(resumo, agora, alertas, situacao, fora, cupons_teste, telegram_sta
         linhas += [f"- {l['origem']}: {l['descricao'][:90]}" + (f" — {l['lance_tipo']} {brl(l['lance'])}" if l.get('lance') else '') +
                    (f", {l['encerra'].lower()}" if l.get('encerra') else '') + f" ({l['link']})" for l in lotes[:8]]
     linhas += ['', '## Fontes', '']
+    barradas = lambda s: f" · barrada em {s['barradas_hoje']} de {s['buscas_hoje']} buscas hoje" if s.get('barradas_hoje') else ''
     linhas += [f"- {n}: " + (f"ok, {s['ofertas']} itens" + (f" ({s['detalhe']})" if s.get('detalhe') else '') if s['ok'] else f"falhou ({s['erro']})")
-               for n, s in situacao.items()]
+               + barradas(s) for n, s in situacao.items()]
     linhas += ['', 'Descartados: ' + (', '.join(f'{v} {k}' for k, v in sorted(fora.items())) or 'nenhum'), '', f'Painel: {PAINEL_URL}']
     return '\n'.join(linhas) + '\n'
 
@@ -679,6 +682,38 @@ def gerar_painel(dados, destino=DOCS):
 
 
 # ---------------------------------------------------------------- varredura
+def avisos_da_fonte(nome, s, h, agora):
+    """Atualiza a saúde de uma fonte (h, guardada no estado) com o resultado desta rodada (s) e devolve os avisos de
+    manutenção a mandar ao dono (quase sempre nenhum).
+    - Fonte quebrada (erro que não é bloqueio): avisa na 6ª falha seguida, no máximo uma vez a cada
+      config.DIAS_ENTRE_AVISOS_DE_FONTE dias.
+    - Bloqueio anti-robô é rotina e não avisa: a loja barra o servidor em parte das buscas e volta sozinha. Só quando a
+      fonte passa um dia inteiro barrada em todas as buscas (20 ou mais) sai um aviso, com o mesmo intervalo mínimo.
+    h também conta as buscas e os bloqueios do dia, para o resumo da varredura mostrar a proporção."""
+    hoje, avisos = agora.strftime('%Y-%m-%d'), []
+    recente = bool(h.get('avisado')) and agora - datetime.fromisoformat(h['avisado']) < timedelta(days=config.DIAS_ENTRE_AVISOS_DE_FONTE)
+    if h.get('dia') != hoje:
+        buscas, barradas = h.get('buscas', 0), h.get('barradas', 0)
+        if h.get('dia') and buscas >= 20 and barradas == buscas and h.get('ja_funcionou') and not recente:
+            avisos.append(f"⚠️ <b>Buscador do PS5</b>: a fonte {html.escape(nome)} barrou o buscador em todas as {buscas} buscas de ontem. "
+                          "Sigo tentando de vez em quando.")
+            recente = True
+        h.update(dia=hoje, buscas=0, barradas=0)
+    barrada = not s['ok'] and str(s.get('erro', '')).startswith(('Bloqueado', 'pausada'))
+    h['buscas'] += 1
+    h['barradas'] += barrada
+    if s['ok'] and not s.get('pausada'):
+        h.update(falhas=0, ja_funcionou=True)
+    else:
+        h['falhas'] += 1
+        if h['falhas'] == 6 and h['ja_funcionou'] and not barrada and not recente:
+            avisos.append(f"⚠️ <b>Buscador do PS5</b>: a fonte {html.escape(nome)} parou de responder há 6 rodadas "
+                          f"({html.escape(str(s.get('erro', ''))[:80])}).")
+    if avisos:
+        h['avisado'] = agora.isoformat(timespec='seconds')
+    return avisos
+
+
 def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=None, painel=None, resumo_agora=False):
     agora = agora or datetime.now(fontes.BRT)
     painel = (pasta == AQUI) if painel is None else painel
@@ -734,21 +769,14 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     estado['falhas_seguidas'] = 0 if ps5 else estado.get('falhas_seguidas', 0) + 1
     if estado['falhas_seguidas'] == 6:
         status.append(enviar('⚠️ <b>Buscador do PS5</b>: há 6 varreduras sem achar nenhuma oferta. As lojas podem ter mudado o site.',
-                             botoes=[PAINEL_BOTAO]))
+                             botoes=[PAINEL_BOTAO], so_dono=True))
     # saúde de cada fonte: quantas rodadas seguidas falhou (quem barra há muito tempo é tentado só de vez em quando)
     saude = estado.setdefault('saude', {})
     for nome, s in situacao.items():
         h = saude.setdefault(nome, {'falhas': 0, 'ja_funcionou': False})
-        if s.get('pausada'):
-            h['falhas'] += 1
-        elif s['ok']:
-            h.update(falhas=0, ja_funcionou=True)
-        else:
-            h['falhas'] += 1
-            if h['falhas'] == 6 and h['ja_funcionou']:
-                status.append(enviar(f"⚠️ <b>Buscador do PS5</b>: a fonte {html.escape(nome)} parou de responder há 6 rodadas.",
-                                     silencioso=True, botoes=[PAINEL_BOTAO]))
+        status += [enviar(t, silencioso=True, botoes=[PAINEL_BOTAO], so_dono=True) for t in avisos_da_fonte(nome, s, h, agora)]
         s['falhas_seguidas'] = h['falhas']
+        s['barradas_hoje'], s['buscas_hoje'] = h['barradas'], h['buscas']
     fontes.PULAR = {n for n, h in saude.items() if h['falhas'] >= 24 and h['falhas'] % 6 != 0}
     tg = ' | '.join(status) or 'sem mensagem nesta varredura'
 
@@ -998,8 +1026,9 @@ def _teste():
         assert not abertas, f'tag sem fechar: {abertas}'
         assert '<' not in re.sub(r'</?(?:b|i|code|a(?: href="[^"<>]*")?)>', '', t), 'sinal < sem escapar'
 
-    def enviar(texto_, silencioso=False, botoes=()):
+    def enviar(texto_, silencioso=False, botoes=(), so_dono=False):
         html_do_telegram(texto_)
+        assert so_dono == texto_.startswith('⚠️ <b>Buscador do PS5</b>'), 'aviso de manutenção vai só para o dono; o resto, para todos'
         assert len(texto_) < 4096, 'o Telegram corta mensagem com mais de 4096 caracteres'
         if 'R$' in texto_ and not texto_.startswith('⚠️'):
             primeira_ = re.sub(r'<[^>]+>', '', texto_.split('\n')[0])
@@ -1180,6 +1209,44 @@ def _teste():
         enviadas.clear()
         rodar(coleta(), cupons, enviar, pasta, agora + timedelta(hours=24))           # dia seguinte: o resumo do dia sai
         assert len(enviadas) == 1 and enviadas[0][0].startswith('🏆'), 'o pedido avulso não conta como resumo do dia'
+
+    # ---- saúde das fontes: bloqueio anti-robô é rotina e não vira mensagem; fonte quebrada avisa o dono, no máximo a cada 3 dias
+    t0 = datetime(2026, 11, 21, 8, 0, tzinfo=fontes.BRT)
+    ok_, barrou, quebrou = {'ok': True, 'ofertas': 3}, {'ok': False, 'erro': 'Bloqueado: HTTP 503 (barrou o robô)'}, {'ok': False, 'erro': "KeyError: 'preco'"}
+
+    def dia_de(h, resultados, inicio):
+        """Passa uma sequência de rodadas (uma a cada 10 minutos) pela saúde h e devolve todos os avisos gerados."""
+        return [a for i, r in enumerate(resultados) for a in avisos_da_fonte('Amazon', dict(r), h, inicio + timedelta(minutes=10 * i))]
+
+    # a Amazon de verdade: funciona, é barrada 8 vezes, volta, é barrada mais 10... nenhum aviso (antes saía um a cada 6 falhas seguidas)
+    h = {'falhas': 0, 'ja_funcionou': False}
+    assert dia_de(h, [ok_] + [barrou] * 8 + [ok_] + [barrou] * 10 + [ok_], t0) == [], 'bloqueio que vai e volta não gera aviso'
+    assert (h['buscas'], h['barradas'], h['falhas'], h['dia']) == (21, 18, 0, '2026-11-21'), h
+    # fonte que quebrou (erro que não é bloqueio): um aviso na 6ª falha seguida, com o motivo; nas falhas seguintes, nada
+    h = {'falhas': 0, 'ja_funcionou': True}
+    avisos = dia_de(h, [quebrou] * 9, t0)
+    assert avisos == ["⚠️ <b>Buscador do PS5</b>: a fonte Amazon parou de responder há 6 rodadas (KeyError: &#x27;preco&#x27;)."], avisos
+    # voltou e quebrou de novo no dia seguinte: ainda dentro dos 3 dias, não repete; passado o prazo, avisa de novo
+    assert dia_de(h, [ok_] + [quebrou] * 7, t0 + timedelta(days=1)) == [], 'no máximo um aviso por fonte a cada 3 dias'
+    assert len(dia_de(h, [ok_] + [quebrou] * 7, t0 + timedelta(days=4))) == 1
+    # fonte que nunca funcionou não avisa (ainda não entrou em serviço)
+    assert dia_de({'falhas': 0, 'ja_funcionou': False}, [quebrou] * 8, t0) == []
+    # um dia inteiro barrada em todas as buscas: um aviso na virada do dia; dia com alguma busca boa, ou com poucas buscas, não
+    h = {'falhas': 0, 'ja_funcionou': True}
+    assert dia_de(h, [barrou] * 30, t0) == []
+    avisos = dia_de(h, [barrou], t0 + timedelta(days=1))
+    assert avisos == ['⚠️ <b>Buscador do PS5</b>: a fonte Amazon barrou o buscador em todas as 30 buscas de ontem. Sigo tentando de vez em quando.'], avisos
+    assert dia_de(h, [barrou] * 30, t0 + timedelta(days=1, minutes=10)) == [] and dia_de(h, [barrou], t0 + timedelta(days=2)) == [], 'não repete dentro de 3 dias'
+    h = {'falhas': 0, 'ja_funcionou': True}
+    assert dia_de(h, [barrou] * 15 + [ok_] + [barrou] * 14, t0) == [] and dia_de(h, [barrou], t0 + timedelta(days=1)) == []
+    h = {'falhas': 0, 'ja_funcionou': True}
+    assert dia_de(h, [barrou] * 5, t0) == [] and dia_de(h, [barrou], t0 + timedelta(days=1)) == []
+    # fonte pausada (tentada só de vez em quando) conta como barrada, sem aviso
+    h = {'falhas': 30, 'ja_funcionou': True}
+    assert dia_de(h, [{'ok': False, 'erro': 'pausada: vem barrando o robô (tenta de novo de vez em quando)', 'pausada': True}] * 3, t0) == [] and h['barradas'] == 3 and h['falhas'] == 33
+    # o resumo da varredura mostra a proporção do dia
+    md = resumo_md({}, t0, [], {'Amazon': {**barrou, 'barradas_hoje': 18, 'buscas_hoje': 21}, 'KaBuM!': {**ok_, 'barradas_hoje': 0, 'buscas_hoje': 21}}, {}, {}, 'x', {}, [])
+    assert '- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 18 de 21 buscas hoje\n' in md and '- KaBuM!: ok, 3 itens\n' in md, md
     print('OK: auto-checagem passou')
 
 

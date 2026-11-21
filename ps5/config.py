@@ -29,6 +29,11 @@ CACADOR_ATE = date(2026, 12, 1)   # None desliga na hora
 # Resumo diário, sem som, com o melhor preço de cada modelo (hora de Brasília). None desliga.
 RESUMO_DIARIO_HORA = 9
 
+# Aviso de fonte quebrada (só para o dono, sem som): no máximo um por fonte a cada tantos dias. Bloqueio anti-robô não
+# gera aviso (a Amazon barra o servidor do GitHub em boa parte das buscas e volta sozinha); só quando uma fonte passa
+# um dia inteiro barrada em todas as buscas.
+DIAS_ENTRE_AVISOS_DE_FONTE = 3
+
 # Seções à parte, nunca misturadas ao melhor preço de console novo. True liga, False desliga.
 SECOES = {
     'openbox': True,      # open box / reembalado / recondicionado vendido por loja
