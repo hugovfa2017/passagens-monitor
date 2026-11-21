@@ -1,8 +1,9 @@
-# Passagens: última busca em 2026-11-21 11:27
+# Passagens: última busca em 2026-11-21 12:25
 
-✈️ Passagens · sáb 21/11, 11:27
+✈️ Passagens · sáb 21/11, 12:25
 Preço por pessoa, sem mala, conferido nesta busca.
-↕️ V, volta −R$45 · H, volta depois −R$3 · G, ida em dezembro +R$25 · G, ida em janeiro +R$16 · W + K, ida +R$25
+🔥 Hora de comprar: G, ida em dezembro R$1.087 (alvo R$1.100) · W + K, ida R$1.087 (alvo R$1.100)
+Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
 
 👩 V
 Volta · 18 a 22/01
@@ -19,37 +20,40 @@ Volta depois · 23/01 a 31/03
 ⭐ R$382 · sáb 06/03 · Gol 1559, direto
 └ 02h25 Fortaleza → 06h05 Guarulhos · Vai de Promo
 🟢 Bom momento: para o Google, preço baixo (a rota costuma ficar entre R$660 e R$2.200)
-Outras datas, preço ainda não conferido: qui 11/03 R$386 · sáb 13/03 R$386
+Outras datas, preço ainda não conferido: ter 09/03 R$386 · qui 11/03 R$386
 ↔️ Volta depois sai R$329 mais barato que volta junto
 
 🧑 G
 Ida em dezembro · 22 a 23/12 e 26 a 30/12
-⭐ R$1.102 · ter 29/12 · Gol 1580, direto
+⭐ ✅ R$1.087 · ter 29/12 · Gol 1580, direto
 └ 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro · Vai de Promo
 🎯 Voo já comprado: R$3.566 · ter 22/12 · Gol 1678, direto
 └ 14h05 Guarulhos → 17h25 Natal · Gol
-🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.150 e R$3.000) · R$2 acima do alvo (R$1.100)
+🟢 Bom momento: abaixo do alvo de R$1.100
 Ida em janeiro · 02 a 10/01
-⭐ R$735 · qua 06/01 · Gol, 1 conexão
+⭐ R$725 · qua 06/01 · Gol, 1 conexão
 └ 20h25 Congonhas → 01h15 (+1 dia) Natal · Vai de Promo
+🟡 Acompanhar: para o Google, preço normal (a rota costuma ficar entre R$730 e R$2.850)
 Volta · 18 a 22/01
 R$711 · qua 20/01 · mesmo voo de V
 └ 00h40 Fortaleza → 06h50 Guarulhos
-📦 Ida + volta: indo em dezembro R$1.813 · indo em janeiro R$1.446
+📦 Ida + volta: indo em dezembro R$1.798 · indo em janeiro R$1.436
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
-⭐ R$1.102 por pessoa · ter 29/12 · Gol 1580, direto
+⭐ ✅ R$1.087 por pessoa · ter 29/12 · Gol 1580, direto
 └ 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro · Vai de Promo
 🎯 Voo já comprado: R$3.566 por pessoa · ter 22/12 · Gol 1678, direto
 └ 14h05 Guarulhos → 17h25 Natal · Gol
+🟢 Bom momento: abaixo do alvo de R$1.100
 Volta · 07 a 12/01
-⭐ R$807 por pessoa · sex 08/01 · LATAM, direto
+⭐ R$807 por pessoa · sex 08/01 · LATAM 3361, direto
 └ 21h05 Fortaleza → 00h40 (+1 dia) Guarulhos · Vai de Promo
-📦 Ida + volta: R$1.909 por pessoa · R$3.818 no total
-🔁 Os mesmos voos numa compra só na Zupper: R$1.774 por pessoa (R$135 a menos) · R$3.548 no total
+🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.275 e R$3.250) · R$157 acima do alvo (R$650)
+📦 Ida + volta: R$1.894 por pessoa · R$3.788 no total
+🔁 Os mesmos voos numa compra só na Zupper: R$1.774 por pessoa (R$120 a menos) · R$3.548 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$104 a R$158 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$104 a R$135 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
