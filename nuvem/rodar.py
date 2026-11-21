@@ -96,7 +96,7 @@ def fila_da_lupa(lista, ts, v, estado, hora):
         if not chaves and rec and rec['d'] in t['datas']:
             chaves = [(rec['d'], rec['ne'])]
         por_ordem.append([(t['sentido'], d, ne, t['pax']) for d, ne in chaves])
-    fila = [c for nivel in range(v['selecao']['lupa_por_trecho']) for cs in por_ordem for c in cs[nivel:nivel + 1]]
+    fila = [c for nivel in range(max(map(len, por_ordem), default=0)) for cs in por_ordem for c in cs[nivel:nivel + 1]]
     if 'MVF' in v['aeroportos']:
         for sentido in ('ida', 'volta'):
             ds = sorted({d for t in ts if t['sentido'] == sentido and not t['rodizio'] for d in t['datas']})
@@ -104,6 +104,18 @@ def fila_da_lupa(lista, ts, v, estado, hora):
                 fila.append((sentido, ds[hora % len(ds)], 'MVF', 1))
     vistos = set()
     return [c for c in fila if not (c in vistos or vistos.add(c))]
+
+
+def completar_numeros(ofertas):
+    """Vendedor que não mostra o número do voo ganha o número do mesmo voo visto em outra fonte (a mensagem fica exata)."""
+    numero = {}
+    for o in ofertas:
+        if o.get('voos'):
+            numero.setdefault((o['sentido'], *selecao.ident(o)), o['voos'])
+    for o in ofertas:
+        if not o.get('voos'):
+            o['voos'] = numero.get((o['sentido'], *selecao.ident(o)), '')
+    return ofertas
 
 
 def taxas_mala(ofertas):
@@ -248,7 +260,7 @@ async def varrer(v, estado, agora):
         do_vendedor, fontes = await lupa(nav, fila)
         print(f'VENDEDORES: {len(fila)} chaves em {round(time.monotonic() - t0)}s |', json.dumps(fontes, ensure_ascii=False))
         await nav.close()
-    ofertas += do_vendedor
+    ofertas = completar_numeros(ofertas + do_vendedor)
     mossoro = [o for o in do_vendedor if 'MVF' in (o['orig'], o['dest'])]
     series = montar(v, ts, lista, ofertas, estado, olhadas)
     achou = any(s['recomendada'] for s in series.values())
@@ -308,12 +320,17 @@ def _teste():
     assert ov['voos'] == 'REC>CGH 2027-01-19 AD 4716' and ov['fonte'] == 'vendedor' and ov['mala'] == 93 and ov['pp'] == 360
     assert oferta_vendedor({**bruto, 'direto': False, 'mala': None}, 'volta', '2027-01-19', 1)['voos'] == ''
     assert taxas_mala([ov, {**ov, 'mala': 120}, {**ov, 'cia': 'Gol', 'mala': 136}, og[0]]) == {'Azul': 120, 'Gol': 136}
+    # o mesmo voo no vendedor que não mostra o número ganha o número lido no Google; voo diferente fica sem
+    sem_numero = [{**og[0], 'vend': 'Vai de Promo', 'voos': '', 'pp': 480}, {**og[0], 'saida': '23:00', 'voos': ''}]
+    cheios = completar_numeros([og[0], *sem_numero])
+    assert [o['voos'] for o in cheios] == ['FOR>GRU 2027-01-19 G3 1555', 'FOR>GRU 2027-01-19 G3 1555', '']
 
     # ---- fila da lupa: a melhor chave de cada trecho antes da segunda; Mossoró no fim, uma data por sentido, girando com a hora
     fila = fila_da_lupa(lista, ts, v, {}, 0)
-    assert fila[:2] == [('volta', '2027-01-19', 'FOR', 1), ('ida', '2026-12-22', 'FOR', 2)], fila
-    # segunda chave de cada trecho: Recife na volta; Natal na ida de 2 lugares (o voo já comprado, com o bônus)
-    assert ('volta', '2027-01-19', 'REC', 1) in fila[2:] and ('ida', '2026-12-22', 'NAT', 2) in fila[2:]
+    # o voo já comprado é conferido sempre nos trechos que pedem, mesmo sem aparecer na lista do Google (1 lugar)
+    assert fila[:3] == [('volta', '2027-01-19', 'FOR', 1), ('ida', '2026-12-22', 'NAT', 1), ('ida', '2026-12-22', 'FOR', 2)], fila
+    # segunda chave de cada trecho: Recife na volta; Natal na ida de 2 lugares (o voo já comprado)
+    assert fila[3:5] == [('volta', '2027-01-19', 'REC', 1), ('ida', '2026-12-22', 'NAT', 2)], fila
     assert fila[-2:] == [('ida', '2026-12-22', 'MVF', 1), ('volta', '2027-01-07', 'MVF', 1)] and len(fila) == len(set(fila))
     assert fila_da_lupa(lista, ts, v, {}, 1)[-2:] == [('ida', '2026-12-23', 'MVF', 1), ('volta', '2027-01-08', 'MVF', 1)]
     # Google bloqueado: sem lista, vale a recomendada da rodada anterior

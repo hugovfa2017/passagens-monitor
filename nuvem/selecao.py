@@ -38,12 +38,24 @@ def do_trecho(itens, t):
     return [x for x in itens if x['sentido'] == t['sentido'] and x['pax'] == t['pax'] and x['d'] in t['datas']]
 
 
+def variados(ordenados, n, chave):
+    """Os n primeiros de uma lista já ordenada, sem repetir a chave (ex.: o aeroporto) enquanto houver chave nova;
+    se as chaves acabarem antes de n, completa com os próximos da ordem."""
+    usados, saida = set(), []
+    for x in ordenados:
+        if chave(x) not in usados and len(saida) < n:
+            usados.add(chave(x))
+            saida.append(x)
+    return saida + [x for x in ordenados if x not in saida][:n - len(saida)]
+
+
 def candidatos(lista, v, t, anterior=None):
-    """Voos da lista que vale conferir na tela de compra para um trecho: os melhores depois do peso, o mais barato de
-    todos, a recomendada da rodada anterior (para saber se subiu ou sumiu) e o voo já comprado, quando o trecho pede."""
+    """Voos da lista que vale conferir na tela de compra para um trecho: o melhor de cada aeroporto depois do peso (um
+    aeroporto barato na lista não esconde os outros), o mais barato de todos, a recomendada da rodada anterior (para
+    saber se subiu ou sumiu) e o voo já comprado, quando o trecho pede."""
     meus = do_trecho(lista, t)
     por_ajustado = sorted(meus, key=lambda x: (x['lista_pp'] + peso(x, v, t), x['d'], x['saida']))
-    escolhidos = por_ajustado[:max(1, v['selecao']['validar_por_trecho'] - 1)]
+    escolhidos = variados(por_ajustado, max(1, v['selecao']['validar_por_trecho'] - 1), lambda x: nordeste(x, v))
     escolhidos += sorted(meus, key=lambda x: (x['lista_pp'], x['d'], x['saida']))[:1]
     if anterior:
         escolhidos += [x for x in meus if ident(x) == tuple(anterior)][:1]
@@ -58,14 +70,16 @@ def candidatos(lista, v, t, anterior=None):
 
 
 def chaves_lupa(lista, v, t):
-    """(data, aeroporto do Nordeste) que vale buscar nos vendedores para um trecho: os melhores depois do peso, sem repetir."""
-    saida = []
-    for x in sorted(do_trecho(lista, t), key=lambda x: (x['lista_pp'] + peso(x, v, t), x['d'], x['saida'])):
-        chave = (x['d'], nordeste(x, v))
-        if chave not in saida:
-            saida.append(chave)
-        if len(saida) >= v['selecao']['lupa_por_trecho']:
-            break
+    """(data, aeroporto do Nordeste) que vale buscar nos vendedores para um trecho: a melhor data de cada aeroporto depois
+    do peso, um aeroporto por chave enquanto houver aeroporto novo. O voo já comprado, quando o trecho pede, entra sempre."""
+    ordenados, chaves = sorted(do_trecho(lista, t), key=lambda x: (x['lista_pp'] + peso(x, v, t), x['d'], x['saida'])), []
+    for x in ordenados:
+        if (x['d'], nordeste(x, v)) not in chaves:
+            chaves.append((x['d'], nordeste(x, v)))
+    saida = variados(chaves, v['selecao']['lupa_por_trecho'], lambda c: c[1])
+    c = v['comprado']
+    if t.get('voo_comprado') and c['d'] in t['datas'] and (c['d'], c['dest']) not in saida:
+        saida.append((c['d'], c['dest']))
     return saida
 
 
@@ -134,16 +148,25 @@ def _teste():
     lista = [voo('2027-01-19', 'REC', 'CGH', '03:00', 400), voo('2027-01-19', 'FOR', 'GRU', '12:50', 520), voo('2027-01-20', 'FOR', 'GRU', '06:00', 540),
              voo('2027-01-20', 'JDO', 'GRU', '09:00', 700), voo('2027-01-21', 'FOR', 'GRU', '06:00', 100),      # fora da janela
              voo('2027-01-19', 'FOR', 'GRU', '12:50', 500, pax=2)]                                               # outros lugares
+    # um voo por aeroporto: Fortaleza (520) e Recife (400 + 200 de peso); Recife é também o mais barato de todos
     c = candidatos(lista, v, volta)
-    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('FOR', '06:00'), ('REC', '03:00')], c
+    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('REC', '03:00')], c
     c = candidatos(lista, v, volta, anterior=('2027-01-20', 'Gol', 'JDO', 'GRU', '09:00'))
-    assert [(x['orig'], x['saida']) for x in c][-1] == ('JDO', '09:00') and len(c) == 4
+    assert [(x['orig'], x['saida']) for x in c] == [('FOR', '12:50'), ('REC', '03:00'), ('JDO', '09:00')], c
+    # só um aeroporto na lista: completa com o próximo voo da ordem
+    so_for = [x for x in lista if x['orig'] == 'FOR' and x['pax'] == 1]
+    assert [x['saida'] for x in candidatos(so_for, v, volta)] == ['12:50', '06:00']
+    assert variados([1, 2, 3, 4], 3, lambda x: x % 2) == [1, 2, 3] and variados([1, 3, 5], 2, lambda x: 0) == [1, 3] and variados([], 2, str) == []
     lista_ida = [comprado, voo('2026-12-23', 'GRU', 'FOR', '07:00', 1200, pax=2, sentido='ida'), voo('2026-12-22', 'GRU', 'FOR', '08:00', 1300, pax=2, sentido='ida'),
                  voo('2026-12-23', 'VCP', 'FOR', '09:00', 1100, pax=2, sentido='ida')]
     c = candidatos(lista_ida, v, ida)
-    assert [(x['orig'], x['dest'], x['saida']) for x in c] == [('VCP', 'FOR', '09:00'), ('GRU', 'FOR', '07:00'), ('GRU', 'NAT', '14:05')], c
-    assert chaves_lupa(lista, v, volta) == [('2027-01-19', 'FOR'), ('2027-01-20', 'FOR')]
-    assert chaves_lupa(lista_ida, v, ida) == [('2026-12-23', 'FOR'), ('2026-12-22', 'FOR')]
+    # Fortaleza por Campinas (1.100 + 60) e Natal no voo comprado (1.650 + 120 - 150); o mais barato puro já está na lista
+    assert [(x['orig'], x['dest'], x['saida']) for x in c] == [('VCP', 'FOR', '09:00'), ('GRU', 'NAT', '14:05')], c
+    # vendedores: a melhor data de cada aeroporto; o voo já comprado entra sempre, mesmo que não esteja entre os melhores
+    assert chaves_lupa(lista, v, volta) == [('2027-01-19', 'FOR'), ('2027-01-19', 'REC')]
+    assert chaves_lupa(lista_ida, v, ida) == [('2026-12-23', 'FOR'), ('2026-12-22', 'NAT')]
+    assert chaves_lupa(lista_ida[1:], v, ida) == [('2026-12-23', 'FOR'), ('2026-12-22', 'FOR'), ('2026-12-22', 'NAT')]
+    assert chaves_lupa(lista_ida[1:], v, {**ida, 'voo_comprado': False}) == [('2026-12-23', 'FOR'), ('2026-12-22', 'FOR')]
 
     # ---- recomendada x mais barata: Fortaleza a 520 ganha de Recife a 400 (peso 200), e Recife aparece como mais barata
     ofertas = [voo('2027-01-19', 'REC', 'CGH', '03:00', 400, vend='Zupper'), voo('2027-01-19', 'FOR', 'GRU', '12:50', 520),

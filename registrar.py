@@ -321,6 +321,9 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes):
             linhas += [(l, 1) for l in linhas_oferta('💸 Mais barata: ', r['mais_barata'], v, t['alvo'], cada)]
         if t['voo_comprado'] and r.get('comprado') and not eh_o_comprado:
             linhas += [(l, 0) for l in linhas_oferta('🎯 Voo já comprado: ', r['comprado'], v, t['alvo'], cada)]
+        elif t['voo_comprado'] and comprado['d'] in t['datas'] and not eh_o_comprado:
+            linhas.append((f"🎯 Voo já comprado ({comprado['cia']} {comprado['voo'].split(' ')[-1]}, {dia(comprado['d'])} "
+                           f"{comprado['saida'].replace(':', 'h')}): sem lugar à venda nesta busca", 0))
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
             outras = sorted(((x['pp'], d) for d, x in vistas.items() if x.get('pp') and d != rec['d']))[:2]
@@ -608,6 +611,7 @@ def _teste_registro():
         # dois lugares no mesmo voo: o preço é sempre por pessoa, e o pacote mostra também o total
         assert ('👭 <b>Duda + Eva</b> · 2 lugares no mesmo voo\n<u>Ida · 22 a 23/12 e 26 a 30/12</u>\n'
                 '⭐ <b>R$1.150</b> por pessoa · seg 28/12 · Gol, direto\n└ 14h05 Guarulhos → 17h25 Fortaleza · 123milhas\n'
+                '🎯 Voo já comprado (Gol 1678, ter 22/12 14h05): sem lugar à venda nesta busca\n'
                 '<u>Volta · 07 a 12/01</u>\n⭐ <b>R$540</b> por pessoa · seg 11/01 · LATAM, direto\n└ 03h20 Juazeiro → 06h50 Guarulhos · MaxMilhas\n'
                 '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total\n\n') in msg, msg
         assert msg.endswith('<i>⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa, Recife · Mossoró: nenhum voo à venda · '
