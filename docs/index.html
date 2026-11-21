@@ -98,7 +98,7 @@
   .pn-trecho { display: grid; gap: var(--cds-gap-sm); min-width: 0; }
   .pn-op { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; font-size: var(--cds-font-size-body); }
   .pn-op b { font-size: 1.15em; }
-  .pn-op.rec b { color: var(--pn-acc); }
+  .pn-op.rec b { color: var(--pn-link); }   /* o destaque misturado com a cor do texto: legível também no tema escuro */
   .pn-selo { font-size: var(--cds-font-size-caption); color: var(--pn-muted); }
   .pn-rola { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .pn table { border-collapse: collapse; font-size: var(--cds-font-size-caption); min-width: 100%; }
@@ -107,8 +107,14 @@
   .pn th { font-weight: 600; color: var(--pn-muted); }
   .pn td.conf { font-weight: 650; }
   .pn td.lista { color: var(--pn-muted); }
-  .pn td.melhor { background: var(--pn-tint); color: var(--pn-acc); }
+  .pn td.melhor { background: var(--pn-tint); color: var(--pn-link); }
   .pn-pacote { font-size: var(--cds-font-size-body); }
+  .pn-momento { font-size: var(--cds-font-size-body); font-weight: 550; }
+  /* tendência do preço da recomendada: linha discreta, o preço de agora marcado no destaque */
+  .pn-hist { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+  .pn-graf { width: 180px; height: 40px; flex: none; overflow: visible; }
+  .pn-graf path { fill: none; stroke: var(--cds-chart-reference, var(--pn-muted)); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .pn-graf circle { fill: var(--pn-acc); stroke: var(--color-panel); stroke-width: 2; }
 </style>
 
 <div class="pn">
@@ -144,6 +150,47 @@
     h('b', null, (alvo && o.pp <= alvo ? '✅ ' : '') + BRL.format(o.pp)),
     h('span', null, `${o.dia} ${hora(o.saida)} · ${lugar(o.orig)} → ${lugar(o.dest)} · ${o.cia} ${o.tipo}`),
     link(o.link, 'comprar na ' + vendedor(o.vend)));
+
+  // o que muda no preço por pessoa com outro número de lugares no mesmo voo (dif = 0: mesmo preço)
+  const lugares = (difs, pax) => {
+    const mais = difs.filter((x) => x.n > pax), um = difs.find((x) => x.n === 1 && pax > 1 && x.dif < 0), partes = [];
+    if (mais.length) partes.push('👥 comprando juntos nesse voo: ' + mais.map((x) => `${x.n} lugares, ` +
+      (x.dif ? `${x.dif > 0 ? '+' : '−'}${BRL.format(Math.abs(x.dif))} por pessoa` : 'mesmo preço por pessoa')).join(' · '));
+    if (um) partes.push(`✂️ 1 lugar sozinho sai ${BRL.format(-um.dif)} mais barato: comprar um de cada vez, em reservas separadas, economiza ${BRL.format(-um.dif)} no total`);
+    return partes.map((t) => h('p', 'pn-selo', t));
+  };
+
+  // veredito de compra do trecho (nuvem/momento.py) e, quando há, a agência de fora que vende o mesmo voo mais barato
+  const SINAL = { bom: '🟢 Bom momento', acompanhar: '🟡 Acompanhar', esperar: '⏳ Esperar' };
+  const momento = (t) => [
+    t.momento ? h('p', 'pn-momento', `${SINAL[t.momento.sinal]}: ${t.momento.motivos.join(' · ')}`) : null,
+    t.fora ? h('p', 'pn-selo', `🌐 Na ${t.fora.vend}, agência de fora do Brasil, esse voo aparece por ${BRL.format(t.fora.pp)} (não entra na escolha)`) : null,
+  ].filter(Boolean);
+
+  // como o preço da recomendada andou: cada preço vale até o seguinte (degraus); precisa de pelo menos duas mudanças
+  const SVG = 'http://www.w3.org/2000/svg';
+  const tendencia = (hist, quando) => {
+    if (!hist || hist.length < 2) return null;
+    const ms = (q) => new Date(q.replace(' ', 'T')).getTime(), precos = hist.map((p) => p[1]);
+    const t0 = ms(hist[0][0]), t1 = Math.max(ms(quando), ms(hist[hist.length - 1][0])) || t0 + 1, lo = Math.min(...precos), hi = Math.max(...precos);
+    const W = 180, H = 40, m = 5, X = (q) => m + (W - 2 * m) * (ms(q) - t0) / Math.max(t1 - t0, 1), Y = (p) => (hi === lo ? H / 2 : m + (H - 2 * m) * (hi - p) / (hi - lo));
+    const d = hist.slice(1).reduce((acc, [q, p]) => `${acc} H${X(q).toFixed(1)} V${Y(p).toFixed(1)}`, `M${m},${Y(precos[0]).toFixed(1)}`) + ` H${W - m}`;
+    const svg = document.createElementNS(SVG, 'svg'), linha = document.createElementNS(SVG, 'path'), ponto = document.createElementNS(SVG, 'circle');
+    const dia = (q) => `${q.slice(8, 10)}/${q.slice(5, 7)}`, texto = `Desde ${dia(hist[0][0])}: de ${BRL.format(lo)} a ${BRL.format(hi)}; agora ${BRL.format(precos[precos.length - 1])}`;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('class', 'pn-graf'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Preço da recomendada. ' + texto);
+    linha.setAttribute('d', d);
+    ponto.setAttribute('cx', W - m); ponto.setAttribute('cy', Y(precos[precos.length - 1]).toFixed(1)); ponto.setAttribute('r', 4);
+    svg.append(linha, ponto);
+    return h('div', 'pn-hist', svg, h('span', 'pn-selo', texto));
+  };
+
+  // ida e volta numa compra só, quando sai mais barato que as duas recomendadas separadas
+  const juntas = (p, g, varios) => {
+    const j = p.juntas, perna = (o) => `${o.dia} ${hora(o.saida)} ${lugar(o.orig)} → ${lugar(o.dest)}, ${o.cia} ${o.tipo}`;
+    return h('p', 'pn-pacote', '🔁 ', varios ? `${p.nome}: ` : '', j.mesmos ? 'os mesmos voos numa compra só: ' : 'ida e volta numa compra só, em outros voos: ',
+      h('b', null, BRL.format(j.pp)), g.assentos > 1 ? ' por pessoa' : '', ` (${BRL.format(j.economia)} a menos) · `, link(j.link, 'ver na ' + vendedor(j.vend)),
+      j.mesmos ? '' : ` · ida ${perna(j.ida)} · volta ${perna(j.volta)}`);
+  };
 
   // tabela data x aeroporto do Nordeste; negrito = preço confirmado, cinza = preço da lista do Google (pode mudar)
   const tabela = (serie, ordem) => {
@@ -191,6 +238,9 @@
           bloco.append(t.recomendada ? opcao(t.recomendada, 'rec', '⭐ recomendada', t.alvo) : h('p', 'pn-note', 'Sem preço confirmado na última busca.'));
           if (t.mais_barata) bloco.append(opcao(t.mais_barata, '', '💸 mais barata', t.alvo));
           if (t.comprado) bloco.append(opcao(t.comprado, '', '🎯 no voo já comprado', t.alvo));
+          bloco.append(...lugares(t.lugares || [], t.pax), ...momento(t));
+          const graf = tendencia(t.historico, r.quando);
+          if (graf) bloco.append(graf);
           if (t.alvo) bloco.append(h('p', 'pn-selo', `Alvo: ${BRL.format(t.alvo)} por pessoa`));
           const tab = tabela(t.serie, r.ordem);
           if (tab) bloco.append(tab);
@@ -201,8 +251,9 @@
       if (meus.length) {
         const menor = Math.min(...meus.map((p) => p.pp));
         sec.append(h('p', 'pn-pacote', '📦 ida + volta: ', ...meus.flatMap((p, i) => [i ? ' · ' : '',
-          meus.length > 1 ? `${p.id} ` : '', p.pp === menor ? h('b', null, BRL.format(p.pp)) : BRL.format(p.pp)]),
+          meus.length > 1 ? `${p.nome || p.id} ` : '', p.pp === menor ? h('b', null, BRL.format(p.pp)) : BRL.format(p.pp)]),
           g.assentos > 1 ? ` por pessoa (${BRL.format(menor * g.assentos)} no total)` : ''));
+        sec.append(...meus.filter((p) => p.juntas).map((p) => juntas(p, g, meus.length > 1)));
       }
       return sec;
     }));
