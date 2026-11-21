@@ -112,7 +112,8 @@ window.__gv = (() => {
   });
 
   // abre direto a tela de compra de voos exatos (endereço de gvoos.url_compra): outro número de lugares, ou ida e volta juntas
-  // (às vezes a tela responde "Algo deu errado" e abre normalmente na segunda vez: tenta até três)
+  // (às vezes a tela responde "Algo deu errado", ou demora demais, e abre normalmente na vez seguinte: tenta até três;
+  // "não está mais disponível" é resposta definitiva e não se repete)
   const comprar = (enderecos, paralelo) => fila(enderecos, paralelo, async u => {
     let r;
     for (let tentativa = 0; tentativa < 3; tentativa++) {
@@ -120,7 +121,7 @@ window.__gv = (() => {
       f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
       f.src = u; document.body.appendChild(f);
       try { r = await lerCompra(f); } finally { f.remove(); }
-      if (parou || !r.erro || !/Algo deu errado/.test(r.inicio || '')) break;
+      if (parou || !r.erro || /não está mais disponível/.test(r.inicio || '')) break;
       await sleep(1500);
     }
     return r;
