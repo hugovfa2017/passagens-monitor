@@ -1,8 +1,8 @@
-# Passagens: última busca em 2026-11-21 18:26
+# Passagens: última busca em 2026-11-21 19:27
 
-✈️ Passagens · sáb 21/11, 18:26
+✈️ Passagens · sáb 21/11, 19:27
 Preço por pessoa, sem mala, conferido nesta busca.
-🔥 Hora de comprar: G, ida em dezembro R$1.066 (alvo R$1.100) · W + K, ida R$1.060 (alvo R$1.100)
+🔥 Hora de comprar: G, ida em dezembro R$1.060 (alvo R$1.100) · W + K, ida R$1.060 (alvo R$1.100)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
 
 👩 V
@@ -25,19 +25,19 @@ Outras datas, preço ainda não conferido: dom 21/03 R$373 · seg 22/03 R$384
 
 🧑 G
 Ida em dezembro · 22 a 23/12 e 26 a 30/12
-⭐ ✅ R$1.066 · ter 29/12 · Gol 1580, direto
+⭐ ✅ R$1.060 · ter 29/12 · Gol 1580, direto
 └ 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro · Vai de Promo
 🎯 Voo já comprado: R$3.566 · ter 22/12 · Gol 1678, direto
 └ 14h05 Guarulhos → 17h25 Natal · Gol
 🟢 Bom momento: abaixo do alvo de R$1.100
 Ida em janeiro · 02 a 10/01
-⭐ R$708 · qua 06/01 · Gol, 1 conexão
-└ 20h25 Congonhas → 01h15 (+1 dia) Natal · Vai de Promo
+⭐ R$716 · qua 06/01 · Gol, 1 conexão
+└ 20h25 Congonhas → 01h15 (+1 dia) Natal · Viaza
 🟡 Acompanhar: para o Google, preço normal (a rota costuma ficar entre R$730 e R$2.850)
 Volta · 18 a 22/01
 R$711 · qua 20/01 · mesmo voo de V
 └ 00h40 Fortaleza → 06h50 Guarulhos
-📦 Ida + volta: indo em dezembro R$1.777 · indo em janeiro R$1.419
+📦 Ida + volta: indo em dezembro R$1.771 · indo em janeiro R$1.427
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
@@ -53,7 +53,7 @@ Volta · 07 a 12/01
 📦 Ida + volta: R$1.860 por pessoa · R$3.720 no total
 🔁 Os mesmos voos numa compra só na Zupper: R$1.774 por pessoa (R$86 a menos) · R$3.548 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$88 a R$119 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$80 a R$135 por trecho
 
 Telegram: TELEGRAM_ENVIADO
 
