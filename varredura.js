@@ -49,7 +49,7 @@ window.__gv = (() => {
   };
 
   // Lista vazia quase sempre é o Google demorando ou respondendo "Algo deu errado" (toda busca nossa tem voo): tenta mais
-  // uma vez, com mais paciência. No máximo 12 repetições por chamada: se o Google está fora do ar, não insistimos.
+  // uma vez, com mais paciência. No máximo 20 repetições por chamada: se o Google está fora do ar, não insistimos.
   let repetidas = 0;
   const texto = f => (((f.contentDocument || {}).body || {}).innerText || '');
   const listar = (enderecos, paralelo) => { repetidas = 0; return fila(enderecos, paralelo, async u => {
@@ -57,9 +57,10 @@ window.__gv = (() => {
     try {
       if (parou) return { bloqueio: parou };
       let r = rotulos(f.contentDocument);
-      if (r.length || repetidas >= 12) return { rotulos: r };
+      if (r.length || repetidas >= 20) return { rotulos: r };
       repetidas++;
-      const inicio = texto(f).slice(0, 160);
+      // para o registro: o que a página mostrava no lugar da lista (sem o cabeçalho, que é igual em todas) e onde o quadro parou
+      const inicio = texto(f).slice(150, 420) + ' @ ' + f.contentWindow.location.pathname;
       f.remove(); await sleep(1500);
       f = await abrir(u, 25);
       if (parou) return { bloqueio: parou };

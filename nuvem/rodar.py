@@ -343,7 +343,7 @@ async def radar_e_conferencia(nav, v, ts, bs, estado, rapida=False):
         lista = voos_da_lista(bs, respostas, v)
         # saúde das listas: quantas buscas vieram vazias (o Google demorou ou falhou) e quantas precisaram de segunda tentativa
         info['listas'] = {'vazias': sum(1 for r in respostas if not (r or {}).get('rotulos')), 'repetidas': sum(1 for r in respostas if (r or {}).get('repetida')),
-                          'exemplo': next(((r or {}).get('inicio', '')[:120].replace('\n', ' | ') for r in respostas if (r or {}).get('repetida')), None)}
+                          'exemplo': next(((r or {}).get('inicio', '')[:300].replace('\n', ' | ') for r in respostas if (r or {}).get('repetida')), None)}
         if rapida:
             com_queda = quedas_possiveis(lista, ts, v, estado)
             info['com_queda'] = sorted(com_queda)
