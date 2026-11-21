@@ -316,7 +316,7 @@
    "publicado": "2026-11-20T16:32:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 5.4
+   "idade_h": 5.5
   },
   "tg-xetdaspromocoes/94379-0": {
    "fonte": "Telegram",
@@ -566,7 +566,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 19,
+   "falhas": 20,
    "ja_funcionou": false
   },
   "Americanas": {
@@ -606,7 +606,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-20T21:58:58-03:00",
+ "ultima": "2026-11-20T21:59:48-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
