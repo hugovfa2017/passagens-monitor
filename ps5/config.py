@@ -6,7 +6,7 @@ from datetime import date
 # com leitor ~R$4.275 (já houve R$3.644 na Vivo); Pro ~R$7.700.
 ALVOS = {
     'leitor': 3799,    # PS5 com leitor de disco (mídia física), Slim ou Standard
-    'digital': 3499,   # PS5 Edição Digital
+    'digital': 3699,   # PS5 Edição Digital (subido de 3.499 em 20/11/2026)
     'pro': 6299,       # PS5 Pro
 }
 
