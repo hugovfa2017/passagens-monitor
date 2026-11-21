@@ -5,10 +5,13 @@ from datetime import date
 # Referência em 20/11/2026: Digital ~R$3.900 (já houve R$3.578 na Shopee e R$3.759 no Mercado Livre com cupom);
 # com leitor ~R$4.275 (já houve R$3.644 na Vivo); Pro ~R$7.700.
 ALVOS = {
-    'leitor': 3799,    # PS5 com leitor de disco (mídia física), Slim ou Standard
-    'digital': 3699,   # PS5 Edição Digital (subido de 3.499 em 20/11/2026)
+    'leitor': 3699,    # PS5 com leitor de disco (mídia física), Slim ou Standard
+    'digital': 3299,   # PS5 Edição Digital (Black Friday 2026: ~28% abaixo do sugerido de R$ 4.599,90)
     'pro': 6299,       # PS5 Pro
 }
+
+# Avisa (com som) qualquer console novo igual ou abaixo deste preço, mesmo acima do alvo. None desliga.
+AVISAR_ABAIXO = 3600
 
 # Também avisa (com som) quando aparecer o menor preço já visto de um modelo, se cair pelo menos isto abaixo do recorde.
 QUEDA_MINIMA = 50
