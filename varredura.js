@@ -92,13 +92,19 @@ window.__gv = (() => {
 
   // clica no voo da lista e lê a tela de compra
   const validar = (itens, paralelo) => fila(itens, paralelo, async it => {
-    const f = await abrir(it.url, 20);
+    let f = await abrir(it.url, 20);
     try {
       if (parou) return { bloqueio: parou };
       // o voo pode estar na parte da lista que chega depois: procura por mais alguns segundos antes de desistir
       const achar = () => [...f.contentDocument.querySelectorAll('[aria-label^="A partir de"]')].find(e => e.getAttribute('aria-label').includes(it.chave));
-      let el = achar();
-      for (let i = 0; i < 10 && !el; i++) { await sleep(1000); el = achar(); }
+      const procurar = async () => { let el = achar(); for (let i = 0; i < 10 && !el; i++) { await sleep(1000); el = achar(); } return el; };
+      let el = await procurar();
+      if (!el && !rotulos(f.contentDocument).length) {   // a lista nem abriu (o Google demorou): mais uma tentativa
+        f.remove(); await sleep(1500);
+        f = await abrir(it.url, 25);
+        if (parou) return { bloqueio: parou };
+        el = await procurar();
+      }
       if (!el) return { erro: rotulos(f.contentDocument).length ? 'voo não está mais na lista' : 'a lista não abriu' };
       el.click();
       return await lerCompra(f);
@@ -106,7 +112,8 @@ window.__gv = (() => {
   });
 
   // abre direto a tela de compra de voos exatos (endereço de gvoos.url_compra): outro número de lugares, ou ida e volta juntas
-  // (às vezes a tela responde "Algo deu errado" e abre normalmente na segunda vez: tenta até três)
+  // (às vezes a tela responde "Algo deu errado", ou demora demais, e abre normalmente na vez seguinte: tenta até três;
+  // "não está mais disponível" é resposta definitiva e não se repete)
   const comprar = (enderecos, paralelo) => fila(enderecos, paralelo, async u => {
     let r;
     for (let tentativa = 0; tentativa < 3; tentativa++) {
@@ -114,7 +121,7 @@ window.__gv = (() => {
       f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
       f.src = u; document.body.appendChild(f);
       try { r = await lerCompra(f); } finally { f.remove(); }
-      if (parou || !r.erro || !/Algo deu errado/.test(r.inicio || '')) break;
+      if (parou || !r.erro || /não está mais disponível/.test(r.inicio || '')) break;
       await sleep(1500);
     }
     return r;

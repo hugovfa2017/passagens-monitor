@@ -162,16 +162,50 @@ def fila_da_lupa(lista, ts, v, estado, hora):
     return [c for c in fila if not (c in vistos or vistos.add(c))]
 
 
-def completar_numeros(ofertas):
-    """Vendedor que não mostra o número do voo ganha o número do mesmo voo visto em outra fonte (a mensagem fica exata)."""
+def numeros_vistos(ofertas):
+    """{chave do voo: número} dos voos desta rodada que vieram com número (tela de compra do Google, ou vendedor que mostra).
+    Fica guardado no estado: na rodada seguinte dá para abrir a tela de compra direto, sem depender da lista."""
+    return {selecao.chave(o): o['voos'] for o in ofertas if o.get('voos')}
+
+
+def completar_numeros(ofertas, memoria=None):
+    """Vendedor que não mostra o número do voo ganha o número do mesmo voo visto em outra fonte nesta rodada ou, se não
+    houver, o guardado de rodadas anteriores (memoria: {chave do voo: número}). A mensagem fica exata."""
     numero = {}
     for o in ofertas:
         if o.get('voos'):
             numero.setdefault((o['sentido'], *selecao.ident(o)), o['voos'])
     for o in ofertas:
         if not o.get('voos'):
-            o['voos'] = numero.get((o['sentido'], *selecao.ident(o)), '')
+            o['voos'] = numero.get((o['sentido'], *selecao.ident(o))) or (memoria or {}).get(selecao.chave(o), '')
     return ofertas
+
+
+def conferencia_direta(cands, ts, v, estado):
+    """Os voos que dá para conferir direto na tela de compra, pelo número guardado no estado (estado['voos']), sem passar
+    pela lista: [(voo, endereço)]. Entram os candidatos com número conhecido e, mesmo fora da lista desta rodada, a
+    recomendada e a mais barata da rodada anterior de cada trecho (um preço bom, uma vez achado, não some porque a lista
+    veio pela metade). Cada voo uma vez por número de lugares."""
+    memoria, saida, vistos = estado.get('voos') or {}, [], set()
+
+    def entra(x):
+        numero, k = memoria.get(selecao.chave(x)), (x['pax'], selecao.chave(x))
+        if numero and k not in vistos:
+            vistos.add(k)
+            de, para = plano.aeroportos(v, x['sentido'])
+            saida.append((x, gvoos.url_compra([(x['d'], de, para, numero)], x['pax'])))
+
+    for x in cands:
+        entra(x)
+    for t in ts:
+        antes = estado.get('series', {}).get(t['serie'], {})
+        for g in (antes.get('rec'), antes.get('barata')):
+            if t['igual_a'] or not g or not g.get('ident') or not g.get('chegada') or g['ident'][0] not in t['datas']:
+                continue
+            d, cia, orig, dest, hora = g['ident']
+            entra({'sentido': t['sentido'], 'd': d, 'pax': t['pax'], 'orig': orig, 'dest': dest, 'cia': cia, 'saida': hora,
+                   'chegada': g['chegada'], 'tipo': g.get('tipo', 'direto'), 'url': '', 'chave': ''})
+    return saida
 
 
 def taxas_mala(ofertas):
@@ -328,6 +362,7 @@ async def radar_e_conferencia(nav, v, ts, bs, estado, rapida=False):
     """Google Voos: lista de cada busca e tela de compra dos candidatos. Devolve (lista, ofertas, resumo da fonte).
     rapida: só vão para a tela de compra os trechos em que a lista mostra queda (quedas_possiveis)."""
     info = {'buscas': len(bs), 'voos': 0, 'conferidos': 0, 'ofertas': 0, 'bloqueio': None}
+    lista, ofertas = [], []
     try:
         ctx, pg, bloqueio = await abrir_google(nav)
     except Exception as e:   # o Google nem abriu: a rodada segue com os vendedores
@@ -344,34 +379,42 @@ async def radar_e_conferencia(nav, v, ts, bs, estado, rapida=False):
         # saúde das listas: quantas buscas vieram vazias (o Google demorou ou falhou) e quantas precisaram de segunda tentativa
         info['listas'] = {'vazias': sum(1 for r in respostas if not (r or {}).get('rotulos')), 'repetidas': sum(1 for r in respostas if (r or {}).get('repetida')),
                           'exemplo': next(((r or {}).get('inicio', '')[:300].replace('\n', ' | ') for r in respostas if (r or {}).get('repetida')), None)}
+        com_queda = quedas_possiveis(lista, ts, v, estado) if rapida else set()
         if rapida:
-            com_queda = quedas_possiveis(lista, ts, v, estado)
             info['com_queda'] = sorted(com_queda)
         cands = a_conferir(lista, [t for t in ts if not rapida or t['serie'] in com_queda], v, estado)
         info.update(voos=len(lista), conferidos=len(cands), bloqueio=next((r['bloqueio'] for r in respostas if (r or {}).get('bloqueio')), None))
         if info['bloqueio']:
             return lista, [], info
-        validados = await chamar('validar', [{'url': x['url'], 'chave': x['chave']} for x in cands]) if cands else []
-        ofertas = ofertas_google(list(zip(cands, validados)), v)
+        comprar = lambda enderecos: asyncio.wait_for(pg.evaluate('(a) => window.__gv.comprar(a.itens, a.paralelo)',
+                                                                 {'itens': enderecos, 'paralelo': PARALELO_COMPRA}), timeout=300)
+        # 1) direto na tela de compra, pelo número do voo guardado de rodadas anteriores: não depende de a lista abrir
+        diretos = conferencia_direta(cands, [t for t in ts if not rapida or t['serie'] in com_queda], v, estado)
+        abertas = await comprar([u for _, u in diretos]) if diretos else []
+        ofertas = ofertas_google([(x, r) for (x, _), r in zip(diretos, abertas)], v)
+        resolvidos = {(x['pax'], selecao.chave(x)) for (x, _), r in zip(diretos, abertas) if (r or {}).get('texto')}
+        info['diretos'] = {'telas': len(diretos), 'lidas': len(resolvidos)}
+        # 2) o resto (voo sem número guardado, ou tela direta que não abriu) pela lista: clica no voo e lê a tela de compra
+        pela_lista = [x for x in cands if (x['pax'], selecao.chave(x)) not in resolvidos]
+        validados = await chamar('validar', [{'url': x['url'], 'chave': x['chave']} for x in pela_lista]) if pela_lista else []
+        ofertas += ofertas_google(list(zip(pela_lista, validados)), v)
         motivos = {}
-        for x, r in zip(cands, validados):
+        for x, r in zip(pela_lista, validados):
             if (r or {}).get('erro'):
                 motivos[r['erro'][:40]] = motivos.get(r['erro'][:40], 0) + 1
             elif not gvoos.melhor_vendedor(gvoos.ler_compra((r or {}).get('texto') or '', x['pax'])):
                 motivos['nenhum vendedor que conta'] = motivos.get('nenhum vendedor que conta', 0) + 1
-        info.update(ofertas=len(ofertas), sem_preco=motivos, bloqueio=next((r['bloqueio'] for r in validados if (r or {}).get('bloqueio')), None))
+        info.update(ofertas=len(ofertas), sem_preco=motivos, bloqueio=next((r['bloqueio'] for r in [*abertas, *validados] if (r or {}).get('bloqueio')), None))
         # o voo já comprado, direto pelo número: mesmo fora da lista do Google, a tela de compra diz se há lugar à venda
         telas = [] if info['bloqueio'] or rapida else telas_do_comprado(v, ts, ofertas)
         if telas:
-            abertas = await asyncio.wait_for(pg.evaluate('(a) => window.__gv.comprar(a.itens, a.paralelo)',
-                                                         {'itens': [t['url'] for t in telas], 'paralelo': PARALELO_COMPRA}), timeout=120)
-            do_comprado = ofertas_do_comprado(telas, abertas, v)
+            do_comprado = ofertas_do_comprado(telas, await comprar([t['url'] for t in telas]), v)
             ofertas += do_comprado
             info['comprado'] = {'telas': len(telas), 'a_venda': len(do_comprado)}
         return lista, ofertas, info
-    except Exception as e:   # o Google falhou inteiro: a rodada segue com os vendedores
+    except Exception as e:   # o Google falhou no meio: a rodada segue com o que já foi lido e com os vendedores
         info['erro'] = f'{type(e).__name__}: {str(e)[:120]}'
-        return [], [], info
+        return lista, ofertas, info
     finally:
         await ctx.close()
 
@@ -518,7 +561,7 @@ async def varrer(v, estado, agora):
         fila = fila_da_lupa(lista, ts, v, estado, agora.hour)
         do_vendedor, fontes = await lupa(nav, fila)
         print(f'VENDEDORES: {len(fila)} chaves em {round(time.monotonic() - t0)}s |', json.dumps(fontes, ensure_ascii=False))
-        ofertas = completar_numeros(ofertas + do_vendedor)
+        ofertas = completar_numeros(ofertas + do_vendedor, estado.get('voos'))
         series = montar(v, ts, lista, ofertas, estado, olhadas)
         t0 = time.monotonic()
         juntas, resumo = await extras(nav, v, ts, series, not (google.get('bloqueio') or google.get('erro')))
@@ -529,7 +572,8 @@ async def varrer(v, estado, agora):
     achou = any(s['recomendada'] for s in series.values())
     scan.update(status='ok' if achou else 'erro', fim=datetime.now(timezone.utc).isoformat(),
                 erro=None if achou else ('Google pediu verificação e nenhum vendedor respondeu' if google.get('bloqueio') else 'nenhum voo com preço confirmado'),
-                fontes={'Google': google, **fontes}, series=series, juntas=juntas, extras=resumo, taxa_mala=taxas_mala(do_vendedor),
+                fontes={'Google': google, **fontes}, series=series, juntas=juntas, extras=resumo, numeros=numeros_vistos(ofertas),
+                taxa_mala=taxas_mala(do_vendedor),
                 mossoro={'buscas': sum(1 for c in fila if c[2] == 'MVF'), 'voos': len(mossoro)})
     return scan
 
@@ -602,6 +646,30 @@ def _teste():
     sem_numero = [{**og[0], 'vend': 'Vai de Promo', 'voos': '', 'pp': 480}, {**og[0], 'saida': '23:00', 'voos': ''}]
     cheios = completar_numeros([og[0], *sem_numero])
     assert [o['voos'] for o in cheios] == ['FOR>GRU 2027-01-19 G3 1555', 'FOR>GRU 2027-01-19 G3 1555', '']
+    # o número visto fica guardado (pela chave do voo, que inclui a chegada) e completa uma rodada em que só o vendedor achou o voo
+    memoria = numeros_vistos([og[0], {**og[0], 'saida': '23:00', 'voos': ''}])
+    assert memoria == {'volta|2027-01-19|Gol|FOR|GRU|12:50|16:30': 'FOR>GRU 2027-01-19 G3 1555'}, memoria
+    so_vendedor = completar_numeros([{**og[0], 'vend': 'Viaza', 'voos': ''}, {**og[0], 'chegada': '18:00', 'voos': ''}], memoria)
+    assert [o['voos'] for o in so_vendedor] == ['FOR>GRU 2027-01-19 G3 1555', '']
+
+    # ---- conferência direta: com o número guardado, o candidato vai direto para a tela de compra; a recomendada e a mais
+    # barata da rodada anterior entram mesmo fora da lista desta rodada; cada voo uma vez por número de lugares
+    guardado = {'voos': {**memoria, 'volta|2027-01-20|Gol|JDO|GRU|09:00|12:10': 'JDO>GRU 2027-01-20 G3 1700', 'volta|2027-01-18|Azul|REC|CGH|05:05|08:40': 'REC>CGH 2027-01-18 AD 4716'},
+                'series': {'v.volta': {'rec': {'ident': ['2027-01-20', 'Gol', 'JDO', 'GRU', '09:00'], 'chegada': '12:10', 'tipo': 'direto', 'pp': 700},
+                                       'barata': {'ident': ['2027-01-18', 'Azul', 'REC', 'CGH', '05:05'], 'chegada': '08:40', 'tipo': 'direto', 'pp': 540}},
+                           'wk.volta': {'rec': {'ident': ['2027-01-08', 'LATAM', 'FOR', 'GRU', '21:05'], 'chegada': '00:40', 'pp': 775}}}}     # sem número guardado: fica de fora
+    dir_ = conferencia_direta(cands, ts, v, guardado)
+    assert [(x['pax'], x['orig'], x['d'], x['saida']) for x, _ in dir_] == [(1, 'FOR', '2027-01-19', '12:50'), (1, 'JDO', '2027-01-20', '09:00'), (1, 'REC', '2027-01-18', '05:05')], dir_
+    assert [gvoos.voos_do_tfs(u) for _, u in dir_] == ['FOR>GRU 2027-01-19 G3 1555', 'JDO>GRU 2027-01-20 G3 1700', 'REC>CGH 2027-01-18 AD 4716']
+    # a oferta lida na tela direta tem o mesmo formato da lida pela lista (o endereço do quadro traz o número do voo)
+    od = ofertas_google([(dir_[1][0], {'texto': 'Reserve com a GolCompanhia aérea\nR$ 690\nContinuar\n', 'href': dir_[1][1]})], v)
+    assert [(o['orig'], o['pp'], o['vend'], o['voos'], o['chegada'], o['tipo']) for o in od] == [('JDO', 690, 'CIA Gol', 'JDO>GRU 2027-01-20 G3 1700', '12:10', 'direto')], od
+    assert od[0]['link'].startswith('https://www.google.com/travel/flights/booking?tfs=')
+    # sem memória, nada vai direto; estado antigo (sem a hora de chegada guardada) não quebra
+    assert conferencia_direta(cands, ts, v, {}) == [] and conferencia_direta([], ts, v, {'voos': memoria, 'series': {'v.volta': {'rec': {'ident': ['2027-01-19', 'Gol', 'FOR', 'GRU', '12:50'], 'pp': 1}}}}) == []
+    # data que saiu da janela não é conferida
+    velho = {'voos': {'volta|2027-01-05|Gol|FOR|GRU|12:50|16:30': 'FOR>GRU 2027-01-05 G3 1'}, 'series': {'v.volta': {'rec': {'ident': ['2027-01-05', 'Gol', 'FOR', 'GRU', '12:50'], 'chegada': '16:30'}}}}
+    assert conferencia_direta([], ts, v, velho) == []
 
     # ---- fila da lupa: a melhor chave de cada trecho antes da segunda; Mossoró no fim, uma data por sentido, girando com a hora
     fila = fila_da_lupa(lista, ts, v, {}, 0)
