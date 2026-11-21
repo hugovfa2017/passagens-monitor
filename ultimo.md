@@ -1,8 +1,8 @@
-# Passagens: última busca em 2026-11-21 14:26
+# Passagens: última busca em 2026-11-21 15:25
 
-✈️ Passagens · sáb 21/11, 14:26
+✈️ Passagens · sáb 21/11, 15:25
 Preço por pessoa, sem mala, conferido nesta busca.
-🔥 Hora de comprar: G, ida em dezembro R$1.066 (alvo R$1.100) · W + K, ida R$1.077 (alvo R$1.100)
+🔥 Hora de comprar: G, ida em dezembro R$1.066 (alvo R$1.100) · W + K, ida R$1.066 (alvo R$1.100)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
 
 👩 V
@@ -41,7 +41,7 @@ R$711 · qua 20/01 · mesmo voo de V
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
-⭐ ✅ R$1.077 por pessoa · ter 29/12 · Gol 1580, direto
+⭐ ✅ R$1.066 por pessoa · ter 29/12 · Gol 1580, direto
 └ 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro · Vai de Promo
 🎯 Voo já comprado: R$3.566 por pessoa · ter 22/12 · Gol 1678, direto
 └ 14h05 Guarulhos → 17h25 Natal · Gol
@@ -50,10 +50,10 @@ Volta · 07 a 12/01
 ⭐ R$800 por pessoa · sex 08/01 · LATAM 3361, direto
 └ 21h05 Fortaleza → 00h40 (+1 dia) Guarulhos · Vai de Promo
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.275 e R$3.250) · R$150 acima do alvo (R$650)
-📦 Ida + volta: R$1.877 por pessoa · R$3.754 no total
-🔁 Os mesmos voos numa compra só na Zupper: R$1.774 por pessoa (R$103 a menos) · R$3.548 no total
+📦 Ida + volta: R$1.866 por pessoa · R$3.732 no total
+🔁 Os mesmos voos numa compra só na Zupper: R$1.774 por pessoa (R$92 a menos) · R$3.548 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$101 a R$135 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$98 a R$135 por trecho
 
 Telegram: TELEGRAM_ENVIADO
 
