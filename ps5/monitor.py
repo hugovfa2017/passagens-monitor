@@ -553,6 +553,11 @@ def guarda_min(agora):
     return 7 if cacador(agora) else 25
 
 
+def limite(m):
+    """Preço que faz um modelo tocar: o alvo dele ou config.AVISAR_ABAIXO, o que for maior."""
+    return max(config.ALVOS.get(m, 0), config.AVISAR_ABAIXO or 0)
+
+
 def decidir_alertas(resumo, estado, agora):
     """Com som: melhor preço confirmado abaixo do alvo ou menor já visto. Sem som: oferta de grupo ainda não confirmada.
     Não repete a mesma oferta (mesma loja, mesmo preço) por 24 h. Oferta só vista em post antigo não toca nem vira recorde."""
@@ -569,6 +574,8 @@ def decidir_alertas(resumo, estado, agora):
             if m in config.MODELOS_COM_ALERTA and not velha and not recente(o['chave']):
                 if o['preco'] <= config.ALVOS.get(m, 0):
                     motivo = f"abaixo do alvo de {brl(config.ALVOS[m])}"
+                elif o['preco'] <= (config.AVISAR_ABAIXO or 0):
+                    motivo = f"abaixo de {brl(config.AVISAR_ABAIXO)}"
                 elif recorde and o['preco'] <= recorde['preco'] - config.QUEDA_MINIMA:
                     motivo = f"menor preço já visto (antes: {brl(recorde['preco'])} em {dia_mes(recorde['quando'])})"
             if motivo:
@@ -579,9 +586,9 @@ def decidir_alertas(resumo, estado, agora):
                                       'cupom': o['cupom'], 'titulo': o['titulo'], 'link': o['link']}
         d = r.get('nao_confirmada')
         if d and m in config.MODELOS_COM_ALERTA and (d.get('idade_h') or 0) <= 3 and not recente('nc|' + d['chave']) \
-                and (d['preco'] <= config.ALVOS.get(m, 0) or (o and d['preco'] <= o['preco'] - 150)):
+                and (d['preco'] <= limite(m) or (o and d['preco'] <= o['preco'] - 150)):
             alertas.append({'modelo': m, 'motivo': 'oferta de grupo ainda NÃO confirmada (confira antes de se animar)', 'oferta': d,
-                            'som': cacador(agora) and d['preco'] <= config.ALVOS.get(m, 0)
+                            'som': cacador(agora) and d['preco'] <= limite(m)
                                    and 'o post não diz o modelo' not in (d.get('ressalvas') or [])})
             ja['nc|' + d['chave']] = agora.isoformat(timespec='seconds')
     estado['alertados'] = {k: v for k, v in ja.items() if agora - datetime.fromisoformat(v) < timedelta(days=7)}
@@ -795,6 +802,9 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
 # ---------------------------------------------------------------- auto-checagem
 def _teste():
     import tempfile
+    # a auto-checagem não depende dos valores que o dono ajusta no config.py (alvos, aviso)
+    config.ALVOS = {'leitor': 3799, 'digital': 3499, 'pro': 6299}
+    config.AVISAR_ABAIXO = None
     casos = [
         ('Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital', 4364, 'digital'),
         ('Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB, Controle Sem Fio DualSense + 2 Jogos Digitais', 5114, 'leitor'),
@@ -1093,6 +1103,25 @@ def _teste():
                     3799.99, 'promobit-9', publicado='2026-11-13T09:00:00-0300')}, 'resumo_dia': '2026-11-13'})
         d = rodar(lambda: ([], {}), cupons, enviar, pasta, agora + timedelta(hours=3))
         assert d['modelos'][1]['melhor']['preco'] == 3799.99 and 'pode ter acabado' in d['modelos'][1]['melhor']['obs']
+
+    # ---- aviso abaixo de um preço fixo (config.AVISAR_ABAIXO), além do alvo de cada modelo
+    def oferta_t(preco, tipo='loja', **kw):
+        return {'preco': preco, 'tipo': tipo, 'chave': f'k{preco}', 'loja': 'X', 'cupom': None, 'titulo': 't', 'link': 'l',
+                'idade_h': 0, 'ressalvas': [], **kw}
+    alvos = config.ALVOS
+    try:
+        config.ALVOS, config.AVISAR_ABAIXO = {'digital': 3299, 'leitor': 3699}, 3600
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3550), 'nao_confirmada': None}}, {}, agora)
+        assert [(x['modelo'], x['som']) for x in a] == [('digital', True)] and 'abaixo de R$ 3.600' in a[0]['motivo'], a
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3250), 'nao_confirmada': None}}, {}, agora)
+        assert 'abaixo do alvo de R$ 3.299' in a[0]['motivo'], a
+        assert not decidir_alertas({'digital': {'melhor': oferta_t(3650), 'nao_confirmada': None}}, {}, agora)
+        a = decidir_alertas({'digital': {'melhor': oferta_t(3905), 'nao_confirmada': oferta_t(3550, 'grupo')}}, {}, agora)
+        assert [(x['modelo'], x['som']) for x in a] == [('digital', True)] and 'NÃO confirmada' in a[0]['motivo'], a
+        config.AVISAR_ABAIXO = None   # desligado: só o alvo vale
+        assert not decidir_alertas({'digital': {'melhor': oferta_t(3550), 'nao_confirmada': None}}, {}, agora)
+    finally:
+        config.ALVOS, config.AVISAR_ABAIXO = alvos, None
 
     # ---- fora do modo caçador: a mesma não confirmada volta a chegar sem som; guarda do workflow de 7 para 25 min
     assert cacador(datetime(2026, 11, 30, 23, 59, tzinfo=fontes.BRT)) and not cacador(datetime(2026, 12, 1, 0, 0, tzinfo=fontes.BRT))
