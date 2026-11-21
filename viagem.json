@@ -5,11 +5,11 @@
   "ida_destinos": ["FOR", "MVF", "JDO", "NAT"],
   "volta_origens": ["FOR", "MVF", "JDO", "NAT", "JPA", "REC"],
 
-  "_aeroportos": "peso = quanto a opção precisa ser mais barata, por pessoa, para ganhar de um aeroporto acima na ordem de prioridade. ultimo_caso = só vira a recomendada quando nenhum outro aeroporto tem preço conferido (aparece como a mais barata, para comparar). google = como o Google Voos escreve o nome do aeroporto. selo = aviso que sempre acompanha o aeroporto.",
+  "_aeroportos": "peso = quanto a opção precisa ser mais barata, por pessoa, para ganhar de um aeroporto acima na ordem de prioridade. ultimo_caso = só vira a recomendada quando nenhum outro aeroporto tem preço conferido (aparece como a mais barata, para comparar). google = como o Google Voos escreve o nome do aeroporto. selo = aviso que sempre acompanha o aeroporto. so_direto_com = o aeroporto só vale em voo direto de ou para os aeroportos da lista (Campinas só entra em voo direto com Mossoró).",
   "aeroportos": {
     "GRU": {"cidade": "Guarulhos", "curto": "Guarulhos", "google": "Guarulhos"},
     "CGH": {"cidade": "Congonhas", "curto": "Congonhas", "google": "Congonhas"},
-    "VCP": {"cidade": "Campinas", "curto": "Campinas (Viracopos)", "google": "Viracopos", "selo": "Campinas", "peso": 60},
+    "VCP": {"cidade": "Campinas", "curto": "Campinas (Viracopos)", "google": "Viracopos", "selo": "Campinas", "peso": 60, "so_direto_com": ["MVF"]},
     "FOR": {"cidade": "Fortaleza", "curto": "Fortaleza", "google": "Fortaleza", "peso": 0},
     "MVF": {"cidade": "Mossoró", "curto": "Mossoró", "google": "Mossor|Dix-Sept", "peso": 40, "escala_max": 360, "duracao_max": 660},
     "JDO": {"cidade": "Juazeiro do Norte", "curto": "Juazeiro", "google": "Juazeiro", "peso": 80},

@@ -18,7 +18,7 @@ permissions:
   contents: write             # para guardar histórico e painel.json de volta no repositório
 
 concurrency:
-  group: monitor
+  group: ${{ github.ref_name == 'main' && 'monitor' || 'monitor-teste' }}   # a rodada de teste da branch não entra na fila da main
   cancel-in-progress: false
 
 jobs:

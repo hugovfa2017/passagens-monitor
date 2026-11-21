@@ -66,6 +66,15 @@ def _minutos(s):
     return (int(h[1]) * 60 if h else 0) + (int(m[1]) if m else 0)
 
 
+def permitido(orig, dest, direto, aeroportos):
+    """Aeroporto com so_direto_com (viagem.json) só vale em voo direto de ou para os aeroportos da lista dele."""
+    for c, outro in ((orig, dest), (dest, orig)):
+        so = aeroportos[c].get('so_direto_com')
+        if so is not None and not (direto and outro in so):
+            return False
+    return True
+
+
 def ler_lista(rotulos, pax, v):
     """Voos da lista de resultados: [{cia, orig, dest, saida, chegada, tipo, dur, lista_pp, chave}], do mais barato ao mais caro.
     Fica só voo direto ou com 1 conexão dentro do limite de espera do aeroporto do Nordeste; aeroporto fora da viagem sai.
@@ -84,6 +93,8 @@ def ler_lista(rotulos, pax, v):
         esperas = [_minutos(x) for x in re.findall(r'Parada \(\d de \d\) de (.+?) no aeroporto', t)]
         direto = bool(a[1])
         if not direto and (len(esperas) != 1 or esperas[0] > ap[ne].get('escala_max', lim['escala_max'])):
+            continue
+        if not permitido(orig, dest, direto, ap):
             continue
         cia = re.sub(r' ?Operado.*', '', a[2])
         ident = (cia, orig, dest, s[2], s[4])
@@ -179,6 +190,13 @@ def _teste():
     # espera de 4h10 passa só onde o aeroporto tem limite próprio (Mossoró); preço da lista é dividido pelos lugares
     mossoro = ler_lista([uma('4 h 10 min', 'Aeroporto de Mossoró - Dix-Sept Rosado')], 2, v)
     assert [(x['dest'], x['tipo'], x['lista_pp']) for x in mossoro] == [('MVF', 'escala 4h10', 750)]
+
+    # ---- Campinas só em voo direto com Mossoró: o direto para Fortaleza sai da lista; um direto para Mossoró ficaria
+    v['aeroportos']['VCP']['so_direto_com'] = ['MVF']
+    assert [x['orig'] for x in ler_lista([azul, latam], 1, v)] == ['GRU']
+    direto_mvf = azul.replace('Aeroporto Internacional de Fortaleza - Pinto Martins (FOR)', 'Aeroporto de Mossoró - Dix-Sept Rosado')
+    assert [(x['orig'], x['dest']) for x in ler_lista([direto_mvf], 1, v)] == [('VCP', 'MVF')]
+    assert permitido('MVF', 'VCP', True, v['aeroportos']) and not permitido('VCP', 'MVF', False, v['aeroportos']) and permitido('GRU', 'FOR', False, v['aeroportos'])
 
     # ---- tela de compra
     texto = ('Opções de reserva\nReserve com a GolCompanhia aérea\nR$\u00a01.824\nContinuar\nReserve com a MaxMilhas\nR$ 1.650\nContinuar\n'

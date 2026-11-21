@@ -211,12 +211,14 @@ async def _cartoes(navegador, url, sem, casa=None):
 
 SP = {'GRU', 'CGH', 'VCP'}   # aeroportos de São Paulo que valem (a busca "SAO" traz também São José dos Campos, que não vale)
 DURACAO = {}                 # duração máxima com conexão para aeroportos com regra própria, em minutos (ex.: {'MVF': 660})
+SO_DIRETO_COM = {}           # aeroporto que só vale em voo direto com os da lista (ex.: {'VCP': ['MVF']})
 
 
 def configurar(v):
     """Aplica o arquivo da viagem (nuvem/plano.py): aeroportos de São Paulo e limite de duração de cada aeroporto."""
-    global SP, DURACAO
+    global SP, DURACAO, SO_DIRETO_COM
     SP = set(v['sp'])
+    SO_DIRETO_COM = {c: a['so_direto_com'] for c, a in v['aeroportos'].items() if 'so_direto_com' in a}
     DURACAO = {c: a['duracao_max'] for c, a in v['aeroportos'].items() if 'duracao_max' in a}
     DURACAO[''] = v['limites']['duracao_max']
 
@@ -226,6 +228,9 @@ def _aceita(x):
     ne = x['dest'] if x['orig'] in SP else x['orig']
     if not SP & {x['orig'], x['dest']} or (not x['direto'] and x['dur'] > DURACAO.get(ne, DURACAO.get('', MAX_MIN_COM_ESCALA))):
         return False
+    for c, outro in ((x['orig'], x['dest']), (x['dest'], x['orig'])):
+        if c in SO_DIRETO_COM and not (x['direto'] and outro in SO_DIRETO_COM[c]):
+            return False
     x['tipo'] = 'direto' if x['direto'] else 'com escala'
     return True
 
@@ -317,6 +322,11 @@ def _teste():
     assert not _aceita(dict(longo))
     configurar({'sp': ['GRU', 'CGH', 'VCP'], 'limites': {'duracao_max': 330}, 'aeroportos': {'MVF': {'duracao_max': 660}, 'FOR': {}}})
     assert _aceita(dict(longo)) and not _aceita({**longo, 'dest': 'FOR'}) and not _aceita({**longo, 'dur': 700})
+    # Campinas só em voo direto com Mossoró
+    configurar({'sp': ['GRU', 'CGH', 'VCP'], 'limites': {'duracao_max': 330}, 'aeroportos': {'VCP': {'so_direto_com': ['MVF']}, 'MVF': {'duracao_max': 660}, 'FOR': {}}})
+    campinas = {'orig': 'VCP', 'dest': 'FOR', 'direto': True, 'dur': 200}
+    assert not _aceita(dict(campinas)) and not _aceita({**campinas, 'orig': 'FOR', 'dest': 'VCP'}) and _aceita({**campinas, 'orig': 'GRU'})
+    assert _aceita({**campinas, 'dest': 'MVF'}) and _aceita({**campinas, 'orig': 'MVF', 'dest': 'VCP'}) and not _aceita({**campinas, 'dest': 'MVF', 'direto': False})
     assert url_vaidepromo('SAO', 'NAT', '2026-12-22', 1).endswith('/pesquisa/SAONAT261222/1/0/0/Y/') and LER['Vai de Promo'] is ler_vaidepromo
     u = url_zupper_iv('FOR', 'JDO', '2026-12-24', '2027-01-20', 2)
     assert 'type=roundTrip' in u and '%22originAirport%22%3A%22JDO%22' in u and '%22destinationAirport%22%3A%22FOR%22' in u

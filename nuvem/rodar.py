@@ -296,18 +296,20 @@ def _teste():
     for b in bs:
         if (b['sentido'], b['d'], b['pax']) == ('volta', '2027-01-19', 1):
             respostas.append({'rotulos': [rotulo(520, 'Gol', 'FOR', 'GRU', '12:50', '16:30'), rotulo(400, 'Azul', 'REC', 'CGH', '03:00', '06:25'),
-                                          rotulo(900, 'LATAM', 'NAT', 'VCP', '10:00', '13:30')]})
+                                          rotulo(900, 'LATAM', 'NAT', 'GRU', '10:00', '13:30'), rotulo(300, 'Azul', 'FOR', 'VCP', '09:00', '12:30')]})
         elif (b['sentido'], b['d'], b['pax']) == ('ida', '2026-12-22', 2):
             respostas.append({'rotulos': [rotulo('3.300', 'Gol', 'GRU', 'NAT', '14:05', '17:25'), rotulo('2.400', 'LATAM', 'GRU', 'FOR', '07:00', '10:30')]})
         else:
             respostas.append({'rotulos': []} if b['sentido'] == 'ida' else None)
     lista = voos_da_lista(bs, respostas, v)
+    # o voo por Campinas (o mais barato da lista) não entra: Campinas só vale em voo direto com Mossoró
     assert len(lista) == 5 and {(x['sentido'], x['d'], x['pax']) for x in lista} == {('volta', '2027-01-19', 1), ('ida', '2026-12-22', 2)}
+    assert not [x for x in lista if 'VCP' in (x['orig'], x['dest'])]
     assert lista[0]['url'].startswith('https://google/') and next(x for x in lista if x['dest'] == 'NAT' and x['pax'] == 2)['lista_pp'] == 1650
 
     # ---- conferência: candidatos de cada trecho, cada voo uma vez; o voo já comprado entra no trecho de 2 lugares
     cands = a_conferir(lista, ts, v, {})
-    # (Natal por Campinas a R$900 não entra: com o peso fica atrás de Fortaleza e de Recife, e não é a mais barata)
+    # (Natal a R$900 não entra: com o peso fica atrás de Fortaleza e de Recife, e não é a mais barata)
     assert [(x['pax'], x['orig'], x['dest']) for x in cands] == [(1, 'FOR', 'GRU'), (1, 'REC', 'CGH'), (2, 'GRU', 'FOR'), (2, 'GRU', 'NAT')], cands
     compra = lambda *vend: {'texto': ''.join(f'Reserve com a {n}\nR$ {p}\nContinuar\n' for n, p in vend),
                             'href': gvoos.url_compra([('2027-01-19', ['FOR'], ['GRU'], 'FOR>GRU 2027-01-19 G3 1555')], 1)}
