@@ -340,7 +340,7 @@
    "publicado": "2026-11-20T19:40:17-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 11.7
+   "idade_h": 11.8
   },
   "promobit-3236887": {
    "fonte": "Promobit",
@@ -374,7 +374,7 @@
    "ressalvas": [],
    "id": "promobit-3237122",
    "publicado": "2026-11-20T23:33:04-0300",
-   "idade_h": 7.8
+   "idade_h": 8.0
   },
   "promobit-3237121": {
    "fonte": "Promobit",
@@ -425,7 +425,7 @@
    "ressalvas": [],
    "id": "promobit-3237137",
    "publicado": "2026-11-20T23:44:06-0300",
-   "idade_h": 7.6
+   "idade_h": 7.8
   },
   "promobit-3237142": {
    "fonte": "Promobit",
@@ -442,7 +442,7 @@
    "ressalvas": [],
    "id": "promobit-3237142",
    "publicado": "2026-11-20T23:51:04-0300",
-   "idade_h": 7.5
+   "idade_h": 7.7
   },
   "promobit-3237136": {
    "fonte": "Promobit",
@@ -459,7 +459,7 @@
    "ressalvas": [],
    "id": "promobit-3237136",
    "publicado": "2026-11-20T23:44:05-0300",
-   "idade_h": 7.6
+   "idade_h": 7.8
   },
   "promobit-3237135": {
    "fonte": "Promobit",
@@ -476,7 +476,7 @@
    "ressalvas": [],
    "id": "promobit-3237135",
    "publicado": "2026-11-20T23:44:04-0300",
-   "idade_h": 7.6
+   "idade_h": 7.8
   },
   "promobit-3237251": {
    "fonte": "Promobit",
@@ -493,7 +493,7 @@
    "ressalvas": [],
    "id": "promobit-3237251",
    "publicado": "2026-11-21T03:04:27-0300",
-   "idade_h": 4.3
+   "idade_h": 4.4
   },
   "promobit-3237252": {
    "fonte": "Promobit",
@@ -510,7 +510,7 @@
    "ressalvas": [],
    "id": "promobit-3237252",
    "publicado": "2026-11-21T03:06:32-0300",
-   "idade_h": 4.2
+   "idade_h": 4.4
   },
   "promobit-3237281": {
    "fonte": "Promobit",
@@ -527,7 +527,7 @@
    "ressalvas": [],
    "id": "promobit-3237281",
    "publicado": "2026-11-21T07:16:23-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3237282": {
    "fonte": "Promobit",
@@ -544,7 +544,7 @@
    "ressalvas": [],
    "id": "promobit-3237282",
    "publicado": "2026-11-21T07:16:37-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3237275": {
    "fonte": "Promobit",
@@ -561,7 +561,41 @@
    "ressalvas": [],
    "id": "promobit-3237275",
    "publicado": "2026-11-21T07:12:25-0300",
-   "idade_h": 0.1
+   "idade_h": 0.3
+  },
+  "promobit-3237284": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Controle sem fio PlayStation DualSense Gray Camouflage",
+   "preco": 333.96,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-playstation-dualsense-gray-camouflage-3237284/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237284",
+   "publicado": "2026-11-21T07:18:18-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237285": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Marvel's Wolverine - PlayStation 5",
+   "preco": 279.9,
+   "link": "https://www.promobit.com.br/oferta/marvels-wolverine-playstation-5-3237285/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237285",
+   "publicado": "2026-11-21T07:18:43-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -599,7 +633,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 13,
+   "falhas": 0,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -639,7 +673,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T07:20:19-03:00",
+ "ultima": "2026-11-21T07:30:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
