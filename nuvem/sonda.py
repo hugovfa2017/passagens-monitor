@@ -9,6 +9,11 @@ from playwright.sync_api import sync_playwright
 # Rodada 1-2 (05/11/2026): funcionam MaxMilhas, 123milhas, Zupper; bloqueiam Decolar, Skyscanner, Kayak, Kiwi, Expedia,
 # Trip.com, LATAM, Gol; Booking tem desafio anti-robô; Smiles exige login.
 # Rodada 3: primeiro só a página inicial de cada candidato, para ver quem deixa um navegador do GitHub entrar.
+# Resultado da rodada 3 (20/11/2026, só a página inicial): abrem Gotogate, Mytrip, Passagens Promo, Voopter (já com
+# preços na página) e Momondo; barram Azul (Access Denied), ViajaNet e Viajala (403); kiss&fly, Hurb e Submarino Viagens
+# não têm mais endereço. Viaza e Vai de Promo já estão em produção (nuvem/vendedores.py).
+# Sondagem do Google Voos no mesmo dia: Viracopos aparece normalmente; a busca de ida e volta (dois trechos) abre;
+# não há nenhum voo para Mossoró (MVF), nem com conexão, nem saindo do Recife.
 ALVOS = {
     'CVC': 'https://www.cvc.com.br/passagens/',
     'eDestinos': 'https://www.edestinos.com.br/',
