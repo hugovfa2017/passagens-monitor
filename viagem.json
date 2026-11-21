@@ -1,0 +1,57 @@
+{
+  "_leia": "A viagem inteira: aeroportos, voo já comprado e o que buscar para cada grupo. Este arquivo é público: os grupos têm só uma sigla (os nomes vêm do segredo NOMES_VIAGEM, no formato v=Nome;h=Nome;g=Nome;wk=Nome + Nome). Depois de mexer, rode: python3 nuvem/plano.py --teste",
+
+  "sp": ["GRU", "CGH", "VCP"],
+  "ida_destinos": ["FOR", "MVF", "JDO", "NAT"],
+  "volta_origens": ["FOR", "MVF", "JDO", "NAT", "JPA", "REC"],
+
+  "_aeroportos": "peso = quanto a opção precisa ser mais barata, por pessoa, para ganhar de um aeroporto acima na ordem de prioridade. google = como o Google Voos escreve o nome do aeroporto. selo = aviso que sempre acompanha o aeroporto.",
+  "aeroportos": {
+    "GRU": {"cidade": "Guarulhos", "curto": "Guarulhos", "google": "Guarulhos"},
+    "CGH": {"cidade": "Congonhas", "curto": "Congonhas", "google": "Congonhas"},
+    "VCP": {"cidade": "Campinas", "curto": "Campinas (Viracopos)", "google": "Viracopos", "selo": "Campinas", "peso": 60},
+    "FOR": {"cidade": "Fortaleza", "curto": "Fortaleza", "google": "Fortaleza", "peso": 0},
+    "MVF": {"cidade": "Mossoró", "curto": "Mossoró", "google": "Mossor|Dix-Sept", "peso": 40, "escala_max": 360, "duracao_max": 660},
+    "JDO": {"cidade": "Juazeiro do Norte", "curto": "Juazeiro", "google": "Juazeiro", "peso": 80},
+    "NAT": {"cidade": "Natal", "curto": "Natal", "google": "Natal", "peso": 120},
+    "JPA": {"cidade": "João Pessoa", "curto": "J. Pessoa", "google": "Jo[aã]o Pessoa|Castro Pinto", "peso": 160},
+    "REC": {"cidade": "Recife", "curto": "Recife", "google": "Recife|Guararapes", "peso": 200}
+  },
+
+  "_limites": "Só voo direto ou com 1 conexão. escala_max = minutos de espera na conexão (Google). duracao_max = minutos da viagem inteira (vendedores, que não mostram a espera). Mossoró tem limites próprios, acima.",
+  "limites": {"escala_max": 120, "duracao_max": 330},
+
+  "_comprado": "O voo que já foi comprado. Nos trechos com voo_comprado, ele é conferido toda rodada e ganha um bônus na escolha (vale como se fosse 'bonus' reais mais barato por pessoa).",
+  "comprado": {"d": "2026-12-22", "saida": "14:05", "cia": "Gol", "orig": "GRU", "dest": "NAT", "voo": "G3 1678", "bonus": 150},
+
+  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72},
+
+  "_grupos": "assentos = lugares no mesmo voo. alvo = preço por pessoa que faz o alerta tocar (trecho sem alvo só toca quando bate o menor preço já visto). igual_a = usa o resultado de outro trecho (mesmas datas e lugares). rodizio = janela longa: a cada rodada olha as 'fixas' datas mais baratas já vistas e as 'giro' que estão há mais tempo sem olhar.",
+  "grupos": [
+    {"id": "v", "rotulo": "V", "emoji": "👩", "assentos": 1,
+     "trechos": [
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-18", "ate": "2027-01-22"}, "alvo": 450}
+     ]},
+    {"id": "h", "rotulo": "H", "emoji": "🧍", "assentos": 1,
+     "trechos": [
+       {"id": "junto", "nome": "Volta junto", "igual_a": "v.volta"},
+       {"id": "depois", "sentido": "volta", "nome": "Volta depois", "datas": {"de": "2027-01-23", "ate": "2027-03-31"},
+        "rodizio": {"fixas": 3, "giro": 5}}
+     ]},
+    {"id": "g", "rotulo": "G", "emoji": "🧑", "assentos": 1, "ida_e_volta": true,
+     "trechos": [
+       {"id": "ida_dez", "sentido": "ida", "nome": "Ida em dezembro", "curto": "Ida dez", "alvo": 1000, "voo_comprado": true,
+        "datas": ["2026-12-22", "2026-12-23", "2026-12-26", "2026-12-27", "2026-12-28", "2026-12-29", "2026-12-30"]},
+       {"id": "ida_jan", "sentido": "ida", "nome": "Ida em janeiro", "curto": "Ida jan", "datas": {"de": "2027-01-02", "ate": "2027-01-10"}},
+       {"id": "volta", "nome": "Volta", "igual_a": "v.volta"}
+     ],
+     "cenarios": [{"id": "A", "nome": "indo em dezembro", "ida": "ida_dez", "volta": "volta"}, {"id": "B", "nome": "indo em janeiro", "ida": "ida_jan", "volta": "volta"}]},
+    {"id": "wk", "rotulo": "W + K", "emoji": "👭", "assentos": 2, "ida_e_volta": true,
+     "trechos": [
+       {"id": "ida", "sentido": "ida", "nome": "Ida", "alvo": 1000, "voo_comprado": true,
+        "datas": ["2026-12-22", "2026-12-23", "2026-12-26", "2026-12-27", "2026-12-28", "2026-12-29", "2026-12-30"]},
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-07", "ate": "2027-01-12"}, "alvo": 450}
+     ],
+     "cenarios": [{"id": "U", "ida": "ida", "volta": "volta"}]}
+  ]
+}

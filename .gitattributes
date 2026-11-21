@@ -1,2 +1,3 @@
 # o histórico só ganha linhas no fim: se duas varreduras gravarem juntas, junta as duas
 historico.csv merge=union
+precos.csv merge=union
