@@ -389,7 +389,7 @@
    "ressalvas": [],
    "id": "promobit-3237119",
    "publicado": "2026-11-20T23:29:03-0300",
-   "idade_h": 12.9
+   "idade_h": 13.0
   },
   "promobit-3237137": {
    "fonte": "Promobit",
@@ -595,7 +595,7 @@
    "publicado": "2026-11-21T08:51:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "tg-OfertasDoDia/483210-0": {
    "fonte": "Telegram",
@@ -614,7 +614,7 @@
    "publicado": "2026-11-21T08:50:50-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3237512": {
    "fonte": "Promobit",
@@ -750,7 +750,7 @@
    "ressalvas": [],
    "id": "promobit-3237635",
    "publicado": "2026-11-21T09:50:15-0300",
-   "idade_h": 2.5
+   "idade_h": 2.7
   },
   "promobit-3237620": {
    "fonte": "Promobit",
@@ -767,7 +767,7 @@
    "ressalvas": [],
    "id": "promobit-3237620",
    "publicado": "2026-11-21T09:43:54-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3235528": {
    "fonte": "Promobit",
@@ -784,7 +784,7 @@
    "ressalvas": [],
    "id": "promobit-3235528",
    "publicado": "2026-11-20T13:13:15-0300",
-   "idade_h": 23.1
+   "idade_h": 23.3
   },
   "promobit-3235318": {
    "fonte": "Promobit",
@@ -801,7 +801,7 @@
    "ressalvas": [],
    "id": "promobit-3235318",
    "publicado": "2026-11-20T11:41:05-0300",
-   "idade_h": 24.7
+   "idade_h": 24.8
   },
   "promobit-3237656": {
    "fonte": "Promobit",
@@ -818,7 +818,7 @@
    "ressalvas": [],
    "id": "promobit-3237656",
    "publicado": "2026-11-21T09:57:17-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3237729": {
    "fonte": "Promobit",
@@ -835,7 +835,7 @@
    "ressalvas": [],
    "id": "promobit-3237729",
    "publicado": "2026-11-21T10:22:05-0300",
-   "idade_h": 2.0
+   "idade_h": 2.1
   },
   "promobit-3237780": {
    "fonte": "Promobit",
@@ -852,7 +852,24 @@
    "ressalvas": [],
    "id": "promobit-3237780",
    "publicado": "2026-11-21T10:36:30-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
+  },
+  "promobit-3238002": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Volante Gamer G29 Driving Force Logitech G",
+   "preco": 1399.0,
+   "link": "https://www.promobit.com.br/oferta/volante-gamer-g29-driving-force-logitech-g-3238002/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "TECH2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3238002",
+   "publicado": "2026-11-21T12:17:59-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -890,7 +907,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 5,
+   "falhas": 6,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -930,7 +947,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T12:20:20-03:00",
+ "ultima": "2026-11-21T12:30:25-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
