@@ -168,7 +168,7 @@
    "ressalvas": [],
    "id": "promobit-3235869",
    "publicado": "2026-11-20T15:36:35-0300",
-   "idade_h": 11.4
+   "idade_h": 11.6
   },
   "promobit-3235862": {
    "fonte": "Promobit",
@@ -221,7 +221,7 @@
    "publicado": "2026-11-20T16:28:37-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.5
+   "idade_h": 10.7
   },
   "tg-meups4/55591-0": {
    "fonte": "Telegram",
@@ -240,7 +240,7 @@
    "publicado": "2026-11-20T16:03:22-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 11.0
+   "idade_h": 11.1
   },
   "tg-pechinchou/239244-0": {
    "fonte": "Telegram",
@@ -259,7 +259,7 @@
    "publicado": "2026-11-20T16:32:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 10.5
+   "idade_h": 10.6
   },
   "tg-nerdofertas/154060-0": {
    "fonte": "Telegram",
@@ -278,7 +278,7 @@
    "publicado": "2026-11-20T16:22:43-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "tg-superofertasbr/13834-0": {
    "fonte": "Telegram",
@@ -297,7 +297,7 @@
    "publicado": "2026-11-20T16:22:46-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "promobit-3236456": {
    "fonte": "Promobit",
@@ -382,7 +382,7 @@
    "ressalvas": [],
    "id": "promobit-3236618",
    "publicado": "2026-11-20T19:10:05-0300",
-   "idade_h": 7.8
+   "idade_h": 8.0
   },
   "promobit-3236619": {
    "fonte": "Promobit",
@@ -399,7 +399,7 @@
    "ressalvas": [],
    "id": "promobit-3236619",
    "publicado": "2026-11-20T19:10:07-0300",
-   "idade_h": 7.8
+   "idade_h": 8.0
   },
   "promobit-3236565": {
    "fonte": "Promobit",
@@ -435,7 +435,7 @@
    "publicado": "2026-11-20T19:40:17-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 7.3
+   "idade_h": 7.5
   },
   "promobit-3236887": {
    "fonte": "Promobit",
@@ -452,7 +452,7 @@
    "ressalvas": [],
    "id": "promobit-3236887",
    "publicado": "2026-11-20T21:12:11-0300",
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "promobit-3237122": {
    "fonte": "Promobit",
@@ -469,7 +469,7 @@
    "ressalvas": [],
    "id": "promobit-3237122",
    "publicado": "2026-11-20T23:33:04-0300",
-   "idade_h": 3.5
+   "idade_h": 3.6
   },
   "promobit-3237121": {
    "fonte": "Promobit",
@@ -486,7 +486,7 @@
    "ressalvas": [],
    "id": "promobit-3237121",
    "publicado": "2026-11-20T23:31:03-0300",
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3237119": {
    "fonte": "Promobit",
@@ -503,7 +503,7 @@
    "ressalvas": [],
    "id": "promobit-3237119",
    "publicado": "2026-11-20T23:29:03-0300",
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3237137": {
    "fonte": "Promobit",
@@ -520,7 +520,7 @@
    "ressalvas": [],
    "id": "promobit-3237137",
    "publicado": "2026-11-20T23:44:06-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "promobit-3237142": {
    "fonte": "Promobit",
@@ -537,7 +537,7 @@
    "ressalvas": [],
    "id": "promobit-3237142",
    "publicado": "2026-11-20T23:51:04-0300",
-   "idade_h": 3.2
+   "idade_h": 3.3
   },
   "promobit-3237136": {
    "fonte": "Promobit",
@@ -554,7 +554,7 @@
    "ressalvas": [],
    "id": "promobit-3237136",
    "publicado": "2026-11-20T23:44:05-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "promobit-3237135": {
    "fonte": "Promobit",
@@ -571,7 +571,24 @@
    "ressalvas": [],
    "id": "promobit-3237135",
    "publicado": "2026-11-20T23:44:04-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
+  },
+  "promobit-3237251": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 SSD 825GB Controle Sem Fio DualSense + 2 Jogos Digitais Edição Digital",
+   "preco": 4499.0,
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237251",
+   "publicado": "2026-11-21T03:04:27-0300",
+   "idade_h": 0.1
   }
  },
  "alertados": {},
@@ -609,7 +626,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 2,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -649,7 +666,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T03:00:29-03:00",
+ "ultima": "2026-11-21T03:10:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
