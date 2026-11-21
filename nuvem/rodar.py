@@ -65,7 +65,7 @@ def a_conferir(lista, ts, v, estado):
 
 def quedas_possiveis(lista, ts, v, estado):
     """As séries em que a lista do Google mostra um voo que, depois do peso dos aeroportos, sairia pelo menos
-    selecao.queda_min mais barato que a recomendada guardada no estado. Numa rodada rápida só essas vão para a tela de
+    selecao.queda_rapida mais barato que a recomendada guardada no estado. Numa rodada rápida só essas vão para a tela de
     compra (o preço da lista pode estar velho). Trecho sem recomendada guardada fica de fora: quem estabelece o preço é
     a rodada completa. Aeroporto de último caso não conta."""
     saida = set()
@@ -76,7 +76,7 @@ def quedas_possiveis(lista, ts, v, estado):
         d, cia, orig, dest, hora = antes['ident']
         referencia = antes['pp'] + selecao.peso({'d': d, 'cia': cia, 'orig': orig, 'dest': dest, 'saida': hora}, v, t)
         melhor = min((x['lista_pp'] + selecao.peso(x, v, t) for x in selecao.do_trecho(lista, t) if not selecao.ultimo_caso(x, v)), default=None)
-        if melhor is not None and melhor <= referencia - v['selecao']['queda_min']:
+        if melhor is not None and melhor <= referencia - v['selecao'].get('queda_rapida', v['selecao']['queda_min']):
             saida.add(t['serie'])
     return saida
 
@@ -621,10 +621,11 @@ def _teste():
     velho = {'series': {'v.volta': {'rec': {'d': '2027-01-05', 'ne': 'FOR'}}}}
     assert ('volta', '2027-01-05', 'FOR', 1) not in fila_da_lupa(lista, ts, v, velho, 0)
 
-    # ---- rodada rápida: só vale conferir o trecho em que a lista mostra um voo R$20 ou mais abaixo da recomendada guardada, já com o peso
+    # ---- rodada rápida: só vale conferir o trecho em que a lista mostra um voo R$40 ou mais abaixo da recomendada guardada, já com o peso
     guardado = lambda pp, orig='FOR': {'series': {'v.volta': {'rec': {'ident': ['2027-01-19', 'Gol', orig, 'GRU', '12:50'], 'pp': pp}}}}
     # na lista: Fortaleza a R$520, Natal a R$900 (+120 de peso), Recife a R$400 (último caso: não conta)
-    assert quedas_possiveis(lista, ts, v, guardado(545)) == {'v.volta'} and quedas_possiveis(lista, ts, v, guardado(530)) == set()
+    assert v['selecao']['queda_rapida'] == 40
+    assert quedas_possiveis(lista, ts, v, guardado(560)) == {'v.volta'} and quedas_possiveis(lista, ts, v, guardado(550)) == set()
     # a recomendada guardada era por Natal (R$500 + 120 de peso): Fortaleza a R$520 já é melhor
     assert quedas_possiveis(lista, ts, v, guardado(500, 'NAT')) == {'v.volta'}
     # trecho sem recomendada guardada, ou sem voo na lista, fica de fora

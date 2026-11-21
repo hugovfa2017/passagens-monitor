@@ -24,8 +24,8 @@
   "_comprado": "O voo que já foi comprado. Nos trechos com voo_comprado, ele é conferido toda rodada (direto na tela de compra do Google, pelo número do voo) e ganha um bônus na escolha (vale como se fosse 'bonus' reais mais barato por pessoa).",
   "comprado": {"d": "2026-12-22", "saida": "14:05", "chegada": "17:25", "cia": "Gol", "orig": "GRU", "dest": "NAT", "voo": "G3 1678", "bonus": 150},
 
-  "_selecao": "margem_lugares = diferença por pessoa, em reais, a partir da qual vale avisar que outro número de lugares muda o preço. margem_juntas = quanto a ida e volta numa compra só precisa economizar, por pessoa, para aparecer. margem_fora = quanto uma agência de fora do Brasil precisa ser mais barata, por pessoa, para ser citada (ela nunca entra na escolha).",
-  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30, "margem_fora": 50},
+  "_selecao": "margem_lugares = diferença por pessoa, em reais, a partir da qual vale avisar que outro número de lugares muda o preço. margem_juntas = quanto a ida e volta numa compra só precisa economizar, por pessoa, para aparecer. margem_fora = quanto uma agência de fora do Brasil precisa ser mais barata, por pessoa, para ser citada (ela nunca entra na escolha). queda_rapida = queda mínima, por pessoa, para a rodada rápida mandar aviso.",
+  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30, "margem_fora": 50, "queda_rapida": 40},
 
   "_rapida": "Semana de promoções: entre 'de' e 'ate', cada rodada completa é seguida, 'espera_min' minutos depois, de uma rodada rápida só no Google, que avisa na hora se algum preço caiu. (Black Friday: 27/11.)",
   "rapida": {"de": "2026-11-21", "ate": "2026-11-21", "espera_min": 1},

@@ -540,9 +540,10 @@ def hora_do_scan(scan):
 # ---------------------------------------------------------------- rodada rápida (só o Google, entre duas completas)
 def quedas_rapidas(scan, v, ts, estado, agora):
     """Os trechos em que a rodada rápida conferiu um preço melhor que o guardado: [(trecho, recomendada guardada, oferta nova)].
-    Melhor = pelo menos selecao.queda_min mais barato depois do peso dos aeroportos, ou abaixo do alvo quando o guardado
+    Melhor = pelo menos selecao.queda_rapida mais barato depois do peso dos aeroportos, ou abaixo do alvo quando o guardado
     estava acima. O mesmo preço não é avisado duas vezes em HORAS_ENTRE_TOQUES (anota em estado[series][serie]['rapida'])."""
     sel, achados = v['selecao'], []
+    queda = sel.get('queda_rapida', sel['queda_min'])
     for t in ts:
         e = estado.get('series', {}).get(t['serie']) or {}
         antes, rec = e.get('rec'), (scan['series'].get(t['serie']) or {}).get('recomendada')
@@ -550,7 +551,7 @@ def quedas_rapidas(scan, v, ts, estado, agora):
             continue
         d, cia, orig, dest, hora = antes['ident']
         referencia = antes['pp'] + selecao.peso({'d': d, 'cia': cia, 'orig': orig, 'dest': dest, 'saida': hora}, v, t)
-        caiu = rec['pp'] + selecao.peso(rec, v, t) <= referencia - sel['queda_min']
+        caiu = rec['pp'] + selecao.peso(rec, v, t) <= referencia - queda
         no_alvo = bool(t['alvo']) and rec['pp'] <= t['alvo'] < antes['pp']
         ja = e.get('rapida')
         repetido = ja and rec['pp'] > ja['pp'] - sel['queda_min'] and _horas(ja['quando'], agora) < HORAS_ENTRE_TOQUES
@@ -561,7 +562,7 @@ def quedas_rapidas(scan, v, ts, estado, agora):
 
 
 def registrar_rapida(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
-    """Rodada rápida: se algum preço caiu, manda um aviso curto (com som) e anota no estado; senão, não manda nem grava nada.
+    """Rodada rápida: se algum preço caiu, manda um aviso curto (com som, menos de madrugada) e anota no estado; senão, não manda nem grava nada.
     Histórico, painel e resumo ficam por conta da rodada completa. Devolve as linhas para o log (sem nomes)."""
     enviar = enviar or envio_padrao()
     agora = agora or hora_do_scan(scan)
@@ -585,7 +586,9 @@ def registrar_rapida(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
                         'url': rec.get('link') or link_mm(rec['orig'], rec['dest'], rec['d'], t['pax'])}])
     texto = (f"⚡ <b>Queda agora</b> · {quando_tg(agora)}\n<i>Busca rápida, só no Google. Preço por pessoa, sem mala, conferido agora.</i>\n\n"
              + '\n\n'.join(blocos) + f"\n\n<i>{DICA_24H}</i>")
-    st = enviar(texto, False, botoes + [PAINEL_BOTAO])
+    # de madrugada (até as 7h) o aviso chega sem som, a não ser que algum trecho tenha batido o alvo
+    no_alvo = any(t['alvo'] and rec['pp'] <= t['alvo'] for t, _, rec in achados)
+    st = enviar(texto, agora[11:13] < '07' and not no_alvo, botoes + [PAINEL_BOTAO])
     gravar_json(os.path.join(pasta, 'estado.json'), estado)
     return ['RAPIDA_QUEDA ' + ' | '.join(f"{t['serie']} {brl(rec['pp'])} (era {brl(antes['pp'])})" for t, antes, rec in achados), st]
 
@@ -930,7 +933,7 @@ def _teste_registro():
         r = registrar({'status': 'erro', 'erro': 'x<y'}, v, d, fake, nomes, '2026-11-24 11:17')
         assert r == ['ERRO_VARREDURA x<y', 'TELEGRAM_ENVIADO'] and enviados[-1][1] and '<i>x&lt;y</i>' in enviados[-1][0]
 
-    # ---- rodada rápida: avisa só o que caiu de verdade (R$20 ou mais, já com o peso dos aeroportos), com som, e não repete
+    # ---- rodada rápida: avisa só o que caiu de verdade (R$40 ou mais, já com o peso dos aeroportos), com som, e não repete
     with tempfile.TemporaryDirectory() as d:
         enviados.clear()
         registrar(scan(), v, d, fake, nomes, '2026-11-20 20:17')
@@ -939,7 +942,7 @@ def _teste_registro():
         # nada conferido, ou preço igual, ou queda pequena: não manda nada e não mexe em arquivo nenhum
         antes_ = open(os.path.join(d, 'estado.json')).read()
         assert rapida('2026-11-20 20:47') == ['RAPIDA_SEM_QUEDA']
-        assert rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-20', 'FOR', 'GRU', '12:50', 600)}) == ['RAPIDA_SEM_QUEDA']
+        assert rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-20', 'FOR', 'GRU', '12:50', 580)}) == ['RAPIDA_SEM_QUEDA']
         # Juazeiro R$70 mais barato que Fortaleza não é queda: com o peso de R$80, não é melhor que a guardada (R$612)
         assert rapida('2026-11-20 20:47', **{'v.volta': of('2027-01-21', 'JDO', 'GRU', '09:00', 542)}) == ['RAPIDA_SEM_QUEDA']
         assert len(enviados) == completa and open(os.path.join(d, 'estado.json')).read() == antes_
@@ -959,9 +962,11 @@ def _teste_registro():
         assert rapida('2026-11-20 21:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 555, 'LATAM')}) == ['RAPIDA_SEM_QUEDA']
         assert rapida('2026-11-20 21:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 538, 'LATAM')})[0] == 'RAPIDA_QUEDA v.volta R$538 (era R$612)'
         assert rapida('2026-11-21 04:47', **{'v.volta': of('2027-01-19', 'FOR', 'CGH', '08:00', 540, 'LATAM')})[0].startswith('RAPIDA_QUEDA')
+        assert enviados[-1][1]                                       # de madrugada, sem som
         # bateu o alvo (R$450) vindo de cima: avisa com a marca do alvo; dupla: preço por pessoa
         r = rapida('2026-11-21 05:47', **{'wk.volta': of('2027-01-11', 'JDO', 'GRU', '03:20', 445, 'LATAM', 'maxmilhas', pax=2, chegada='06:50')})
         assert r[0] == 'RAPIDA_QUEDA wk.volta R$445 (era R$540)' and '👭 <b>Duda + Eva</b> · Volta\n✅ <b>R$445</b> por pessoa · seg 11/01 · LATAM, direto · era R$540' in enviados[-1][0]
+        assert not enviados[-1][1]                                   # bateu o alvo: toca mesmo de madrugada
         # Google fora do ar ou pedindo verificação: não manda nada
         assert registrar_rapida({'status': 'erro', 'fontes': {'Google': {'bloqueio': 'tráfego incomum'}}}, v, d, fake, nomes, '2026-11-21 06:47') == ['RAPIDA_SEM_GOOGLE tráfego incomum']
 
