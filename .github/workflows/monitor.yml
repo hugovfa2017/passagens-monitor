@@ -10,8 +10,7 @@ on:
         required: false
         default: 'manual'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
-    # provisório: a branch de trabalho roda para testar a versão por pessoa, sem enviar Telegram; sai ao juntar na main
-    branches: [main, claude/ps5-price-monitor-brazil-cqvxiw]
+    branches: [main]
     paths: ['viagem.json', 'varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/*.py', '.github/workflows/monitor.yml']
 
 permissions:
