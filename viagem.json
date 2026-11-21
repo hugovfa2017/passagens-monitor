@@ -28,7 +28,7 @@
   "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30, "margem_fora": 50, "queda_rapida": 40},
 
   "_rapida": "Semana de promoções: entre 'de' e 'ate', cada rodada completa é seguida, 'espera_min' minutos depois, de uma rodada rápida só no Google, que avisa na hora se algum preço caiu. (Black Friday: 27/11.)",
-  "rapida": {"de": "2026-11-21", "ate": "2026-11-21", "espera_min": 1},
+  "rapida": {"de": "2026-11-23", "ate": "2026-11-30", "espera_min": 25},
 
   "_grupos": "assentos = lugares no mesmo voo. alvo = preço por pessoa que faz o alerta tocar (trecho sem alvo só toca quando bate o menor preço já visto). igual_a = usa o resultado de outro trecho (mesmas datas e lugares). rodizio = janela longa: a cada rodada olha as 'fixas' datas mais baratas já vistas e as 'giro' que estão há mais tempo sem olhar. lugares = confere o voo recomendado também com esses números de lugares (quanto custa ir junto, ou comprar um lugar de cada vez). ida_e_volta = confere se as duas recomendadas de cada cenário saem mais baratas numa compra só.",
   "grupos": [
