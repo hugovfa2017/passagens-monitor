@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-21 06:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-21 06:30 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.184,07 na KaBuM! · à vista no Pix, visto em 2 lugares
 
