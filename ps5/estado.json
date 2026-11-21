@@ -491,7 +491,7 @@
    "ressalvas": [],
    "id": "promobit-3237252",
    "publicado": "2026-11-21T03:06:32-0300",
-   "idade_h": 6.4
+   "idade_h": 6.6
   },
   "promobit-3237281": {
    "fonte": "Promobit",
@@ -508,7 +508,7 @@
    "ressalvas": [],
    "id": "promobit-3237281",
    "publicado": "2026-11-21T07:16:23-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3237282": {
    "fonte": "Promobit",
@@ -525,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3237282",
    "publicado": "2026-11-21T07:16:37-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3237275": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3237284",
    "publicado": "2026-11-21T07:18:18-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3237285": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3237285",
    "publicado": "2026-11-21T07:18:43-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "tg-hardmob_promo/472969-0": {
    "fonte": "Telegram",
@@ -595,7 +595,7 @@
    "publicado": "2026-11-21T08:51:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 0.7
+   "idade_h": 0.8
   },
   "tg-OfertasDoDia/483210-0": {
    "fonte": "Telegram",
@@ -614,7 +614,7 @@
    "publicado": "2026-11-21T08:50:50-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 0.7
+   "idade_h": 0.8
   },
   "promobit-3237512": {
    "fonte": "Promobit",
@@ -631,7 +631,7 @@
    "ressalvas": [],
    "id": "promobit-3237512",
    "publicado": "2026-11-21T09:20:08-0300",
-   "idade_h": 0.2
+   "idade_h": 0.3
   },
   "promobit-3237510": {
    "fonte": "Promobit",
@@ -648,7 +648,7 @@
    "ressalvas": [],
    "id": "promobit-3237510",
    "publicado": "2026-11-21T09:19:19-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "promobit-3237492": {
    "fonte": "Promobit",
@@ -665,7 +665,7 @@
    "ressalvas": [],
    "id": "promobit-3237492",
    "publicado": "2026-11-21T09:16:05-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "promobit-3237486": {
    "fonte": "Promobit",
@@ -682,7 +682,58 @@
    "ressalvas": [],
    "id": "promobit-3237486",
    "publicado": "2026-11-21T09:15:05-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
+  },
+  "promobit-3237567": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada Amarelo",
+   "preco": 378.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3237567/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "INOVATECHML",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237567",
+   "publicado": "2026-11-21T09:28:08-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237573": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada Amarelo",
+   "preco": 378.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3237573/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237573",
+   "publicado": "2026-11-21T09:29:13-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3237563": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Adamantium Wolverine Edição Limitada",
+   "preco": 464.07,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-adamantium-wolverine-edicao-limitada-3237563/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIMAIS2111",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3237563",
+   "publicado": "2026-11-21T09:28:05-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -720,7 +771,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 4,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -760,7 +811,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T09:30:23-03:00",
+ "ultima": "2026-11-21T09:40:22-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
