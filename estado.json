@@ -50,7 +50,9 @@
     "d": "2027-01-22",
     "ne": "FOR",
     "pp": 711,
-    "vend": "Zupper"
+    "vend": "Zupper",
+    "chegada": "05:30",
+    "tipo": "direto"
    },
    "barata": null,
    "hist": [
@@ -340,7 +342,9 @@
     "d": "2027-03-06",
     "ne": "FOR",
     "pp": 364,
-    "vend": "Vai de Promo"
+    "vend": "Vai de Promo",
+    "chegada": "16:55",
+    "tipo": "direto"
    },
    "barata": null,
    "hist": [
@@ -406,7 +410,9 @@
     "d": "2026-12-28",
     "ne": "JDO",
     "pp": 1235,
-    "vend": "Zupper"
+    "vend": "Zupper",
+    "chegada": "23:15",
+    "tipo": "direto"
    },
    "barata": null,
    "hist": [
@@ -480,7 +486,9 @@
     "d": "2027-01-06",
     "ne": "NAT",
     "pp": 719,
-    "vend": "Vai de Promo"
+    "vend": "Vai de Promo",
+    "chegada": "01:15",
+    "tipo": "com escala"
    },
    "barata": null,
    "hist": [
@@ -548,7 +556,9 @@
     "d": "2026-12-28",
     "ne": "JDO",
     "pp": 1235,
-    "vend": "Zupper"
+    "vend": "Zupper",
+    "chegada": "23:15",
+    "tipo": "direto"
    },
    "barata": null,
    "hist": [
@@ -608,7 +618,9 @@
     "d": "2027-01-08",
     "ne": "FOR",
     "pp": 775,
-    "vend": "Zupper"
+    "vend": "Zupper",
+    "chegada": "00:40",
+    "tipo": "direto"
    },
    "barata": null,
    "hist": [
@@ -619,5 +631,11 @@
    ]
   }
  },
- "quando": "2026-11-21 03:28"
+ "quando": "2026-11-21 03:28",
+ "voos": {
+  "volta|2027-01-22|LATAM|FOR|GRU|02:10|05:30": "FOR>GRU 2027-01-22 LA 4777",
+  "volta|2027-03-06|Gol|FOR|CGH|13:20|16:55": "FOR>CGH 2027-03-06 G3 1511",
+  "ida|2026-12-28|LATAM|GRU|JDO|20:10|23:15": "GRU>JDO 2026-12-28 LA 3888",
+  "ida|2026-12-22|Gol|GRU|NAT|14:05|17:25": "GRU>NAT 2026-12-22 G3 1678"
+ }
 }

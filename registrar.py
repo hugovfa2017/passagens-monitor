@@ -260,9 +260,17 @@ def atualizar_estado(estado, scan, ts, v, agora):
                 e['tocou'] = {'pp': rec['pp'], 'quando': agora}
         e['min'] = min(menor, rec['pp']) if menor else rec['pp']
         momento.anotar(e.setdefault('hist', []), agora, rec['pp'])
-        e['rec'] = {'ident': list(selecao.ident(rec)), 'd': rec['d'], 'ne': selecao.nordeste(rec, v), 'pp': rec['pp'], 'vend': rec['vend']}
+        # (chegada e tipo: para a próxima rodada conferir este mesmo voo direto na tela de compra, mesmo fora da lista)
+        e['rec'] = {'ident': list(selecao.ident(rec)), 'd': rec['d'], 'ne': selecao.nordeste(rec, v), 'pp': rec['pp'], 'vend': rec['vend'],
+                    'chegada': rec['chegada'], 'tipo': rec['tipo']}
         barata = r.get('mais_barata')   # a próxima rodada confere de novo a mais barata, mesmo que ela não seja a recomendada
-        e['barata'] = {'d': barata['d'], 'ne': selecao.nordeste(barata, v), 'pp': barata['pp']} if barata else None
+        e['barata'] = {'ident': list(selecao.ident(barata)), 'd': barata['d'], 'ne': selecao.nordeste(barata, v), 'pp': barata['pp'],
+                       'chegada': barata['chegada'], 'tipo': barata['tipo']} if barata else None
+    # números dos voos vistos nesta rodada (chave do voo -> número): ficam guardados até a data do voo passar
+    memoria = estado.setdefault('voos', {})
+    memoria.update(scan.get('numeros') or {})
+    for k in [k for k in memoria if k.split('|')[1] <= agora[:10]]:
+        del memoria[k]
     estado['quando'] = agora
     return linhas, alertas, mudancas
 
@@ -798,8 +806,11 @@ def _teste_registro():
         assert do_v == [('2027-01-18', 'REC', '540', '1'), ('2027-01-19', 'JDO', '880', '0'), ('2027-01-20', 'FOR', '612', '1')], do_v
         assert [(x['d'], x['pp']) for x in linhas if x['serie'] == 'v.volta#rec'] == [('2027-01-20', '612')] and len(linhas) == 3 + 4 + 6
         estado = ler_estado(d)
-        assert estado['series']['v.volta']['rec'] == {'ident': ['2027-01-20', 'Gol', 'FOR', 'GRU', '12:50'], 'd': '2027-01-20', 'ne': 'FOR', 'pp': 612, 'vend': 'maxmilhas'}
-        assert estado['series']['v.volta']['barata'] == {'d': '2027-01-18', 'ne': 'REC', 'pp': 540} and estado['series']['wk.volta']['barata'] is None
+        assert estado['series']['v.volta']['rec'] == {'ident': ['2027-01-20', 'Gol', 'FOR', 'GRU', '12:50'], 'd': '2027-01-20', 'ne': 'FOR', 'pp': 612, 'vend': 'maxmilhas',
+                                                      'chegada': '16:30', 'tipo': 'direto'}
+        assert estado['series']['v.volta']['barata'] == {'ident': ['2027-01-18', 'Azul', 'REC', 'CGH', '05:05'], 'd': '2027-01-18', 'ne': 'REC', 'pp': 540,
+                                                         'chegada': '08:40', 'tipo': 'direto'} and estado['series']['wk.volta']['barata'] is None
+        assert estado['voos'] == {}                                     # esta rodada de teste não trouxe números
         assert estado['series']['v.volta']['datas']['2027-01-21'] == {'pp': None, 'visto': '2026-11-20 20:17'} and estado['series']['v.volta']['min'] == 612
 
     # ---- lugares e ida e volta numa compra só: linhas a mais só quando há o que dizer
@@ -929,8 +940,15 @@ def _teste_registro():
         assert '👩 <b>Ana</b>\n<u>Volta · 18 a 22/01</u>\nsem preço conferido nesta busca' in msg and '<u>Volta junto · 18 a 22/01</u>\nsem preço conferido nesta busca' in msg
         assert '<u>Volta depois · 23/01 a 31/03</u>\nsem preço conferido nesta busca' in msg and '📦 Ida + volta: <b>R$1.690</b>' in msg and 'Caio' in msg
         assert ler_estado(d)['series']['v.volta']['rec']['pp'] == 612      # a última recomendada conhecida fica guardada
+        # ---- números dos voos: guardados de uma rodada para a outra, até a data do voo passar
+        s = scan(**base)
+        s['numeros'] = {'volta|2027-01-20|Gol|FOR|GRU|12:50|16:30': 'FOR>GRU 2027-01-20 G3 1555', 'ida|2026-12-28|Gol|GRU|FOR|14:05|17:25': 'GRU>FOR 2026-12-28 G3 1234'}
+        rodar(s, '2026-11-24 12:17')
+        rodar(scan(**base), '2026-11-24 13:17')                         # rodada sem números: o que estava guardado fica
+        assert ler_estado(d)['voos'] == s['numeros']
         # ---- datas que já passaram saem do bloco e do estado
         rodar(scan(**base), '2026-12-29 10:17')
+        assert list(ler_estado(d)['voos']) == ['volta|2027-01-20|Gol|FOR|GRU|12:50|16:30']
         msg = enviados[-1][0]
         assert '<u>Ida em dezembro · 30/12</u>' in msg and '2027-01-18' in ler_estado(d)['series']['v.volta']['datas']
         rodar(scan(**base), '2027-01-19 10:17')

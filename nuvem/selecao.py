@@ -17,6 +17,12 @@ def ident(x):
     return (x['d'], x['cia'], x['orig'], x['dest'], x['saida'])
 
 
+def chave(x):
+    """Texto que identifica um voo de uma rodada para a outra (para guardar o número dele): sentido, data, companhia,
+    aeroportos e os dois horários. A chegada entra para não confundir duas conexões que saem no mesmo voo."""
+    return '|'.join((x['sentido'], x['d'], x['cia'], x['orig'], x['dest'], x['saida'], x['chegada']))
+
+
 def nordeste(x, v):
     return x['dest'] if x['orig'] in v['sp'] else x['orig']
 
@@ -186,6 +192,8 @@ def _teste():
     def voo(d, orig, dest, saida, preco, cia='Gol', pax=1, sentido='volta', **mais):
         return {'sentido': sentido, 'd': d, 'orig': orig, 'dest': dest, 'cia': cia, 'saida': saida, 'chegada': '23:00', 'tipo': 'direto',
                 'pax': pax, 'lista_pp': preco, 'pp': preco, 'vend': 'CIA ' + cia, 'link': 'https://x', 'fonte': 'google', 'voos': '', **mais}
+
+    assert chave(voo('2027-01-19', 'FOR', 'GRU', '12:50', 1)) == 'volta|2027-01-19|Gol|FOR|GRU|12:50|23:00'
 
     # ---- peso: Fortaleza 0, Recife 200, Campinas +60; o voo comprado ganha o bônus só no trecho que pede
     assert peso(voo('2027-01-19', 'FOR', 'GRU', '10:00', 1), v, volta) == 0
