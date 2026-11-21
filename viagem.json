@@ -34,7 +34,7 @@
   "grupos": [
     {"id": "v", "rotulo": "V", "emoji": "👩", "assentos": 1,
      "trechos": [
-       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-18", "ate": "2027-01-22"}, "alvo": 450, "lugares": [2, 3]}
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-18", "ate": "2027-01-22"}, "alvo": 650, "lugares": [2, 3]}
      ]},
     {"id": "h", "rotulo": "H", "emoji": "🧍", "assentos": 1,
      "trechos": [
@@ -44,7 +44,7 @@
      ]},
     {"id": "g", "rotulo": "G", "emoji": "🧑", "assentos": 1, "ida_e_volta": true,
      "trechos": [
-       {"id": "ida_dez", "sentido": "ida", "nome": "Ida em dezembro", "curto": "Ida dez", "alvo": 1000, "voo_comprado": true,
+       {"id": "ida_dez", "sentido": "ida", "nome": "Ida em dezembro", "curto": "Ida dez", "alvo": 1100, "voo_comprado": true,
         "datas": ["2026-12-22", "2026-12-23", "2026-12-26", "2026-12-27", "2026-12-28", "2026-12-29", "2026-12-30"]},
        {"id": "ida_jan", "sentido": "ida", "nome": "Ida em janeiro", "curto": "Ida jan", "datas": {"de": "2027-01-02", "ate": "2027-01-10"}},
        {"id": "volta", "nome": "Volta", "igual_a": "v.volta"}
@@ -52,9 +52,9 @@
      "cenarios": [{"id": "A", "nome": "indo em dezembro", "ida": "ida_dez", "volta": "volta"}, {"id": "B", "nome": "indo em janeiro", "ida": "ida_jan", "volta": "volta"}]},
     {"id": "wk", "rotulo": "W + K", "emoji": "👭", "assentos": 2, "ida_e_volta": true,
      "trechos": [
-       {"id": "ida", "sentido": "ida", "nome": "Ida", "alvo": 1000, "voo_comprado": true, "lugares": [1],
+       {"id": "ida", "sentido": "ida", "nome": "Ida", "alvo": 1100, "voo_comprado": true, "lugares": [1],
         "datas": ["2026-12-22", "2026-12-23", "2026-12-26", "2026-12-27", "2026-12-28", "2026-12-29", "2026-12-30"]},
-       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-07", "ate": "2027-01-12"}, "alvo": 450, "lugares": [1]}
+       {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-07", "ate": "2027-01-12"}, "alvo": 650, "lugares": [1]}
      ],
      "cenarios": [{"id": "U", "ida": "ida", "volta": "volta"}]}
   ]

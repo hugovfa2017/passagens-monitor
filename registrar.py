@@ -703,6 +703,12 @@ def _teste_registro():
     assert janela(['2026-12-30', '2027-01-02', '2027-01-03']) == '30/12 e 02 a 03/01' and brl(1234.4) == 'R$1.234'
 
     v = plano.carregar()
+    # os alvos do teste são fixos: mudar um alvo no arquivo da viagem não muda o que este teste confere
+    alvos = {'v.volta': 450, 'g.ida_dez': 1000, 'wk.ida': 1000, 'wk.volta': 450}
+    for g in v['grupos']:
+        for t in g['trechos']:
+            if f"{g['id']}.{t['id']}" in alvos:
+                t['alvo'] = alvos[f"{g['id']}.{t['id']}"]
     nomes = {'v': 'Ana', 'h': 'Beto', 'g': 'Caio', 'wk': 'Duda + Eva'}
 
     def of(d, orig, dest, saida, pp, cia='Gol', vend='CIA Gol', pax=1, sentido='volta', tipo='direto', chegada='16:30', voos=''):
