@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-21 04:25
+# Passagens: última busca em 2026-11-21 05:26
 
-✈️ Passagens · sáb 21/11, 04:25
+✈️ Passagens · sáb 21/11, 05:26
 Preço por pessoa, sem mala, conferido nesta busca.
 😌 Sem mudança desde a última busca.
 
@@ -8,7 +8,7 @@ Preço por pessoa, sem mala, conferido nesta busca.
 Volta · 18 a 22/01
 ⭐ R$711 · sex 22/01 · LATAM 4777, direto
 └ 02h10 Fortaleza → 05h30 Guarulhos · Zupper
-👥 Nesse voo, 3 lugares juntos saem pelo mesmo preço por pessoa
+👥 Nesse voo, 2 ou 3 lugares juntos saem pelo mesmo preço por pessoa
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250) · R$61 acima do alvo (R$650)
 
 🧍 H
@@ -19,7 +19,7 @@ Volta depois · 23/01 a 31/03
 ⭐ R$364 · sáb 06/03 · Gol 1511, direto
 └ 13h20 Fortaleza → 16h55 Congonhas · Vai de Promo
 🟢 Bom momento: para o Google, preço baixo (a rota costuma ficar entre R$830 e R$2.500)
-Outras datas, preço ainda não conferido: qui 11/03 R$386 · sáb 13/03 R$386
+Outras datas, preço ainda não conferido: sex 19/03 R$373 · qui 11/03 R$386
 ↔️ Volta depois sai R$347 mais barato que volta junto
 
 🧑 G
