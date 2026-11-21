@@ -30,6 +30,9 @@ jobs:
     timeout-minutes: 45
     env:
       TZ: America/Sao_Paulo
+    outputs:
+      rapida: ${{ steps.guarda.outputs.rapida }}     # 'true' na semana de promoções (viagem.json: rapida), depois de uma rodada completa
+      espera: ${{ steps.guarda.outputs.espera }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -54,6 +57,11 @@ jobs:
               except Exception:
                   pass
           print('pular=' + str(pular).lower())
+          # semana de promoções: depois de cada rodada completa vem uma rápida (o trabalho "rapida", mais abaixo)
+          r = json.load(open('viagem.json')).get('rapida') or {}
+          ativa = not pular and not rapida and r.get('de', '9') <= dt.date.today().isoformat() <= r.get('ate', '')
+          print('rapida=' + str(ativa).lower())
+          print('espera=' + str(int(r.get('espera_min', 25)) * 60))
           FIM
       - uses: actions/setup-python@v5
         if: steps.guarda.outputs.pular != 'true'
@@ -88,5 +96,43 @@ jobs:
           for f in precos.csv estado.json ultimo.md ultima.json painel.json docs/index.html docs/painel.json docs/.nojekyll; do [ -f "$f" ] && git add "$f"; done
           git commit -m "Varredura $(date '+%d/%m %H:%M')" || echo "nada novo"
           # o código pode ter mudado durante a varredura; se os arquivos de dados se chocarem, vale o desta varredura (a mais nova)
+          git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+  rapida:
+    # Semana de promoções (viagem.json: rapida): meia hora depois da rodada completa, uma rodada rápida só no Google.
+    # Se algum preço caiu, avisa na hora; senão, não manda nada. Fora dessa semana, este trabalho nem começa.
+    needs: varredura
+    if: needs.varredura.outputs.rapida == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - name: Esperar o meio do intervalo
+        run: sleep ${{ needs.varredura.outputs.espera }}
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # com o estado que a rodada completa acabou de guardar
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar navegador sem tela
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Rodada rápida
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NOMES_VIAGEM: ${{ secrets.NOMES_VIAGEM }}
+          PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}
+        run: python nuvem/rodar.py --rapida
+      - name: Guardar o aviso (só muda quando houve queda)
+        run: |
+          git config user.name "monitor-passagens"
+          git config user.email "monitor-passagens@users.noreply.github.com"
+          git add estado.json
+          git commit -m "Rodada rápida $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
           git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
