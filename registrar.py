@@ -258,6 +258,8 @@ def atualizar_estado(estado, scan, ts, v, agora):
                 e['tocou'] = {'pp': rec['pp'], 'quando': agora}
         e['min'] = min(menor, rec['pp']) if menor else rec['pp']
         e['rec'] = {'ident': list(selecao.ident(rec)), 'd': rec['d'], 'ne': selecao.nordeste(rec, v), 'pp': rec['pp'], 'vend': rec['vend']}
+        barata = r.get('mais_barata')   # a próxima rodada confere de novo a mais barata, mesmo que ela não seja a recomendada
+        e['barata'] = {'d': barata['d'], 'ne': selecao.nordeste(barata, v), 'pp': barata['pp']} if barata else None
     estado['quando'] = agora
     return linhas, alertas, mudancas
 
@@ -647,6 +649,7 @@ def _teste_registro():
         assert [(x['d'], x['pp']) for x in linhas if x['serie'] == 'v.volta#rec'] == [('2027-01-20', '612')] and len(linhas) == 3 + 4 + 6
         estado = ler_estado(d)
         assert estado['series']['v.volta']['rec'] == {'ident': ['2027-01-20', 'Gol', 'FOR', 'GRU', '12:50'], 'd': '2027-01-20', 'ne': 'FOR', 'pp': 612, 'vend': 'maxmilhas'}
+        assert estado['series']['v.volta']['barata'] == {'d': '2027-01-18', 'ne': 'REC', 'pp': 540} and estado['series']['wk.volta']['barata'] is None
         assert estado['series']['v.volta']['datas']['2027-01-21'] == {'pp': None, 'visto': '2026-11-20 20:17'} and estado['series']['v.volta']['min'] == 612
 
     with tempfile.TemporaryDirectory() as d:

@@ -91,10 +91,11 @@ def fila_da_lupa(lista, ts, v, estado, hora):
     for t in ts:
         if t['igual_a'] or not t['datas']:
             continue
-        chaves = selecao.chaves_lupa(lista, v, t)
-        rec = estado.get('series', {}).get(t['serie'], {}).get('rec')
-        if not chaves and rec and rec['d'] in t['datas']:
-            chaves = [(rec['d'], rec['ne'])]
+        # primeiro o que a rodada anterior achou de melhor (a recomendada e a mais barata): preço bom, uma vez achado,
+        # é conferido de novo toda rodada até sumir; depois as melhores chaves da lista desta rodada
+        antes = estado.get('series', {}).get(t['serie'], {})
+        fixas = [(x['d'], x['ne']) for x in (antes.get('rec'), antes.get('barata')) if x and x['d'] in t['datas']]
+        chaves = fixas + [c for c in selecao.chaves_lupa(lista, v, t) if c not in fixas]
         por_ordem.append([(t['sentido'], d, ne, t['pax']) for d, ne in chaves])
     fila = [c for nivel in range(max(map(len, por_ordem), default=0)) for cs in por_ordem for c in cs[nivel:nivel + 1]]
     if 'MVF' in v['aeroportos']:
@@ -341,9 +342,15 @@ def _teste():
     assert fila[3:5] == [('volta', '2027-01-19', 'REC', 1), ('ida', '2026-12-22', 'NAT', 2)], fila
     assert fila[-2:] == [('ida', '2026-12-22', 'MVF', 1), ('volta', '2027-01-07', 'MVF', 1)] and len(fila) == len(set(fila))
     assert fila_da_lupa(lista, ts, v, {}, 1)[-2:] == [('ida', '2026-12-23', 'MVF', 1), ('volta', '2027-01-08', 'MVF', 1)]
-    # Google bloqueado: sem lista, vale a recomendada da rodada anterior
-    estado = {'series': {'v.volta': {'rec': {'d': '2027-01-20', 'ne': 'JDO', 'ident': ['2027-01-20', 'Gol', 'JDO', 'GRU', '09:00']}}}}
+    # o que a rodada anterior achou de melhor vem primeiro (recomendada e mais barata), mesmo com o Google bloqueado (sem lista)
+    estado = {'series': {'v.volta': {'rec': {'d': '2027-01-20', 'ne': 'JDO', 'ident': ['2027-01-20', 'Gol', 'JDO', 'GRU', '09:00']},
+                                     'barata': {'d': '2027-01-22', 'ne': 'REC', 'pp': 411}}}}
     assert fila_da_lupa([], ts, v, estado, 0)[0] == ('volta', '2027-01-20', 'JDO', 1)
+    com_memoria = fila_da_lupa(lista, ts, v, estado, 0)
+    assert com_memoria[0] == ('volta', '2027-01-20', 'JDO', 1) and ('volta', '2027-01-22', 'REC', 1) in com_memoria[:6] and len(com_memoria) == len(set(com_memoria))
+    # data que saiu da janela não é mais buscada
+    velho = {'series': {'v.volta': {'rec': {'d': '2027-01-05', 'ne': 'FOR'}}}}
+    assert ('volta', '2027-01-05', 'FOR', 1) not in fila_da_lupa(lista, ts, v, velho, 0)
 
     # ---- montagem: recomendada com peso, mais barata, voo comprado, células por data e aeroporto
     olhadas = {'v.volta': ['2027-01-19'], 'wk.ida': ['2026-12-22']}
