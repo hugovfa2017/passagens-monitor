@@ -1,26 +1,27 @@
-# Passagens: última busca em 2026-11-20 21:51
+# Passagens: última busca em 2026-11-20 21:58
 
-✈️ Passagens · sex 20/11, 21:51
+✈️ Passagens · sex 20/11, 21:58
 Preço por pessoa, sem mala, conferido nesta busca.
-🔥 Hora de comprar: V, volta R$411 (alvo R$450)
-Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
+📈 V, volta +R$335 · H, volta depois +R$25
 
 👩 V
 Volta · 18 a 22/01
-⭐ ✅ R$411 · sex 22/01 · Azul 6085, direto
+⭐ R$746 · sex 22/01 · LATAM 4777, direto
+└ 02h10 Fortaleza → 05h30 Guarulhos · 123milhas
+💸 Mais barata: ✅ R$411 · sex 22/01 · Azul, direto
 └ 18h05 Recife → 21h35 Congonhas · Zupper
 
 🧍 H
 Volta junto · 18 a 22/01
-R$411 · sex 22/01 · mesmo voo de V
-└ 18h05 Recife → 21h35 Congonhas
+R$746 · sex 22/01 · mesmo voo de V
+└ 02h10 Fortaleza → 05h30 Guarulhos
 Volta depois · 23/01 a 31/03
-⭐ R$405 · qua 03/02 · LATAM 3321, direto
-└ 18h00 Fortaleza → 21h35 Guarulhos · 123milhas
-💸 Mais barata: R$373 · seg 01/02 · Gol 9337, direto
-└ 04h55 Recife → 08h15 Congonhas · Gol
-Outras datas, preço ainda não conferido: seg 01/02 R$373 · qui 04/02 R$424
-↔️ Volta depois sai R$6 mais barato que volta junto
+⭐ R$430 · qua 03/02 · Azul 2269, direto
+└ 03h15 Fortaleza → 06h45 Campinas (Viracopos) · Vai de Promo
+💸 Mais barata: R$366 · seg 01/02 · Gol 9337, direto
+└ 04h55 Recife → 08h15 Congonhas · Vai de Promo
+Outras datas, preço ainda não conferido: seg 01/02 R$366 · dom 07/02 R$391
+↔️ Volta depois sai R$316 mais barato que volta junto
 
 🧑 G
 Ida em dezembro · 22 a 23/12 e 26 a 30/12
@@ -31,9 +32,9 @@ Ida em janeiro · 02 a 10/01
 ⭐ R$719 · qua 06/01 · Gol, 1 conexão
 └ 20h25 Congonhas → 01h15 (+1 dia) Natal · Vai de Promo
 Volta · 18 a 22/01
-R$411 · sex 22/01 · mesmo voo de V
-└ 18h05 Recife → 21h35 Congonhas
-📦 Ida + volta: indo em dezembro R$1.529 · indo em janeiro R$1.130
+R$746 · sex 22/01 · mesmo voo de V
+└ 02h10 Fortaleza → 05h30 Guarulhos
+📦 Ida + volta: indo em dezembro R$1.864 · indo em janeiro R$1.465
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
@@ -45,8 +46,8 @@ Volta · 07 a 12/01
 └ 21h05 Fortaleza → 00h40 (+1 dia) Guarulhos · Vai de Promo
 📦 Ida + volta: R$1.925 por pessoa · R$3.850 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa, Recife · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$77 a R$144 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$77 a R$144 por trecho · Viaza não respondeu
 
-Telegram: TELEGRAM_DESLIGADO
+Telegram: TELEGRAM_ENVIADO
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/
