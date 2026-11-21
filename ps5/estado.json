@@ -204,25 +204,6 @@
    "publicado": "2026-11-20T15:23:09-0300",
    "idade_h": 1.9
   },
-  "tg-jogobarato/110305-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Console PlayStation 5 Digital - Edição Limitada de Marvel’s Wolverine (Battle Yellow)",
-   "preco": 4742.07,
-   "link": "https://t.me/jogobarato/110305",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [],
-   "id": "tg-jogobarato/110305-0",
-   "publicado": "2026-11-20T16:28:37-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 11.9
-  },
   "tg-pechinchou/239244-0": {
    "fonte": "Telegram",
    "loja": "KaBuM!",
@@ -239,44 +220,6 @@
    "id": "tg-pechinchou/239244-0",
    "publicado": "2026-11-20T16:32:16-0300",
    "canal": "Pechinchou",
-   "preco_de": null,
-   "idade_h": 11.8
-  },
-  "tg-nerdofertas/154060-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Console PlayStation 5 Sony Edição Digital Marvel's Wolverine Pacote de Edição Limitada, 825 GB, Amarelo 1000056865",
-   "preco": 4742.0,
-   "link": "https://t.me/nerdofertas/154060",
-   "tipo": "grupo",
-   "origem": "nerdofertas",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Nerd Ofertas",
-   "ressalvas": [],
-   "id": "tg-nerdofertas/154060-0",
-   "publicado": "2026-11-20T16:22:43-0300",
-   "canal": "Nerd Ofertas",
-   "preco_de": null,
-   "idade_h": 12.0
-  },
-  "tg-superofertasbr/13834-0": {
-   "fonte": "Telegram",
-   "loja": "?",
-   "titulo": "Console PlayStation 5 Sony Edição Digital Marvel's Wolverine Pacote de Edição Limitada, 825 GB, Amarelo 1000056865",
-   "preco": 4742.0,
-   "link": "https://t.me/superofertasbr/13834",
-   "tipo": "grupo",
-   "origem": "nerdofertas",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Super Ofertas BR",
-   "ressalvas": [],
-   "id": "tg-superofertasbr/13834-0",
-   "publicado": "2026-11-20T16:22:46-0300",
-   "canal": "Super Ofertas BR",
    "preco_de": null,
    "idade_h": 12.0
   },
@@ -363,7 +306,7 @@
    "ressalvas": [],
    "id": "promobit-3236618",
    "publicado": "2026-11-20T19:10:05-0300",
-   "idade_h": 9.2
+   "idade_h": 9.3
   },
   "promobit-3236619": {
    "fonte": "Promobit",
@@ -380,7 +323,7 @@
    "ressalvas": [],
    "id": "promobit-3236619",
    "publicado": "2026-11-20T19:10:07-0300",
-   "idade_h": 9.2
+   "idade_h": 9.3
   },
   "promobit-3236565": {
    "fonte": "Promobit",
@@ -416,7 +359,7 @@
    "publicado": "2026-11-20T19:40:17-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 8.7
+   "idade_h": 8.8
   },
   "promobit-3236887": {
    "fonte": "Promobit",
@@ -433,7 +376,7 @@
    "ressalvas": [],
    "id": "promobit-3236887",
    "publicado": "2026-11-20T21:12:11-0300",
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3237122": {
    "fonte": "Promobit",
@@ -450,7 +393,7 @@
    "ressalvas": [],
    "id": "promobit-3237122",
    "publicado": "2026-11-20T23:33:04-0300",
-   "idade_h": 4.8
+   "idade_h": 5.0
   },
   "promobit-3237121": {
    "fonte": "Promobit",
@@ -467,7 +410,7 @@
    "ressalvas": [],
    "id": "promobit-3237121",
    "publicado": "2026-11-20T23:31:03-0300",
-   "idade_h": 4.8
+   "idade_h": 5.0
   },
   "promobit-3237119": {
    "fonte": "Promobit",
@@ -484,7 +427,7 @@
    "ressalvas": [],
    "id": "promobit-3237119",
    "publicado": "2026-11-20T23:29:03-0300",
-   "idade_h": 4.9
+   "idade_h": 5.0
   },
   "promobit-3237137": {
    "fonte": "Promobit",
@@ -501,7 +444,7 @@
    "ressalvas": [],
    "id": "promobit-3237137",
    "publicado": "2026-11-20T23:44:06-0300",
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3237142": {
    "fonte": "Promobit",
@@ -518,7 +461,7 @@
    "ressalvas": [],
    "id": "promobit-3237142",
    "publicado": "2026-11-20T23:51:04-0300",
-   "idade_h": 4.5
+   "idade_h": 4.7
   },
   "promobit-3237136": {
    "fonte": "Promobit",
@@ -535,7 +478,7 @@
    "ressalvas": [],
    "id": "promobit-3237136",
    "publicado": "2026-11-20T23:44:05-0300",
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3237135": {
    "fonte": "Promobit",
@@ -552,7 +495,7 @@
    "ressalvas": [],
    "id": "promobit-3237135",
    "publicado": "2026-11-20T23:44:04-0300",
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3237251": {
    "fonte": "Promobit",
@@ -569,7 +512,7 @@
    "ressalvas": [],
    "id": "promobit-3237251",
    "publicado": "2026-11-21T03:04:27-0300",
-   "idade_h": 1.3
+   "idade_h": 1.4
   },
   "promobit-3237252": {
    "fonte": "Promobit",
@@ -586,7 +529,7 @@
    "ressalvas": [],
    "id": "promobit-3237252",
    "publicado": "2026-11-21T03:06:32-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   }
  },
  "alertados": {},
@@ -624,7 +567,7 @@
    "ja_funcionou": true
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 0,
    "ja_funcionou": true
   },
   "Americanas": {
@@ -664,7 +607,7 @@
    "ja_funcionou": true
   }
  },
- "ultima": "2026-11-21T04:20:19-03:00",
+ "ultima": "2026-11-21T04:30:30-03:00",
  "pular": [],
  "resumo_dia": "2026-11-20"
 }
