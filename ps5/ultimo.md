@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-21 12:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-21 12:20 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.905 na Amazon · visto em 3 lugares, postado há 3h
+**Mais barato agora:** PS5 Digital por R$ 3.905 na Amazon · visto em 3 lugares, postado há 4h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-- **PS5 Digital**: R$ 3.905 na Amazon · visto em 3 lugares, postado há 3h
-- **PS5 Pro**: R$ 7.699 na KaBuM! · à vista no Pix, visto em 2 lugares
+- **PS5 Digital**: R$ 3.905 na Amazon · visto em 3 lugares, postado há 4h
+- **PS5 Pro**: R$ 7.079,90 na Amazon · à vista
 
 ## Alertas
 
@@ -27,8 +27,8 @@ Telegram: sem mensagem nesta varredura
 - KaBuM!: ok, 37 itens
 - Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô))
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 6 itens
-- Webcontinental: ok, 49 itens
+- Fast Shop: ok, 7 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 4 itens
 - Zoom: ok, 29 itens
 - Promobit: ok, 11 itens
@@ -36,6 +36,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 20 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 136 não é console PS5
+Descartados: 137 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
