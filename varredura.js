@@ -18,14 +18,15 @@ window.__gv = (() => {
     const f = document.createElement('iframe');
     f.style.cssText = 'width:1200px;height:900px;position:fixed;left:-5000px;top:0';
     f.src = u; document.body.appendChild(f);
-    let antes = -1;
+    let antes = -1, parado = 0;   // a lista chega em partes (principais voos, depois os outros): só vale quando para de crescer
     for (let i = 0; i < 30; i++) {
       await sleep(1000);
       const doc = f.contentDocument;
       if (!doc || !doc.body) continue;
       if (i >= 2 && BLOQUEIO.test((doc.body.innerText || '').slice(0, 3000))) { parou = (doc.body.innerText || '').slice(0, 200); break; }
       const n = rotulos(doc).length;
-      if (n > 0 && n === antes && i >= 3) break;
+      parado = n > 0 && n === antes ? parado + 1 : 0;
+      if (parado >= 2 && i >= 3) break;
       if (n === 0 && i >= vazio) break;
       antes = n;
     }
@@ -54,7 +55,10 @@ window.__gv = (() => {
     const f = await abrir(it.url, 12);
     try {
       if (parou) return { bloqueio: parou };
-      const el = [...f.contentDocument.querySelectorAll('[aria-label^="A partir de"]')].find(e => e.getAttribute('aria-label').includes(it.chave));
+      // o voo pode estar na parte da lista que chega depois: procura por mais alguns segundos antes de desistir
+      const achar = () => [...f.contentDocument.querySelectorAll('[aria-label^="A partir de"]')].find(e => e.getAttribute('aria-label').includes(it.chave));
+      let el = achar();
+      for (let i = 0; i < 8 && !el; i++) { await sleep(1000); el = achar(); }
       if (!el) return { erro: 'voo não está mais na lista' };
       el.click();
       let antes = -1, n = 0, texto = '';

@@ -185,7 +185,13 @@ async def radar_e_conferencia(nav, v, ts, bs, estado):
             return lista, [], info
         validados = await chamar('validar', [{'url': x['url'], 'chave': x['chave']} for x in cands])
         ofertas = ofertas_google(list(zip(cands, validados)), v)
-        info.update(ofertas=len(ofertas), bloqueio=next((r['bloqueio'] for r in validados if (r or {}).get('bloqueio')), None))
+        motivos = {}
+        for x, r in zip(cands, validados):
+            if (r or {}).get('erro'):
+                motivos[r['erro'][:40]] = motivos.get(r['erro'][:40], 0) + 1
+            elif not gvoos.melhor_vendedor(gvoos.ler_compra((r or {}).get('texto') or '', x['pax'])):
+                motivos['nenhum vendedor que conta'] = motivos.get('nenhum vendedor que conta', 0) + 1
+        info.update(ofertas=len(ofertas), sem_preco=motivos, bloqueio=next((r['bloqueio'] for r in validados if (r or {}).get('bloqueio')), None))
         return lista, ofertas, info
     except Exception as e:   # o Google falhou inteiro: a rodada segue com os vendedores
         info['erro'] = f'{type(e).__name__}: {str(e)[:120]}'

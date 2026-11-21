@@ -70,7 +70,7 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NOMES_VIAGEM: ${{ secrets.NOMES_VIAGEM }}                    # opcional: nomes das pessoas, só para o Telegram (o repositório é público)
-          PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}   # fora da main: só o dono recebe, sem som, marcado [TESTE]
+          PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram ('teste' = só o dono, sem som, marcado [TESTE])
         run: python nuvem/rodar.py
       - name: Gerar a página (GitHub Pages)
         if: always() && steps.guarda.outputs.pular != 'true'
