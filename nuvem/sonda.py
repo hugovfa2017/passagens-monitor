@@ -1,18 +1,17 @@
 """Sonda: testa no GitHub, sem mandar nada ao Telegram, o que ainda não sabemos se funciona de um servidor de lá.
 
-Rodada 4: o Google Voos abre direto a tela de compra de voos exatos (endereço montado por gvoos.url_compra)?
-  - o mesmo voo com 1, 2 e 3 lugares (para dizer quanto custa viajar junto, ou comprar um lugar de cada vez);
-  - ida e volta compradas juntas (mesma companhia e companhias diferentes);
-e a Zupper responde à busca de ida e volta (vendedores.buscar_iv)?
+Rodada 5:
+  - quanto tempo cada vendedor leva para mostrar os cartões e se rolar a página traz cartões novos (para encurtar a
+    espera de quem desenha tudo de uma vez), com e sem as imagens bloqueadas;
+  - fontes novas: abrem a página de resultados para um navegador do GitHub?
 Não tenta contornar bloqueio nenhum: se o site barrar, só registra.
 
-Uso: python nuvem/sonda.py   (os voos vêm das recomendadas de ultima.json)
+Uso: python nuvem/sonda.py
 """
-import asyncio, json, os, re, sys
+import asyncio, os, re, sys, time
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(RAIZ, 'nuvem'))
-import gvoos       # noqa: E402
 import plano       # noqa: E402
 import vendedores  # noqa: E402
 
@@ -31,30 +30,87 @@ import vendedores  # noqa: E402
 #     trechos separados e só "ligue para reservar"; companhias diferentes: "itinerário não está mais disponível";
 #   - Zupper ida e volta: responde (15 cartões por busca) e o par dos mesmos voos saiu R$126 a R$143 por pessoa mais
 #     barato que os dois trechos comprados separados nos outros vendedores.
-GOOGLE = 'https://www.google.com/travel/flights?hl=pt-BR&gl=BR&curr=BRL'
+# Resultado da rodada 5: ver o registro da execução (anotar aqui depois).
+DATA, NE, PAX = '2026-12-28', 'FOR', 1
+PESADOS = re.compile(r'\.(png|jpe?g|gif|webp|svg|ico|woff2?|ttf|otf|mp4|webm)(\?|$)', re.I)
+BLOQUEIO = r'captcha|datadome|access denied|acesso negado|forbidden|blocked|bloquead|verify you are|verifique|robot|robô|cloudflare|press & hold|pressione e segure|humano'
+NOVAS = {
+    'Momondo': f'https://www.momondo.com.br/flight-search/SAO-{NE}/{DATA}?sort=price_a',
+    'eDestinos': f'https://www.edestinos.com.br/flights/select/oneway/mp/sao/ap/{NE.lower()}?departureDate={DATA}&pa={PAX}&py=0&pc=0&pi=0&sc=economy',
+    'CVC': f'https://www.cvc.com.br/passagens/v2/search/SAO/{NE}?Date1={DATA}&ADT={PAX}&CHD=0&INF=0&CLA=all',
+    'Voopter': 'https://www.voopter.com.br/',
+    'Gotogate': 'https://br.gotogate.com/',
+}
 
 
-def casos(v, series):
-    """[(nome, endereço, lugares)] a partir das recomendadas da última rodada que têm o número do voo."""
-    rec = {s: r['recomendada'] for s, r in series.items() if r.get('recomendada') and r['recomendada'].get('voos')}
-    perna = lambda o: (o['d'], *plano.aeroportos(v, o['sentido']), o['voos'])
-    saida = []
-    for s, lugares in (('v.volta', (1, 2, 3)), ('wk.volta', (1, 2)), ('wk.ida', (1, 2))):
-        if s in rec:
-            saida += [(f'{s} {rec[s]["voos"]} com {n} lugar(es)', gvoos.url_compra([perna(rec[s])], n), n) for n in lugares]
-    for nome, ida, volta, n in (('W+K', 'wk.ida', 'wk.volta', 2), ('G dezembro', 'g.ida_dez', 'v.volta', 1), ('G janeiro', 'g.ida_jan', 'v.volta', 1)):
-        if ida in rec and volta in rec:
-            saida.append((f'ida e volta {nome}: {rec[ida]["voos"]} + {rec[volta]["voos"]}, {n} lugar(es)',
-                          gvoos.url_compra([perna(rec[ida]), perna(rec[volta])], n, True), n))
-    return saida, rec
+async def medir(nav, vendedor, bloquear):
+    """Uma busca num vendedor, anotando quando os cartões aparecem e quantos há depois de cada espera e de cada rolagem."""
+    url, casa = vendedores.URL[vendedor]('SAO', NE, DATA, PAX), vendedores.CASA.get(vendedor)
+    ctx = await nav.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
+    if bloquear:
+        await ctx.route(PESADOS, lambda rota: rota.abort())
+    pg = await ctx.new_page()
+    t0 = time.monotonic()
+    agora = lambda: round(time.monotonic() - t0, 1)
+    try:
+        if casa:
+            await pg.goto(casa, wait_until='domcontentloaded', timeout=60000)
+            await pg.wait_for_timeout(3000)
+        await pg.goto(url, wait_until='domcontentloaded', timeout=60000)
+        try:
+            await pg.wait_for_function(f'() => ({vendedores.LER_CARTOES})().length > 0', timeout=45000)
+        except Exception:
+            print(f'-- {vendedor} (imagens {"bloqueadas" if bloquear else "normais"}): nenhum cartão em {agora()}s')
+            return
+        vistos, passos = {}, []
+
+        async def contar(rotulo):
+            for t in await pg.evaluate(vendedores.LER_CARTOES):
+                vistos[t] = True
+            lidos = [x for x in vendedores.LER[vendedor](list(vistos), PAX) if vendedores._aceita(x)]
+            passos.append(f'{rotulo}: {agora()}s, {len(vistos)} cartões, {len(lidos)} voos válidos, menor R${min((x["pp"] for x in lidos), default=0)}')
+
+        await contar('primeiro cartão')
+        for espera in (1000, 2000):
+            await pg.wait_for_timeout(espera)
+            await contar(f'+{espera // 1000}s')
+        for n in range(1, 6):
+            await pg.mouse.wheel(0, 1500)
+            await pg.wait_for_timeout(1200)
+            await contar(f'rolagem {n}')
+        print(f'-- {vendedor} (imagens {"bloqueadas" if bloquear else "normais"}):')
+        for linha in passos:
+            print('   ' + linha)
+    except Exception as e:
+        print(f'-- {vendedor}: ERRO {type(e).__name__} {str(e)[:120]}')
+    finally:
+        await ctx.close()
+
+
+async def nova(nav, nome, url):
+    pg = await nav.new_page(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
+    try:
+        resp = await pg.goto(url, wait_until='domcontentloaded', timeout=60000)
+        await pg.wait_for_timeout(12000)
+        txt = await pg.inner_text('body')
+        precos = re.findall(r'R\$\s?[\d.]+(?:,\d\d)?', txt)
+        print(f'== {nome}: HTTP {resp.status if resp else "?"} | título: {(await pg.title())[:80]} | parou em: {pg.url[:110]}')
+        print(f'   preços na página: {len(precos)} {precos[:6]} | sinal de bloqueio: {bool(re.search(BLOQUEIO, txt[:3000], re.I))}')
+        ini = txt.find('R$')
+        print('   início:', txt[:300].replace('\n', ' | '))
+        if ini > 0:
+            print('   perto do primeiro preço:', txt[max(ini - 400, 0):ini + 300].replace('\n', ' | '))
+        links = await pg.evaluate("() => [...new Set([...document.querySelectorAll('a[href]')].map(a => a.href).filter(h => /passag|voo|flight|air|busca|search/i.test(h)))].slice(0, 12)")
+        print('   links de busca:', links)
+    except Exception as e:
+        print(f'== {nome}: ERRO {type(e).__name__} {str(e)[:120]}')
+    finally:
+        await pg.close()
 
 
 async def main():
     from playwright.async_api import async_playwright
-    v = plano.carregar()
-    series = json.load(open(os.path.join(RAIZ, 'ultima.json'), encoding='utf-8'))['series']
-    lista, rec = casos(v, series)
-    vendedores.configurar(v)
+    vendedores.configurar(plano.carregar())
     async with async_playwright() as p:
         opcoes = {'headless': True}
         if os.environ.get('PASSAGENS_CHROMIUM'):
@@ -62,55 +118,12 @@ async def main():
         if os.environ.get('HTTPS_PROXY'):
             opcoes['proxy'] = {'server': os.environ['HTTPS_PROXY']}
         nav = await p.chromium.launch(**opcoes)
-        ctx = await nav.new_context(locale='pt-BR', timezone_id='America/Sao_Paulo', viewport={'width': 1280, 'height': 900})
-        pg = await ctx.new_page()
-        await pg.goto(GOOGLE, wait_until='domcontentloaded', timeout=60000)
-        await pg.wait_for_timeout(3000)
-        await pg.evaluate(open(os.path.join(RAIZ, 'varredura.js'), encoding='utf-8').read())
-        print(f'== Google: {len(lista)} telas de compra abertas direto, dentro da página (como na rodada de verdade)')
-        respostas = await pg.evaluate('(a) => window.__gv.comprar(a, 4)', [u for _, u, _ in lista])
-        for (nome, _, n), r in zip(lista, respostas):
-            r = r or {}
-            vend = gvoos.ler_compra(r.get('texto') or '', n)
-            print(f'-- {nome}')
-            print('   vendedores (por pessoa):', ', '.join(f"{x['vend']} {x['pp']}" for x in vend) or 'nenhum', '| conta:', gvoos.melhor_vendedor(vend))
-            print('   voos no endereço:', gvoos.voos_do_tfs(r.get('href') or '') or '-', '| erro:', r.get('erro') or r.get('bloqueio') or '-')
-            trecho = (r.get('texto') or r.get('inicio') or '')[:1500 if 'ida e volta' in nome else 400]
-            print('   texto:', trecho.replace('\n', ' | '))
-        # a mesma tela aberta como página inteira, para comparar (só os casos de ida e volta e o primeiro de um trecho)
-        for nome, u, n in [c for c in lista if 'ida e volta' in c[0]][:2] + lista[:1]:
-            aba = await ctx.new_page()
-            try:
-                await aba.goto(u, wait_until='domcontentloaded', timeout=60000)
-                await aba.wait_for_timeout(9000)
-                txt = await aba.inner_text('body')
-                ini = max(txt.find('Reserve com a '), 0)
-                print(f'-- página inteira: {nome}')
-                print('   vendedores:', ', '.join(f"{x['vend']} {x['pp']}" for x in gvoos.ler_compra(txt, n)) or 'nenhum', '| parou em:', aba.url[:60])
-                print('   texto:', txt[ini:ini + 900].replace('\n', ' | '))
-            except Exception as e:
-                print(f'-- página inteira: {nome}: ERRO {type(e).__name__} {str(e)[:120]}')
-            finally:
-                await aba.close()
-        await ctx.close()
-
-        print('== Zupper: ida e volta juntas')
-        sem = asyncio.Semaphore(1)
-        for nome, ida, volta, n in (('W+K', 'wk.ida', 'wk.volta', 2), ('G dezembro', 'g.ida_dez', 'v.volta', 1)):
-            if ida not in rec or volta not in rec:
-                continue
-            a, b = rec[ida], rec[volta]
-            url = vendedores.url_zupper_iv(a['dest'], b['orig'], a['d'], b['d'], n)
-            cartoes = await vendedores._cartoes(nav, url, sem)
-            lidos = vendedores.ler_zupper_iv(cartoes, n)
-            print(f'-- {nome}: {a["d"]} SAO>{a["dest"]} + {b["d"]} {b["orig"]}>SAO, {n} lugar(es): {len(cartoes)} cartões, {len(lidos)} lidos')
-            for x in sorted(lidos, key=lambda x: x['pp'])[:4]:
-                i, vt = x['pernas']['ida'], x['pernas']['volta']
-                print(f"   R${x['pp']} por pessoa | ida {i['cia']} {i['orig']}>{i['dest']} {i['saida']} {'direto' if i['direto'] else 'conexão'}"
-                      f" | volta {vt['cia']} {vt['orig']}>{vt['dest']} {vt['saida']} {'direto' if vt['direto'] else 'conexão'}")
-            for t in cartoes[:2]:
-                print('   cartão:', t[:900])
-            await asyncio.sleep(2)
+        print(f'== vendedores: SAO -> {NE} em {DATA}, {PAX} lugar; um vendedor por vez, primeiro com as imagens normais')
+        for bloquear in (False, True):
+            await asyncio.gather(*(medir(nav, x, bloquear) for x in vendedores.URL))
+            await asyncio.sleep(3)
+        for nome, url in NOVAS.items():
+            await nova(nav, nome, url)
         await nav.close()
 
 

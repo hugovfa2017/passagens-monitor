@@ -21,11 +21,11 @@
   "_limites": "Só voo direto ou com 1 conexão. escala_max = minutos de espera na conexão (Google). duracao_max = minutos da viagem inteira (vendedores, que não mostram a espera). Mossoró tem limites próprios, acima.",
   "limites": {"escala_max": 120, "duracao_max": 330},
 
-  "_comprado": "O voo que já foi comprado. Nos trechos com voo_comprado, ele é conferido toda rodada e ganha um bônus na escolha (vale como se fosse 'bonus' reais mais barato por pessoa).",
-  "comprado": {"d": "2026-12-22", "saida": "14:05", "cia": "Gol", "orig": "GRU", "dest": "NAT", "voo": "G3 1678", "bonus": 150},
+  "_comprado": "O voo que já foi comprado. Nos trechos com voo_comprado, ele é conferido toda rodada (direto na tela de compra do Google, pelo número do voo) e ganha um bônus na escolha (vale como se fosse 'bonus' reais mais barato por pessoa).",
+  "comprado": {"d": "2026-12-22", "saida": "14:05", "chegada": "17:25", "cia": "Gol", "orig": "GRU", "dest": "NAT", "voo": "G3 1678", "bonus": 150},
 
-  "_selecao": "margem_lugares = diferença por pessoa, em reais, a partir da qual vale avisar que outro número de lugares muda o preço. margem_juntas = quanto a ida e volta numa compra só precisa economizar, por pessoa, para aparecer.",
-  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30},
+  "_selecao": "margem_lugares = diferença por pessoa, em reais, a partir da qual vale avisar que outro número de lugares muda o preço. margem_juntas = quanto a ida e volta numa compra só precisa economizar, por pessoa, para aparecer. margem_fora = quanto uma agência de fora do Brasil precisa ser mais barata, por pessoa, para ser citada (ela nunca entra na escolha).",
+  "selecao": {"validar_por_trecho": 3, "lupa_por_trecho": 2, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72, "margem_lugares": 15, "margem_juntas": 30, "margem_fora": 50},
 
   "_grupos": "assentos = lugares no mesmo voo. alvo = preço por pessoa que faz o alerta tocar (trecho sem alvo só toca quando bate o menor preço já visto). igual_a = usa o resultado de outro trecho (mesmas datas e lugares). rodizio = janela longa: a cada rodada olha as 'fixas' datas mais baratas já vistas e as 'giro' que estão há mais tempo sem olhar. lugares = confere o voo recomendado também com esses números de lugares (quanto custa ir junto, ou comprar um lugar de cada vez). ida_e_volta = confere se as duas recomendadas de cada cenário saem mais baratas numa compra só.",
   "grupos": [

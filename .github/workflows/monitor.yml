@@ -61,7 +61,7 @@ jobs:
       - name: Auto-checagem
         if: steps.guarda.outputs.pular != 'true'
         run: |
-          for f in nuvem/plano.py nuvem/gvoos.py nuvem/selecao.py nuvem/rodar.py registrar.py atendimento.py; do python "$f" --teste; done
+          for f in nuvem/plano.py nuvem/gvoos.py nuvem/selecao.py nuvem/momento.py nuvem/rodar.py registrar.py atendimento.py; do python "$f" --teste; done
           python nuvem/vendedores.py
       - name: Varredura e alerta
         if: steps.guarda.outputs.pular != 'true'

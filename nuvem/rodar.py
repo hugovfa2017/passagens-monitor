@@ -71,8 +71,36 @@ def ofertas_google(conferidos, v):
         cia = next((q['pp'] for q in vend if q['vend'].startswith('CIA ')), None)
         saida.append({'sentido': x['sentido'], 'd': x['d'], 'pax': x['pax'], 'orig': x['orig'], 'dest': x['dest'], 'cia': x['cia'],
                       'saida': x['saida'], 'chegada': x['chegada'], 'tipo': x['tipo'], 'pp': melhor['pp'], 'vend': melhor['vend'],
-                      'pp_cia': cia, 'voos': voos, 'fonte': 'google',
+                      'pp_cia': cia, 'voos': voos, 'fonte': 'google', 'aviso': gvoos.ler_aviso((r or {}).get('texto') or '', x['pax']),
+                      'fora': gvoos.melhor_de_fora(vend),
                       'link': gvoos.url_compra([(x['d'], de, para, voos)], x['pax']) or x['url']})
+    return saida
+
+
+def telas_do_comprado(v, ts, ofertas):
+    """Telas de compra do voo já comprado (aberto direto pelo número do voo), para os lugares dos trechos que pedem e
+    que a conferência ainda não cobriu: [{pax, sentido, voos, url}]. É a resposta definitiva sobre haver lugar à venda."""
+    c = v['comprado']
+    sentido = 'ida' if c['orig'] in v['sp'] else 'volta'
+    voos = f"{c['orig']}>{c['dest']} {c['d']} {c['voo']}"
+    de, para = plano.aeroportos(v, sentido)
+    lugares = sorted({t['pax'] for t in ts if t['voo_comprado'] and not t['igual_a'] and c['d'] in t['datas']})
+    ja = {o['pax'] for o in ofertas if selecao.eh_comprado(o, v)}
+    return [{'pax': n, 'sentido': sentido, 'voos': voos, 'url': gvoos.url_compra([(c['d'], de, para, voos)], n)} for n in lugares if n not in ja]
+
+
+def ofertas_do_comprado(telas, respostas, v):
+    """Ofertas do voo já comprado lidas nas telas de telas_do_comprado (só quando há vendedor que conta)."""
+    c, saida = v['comprado'], []
+    for t, r in zip(telas, respostas):
+        texto = (r or {}).get('texto') or ''
+        vend = gvoos.ler_compra(texto, t['pax'])
+        melhor = gvoos.melhor_vendedor(vend)
+        if melhor:
+            saida.append({'sentido': t['sentido'], 'd': c['d'], 'pax': t['pax'], 'orig': c['orig'], 'dest': c['dest'], 'cia': c['cia'], 'saida': c['saida'],
+                          'chegada': c.get('chegada', ''), 'tipo': 'direto', 'pp': melhor['pp'], 'vend': melhor['vend'],
+                          'pp_cia': next((q['pp'] for q in vend if q['vend'].startswith('CIA ')), None), 'voos': t['voos'], 'fonte': 'google',
+                          'aviso': gvoos.ler_aviso(texto, t['pax']), 'fora': gvoos.melhor_de_fora(vend), 'link': t['url']})
     return saida
 
 
@@ -148,7 +176,7 @@ def celulas(lista, ofertas, t, v):
 
 
 def montar(v, ts, lista, ofertas, estado, olhadas):
-    """O resultado de cada trecho: {serie: {recomendada, mais_barata, comprado, celulas, olhadas}}.
+    """O resultado de cada trecho: {serie: {recomendada, mais_barata, comprado, celulas, olhadas, aviso, fora}}.
     Trecho com igual_a aponta para o resultado do outro (o registrador mostra como "no mesmo voo")."""
     series = {}
     for t in ts:
@@ -161,20 +189,28 @@ def montar(v, ts, lista, ofertas, estado, olhadas):
             r['comprado'] = min(meus, key=lambda o: o['pp']) if meus else None
         r['celulas'] = celulas(lista, ofertas, t, v)
         r['olhadas'] = olhadas.get(t['serie'], [])
+        # o que o Google diz do preço do voo recomendado (baixo, normal, alto), se ele passou pela tela de compra nesta rodada
+        rec = r['recomendada']
+        do_voo = [o for o in selecao.do_trecho(ofertas, t) if rec and selecao.ident(o) == selecao.ident(rec)]
+        r['aviso'] = next((o['aviso'] for o in do_voo if o.get('aviso')), None)
+        # o mesmo voo numa agência de fora do Brasil (não entra na escolha; a mensagem cita quando é bem mais barata)
+        r['fora'] = min((o['fora'] for o in do_voo if o.get('fora')), key=lambda q: q['pp'], default=None)
         series[t['serie']] = r
     return series
 
 
 def plano_dos_extras(v, ts, series):
     """O que conferir depois da escolha das recomendadas. Devolve (telas, pares):
-    telas: [{serie, pax, n, url}] -> tela de compra do Google do voo recomendado com n lugares, para os trechos que
-           pedem (viagem.json: lugares); só dá para abrir quando o número do voo é conhecido;
+    telas: [{serie, pax, n, url}] -> tela de compra do Google do voo recomendado com n lugares: com os lugares do próprio
+           trecho (para ler o aviso de preço do Google, se ainda não veio) e com os outros números que o trecho pede
+           (viagem.json: lugares). Só dá para abrir quando o número do voo é conhecido;
     pares: [{chave, pax, ida, volta}] -> as duas recomendadas de cada cenário dos grupos com ida_e_volta, para buscar
            numa compra só. chave = 'grupo.cenário'."""
     telas, pares = [], []
     for t in ts:
-        rec = (series.get(t['serie']) or {}).get('recomendada')
-        if t['igual_a'] or not t['lugares'] or not rec or not rec.get('voos'):
+        r = series.get(t['serie']) or {}
+        rec = r.get('recomendada')
+        if t['igual_a'] or not rec or not rec.get('voos') or (not t['lugares'] and r.get('aviso')):
             continue
         de, para = plano.aeroportos(v, t['sentido'])
         telas += [{'serie': t['serie'], 'pax': t['pax'], 'n': n, 'url': gvoos.url_compra([(rec['d'], de, para, rec['voos'])], n)}
@@ -184,6 +220,21 @@ def plano_dos_extras(v, ts, series):
             pares += [{'chave': f"{g['id']}.{p['id']}", 'pax': g['assentos'], 'ida': p['ida'], 'volta': p['volta']}
                       for p in selecao.pacotes(selecao.com_apelidos(series, ts, g['id']), g)]
     return telas, pares
+
+
+def avisos_lidos(telas, respostas):
+    """{serie: {'aviso': aviso de preço do Google, 'fora': agência de fora mais barata}} lidos na tela dos lugares do
+    próprio trecho (gvoos.ler_aviso, gvoos.melhor_de_fora). Só entra o que a tela trouxe."""
+    saida = {}
+    for t, r in zip(telas, respostas):
+        if t['n'] != t['pax']:
+            continue
+        texto = (r or {}).get('texto') or ''
+        lido = {'aviso': gvoos.ler_aviso(texto, t['n']), 'fora': gvoos.melhor_de_fora(gvoos.ler_compra(texto, t['n']))}
+        lido = {k: x for k, x in lido.items() if x}
+        if lido:
+            saida[t['serie']] = lido
+    return saida
 
 
 def lugares_lidos(telas, respostas):
@@ -268,9 +319,9 @@ async def radar_e_conferencia(nav, v, ts, bs, estado):
         lista = voos_da_lista(bs, respostas, v)
         cands = a_conferir(lista, ts, v, estado)
         info.update(voos=len(lista), conferidos=len(cands), bloqueio=next((r['bloqueio'] for r in respostas if (r or {}).get('bloqueio')), None))
-        if not cands or info['bloqueio']:
+        if info['bloqueio']:
             return lista, [], info
-        validados = await chamar('validar', [{'url': x['url'], 'chave': x['chave']} for x in cands])
+        validados = await chamar('validar', [{'url': x['url'], 'chave': x['chave']} for x in cands]) if cands else []
         ofertas = ofertas_google(list(zip(cands, validados)), v)
         motivos = {}
         for x, r in zip(cands, validados):
@@ -279,6 +330,14 @@ async def radar_e_conferencia(nav, v, ts, bs, estado):
             elif not gvoos.melhor_vendedor(gvoos.ler_compra((r or {}).get('texto') or '', x['pax'])):
                 motivos['nenhum vendedor que conta'] = motivos.get('nenhum vendedor que conta', 0) + 1
         info.update(ofertas=len(ofertas), sem_preco=motivos, bloqueio=next((r['bloqueio'] for r in validados if (r or {}).get('bloqueio')), None))
+        # o voo já comprado, direto pelo número: mesmo fora da lista do Google, a tela de compra diz se há lugar à venda
+        telas = [] if info['bloqueio'] else telas_do_comprado(v, ts, ofertas)
+        if telas:
+            abertas = await asyncio.wait_for(pg.evaluate('(a) => window.__gv.comprar(a.itens, a.paralelo)',
+                                                         {'itens': [t['url'] for t in telas], 'paralelo': PARALELO_COMPRA}), timeout=120)
+            do_comprado = ofertas_do_comprado(telas, abertas, v)
+            ofertas += do_comprado
+            info['comprado'] = {'telas': len(telas), 'a_venda': len(do_comprado)}
         return lista, ofertas, info
     except Exception as e:   # o Google falhou inteiro: a rodada segue com os vendedores
         info['erro'] = f'{type(e).__name__}: {str(e)[:120]}'
@@ -346,7 +405,11 @@ async def extras(nav, v, ts, series, google_ok, prazo_s=PRAZO_EXTRAS_S):
                                                            {'itens': [t['url'] for t in telas], 'paralelo': PARALELO_COMPRA}), timeout=prazo_s)
             resumo['telas_lidas'] = sum(1 for r in respostas if (r or {}).get('texto'))
             for serie, precos in lugares_lidos(telas, respostas).items():
-                series[serie]['lugares'] = precos
+                if len(precos) > 1:
+                    series[serie]['lugares'] = precos
+            for serie, lido in avisos_lidos(telas, respostas).items():
+                for k, x in lido.items():
+                    series[serie][k] = series[serie].get(k) or x
         except Exception as e:
             resumo['erro_google'] = type(e).__name__
         finally:
@@ -458,6 +521,19 @@ def _teste():
     # Kiwi não conta; sem vendedor que conta, o voo fica sem preço confirmado; preço é por pessoa
     assert [(o['orig'], o['pp'], o['vend'], o['pax']) for o in og] == [('FOR', 505, 'MaxMilhas', 1), ('GRU', 1250, 'CIA LATAM', 2), ('GRU', 1650, 'CIA Gol', 2)], og
     assert og[0]['voos'] == 'FOR>GRU 2027-01-19 G3 1555' and og[0]['link'].startswith('https://www.google.com/travel/flights/booking?tfs=') and og[0]['pp_cia'] == 530
+    assert og[0]['aviso'] is None and og[0]['fora'] == {'vend': 'Kiwi.com', 'pp': 300} and og[1]['fora'] is None
+
+    # ---- voo já comprado direto na tela de compra: só para os lugares que a conferência não cobriu (aqui, 1 lugar: G; W + K já veio da lista)
+    telas_c = telas_do_comprado(v, ts, og)
+    assert [(t['pax'], t['sentido'], t['voos']) for t in telas_c] == [(1, 'ida', 'GRU>NAT 2026-12-22 G3 1678')], telas_c
+    assert gvoos.voos_do_tfs(telas_c[0]['url']) == 'GRU>NAT 2026-12-22 G3 1678' and [t['pax'] for t in telas_do_comprado(v, ts, [])] == [1, 2]
+    oc = ofertas_do_comprado(telas_c, [compra(('GolCompanhia aérea', '1.480'), ('Kiwi.com', '1.300'))], v)
+    assert len(oc) == 1 and selecao.eh_comprado(oc[0], v) and (oc[0]['pp'], oc[0]['vend'], oc[0]['pax'], oc[0]['chegada'], oc[0]['tipo']) == (1480, 'CIA Gol', 1, '17:25', 'direto')
+    assert oc[0]['fora'] == {'vend': 'Kiwi.com', 'pp': 1300} and oc[0]['link'] == telas_c[0]['url']
+    # sem vendedor que conta (ou tela que não abriu: voo sem lugar), não há oferta
+    assert ofertas_do_comprado(telas_c, [compra(('Kiwi.com', '900'))], v) == [] and ofertas_do_comprado(telas_c, [{'erro': 'tela de compra sem vendedores'}], v) == []
+    # passada a data do voo, não há mais o que conferir
+    assert telas_do_comprado(v, plano.trechos(v, '2026-12-22'), []) == []
 
     # ---- vendedor no formato comum; número do voo só quando é direto
     bruto = {'vend': 'Zupper', 'cia': 'Azul', 'orig': 'REC', 'dest': 'CGH', 'saida': '03:00', 'chegada': '06:25', 'dur': 205, 'direto': True,
@@ -496,7 +572,11 @@ def _teste():
     sv = series['v.volta']
     assert (sv['recomendada']['orig'], sv['recomendada']['pp']) == ('FOR', 505) and (sv['mais_barata']['orig'], sv['mais_barata']['vend']) == ('REC', 'Zupper')
     assert sv['celulas'] == {'2027-01-19': {'FOR': {'pp': 505, 'conf': True}, 'REC': {'pp': 360, 'conf': True}, 'NAT': {'pp': 900, 'conf': False}}}, sv['celulas']
-    assert sv['olhadas'] == ['2027-01-19'] and 'comprado' not in sv
+    assert sv['olhadas'] == ['2027-01-19'] and 'comprado' not in sv and sv['aviso'] is None
+    # o aviso de preço do Google acompanha a recomendada quando o mesmo voo passou pela tela de compra (mesmo que o melhor preço seja de outro vendedor)
+    com = montar(v, ts, lista, [{**og[0], 'aviso': {'nivel': 'baixo', 'de': 900, 'ate': 2000}}, {**og[0], 'vend': 'Zupper', 'pp': 400, 'aviso': None}], {}, olhadas)['v.volta']
+    assert com['recomendada']['vend'] == 'Zupper' and com['aviso'] == {'nivel': 'baixo', 'de': 900, 'ate': 2000} and com['fora'] == {'vend': 'Kiwi.com', 'pp': 300}
+    assert sv['fora'] == {'vend': 'Kiwi.com', 'pp': 300} and series['wk.ida']['fora'] is None
     sw = series['wk.ida']
     # o voo comprado (Natal, R$1.650) perde para Fortaleza R$1.250 mesmo com o bônus, mas fica registrado à parte
     assert sw['recomendada']['dest'] == 'FOR' and sw['comprado']['pp'] == 1650 and sw['mais_barata'] is None
@@ -513,9 +593,15 @@ def _teste():
                   'wk.ida': {'recomendada': rec('2026-12-26', 'GRU', 'JDO', '14:50', 1357, 'LATAM', 'ida', 2)},          # vendedor sem número do voo
                   'wk.volta': {'recomendada': rec('2027-01-08', 'FOR', 'GRU', '21:05', 807, 'LATAM', 'volta', 2, 'FOR>GRU 2027-01-08 LA 3361')}}
     telas, pares = plano_dos_extras(v, ts, escolhidas)
-    # V: 1, 2 e 3 lugares; W + K na volta: 1 e 2; a ida de W + K fica de fora (sem número do voo não há endereço); H não pede
-    assert [(t['serie'], t['pax'], t['n']) for t in telas] == [('v.volta', 1, 1), ('v.volta', 1, 2), ('v.volta', 1, 3), ('wk.volta', 2, 1), ('wk.volta', 2, 2)], telas
-    assert all(t['url'].startswith('https://www.google.com/travel/flights/booking?tfs=') for t in telas) and len({t['url'] for t in telas}) == 5
+    # V: 1, 2 e 3 lugares; W + K na volta: 1 e 2; a ida de W + K fica de fora (sem número do voo não há endereço);
+    # quem não pede outros lugares tem só a tela do próprio trecho, para o aviso de preço do Google
+    assert [(t['serie'], t['pax'], t['n']) for t in telas] == [('v.volta', 1, 1), ('v.volta', 1, 2), ('v.volta', 1, 3), ('h.depois', 1, 1), ('g.ida_dez', 1, 1),
+                                                               ('wk.volta', 2, 1), ('wk.volta', 2, 2)], telas
+    assert all(t['url'].startswith('https://www.google.com/travel/flights/booking?tfs=') for t in telas) and len({t['url'] for t in telas}) == 7
+    # aviso que já veio da conferência não é pedido de novo; quem pede outros lugares abre as telas mesmo assim
+    com_aviso = {k: {**x, 'aviso': {'nivel': 'baixo', 'de': 1, 'ate': 2}} for k, x in escolhidas.items()}
+    assert [t['serie'] for t in plano_dos_extras(v, ts, com_aviso)[0]] == ['v.volta'] * 3 + ['wk.volta'] * 2
+    telas = [t for t in telas if t['serie'] in ('v.volta', 'wk.volta')]
     assert gvoos.voos_do_tfs(telas[1]['url']) == 'FOR>GRU 2027-01-22 LA 4777'
     # cenário sem uma das recomendadas (G indo em janeiro) não gera par; a volta de G é a de V
     assert [(x['chave'], x['pax'], x['ida']['d'], x['volta']['d']) for x in pares] == [('g.A', 1, '2026-12-29', '2027-01-22'), ('wk.U', 2, '2026-12-26', '2027-01-08')], pares
@@ -530,6 +616,13 @@ def _teste():
     # só as telas de 1 e 2 lugares: a MaxMilhas está nas duas e é a mais barata, então vale ela
     assert lugares_lidos(telas[:2], respostas[:2]) == {'v.volta': [{'n': 1, 'pp': 760}, {'n': 2, 'pp': 765}]}
     assert lugares_lidos(telas[:3], [None, respostas[1], respostas[2]]) == {}          # sem a tela dos lugares do próprio trecho, nada
+    # o aviso de preço do Google sai da tela dos lugares do próprio trecho (V: 1 lugar; W + K: 2 lugares)
+    aviso = lambda preco, faixa: {'texto': f'Reserve com a LATAMCompanhia aérea\nR$ {preco}\nR$ {preco} é um preço baixo para Econômica\ngeralmente custam R$ {faixa}.'}
+    assert avisos_lidos(telas, [aviso('786', '1.250 a 3.250'), aviso('1.572', '2.500 a 6.500'), None, aviso('857', '1.250 a 3.250'), aviso('1.714', '2.550 a 6.500')]) == {
+        'v.volta': {'aviso': {'nivel': 'baixo', 'de': 1250, 'ate': 3250}}, 'wk.volta': {'aviso': {'nivel': 'baixo', 'de': 1275, 'ate': 3250}}}
+    assert avisos_lidos(telas, respostas) == {}
+    # a mesma tela traz a agência de fora mais barata (só a dos lugares do próprio trecho conta)
+    assert avisos_lidos(telas[:2], [tela(('Kiwi.com', '500'), ('GolCompanhia aérea', '600')), tela(('Kiwi.com', '700'))]) == {'v.volta': {'fora': {'vend': 'Kiwi.com', 'pp': 500}}}
     # vendedor que não conta (Kiwi) não vira a referência, mesmo aparecendo em todas
     assert lugares_lidos(telas[:2], [tela(('Kiwi.com', '500'), ('GolCompanhia aérea', '600')), tela(('Kiwi.com', '900'), ('GolCompanhia aérea', '1.300'))]) == {
         'v.volta': [{'n': 1, 'pp': 600}, {'n': 2, 'pp': 650}]}

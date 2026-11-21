@@ -11,8 +11,9 @@ Uso: python3 nuvem/gvoos.py --teste
 import base64, re, sys, urllib.parse
 
 SUFIXO = '&hl=pt-BR&gl=BR&curr=BRL'
-# vendedores da tela de compra que entram no ranking (os outros aparecem, mas não contam)
-CONFIAVEIS = re.compile(r'^(CIA |maxmilhas|123milhas|zupper|decolar|booking)', re.I)
+# Vendedores da tela de compra, em dois níveis: os que entram na escolha (a própria companhia e agências conhecidas no
+# Brasil) e os de fora (agências estrangeiras: aparecem na mensagem só como aviso, quando bem mais baratas).
+CONFIAVEIS = re.compile(r'^(CIA |maxmilhas|123milhas|zupper|decolar|booking|viajanet|cvc|submarino|vai de promo|viaza)', re.I)
 
 
 def _s(tag, txt):
@@ -117,9 +118,30 @@ def ler_compra(texto, pax):
                    for nome, cia, preco in achados), key=lambda x: x['pp'])
 
 
+def ler_aviso(texto, pax):
+    """O que o próprio Google diz do preço na tela de compra: {'nivel': 'baixo' | 'normal' | 'alto', 'de', 'ate'} por
+    pessoa (de e ate = a faixa em que os voos mais baratos da rota costumam ficar), ou None se a tela não trouxe.
+    Ex.: 'R$ 857 é um preço baixo para Econômica (...) geralmente custam R$ 1.250 a 3.250.'"""
+    n = re.search(r'R\$[\s\u00a0]([\d.]+) é um preço (baixo|normal|típico|comum|alto)', texto)
+    f = re.search(r'geralmente custam R\$[\s\u00a0]([\d.]+) a (?:R\$[\s\u00a0])?([\d.]+)', texto)
+    if not n and not f:
+        return None
+    reais = lambda x: round(int(x.replace('.', '')) / pax)
+    aviso = {'nivel': {'típico': 'normal', 'comum': 'normal'}.get(n[2], n[2]) if n else None,
+             'de': reais(f[1]) if f else None, 'ate': reais(f[2]) if f else None}
+    if not aviso['nivel']:      # a tela trouxe só a faixa: sem o preço do voo para comparar, não há nível
+        return None
+    return aviso
+
+
 def melhor_vendedor(vendedores):
     """O mais barato entre os vendedores que contam; None se nenhum conta."""
     return next((x for x in vendedores if CONFIAVEIS.search(x['vend'])), None)
+
+
+def melhor_de_fora(vendedores):
+    """O mais barato entre os vendedores que não contam (agências de fora); None se não há."""
+    return next((x for x in vendedores if not CONFIAVEIS.search(x['vend'])), None)
 
 
 def voos_do_tfs(href):
@@ -204,6 +226,21 @@ def _teste():
     vend = ler_compra(texto, 2)
     assert vend == [{'vend': 'Kiwi.com', 'pp': 800}, {'vend': 'MaxMilhas', 'pp': 825}, {'vend': 'CIA Gol', 'pp': 912}], vend
     assert melhor_vendedor(vend) == {'vend': 'MaxMilhas', 'pp': 825} and melhor_vendedor(vend[:1]) is None and ler_compra('nada', 1) == []
+    # dois níveis: a agência de fora mais barata fica à parte; agência brasileira conhecida conta
+    assert melhor_de_fora(vend) == {'vend': 'Kiwi.com', 'pp': 800} and melhor_de_fora(vend[1:]) is None
+    assert melhor_vendedor([{'vend': 'Gotogate', 'pp': 1}, {'vend': 'ViajaNet', 'pp': 2}]) == {'vend': 'ViajaNet', 'pp': 2}
+
+    # ---- aviso de preço do Google na tela de compra (textos de verdade, sondagem de 21/11/2026); a faixa vem no total dos lugares
+    um = ('Reserve com a LATAMCompanhia aérea\nR$ 857\nContinuar\nVeja as opções\nOs preços incluem os tributos e tarifas obrigatórios para 1 adulto.\n'
+          'Informações de preço\nR$ 857 é um preço baixo para Econômica (R$ 1.298 mais barato que o normal)\nOs voos mais baratos para viagens semelhantes '
+          'que têm São Paulo como destino geralmente custam R$ 1.250 a 3.250. \nR$ 857 é um preço baixo\nR$ 1.250\nR$ 3.250\nHistórico de preços para esses voos')
+    assert ler_aviso(um, 1) == {'nivel': 'baixo', 'de': 1250, 'ate': 3250}, ler_aviso(um, 1)
+    dois = um.replace('R$ 857', 'R$ 1.714').replace('R$ 1.250 a 3.250', 'R$ 2.550 a 6.500')
+    assert ler_aviso(dois, 2) == {'nivel': 'baixo', 'de': 1275, 'ate': 3250} and ler_compra(dois, 2) == [{'vend': 'CIA LATAM', 'pp': 857}]
+    assert ler_aviso(um.replace('é um preço baixo', 'é um preço alto'), 1)['nivel'] == 'alto' and ler_aviso(um.replace('preço baixo', 'preço típico'), 1)['nivel'] == 'normal'
+    # sem a frase do nível, ou tela sem aviso nenhum: nada
+    assert ler_aviso('Reserve com a Gol\nR$ 500\ngeralmente custam R$ 400 a 900.', 1) is None and ler_aviso(texto, 2) is None
+    assert ler_aviso('R$ 500 é um preço normal para Econômica', 1) == {'nivel': 'normal', 'de': None, 'ate': None}
     print('ok')
 
 
