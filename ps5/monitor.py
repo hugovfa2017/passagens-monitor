@@ -545,7 +545,7 @@ PAINEL_BOTAO = [{'text': '📊 Abrir o painel do PS5', 'url': PAINEL_URL}]
 # ---------------------------------------------------------------- alertas e estado
 def cacador(agora):
     """Modo caçador ligado? (até config.CACADOR_ATE, exclusiva, no fuso de agora)"""
-    return agora.date() < config.CACADOR_ATE
+    return bool(config.CACADOR_ATE) and agora.date() < config.CACADOR_ATE
 
 
 def guarda_min(agora):
@@ -581,7 +581,8 @@ def decidir_alertas(resumo, estado, agora):
         if d and m in config.MODELOS_COM_ALERTA and (d.get('idade_h') or 0) <= 3 and not recente('nc|' + d['chave']) \
                 and (d['preco'] <= config.ALVOS.get(m, 0) or (o and d['preco'] <= o['preco'] - 150)):
             alertas.append({'modelo': m, 'motivo': 'oferta de grupo ainda NÃO confirmada (confira antes de se animar)', 'oferta': d,
-                            'som': cacador(agora) and d['preco'] <= config.ALVOS.get(m, 0)})
+                            'som': cacador(agora) and d['preco'] <= config.ALVOS.get(m, 0)
+                                   and 'o post não diz o modelo' not in (d.get('ressalvas') or [])})
             ja['nc|' + d['chave']] = agora.isoformat(timespec='seconds')
     estado['alertados'] = {k: v for k, v in ja.items() if agora - datetime.fromisoformat(v) < timedelta(days=7)}
     return alertas
@@ -1084,6 +1085,9 @@ def _teste():
                  grupo('xet', 'Shopee', 'Console PlayStation 5 Slim Digital', 1999, 62), grupo('cj', 'Shopee', 'Console PlayStation 5 Slim Digital', 1999, 63)]
         d = rodar(coleta(extras=vagos), cupons, enviar, pasta, agora + timedelta(hours=2, minutes=10))
         assert all(o['confianca'] == 'C' for m in d['modelos'] for o in m['ofertas'] if o['preco'] in (3600, 1999))
+        # caçador: post que não diz o modelo ("PS5 Slim") não toca com som, só chega como aviso
+        vago = lambda a: 'o post não diz o modelo' in (a['oferta'].get('ressalvas') or [])
+        assert any(vago(a) and not a['som'] for a in d['alertas']) and not any(vago(a) and a['som'] for a in d['alertas']), d['alertas']
         # estado antigo (chave 'promobit') ainda carrega
         gravar_json(os.path.join(pasta, 'estado.json'), {'promobit': {'promobit-9': of('Promobit', 'Havan', 'PlayStation 5 Slim Digital 825GB',
                     3799.99, 'promobit-9', publicado='2026-11-13T09:00:00-0300')}, 'resumo_dia': '2026-11-13'})
@@ -1095,6 +1099,8 @@ def _teste():
     assert guarda_min(datetime(2026, 11, 27, tzinfo=fontes.BRT)) == 7 and guarda_min(datetime(2026, 12, 2, tzinfo=fontes.BRT)) == 25
     ate = config.CACADOR_ATE
     try:
+        config.CACADOR_ATE = None   # desligado no config.py: sem modo caçador, sem erro
+        assert not cacador(agora) and guarda_min(agora) == 25
         config.CACADOR_ATE = datetime(2026, 11, 1).date()
         with tempfile.TemporaryDirectory() as pasta:
             rodar(coleta(), cupons, enviar, pasta, agora)
