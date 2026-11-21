@@ -1,37 +1,43 @@
 {
- "atualizado": "2026-11-21 03:40",
+ "atualizado": "2026-11-21 14:50",
  "mais_barato": {
   "modelo": "digital",
-  "fonte": "KaBuM!",
-  "loja": "KaBuM!",
-  "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-  "preco": 4184.07,
+  "fonte": "Promobit",
+  "loja": "Amazon",
+  "titulo": "Playstation5 Slim Digital 825gb – Pacote Astro Bot E Gran Turismo 7",
+  "preco": 3905.0,
   "preco_sem_cupom": null,
   "cupom": null,
   "cupom_origem": null,
-  "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-  "obs": "à vista no Pix · oferta relâmpago",
+  "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+  "obs": "postado no Promobit",
   "detalhes": "com jogo/extra",
-  "idade_h": null,
-  "tipo": "loja",
+  "idade_h": 6.0,
+  "tipo": "postada",
   "condicao": "novo",
-  "confianca": "A",
+  "confianca": "B",
   "ressalvas": [],
   "visto_em": [
    {
-    "fonte": "KaBuM!",
-    "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-    "idade_h": null,
-    "tipo": "loja"
+    "fonte": "Promobit",
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+    "idade_h": 25.6,
+    "tipo": "postada"
    },
    {
-    "fonte": "Zoom",
-    "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-    "idade_h": null,
-    "tipo": "comparador"
+    "fonte": "Hardmob Promo",
+    "link": "https://t.me/hardmob_promo/472969",
+    "idade_h": 6.0,
+    "tipo": "grupo"
+   },
+   {
+    "fonte": "Ofertas do Dia",
+    "link": "https://t.me/OfertasDoDia/483210",
+    "idade_h": 6.0,
+    "tipo": "grupo"
    }
   ],
-  "n_vistos": 2,
+  "n_vistos": 3,
   "cupom_citado": null
  },
  "modelos": [
@@ -155,6 +161,62 @@
     },
     {
      "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Magazine Luiza",
+     "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Bran",
+     "preco": 4530.55,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Promobit",
+     "loja": "Amazon",
+     "titulo": "PlayStation5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
+     "preco": 4649.06,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
+     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
+     "detalhes": "com jogo/extra",
+     "idade_h": 7.6,
+     "tipo": "postada",
+     "condicao": "novo",
+     "confianca": "B",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
+       "idade_h": 7.6,
+       "tipo": "postada"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
      "fonte": "KaBuM!",
      "loja": "KaBuM!",
      "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB, Controle Sem Fio DualSense + 2 Jogos",
@@ -189,10 +251,38 @@
     },
     {
      "modelo": "leitor",
+     "fonte": "KaBuM!",
+     "loja": "KaBuM!",
+     "titulo": "Console PlayStation 5 Sony, SSD 1TB, Leitor de Discos, Controle DualSense, Astro's Playroom, Branco - 1000049892",
+     "preco": 4742.07,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.kabum.com.br/produto/1049973/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astro-s-playroom-branco-1000049892",
+     "obs": "à vista no Pix",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "KaBuM!",
+       "link": "https://www.kabum.com.br/produto/1049973/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astro-s-playroom-branco-1000049892",
+       "idade_h": null,
+       "tipo": "loja"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
      "fonte": "Zoom",
      "loja": "Amazon",
      "titulo": "PlayStation®5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
-     "preco": 4799.9,
+     "preco": 4749,
      "preco_sem_cupom": null,
      "cupom": null,
      "cupom_origem": null,
@@ -606,90 +696,6 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "KaBuM!",
-     "loja": "KaBuM! · GIGANTEC",
-     "titulo": "Console Sony Playstation 5 Cfi-2114a, Leitor De Disco, SSD 1TB, 16gb Gddr6",
-     "preco": 6196.39,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.kabum.com.br/produto/953110/console-playstation-5-slim-sony-1tb-midia-fisica-cfi-2114a",
-     "obs": "à vista no Pix",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "KaBuM!",
-       "link": "https://www.kabum.com.br/produto/953110/console-playstation-5-slim-sony-1tb-midia-fisica-cfi-2114a",
-       "idade_h": null,
-       "tipo": "loja"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "Pack do console PlayStation®5 – Edição Limitada Ouro - Ghost of Yōtei",
-     "preco": 6699,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-     "obs": "à vista",
-     "detalhes": "edição especial, com jogo/extra",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "Pack do console PlayStation®5 – Edição Limitada Ouro - Ghost of Yōtei",
-     "preco": 6699,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-     "obs": "à vista",
-     "detalhes": "edição especial, com jogo/extra",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
     }
    ]
   },
@@ -700,101 +706,113 @@
    "alerta": true,
    "melhor": {
     "modelo": "digital",
-    "fonte": "KaBuM!",
-    "loja": "KaBuM!",
-    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-    "preco": 4184.07,
-    "preco_sem_cupom": null,
-    "cupom": null,
-    "cupom_origem": null,
-    "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-    "obs": "à vista no Pix · oferta relâmpago",
-    "detalhes": "com jogo/extra",
-    "idade_h": null,
-    "tipo": "loja",
-    "condicao": "novo",
-    "confianca": "A",
-    "ressalvas": [],
-    "visto_em": [
-     {
-      "fonte": "KaBuM!",
-      "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-      "idade_h": null,
-      "tipo": "loja"
-     },
-     {
-      "fonte": "Zoom",
-      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-      "idade_h": null,
-      "tipo": "comparador"
-     }
-    ],
-    "n_vistos": 2,
-    "cupom_citado": null
-   },
-   "sem": {
-    "modelo": "digital",
-    "fonte": "KaBuM!",
-    "loja": "KaBuM!",
-    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-    "preco": 4184.07,
-    "preco_sem_cupom": null,
-    "cupom": null,
-    "cupom_origem": null,
-    "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-    "obs": "à vista no Pix · oferta relâmpago",
-    "detalhes": "com jogo/extra",
-    "idade_h": null,
-    "tipo": "loja",
-    "condicao": "novo",
-    "confianca": "A",
-    "ressalvas": [],
-    "visto_em": [
-     {
-      "fonte": "KaBuM!",
-      "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-      "idade_h": null,
-      "tipo": "loja"
-     },
-     {
-      "fonte": "Zoom",
-      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-      "idade_h": null,
-      "tipo": "comparador"
-     }
-    ],
-    "n_vistos": 2,
-    "cupom_citado": null
-   },
-   "com": null,
-   "nao_confirmada": {
-    "modelo": "digital",
-    "fonte": "Telegram",
-    "loja": "KaBuM!",
-    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+    "fonte": "Promobit",
+    "loja": "Amazon",
+    "titulo": "Playstation5 Slim Digital 825gb – Pacote Astro Bot E Gran Turismo 7",
     "preco": 3905.0,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
-    "link": "https://t.me/cupons_desconto/84689",
-    "obs": "postado no canal Promobit (Telegram)",
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+    "obs": "postado no Promobit",
     "detalhes": "com jogo/extra",
-    "idade_h": 8.0,
-    "tipo": "grupo",
+    "idade_h": 6.0,
+    "tipo": "postada",
     "condicao": "novo",
-    "confianca": "C",
+    "confianca": "B",
     "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Promobit (Telegram)",
-      "link": "https://t.me/cupons_desconto/84689",
-      "idade_h": 8.0,
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+      "idade_h": 25.6,
+      "tipo": "postada"
+     },
+     {
+      "fonte": "Hardmob Promo",
+      "link": "https://t.me/hardmob_promo/472969",
+      "idade_h": 6.0,
       "tipo": "grupo"
+     },
+     {
+      "fonte": "Ofertas do Dia",
+      "link": "https://t.me/OfertasDoDia/483210",
+      "idade_h": 6.0,
+      "tipo": "grupo"
+     }
+    ],
+    "n_vistos": 3,
+    "cupom_citado": null
+   },
+   "sem": {
+    "modelo": "digital",
+    "fonte": "Promobit",
+    "loja": "Amazon",
+    "titulo": "Playstation5 Slim Digital 825gb – Pacote Astro Bot E Gran Turismo 7",
+    "preco": 3905.0,
+    "preco_sem_cupom": null,
+    "cupom": null,
+    "cupom_origem": null,
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+    "obs": "postado no Promobit",
+    "detalhes": "com jogo/extra",
+    "idade_h": 6.0,
+    "tipo": "postada",
+    "condicao": "novo",
+    "confianca": "B",
+    "ressalvas": [],
+    "visto_em": [
+     {
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+      "idade_h": 25.6,
+      "tipo": "postada"
+     },
+     {
+      "fonte": "Hardmob Promo",
+      "link": "https://t.me/hardmob_promo/472969",
+      "idade_h": 6.0,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Ofertas do Dia",
+      "link": "https://t.me/OfertasDoDia/483210",
+      "idade_h": 6.0,
+      "tipo": "grupo"
+     }
+    ],
+    "n_vistos": 3,
+    "cupom_citado": null
+   },
+   "com": {
+    "modelo": "digital",
+    "fonte": "Promobit",
+    "loja": "KaBuM!",
+    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+    "preco": 3905.0,
+    "preco_sem_cupom": null,
+    "cupom": "JOGAMUITO",
+    "cupom_origem": "postado",
+    "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3235318/",
+    "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
+    "detalhes": "com jogo/extra",
+    "idade_h": 27.2,
+    "tipo": "postada",
+    "condicao": "novo",
+    "confianca": "B",
+    "ressalvas": [],
+    "visto_em": [
+     {
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3235318/",
+      "idade_h": 27.2,
+      "tipo": "postada"
      }
     ],
     "n_vistos": 1,
     "cupom_citado": null
    },
+   "nao_confirmada": null,
    "recorde": {
     "preco": 3905.0,
     "quando": "2026-11-20 20:04",
@@ -806,92 +824,98 @@
    "ofertas": [
     {
      "modelo": "digital",
-     "fonte": "Telegram",
-     "loja": "KaBuM!",
-     "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+     "fonte": "Promobit",
+     "loja": "Amazon",
+     "titulo": "Playstation5 Slim Digital 825gb – Pacote Astro Bot E Gran Turismo 7",
      "preco": 3905.0,
      "preco_sem_cupom": null,
      "cupom": null,
      "cupom_origem": null,
-     "link": "https://t.me/cupons_desconto/84689",
-     "obs": "postado no canal Promobit (Telegram)",
+     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+     "obs": "postado no Promobit",
      "detalhes": "com jogo/extra",
-     "idade_h": 8.0,
-     "tipo": "grupo",
+     "idade_h": 6.0,
+     "tipo": "postada",
      "condicao": "novo",
-     "confianca": "C",
+     "confianca": "B",
      "ressalvas": [],
      "visto_em": [
       {
-       "fonte": "Promobit (Telegram)",
-       "link": "https://t.me/cupons_desconto/84689",
-       "idade_h": 8.0,
-       "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "Telegram",
-     "loja": "Amazon",
-     "titulo": "Console PlayStation 5 Slim Digital + 2 Jogos",
-     "preco": 3905.07,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://t.me/meups4/55591",
-     "obs": "postado no canal MeuPlayStation",
-     "detalhes": "com jogo/extra",
-     "idade_h": 11.6,
-     "tipo": "grupo",
-     "condicao": "novo",
-     "confianca": "C",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "MeuPlayStation",
-       "link": "https://t.me/meups4/55591",
-       "idade_h": 11.6,
-       "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "KaBuM!",
-     "loja": "KaBuM!",
-     "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-     "preco": 4184.07,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-     "obs": "à vista no Pix · oferta relâmpago",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "KaBuM!",
-       "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-       "idade_h": null,
-       "tipo": "loja"
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3235528/",
+       "idade_h": 25.6,
+       "tipo": "postada"
       },
       {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-       "idade_h": null,
-       "tipo": "comparador"
+       "fonte": "Hardmob Promo",
+       "link": "https://t.me/hardmob_promo/472969",
+       "idade_h": 6.0,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "Ofertas do Dia",
+       "link": "https://t.me/OfertasDoDia/483210",
+       "idade_h": 6.0,
+       "tipo": "grupo"
       }
      ],
-     "n_vistos": 2,
+     "n_vistos": 3,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Promobit",
+     "loja": "KaBuM!",
+     "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+     "preco": 3905.0,
+     "preco_sem_cupom": null,
+     "cupom": "JOGAMUITO",
+     "cupom_origem": "postado",
+     "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3235318/",
+     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
+     "detalhes": "com jogo/extra",
+     "idade_h": 27.2,
+     "tipo": "postada",
+     "condicao": "novo",
+     "confianca": "B",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3235318/",
+       "idade_h": 27.2,
+       "tipo": "postada"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Promobit",
+     "loja": "Amazon",
+     "titulo": "PlayStation5 Slim Digital 825GB Pacote ASTRO BOT e Gran Turismo 7",
+     "preco": 4184.06,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
+     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
+     "detalhes": "com jogo/extra",
+     "idade_h": 7.6,
+     "tipo": "postada",
+     "condicao": "novo",
+     "confianca": "B",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
+       "idade_h": 7.6,
+       "tipo": "postada"
+      }
+     ],
+     "n_vistos": 1,
      "cupom_citado": null
     },
     {
@@ -934,7 +958,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.6,
+     "idade_h": 11.8,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -949,7 +973,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
-       "idade_h": 0.6,
+       "idade_h": 11.8,
        "tipo": "postada"
       }
      ],
@@ -977,6 +1001,62 @@
       {
        "fonte": "Zoom",
        "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation®5 Slim Edição Digital",
+     "preco": 4499,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation®5 Slim Edição Digital",
+     "preco": 4499,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
        "idade_h": null,
        "tipo": "comparador"
       }
@@ -1048,62 +1128,6 @@
     },
     {
      "modelo": "digital",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 Slim Edição Digital",
-     "preco": 4589.99,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 Slim Edição Digital",
-     "preco": 4589.99,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/pre-venda-console-playstation-5-slim-1-tb-sony-1214a-4k",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
      "fonte": "Americanas",
      "loja": "Americanas · Magazine Luiza",
      "titulo": "Console PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony",
@@ -1160,6 +1184,40 @@
     },
     {
      "modelo": "digital",
+     "fonte": "KaBuM!",
+     "loja": "KaBuM!",
+     "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+     "preco": 4649.07,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
+     "obs": "à vista no Pix",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "KaBuM!",
+       "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
+       "idade_h": null,
+       "tipo": "loja"
+      },
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 2,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
      "fonte": "Americanas",
      "loja": "Americanas",
      "titulo": "Console PlayStation 5 Digital Sony Bundle Astro Bot e Gran Turismo 7 825GB Branco",
@@ -1204,7 +1262,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
      "obs": "à vista",
      "detalhes": "",
-     "idade_h": 0.6,
+     "idade_h": 11.7,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1219,7 +1277,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3237252/",
-       "idade_h": 0.6,
+       "idade_h": 11.7,
        "tipo": "postada"
       }
      ],
@@ -1266,7 +1324,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 11.1,
+     "idade_h": 22.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1275,69 +1333,11 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-edicao-digital-marvels-wolverine-pacote-de-edicao-limitada-825-gb-amarelo-1000056865-3236025/",
-       "idade_h": 11.2,
+       "idade_h": 22.4,
        "tipo": "postada"
-      },
-      {
-       "fonte": "Pechinchou",
-       "link": "https://t.me/pechinchou/239244",
-       "idade_h": 11.1,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Jogo Barato",
-       "link": "https://t.me/jogobarato/110305",
-       "idade_h": 11.2,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Nerd Ofertas",
-       "link": "https://t.me/nerdofertas/154060",
-       "idade_h": 11.3,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Super Ofertas BR",
-       "link": "https://t.me/superofertasbr/13834",
-       "idade_h": 11.3,
-       "tipo": "grupo"
       }
      ],
-     "n_vistos": 5,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "Webcontinental",
-     "loja": "Webcontinental · Lojas Edmil",
-     "titulo": "Console de Videogame Playstation 5 Slim Edição Digital 825GB com 2 Jogos Branco",
-     "preco": 5080.41,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.webcontinental.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-003958001074/p",
-     "obs": "à vista no Pix",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Webcontinental",
-       "link": "https://www.webcontinental.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-003958001074/p",
-       "idade_h": null,
-       "tipo": "loja"
-      },
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 2,
+     "n_vistos": 1,
      "cupom_citado": null
     },
     {
@@ -1446,12 +1446,12 @@
    "com": null,
    "nao_confirmada": null,
    "recorde": {
-    "preco": 7699,
-    "quando": "2026-11-20 17:16",
-    "loja": "KaBuM!",
+    "preco": 7079.9,
+    "quando": "2026-11-21 12:20",
+    "loja": "Amazon",
     "cupom": null,
-    "titulo": "Console PlayStation 5 Pro Sony, SSD 2TB, Com Controle Sem Fio DualSense, Branco - 1000046552",
-    "link": "https://www.kabum.com.br/produto/636960/console-playstation-5-pro-sony-ssd-2tb-com-controle-sem-fio-dualsense-branco-1000046552"
+    "titulo": "PlayStation®5 Pro",
+    "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony"
    },
    "ofertas": [
     {
@@ -2195,9 +2195,817 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 03:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 04:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 05:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 06:48",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.06",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4047.0",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 07:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 08:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 09:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3999.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:27",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 10:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:28",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 11:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 12:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 12:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 12:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 12:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 12:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 12:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:27",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 13:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 14:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 14:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 14:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 14:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7079.9",
+   "pro_cupom": "",
+   "pro_loja": "Amazon"
+  },
+  {
+   "data_hora": "2026-11-21 14:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-21 14:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3905.0",
+   "digital_cupom": "3905.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
+  "Webcontinental": {
+   "pagina": null,
+   "cupons": []
+  },
   "KaBuM!": {
    "pagina": "https://www.promobit.com.br/cupons/loja/kabum/",
    "cupons": [
@@ -2208,16 +3016,12 @@
      "validade": null,
      "origem": "Promobit",
      "link": "https://www.promobit.com.br/cupons/loja/kabum/",
-     "desconto": 418,
-     "preco_estimado": 3765.66,
+     "desconto": 437,
+     "preco_estimado": 3933.06,
      "modelo": "PS5 Digital",
-     "preco_base": 4184.07
+     "preco_base": 4370.07
     }
    ]
-  },
-  "Webcontinental": {
-   "pagina": null,
-   "cupons": []
   },
   "Magazine Luiza": {
    "pagina": "https://www.promobit.com.br/cupons/loja/magazine-luiza/",
@@ -2311,63 +3115,63 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.4,
-   "ofertas": 37,
+   "segundos": 0.7,
+   "ofertas": 38,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.4,
+   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
+   "segundos": 0.1,
    "tipo": "loja",
-   "falhas_seguidas": 5
+   "falhas_seguidas": 2
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.6,
+   "segundos": 1.1,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 0.7,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 1.4,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Bemol": {
    "ok": true,
-   "segundos": 1.3,
+   "segundos": 1.2,
    "ofertas": 4,
    "tipo": "loja",
    "falhas_seguidas": 0
   },
   "Zoom": {
    "ok": true,
-   "segundos": 7.5,
+   "segundos": 6.1,
    "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0
   },
   "Promobit": {
    "ok": true,
-   "segundos": 2.0,
-   "ofertas": 12,
+   "segundos": 1.6,
+   "ofertas": 11,
    "tipo": "postada",
    "falhas_seguidas": 0
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.1,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
@@ -2375,15 +3179,15 @@
   },
   "Telegram": {
    "ok": true,
-   "segundos": 26.2,
-   "ofertas": 20,
+   "segundos": 26.6,
+   "ofertas": 18,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0
   },
   "Leilões": {
    "ok": true,
-   "segundos": 5.1,
+   "segundos": 5.0,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
@@ -2391,12 +3195,12 @@
   },
   "Cupons (Promobit)": {
    "ok": true,
-   "ofertas": 107,
+   "ofertas": 160,
    "tipo": "cupom"
   }
  },
  "descartados": {
-  "não é console PS5": 121
+  "não é console PS5": 139
  },
  "config": {
   "queda_minima": 50,

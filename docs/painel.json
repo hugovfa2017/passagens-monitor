@@ -2,8 +2,8 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-21 03:28",
-  "alerta": null,
+  "quando": "2026-11-21 14:26",
+  "alerta": "🔥 Hora de comprar: G, ida em dezembro R$1.066 (alvo R$1.100) · W + K, ida R$1.077 (alvo R$1.100)\nCom 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.",
   "ordem": [
    "FOR",
    "MVF",
@@ -67,40 +67,40 @@
   "fontes": {
    "Google": {
     "buscas": 42,
-    "voos": 970,
-    "conferidos": 15,
-    "ofertas": 8,
+    "voos": 1225,
+    "conferidos": 14,
+    "ofertas": 7,
     "bloqueio": null,
     "listas": {
-     "vazias": 7,
-     "repetidas": 19,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 2 | Econômica | São Paulo GRU CGH · Campinas VCP | Fortaleza FOR · Mossoró MVF · Juazeiro do Norte JDO · Natal NAT | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca |  @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 11,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 1 | Econômica | São Paulo GRU CGH · Campinas VCP | Fortaleza FOR · Mossoró MVF · Juazeiro do Norte JDO · Natal NAT | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca |  @ /travel/flights/search"
     },
     "sem_preco": {
-     "tela de compra sem vendedores": 1,
-     "a lista não abriu": 6
+     "a lista não abriu": 5,
+     "tela de compra sem vendedores": 2
     },
     "comprado": {
      "telas": 2,
-     "a_venda": 1
+     "a_venda": 2
     },
-    "seg": 253
-   },
-   "MaxMilhas": {
-    "buscas": 20,
-    "com_voo": 20
-   },
-   "Vai de Promo": {
-    "buscas": 18,
-    "com_voo": 18
-   },
-   "Zupper": {
-    "buscas": 17,
-    "com_voo": 17
+    "seg": 159
    },
    "123milhas": {
-    "buscas": 13,
+    "buscas": 14,
     "com_voo": 11
+   },
+   "MaxMilhas": {
+    "buscas": 17,
+    "com_voo": 16
+   },
+   "Vai de Promo": {
+    "buscas": 15,
+    "com_voo": 15
+   },
+   "Zupper": {
+    "buscas": 15,
+    "com_voo": 15
    },
    "Viaza": {
     "buscas": 4,
@@ -110,12 +110,12 @@
   },
   "mossoro": {
    "buscas": 2,
-   "voos": 5
+   "voos": 1
   },
   "taxa_mala": {
-   "Azul": 102,
-   "Gol": 136,
-   "LATAM": 82
+   "Azul": 118,
+   "Gol": 135,
+   "LATAM": 101
   },
   "grupos": [
    {
@@ -155,34 +155,34 @@
   "alvo": 650,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-22",
+   "d": "2027-01-20",
    "orig": "FOR",
    "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "02:10",
-   "chegada": "05:30",
-   "tipo": "direto",
+   "cia": "Gol",
+   "saida": "00:40",
+   "chegada": "06:50",
+   "tipo": "escala 1h50",
    "pp": 711,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "dia": "sex 22/01"
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhqhARIKMjAyNy0wMS0yMCIgCgNGT1ISCjIwMjctMDEtMjAaA1NTQSoCRzMyBDkxMTUiIAoDU1NBEgoyMDI3LTAxLTIwGgNHUlUqAkczMgQxNjk3agcIARIDRk9SagcIARIDTVZGagcIARIDSkRPagcIARIDTkFUagcIARIDSlBBagcIARIDUkVDcgcIARIDR1JVcgcIARIDQ0dIcgcIARIDVkNQQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 20/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [
    {
     "n": 2,
-    "dif": 0
+    "dif": 352
    },
    {
     "n": 3,
-    "dif": 0
+    "dif": 352
    }
   ],
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.250 e R$3.250)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.050 e R$2.700)",
     "R$61 acima do alvo (R$650)"
    ]
   },
@@ -191,17 +191,32 @@
    [
     "2026-11-21 03:28",
     711
+   ],
+   [
+    "2026-11-21 06:25",
+    756
+   ],
+   [
+    "2026-11-21 07:26",
+    770
+   ],
+   [
+    "2026-11-21 08:25",
+    756
+   ],
+   [
+    "2026-11-21 11:27",
+    711
+   ],
+   [
+    "2026-11-21 13:27",
+    769
+   ],
+   [
+    "2026-11-21 14:26",
+    711
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "v.volta",
-  "d": "2027-01-18",
-  "dia": "seg 18/01",
-  "ne": "REC",
-  "pp": 821,
-  "conf": false
  },
  {
   "tipo": "celula",
@@ -226,6 +241,15 @@
   "serie": "v.volta",
   "d": "2027-01-18",
   "dia": "seg 18/01",
+  "ne": "REC",
+  "pp": 959,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "v.volta",
+  "d": "2027-01-18",
+  "dia": "seg 18/01",
   "ne": "JPA",
   "pp": 1047,
   "conf": false
@@ -236,7 +260,16 @@
   "d": "2027-01-18",
   "dia": "seg 18/01",
   "ne": "NAT",
-  "pp": 1253,
+  "pp": 1160,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "v.volta",
+  "d": "2027-01-19",
+  "dia": "ter 19/01",
+  "ne": "FOR",
+  "pp": 786,
   "conf": false
  },
  {
@@ -253,24 +286,6 @@
   "serie": "v.volta",
   "d": "2027-01-19",
   "dia": "ter 19/01",
-  "ne": "JPA",
-  "pp": 830,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "v.volta",
-  "d": "2027-01-19",
-  "dia": "ter 19/01",
-  "ne": "JDO",
-  "pp": 875,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "v.volta",
-  "d": "2027-01-19",
-  "dia": "ter 19/01",
   "ne": "REC",
   "pp": 893,
   "conf": false
@@ -280,8 +295,17 @@
   "serie": "v.volta",
   "d": "2027-01-19",
   "dia": "ter 19/01",
-  "ne": "FOR",
-  "pp": 1027,
+  "ne": "JDO",
+  "pp": 915,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "v.volta",
+  "d": "2027-01-19",
+  "dia": "ter 19/01",
+  "ne": "JPA",
+  "pp": 1047,
   "conf": false
  },
  {
@@ -289,9 +313,18 @@
   "serie": "v.volta",
   "d": "2027-01-20",
   "dia": "qua 20/01",
-  "ne": "REC",
+  "ne": "FOR",
   "pp": 711,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "v.volta",
+  "d": "2027-01-20",
+  "dia": "qua 20/01",
+  "ne": "REC",
+  "pp": 712,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -308,7 +341,7 @@
   "d": "2027-01-20",
   "dia": "qua 20/01",
   "ne": "JPA",
-  "pp": 974,
+  "pp": 1047,
   "conf": false
  },
  {
@@ -316,8 +349,8 @@
   "serie": "v.volta",
   "d": "2027-01-20",
   "dia": "qua 20/01",
-  "ne": "FOR",
-  "pp": 1004,
+  "ne": "NAT",
+  "pp": 1065,
   "conf": false
  },
  {
@@ -326,7 +359,16 @@
   "d": "2027-01-21",
   "dia": "qui 21/01",
   "ne": "REC",
-  "pp": 712,
+  "pp": 709,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "v.volta",
+  "d": "2027-01-21",
+  "dia": "qui 21/01",
+  "ne": "NAT",
+  "pp": 767,
   "conf": false
  },
  {
@@ -335,7 +377,7 @@
   "d": "2027-01-21",
   "dia": "qui 21/01",
   "ne": "JDO",
-  "pp": 717,
+  "pp": 774,
   "conf": true
  },
  {
@@ -344,7 +386,7 @@
   "d": "2027-01-21",
   "dia": "qui 21/01",
   "ne": "JPA",
-  "pp": 827,
+  "pp": 829,
   "conf": false
  },
  {
@@ -353,16 +395,7 @@
   "d": "2027-01-21",
   "dia": "qui 21/01",
   "ne": "FOR",
-  "pp": 947,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "v.volta",
-  "d": "2027-01-21",
-  "dia": "qui 21/01",
-  "ne": "NAT",
-  "pp": 1065,
+  "pp": 920,
   "conf": false
  },
  {
@@ -371,8 +404,8 @@
   "d": "2027-01-22",
   "dia": "sex 22/01",
   "ne": "FOR",
-  "pp": 711,
-  "conf": true
+  "pp": 786,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -389,7 +422,7 @@
   "d": "2027-01-22",
   "dia": "sex 22/01",
   "ne": "JPA",
-  "pp": 827,
+  "pp": 829,
   "conf": false
  },
  {
@@ -412,17 +445,17 @@
   "alvo": 650,
   "igual_a": "v.volta",
   "recomendada": {
-   "d": "2027-01-22",
+   "d": "2027-01-20",
    "orig": "FOR",
    "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "02:10",
-   "chegada": "05:30",
-   "tipo": "direto",
+   "cia": "Gol",
+   "saida": "00:40",
+   "chegada": "06:50",
+   "tipo": "escala 1h50",
    "pp": 711,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "dia": "sex 22/01"
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhqhARIKMjAyNy0wMS0yMCIgCgNGT1ISCjIwMjctMDEtMjAaA1NTQSoCRzMyBDkxMTUiIAoDU1NBEgoyMDI3LTAxLTIwGgNHUlUqAkczMgQxNjk3agcIARIDRk9SagcIARIDTVZGagcIARIDSkRPagcIARIDTkFUagcIARIDSlBBagcIARIDUkVDcgcIARIDR1JVcgcIARIDQ0dIcgcIARIDVkNQQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 20/01"
   },
   "mais_barata": null,
   "comprado": null,
@@ -444,14 +477,14 @@
   "recomendada": {
    "d": "2027-03-06",
    "orig": "FOR",
-   "dest": "CGH",
+   "dest": "GRU",
    "cia": "Gol",
-   "saida": "13:20",
-   "chegada": "16:55",
+   "saida": "02:25",
+   "chegada": "06:05",
    "tipo": "direto",
-   "pp": 364,
+   "pp": 371,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/FORCGH270306/1/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/FORGRU270306/1/0/0/Y/",
    "dia": "sáb 06/03"
   },
   "mais_barata": null,
@@ -460,7 +493,7 @@
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$830 e R$2.500)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$660 e R$2.200)"
    ]
   },
   "fora": null,
@@ -468,149 +501,84 @@
    [
     "2026-11-21 03:28",
     364
+   ],
+   [
+    "2026-11-21 10:27",
+    385
+   ],
+   [
+    "2026-11-21 11:27",
+    382
+   ],
+   [
+    "2026-11-21 13:27",
+    374
+   ],
+   [
+    "2026-11-21 14:26",
+    371
    ]
   ]
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-07",
-  "dia": "dom 07/02",
-  "ne": "REC",
-  "pp": 391,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-07",
-  "dia": "dom 07/02",
-  "ne": "FOR",
-  "pp": 618,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-07",
-  "dia": "dom 07/02",
+  "d": "2027-02-22",
+  "dia": "seg 22/02",
   "ne": "JDO",
-  "pp": 713,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-07",
-  "dia": "dom 07/02",
-  "ne": "NAT",
-  "pp": 795,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-07",
-  "dia": "dom 07/02",
-  "ne": "JPA",
-  "pp": 944,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-16",
-  "dia": "ter 16/02",
-  "ne": "REC",
-  "pp": 390,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-16",
-  "dia": "ter 16/02",
-  "ne": "FOR",
-  "pp": 504,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-16",
-  "dia": "ter 16/02",
-  "ne": "NAT",
-  "pp": 518,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-16",
-  "dia": "ter 16/02",
-  "ne": "JPA",
-  "pp": 567,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-16",
-  "dia": "ter 16/02",
-  "ne": "JDO",
-  "pp": 715,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-06",
-  "dia": "sáb 06/03",
-  "ne": "FOR",
-  "pp": 364,
+  "pp": 374,
   "conf": true
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-06",
-  "dia": "sáb 06/03",
-  "ne": "JDO",
-  "pp": 404,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-06",
-  "dia": "sáb 06/03",
+  "d": "2027-02-22",
+  "dia": "seg 22/02",
   "ne": "REC",
-  "pp": 497,
+  "pp": 415,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-06",
-  "dia": "sáb 06/03",
+  "d": "2027-02-22",
+  "dia": "seg 22/02",
+  "ne": "FOR",
+  "pp": 665,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-22",
+  "dia": "seg 22/02",
   "ne": "JPA",
-  "pp": 831,
+  "pp": 830,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
+  "d": "2027-02-24",
+  "dia": "qua 24/02",
   "ne": "JDO",
-  "pp": 352,
-  "conf": true
+  "pp": 385,
+  "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
+  "d": "2027-02-24",
+  "dia": "qua 24/02",
+  "ne": "REC",
+  "pp": 415,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-24",
+  "dia": "qua 24/02",
   "ne": "FOR",
   "pp": 505,
   "conf": false
@@ -618,89 +586,26 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
-  "ne": "REC",
-  "pp": 601,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-10",
-  "dia": "qua 10/03",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "JDO",
-  "pp": 404,
+  "pp": 385,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-10",
-  "dia": "qua 10/03",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "REC",
-  "pp": 501,
+  "pp": 415,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-10",
-  "dia": "qua 10/03",
-  "ne": "FOR",
-  "pp": 505,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-10",
-  "dia": "qua 10/03",
-  "ne": "NAT",
-  "pp": 552,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-11",
-  "dia": "qui 11/03",
-  "ne": "JDO",
-  "pp": 386,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-11",
-  "dia": "qui 11/03",
-  "ne": "REC",
-  "pp": 626,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-11",
-  "dia": "qui 11/03",
-  "ne": "FOR",
-  "pp": 657,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-13",
-  "dia": "sáb 13/03",
-  "ne": "JDO",
-  "pp": 386,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-13",
-  "dia": "sáb 13/03",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "FOR",
   "pp": 449,
   "conf": false
@@ -708,28 +613,199 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-13",
-  "dia": "sáb 13/03",
-  "ne": "REC",
-  "pp": 497,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-13",
-  "dia": "sáb 13/03",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "JPA",
-  "pp": 826,
+  "pp": 831,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-13",
-  "dia": "sáb 13/03",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "NAT",
-  "pp": 850,
+  "pp": 855,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "REC",
+  "pp": 415,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "FOR",
+  "pp": 449,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "JDO",
+  "pp": 651,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "NAT",
+  "pp": 795,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "JPA",
+  "pp": 830,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "JDO",
+  "pp": 385,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "REC",
+  "pp": 415,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "FOR",
+  "pp": 505,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "JPA",
+  "pp": 830,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "JDO",
+  "pp": 385,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "REC",
+  "pp": 415,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "FOR",
+  "pp": 449,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "JPA",
+  "pp": 567,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
+  "ne": "JDO",
+  "pp": 385,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
+  "ne": "REC",
+  "pp": 415,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
+  "ne": "FOR",
+  "pp": 505,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
+  "ne": "JPA",
+  "pp": 567,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-06",
+  "dia": "sáb 06/03",
+  "ne": "JDO",
+  "pp": 385,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-06",
+  "dia": "sáb 06/03",
+  "ne": "FOR",
+  "pp": 371,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-06",
+  "dia": "sáb 06/03",
+  "ne": "REC",
+  "pp": 415,
   "conf": false
  },
  {
@@ -743,17 +819,17 @@
   "alvo": 1100,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-28",
+   "d": "2026-12-29",
    "orig": "GRU",
    "dest": "JDO",
-   "cia": "LATAM",
-   "saida": "20:10",
-   "chegada": "23:15",
+   "cia": "Gol",
+   "saida": "21:25",
+   "chegada": "00:20",
    "tipo": "direto",
-   "pp": 1235,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-28%22%7D%5D",
-   "dia": "seg 28/12"
+   "pp": 1066,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261229/1/0/0/Y/",
+   "dia": "ter 29/12"
   },
   "mais_barata": null,
   "comprado": {
@@ -764,17 +840,16 @@
    "saida": "14:05",
    "chegada": "17:25",
    "tipo": "direto",
-   "pp": 3783,
-   "vend": "MaxMilhas",
-   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/GRU/NAT/2026-12-22/1/0/0/EC",
+   "pp": 3566,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhptEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDTkFUKgJHMzIEMTY3OGoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA0ZPUnIHCAESA01WRnIHCAESA0pET3IHCAESA05BVEABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "ter 22/12"
   },
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.650 e R$3.250)",
-    "R$135 acima do alvo (R$1.100)"
+    "abaixo do alvo de R$1.100"
    ]
   },
   "fora": null,
@@ -782,6 +857,30 @@
    [
     "2026-11-21 03:28",
     1235
+   ],
+   [
+    "2026-11-21 06:25",
+    1331
+   ],
+   [
+    "2026-11-21 09:27",
+    1077
+   ],
+   [
+    "2026-11-21 11:27",
+    1102
+   ],
+   [
+    "2026-11-21 12:25",
+    1087
+   ],
+   [
+    "2026-11-21 13:27",
+    1077
+   ],
+   [
+    "2026-11-21 14:26",
+    1066
    ]
   ]
  },
@@ -791,8 +890,8 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "FOR",
-  "pp": 1475,
-  "conf": true
+  "pp": 1649,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -800,7 +899,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "NAT",
-  "pp": 1632,
+  "pp": 1677,
   "conf": true
  },
  {
@@ -809,7 +908,16 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "JDO",
-  "pp": 1813,
+  "pp": 1849,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
+  "ne": "NAT",
+  "pp": 1552,
   "conf": false
  },
  {
@@ -826,17 +934,35 @@
   "serie": "g.ida_dez",
   "d": "2026-12-23",
   "dia": "qua 23/12",
-  "ne": "NAT",
-  "pp": 1848,
+  "ne": "JDO",
+  "pp": 2322,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "g.ida_dez",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
   "ne": "JDO",
-  "pp": 2313,
+  "pp": 1383,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "NAT",
+  "pp": 2170,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "FOR",
+  "pp": 2716,
   "conf": false
  },
  {
@@ -845,7 +971,7 @@
   "d": "2026-12-27",
   "dia": "dom 27/12",
   "ne": "JDO",
-  "pp": 1408,
+  "pp": 1368,
   "conf": false
  },
  {
@@ -854,7 +980,7 @@
   "d": "2026-12-27",
   "dia": "dom 27/12",
   "ne": "FOR",
-  "pp": 1838,
+  "pp": 1812,
   "conf": false
  },
  {
@@ -869,20 +995,11 @@
  {
   "tipo": "celula",
   "serie": "g.ida_dez",
-  "d": "2026-12-27",
-  "dia": "dom 27/12",
-  "ne": "MVF",
-  "pp": 2017,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_dez",
   "d": "2026-12-28",
   "dia": "seg 28/12",
   "ne": "JDO",
-  "pp": 1235,
-  "conf": true
+  "pp": 1251,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -890,7 +1007,7 @@
   "d": "2026-12-28",
   "dia": "seg 28/12",
   "ne": "FOR",
-  "pp": 1819,
+  "pp": 1816,
   "conf": false
  },
  {
@@ -899,7 +1016,7 @@
   "d": "2026-12-28",
   "dia": "seg 28/12",
   "ne": "NAT",
-  "pp": 1838,
+  "pp": 1820,
   "conf": false
  },
  {
@@ -908,7 +1025,7 @@
   "d": "2026-12-29",
   "dia": "ter 29/12",
   "ne": "JDO",
-  "pp": 1331,
+  "pp": 1066,
   "conf": true
  },
  {
@@ -917,44 +1034,44 @@
   "d": "2026-12-29",
   "dia": "ter 29/12",
   "ne": "NAT",
-  "pp": 1594,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_dez",
-  "d": "2026-12-29",
-  "dia": "ter 29/12",
-  "ne": "FOR",
-  "pp": 1833,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_dez",
-  "d": "2026-12-30",
-  "dia": "qua 30/12",
-  "ne": "JDO",
-  "pp": 1368,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_dez",
-  "d": "2026-12-30",
-  "dia": "qua 30/12",
-  "ne": "NAT",
-  "pp": 1578,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_dez",
-  "d": "2026-12-30",
-  "dia": "qua 30/12",
-  "ne": "FOR",
   "pp": 1649,
   "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-29",
+  "dia": "ter 29/12",
+  "ne": "FOR",
+  "pp": 1812,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "JDO",
+  "pp": 1105,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "NAT",
+  "pp": 1478,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "FOR",
+  "pp": 1506,
+  "conf": true
  },
  {
   "tipo": "trecho",
@@ -974,7 +1091,7 @@
    "saida": "20:25",
    "chegada": "01:15",
    "tipo": "com escala",
-   "pp": 719,
+   "pp": 712,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHNAT270106/1/0/0/Y/",
    "dia": "qua 06/01"
@@ -982,12 +1099,33 @@
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": null,
+  "momento": {
+   "sinal": "acompanhar",
+   "motivos": [
+    "para o Google, preço normal (a rota costuma ficar entre R$730 e R$2.850)"
+   ]
+  },
   "fora": null,
   "historico": [
    [
     "2026-11-21 03:28",
     719
+   ],
+   [
+    "2026-11-21 11:27",
+    735
+   ],
+   [
+    "2026-11-21 12:25",
+    725
+   ],
+   [
+    "2026-11-21 13:27",
+    719
+   ],
+   [
+    "2026-11-21 14:26",
+    712
    ]
   ]
  },
@@ -1015,7 +1153,7 @@
   "d": "2027-01-02",
   "dia": "sáb 02/01",
   "ne": "FOR",
-  "pp": 1195,
+  "pp": 1213,
   "conf": false
  },
  {
@@ -1024,7 +1162,7 @@
   "d": "2027-01-03",
   "dia": "dom 03/01",
   "ne": "NAT",
-  "pp": 1033,
+  "pp": 1075,
   "conf": false
  },
  {
@@ -1033,7 +1171,7 @@
   "d": "2027-01-03",
   "dia": "dom 03/01",
   "ne": "JDO",
-  "pp": 1046,
+  "pp": 1105,
   "conf": false
  },
  {
@@ -1048,100 +1186,190 @@
  {
   "tipo": "celula",
   "serie": "g.ida_jan",
-  "d": "2027-01-05",
-  "dia": "ter 05/01",
-  "ne": "FOR",
-  "pp": 1140,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-05",
-  "dia": "ter 05/01",
+  "d": "2027-01-04",
+  "dia": "seg 04/01",
   "ne": "NAT",
-  "pp": 1491,
+  "pp": 1079,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "g.ida_jan",
-  "d": "2027-01-06",
-  "dia": "qua 06/01",
-  "ne": "NAT",
-  "pp": 719,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-06",
-  "dia": "qua 06/01",
-  "ne": "JDO",
-  "pp": 840,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-06",
-  "dia": "qua 06/01",
-  "ne": "FOR",
-  "pp": 1140,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-08",
-  "dia": "sex 08/01",
-  "ne": "NAT",
-  "pp": 882,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-08",
-  "dia": "sex 08/01",
-  "ne": "FOR",
-  "pp": 1163,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-08",
-  "dia": "sex 08/01",
-  "ne": "JDO",
-  "pp": 1806,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-09",
-  "dia": "sáb 09/01",
-  "ne": "NAT",
-  "pp": 882,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-09",
-  "dia": "sáb 09/01",
-  "ne": "FOR",
-  "pp": 1078,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "g.ida_jan",
-  "d": "2027-01-09",
-  "dia": "sáb 09/01",
+  "d": "2027-01-04",
+  "dia": "seg 04/01",
   "ne": "JDO",
   "pp": 1105,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-04",
+  "dia": "seg 04/01",
+  "ne": "FOR",
+  "pp": 1138,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "JDO",
+  "pp": 832,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "FOR",
+  "pp": 1138,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "NAT",
+  "pp": 1487,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-06",
+  "dia": "qua 06/01",
+  "ne": "NAT",
+  "pp": 712,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-06",
+  "dia": "qua 06/01",
+  "ne": "JDO",
+  "pp": 902,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-06",
+  "dia": "qua 06/01",
+  "ne": "FOR",
+  "pp": 1138,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-07",
+  "dia": "qui 07/01",
+  "ne": "FOR",
+  "pp": 1036,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-07",
+  "dia": "qui 07/01",
+  "ne": "NAT",
+  "pp": 1103,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-07",
+  "dia": "qui 07/01",
+  "ne": "JDO",
+  "pp": 1331,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "NAT",
+  "pp": 882,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "FOR",
+  "pp": 1147,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "JDO",
+  "pp": 1813,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-09",
+  "dia": "sáb 09/01",
+  "ne": "NAT",
+  "pp": 882,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-09",
+  "dia": "sáb 09/01",
+  "ne": "JDO",
+  "pp": 996,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-09",
+  "dia": "sáb 09/01",
+  "ne": "FOR",
+  "pp": 1113,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "JDO",
+  "pp": 1105,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "FOR",
+  "pp": 1125,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "NAT",
+  "pp": 1486,
   "conf": false
  },
  {
@@ -1155,17 +1383,17 @@
   "alvo": 650,
   "igual_a": "v.volta",
   "recomendada": {
-   "d": "2027-01-22",
+   "d": "2027-01-20",
    "orig": "FOR",
    "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "02:10",
-   "chegada": "05:30",
-   "tipo": "direto",
+   "cia": "Gol",
+   "saida": "00:40",
+   "chegada": "06:50",
+   "tipo": "escala 1h50",
    "pp": 711,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "dia": "sex 22/01"
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhqhARIKMjAyNy0wMS0yMCIgCgNGT1ISCjIwMjctMDEtMjAaA1NTQSoCRzMyBDkxMTUiIAoDU1NBEgoyMDI3LTAxLTIwGgNHUlUqAkczMgQxNjk3agcIARIDRk9SagcIARIDTVZGagcIARIDSkRPagcIARIDTkFUagcIARIDSlBBagcIARIDUkVDcgcIARIDR1JVcgcIARIDQ0dIcgcIARIDVkNQQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 20/01"
   },
   "mais_barata": null,
   "comprado": null,
@@ -1185,17 +1413,17 @@
   "alvo": 1100,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-28",
+   "d": "2026-12-29",
    "orig": "GRU",
    "dest": "JDO",
-   "cia": "LATAM",
-   "saida": "20:10",
-   "chegada": "23:15",
+   "cia": "Gol",
+   "saida": "21:25",
+   "chegada": "00:20",
    "tipo": "direto",
-   "pp": 1235,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-28%22%7D%5D",
-   "dia": "seg 28/12"
+   "pp": 1077,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261229/2/0/0/Y/",
+   "dia": "ter 29/12"
   },
   "mais_barata": null,
   "comprado": {
@@ -1218,10 +1446,9 @@
    }
   ],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.250)",
-    "R$135 acima do alvo (R$1.100)"
+    "abaixo do alvo de R$1.100"
    ]
   },
   "fora": null,
@@ -1229,6 +1456,26 @@
    [
     "2026-11-21 03:28",
     1235
+   ],
+   [
+    "2026-11-21 06:25",
+    1373
+   ],
+   [
+    "2026-11-21 09:27",
+    1077
+   ],
+   [
+    "2026-11-21 11:27",
+    1102
+   ],
+   [
+    "2026-11-21 12:25",
+    1087
+   ],
+   [
+    "2026-11-21 13:27",
+    1077
    ]
   ]
  },
@@ -1238,8 +1485,8 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "FOR",
-  "pp": 1475,
-  "conf": true
+  "pp": 1648,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1247,7 +1494,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "NAT",
-  "pp": 1730,
+  "pp": 1677,
   "conf": true
  },
  {
@@ -1264,6 +1511,15 @@
   "serie": "wk.ida",
   "d": "2026-12-23",
   "dia": "qua 23/12",
+  "ne": "NAT",
+  "pp": 1552,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
   "ne": "FOR",
   "pp": 1648,
   "conf": false
@@ -1273,17 +1529,8 @@
   "serie": "wk.ida",
   "d": "2026-12-23",
   "dia": "qua 23/12",
-  "ne": "NAT",
-  "pp": 1848,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.ida",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
   "ne": "JDO",
-  "pp": 2313,
+  "pp": 2322,
   "conf": false
  },
  {
@@ -1292,16 +1539,7 @@
   "d": "2026-12-26",
   "dia": "sáb 26/12",
   "ne": "JDO",
-  "pp": 1256,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "wk.ida",
-  "d": "2026-12-26",
-  "dia": "sáb 26/12",
-  "ne": "FOR",
-  "pp": 1812,
+  "pp": 1368,
   "conf": false
  },
  {
@@ -1311,6 +1549,15 @@
   "dia": "sáb 26/12",
   "ne": "NAT",
   "pp": 2310,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "FOR",
+  "pp": 2716,
   "conf": false
  },
  {
@@ -1328,7 +1575,7 @@
   "d": "2026-12-27",
   "dia": "dom 27/12",
   "ne": "FOR",
-  "pp": 1838,
+  "pp": 1812,
   "conf": false
  },
  {
@@ -1346,34 +1593,43 @@
   "d": "2026-12-28",
   "dia": "seg 28/12",
   "ne": "JDO",
-  "pp": 1235,
+  "pp": 1368,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "FOR",
+  "pp": 1812,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "NAT",
+  "pp": 1820,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-29",
+  "dia": "ter 29/12",
+  "ne": "JDO",
+  "pp": 1077,
   "conf": true
  },
  {
   "tipo": "celula",
   "serie": "wk.ida",
-  "d": "2026-12-28",
-  "dia": "seg 28/12",
-  "ne": "FOR",
-  "pp": 1812,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.ida",
-  "d": "2026-12-28",
-  "dia": "seg 28/12",
-  "ne": "NAT",
-  "pp": 1820,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.ida",
   "d": "2026-12-29",
   "dia": "ter 29/12",
-  "ne": "JDO",
-  "pp": 1368,
+  "ne": "NAT",
+  "pp": 1820,
   "conf": false
  },
  {
@@ -1382,16 +1638,7 @@
   "d": "2026-12-29",
   "dia": "ter 29/12",
   "ne": "FOR",
-  "pp": 1812,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.ida",
-  "d": "2026-12-29",
-  "dia": "ter 29/12",
-  "ne": "NAT",
-  "pp": 1820,
+  "pp": 1988,
   "conf": false
  },
  {
@@ -1409,7 +1656,7 @@
   "d": "2026-12-30",
   "dia": "qua 30/12",
   "ne": "NAT",
-  "pp": 1552,
+  "pp": 1478,
   "conf": false
  },
  {
@@ -1418,8 +1665,8 @@
   "d": "2026-12-30",
   "dia": "qua 30/12",
   "ne": "FOR",
-  "pp": 1648,
-  "conf": false
+  "pp": 1506,
+  "conf": true
  },
  {
   "tipo": "trecho",
@@ -1439,20 +1686,47 @@
    "saida": "21:05",
    "chegada": "00:40",
    "tipo": "direto",
-   "pp": 775,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-08%22%7D%5D",
+   "pp": 800,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/FORGRU270108/2/0/0/Y/",
    "dia": "sex 08/01"
   },
   "mais_barata": null,
   "comprado": null,
-  "lugares": [],
-  "momento": null,
+  "lugares": [
+   {
+    "n": 1,
+    "dif": 0
+   }
+  ],
+  "momento": {
+   "sinal": "acompanhar",
+   "motivos": [
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.275 e R$3.250)",
+    "R$150 acima do alvo (R$650)"
+   ]
+  },
   "fora": null,
   "historico": [
    [
     "2026-11-21 03:28",
     775
+   ],
+   [
+    "2026-11-21 06:25",
+    807
+   ],
+   [
+    "2026-11-21 10:27",
+    856
+   ],
+   [
+    "2026-11-21 11:27",
+    807
+   ],
+   [
+    "2026-11-21 13:27",
+    800
    ]
   ]
  },
@@ -1470,8 +1744,8 @@
   "serie": "wk.volta",
   "d": "2027-01-07",
   "dia": "qui 07/01",
-  "ne": "FOR",
-  "pp": 1034,
+  "ne": "JPA",
+  "pp": 1047,
   "conf": false
  },
  {
@@ -1479,8 +1753,8 @@
   "serie": "wk.volta",
   "d": "2027-01-07",
   "dia": "qui 07/01",
-  "ne": "JPA",
-  "pp": 1047,
+  "ne": "FOR",
+  "pp": 1060,
   "conf": false
  },
  {
@@ -1507,25 +1781,43 @@
   "d": "2027-01-08",
   "dia": "sex 08/01",
   "ne": "FOR",
-  "pp": 775,
+  "pp": 800,
   "conf": true
  },
  {
   "tipo": "celula",
   "serie": "wk.volta",
-  "d": "2027-01-09",
-  "dia": "sáb 09/01",
-  "ne": "NAT",
-  "pp": 816,
-  "conf": true
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "JPA",
+  "pp": 1047,
+  "conf": false
  },
  {
   "tipo": "celula",
   "serie": "wk.volta",
-  "d": "2027-01-09",
-  "dia": "sáb 09/01",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "JDO",
+  "pp": 1118,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
   "ne": "REC",
-  "pp": 1006,
+  "pp": 1158,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-08",
+  "dia": "sex 08/01",
+  "ne": "NAT",
+  "pp": 1472,
   "conf": false
  },
  {
@@ -1542,8 +1834,17 @@
   "serie": "wk.volta",
   "d": "2027-01-09",
   "dia": "sáb 09/01",
+  "ne": "REC",
+  "pp": 1136,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-09",
+  "dia": "sáb 09/01",
   "ne": "JPA",
-  "pp": 1202,
+  "pp": 1210,
   "conf": false
  },
  {
@@ -1552,7 +1853,16 @@
   "d": "2027-01-09",
   "dia": "sáb 09/01",
   "ne": "FOR",
-  "pp": 1286,
+  "pp": 1412,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-09",
+  "dia": "sáb 09/01",
+  "ne": "NAT",
+  "pp": 1462,
   "conf": false
  },
  {
@@ -1594,10 +1904,46 @@
  {
   "tipo": "celula",
   "serie": "wk.volta",
-  "d": "2027-01-12",
-  "dia": "ter 12/01",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "FOR",
+  "pp": 1102,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "JDO",
+  "pp": 1118,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
   "ne": "JPA",
-  "pp": 905,
+  "pp": 1210,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "NAT",
+  "pp": 1218,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "REC",
+  "pp": 1443,
   "conf": false
  },
  {
@@ -1605,9 +1951,18 @@
   "serie": "wk.volta",
   "d": "2027-01-12",
   "dia": "ter 12/01",
-  "ne": "FOR",
-  "pp": 994,
+  "ne": "JPA",
+  "pp": 848,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.volta",
+  "d": "2027-01-12",
+  "dia": "ter 12/01",
+  "ne": "FOR",
+  "pp": 1013,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1623,8 +1978,8 @@
   "serie": "wk.volta",
   "d": "2027-01-12",
   "dia": "ter 12/01",
-  "ne": "REC",
-  "pp": 1233,
+  "ne": "NAT",
+  "pp": 1218,
   "conf": false
  },
  {
@@ -1632,8 +1987,8 @@
   "serie": "wk.volta",
   "d": "2027-01-12",
   "dia": "ter 12/01",
-  "ne": "NAT",
-  "pp": 1337,
+  "ne": "REC",
+  "pp": 1233,
   "conf": false
  },
  {
@@ -1641,32 +1996,32 @@
   "grupo": "g",
   "id": "A",
   "nome": "indo em dezembro",
-  "pp": 1946,
+  "pp": 1777,
   "ida": {
-   "d": "2026-12-28",
+   "d": "2026-12-29",
    "orig": "GRU",
    "dest": "JDO",
-   "cia": "LATAM",
-   "saida": "20:10",
-   "chegada": "23:15",
+   "cia": "Gol",
+   "saida": "21:25",
+   "chegada": "00:20",
    "tipo": "direto",
-   "pp": 1235,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-28%22%7D%5D",
-   "dia": "seg 28/12"
+   "pp": 1066,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261229/1/0/0/Y/",
+   "dia": "ter 29/12"
   },
   "volta": {
-   "d": "2027-01-22",
+   "d": "2027-01-20",
    "orig": "FOR",
    "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "02:10",
-   "chegada": "05:30",
-   "tipo": "direto",
+   "cia": "Gol",
+   "saida": "00:40",
+   "chegada": "06:50",
+   "tipo": "escala 1h50",
    "pp": 711,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "dia": "sex 22/01"
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhqhARIKMjAyNy0wMS0yMCIgCgNGT1ISCjIwMjctMDEtMjAaA1NTQSoCRzMyBDkxMTUiIAoDU1NBEgoyMDI3LTAxLTIwGgNHUlUqAkczMgQxNjk3agcIARIDRk9SagcIARIDTVZGagcIARIDSkRPagcIARIDTkFUagcIARIDSlBBagcIARIDUkVDcgcIARIDR1JVcgcIARIDQ0dIcgcIARIDVkNQQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 20/01"
   },
   "juntas": null
  },
@@ -1675,7 +2030,7 @@
   "grupo": "g",
   "id": "B",
   "nome": "indo em janeiro",
-  "pp": 1430,
+  "pp": 1423,
   "ida": {
    "d": "2027-01-06",
    "orig": "CGH",
@@ -1684,70 +2039,44 @@
    "saida": "20:25",
    "chegada": "01:15",
    "tipo": "com escala",
-   "pp": 719,
+   "pp": 712,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHNAT270106/1/0/0/Y/",
    "dia": "qua 06/01"
   },
   "volta": {
-   "d": "2027-01-22",
+   "d": "2027-01-20",
    "orig": "FOR",
    "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "02:10",
-   "chegada": "05:30",
-   "tipo": "direto",
+   "cia": "Gol",
+   "saida": "00:40",
+   "chegada": "06:50",
+   "tipo": "escala 1h50",
    "pp": 711,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "dia": "sex 22/01"
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhqhARIKMjAyNy0wMS0yMCIgCgNGT1ISCjIwMjctMDEtMjAaA1NTQSoCRzMyBDkxMTUiIAoDU1NBEgoyMDI3LTAxLTIwGgNHUlUqAkczMgQxNjk3agcIARIDRk9SagcIARIDTVZGagcIARIDSkRPagcIARIDTkFUagcIARIDSlBBagcIARIDUkVDcgcIARIDR1JVcgcIARIDQ0dIcgcIARIDVkNQQAFIAXABggELCP___________wGYAQI&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 20/01"
   },
-  "juntas": {
-   "pp": 1375,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=1&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22NAT%22%2C%22departureDate%22%3A%222027-01-06%22%7D%2C%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-22%22%7D%5D",
-   "economia": 55,
-   "mesmos": true,
-   "ida": {
-    "d": "2027-01-06",
-    "orig": "CGH",
-    "dest": "NAT",
-    "cia": "Gol",
-    "saida": "20:25",
-    "chegada": "01:15",
-    "tipo": "com escala",
-    "dia": "qua 06/01"
-   },
-   "volta": {
-    "d": "2027-01-22",
-    "orig": "FOR",
-    "dest": "GRU",
-    "cia": "LATAM",
-    "saida": "02:10",
-    "chegada": "05:30",
-    "tipo": "direto",
-    "dia": "sex 22/01"
-   }
-  }
+  "juntas": null
  },
  {
   "tipo": "pacote",
   "grupo": "wk",
   "id": "U",
   "nome": "U",
-  "pp": 2010,
+  "pp": 1877,
   "ida": {
-   "d": "2026-12-28",
+   "d": "2026-12-29",
    "orig": "GRU",
    "dest": "JDO",
-   "cia": "LATAM",
-   "saida": "20:10",
-   "chegada": "23:15",
+   "cia": "Gol",
+   "saida": "21:25",
+   "chegada": "00:20",
    "tipo": "direto",
-   "pp": 1235,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-28%22%7D%5D",
-   "dia": "seg 28/12"
+   "pp": 1077,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUJDO261229/2/0/0/Y/",
+   "dia": "ter 29/12"
   },
   "volta": {
    "d": "2027-01-08",
@@ -1757,11 +2086,37 @@
    "saida": "21:05",
    "chegada": "00:40",
    "tipo": "direto",
-   "pp": 775,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-08%22%7D%5D",
+   "pp": 800,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/FORGRU270108/2/0/0/Y/",
    "dia": "sex 08/01"
   },
-  "juntas": null
+  "juntas": {
+   "pp": 1774,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-29%22%7D%2C%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-08%22%7D%5D",
+   "economia": 103,
+   "mesmos": true,
+   "ida": {
+    "d": "2026-12-29",
+    "orig": "GRU",
+    "dest": "JDO",
+    "cia": "Gol",
+    "saida": "21:25",
+    "chegada": "00:20",
+    "tipo": "direto",
+    "dia": "ter 29/12"
+   },
+   "volta": {
+    "d": "2027-01-08",
+    "orig": "FOR",
+    "dest": "GRU",
+    "cia": "LATAM",
+    "saida": "21:05",
+    "chegada": "00:40",
+    "tipo": "direto",
+    "dia": "sex 08/01"
+   }
+  }
  }
 ]
