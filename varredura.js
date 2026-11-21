@@ -28,7 +28,8 @@ window.__gv = (() => {
       if (i >= 2 && BLOQUEIO.test((doc.body.innerText || '').slice(0, 3000))) { parou = (doc.body.innerText || '').slice(0, 200); break; }
       const n = rotulos(doc).length;
       parado = n > 0 && n === antes ? parado + 1 : 0;
-      if (parado >= 2 && i >= 3) break;
+      // lista curta pode ser só a primeira parte (com o Google lento, o resto demora): espera 4 segundos parada, não 2
+      if (parado >= (n < 8 ? 4 : 2) && i >= 3) break;
       if (n === 0 && i >= vazio) break;
       antes = n;
     }
@@ -47,10 +48,24 @@ window.__gv = (() => {
     return out;
   };
 
-  const listar = (enderecos, paralelo) => fila(enderecos, paralelo, async u => {
-    const f = await abrir(u, 12);
-    try { return parou ? { bloqueio: parou } : { rotulos: rotulos(f.contentDocument) }; } finally { f.remove(); }
-  });
+  // Lista vazia quase sempre é o Google demorando ou respondendo "Algo deu errado" (toda busca nossa tem voo): tenta mais
+  // uma vez, com mais paciência. No máximo 12 repetições por chamada: se o Google está fora do ar, não insistimos.
+  let repetidas = 0;
+  const texto = f => (((f.contentDocument || {}).body || {}).innerText || '');
+  const listar = (enderecos, paralelo) => { repetidas = 0; return fila(enderecos, paralelo, async u => {
+    let f = await abrir(u, 15);
+    try {
+      if (parou) return { bloqueio: parou };
+      let r = rotulos(f.contentDocument);
+      if (r.length || repetidas >= 12) return { rotulos: r };
+      repetidas++;
+      const inicio = texto(f).slice(0, 160);
+      f.remove(); await sleep(1500);
+      f = await abrir(u, 25);
+      if (parou) return { bloqueio: parou };
+      return { rotulos: rotulos(f.contentDocument), repetida: true, inicio };
+    } finally { f.remove(); }
+  }); };
 
   // espera a tela de compra mostrar os vendedores ("Reserve com a ...") e devolve o texto e o endereço (que traz o número de cada voo)
   const lerCompra = async f => {
@@ -76,14 +91,14 @@ window.__gv = (() => {
 
   // clica no voo da lista e lê a tela de compra
   const validar = (itens, paralelo) => fila(itens, paralelo, async it => {
-    const f = await abrir(it.url, 12);
+    const f = await abrir(it.url, 20);
     try {
       if (parou) return { bloqueio: parou };
       // o voo pode estar na parte da lista que chega depois: procura por mais alguns segundos antes de desistir
       const achar = () => [...f.contentDocument.querySelectorAll('[aria-label^="A partir de"]')].find(e => e.getAttribute('aria-label').includes(it.chave));
       let el = achar();
-      for (let i = 0; i < 8 && !el; i++) { await sleep(1000); el = achar(); }
-      if (!el) return { erro: 'voo não está mais na lista' };
+      for (let i = 0; i < 10 && !el; i++) { await sleep(1000); el = achar(); }
+      if (!el) return { erro: rotulos(f.contentDocument).length ? 'voo não está mais na lista' : 'a lista não abriu' };
       el.click();
       return await lerCompra(f);
     } finally { f.remove(); }
