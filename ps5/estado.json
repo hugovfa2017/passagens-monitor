@@ -542,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3240704",
    "publicado": "2026-11-22T15:27:03-0300",
-   "idade_h": 4.0
+   "idade_h": 4.2
   },
   "promobit-3240700": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3240817",
    "publicado": "2026-11-22T16:25:14-0300",
-   "idade_h": 3.0
+   "idade_h": 3.3
   },
   "promobit-3240889": {
    "fonte": "Promobit",
@@ -593,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3240889",
    "publicado": "2026-11-22T16:52:07-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3240879": {
    "fonte": "Promobit",
@@ -610,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3240879",
    "publicado": "2026-11-22T16:47:22-0300",
-   "idade_h": 2.7
+   "idade_h": 2.9
   },
   "promobit-3241073": {
    "fonte": "Promobit",
@@ -627,7 +627,7 @@
    "ressalvas": [],
    "id": "promobit-3241073",
    "publicado": "2026-11-22T17:55:07-0300",
-   "idade_h": 1.5
+   "idade_h": 1.8
   },
   "promobit-3241119": {
    "fonte": "Promobit",
@@ -644,7 +644,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -661,7 +661,7 @@
    "ressalvas": [],
    "id": "promobit-3241300",
    "publicado": "2026-11-22T19:12:45-0300",
-   "idade_h": 0.2
+   "idade_h": 0.5
   },
   "promobit-3241261": {
    "fonte": "Promobit",
@@ -678,7 +678,7 @@
    "ressalvas": [],
    "id": "promobit-3241261",
    "publicado": "2026-11-22T19:06:04-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3241274": {
    "fonte": "Promobit",
@@ -695,7 +695,24 @@
    "ressalvas": [],
    "id": "promobit-3241274",
    "publicado": "2026-11-22T19:08:04-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
+  },
+  "promobit-3241363": {
+   "fonte": "Promobit",
+   "loja": "Shopee",
+   "titulo": "Console PlayStation 5 Sony SSD 1TB Leitor de Discos Controle DualSense Astro's Playroom Branco - 1000049892",
+   "preco": 4599.0,
+   "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astros-playroom-branco-1000049892-3241363/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3241363",
+   "publicado": "2026-11-22T19:30:55-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -732,81 +749,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 4,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
-   "barradas": 93
+   "buscas": 119,
+   "barradas": 94
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 118,
+   "buscas": 119,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T19:27:36-03:00",
+ "ultima": "2026-11-22T19:40:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }

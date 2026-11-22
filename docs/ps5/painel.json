@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-22 19:27",
+ "atualizado": "2026-11-22 19:40",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Promobit",
@@ -12,7 +12,7 @@
   "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
   "obs": "postado no Promobit",
   "detalhes": "com jogo/extra",
-  "idade_h": 1.2,
+  "idade_h": 1.4,
   "tipo": "postada",
   "condicao": "novo",
   "confianca": "B",
@@ -21,7 +21,7 @@
    {
     "fonte": "Promobit",
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
-    "idade_h": 1.2,
+    "idade_h": 1.4,
     "tipo": "postada"
    }
   ],
@@ -159,7 +159,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-slim-1tb-1-controle-branco-sony-com-2-jogos-3240879/",
      "obs": "postado no Promobit",
      "detalhes": "com jogo/extra",
-     "idade_h": 2.7,
+     "idade_h": 2.9,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -168,7 +168,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-slim-1tb-1-controle-branco-sony-com-2-jogos-3240879/",
-       "idade_h": 2.7,
+       "idade_h": 2.9,
        "tipo": "postada"
       }
      ],
@@ -198,6 +198,36 @@
        "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
        "idade_h": null,
        "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Promobit",
+     "loja": "Shopee",
+     "titulo": "Console PlayStation 5 Sony SSD 1TB Leitor de Discos Controle DualSense Astro's Playroom Branco - 1000049892",
+     "preco": 4599.0,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astros-playroom-branco-1000049892-3241363/",
+     "obs": "postado no Promobit",
+     "detalhes": "",
+     "idade_h": 0.2,
+     "tipo": "postada",
+     "condicao": "novo",
+     "confianca": "B",
+     "ressalvas": [
+      "confira se é a versão nacional"
+     ],
+     "visto_em": [
+      {
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astros-playroom-branco-1000049892-3241363/",
+       "idade_h": 0.2,
+       "tipo": "postada"
       }
      ],
      "n_vistos": 1,
@@ -656,34 +686,6 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "Console PlayStation 5",
-     "preco": 5999.9,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
-       "idade_h": null,
-       "tipo": "comparador"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
     }
    ]
   },
@@ -704,7 +706,7 @@
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
     "obs": "postado no Promobit",
     "detalhes": "com jogo/extra",
-    "idade_h": 1.2,
+    "idade_h": 1.4,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -713,7 +715,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
-      "idade_h": 1.2,
+      "idade_h": 1.4,
       "tipo": "postada"
      }
     ],
@@ -766,7 +768,7 @@
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
     "obs": "postado no Promobit",
     "detalhes": "com jogo/extra",
-    "idade_h": 1.2,
+    "idade_h": 1.4,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -775,7 +777,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
-      "idade_h": 1.2,
+      "idade_h": 1.4,
       "tipo": "postada"
      }
     ],
@@ -804,7 +806,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
      "obs": "postado no Promobit",
      "detalhes": "com jogo/extra",
-     "idade_h": 1.2,
+     "idade_h": 1.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -813,7 +815,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3241119/",
-       "idade_h": 1.2,
+       "idade_h": 1.4,
        "tipo": "postada"
       }
      ],
@@ -832,7 +834,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 25.6,
+     "idade_h": 25.8,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -841,7 +843,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-       "idade_h": 25.6,
+       "idade_h": 25.8,
        "tipo": "postada"
       }
      ],
@@ -950,7 +952,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 6.8,
+     "idade_h": 7.0,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -965,7 +967,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3240334/",
-       "idade_h": 6.8,
+       "idade_h": 7.0,
        "tipo": "postada"
       }
      ],
@@ -4925,6 +4927,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-22 19:40",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "4084.07",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -5028,48 +5042,48 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.5,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
    "segundos": 0.1,
    "tipo": "loja",
-   "falhas_seguidas": 3,
-   "barradas_hoje": 93,
-   "buscas_hoje": 118
+   "falhas_seguidas": 4,
+   "barradas_hoje": 94,
+   "buscas_hoje": 119
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 1.0,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.4,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 1.0,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Bemol": {
    "ok": true,
@@ -5078,16 +5092,16 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Zoom": {
    "ok": true,
-   "segundos": 6.1,
+   "segundos": 5.9,
    "ofertas": 28,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Promobit": {
    "ok": true,
@@ -5096,37 +5110,37 @@
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.1,
+   "segundos": 0.2,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Telegram": {
    "ok": true,
-   "segundos": 17.7,
-   "ofertas": 5,
+   "segundos": 21.2,
+   "ofertas": 4,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.5,
+   "segundos": 4.5,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 118
+   "buscas_hoje": 119
   },
   "Cupons (Promobit)": {
    "ok": true,
