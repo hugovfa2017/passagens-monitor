@@ -593,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3240889",
    "publicado": "2026-11-22T16:52:07-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3240879": {
    "fonte": "Promobit",
@@ -610,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3240879",
    "publicado": "2026-11-22T16:47:22-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3241073": {
    "fonte": "Promobit",
@@ -627,7 +627,7 @@
    "ressalvas": [],
    "id": "promobit-3241073",
    "publicado": "2026-11-22T17:55:07-0300",
-   "idade_h": 1.8
+   "idade_h": 1.9
   },
   "promobit-3241119": {
    "fonte": "Promobit",
@@ -644,7 +644,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -661,7 +661,7 @@
    "ressalvas": [],
    "id": "promobit-3241300",
    "publicado": "2026-11-22T19:12:45-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "promobit-3241261": {
    "fonte": "Promobit",
@@ -678,7 +678,7 @@
    "ressalvas": [],
    "id": "promobit-3241261",
    "publicado": "2026-11-22T19:06:04-0300",
-   "idade_h": 0.6
+   "idade_h": 0.7
   },
   "promobit-3241274": {
    "fonte": "Promobit",
@@ -695,7 +695,7 @@
    "ressalvas": [],
    "id": "promobit-3241274",
    "publicado": "2026-11-22T19:08:04-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3241363": {
    "fonte": "Promobit",
@@ -712,6 +712,59 @@
    "ressalvas": [],
    "id": "promobit-3241363",
    "publicado": "2026-11-22T19:30:55-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3241404": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Jogo Dragon Age The Veilguard - Ps5 Midia Fisica",
+   "preco": 69.98,
+   "link": "https://www.promobit.com.br/oferta/jogo-dragon-age-the-veilguard-ps5-midia-fisica-3241404/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3241404",
+   "publicado": "2026-11-22T19:46:45-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3241401": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Sony PlayStation 5 Edição Digital 825GB 1 Controle | Branco",
+   "preco": 4047.0,
+   "link": "https://www.promobit.com.br/oferta/sony-playstation-5-edicao-digital-825gb-1-controle-branco-3241401/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3241401",
+   "publicado": "2026-11-22T19:45:29-0300",
+   "idade_h": 0.1
+  },
+  "tg-cupons_desconto/84729-0": {
+   "fonte": "Telegram",
+   "loja": "KaBuM!",
+   "titulo": "Console Sony Playstation 5 Slim Edição Digital 1TB 2 Jogos",
+   "preco": 4311.28,
+   "link": "https://t.me/cupons_desconto/84729",
+   "tipo": "grupo",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Promobit (Telegram)",
+   "ressalvas": [],
+   "id": "tg-cupons_desconto/84729-0",
+   "publicado": "2026-11-22T19:40:14-0300",
+   "canal": "Promobit (Telegram)",
+   "preco_de": null,
    "idade_h": 0.2
   }
  },
@@ -749,81 +802,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 5,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
-   "barradas": 94
+   "buscas": 120,
+   "barradas": 95
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 119,
+   "buscas": 120,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T19:40:19-03:00",
+ "ultima": "2026-11-22T19:50:18-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
