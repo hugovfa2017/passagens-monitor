@@ -457,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3239259",
    "publicado": "2026-11-21T20:43:02-0300",
-   "idade_h": 16.0
+   "idade_h": 16.1
   },
   "promobit-3239271": {
    "fonte": "Promobit",
@@ -525,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3239409",
    "publicado": "2026-11-21T21:53:37-0300",
-   "idade_h": 14.8
+   "idade_h": 14.9
   },
   "promobit-3239517": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3239643",
    "publicado": "2026-11-22T06:51:58-0300",
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "promobit-3239908": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3239908",
    "publicado": "2026-11-22T09:44:25-0300",
-   "idade_h": 2.9
+   "idade_h": 3.1
   },
   "promobit-3239996": {
    "fonte": "Promobit",
@@ -593,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3239996",
    "publicado": "2026-11-22T10:16:43-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3240222": {
    "fonte": "Promobit",
@@ -610,7 +610,24 @@
    "ressalvas": [],
    "id": "promobit-3240222",
    "publicado": "2026-11-22T11:51:01-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
+  },
+  "promobit-3240334": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "PlayStation5 Slim Digital 825GB Pacote ASTRO BOT e Gran Turismo 7",
+   "preco": 4499.0,
+   "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3240334/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3240334",
+   "publicado": "2026-11-22T12:38:28-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -647,81 +664,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 15,
+   "falhas": 16,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
-   "barradas": 60
+   "buscas": 78,
+   "barradas": 61
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 77,
+   "buscas": 78,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T12:40:19-03:00",
+ "ultima": "2026-11-22T12:50:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
