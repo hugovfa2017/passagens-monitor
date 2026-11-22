@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3236153": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Mega Man Star Force Legacy Collection - PS5",
-   "preco": 74.33,
-   "link": "https://www.promobit.com.br/oferta/mega-man-star-force-legacy-collection-ps5-3236153/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3236153",
-   "publicado": "2026-11-20T16:58:03-0300",
-   "idade_h": 6.9
-  },
-  "promobit-3236134": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Grand Theft Auto Vi - Playstation 5",
-   "preco": 279.92,
-   "link": "https://www.promobit.com.br/oferta/grand-theft-auto-vi-playstation-5-3236134/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "GRAND100MP",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3236134",
-   "publicado": "2026-11-20T16:54:45-0300",
-   "idade_h": 1.7
-  },
   "promobit-3236456": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -644,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3238212",
    "publicado": "2026-11-21T13:56:12-0300",
-   "idade_h": 14.9
+   "idade_h": 15.1
   },
   "promobit-3238309": {
    "fonte": "Promobit",
@@ -661,7 +627,7 @@
    "ressalvas": [],
    "id": "promobit-3238309",
    "publicado": "2026-11-21T14:42:19-0300",
-   "idade_h": 14.1
+   "idade_h": 14.3
   },
   "promobit-3238404": {
    "fonte": "Promobit",
@@ -678,7 +644,7 @@
    "ressalvas": [],
    "id": "promobit-3238404",
    "publicado": "2026-11-21T15:13:04-0300",
-   "idade_h": 13.6
+   "idade_h": 13.8
   },
   "promobit-3238929": {
    "fonte": "Promobit",
@@ -695,7 +661,7 @@
    "ressalvas": [],
    "id": "promobit-3238929",
    "publicado": "2026-11-21T17:54:29-0300",
-   "idade_h": 10.9
+   "idade_h": 11.1
   },
   "promobit-3239052": {
    "fonte": "Promobit",
@@ -712,7 +678,7 @@
    "ressalvas": [],
    "id": "promobit-3239052",
    "publicado": "2026-11-21T18:43:47-0300",
-   "idade_h": 10.1
+   "idade_h": 10.3
   },
   "tg-cupons_desconto/84710-0": {
    "fonte": "Telegram",
@@ -731,7 +697,7 @@
    "publicado": "2026-11-21T19:40:18-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 9.2
+   "idade_h": 9.3
   },
   "promobit-3239261": {
    "fonte": "Promobit",
@@ -748,7 +714,7 @@
    "ressalvas": [],
    "id": "promobit-3239261",
    "publicado": "2026-11-21T20:44:09-0300",
-   "idade_h": 8.1
+   "idade_h": 8.3
   },
   "promobit-3239259": {
    "fonte": "Promobit",
@@ -765,7 +731,7 @@
    "ressalvas": [],
    "id": "promobit-3239259",
    "publicado": "2026-11-21T20:43:02-0300",
-   "idade_h": 8.1
+   "idade_h": 8.3
   },
   "promobit-3239271": {
    "fonte": "Promobit",
@@ -782,7 +748,7 @@
    "ressalvas": [],
    "id": "promobit-3239271",
    "publicado": "2026-11-21T20:51:15-0300",
-   "idade_h": 8.0
+   "idade_h": 8.2
   },
   "promobit-3239390": {
    "fonte": "Promobit",
@@ -799,7 +765,7 @@
    "ressalvas": [],
    "id": "promobit-3239390",
    "publicado": "2026-11-21T21:35:52-0300",
-   "idade_h": 7.2
+   "idade_h": 7.4
   },
   "promobit-3239387": {
    "fonte": "Promobit",
@@ -816,7 +782,7 @@
    "ressalvas": [],
    "id": "promobit-3239387",
    "publicado": "2026-11-21T21:32:17-0300",
-   "idade_h": 7.3
+   "idade_h": 7.5
   },
   "promobit-3239409": {
    "fonte": "Promobit",
@@ -833,7 +799,7 @@
    "ressalvas": [],
    "id": "promobit-3239409",
    "publicado": "2026-11-21T21:53:37-0300",
-   "idade_h": 6.9
+   "idade_h": 7.1
   },
   "promobit-3239517": {
    "fonte": "Promobit",
@@ -850,7 +816,7 @@
    "ressalvas": [],
    "id": "promobit-3239517",
    "publicado": "2026-11-22T00:19:07-0300",
-   "idade_h": 4.5
+   "idade_h": 4.7
   },
   "tg-achadosdotb/12211-0": {
    "fonte": "Telegram",
@@ -869,7 +835,7 @@
    "publicado": "2026-11-22T00:17:40-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 4599.9,
-   "idade_h": 4.5
+   "idade_h": 4.7
   }
  },
  "alertados": {},
@@ -906,81 +872,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
-   "barradas": 21
+   "buscas": 31,
+   "barradas": 22
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 30,
+   "buscas": 31,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T04:50:25-03:00",
+ "ultima": "2026-11-22T05:00:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
