@@ -457,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3239259",
    "publicado": "2026-11-21T20:43:02-0300",
-   "idade_h": 15.5
+   "idade_h": 15.6
   },
   "promobit-3239271": {
    "fonte": "Promobit",
@@ -491,7 +491,7 @@
    "ressalvas": [],
    "id": "promobit-3239390",
    "publicado": "2026-11-21T21:35:52-0300",
-   "idade_h": 14.6
+   "idade_h": 14.7
   },
   "promobit-3239387": {
    "fonte": "Promobit",
@@ -525,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3239409",
    "publicado": "2026-11-21T21:53:37-0300",
-   "idade_h": 14.3
+   "idade_h": 14.4
   },
   "promobit-3239517": {
    "fonte": "Promobit",
@@ -544,25 +544,6 @@
    "publicado": "2026-11-22T00:19:07-0300",
    "idade_h": 8.7
   },
-  "tg-achadosdotb/12211-0": {
-   "fonte": "Telegram",
-   "loja": "Amazon",
-   "titulo": "PS5 Slim Digital com Astro Bot e GT7 chega a novo menor preço na Amazon",
-   "preco": 3905.0,
-   "link": "https://t.me/achadosdotb/12211",
-   "tipo": "grupo",
-   "origem": "achadosdotb",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Achados do Tecnoblog",
-   "ressalvas": [],
-   "id": "tg-achadosdotb/12211-0",
-   "publicado": "2026-11-22T00:17:40-0300",
-   "canal": "Achados do Tecnoblog",
-   "preco_de": 4599.9,
-   "idade_h": 11.9
-  },
   "promobit-3239643": {
    "fonte": "Promobit",
    "loja": "Aliexpress",
@@ -578,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3239643",
    "publicado": "2026-11-22T06:51:58-0300",
-   "idade_h": 5.3
+   "idade_h": 5.5
   },
   "promobit-3239908": {
    "fonte": "Promobit",
@@ -595,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3239908",
    "publicado": "2026-11-22T09:44:25-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3239996": {
    "fonte": "Promobit",
@@ -612,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3239996",
    "publicado": "2026-11-22T10:16:43-0300",
-   "idade_h": 1.9
+   "idade_h": 2.1
   },
   "promobit-3240222": {
    "fonte": "Promobit",
@@ -629,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3240222",
    "publicado": "2026-11-22T11:51:01-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   }
  },
  "alertados": {},
@@ -666,81 +647,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 12,
+   "falhas": 13,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
-   "barradas": 57
+   "buscas": 75,
+   "barradas": 58
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T12:10:19-03:00",
+ "ultima": "2026-11-22T12:20:21-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
