@@ -457,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3239259",
    "publicado": "2026-11-21T20:43:02-0300",
-   "idade_h": 18.1
+   "idade_h": 18.3
   },
   "promobit-3239271": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3239643",
    "publicado": "2026-11-22T06:51:58-0300",
-   "idade_h": 8.0
+   "idade_h": 8.1
   },
   "promobit-3239908": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3239908",
    "publicado": "2026-11-22T09:44:25-0300",
-   "idade_h": 5.1
+   "idade_h": 5.3
   },
   "promobit-3239996": {
    "fonte": "Promobit",
@@ -593,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3239996",
    "publicado": "2026-11-22T10:16:43-0300",
-   "idade_h": 4.6
+   "idade_h": 4.7
   },
   "promobit-3240222": {
    "fonte": "Promobit",
@@ -610,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3240222",
    "publicado": "2026-11-22T11:51:01-0300",
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "promobit-3240334": {
    "fonte": "Promobit",
@@ -627,7 +627,7 @@
    "ressalvas": [],
    "id": "promobit-3240334",
    "publicado": "2026-11-22T12:38:28-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3240550": {
    "fonte": "Promobit",
@@ -644,7 +644,7 @@
    "ressalvas": [],
    "id": "promobit-3240550",
    "publicado": "2026-11-22T14:27:56-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
   }
  },
  "alertados": {},
@@ -681,81 +681,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 6,
+   "falhas": 7,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
-   "barradas": 71
+   "buscas": 91,
+   "barradas": 72
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T14:50:19-03:00",
+ "ultima": "2026-11-22T15:00:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
