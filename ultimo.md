@@ -1,8 +1,8 @@
-# Passagens: última busca em 2026-11-22 16:24
+# Passagens: última busca em 2026-11-22 17:25
 
-✈️ Passagens · dom 22/11, 16:24
+✈️ Passagens · dom 22/11, 17:25
 Preço por pessoa, sem mala, conferido nesta busca.
-🔥 Hora de comprar: G, ida em dezembro R$1.060 (alvo R$1.100) · W + K, ida R$1.070 (alvo R$1.100)
+🔥 Hora de comprar: G, ida em dezembro R$1.070 (alvo R$1.100) · W + K, ida R$1.070 (alvo R$1.100)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
 
 👩 V
@@ -25,24 +25,21 @@ Outras datas, preço ainda não conferido: sáb 20/02 R$384 · seg 22/02 R$384
 
 🧑 G
 Ida em dezembro · 22 a 23/12 e 26 a 30/12
-⭐ ✅ R$1.060 · ter 29/12 · Gol 1580, direto
-└ 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro · Vai de Promo
+⭐ ✅ R$1.070 · ter 22/12 · LATAM 4732, direto
+└ 09h55 Congonhas → 13h20 Natal · Vai de Promo
 🎯 Voo já comprado: R$3.566 · ter 22/12 · Gol 1678, direto
 └ 14h05 Guarulhos → 17h25 Natal · Gol
 🟢 Bom momento: abaixo do alvo de R$1.100
 Ida em janeiro · 02 a 10/01
-⭐ R$793 · dom 10/01 · LATAM 3252, direto
-└ 20h15 Guarulhos → 23h40 Fortaleza · Vai de Promo
-💸 Mais barata: R$709 · qua 06/01 · Gol, 1 conexão
+⭐ R$786 · dom 10/01 · LATAM 3252, direto
+└ 20h15 Guarulhos → 23h40 Fortaleza · 123milhas
+💸 Mais barata: R$715 · qua 06/01 · Gol, 1 conexão
 └ 20h25 Congonhas → 01h15 (+1 dia) Natal · Vai de Promo
 🟡 Acompanhar: para o Google, preço normal (a rota costuma ficar entre R$720 e R$2.550)
 Volta · 18 a 22/01
 R$725 · qua 20/01 · mesmo voo de V
 └ 00h40 Fortaleza → 06h15 Congonhas
-📦 Ida + volta: indo em dezembro R$1.785 · indo em janeiro R$1.518
-🔁 Indo em dezembro, ida e volta numa compra só na Zupper, em outros voos: R$1.713 (R$72 a menos)
-└ ida: ter 29/12 · Gol, direto · 21h25 Guarulhos → 00h20 (+1 dia) Juazeiro
-└ volta: qua 20/01 · LATAM, direto · 19h50 Fortaleza → 23h25 Guarulhos
+📦 Ida + volta: indo em dezembro R$1.795 · indo em janeiro R$1.511
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
@@ -57,7 +54,7 @@ Volta · 07 a 12/01
 🟡 Acompanhar: para o Google, preço normal (a rota costuma ficar entre R$900 e R$2.600) · R$227 acima do alvo (R$650)
 📦 Ida + volta: R$1.947 por pessoa · R$3.894 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$98 a R$135 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$97 a R$135 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
