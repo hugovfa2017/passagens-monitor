@@ -542,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3239908",
    "publicado": "2026-11-22T09:44:25-0300",
-   "idade_h": 5.7
+   "idade_h": 5.9
   },
   "promobit-3239996": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3239996",
    "publicado": "2026-11-22T10:16:43-0300",
-   "idade_h": 5.2
+   "idade_h": 5.4
   },
   "promobit-3240222": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3240222",
    "publicado": "2026-11-22T11:51:01-0300",
-   "idade_h": 3.6
+   "idade_h": 3.8
   },
   "promobit-3240334": {
    "fonte": "Promobit",
@@ -593,7 +593,7 @@
    "ressalvas": [],
    "id": "promobit-3240334",
    "publicado": "2026-11-22T12:38:28-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3240550": {
    "fonte": "Promobit",
@@ -610,7 +610,41 @@
    "ressalvas": [],
    "id": "promobit-3240550",
    "publicado": "2026-11-22T14:27:56-0300",
-   "idade_h": 1.0
+   "idade_h": 1.2
+  },
+  "promobit-3240704": {
+   "fonte": "Promobit",
+   "loja": "Aliexpress",
+   "titulo": "Reprodutor Remoto PlayStation Portal Para o Console PS5",
+   "preco": 1678.0,
+   "link": "https://www.promobit.com.br/oferta/reprodutor-remoto-playstation-portal-para-o-console-ps5-3240704/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "BLACKAE6",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3240704",
+   "publicado": "2026-11-22T15:27:03-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3240700": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Controle Sony Dualsense Edge PS5 Sem Fio Preto e Branco - CFI-ZCP1WY",
+   "preco": 1129.11,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-edge-ps5-sem-fio-preto-e-branco-cfi-zcp1wy-3240700/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "CONTROLENAMAO",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3240700",
+   "publicado": "2026-11-22T15:25:47-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -647,81 +681,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 2,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
-   "barradas": 74
+   "buscas": 95,
+   "barradas": 75
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 94,
+   "buscas": 95,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T15:26:53-03:00",
+ "ultima": "2026-11-22T15:40:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
