@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-22 09:26
+# Passagens: última busca em 2026-11-22 10:26
 
-✈️ Passagens · dom 22/11, 09:26
+✈️ Passagens · dom 22/11, 10:26
 Preço por pessoa, sem mala, conferido nesta busca.
 🔥 Hora de comprar: G, ida em dezembro R$1.052 (alvo R$1.100)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
@@ -9,7 +9,6 @@ Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). P
 Volta · 18 a 22/01
 ⭐ R$725 · qua 20/01 · Gol, 1 conexão (espera de 1h05)
 └ 00h40 Fortaleza → 06h15 Congonhas · Gol
-👥 Nesse voo, 2 ou 3 lugares juntos saem pelo mesmo preço por pessoa
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.100 e R$3.000) · R$75 acima do alvo (R$650)
 
 🧍 H
@@ -47,12 +46,12 @@ Ida · 22 a 23/12 e 26 a 30/12
 └ 14h05 Guarulhos → 17h25 Natal · Gol
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.250) · R$150 acima do alvo (R$1.100)
 Volta · 07 a 12/01
-⭐ R$808 por pessoa · sex 08/01 · LATAM 3361, direto
-└ 21h05 Fortaleza → 00h40 (+1 dia) Guarulhos · Vai de Promo
-🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.275 e R$3.250) · R$158 acima do alvo (R$650)
-📦 Ida + volta: R$2.058 por pessoa · R$4.116 no total
+⭐ R$824 por pessoa · sex 08/01 · LATAM 3361, direto
+└ 21h05 Fortaleza → 00h40 (+1 dia) Guarulhos · 123milhas
+🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.275 e R$3.250) · R$174 acima do alvo (R$650)
+📦 Ida + volta: R$2.074 por pessoa · R$4.148 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$90 a R$135 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$90 a R$158 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
