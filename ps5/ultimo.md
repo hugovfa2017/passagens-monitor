@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-22 04:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-22 04:29 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 4.169 na Amazon com cupom 100OFF · visto em 2 lugares, postado há 10h
+**Mais barato agora:** PS5 Digital por R$ 4.169 na Amazon com cupom 100OFF · visto em 2 lugares, postado há 11h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-- **PS5 Digital**: R$ 4.169 na Amazon com cupom 100OFF · visto em 2 lugares, postado há 10h
+- **PS5 Digital**: R$ 4.169 na Amazon com cupom 100OFF · visto em 2 lugares, postado há 11h
    sem cupom: R$ 4.184,07 na KaBuM!
    não confirmada: R$ 3.869,79 na Aliexpress · confira se é a versão nacional, postado há 9h
 - **PS5 Pro**: R$ 7.699 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -27,10 +27,10 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 20 de 27 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 21 de 28 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 7 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 5 itens
 - Zoom: ok, 28 itens
 - Promobit: ok, 12 itens
