@@ -542,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3239908",
    "publicado": "2026-11-22T09:44:25-0300",
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3239996": {
    "fonte": "Promobit",
@@ -559,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3239996",
    "publicado": "2026-11-22T10:16:43-0300",
-   "idade_h": 6.6
+   "idade_h": 6.7
   },
   "promobit-3240222": {
    "fonte": "Promobit",
@@ -576,7 +576,7 @@
    "ressalvas": [],
    "id": "promobit-3240222",
    "publicado": "2026-11-22T11:51:01-0300",
-   "idade_h": 5.0
+   "idade_h": 5.2
   },
   "promobit-3240334": {
    "fonte": "Promobit",
@@ -610,7 +610,7 @@
    "ressalvas": [],
    "id": "promobit-3240550",
    "publicado": "2026-11-22T14:27:56-0300",
-   "idade_h": 2.4
+   "idade_h": 2.5
   },
   "promobit-3240704": {
    "fonte": "Promobit",
@@ -627,7 +627,7 @@
    "ressalvas": [],
    "id": "promobit-3240704",
    "publicado": "2026-11-22T15:27:03-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3240700": {
    "fonte": "Promobit",
@@ -644,7 +644,7 @@
    "ressalvas": [],
    "id": "promobit-3240700",
    "publicado": "2026-11-22T15:25:47-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3240817": {
    "fonte": "Promobit",
@@ -661,7 +661,41 @@
    "ressalvas": [],
    "id": "promobit-3240817",
    "publicado": "2026-11-22T16:25:14-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
+  },
+  "promobit-3240889": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Demon's Souls - Playstation 5",
+   "preco": 152.43,
+   "link": "https://www.promobit.com.br/oferta/demons-souls-playstation-5-3240889/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3240889",
+   "publicado": "2026-11-22T16:52:07-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3240879": {
+   "fonte": "Promobit",
+   "loja": "Netshoes",
+   "titulo": "PlayStation 5 Slim 1TB 1 Controle Branco Sony com 2 Jogos",
+   "preco": 4499.0,
+   "link": "https://www.promobit.com.br/oferta/playstation-5-slim-1tb-1-controle-branco-sony-com-2-jogos-3240879/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3240879",
+   "publicado": "2026-11-22T16:47:22-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -698,81 +732,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 9,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 82
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 102,
+   "buscas": 103,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T16:50:20-03:00",
+ "ultima": "2026-11-22T17:00:29-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
