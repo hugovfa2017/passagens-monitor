@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-21 21:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-21 21:20 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.905 na Amazon · postado há 32h
 
@@ -15,18 +15,21 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.184,06 por ~R$ 3.347,25
 - KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.184,07 por ~R$ 3.681,98; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.184,07 por ~R$ 3.765,66; `CASANINJA10` (Use o cupom Kabum e ganhe 10% OFF em todo o site) → PS5 Digital de R$ 4.184,07 por ~R$ 3.765,66
-- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.499 por ~R$ 3.599,20
 - Mercado Livre: `SITETODO2011` (R$100 OFF em compras acima de R$999 Cupom: «SITETODO2011»); `TODOSITE2011` (R$40 OFF em compras acima de R$399 Cupom: «TODOSITE2011»)
 
 ## À parte: importado
 
+- PS5 Digital: R$ 4.369,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.272,40 na Amazon
+- PS5 com leitor de disco: R$ 5.319,90 na Amazon
 
 ## Fontes
 
 - KaBuM!: ok, 37 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 31 de 37 buscas hoje
+- Amazon: ok, 56 itens · barrada em 31 de 38 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
@@ -37,6 +40,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 18 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 146 não é console PS5
+Descartados: 183 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/

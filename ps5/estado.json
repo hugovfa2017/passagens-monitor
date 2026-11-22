@@ -780,7 +780,7 @@
    "ressalvas": [],
    "id": "promobit-3237656",
    "publicado": "2026-11-21T09:57:17-0300",
-   "idade_h": 11.2
+   "idade_h": 11.4
   },
   "promobit-3237729": {
    "fonte": "Promobit",
@@ -797,7 +797,7 @@
    "ressalvas": [],
    "id": "promobit-3237729",
    "publicado": "2026-11-21T10:22:05-0300",
-   "idade_h": 10.8
+   "idade_h": 11.0
   },
   "promobit-3237780": {
    "fonte": "Promobit",
@@ -814,7 +814,7 @@
    "ressalvas": [],
    "id": "promobit-3237780",
    "publicado": "2026-11-21T10:36:30-0300",
-   "idade_h": 10.6
+   "idade_h": 10.7
   },
   "promobit-3238002": {
    "fonte": "Promobit",
@@ -831,7 +831,7 @@
    "ressalvas": [],
    "id": "promobit-3238002",
    "publicado": "2026-11-21T12:17:59-0300",
-   "idade_h": 8.9
+   "idade_h": 9.0
   },
   "promobit-3238212": {
    "fonte": "Promobit",
@@ -848,7 +848,7 @@
    "ressalvas": [],
    "id": "promobit-3238212",
    "publicado": "2026-11-21T13:56:12-0300",
-   "idade_h": 7.2
+   "idade_h": 7.4
   },
   "promobit-3238309": {
    "fonte": "Promobit",
@@ -865,7 +865,7 @@
    "ressalvas": [],
    "id": "promobit-3238309",
    "publicado": "2026-11-21T14:42:19-0300",
-   "idade_h": 6.5
+   "idade_h": 6.6
   },
   "promobit-3238404": {
    "fonte": "Promobit",
@@ -882,7 +882,7 @@
    "ressalvas": [],
    "id": "promobit-3238404",
    "publicado": "2026-11-21T15:13:04-0300",
-   "idade_h": 6.0
+   "idade_h": 6.1
   },
   "promobit-3238929": {
    "fonte": "Promobit",
@@ -899,7 +899,7 @@
    "ressalvas": [],
    "id": "promobit-3238929",
    "publicado": "2026-11-21T17:54:29-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "promobit-3239052": {
    "fonte": "Promobit",
@@ -916,7 +916,7 @@
    "ressalvas": [],
    "id": "promobit-3239052",
    "publicado": "2026-11-21T18:43:47-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "tg-cupons_desconto/84710-0": {
    "fonte": "Telegram",
@@ -935,7 +935,7 @@
    "publicado": "2026-11-21T19:40:18-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "promobit-3239261": {
    "fonte": "Promobit",
@@ -952,7 +952,7 @@
    "ressalvas": [],
    "id": "promobit-3239261",
    "publicado": "2026-11-21T20:44:09-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3239259": {
    "fonte": "Promobit",
@@ -969,7 +969,7 @@
    "ressalvas": [],
    "id": "promobit-3239259",
    "publicado": "2026-11-21T20:43:02-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "promobit-3239271": {
    "fonte": "Promobit",
@@ -986,7 +986,7 @@
    "ressalvas": [],
    "id": "promobit-3239271",
    "publicado": "2026-11-21T20:51:15-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   }
  },
  "alertados": {},
@@ -1023,81 +1023,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 31
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-21",
-   "buscas": 37,
+   "buscas": 38,
    "barradas": 0
   }
  },
- "ultima": "2026-11-21T21:10:20-03:00",
+ "ultima": "2026-11-21T21:20:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-21"
 }
