@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-22 16:37",
+ "atualizado": "2026-11-22 16:50",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Promobit",
@@ -12,7 +12,7 @@
   "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
   "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
   "detalhes": "",
-  "idade_h": 22.7,
+  "idade_h": 22.9,
   "tipo": "postada",
   "condicao": "novo",
   "confianca": "B",
@@ -21,13 +21,13 @@
    {
     "fonte": "Promobit",
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-    "idade_h": 22.7,
+    "idade_h": 22.9,
     "tipo": "postada"
    },
    {
     "fonte": "Promobit",
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-    "idade_h": 33.4,
+    "idade_h": 33.6,
     "tipo": "postada"
    }
   ],
@@ -183,6 +183,34 @@
     },
     {
      "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation®5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
+     "preco": 4599.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7",
+     "obs": "à vista",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
      "fonte": "Promobit",
      "loja": "Amazon",
      "titulo": "PlayStation5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
@@ -193,7 +221,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 33.4,
+     "idade_h": 33.6,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -202,7 +230,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
-       "idade_h": 33.4,
+       "idade_h": 33.6,
        "tipo": "postada"
       }
      ],
@@ -266,34 +294,6 @@
        "link": "https://www.kabum.com.br/produto/1049973/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astro-s-playroom-branco-1000049892",
        "idade_h": null,
        "tipo": "loja"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
-     "preco": 4749,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7",
-     "obs": "à vista",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7",
-       "idade_h": null,
-       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -710,7 +710,7 @@
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 22.7,
+    "idade_h": 22.9,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -719,13 +719,13 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-      "idade_h": 22.7,
+      "idade_h": 22.9,
       "tipo": "postada"
      },
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-      "idade_h": 33.4,
+      "idade_h": 33.6,
       "tipo": "postada"
      }
     ],
@@ -778,7 +778,7 @@
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 22.7,
+    "idade_h": 22.9,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -787,13 +787,13 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-      "idade_h": 22.7,
+      "idade_h": 22.9,
       "tipo": "postada"
      },
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-      "idade_h": 33.4,
+      "idade_h": 33.6,
       "tipo": "postada"
      }
     ],
@@ -822,7 +822,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 22.7,
+     "idade_h": 22.9,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -831,13 +831,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-       "idade_h": 22.7,
+       "idade_h": 22.9,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-       "idade_h": 33.4,
+       "idade_h": 33.6,
        "tipo": "postada"
       }
      ],
@@ -946,7 +946,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 4.0,
+     "idade_h": 4.2,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -961,7 +961,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3240334/",
-       "idade_h": 4.0,
+       "idade_h": 4.2,
        "tipo": "postada"
       }
      ],
@@ -4717,6 +4717,18 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-22 16:50",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "4169.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -4816,105 +4828,105 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.3,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.2,
+   "segundos": 0.4,
    "tipo": "loja",
-   "falhas_seguidas": 8,
-   "barradas_hoje": 81,
-   "buscas_hoje": 101
+   "falhas_seguidas": 9,
+   "barradas_hoje": 82,
+   "buscas_hoje": 102
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.9,
+   "segundos": 1.2,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.8,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 1.0,
    "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.9,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Zoom": {
    "ok": true,
-   "segundos": 6.3,
+   "segundos": 6.7,
    "ofertas": 28,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.2,
    "ofertas": 11,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.1,
+   "segundos": 0.2,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "39 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Telegram": {
    "ok": true,
-   "segundos": 20.3,
+   "segundos": 21.7,
    "ofertas": 5,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.6,
+   "segundos": 4.6,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 101
+   "buscas_hoje": 102
   },
   "Cupons (Promobit)": {
    "ok": true,
