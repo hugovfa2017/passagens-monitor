@@ -1,31 +1,37 @@
 {
- "atualizado": "2026-11-22 08:50",
+ "atualizado": "2026-11-22 08:59",
  "mais_barato": {
   "modelo": "digital",
-  "fonte": "Fast Shop",
-  "loja": "Fast Shop · Negociun",
-  "titulo": "Console PlayStation 5 Slim Digital 825GB com controle Dualsense",
-  "preco": 4149.0,
+  "fonte": "Promobit",
+  "loja": "Amazon",
+  "titulo": "PlayStation5 Slim Edição Digital",
+  "preco": 4169.0,
   "preco_sem_cupom": null,
-  "cupom": null,
-  "cupom_origem": null,
-  "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-  "obs": "",
+  "cupom": "100OFF",
+  "cupom_origem": "postado",
+  "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
+  "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
   "detalhes": "",
-  "idade_h": null,
-  "tipo": "loja",
+  "idade_h": 15.1,
+  "tipo": "postada",
   "condicao": "novo",
-  "confianca": "A",
+  "confianca": "B",
   "ressalvas": [],
   "visto_em": [
    {
-    "fonte": "Fast Shop",
-    "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-    "idade_h": null,
-    "tipo": "loja"
+    "fonte": "Promobit",
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
+    "idade_h": 15.1,
+    "tipo": "postada"
+   },
+   {
+    "fonte": "Promobit",
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
+    "idade_h": 25.7,
+    "tipo": "postada"
    }
   ],
-  "n_vistos": 1,
+  "n_vistos": 2,
   "cupom_citado": null
  },
  "modelos": [
@@ -187,7 +193,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 25.6,
+     "idade_h": 25.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -196,7 +202,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3237281/",
-       "idade_h": 25.6,
+       "idade_h": 25.7,
        "tipo": "postada"
       }
      ],
@@ -694,44 +700,50 @@
    "alerta": true,
    "melhor": {
     "modelo": "digital",
-    "fonte": "Fast Shop",
-    "loja": "Fast Shop · Negociun",
-    "titulo": "Console PlayStation 5 Slim Digital 825GB com controle Dualsense",
-    "preco": 4149.0,
+    "fonte": "Promobit",
+    "loja": "Amazon",
+    "titulo": "PlayStation5 Slim Edição Digital",
+    "preco": 4169.0,
     "preco_sem_cupom": null,
-    "cupom": null,
-    "cupom_origem": null,
-    "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-    "obs": "",
+    "cupom": "100OFF",
+    "cupom_origem": "postado",
+    "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
+    "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": null,
-    "tipo": "loja",
+    "idade_h": 15.1,
+    "tipo": "postada",
     "condicao": "novo",
-    "confianca": "A",
+    "confianca": "B",
     "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Fast Shop",
-      "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-      "idade_h": null,
-      "tipo": "loja"
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
+      "idade_h": 15.1,
+      "tipo": "postada"
+     },
+     {
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
+      "idade_h": 25.7,
+      "tipo": "postada"
      }
     ],
-    "n_vistos": 1,
+    "n_vistos": 2,
     "cupom_citado": null
    },
    "sem": {
     "modelo": "digital",
-    "fonte": "Fast Shop",
-    "loja": "Fast Shop · Negociun",
-    "titulo": "Console PlayStation 5 Slim Digital 825GB com controle Dualsense",
-    "preco": 4149.0,
+    "fonte": "KaBuM!",
+    "loja": "KaBuM!",
+    "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
+    "preco": 4184.07,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
-    "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-    "obs": "",
-    "detalhes": "",
+    "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
+    "obs": "à vista no Pix · oferta relâmpago",
+    "detalhes": "com jogo/extra",
     "idade_h": null,
     "tipo": "loja",
     "condicao": "novo",
@@ -739,13 +751,19 @@
     "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Fast Shop",
-      "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
+      "fonte": "KaBuM!",
+      "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
       "idade_h": null,
       "tipo": "loja"
+     },
+     {
+      "fonte": "Zoom",
+      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+      "idade_h": null,
+      "tipo": "comparador"
      }
     ],
-    "n_vistos": 1,
+    "n_vistos": 2,
     "cupom_citado": null
    },
    "com": {
@@ -760,7 +778,7 @@
     "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 14.9,
+    "idade_h": 15.1,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -769,13 +787,13 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-      "idade_h": 14.9,
+      "idade_h": 15.1,
       "tipo": "postada"
      },
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-      "idade_h": 25.6,
+      "idade_h": 25.7,
       "tipo": "postada"
      }
     ],
@@ -794,7 +812,7 @@
     "link": "https://t.me/achadosdotb/12211",
     "obs": "postado no canal Achados do Tecnoblog",
     "detalhes": "com jogo/extra",
-    "idade_h": 8.5,
+    "idade_h": 8.7,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -803,7 +821,7 @@
      {
       "fonte": "Achados do Tecnoblog",
       "link": "https://t.me/achadosdotb/12211",
-      "idade_h": 8.5,
+      "idade_h": 8.7,
       "tipo": "grupo"
      }
     ],
@@ -831,7 +849,7 @@
      "link": "https://t.me/achadosdotb/12211",
      "obs": "postado no canal Achados do Tecnoblog",
      "detalhes": "com jogo/extra",
-     "idade_h": 8.5,
+     "idade_h": 8.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -840,36 +858,8 @@
       {
        "fonte": "Achados do Tecnoblog",
        "link": "https://t.me/achadosdotb/12211",
-       "idade_h": 8.5,
+       "idade_h": 8.7,
        "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "digital",
-     "fonte": "Fast Shop",
-     "loja": "Fast Shop · Negociun",
-     "titulo": "Console PlayStation 5 Slim Digital 825GB com controle Dualsense",
-     "preco": 4149.0,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-     "obs": "",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Fast Shop",
-       "link": "https://site.fastshop.com.br/console-playstation-5-slim-digital-825gb-com-controle-dualsense-187039/p",
-       "idade_h": null,
-       "tipo": "loja"
       }
      ],
      "n_vistos": 1,
@@ -887,7 +877,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 14.9,
+     "idade_h": 15.1,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -896,13 +886,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-edicao-digital-3238929/",
-       "idade_h": 14.9,
+       "idade_h": 15.1,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7-3237282/",
-       "idade_h": 25.6,
+       "idade_h": 25.7,
        "tipo": "postada"
       }
      ],
@@ -983,7 +973,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 29.8,
+     "idade_h": 29.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -998,7 +988,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3237251/",
-       "idade_h": 29.8,
+       "idade_h": 29.9,
        "tipo": "postada"
       }
      ],
@@ -1219,7 +1209,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
      "obs": "à vista",
      "detalhes": "",
-     "idade_h": 29.7,
+     "idade_h": 29.9,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1234,7 +1224,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3237252/",
-       "idade_h": 29.7,
+       "idade_h": 29.9,
        "tipo": "postada"
       }
      ],
@@ -4224,13 +4214,21 @@
    "pro": "7699",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-22 08:59",
+   "leitor": "4284.0",
+   "leitor_cupom": "",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4184.07",
+   "digital_cupom": "4169.0",
+   "digital_loja": "Amazon",
+   "pro": "7699",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
-  "Fast Shop": {
-   "pagina": "https://www.promobit.com.br/cupons/loja/fast-shop/",
-   "cupons": []
-  },
   "KaBuM!": {
    "pagina": "https://www.promobit.com.br/cupons/loja/kabum/",
    "cupons": [
@@ -4373,70 +4371,70 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.2,
+   "segundos": 0.3,
    "tipo": "loja",
-   "falhas_seguidas": 11,
-   "barradas_hoje": 41,
-   "buscas_hoje": 54
+   "falhas_seguidas": 12,
+   "barradas_hoje": 42,
+   "buscas_hoje": 55
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 1.0,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.3,
-   "ofertas": 8,
+   "segundos": 0.6,
+   "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.8,
-   "ofertas": 50,
+   "segundos": 1.0,
+   "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 0.9,
    "ofertas": 5,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.7,
+   "segundos": 5.9,
    "ofertas": 28,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.2,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Gatry": {
    "ok": true,
@@ -4446,27 +4444,27 @@
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Telegram": {
    "ok": true,
-   "segundos": 17.3,
+   "segundos": 20.5,
    "ofertas": 18,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.7,
+   "segundos": 3.5,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 54
+   "buscas_hoje": 55
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -4475,7 +4473,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 133
+  "não é console PS5": 132
  },
  "config": {
   "queda_minima": 50,
