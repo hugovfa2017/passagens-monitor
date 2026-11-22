@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-22 02:27",
+  "quando": "2026-11-22 03:25",
   "alerta": "🔥 Hora de comprar: G, ida em dezembro R$1.052 (alvo R$1.100)\nCom 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.",
   "ordem": [
    "FOR",
@@ -67,43 +67,41 @@
   "fontes": {
    "Google": {
     "buscas": 42,
-    "voos": 1099,
-    "conferidos": 15,
-    "ofertas": 14,
+    "voos": 1220,
+    "conferidos": 16,
+    "ofertas": 16,
     "bloqueio": null,
     "listas": {
-     "vazias": 6,
-     "repetidas": 19,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 1 | Econômica | São Paulo GRU CGH · Campinas VCP | Fortaleza FOR · Mossoró MVF · Juazeiro do Norte JDO · Natal NAT | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca |  @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 15,
-     "lidas": 12
+     "telas": 16,
+     "lidas": 16
     },
-    "sem_preco": {
-     "tela de compra sem vendedores": 2
-    },
+    "sem_preco": {},
     "comprado": {
      "telas": 2,
      "a_venda": 2
     },
-    "seg": 240
+    "seg": 84
    },
    "123milhas": {
-    "buscas": 16,
-    "com_voo": 13
+    "buscas": 15,
+    "com_voo": 12
    },
    "MaxMilhas": {
     "buscas": 19,
-    "com_voo": 17
+    "com_voo": 19
    },
    "Vai de Promo": {
     "buscas": 17,
     "com_voo": 17
    },
    "Zupper": {
-    "buscas": 17,
-    "com_voo": 17
+    "buscas": 16,
+    "com_voo": 16
    },
    "Viaza": {
     "buscas": 4,
@@ -113,12 +111,12 @@
   },
   "mossoro": {
    "buscas": 2,
-   "voos": 0
+   "voos": 5
   },
   "taxa_mala": {
-   "Azul": 96,
+   "Azul": 108,
    "Gol": 135,
-   "LATAM": 76
+   "LATAM": 80
   },
   "grupos": [
    {
@@ -545,7 +543,7 @@
   "d": "2027-02-19",
   "dia": "sex 19/02",
   "ne": "JDO",
-  "pp": 355,
+  "pp": 354,
   "conf": true
  },
  {
@@ -569,8 +567,26 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-21",
-  "dia": "dom 21/02",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
+  "ne": "JDO",
+  "pp": 384,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
+  "ne": "FOR",
+  "pp": 449,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
   "ne": "REC",
   "pp": 497,
   "conf": false
@@ -578,26 +594,53 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-21",
-  "dia": "dom 21/02",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
+  "ne": "JPA",
+  "pp": 838,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-27",
+  "dia": "sáb 27/02",
+  "ne": "NAT",
+  "pp": 854,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
   "ne": "FOR",
-  "pp": 664,
+  "pp": 449,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-21",
-  "dia": "dom 21/02",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
+  "ne": "REC",
+  "pp": 601,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
   "ne": "JDO",
-  "pp": 686,
+  "pp": 651,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-21",
-  "dia": "dom 21/02",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
   "ne": "NAT",
   "pp": 795,
   "conf": false
@@ -605,8 +648,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-21",
-  "dia": "dom 21/02",
+  "d": "2027-02-28",
+  "dia": "dom 28/02",
   "ne": "JPA",
   "pp": 830,
   "conf": false
@@ -614,8 +657,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-23",
-  "dia": "ter 23/02",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
   "ne": "JDO",
   "pp": 384,
   "conf": false
@@ -623,17 +666,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-23",
-  "dia": "ter 23/02",
-  "ne": "REC",
-  "pp": 497,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-23",
-  "dia": "ter 23/02",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
   "ne": "FOR",
   "pp": 505,
   "conf": false
@@ -641,8 +675,26 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "REC",
+  "pp": 510,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-01",
+  "dia": "seg 01/03",
+  "ne": "JPA",
+  "pp": 830,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
   "ne": "JDO",
   "pp": 384,
   "conf": false
@@ -650,26 +702,35 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
-  "ne": "REC",
-  "pp": 497,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
   "ne": "FOR",
-  "pp": 511,
+  "pp": 449,
   "conf": false
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-26",
-  "dia": "sex 26/02",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "REC",
+  "pp": 552,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-02",
+  "dia": "ter 02/03",
+  "ne": "JPA",
+  "pp": 567,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
   "ne": "JDO",
   "pp": 384,
   "conf": false
@@ -677,8 +738,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-26",
-  "dia": "sex 26/02",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
   "ne": "REC",
   "pp": 497,
   "conf": false
@@ -686,10 +747,10 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-26",
-  "dia": "sex 26/02",
+  "d": "2027-03-03",
+  "dia": "qua 03/03",
   "ne": "FOR",
-  "pp": 711,
+  "pp": 505,
   "conf": false
  },
  {
@@ -717,33 +778,6 @@
   "dia": "sáb 06/03",
   "ne": "REC",
   "pp": 497,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
-  "ne": "JDO",
-  "pp": 384,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
-  "ne": "FOR",
-  "pp": 523,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-09",
-  "dia": "ter 09/03",
-  "ne": "REC",
-  "pp": 601,
   "conf": false
  },
  {
@@ -878,6 +912,24 @@
  {
   "tipo": "celula",
   "serie": "g.ida_dez",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "FOR",
+  "pp": 1694,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "JDO",
+  "pp": 1861,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "NAT",
@@ -959,10 +1011,19 @@
  {
   "tipo": "celula",
   "serie": "g.ida_dez",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "MVF",
+  "pp": 2017,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
   "d": "2026-12-28",
   "dia": "seg 28/12",
   "ne": "JDO",
-  "pp": 1052,
+  "pp": 1087,
   "conf": true
  },
  {
@@ -991,6 +1052,24 @@
   "ne": "JDO",
   "pp": 1052,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-29",
+  "dia": "ter 29/12",
+  "ne": "NAT",
+  "pp": 1649,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-29",
+  "dia": "ter 29/12",
+  "ne": "FOR",
+  "pp": 1826,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1170,6 +1249,33 @@
   "dia": "seg 04/01",
   "ne": "FOR",
   "pp": 1323,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "JDO",
+  "pp": 1105,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "FOR",
+  "pp": 1312,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_jan",
+  "d": "2027-01-05",
+  "dia": "ter 05/01",
+  "ne": "NAT",
+  "pp": 1487,
   "conf": false
  },
  {
@@ -1449,8 +1555,26 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "NAT",
-  "pp": 1518,
+  "pp": 1686,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "FOR",
+  "pp": 1812,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "JDO",
+  "pp": 1813,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1458,8 +1582,8 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "NAT",
-  "pp": 1414,
-  "conf": true
+  "pp": 1552,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1482,11 +1606,38 @@
  {
   "tipo": "celula",
   "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "JDO",
+  "pp": 1268,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "NAT",
+  "pp": 2310,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "FOR",
+  "pp": 2716,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
   "d": "2026-12-27",
   "dia": "dom 27/12",
   "ne": "JDO",
-  "pp": 1246,
-  "conf": true
+  "pp": 1368,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -1558,6 +1709,33 @@
   "dia": "ter 29/12",
   "ne": "FOR",
   "pp": 1988,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "JDO",
+  "pp": 1368,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "FOR",
+  "pp": 1361,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-30",
+  "dia": "qua 30/12",
+  "ne": "NAT",
+  "pp": 1820,
   "conf": false
  },
  {
