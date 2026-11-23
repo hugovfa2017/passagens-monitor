@@ -391,7 +391,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 11.1
+   "idade_h": 11.3
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -410,7 +410,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 11.1
+   "idade_h": 11.3
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -869,7 +869,7 @@
    "ressalvas": [],
    "id": "promobit-3244333",
    "publicado": "2026-11-23T16:00:00-0300",
-   "idade_h": 1.2
+   "idade_h": 1.3
   },
   "promobit-3244412": {
    "fonte": "Promobit",
@@ -886,7 +886,7 @@
    "ressalvas": [],
    "id": "promobit-3244412",
    "publicado": "2026-11-23T16:21:07-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3244409": {
    "fonte": "Promobit",
@@ -903,7 +903,7 @@
    "ressalvas": [],
    "id": "promobit-3244409",
    "publicado": "2026-11-23T16:20:05-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3244423": {
    "fonte": "Promobit",
@@ -920,7 +920,7 @@
    "ressalvas": [],
    "id": "promobit-3244423",
    "publicado": "2026-11-23T16:23:06-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3244451": {
    "fonte": "Promobit",
@@ -937,7 +937,7 @@
    "ressalvas": [],
    "id": "promobit-3244451",
    "publicado": "2026-11-23T16:30:05-0300",
-   "idade_h": 0.7
+   "idade_h": 0.8
   },
   "promobit-3244483": {
    "fonte": "Promobit",
@@ -971,7 +971,7 @@
    "ressalvas": [],
    "id": "promobit-3244487",
    "publicado": "2026-11-23T16:38:21-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3244470": {
    "fonte": "Promobit",
@@ -988,7 +988,7 @@
    "ressalvas": [],
    "id": "promobit-3244470",
    "publicado": "2026-11-23T16:34:05-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "promobit-3244562": {
    "fonte": "Promobit",
@@ -1005,7 +1005,7 @@
    "ressalvas": [],
    "id": "promobit-3244562",
    "publicado": "2026-11-23T16:50:06-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3244555": {
    "fonte": "Promobit",
@@ -1022,7 +1022,7 @@
    "ressalvas": [],
    "id": "promobit-3244555",
    "publicado": "2026-11-23T16:48:58-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
   },
   "promobit-3244533": {
    "fonte": "Promobit",
@@ -1039,7 +1039,7 @@
    "ressalvas": [],
    "id": "promobit-3244533",
    "publicado": "2026-11-23T16:44:51-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3244607": {
    "fonte": "Promobit",
@@ -1056,7 +1056,24 @@
    "ressalvas": [],
    "id": "promobit-3244607",
    "publicado": "2026-11-23T16:59:06-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
+  },
+  "promobit-3244617": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Jogo Elden Ring Standard Edition - PlayStation 5 (Físico) - R$ 189,97",
+   "preco": 161.47,
+   "link": "https://www.promobit.com.br/oferta/jogo-elden-ring-standard-edition-playstation-5-fisico-r-18997-3244617/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3244617",
+   "publicado": "2026-11-23T17:01:54-0300",
+   "idade_h": 0.3
   }
  },
  "alertados": {},
@@ -1093,81 +1110,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 13,
+   "falhas": 14,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
-   "barradas": 88
+   "buscas": 105,
+   "barradas": 89
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 104,
+   "buscas": 105,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T17:10:19-03:00",
+ "ultima": "2026-11-23T17:20:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
