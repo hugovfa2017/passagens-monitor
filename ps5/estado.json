@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3239390": {
-   "fonte": "Promobit",
-   "loja": "Aliexpress",
-   "titulo": "Controle sem Fio DualSense Midnight Black PS5 Sony PlayStation",
-   "preco": 316.3,
-   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-dualsense-midnight-black-ps5-sony-playstation-3239390/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "BLACKAE3",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3239390",
-   "publicado": "2026-11-21T21:35:52-0300",
-   "idade_h": 15.1
-  },
-  "promobit-3239387": {
-   "fonte": "Promobit",
-   "loja": "Shopee",
-   "titulo": "Grand Theft Auto VI - Playstation 5",
-   "preco": 351.41,
-   "link": "https://www.promobit.com.br/oferta/grand-theft-auto-vi-playstation-5-3239387/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3239387",
-   "publicado": "2026-11-21T21:32:17-0300",
-   "idade_h": 11.1
-  },
   "promobit-3239409": {
    "fonte": "Promobit",
    "loja": "Mercado Livre",
@@ -287,7 +253,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 15.2
+   "idade_h": 15.4
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -355,7 +321,7 @@
    "ressalvas": [],
    "id": "promobit-3241363",
    "publicado": "2026-11-22T19:30:55-0300",
-   "idade_h": 14.0
+   "idade_h": 14.2
   },
   "promobit-3241404": {
    "fonte": "Promobit",
@@ -389,7 +355,7 @@
    "ressalvas": [],
    "id": "promobit-3241401",
    "publicado": "2026-11-22T19:45:29-0300",
-   "idade_h": 13.7
+   "idade_h": 13.9
   },
   "promobit-3241495": {
    "fonte": "Promobit",
@@ -406,7 +372,7 @@
    "ressalvas": [],
    "id": "promobit-3241495",
    "publicado": "2026-11-22T20:44:15-0300",
-   "idade_h": 12.8
+   "idade_h": 12.9
   },
   "promobit-3241488": {
    "fonte": "Promobit",
@@ -423,7 +389,7 @@
    "ressalvas": [],
    "id": "promobit-3241488",
    "publicado": "2026-11-22T20:39:03-0300",
-   "idade_h": 12.9
+   "idade_h": 13.0
   },
   "promobit-3241489": {
    "fonte": "Promobit",
@@ -440,7 +406,7 @@
    "ressalvas": [],
    "id": "promobit-3241489",
    "publicado": "2026-11-22T20:39:04-0300",
-   "idade_h": 12.9
+   "idade_h": 13.0
   },
   "tg-OfertasDoDia/485621-0": {
    "fonte": "Telegram",
@@ -459,7 +425,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 3.4
+   "idade_h": 3.6
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -478,7 +444,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 3.4
+   "idade_h": 3.6
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -495,7 +461,7 @@
    "ressalvas": [],
    "id": "promobit-3242121",
    "publicado": "2026-11-23T08:53:46-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "promobit-3242182": {
    "fonte": "Promobit",
@@ -512,7 +478,7 @@
    "ressalvas": [],
    "id": "promobit-3242182",
    "publicado": "2026-11-23T09:09:35-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3242337": {
    "fonte": "Promobit",
@@ -529,7 +495,7 @@
    "ressalvas": [],
    "id": "promobit-3242337",
    "publicado": "2026-11-23T09:26:07-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3242339": {
    "fonte": "Promobit",
@@ -546,6 +512,40 @@
    "ressalvas": [],
    "id": "promobit-3242339",
    "publicado": "2026-11-23T09:26:11-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3242403": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Controle sem fio PlayStation DualSense Graphite Gray",
+   "preco": 557.91,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-playstation-dualsense-graphite-gray-3242403/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3242403",
+   "publicado": "2026-11-23T09:36:21-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3242376": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Grand Theft Auto GTA VI PS5 - TT000272PS5",
+   "preco": 371.91,
+   "link": "https://www.promobit.com.br/oferta/jogo-grand-theft-auto-gta-vi-ps5-tt000272ps5-3242376/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "JASONLUCIA",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3242376",
+   "publicado": "2026-11-23T09:32:42-0300",
    "idade_h": 0.1
   }
  },
@@ -583,81 +583,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 7,
+   "falhas": 8,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
-   "barradas": 48
+   "buscas": 59,
+   "barradas": 49
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T09:30:24-03:00",
+ "ultima": "2026-11-23T09:40:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
