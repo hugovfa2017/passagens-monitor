@@ -15,6 +15,7 @@ manda nada e não mexe no histórico.
 
 Uso: python nuvem/rodar.py           (roda tudo e registra)
      python nuvem/rodar.py --rapida  (só o Google; avisa se algum preço caiu)
+     python nuvem/rodar.py --viagem viagens/rec [--rapida]   (outra viagem: viagem.json, histórico e painel na pasta dela)
      python nuvem/rodar.py --teste   (auto-checagem das etapas, sem navegador)
 """
 import asyncio, json, os, re, sys, time
@@ -103,7 +104,9 @@ def ofertas_google(conferidos, v):
 def telas_do_comprado(v, ts, ofertas):
     """Telas de compra do voo já comprado (aberto direto pelo número do voo), para os lugares dos trechos que pedem e
     que a conferência ainda não cobriu: [{pax, sentido, voos, url}]. É a resposta definitiva sobre haver lugar à venda."""
-    c = v['comprado']
+    c = v.get('comprado')
+    if not c:
+        return []
     sentido = 'ida' if c['orig'] in v['sp'] else 'volta'
     voos = f"{c['orig']}>{c['dest']} {c['d']} {c['voo']}"
     de, para = plano.aeroportos(v, sentido)
@@ -790,21 +793,26 @@ if __name__ == '__main__':
     if sys.argv[1:] == ['--teste']:
         _teste()
         sys.exit(0)
-    viagem = plano.carregar()
-    estado_ = registrar.ler_estado()
-    if sys.argv[1:] == ['--rapida']:
+    args = sys.argv[1:]
+    pasta = RAIZ
+    if '--viagem' in args:      # outra viagem: tudo dela (configuração, histórico, resumo) fica na pasta dela
+        pasta = os.path.join(RAIZ, args[args.index('--viagem') + 1])
+    viagem = plano.carregar(os.path.join(pasta, 'viagem.json'))
+    registrar.configurar(viagem)
+    estado_ = registrar.ler_estado(pasta)
+    if '--rapida' in args:
         # se o Google barrou a última rodada completa, a rápida não insiste
-        anterior = (registrar.ler_json(os.path.join(RAIZ, 'ultima.json'), {}).get('fontes') or {}).get('Google') or {}
+        anterior = (registrar.ler_json(os.path.join(pasta, 'ultima.json'), {}).get('fontes') or {}).get('Google') or {}
         if anterior.get('bloqueio') or anterior.get('erro'):
             print('RAPIDA_PULADA o Google não respondeu bem na última rodada completa')
             sys.exit(0)
         scan_ = asyncio.run(varrer_rapido(viagem, estado_, datetime.now()))
-        for linha in registrar.registrar_rapida(scan_, viagem):
+        for linha in registrar.registrar_rapida(scan_, viagem, pasta):
             print(linha)
         sys.exit(0)
     scan_ = asyncio.run(varrer(viagem, estado_, datetime.now()))
-    json.dump(scan_, open(os.path.join(RAIZ, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    json.dump(scan_, open(os.path.join(pasta, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
     print('STATUS:', scan_['status'], scan_.get('erro') or '', '| trechos com preço:', sum(1 for s in scan_['series'].values() if s['recomendada']))
-    for linha in registrar.registrar(scan_, viagem):
+    for linha in registrar.registrar(scan_, viagem, pasta):
         print(linha)
     sys.exit(0 if scan_['status'] == 'ok' else 1)

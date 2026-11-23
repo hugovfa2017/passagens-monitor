@@ -32,6 +32,7 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}
       TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+      TELEGRAM_TOKEN_REC: ${{ secrets.TELEGRAM_TOKEN_REC }}     # bot da viagem viagens/rec (sem ele, esse bot é pulado)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +42,7 @@ jobs:
         run: python3 atendimento.py --teste && python3 atendimento.py
       - name: Guardar a lista de inscritos (cifrada)
         run: |
-          for f in assinantes.cif ps5/assinantes.cif; do [ -f "$f" ] && git add "$f"; done
+          for f in assinantes.cif ps5/assinantes.cif viagens/*/assinantes.cif; do [ -f "$f" ] && git add "$f"; done
           if git diff --cached --quiet; then echo "lista igual"; exit 0; fi
           git config user.name "atendimento-bots"
           git config user.email "atendimento-bots@users.noreply.github.com"

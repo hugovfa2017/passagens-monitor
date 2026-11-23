@@ -4,7 +4,7 @@ O painel foi escrito para o tipo Dashboard do Claude, que injeta um objeto `dash
 Aqui um pequeno substituto de `dash` lê o painel.json ao lado da página, e os tokens são definidos
 para os temas claro e escuro. Uso: python nuvem/pagina.py  (rodado pelo workflow a cada varredura)
 """
-import os, shutil
+import os, shutil, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS = os.path.join(RAIZ, 'docs')
@@ -94,16 +94,23 @@ FIM = """
 """
 
 
-def gerar():
-    os.makedirs(DOCS, exist_ok=True)
+def gerar(dados=RAIZ, destino=DOCS):
+    """dados: a pasta com o painel.json da viagem; destino: onde a página fica (docs/ ou docs/<pasta da viagem>/)."""
+    os.makedirs(destino, exist_ok=True)
     painel = open(os.path.join(RAIZ, 'painel-index.html'), encoding='utf-8').read()
     painel = painel.replace('<meta name="dash-one-writer">', '')
-    open(os.path.join(DOCS, 'index.html'), 'w', encoding='utf-8').write(TOPO + painel + FIM)
-    if os.path.exists(os.path.join(RAIZ, 'painel.json')):
-        shutil.copy(os.path.join(RAIZ, 'painel.json'), os.path.join(DOCS, 'painel.json'))
+    open(os.path.join(destino, 'index.html'), 'w', encoding='utf-8').write(TOPO + painel + FIM)
+    if os.path.exists(os.path.join(dados, 'painel.json')):
+        shutil.copy(os.path.join(dados, 'painel.json'), os.path.join(destino, 'painel.json'))
     open(os.path.join(DOCS, '.nojekyll'), 'w').close()   # o Pages serve os arquivos como estão
 
 
 if __name__ == '__main__':
-    gerar()
-    print('docs/index.html e docs/painel.json gerados')
+    # python nuvem/pagina.py                       -> docs/ (viagem principal)
+    # python nuvem/pagina.py --viagem viagens/rec  -> docs/rec/ (a página de cada viagem fica na subpasta com o nome dela)
+    if '--viagem' in sys.argv:
+        pasta = sys.argv[sys.argv.index('--viagem') + 1]
+        gerar(os.path.join(RAIZ, pasta), os.path.join(DOCS, os.path.basename(pasta.rstrip('/'))))
+    else:
+        gerar()
+    print('página gerada')

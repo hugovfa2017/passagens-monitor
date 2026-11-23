@@ -28,13 +28,23 @@ import momento  # noqa: E402
 import plano    # noqa: E402
 import selecao  # noqa: E402
 
-PAINEL_URL = 'https://hugovfa2017.github.io/passagens-monitor/'
+PAINEL_BASE = 'https://hugovfa2017.github.io/passagens-monitor/'
+PAINEL_URL = PAINEL_BASE
+BOT = 'passagens'              # qual bot de atendimento.BOTS manda as mensagens desta viagem (configurar)
 DICA_24H = "Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata."
 SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sáb', 'dom']
 CAMPOS = ['quando', 'serie', 'd', 'ne', 'pax', 'pp', 'conf']   # precos.csv
 LIMITE_MENSAGEM = 3900          # o Telegram aceita 4.096 caracteres
 HORAS_ENTRE_TOQUES = 6          # o mesmo trecho não toca de novo antes disso, a não ser que caia mais
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
+
+
+def configurar(v):
+    """Aplica o bot e o painel de uma viagem (viagem.json: "bot" e "painel"; sem eles, os da viagem principal)."""
+    global BOT, PAINEL_URL, PAINEL_BOTAO
+    BOT = v.get('bot', 'passagens')
+    PAINEL_URL = PAINEL_BASE + v.get('painel', '')
+    PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
 SINAL = {'bom': '🟢 Bom momento', 'acompanhar': '🟡 Acompanhar', 'esperar': '⏳ Esperar'}   # nuvem/momento.py
 OUTRAS_DATAS = 4                # quantas outras datas com preço conferido a mensagem lista por trecho
 
@@ -79,11 +89,22 @@ def janela(datas_):
 CHAT_FILE = os.path.join(AQUI, 'telegram_chat.txt')
 
 
+def _bot():
+    try:
+        import atendimento
+        return atendimento.config_bot(BOT)
+    except Exception:
+        return None
+
+
 def _token():
-    # no GitHub Actions o token vem do segredo TELEGRAM_TOKEN; no Mac, do Keychain.
+    # no GitHub Actions o token vem do segredo do bot da viagem (TELEGRAM_TOKEN na principal); no Mac, do Keychain.
     # Fica só com o token (123456:ABC...), mesmo que tenha sido colado com texto ou espaço em volta.
-    bruto = os.environ.get('TELEGRAM_TOKEN', '')
-    if not bruto:
+    b = _bot()
+    if BOT != 'passagens' and not b:
+        return ''
+    bruto = os.environ.get(b['token'] if b else 'TELEGRAM_TOKEN', '')
+    if not bruto and BOT == 'passagens':
         try:
             bruto = subprocess.run(['security', 'find-generic-password', '-s', 'telegram-passagens', '-w'],
                                    capture_output=True, text=True).stdout
@@ -99,19 +120,31 @@ def _api(token, metodo, campos=None):
         return json.loads(r.read().decode())
 
 
-def _chats():
-    """Quem recebe os alertas: a lista fixa do dono (segredo TELEGRAM_CHAT_ID ou telegram_chat.txt) e, depois dela,
-    quem se inscreveu mandando /start ao bot (assinantes.cif, mantido por atendimento.py).
-    Bot particular (atendimento.BOTS): só o primeiro da lista fixa, o dono. Se não der para saber, também só o dono."""
+def _fixos():
+    """A lista fixa do bot da viagem (o primeiro é o dono)."""
+    b = _bot()
+    if b and BOT != 'passagens':
+        return b['fixos']()
     bruto = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
-    fixos = re.findall(r'-?\d{5,}', bruto)
+    return re.findall(r'-?\d{5,}', bruto)
+
+
+def _chats(so_dono=False):
+    """Quem recebe os alertas: a lista fixa do dono (segredo TELEGRAM_CHAT_ID ou telegram_chat.txt) e, depois dela,
+    quem se inscreveu mandando /start ao bot (o arquivo cifrado do bot, mantido por atendimento.py).
+    Bot particular: só o dono. Bot de outra pessoa (dono_recebe=False): só os inscritos; o dono só nas rodadas de teste
+    (so_dono). Se não der para saber, só o dono."""
+    fixos = _fixos()
+    b = _bot()
+    if so_dono or not b or b.get('particular'):
+        return fixos[:1]
     try:
         import atendimento
-        if atendimento.bot_particular('passagens'):
-            return fixos[:1]
-        pelo_start = atendimento.inscritos(_token(), os.path.join(AQUI, 'assinantes.cif'))
+        pelo_start = atendimento.inscritos(_token(), os.path.join(AQUI, b['arquivo']))
     except Exception:
         return fixos[:1]
+    if not b.get('dono_recebe', True):
+        fixos = fixos[1:]
     return list(dict.fromkeys(fixos + pelo_start))
 
 
@@ -139,7 +172,7 @@ def _enviar_um(token, campos, api=None, espera=5):
 def telegram(texto, silencioso=False, botoes=(), _envio=_enviar_um, so_dono=False):
     """Manda para todos os chats. botoes: linhas de botões com link, ex. [[{'text': 'Abrir', 'url': 'https://...'}]]
     O resultado vai para arquivos públicos (ultimo.md, painel.json): nunca põe o id do chat nele."""
-    token, chats = _token(), (_chats()[:1] if so_dono else _chats())   # so_dono: rodada de teste, só o primeiro chat
+    token, chats = _token(), _chats(so_dono)   # so_dono: rodada de teste, só o dono
     if not token or not chats:
         return 'TELEGRAM_NAO_CONFIGURADO'
     falhas = []
@@ -364,7 +397,7 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
     series, meus = scan['series'], [t for t in ts if t['grupo'] == g['id']]
     cada = ' por pessoa' if g['assentos'] > 1 else ''
     linhas = [(f"{g.get('emoji', '•')} <b>{html.escape(nomes[g['id']])}</b>" + (f" · {g['assentos']} lugares no mesmo voo" if g['assentos'] > 1 else ''), 0)]
-    precos, comprado = {}, v['comprado']
+    precos, comprado = {}, v.get('comprado') or {}
     for t in meus:
         linhas.append((f"<u>{t['nome']} · {janela(t['datas'])}</u>", 0))
         if not t['datas']:
@@ -462,7 +495,7 @@ def montar_topo(alertas, mudancas, primeira, ts, nomes):
     if recordes:
         return '📉 <b>Menor preço já visto:</b> ' + ' · '.join(f"{html.escape(nome_curto(a['serie'], ts, nomes))} {brl(a['pp'])} (era {brl(a['antes'])})" for a in recordes)
     if primeira:
-        return '👋 Primeira busca no formato novo: um bloco por pessoa.'
+        return '👋 Primeira busca. Daqui em diante chega uma mensagem por hora; ela só toca quando um preço bate o alvo ou o menor já visto.'
     if not mudancas:
         return '😌 Sem mudança desde a última busca.'
     sinais = {v_ > 0 for v_ in mudancas.values()}
@@ -474,7 +507,7 @@ def montar_topo(alertas, mudancas, primeira, ts, nomes):
 def montar_rodape(scan, v):
     ultimos = [c for c in v['volta_origens'] if v['aeroportos'][c].get('ultimo_caso')]
     partes = ['⭐ = melhor opção pela ordem ' + ', '.join(lugar(c, v) for c in v['volta_origens'] if c not in ultimos)
-              + (f"; {' e '.join(lugar(c, v) for c in ultimos)} só em último caso" if ultimos else '')]
+              + (f"; {' e '.join(lugar(c, v) for c in ultimos)} só em último caso" if ultimos else '')] if len(v['volta_origens']) > 1 else []
     m = scan.get('mossoro') or {}
     if m.get('buscas') and not m.get('voos'):
         partes.append('Mossoró: nenhum voo à venda')
@@ -718,10 +751,26 @@ def _teste():
                 os.environ['TELEGRAM_TOKEN'] = tk
                 bot_passagens['particular'] = True
                 assert _chats() == ['111111111']
+                # viagem de outra pessoa, com bot próprio: só quem se inscreveu nele recebe; o dono, só no teste
+                tk2 = '555555555:' + 'R' * 35
+                os.makedirs(os.path.join(d, 'viagens', 'rec'))
+                atendimento.gravar_inscritos(tk2, os.path.join(d, 'viagens', 'rec', 'assinantes.cif'), ['444444444'])
+                configurar({'bot': 'rec', 'painel': 'rec/'})
+                assert _token() == '' and _chats() == []      # sem o segredo do bot dela, não há token nem como abrir a lista
+                assert telegram('oi', _envio=lambda t, c: None) == 'TELEGRAM_NAO_CONFIGURADO'
+                os.environ['TELEGRAM_TOKEN_REC'] = tk2
+                assert _token() == tk2 and _chats() == ['444444444'] and _chats(so_dono=True) == ['111111111']
+                foram = []
+                assert telegram('oi', _envio=lambda t, c: foram.append((t, c['chat_id']))) == 'TELEGRAM_ENVIADO' and foram == [(tk2, '444444444')]
+                assert PAINEL_URL == 'https://hugovfa2017.github.io/passagens-monitor/rec/' and PAINEL_BOTAO[0]['url'] == PAINEL_URL
+                configurar({})
+                assert BOT == 'passagens' and _token() == tk and PAINEL_URL == PAINEL_BASE and _chats() == ['111111111']
             finally:
                 AQUI = aqui_real
     finally:
         bot_passagens['particular'] = True
+        configurar({})
+        os.environ.pop('TELEGRAM_TOKEN_REC', None)
         os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
     _teste_registro()
@@ -776,7 +825,7 @@ def _teste_registro():
         assert r == ['SEM_NOVIDADE v.volta R$612 | h.depois R$389 | g.ida_dez R$1.180 | g.ida_jan R$690 | wk.ida R$1.150 | wk.volta R$540', 'TELEGRAM_ENVIADO'], r
         msg, mudo, bt = enviados[-1]
         assert mudo and msg.startswith('✈️ <b>Passagens</b> · sex 20/11, 20:17\n<i>Preço por pessoa, sem mala, conferido nesta busca.</i>\n'
-                                       '👋 Primeira busca no formato novo'), msg
+                                       '👋 Primeira busca. Daqui em diante'), msg
         assert msg.index('👩 <b>Ana</b>') < msg.index('🧍 <b>Beto</b>') < msg.index('🧑 <b>Caio</b>') < msg.index('👭 <b>Duda + Eva</b>')
         # cada opção em duas linhas, sempre na mesma ordem: preço, dia e voo; embaixo, horários, aeroportos por extenso e onde comprar
         assert ('👩 <b>Ana</b>\n<u>Volta · 18 a 22/01</u>\n'
