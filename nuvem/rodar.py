@@ -15,6 +15,7 @@ manda nada e não mexe no histórico.
 
 Uso: python nuvem/rodar.py           (roda tudo e registra)
      python nuvem/rodar.py --rapida  (só o Google; avisa se algum preço caiu)
+     python nuvem/rodar.py --viagem viagens/rec [--rapida]   (outra viagem: viagem.json, histórico e painel na pasta dela)
      python nuvem/rodar.py --teste   (auto-checagem das etapas, sem navegador)
 """
 import asyncio, json, os, re, sys, time
@@ -103,7 +104,9 @@ def ofertas_google(conferidos, v):
 def telas_do_comprado(v, ts, ofertas):
     """Telas de compra do voo já comprado (aberto direto pelo número do voo), para os lugares dos trechos que pedem e
     que a conferência ainda não cobriu: [{pax, sentido, voos, url}]. É a resposta definitiva sobre haver lugar à venda."""
-    c = v['comprado']
+    c = v.get('comprado')
+    if not c:
+        return []
     sentido = 'ida' if c['orig'] in v['sp'] else 'volta'
     voos = f"{c['orig']}>{c['dest']} {c['d']} {c['voo']}"
     de, para = plano.aeroportos(v, sentido)
@@ -137,6 +140,17 @@ def oferta_vendedor(x, sentido, d, pax):
     return o
 
 
+def sem_lista(v, t, hora):
+    """Chaves (data, aeroporto do Nordeste) de um trecho sem depender do Google: as datas da rodada, a partir de uma que
+    gira com a hora, cada uma no aeroporto do Nordeste de menor peso (fora os de último caso), depois no seguinte."""
+    de, para = plano.aeroportos(v, t['sentido'])
+    ne = sorted((c for c in (para if t['sentido'] == 'ida' else de) if not v['aeroportos'][c].get('ultimo_caso')),
+                key=lambda c: v['aeroportos'][c].get('peso', 0))
+    ds = t['datas']
+    girando = ds[hora % len(ds):] + ds[:hora % len(ds)] if ds else []
+    return [(d, c) for c in ne for d in girando]
+
+
 def fila_da_lupa(lista, ts, v, estado, hora):
     """O que buscar nos vendedores, por ordem de importância: [(sentido, data, aeroporto do Nordeste, lugares)].
     Primeiro a melhor (data, aeroporto) de cada trecho, depois a segunda. Sem lista do Google (bloqueio), vale a
@@ -151,6 +165,10 @@ def fila_da_lupa(lista, ts, v, estado, hora):
         antes = estado.get('series', {}).get(t['serie'], {})
         fixas = [(x['d'], x['ne']) for x in (antes.get('rec'), antes.get('barata')) if x and x['d'] in t['datas']]
         chaves = fixas + [c for c in selecao.chaves_lupa(lista, v, t) if c not in fixas]
+        # Google sem lista (barrou ou demorou) e nada guardado: os vendedores buscam direto nas datas do trecho, girando a
+        # cada hora, no aeroporto preferido de cada lado (sem isso, uma viagem nova com o Google barrado ficaria sem preço)
+        if not chaves:
+            chaves = sem_lista(v, t, hora)[:v['selecao']['lupa_por_trecho']]
         por_ordem.append([(t['sentido'], d, ne, t['pax']) for d, ne in chaves])
     fila = [c for nivel in range(max(map(len, por_ordem), default=0)) for cs in por_ordem for c in cs[nivel:nivel + 1]]
     if 'MVF' in v['aeroportos']:
@@ -674,18 +692,30 @@ def _teste():
 
     # ---- fila da lupa: a melhor chave de cada trecho antes da segunda; Mossoró no fim, uma data por sentido, girando com a hora
     fila = fila_da_lupa(lista, ts, v, {}, 0)
-    # o voo já comprado é conferido sempre nos trechos que pedem, mesmo sem aparecer na lista do Google (1 lugar)
-    assert fila[:3] == [('volta', '2027-01-19', 'FOR', 1), ('ida', '2026-12-22', 'NAT', 1), ('ida', '2026-12-22', 'FOR', 2)], fila
-    # segunda chave de cada trecho: Recife na volta; Natal na ida de 2 lugares (o voo já comprado)
-    assert fila[3:5] == [('volta', '2027-01-19', 'REC', 1), ('ida', '2026-12-22', 'NAT', 2)], fila
+    # a primeira chave de cada trecho: o voo já comprado é conferido sempre nos trechos que pedem, mesmo sem aparecer na
+    # lista do Google (1 lugar); trecho sem nada na lista (volta depois, ida de janeiro, volta de W + K) busca as datas dele
+    assert fila[:6] == [('volta', '2027-01-19', 'FOR', 1), ('volta', '2027-01-23', 'FOR', 1), ('ida', '2026-12-22', 'NAT', 1),
+                        ('ida', '2027-01-02', 'FOR', 1), ('ida', '2026-12-22', 'FOR', 2), ('volta', '2027-01-07', 'FOR', 2)], fila
+    # segunda chave de cada trecho: Recife na volta; a data seguinte nos trechos sem lista; Natal na ida de 2 lugares (o voo já comprado)
+    assert fila[6:11] == [('volta', '2027-01-19', 'REC', 1), ('volta', '2027-01-24', 'FOR', 1), ('ida', '2027-01-03', 'FOR', 1),
+                          ('ida', '2026-12-22', 'NAT', 2), ('volta', '2027-01-08', 'FOR', 2)], fila
     assert fila[-2:] == [('ida', '2026-12-22', 'MVF', 1), ('volta', '2027-01-07', 'MVF', 1)] and len(fila) == len(set(fila))
     assert fila_da_lupa(lista, ts, v, {}, 1)[-2:] == [('ida', '2026-12-23', 'MVF', 1), ('volta', '2027-01-08', 'MVF', 1)]
+    # Google sem lista e nada guardado: cada trecho busca nos vendedores as datas dele, girando com a hora, no aeroporto
+    # preferido (Fortaleza na volta; na ida, o primeiro de menor peso), até lupa_por_trecho chaves
+    vazia = fila_da_lupa([], ts, v, {}, 0)
+    assert ('volta', '2027-01-18', 'FOR', 1) in vazia and ('volta', '2027-01-19', 'FOR', 1) in vazia and ('ida', '2027-01-02', 'FOR', 1) in vazia
+    # trecho com o voo já comprado continua buscando o voo comprado (não cai nas datas genéricas)
+    assert len(vazia) == len(set(vazia)) and ('ida', '2026-12-22', 'NAT', 1) in vazia and ('ida', '2026-12-22', 'NAT', 2) in vazia, vazia
+    assert sem_lista(v, ts[0], 1)[:2] == [('2027-01-19', 'FOR'), ('2027-01-20', 'FOR')] and sem_lista(v, ts[0], 0)[5] == ('2027-01-18', 'MVF')
+    assert all(ne != 'REC' for _, ne in sem_lista(v, ts[0], 0))       # Recife é último caso: fica de fora
     # o que a rodada anterior achou de melhor vem primeiro (recomendada e mais barata), mesmo com o Google bloqueado (sem lista)
     estado = {'series': {'v.volta': {'rec': {'d': '2027-01-20', 'ne': 'JDO', 'ident': ['2027-01-20', 'Gol', 'JDO', 'GRU', '09:00']},
                                      'barata': {'d': '2027-01-22', 'ne': 'REC', 'pp': 411}}}}
     assert fila_da_lupa([], ts, v, estado, 0)[0] == ('volta', '2027-01-20', 'JDO', 1)
     com_memoria = fila_da_lupa(lista, ts, v, estado, 0)
-    assert com_memoria[0] == ('volta', '2027-01-20', 'JDO', 1) and ('volta', '2027-01-22', 'REC', 1) in com_memoria[:6] and len(com_memoria) == len(set(com_memoria))
+    # (a mais barata guardada vem logo na segunda volta da fila, antes das segundas chaves dos outros trechos)
+    assert com_memoria[0] == ('volta', '2027-01-20', 'JDO', 1) and com_memoria[6] == ('volta', '2027-01-22', 'REC', 1) and len(com_memoria) == len(set(com_memoria)), com_memoria
     # data que saiu da janela não é mais buscada
     velho = {'series': {'v.volta': {'rec': {'d': '2027-01-05', 'ne': 'FOR'}}}}
     assert ('volta', '2027-01-05', 'FOR', 1) not in fila_da_lupa(lista, ts, v, velho, 0)
@@ -790,21 +820,26 @@ if __name__ == '__main__':
     if sys.argv[1:] == ['--teste']:
         _teste()
         sys.exit(0)
-    viagem = plano.carregar()
-    estado_ = registrar.ler_estado()
-    if sys.argv[1:] == ['--rapida']:
+    args = sys.argv[1:]
+    pasta = RAIZ
+    if '--viagem' in args:      # outra viagem: tudo dela (configuração, histórico, resumo) fica na pasta dela
+        pasta = os.path.join(RAIZ, args[args.index('--viagem') + 1])
+    viagem = plano.carregar(os.path.join(pasta, 'viagem.json'))
+    registrar.configurar(viagem)
+    estado_ = registrar.ler_estado(pasta)
+    if '--rapida' in args:
         # se o Google barrou a última rodada completa, a rápida não insiste
-        anterior = (registrar.ler_json(os.path.join(RAIZ, 'ultima.json'), {}).get('fontes') or {}).get('Google') or {}
+        anterior = (registrar.ler_json(os.path.join(pasta, 'ultima.json'), {}).get('fontes') or {}).get('Google') or {}
         if anterior.get('bloqueio') or anterior.get('erro'):
             print('RAPIDA_PULADA o Google não respondeu bem na última rodada completa')
             sys.exit(0)
         scan_ = asyncio.run(varrer_rapido(viagem, estado_, datetime.now()))
-        for linha in registrar.registrar_rapida(scan_, viagem):
+        for linha in registrar.registrar_rapida(scan_, viagem, pasta):
             print(linha)
         sys.exit(0)
     scan_ = asyncio.run(varrer(viagem, estado_, datetime.now()))
-    json.dump(scan_, open(os.path.join(RAIZ, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    json.dump(scan_, open(os.path.join(pasta, 'ultima.json'), 'w', encoding='utf-8'), ensure_ascii=False)
     print('STATUS:', scan_['status'], scan_.get('erro') or '', '| trechos com preço:', sum(1 for s in scan_['series'].values() if s['recomendada']))
-    for linha in registrar.registrar(scan_, viagem):
+    for linha in registrar.registrar(scan_, viagem, pasta):
         print(linha)
     sys.exit(0 if scan_['status'] == 'ok' else 1)

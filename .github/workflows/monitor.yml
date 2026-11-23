@@ -10,12 +10,12 @@ on:
         required: false
         default: 'manual'
       modo:
-        description: 'completa = rodada inteira; rapida = só o Google, avisa se algum preço caiu (para o meio da hora)'
+        description: 'completa = rodada inteira; rapida = só o Google, avisa se algum preço caiu (para o meio da hora); outras = só as outras viagens (viagens/)'
         required: false
         default: 'completa'
   push:                       # roda também quando o código muda (não quando só os dados mudam)
     branches: [main]
-    paths: ['viagem.json', 'varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/*.py', '.github/workflows/monitor.yml']
+    paths: ['viagem.json', 'viagens/*/viagem.json', 'varredura.js', 'registrar.py', 'atendimento.py', 'painel-index.html', 'nuvem/*.py', '.github/workflows/monitor.yml']
 
 permissions:
   contents: write             # para guardar histórico e painel.json de volta no repositório
@@ -31,6 +31,8 @@ jobs:
     env:
       TZ: America/Sao_Paulo
     outputs:
+      pular: ${{ steps.guarda.outputs.pular }}
+      outras: ${{ steps.guarda.outputs.outras }}     # 'true' quando as outras viagens (trabalho "outras") devem rodar
       rapida: ${{ steps.guarda.outputs.rapida }}     # 'true' na semana de promoções (viagem.json: rapida), depois de uma rodada completa
       espera: ${{ steps.guarda.outputs.espera }}
     steps:
@@ -56,7 +58,10 @@ jobs:
                   pular = idade.total_seconds() < (15 if rapida else 40) * 60
               except Exception:
                   pass
-          print('pular=' + str(pular).lower())
+          so_outras = os.environ.get('MODO') == 'outras'     # botão "Run workflow": só as outras viagens
+          print('pular=' + str(pular or so_outras).lower())
+          print('outras=' + str(so_outras or (not pular and not rapida)).lower())
+          pular = pular or so_outras
           # semana de promoções: depois de cada rodada completa vem uma rápida (o trabalho "rapida", mais abaixo)
           r = json.load(open('viagem.json')).get('rapida') or {}
           ativa = not pular and not rapida and r.get('de', '9') <= dt.date.today().isoformat() <= r.get('ate', '')
@@ -136,3 +141,56 @@ jobs:
           git commit -m "Rodada rápida $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
           git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
+
+  outras:
+    # As outras viagens do monitor (viagens/<pasta>/viagem.json), uma de cada vez, logo depois da viagem principal (para
+    # não somar carga no Google ao mesmo tempo). Cada uma manda pelo seu bot (atendimento.py), guarda o histórico na
+    # pasta dela e tem o painel em docs/<pasta>/. Viagem nova: uma linha em matrix.viagem e o segredo do bot dela abaixo.
+    needs: varredura
+    if: ${{ !cancelled() && needs.varredura.outputs.outras == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        viagem: ['viagens/rec']
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar navegador sem tela
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Varredura e alerta
+        env:
+          TELEGRAM_TOKEN_REC: ${{ secrets.TELEGRAM_TOKEN_REC }}   # bot da viagem viagens/rec (sem ele, a busca roda e não manda nada)
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}       # o primeiro chat é o dono, que administra os bots
+          PASSAGENS_ENVIAR: ${{ github.ref_name == 'main' && '1' || 'teste' }}   # fora da main: só o dono recebe, sem som, marcado [TESTE]
+        run: python nuvem/rodar.py --viagem ${{ matrix.viagem }}
+      - name: Gerar a página (GitHub Pages)
+        if: ${{ !cancelled() }}
+        run: python nuvem/pagina.py --viagem ${{ matrix.viagem }}
+      - name: Guardar resultado
+        if: ${{ !cancelled() }}
+        env:
+          PASTA: ${{ matrix.viagem }}
+        run: |
+          git config user.name "monitor-passagens"
+          git config user.email "monitor-passagens@users.noreply.github.com"
+          nome=$(basename "$PASTA")
+          for f in precos.csv estado.json ultimo.md ultima.json painel.json; do [ -f "$PASTA/$f" ] && git add "$PASTA/$f"; done
+          for f in "docs/$nome/index.html" "docs/$nome/painel.json" docs/.nojekyll; do [ -f "$f" ] && git add "$f"; done
+          git commit -m "Varredura $nome $(date '+%d/%m %H:%M')" || { echo "nada novo"; exit 0; }
+          # a viagem principal e o atendimento também gravam: junta e tenta de novo se alguém gravou antes
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash -X theirs -q origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

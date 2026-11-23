@@ -28,8 +28,8 @@ def nordeste(x, v):
 
 
 def eh_comprado(x, v):
-    c = v['comprado']
-    return (x['d'], x['cia'], x['orig'], x['dest'], x['saida']) == (c['d'], c['cia'], c['orig'], c['dest'], c['saida'])
+    c = v.get('comprado')
+    return bool(c) and (x['d'], x['cia'], x['orig'], x['dest'], x['saida']) == (c['d'], c['cia'], c['orig'], c['dest'], c['saida'])
 
 
 def peso(x, v, t):
@@ -102,8 +102,8 @@ def chaves_lupa(lista, v, t):
         if (x['d'], nordeste(x, v)) not in chaves:
             chaves.append((x['d'], nordeste(x, v)))
     saida = variados(chaves, v['selecao']['lupa_por_trecho'], lambda c: c[1])
-    c = v['comprado']
-    if t.get('voo_comprado') and c['d'] in t['datas'] and (c['d'], c['dest']) not in saida:
+    c = v.get('comprado')
+    if c and t.get('voo_comprado') and c['d'] in t['datas'] and (c['d'], c['dest']) not in saida:
         saida.append((c['d'], c['dest']))
     # por último (é o que sai primeiro se o tempo acabar): a mais barata de todas, para a mensagem poder comparar
     barata = min(ordenados, key=lambda x: (x['lista_pp'], x['d'], x['saida']), default=None)

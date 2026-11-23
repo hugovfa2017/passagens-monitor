@@ -16,6 +16,9 @@ Quem recebe os alertas = a lista fixa do dono (segredos TELEGRAM_CHAT_ID / TELEG
 + os inscritos pelo /start. Comandos só do dono: /inscritos e /remover <número>.
 Bot particular (particular=True em BOTS): só o dono recebe. Ninguém entra pelo /start, a lista de inscritos fica vazia e
 os outros chats da lista fixa também deixam de receber (registrar.py lê isso daqui, por bot_particular).
+Bot de outra pessoa (dono_recebe=False): o dono administra (recebe o aviso de inscrição, usa /inscritos e /remover e
+recebe as rodadas de teste), mas os alertas vão só para quem se inscreveu pelo /start.
+Cada viagem a mais (viagens/<pasta>/viagem.json, campo "bot") tem o seu bot aqui.
 
 Uso:  python3 atendimento.py              -> atende os dois bots e grava as listas
       python3 atendimento.py --confirmar  -> confirma a leitura (depois que as listas foram guardadas)
@@ -38,6 +41,12 @@ BOTS = [
          fixos=lambda: _ids('TELEGRAM_CHAT_ID'), particular=True,
          sobre='Chega uma mensagem por hora com os preços; ela só toca quando um preço fica abaixo do alvo ou bate o menor já visto.',
          descricao='Avisos de preço de passagens. Este bot é particular: os alertas vão só para o dono do monitor.'),
+    # viagem de outra pessoa (viagens/rec): bot próprio; o dono administra e quem se inscreve pelo /start recebe
+    dict(chave='rec', nome='monitor de passagens São Paulo–Recife', token='TELEGRAM_TOKEN_REC',
+         arquivo=os.path.join('viagens', 'rec', 'assinantes.cif'), fixos=lambda: _ids('TELEGRAM_CHAT_ID')[:1], dono_recebe=False,
+         sobre='Chega uma mensagem por hora com os preços da ida e da volta; ela só toca quando um preço bate o menor já visto.',
+         descricao='Avisos de preço de passagens São Paulo–Recife. Toque em Iniciar para receber: a confirmação chega em poucos '
+                   'minutos. Para parar, mande /sair.'),
     dict(chave='ps5', nome='buscador de PS5', token='TELEGRAM_TOKEN_PS5', arquivo=os.path.join('ps5', 'assinantes.cif'),
          fixos=lambda: _ids('TELEGRAM_CHAT_ID_PS5') or _ids('TELEGRAM_CHAT_ID')[:1],
          sobre='A busca roda de 30 em 30 minutos. O aviso toca quando um PS5 fica abaixo do alvo ou bate o menor preço já visto; '
@@ -46,6 +55,11 @@ BOTS = [
                    'poucos minutos. Para parar, mande /sair.'),
 ]
 COMANDOS = [{'command': 'start', 'description': 'Receber os alertas'}, {'command': 'sair', 'description': 'Parar de receber'}]
+
+
+def config_bot(chave):
+    """A configuração de um bot de BOTS (None se não existe)."""
+    return next((b for b in BOTS if b['chave'] == chave), None)
 
 
 def bot_particular(chave):
@@ -149,11 +163,12 @@ def _eventos(novidades):
     return saida
 
 
-def atender(api, fixos, lista, nome, sobre, limite=LIMITE, particular=False):
+def atender(api, fixos, lista, nome, sobre, limite=LIMITE, particular=False, dono_recebe=True):
     """api(metodo, campos) fala com o Telegram. fixos: lista do dono (o primeiro é o dono). lista: inscritos de agora.
     Devolve {'inscritos': lista nova, 'offset': o que confirmar depois de guardar a lista (ou None), 'resumo': contagens}.
     Nunca levanta exceção nem confirma a leitura: quem chama guarda a lista primeiro.
-    particular: só o dono recebe; a lista de inscritos é esvaziada e o /start de outra pessoa é recusado com educação."""
+    particular: só o dono recebe; a lista de inscritos é esvaziada e o /start de outra pessoa é recusado com educação.
+    dono_recebe=False: bot de outra pessoa; o dono só administra (o /start dele não o inscreve nos alertas)."""
     saiu_por_ser_particular = len(lista) if particular else 0
     if particular:
         fixos, lista = list(fixos)[:1], []
@@ -185,7 +200,10 @@ def atender(api, fixos, lista, nome, sobre, limite=LIMITE, particular=False):
                 lista.remove(i)
                 cont['saidas'] += 1
         elif acao == 'entrar':
-            if recebe:
+            if i == dono and not dono_recebe:
+                mandar(i, f"🛠 Você administra o {nome}: recebe os avisos de inscrição e as rodadas de teste, não os alertas. "
+                          f"Quem recebe: {len(lista)} pelo /start (veja com /inscritos).")
+            elif recebe:
                 mandar(i, f"✅ Este chat já recebe os alertas do {nome}.\n{sobre}\nPara parar, mande /sair.")
             elif particular:
                 if privado:
@@ -272,7 +290,8 @@ def rodar(bots=BOTS, pasta=AQUI, api_de=None):
             continue
         api, arquivo = api_de(token), os.path.join(pasta, b['arquivo'])
         antes = inscritos(token, arquivo)
-        r = atender(api, b['fixos'](), antes, b['nome'], b['sobre'], particular=bool(b.get('particular')))
+        r = atender(api, b['fixos'](), antes, b['nome'], b['sobre'], particular=bool(b.get('particular')),
+                    dono_recebe=b.get('dono_recebe', True))
         if r['inscritos'] != antes:
             gravar_inscritos(token, arquivo, r['inscritos'])
         if r['offset'] is not None:
@@ -415,6 +434,14 @@ def _teste():
     assert not any('Inscrição nova' in t for _, t in textos)
     assert bot_particular('passagens') and not bot_particular('ps5') and bot_particular('outro')
 
+    # ---- bot da viagem de outra pessoa: o dono administra, mas o /start dele não o inscreve nos alertas
+    api, e = bot([msg(1, dono, '/start'), msg(2, maria), msg(3, dono, '/inscritos')])
+    r = atender(api, D, [], dono_recebe=False, **args)
+    textos = [(c, t) for c, t, _ in e['enviado']]
+    assert r['inscritos'] == ['222222222'] and textos[0][0] == D[0] and textos[0][1].startswith('🛠') and textos[1][1].startswith('✅ Pronto')
+    assert '1 da lista fixa e 1 pelo /start' in textos[2][1] and 'Inscrição nova' in textos[3][1] and textos[3][0] == D[0], textos
+    assert config_bot('rec')['dono_recebe'] is False and config_bot('rec')['token'] == 'TELEGRAM_TOKEN_REC' and config_bot('nada') is None
+
     # ---- lista cheia: não inscreve
     api, e = bot([msg(1, maria)])
     r = atender(api, D, ['900000001', '900000002'], limite=2, **args)
@@ -443,7 +470,8 @@ def _teste():
             api2, e2 = bot([msg(3, maria), msg(4, grupo, '/start@Ps5Bot')])
             api_de = lambda token: {tk: api1, outro: api2}[token]
             linhas = rodar(pasta=d, api_de=api_de)
-            assert linhas == ['passagens: mensagens=1 novos=0 saidas=2 recebem=1 falhas=0',
+            # o bot da viagem de outra pessoa ainda não tem token: é pulado, e os outros seguem
+            assert linhas == ['passagens: mensagens=1 novos=0 saidas=2 recebem=1 falhas=0', 'rec: sem token',
                               'ps5: mensagens=3 novos=2 saidas=0 recebem=3 falhas=0'], linhas
             assert inscritos(tk, os.path.join(d, 'assinantes.cif')) == [] and e1['enviado'][0][1].startswith('🔒')
             assert inscritos(outro, os.path.join(d, 'ps5', 'assinantes.cif')) == ['222222222', '-1001234567890']
@@ -453,11 +481,11 @@ def _teste():
             assert not e1['fila'] and not e2['fila'] and confirmar(api_de=api_de) == ['nada a confirmar']
             antes = open(os.path.join(d, 'assinantes.cif')).read()
             linhas = rodar(pasta=d, api_de=api_de)
-            assert linhas == ['passagens: ninguém escreveu (recebem: 1)', 'ps5: ninguém escreveu (recebem: 3)'], linhas
+            assert linhas == ['passagens: ninguém escreveu (recebem: 1)', 'rec: sem token', 'ps5: ninguém escreveu (recebem: 3)'], linhas
             assert open(os.path.join(d, 'assinantes.cif')).read() == antes and e1['ajustes'] == 2 and len(e1['enviado']) == 1
             # sem o token de um bot, ele é pulado e o outro segue
             os.environ.pop('TELEGRAM_TOKEN_PS5')
-            assert rodar(pasta=d, api_de=api_de)[1] == 'ps5: sem token'
+            assert rodar(pasta=d, api_de=api_de)[2] == 'ps5: sem token'
     finally:
         os.environ.clear()
         os.environ.update(ambiente)

@@ -25,7 +25,8 @@ def datas(spec):
 def conferir(v):
     """Levanta ValueError com o que está errado no arquivo da viagem (aeroporto desconhecido, trecho que aponta para nada...)."""
     ap = v['aeroportos']
-    for c in [*v['sp'], *v['ida_destinos'], *v['volta_origens'], v['comprado']['orig'], v['comprado']['dest']]:
+    comprado = v.get('comprado') or {}
+    for c in [*v['sp'], *v['ida_destinos'], *v['volta_origens'], *[comprado[k] for k in ('orig', 'dest') if k in comprado]]:
         if c not in ap:
             raise ValueError(f'aeroporto sem cadastro: {c}')
     series = {f"{g['id']}.{t['id']}": (g, t) for g in v['grupos'] for t in g['trechos']}
@@ -122,11 +123,15 @@ def _teste():
     assert datas({'de': '2026-12-30', 'ate': '2027-01-02'}) == ['2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02']
     assert datas(['2026-12-23', '2026-12-22']) == ['2026-12-22', '2026-12-23']
 
-    # ---- o arquivo de verdade: tem que estar certo e caber numa rodada (cada busca é uma página do Google)
-    real = carregar()
+    # ---- os arquivos de verdade (a viagem principal e as outras, em viagens/*/): têm que estar certos e caber numa
+    #      rodada (cada busca é uma página do Google)
+    import glob
     hoje_ = date.today().isoformat()
-    assert all(t['datas'] or t['igual_a'] for t in trechos(real, '2026-11-23')), 'trecho sem datas'
-    assert len(buscas(real, hoje_)) <= 60, f"buscas demais por rodada: {len(buscas(real, hoje_))}"
+    for caminho in [None, *sorted(glob.glob(os.path.join(RAIZ, 'viagens', '*', 'viagem.json')))]:
+        real = carregar(caminho)
+        assert all(t['datas'] or t['igual_a'] for t in trechos(real, '2026-11-23')), f'trecho sem datas: {caminho}'
+        assert len(buscas(real, hoje_)) <= 60, f"buscas demais por rodada em {caminho}: {len(buscas(real, hoje_))}"
+        assert caminho is None or (real.get('bot') and real.get('painel', '').endswith('/')), f'outra viagem precisa de bot e painel: {caminho}'
 
     # ---- a viagem dos testes (quatro grupos)
     v = carregar_teste()
