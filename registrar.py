@@ -441,7 +441,10 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
         conferidas = sorted((min((c['pp'], ne) for ne, c in cel.items() if c['conf']) + (d,) for d, cel in (r.get('celulas') or {}).items()
                              if d not in mostradas and d in t['datas'] and any(c['conf'] for c in cel.values())))[:OUTRAS_DATAS]
         if conferidas:
-            linhas.append(('📅 Outras datas conferidas: ' + ' · '.join(f"{dia(d)} {brl(pp)} ({lugar(ne, v)})" for pp, ne, d in conferidas), 1))
+            de_, para_ = plano.aeroportos(v, t['sentido'])
+            um_so = len(para_ if t['sentido'] == 'ida' else de_) == 1     # um aeroporto só do lado de lá: não precisa dizer qual
+            linhas.append(('📅 Outras datas conferidas: ' + ' · '.join(f"{dia(d)} {brl(pp)}" + ('' if um_so else f" ({lugar(ne, v)})")
+                                                                       for pp, ne, d in conferidas), 1))
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
             # só datas cujo preço ainda é o da lista do Google; as já conferidas aparecem nas linhas de cima
