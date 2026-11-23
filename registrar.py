@@ -15,8 +15,8 @@ Uso:  python3 registrar.py --teste                -> auto-checagem (não envia n
 
 O token do bot fica no Keychain (serviço telegram-passagens); o id do chat em telegram_chat.txt.
 No GitHub, os segredos TELEGRAM_TOKEN e TELEGRAM_CHAT_ID (a lista fixa do dono; o primeiro chat é o dono).
-Para outro celular receber, basta abrir o bot e mandar /start: o workflow "Atendimento dos bots" inscreve o chat em
-poucos minutos e guarda a lista em assinantes.cif, cifrada (ver atendimento.py). /sair cancela.
+O bot das passagens é particular (atendimento.BOTS): só o primeiro chat do segredo TELEGRAM_CHAT_ID, o dono, recebe.
+Para voltar a aceitar outros celulares pelo /start, tire particular=True do bot das passagens em atendimento.py.
 PASSAGENS_ENVIAR=0 não envia nada; PASSAGENS_ENVIAR=teste manda só para o dono, sem som, marcado [TESTE].
 """
 import csv, html, json, os, re, subprocess, sys, tempfile, time, urllib.parse, urllib.request
@@ -36,6 +36,7 @@ LIMITE_MENSAGEM = 3900          # o Telegram aceita 4.096 caracteres
 HORAS_ENTRE_TOQUES = 6          # o mesmo trecho não toca de novo antes disso, a não ser que caia mais
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
 SINAL = {'bom': '🟢 Bom momento', 'acompanhar': '🟡 Acompanhar', 'esperar': '⏳ Esperar'}   # nuvem/momento.py
+OUTRAS_DATAS = 4                # quantas outras datas com preço conferido a mensagem lista por trecho
 
 
 def dia(d):  # '2026-12-18' -> 'sex 18/12'
@@ -100,14 +101,17 @@ def _api(token, metodo, campos=None):
 
 def _chats():
     """Quem recebe os alertas: a lista fixa do dono (segredo TELEGRAM_CHAT_ID ou telegram_chat.txt) e, depois dela,
-    quem se inscreveu mandando /start ao bot (assinantes.cif, mantido por atendimento.py)."""
+    quem se inscreveu mandando /start ao bot (assinantes.cif, mantido por atendimento.py).
+    Bot particular (atendimento.BOTS): só o primeiro da lista fixa, o dono. Se não der para saber, também só o dono."""
     bruto = os.environ.get('TELEGRAM_CHAT_ID', '').strip() or (open(CHAT_FILE).read().strip() if os.path.exists(CHAT_FILE) else '')
     fixos = re.findall(r'-?\d{5,}', bruto)
     try:
         import atendimento
+        if atendimento.bot_particular('passagens'):
+            return fixos[:1]
         pelo_start = atendimento.inscritos(_token(), os.path.join(AQUI, 'assinantes.cif'))
     except Exception:
-        pelo_start = []
+        return fixos[:1]
     return list(dict.fromkeys(fixos + pelo_start))
 
 
@@ -398,11 +402,18 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
         fora = de_fora(r, v)
         if fora:
             linhas.append((f"🌐 Na {html.escape(fora['vend'])}, agência de fora do Brasil, esse voo aparece por {brl(fora['pp'])} (não entra na escolha)", 2))
+        # outras datas com preço conferido nesta busca (o melhor de cada data, com o aeroporto): numa janela longa, é o
+        # que mostra as alternativas à recomendada
+        mostradas = {rec['d']} | ({r['mais_barata']['d']} if r.get('mais_barata') else set())
+        conferidas = sorted((min((c['pp'], ne) for ne, c in cel.items() if c['conf']) + (d,) for d, cel in (r.get('celulas') or {}).items()
+                             if d not in mostradas and d in t['datas'] and any(c['conf'] for c in cel.values())))[:OUTRAS_DATAS]
+        if conferidas:
+            linhas.append(('📅 Outras datas conferidas: ' + ' · '.join(f"{dia(d)} {brl(pp)} ({lugar(ne, v)})" for pp, ne, d in conferidas), 1))
         if t['rodizio']:
             vistas = estado.get('series', {}).get(t['serie'], {}).get('datas', {})
             # só datas cujo preço ainda é o da lista do Google; as já conferidas aparecem nas linhas de cima
-            mostradas = {rec['d']} | ({r['mais_barata']['d']} if r.get('mais_barata') else set())
-            outras = sorted(((x['pp'], d) for d, x in vistas.items() if x.get('pp') and not x.get('conf') and d not in mostradas))[:2]
+            ja = mostradas | {d for _, _, d in conferidas}
+            outras = sorted(((x['pp'], d) for d, x in vistas.items() if x.get('pp') and not x.get('conf') and d not in ja and d in t['datas']))[:2]
             if outras:
                 linhas.append(('Outras datas, preço ainda não conferido: ' + ' · '.join(f"{dia(d)} {brl(pp)}" for pp, d in outras), 2))
     # quem tem duas formas de voltar: quanto uma sai mais barata que a outra
@@ -647,15 +658,23 @@ def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
 
 
 def _teste():
+    import atendimento
     antes = os.environ.get('TELEGRAM_TOKEN')
+    bot_passagens = next(b for b in atendimento.BOTS if b['chave'] == 'passagens')
     try:
         tk = '123456789:AAH-abcdefghijklmnopqrstuvwxyz_0123'
         os.environ['TELEGRAM_TOKEN'] = f' Use this token to access the HTTP API:\n{tk} \n'
         assert _token() == tk, _token()
         os.environ['TELEGRAM_TOKEN'] = 'sem token aqui'
         assert _token() == '' and telegram('x') == 'TELEGRAM_NAO_CONFIGURADO'
-        # vários destinatários: manda para cada um; o resultado diz quem falhou, sem mostrar o id
+        # bot particular (como está agora): só o primeiro da lista fixa recebe, mesmo com outros chats no segredo
         os.environ.update(TELEGRAM_TOKEN=tk, TELEGRAM_CHAT_ID=' 111111111, 222222222 ')
+        assert atendimento.bot_particular('passagens') and _chats() == ['111111111']
+        foram = []
+        assert telegram('oi', _envio=lambda t, c: foram.append(c['chat_id'])) == 'TELEGRAM_ENVIADO' and foram == ['111111111']
+        # daqui para baixo, o bot aberto: vale a lista fixa inteira e quem entrou pelo /start
+        bot_passagens['particular'] = False
+        # vários destinatários: manda para cada um; o resultado diz quem falhou, sem mostrar o id
         foram = []
         envio = lambda token, campos: foram.append(campos['chat_id']) or (None if campos['chat_id'] == '111111111' else 'Forbidden: bot was blocked')
         r = telegram('oi', _envio=envio)
@@ -685,7 +704,6 @@ def _teste():
             raise Recusa()
         assert _enviar_um(tk, {}, api=recusado, espera=0) == 'Recusa 403 Forbidden: bot was blocked by the user' and len(chamadas) == 5
         # quem se inscreveu pelo /start entra depois da lista fixa, sem repetir; arquivo de outro bot não abre
-        import atendimento
         global AQUI
         aqui_real = AQUI
         with tempfile.TemporaryDirectory() as d:
@@ -696,9 +714,14 @@ def _teste():
                 assert _chats() == ['111111111', '222222222', '333333333'], _chats()
                 os.environ['TELEGRAM_TOKEN'] = '987654321:' + 'Z' * 35
                 assert _chats() == ['111111111', '222222222']
+                # de volta a particular: a lista do /start é ignorada
+                os.environ['TELEGRAM_TOKEN'] = tk
+                bot_passagens['particular'] = True
+                assert _chats() == ['111111111']
             finally:
                 AQUI = aqui_real
     finally:
+        bot_passagens['particular'] = True
         os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
     _teste_registro()
@@ -710,7 +733,7 @@ def _teste_registro():
     assert janela(['2027-01-18']) == '18/01' and janela([]) == 'sem datas' and janela(plano.datas({'de': '2027-01-23', 'ate': '2027-03-31'})) == '23/01 a 31/03'
     assert janela(['2026-12-30', '2027-01-02', '2027-01-03']) == '30/12 e 02 a 03/01' and brl(1234.4) == 'R$1.234'
 
-    v = plano.carregar()
+    v = plano.carregar_teste()
     # os alvos do teste são fixos: mudar um alvo no arquivo da viagem não muda o que este teste confere
     alvos = {'v.volta': 450, 'g.ida_dez': 1000, 'wk.ida': 1000, 'wk.volta': 450}
     for g in v['grupos']:
@@ -762,6 +785,7 @@ def _teste_registro():
         # quem pode voltar junto ou depois: as duas possibilidades, a diferença, e o que ainda não foi conferido vem avisado
         assert ('🧍 <b>Beto</b>\n<u>Volta junto · 18 a 22/01</u>\n<b>R$612</b> · qua 20/01 · mesmo voo de Ana\n└ 12h50 Fortaleza → 16h30 Guarulhos\n'
                 '<u>Volta depois · 23/01 a 31/03</u>\n⭐ <b>R$389</b> · ter 09/02 · LATAM, direto\n└ 13h10 Fortaleza → 16h30 Guarulhos · 123milhas\n'
+                '📅 Outras datas conferidas: seg 01/02 R$366 (Recife)\n'
                 'Outras datas, preço ainda não conferido: ter 23/02 R$402 · qua 10/03 R$415\n'
                 '↔️ Volta depois sai R$223 mais barato que volta junto\n\n') in msg, msg
         # dois cenários de ida, o voo já comprado à parte, Campinas por extenso, conexão com o tempo de espera, chegada no dia seguinte

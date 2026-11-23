@@ -6,7 +6,7 @@ uma janela de datas, um número de lugares). Daqui saem:
   buscas(v, hoje, estado) -> as buscas do Google desta rodada, sem repetir (sentido, data, lugares)
 O repositório é público: no arquivo os grupos têm só uma sigla. Os nomes vêm do segredo NOMES_VIAGEM (nomes()).
 
-Uso: python3 nuvem/plano.py --teste   -> auto-checagem, inclusive do viagem.json de verdade
+Uso: python3 nuvem/plano.py --teste   -> auto-checagem (confere o viagem.json de verdade e usa nuvem/viagem_teste.json)
 """
 import json, os, re, sys
 from datetime import date, timedelta
@@ -47,6 +47,12 @@ def conferir(v):
 def carregar(caminho=None):
     with open(caminho or os.path.join(RAIZ, 'viagem.json'), encoding='utf-8') as f:
         return conferir(json.load(f))
+
+
+def carregar_teste():
+    """A viagem usada nas auto-checagens (nuvem/viagem_teste.json): quatro grupos, com todos os recursos. Fica fixa, para
+    mudar a viagem de verdade (viagem.json) não quebrar os testes."""
+    return carregar(os.path.join(RAIZ, 'nuvem', 'viagem_teste.json'))
 
 
 def aeroportos(v, sentido):
@@ -116,8 +122,14 @@ def _teste():
     assert datas({'de': '2026-12-30', 'ate': '2027-01-02'}) == ['2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02']
     assert datas(['2026-12-23', '2026-12-22']) == ['2026-12-22', '2026-12-23']
 
-    # ---- o arquivo de verdade
-    v = carregar()
+    # ---- o arquivo de verdade: tem que estar certo e caber numa rodada (cada busca é uma página do Google)
+    real = carregar()
+    hoje_ = date.today().isoformat()
+    assert all(t['datas'] or t['igual_a'] for t in trechos(real, '2026-11-23')), 'trecho sem datas'
+    assert len(buscas(real, hoje_)) <= 60, f"buscas demais por rodada: {len(buscas(real, hoje_))}"
+
+    # ---- a viagem dos testes (quatro grupos)
+    v = carregar_teste()
     ts = {t['serie']: t for t in trechos(v, '2026-11-20')}
     assert list(ts) == ['v.volta', 'h.junto', 'h.depois', 'g.ida_dez', 'g.ida_jan', 'g.volta', 'wk.ida', 'wk.volta'], list(ts)
     assert ts['v.volta']['datas'] == ['2027-01-18', '2027-01-19', '2027-01-20', '2027-01-21', '2027-01-22'] and ts['v.volta']['pax'] == 1

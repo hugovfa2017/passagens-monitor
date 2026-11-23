@@ -60,13 +60,27 @@ def variados(ordenados, n, chave):
     return saida + [x for x in ordenados if x not in saida][:n - len(saida)]
 
 
+def diversos(ordenados, n, *chaves):
+    """Os n primeiros de uma lista já ordenada, variando: primeiro um por valor da primeira chave (ex.: o aeroporto),
+    depois um por valor novo da segunda (ex.: a data), e só então os próximos da ordem."""
+    saida = []
+    for chave in chaves:
+        usados = {chave(x) for x in saida}
+        for x in ordenados:
+            if len(saida) < n and x not in saida and chave(x) not in usados:
+                usados.add(chave(x))
+                saida.append(x)
+    return saida + [x for x in ordenados if x not in saida][:n - len(saida)]
+
+
 def candidatos(lista, v, t, anterior=None):
     """Voos da lista que vale conferir na tela de compra para um trecho: o melhor de cada aeroporto depois do peso (um
-    aeroporto barato na lista não esconde os outros), o mais barato de todos, a recomendada da rodada anterior (para
-    saber se subiu ou sumiu) e o voo já comprado, quando o trecho pede."""
+    aeroporto barato na lista não esconde os outros), depois o melhor de cada data ainda não coberta (numa janela longa,
+    a mensagem mostra várias datas conferidas), o mais barato de todos, a recomendada da rodada anterior (para saber se
+    subiu ou sumiu) e o voo já comprado, quando o trecho pede."""
     meus = do_trecho(lista, t)
     por_ajustado = sorted(meus, key=lambda x: (x['lista_pp'] + peso(x, v, t), x['d'], x['saida']))
-    escolhidos = variados(por_ajustado, max(1, v['selecao']['validar_por_trecho'] - 1), lambda x: nordeste(x, v))
+    escolhidos = diversos(por_ajustado, max(1, v['selecao']['validar_por_trecho'] - 1), lambda x: nordeste(x, v), lambda x: x['d'])
     escolhidos += sorted(meus, key=lambda x: (x['lista_pp'], x['d'], x['saida']))[:1]
     if anterior:
         escolhidos += [x for x in meus if ident(x) == tuple(anterior)][:1]
@@ -215,6 +229,16 @@ def _teste():
     so_for = [x for x in lista if x['orig'] == 'FOR' and x['pax'] == 1]
     assert [x['saida'] for x in candidatos(so_for, v, volta)] == ['12:50', '06:00']
     assert variados([1, 2, 3, 4], 3, lambda x: x % 2) == [1, 2, 3] and variados([1, 3, 5], 2, lambda x: 0) == [1, 3] and variados([], 2, str) == []
+    # variando por duas chaves: primeiro uma de cada paridade, depois uma de cada dezena nova, depois o que vier
+    assert diversos([1, 3, 5, 12, 14, 25, 27], 5, lambda x: x % 2, lambda x: x // 10) == [1, 12, 25, 3, 5]
+    assert diversos([1, 2, 3], 2, lambda x: 0) == variados([1, 2, 3], 2, lambda x: 0) == [1, 2] and diversos([], 3, str, str) == []
+    # janela longa, um trecho só: com 6 conferências, entra o melhor de cada aeroporto e depois datas novas, não 6 voos do mesmo dia
+    longa = {'serie': 'h.depois', 'sentido': 'volta', 'pax': 1, 'datas': [f'2027-02-{d:02d}' for d in range(1, 11)], 'voo_comprado': False}
+    cheia = [voo('2027-02-01', 'FOR', 'GRU', f'{h:02d}:00', 300 + h) for h in (6, 7, 8, 9)] + [voo('2027-02-03', 'FOR', 'GRU', '10:00', 320),
+             voo('2027-02-05', 'JDO', 'GRU', '11:00', 330), voo('2027-02-07', 'FOR', 'GRU', '12:00', 340), voo('2027-02-08', 'NAT', 'GRU', '13:00', 400)]
+    c = candidatos(cheia, {**v, 'selecao': {**v['selecao'], 'validar_por_trecho': 7}}, longa)
+    assert [(x['d'][8:], x['orig'], x['saida']) for x in c] == [('01', 'FOR', '06:00'), ('05', 'JDO', '11:00'), ('08', 'NAT', '13:00'), ('03', 'FOR', '10:00'),
+                                                              ('07', 'FOR', '12:00'), ('01', 'FOR', '07:00')], c
     lista_ida = [comprado, voo('2026-12-23', 'GRU', 'FOR', '07:00', 1200, pax=2, sentido='ida'), voo('2026-12-22', 'GRU', 'FOR', '08:00', 1300, pax=2, sentido='ida'),
                  voo('2026-12-23', 'VCP', 'FOR', '09:00', 1100, pax=2, sentido='ida')]
     c = candidatos(lista_ida, v, ida)

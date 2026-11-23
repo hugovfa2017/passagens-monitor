@@ -14,6 +14,8 @@ Só este workflow chama getUpdates. Dois leitores ao mesmo tempo atendem a mesma
 
 Quem recebe os alertas = a lista fixa do dono (segredos TELEGRAM_CHAT_ID / TELEGRAM_CHAT_ID_PS5; o primeiro é o dono)
 + os inscritos pelo /start. Comandos só do dono: /inscritos e /remover <número>.
+Bot particular (particular=True em BOTS): só o dono recebe. Ninguém entra pelo /start, a lista de inscritos fica vazia e
+os outros chats da lista fixa também deixam de receber (registrar.py lê isso daqui, por bot_particular).
 
 Uso:  python3 atendimento.py              -> atende os dois bots e grava as listas
       python3 atendimento.py --confirmar  -> confirma a leitura (depois que as listas foram guardadas)
@@ -30,11 +32,12 @@ def _ids(variavel):
 
 
 BOTS = [
+    # o bot das passagens é particular desde 23/11/2026: as outras passagens da viagem já foram compradas e só falta a
+    # volta do dono, então só ele recebe
     dict(chave='passagens', nome='monitor de passagens', token='TELEGRAM_TOKEN', arquivo='assinantes.cif',
-         fixos=lambda: _ids('TELEGRAM_CHAT_ID'),
+         fixos=lambda: _ids('TELEGRAM_CHAT_ID'), particular=True,
          sobre='Chega uma mensagem por hora com os preços; ela só toca quando um preço fica abaixo do alvo ou bate o menor já visto.',
-         descricao='Avisos de preço de passagens. Toque em Iniciar para receber: a confirmação chega em poucos minutos. '
-                   'Para parar, mande /sair.'),
+         descricao='Avisos de preço de passagens. Este bot é particular: os alertas vão só para o dono do monitor.'),
     dict(chave='ps5', nome='buscador de PS5', token='TELEGRAM_TOKEN_PS5', arquivo=os.path.join('ps5', 'assinantes.cif'),
          fixos=lambda: _ids('TELEGRAM_CHAT_ID_PS5') or _ids('TELEGRAM_CHAT_ID')[:1],
          sobre='A busca roda de 30 em 30 minutos. O aviso toca quando um PS5 fica abaixo do alvo ou bate o menor preço já visto; '
@@ -43,6 +46,12 @@ BOTS = [
                    'poucos minutos. Para parar, mande /sair.'),
 ]
 COMANDOS = [{'command': 'start', 'description': 'Receber os alertas'}, {'command': 'sair', 'description': 'Parar de receber'}]
+
+
+def bot_particular(chave):
+    """True se o bot só manda para o dono. Na dúvida (chave desconhecida), também True: é melhor ninguém além do dono
+    receber do que mandar para quem não devia."""
+    return next((bool(b.get('particular')) for b in BOTS if b['chave'] == chave), True)
 
 
 # ---------------------------------------------------------------- lista de inscritos (arquivo cifrado)
@@ -140,10 +149,14 @@ def _eventos(novidades):
     return saida
 
 
-def atender(api, fixos, lista, nome, sobre, limite=LIMITE):
+def atender(api, fixos, lista, nome, sobre, limite=LIMITE, particular=False):
     """api(metodo, campos) fala com o Telegram. fixos: lista do dono (o primeiro é o dono). lista: inscritos de agora.
     Devolve {'inscritos': lista nova, 'offset': o que confirmar depois de guardar a lista (ou None), 'resumo': contagens}.
-    Nunca levanta exceção nem confirma a leitura: quem chama guarda a lista primeiro."""
+    Nunca levanta exceção nem confirma a leitura: quem chama guarda a lista primeiro.
+    particular: só o dono recebe; a lista de inscritos é esvaziada e o /start de outra pessoa é recusado com educação."""
+    saiu_por_ser_particular = len(lista) if particular else 0
+    if particular:
+        fixos, lista = list(fixos)[:1], []
     try:
         novidades = api('getUpdates', {'timeout': 0}).get('result') or []
     except Exception as e:   # sem str(e): pode trazer o token na URL
@@ -152,8 +165,10 @@ def atender(api, fixos, lista, nome, sobre, limite=LIMITE):
     fixos, lista = [str(c) for c in fixos], [str(c) for c in lista]
     dono = fixos[0] if fixos else None
     if not novidades:
-        return {'inscritos': lista, 'offset': None, 'resumo': f'ninguém escreveu (recebem: {len(set(fixos + lista))})'}
-    cont = dict(enviadas=0, falhas=0, saidas=0)
+        return {'inscritos': lista, 'offset': None, 'resumo': f'ninguém escreveu (recebem: {len(set(fixos + lista))})'
+                + (f', {saiu_por_ser_particular} inscritos saíram (bot particular)' if saiu_por_ser_particular else '')}
+    cont = dict(enviadas=0, falhas=0, saidas=saiu_por_ser_particular)
+    fechado = f"🔒 O {nome} agora é particular: os alertas vão só para o dono do monitor."
     novos = []
 
     def mandar(chat, texto, **extra):
@@ -172,6 +187,9 @@ def atender(api, fixos, lista, nome, sobre, limite=LIMITE):
         elif acao == 'entrar':
             if recebe:
                 mandar(i, f"✅ Este chat já recebe os alertas do {nome}.\n{sobre}\nPara parar, mande /sair.")
+            elif particular:
+                if privado:
+                    mandar(i, fechado)
             elif len(lista) >= limite:
                 mandar(i, f"😕 A lista de quem recebe os alertas do {nome} está cheia. Tente de novo outro dia.")
             else:
@@ -187,6 +205,8 @@ def atender(api, fixos, lista, nome, sobre, limite=LIMITE):
                 mandar(i, "ℹ️ Este chat está na lista fixa do dono do monitor (um segredo no GitHub); por aqui não dá para sair.")
             else:
                 mandar(i, "ℹ️ Este chat não está inscrito. Para receber os alertas, mande /start.")
+        elif acao == 'inscritos' and i == dono and particular:
+            mandar(i, f"📋 O {nome} é particular: só este chat recebe os alertas.")
         elif acao == 'inscritos' and i == dono:
             numeros = ', '.join(f'<code>{x}</code>' for x in lista) or 'ninguém'
             mandar(i, f"📋 Recebem os alertas do {nome}: {len(fixos)} da lista fixa e {len(lista)} pelo /start.\n"
@@ -201,7 +221,7 @@ def atender(api, fixos, lista, nome, sobre, limite=LIMITE):
                 mandar(i, "ℹ️ Esse número não está entre os inscritos pelo /start. Veja a lista com /inscritos.")
         elif privado:   # qualquer outra mensagem, ou comando do dono vindo de outra pessoa
             mandar(i, f"ℹ️ Este chat recebe os alertas do {nome}.\n{sobre}\nPara parar, mande /sair." if recebe else
-                      f"👋 Este bot manda os alertas do {nome}. Para receber, mande /start.")
+                      fechado if particular else f"👋 Este bot manda os alertas do {nome}. Para receber, mande /start.")
 
     entraram = [(i, c) for i, c in novos if i in lista]
     if dono and entraram:
@@ -252,7 +272,7 @@ def rodar(bots=BOTS, pasta=AQUI, api_de=None):
             continue
         api, arquivo = api_de(token), os.path.join(pasta, b['arquivo'])
         antes = inscritos(token, arquivo)
-        r = atender(api, b['fixos'](), antes, b['nome'], b['sobre'])
+        r = atender(api, b['fixos'](), antes, b['nome'], b['sobre'], particular=bool(b.get('particular')))
         if r['inscritos'] != antes:
             gravar_inscritos(token, arquivo, r['inscritos'])
         if r['offset'] is not None:
@@ -379,6 +399,22 @@ def _teste():
     assert r['inscritos'] == [] and '1 da lista fixa e 1 pelo /start' in e['enviado'][0][1] and '<code>222222222</code>' in e['enviado'][0][1]
     assert e['enviado'][1][1].startswith('🗑') and e['enviado'][2][1].startswith('ℹ') and e['enviado'][3][1].startswith('👋')
 
+    # ---- bot particular: só o dono recebe; a lista antiga sai mesmo sem ninguém escrever; /start de outro é recusado
+    #      sem inscrever nem avisar o dono; o dono continua respondido; o segundo da lista fixa também deixa de receber
+    dois = D + ['555555555']                       # lista fixa com dois chats: só o primeiro (o dono) continua recebendo
+    api, e = bot([])
+    r = atender(api, dois, ['333333333'], particular=True, **args)
+    assert r['inscritos'] == [] and r['resumo'] == 'ninguém escreveu (recebem: 1), 1 inscritos saíram (bot particular)', r
+    api, e = bot([msg(1, maria), msg(2, maria, 'oi'), msg(3, {'id': 555555555, 'type': 'private'}), msg(4, dono, '/start'),
+                  msg(5, dono, '/inscritos'), msg(6, grupo, '/start@PassagensBot')])
+    r = atender(api, dois, ['333333333'], particular=True, **args)
+    textos = [(c, t) for c, t, _ in e['enviado']]
+    assert r['inscritos'] == [] and r['offset'] == 7 and r['resumo'] == 'mensagens=5 novos=0 saidas=1 recebem=1 falhas=0', r
+    assert [c for c, _ in textos] == ['222222222', '222222222', '555555555', D[0], D[0]], textos
+    assert all(t.startswith('🔒') for _, t in textos[:3]) and textos[3][1].startswith('✅') and 'particular' in textos[4][1]
+    assert not any('Inscrição nova' in t for _, t in textos)
+    assert bot_particular('passagens') and not bot_particular('ps5') and bot_particular('outro')
+
     # ---- lista cheia: não inscreve
     api, e = bot([msg(1, maria)])
     r = atender(api, D, ['900000001', '900000002'], limite=2, **args)
@@ -402,13 +438,14 @@ def _teste():
             os.environ.update(TELEGRAM_TOKEN=tk, TELEGRAM_CHAT_ID='111111111', TELEGRAM_TOKEN_PS5=outro,
                               ATENDIMENTO_PENDENTE=os.path.join(d, 'pendente.json'))
             os.environ.pop('TELEGRAM_CHAT_ID_PS5', None)
+            gravar_inscritos(tk, os.path.join(d, 'assinantes.cif'), ['333333333', '444444444'])     # inscritos de antes
             api1, e1 = bot([msg(5, maria)])
             api2, e2 = bot([msg(3, maria), msg(4, grupo, '/start@Ps5Bot')])
             api_de = lambda token: {tk: api1, outro: api2}[token]
             linhas = rodar(pasta=d, api_de=api_de)
-            assert linhas == ['passagens: mensagens=2 novos=1 saidas=0 recebem=2 falhas=0',
+            assert linhas == ['passagens: mensagens=1 novos=0 saidas=2 recebem=1 falhas=0',
                               'ps5: mensagens=3 novos=2 saidas=0 recebem=3 falhas=0'], linhas
-            assert inscritos(tk, os.path.join(d, 'assinantes.cif')) == ['222222222']
+            assert inscritos(tk, os.path.join(d, 'assinantes.cif')) == [] and e1['enviado'][0][1].startswith('🔒')
             assert inscritos(outro, os.path.join(d, 'ps5', 'assinantes.cif')) == ['222222222', '-1001234567890']
             assert e1['descricao'] == BOTS[0]['descricao'] and e2['comandos'] == COMANDOS and e1['ajustes'] == 2
             assert len(e1['fila']) == 1 and len(e2['fila']) == 2          # ainda não confirmado
@@ -416,8 +453,8 @@ def _teste():
             assert not e1['fila'] and not e2['fila'] and confirmar(api_de=api_de) == ['nada a confirmar']
             antes = open(os.path.join(d, 'assinantes.cif')).read()
             linhas = rodar(pasta=d, api_de=api_de)
-            assert linhas == ['passagens: ninguém escreveu (recebem: 2)', 'ps5: ninguém escreveu (recebem: 3)'], linhas
-            assert open(os.path.join(d, 'assinantes.cif')).read() == antes and e1['ajustes'] == 2 and len(e1['enviado']) == 2
+            assert linhas == ['passagens: ninguém escreveu (recebem: 1)', 'ps5: ninguém escreveu (recebem: 3)'], linhas
+            assert open(os.path.join(d, 'assinantes.cif')).read() == antes and e1['ajustes'] == 2 and len(e1['enviado']) == 1
             # sem o token de um bot, ele é pulado e o outro segue
             os.environ.pop('TELEGRAM_TOKEN_PS5')
             assert rodar(pasta=d, api_de=api_de)[1] == 'ps5: sem token'
