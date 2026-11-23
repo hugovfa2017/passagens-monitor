@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-23 17:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-23 17:40 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon · postado há 22h
+**Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon · visto em 2 lugares
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 3 lugares
-- **PS5 Digital**: R$ 4.047 na Amazon · postado há 22h
-- **PS5 Pro**: R$ 7.699 na Amazon · visto em 2 lugares
+- **PS5 Digital**: R$ 4.047 na Amazon · visto em 2 lugares
+- **PS5 Pro**: R$ 7.699 na Amazon · à vista
 
 ## Alertas
 
@@ -14,7 +14,7 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.169,55 por ~R$ 3.335,64
+- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.047 por ~R$ 3.237,60
 - KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.369,05 por ~R$ 3.932,15; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.369,05 por ~R$ 4.269,05
 - Mercado Livre: `TODO2311SITE` (R$120 OFF em compras acima de R$999 Cupom: «TODO2311SITE»); `SITETODO2311` (R$50 OFF em compras acima de R$399 Cupom: «SITETODO2311»)
 
@@ -28,18 +28,18 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 35 itens · barrada em 1 de 106 buscas hoje
-- Amazon: ok, 46 itens · barrada em 89 de 106 buscas hoje
+- KaBuM!: ok, 35 itens · barrada em 1 de 107 buscas hoje
+- Amazon: ok, 58 itens · barrada em 89 de 107 buscas hoje
 - Americanas: ok, 13 itens
-- Fast Shop: ok, 8 itens
+- Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 4 itens
-- Zoom: ok, 28 itens
+- Zoom: ok, 26 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (39 ofertas no feed)
 - Telegram: ok, 7 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 178 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 190 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
