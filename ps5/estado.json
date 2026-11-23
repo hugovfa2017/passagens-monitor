@@ -253,7 +253,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 15.4
+   "idade_h": 15.6
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -355,7 +355,7 @@
    "ressalvas": [],
    "id": "promobit-3241401",
    "publicado": "2026-11-22T19:45:29-0300",
-   "idade_h": 13.9
+   "idade_h": 14.1
   },
   "promobit-3241495": {
    "fonte": "Promobit",
@@ -389,7 +389,7 @@
    "ressalvas": [],
    "id": "promobit-3241488",
    "publicado": "2026-11-22T20:39:03-0300",
-   "idade_h": 13.0
+   "idade_h": 13.2
   },
   "promobit-3241489": {
    "fonte": "Promobit",
@@ -406,7 +406,7 @@
    "ressalvas": [],
    "id": "promobit-3241489",
    "publicado": "2026-11-22T20:39:04-0300",
-   "idade_h": 13.0
+   "idade_h": 13.2
   },
   "tg-OfertasDoDia/485621-0": {
    "fonte": "Telegram",
@@ -425,7 +425,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 3.6
+   "idade_h": 3.8
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -444,7 +444,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 3.6
+   "idade_h": 3.8
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -461,7 +461,7 @@
    "ressalvas": [],
    "id": "promobit-3242121",
    "publicado": "2026-11-23T08:53:46-0300",
-   "idade_h": 0.8
+   "idade_h": 0.9
   },
   "promobit-3242182": {
    "fonte": "Promobit",
@@ -478,7 +478,7 @@
    "ressalvas": [],
    "id": "promobit-3242182",
    "publicado": "2026-11-23T09:09:35-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3242337": {
    "fonte": "Promobit",
@@ -495,7 +495,7 @@
    "ressalvas": [],
    "id": "promobit-3242337",
    "publicado": "2026-11-23T09:26:07-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "promobit-3242339": {
    "fonte": "Promobit",
@@ -529,7 +529,7 @@
    "ressalvas": [],
    "id": "promobit-3242403",
    "publicado": "2026-11-23T09:36:21-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3242376": {
    "fonte": "Promobit",
@@ -546,7 +546,41 @@
    "ressalvas": [],
    "id": "promobit-3242376",
    "publicado": "2026-11-23T09:32:42-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3242449": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sem Fio Sony Dualsense Hyperpop, Ps5, Techno Red",
+   "preco": 349.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-sony-dualsense-hyperpop-ps5-techno-red-3242449/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "OFERTAML",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3242449",
+   "publicado": "2026-11-23T09:43:11-0300",
    "idade_h": 0.1
+  },
+  "promobit-3242402": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Rockstar Games GTA VI PS5 Edição Padrão Física",
+   "preco": 261.9,
+   "link": "https://www.promobit.com.br/oferta/rockstar-games-gta-vi-ps5-edicao-padrao-fisica-3242402/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "OFERTAML",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3242402",
+   "publicado": "2026-11-23T09:36:19-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -583,81 +617,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 8,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 49
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T09:40:20-03:00",
+ "ultima": "2026-11-23T09:50:21-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
