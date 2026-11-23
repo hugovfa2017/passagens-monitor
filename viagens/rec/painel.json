@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-23 16:28",
+  "quando": "2026-11-23 17:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,44 +37,43 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 328,
+    "voos": 290,
     "conferidos": 10,
     "ofertas": 8,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
-     "repetidas": 2,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 1,
+     "repetidas": 1,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
      "telas": 9,
-     "lidas": 8
+     "lidas": 9
     },
     "sem_preco": {
-     "tela de compra sem vendedores": 2
+     "tela de compra sem vendedores": 1
     },
-    "seg": 65
-   },
-   "123milhas": {
-    "buscas": 8,
-    "com_voo": 7
+    "seg": 84
    },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
+   },
+   "123milhas": {
+    "buscas": 7,
+    "com_voo": 7
    },
    "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Viaza": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 7,
+    "com_voo": 7
    }
   },
   "mossoro": {
@@ -82,7 +81,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 111,
+   "Azul": 106,
    "Gol": 136,
    "LATAM": 92
   },
@@ -113,9 +112,9 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1037,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
+   "pp": 1007,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-21",
    "dia": "seg 21/12"
   },
   "mais_barata": null,
@@ -136,6 +135,10 @@
    [
     "2026-11-23 16:28",
     1037
+   ],
+   [
+    "2026-11-23 17:28",
+    1007
    ]
   ]
  },
@@ -154,7 +157,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1640,
+  "pp": 1859,
   "conf": true
  },
  {
@@ -163,7 +166,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1037,
+  "pp": 1007,
   "conf": true
  },
  {
@@ -172,7 +175,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1438,
+  "pp": 1262,
   "conf": true
  },
  {
@@ -181,7 +184,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1752,
+  "pp": 1503,
   "conf": true
  },
  {
@@ -227,19 +230,10 @@
  {
   "tipo": "celula",
   "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
-  "ne": "REC",
-  "pp": 1098,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 937,
+  "pp": 1059,
   "conf": true
  },
  {
@@ -257,7 +251,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 828,
+  "pp": 807,
   "conf": true
  },
  {
@@ -265,7 +259,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1828,
+  "pp": 1798,
   "ida": {
    "d": "2026-12-21",
    "orig": "CGH",
@@ -274,9 +268,9 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1037,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
+   "pp": 1007,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-21",
    "dia": "seg 21/12"
   },
   "volta": {
