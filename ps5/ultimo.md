@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-23 15:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-23 15:30 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon · postado há 20h
 
@@ -14,8 +14,9 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.184,07 por ~R$ 3.681,98; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.184,07 por ~R$ 3.765,66
+- KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.369,05 por ~R$ 3.932,15
 - Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.499 por ~R$ 3.599,20
+- Mercado Livre: `TODO2311SITE` (R$120 OFF em compras acima de R$999 Cupom: «TODO2311SITE»); `SITETODO2311` (R$50 OFF em compras acima de R$399 Cupom: «SITETODO2311»)
 
 ## À parte: importado
 
@@ -23,8 +24,8 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 36 itens · barrada em 1 de 93 buscas hoje
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 77 de 93 buscas hoje
+- KaBuM!: ok, 36 itens · barrada em 1 de 94 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 78 de 94 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
@@ -32,7 +33,7 @@ Telegram: sem mensagem nesta varredura
 - Zoom: ok, 27 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (39 ofertas no feed)
-- Telegram: ok, 5 itens (22 de 22 canais)
+- Telegram: ok, 7 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
 Descartados: 138 não é console PS5
