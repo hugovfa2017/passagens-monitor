@@ -462,6 +462,8 @@ def _teste():
     try:
         with tempfile.TemporaryDirectory() as d:
             os.makedirs(os.path.join(d, 'ps5'))
+            for b in BOTS:                    # tokens de verdade do ambiente (no GitHub, os secrets) não entram no teste
+                os.environ.pop(b['token'], None)
             os.environ.update(TELEGRAM_TOKEN=tk, TELEGRAM_CHAT_ID='111111111', TELEGRAM_TOKEN_PS5=outro,
                               ATENDIMENTO_PENDENTE=os.path.join(d, 'pendente.json'))
             os.environ.pop('TELEGRAM_CHAT_ID_PS5', None)
