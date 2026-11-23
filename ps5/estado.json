@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3239517": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "Avatar: Frontiers Pandora Edição PlayStation 5",
-   "preco": 135.15,
-   "link": "https://www.promobit.com.br/oferta/avatar-frontiers-pandora-edicao-playstation-5-3239517/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3239517",
-   "publicado": "2026-11-22T00:19:07-0300",
-   "idade_h": 8.7
-  },
   "promobit-3239643": {
    "fonte": "Promobit",
    "loja": "Aliexpress",
@@ -408,7 +391,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 6.2
+   "idade_h": 6.4
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -427,7 +410,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 6.2
+   "idade_h": 6.4
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -546,7 +529,7 @@
    "ressalvas": [],
    "id": "promobit-3242449",
    "publicado": "2026-11-23T09:43:11-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3242402": {
    "fonte": "Promobit",
@@ -563,7 +546,7 @@
    "ressalvas": [],
    "id": "promobit-3242402",
    "publicado": "2026-11-23T09:36:19-0300",
-   "idade_h": 2.7
+   "idade_h": 2.9
   },
   "promobit-3242530": {
    "fonte": "Promobit",
@@ -580,7 +563,7 @@
    "ressalvas": [],
    "id": "promobit-3242530",
    "publicado": "2026-11-23T09:54:23-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3242933": {
    "fonte": "Promobit",
@@ -597,7 +580,7 @@
    "ressalvas": [],
    "id": "promobit-3242933",
    "publicado": "2026-11-23T10:59:07-0300",
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "promobit-3243171": {
    "fonte": "Promobit",
@@ -614,7 +597,7 @@
    "ressalvas": [],
    "id": "promobit-3243171",
    "publicado": "2026-11-23T11:35:07-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "promobit-3243291": {
    "fonte": "Promobit",
@@ -631,7 +614,109 @@
    "ressalvas": [],
    "id": "promobit-3243291",
    "publicado": "2026-11-23T12:07:30-0300",
+   "idade_h": 0.4
+  },
+  "promobit-3243391": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle PlayStation PS5 gray camuflado",
+   "preco": 287.28,
+   "link": "https://www.promobit.com.br/oferta/controle-playstation-ps5-gray-camuflado-3243391/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "LIVROSJOGOS2311",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243391",
+   "publicado": "2026-11-23T12:21:08-0300",
    "idade_h": 0.2
+  },
+  "promobit-3243343": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Marvel's Wolverine PS5 Branco",
+   "preco": 377.1,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-marvels-wolverine-ps5-branco-3243343/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "LIVROSJOGOS2311",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243343",
+   "publicado": "2026-11-23T12:14:05-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3243364": {
+   "fonte": "Promobit",
+   "loja": "Playstation",
+   "titulo": "Jogo Mortal Kombat 1 - PS5",
+   "preco": 29.92,
+   "link": "https://www.promobit.com.br/oferta/jogo-mortal-kombat-1-ps5-3243364/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243364",
+   "publicado": "2026-11-23T12:16:25-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3243321": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Jogo Grand Theft Auto Gta Vi, Ps5 - Tt000272ps5",
+   "preco": 369.9,
+   "link": "https://www.promobit.com.br/oferta/jogo-grand-theft-auto-gta-vi-ps5-tt000272ps5-3243321/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "LIVROSJOGOS2311",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243321",
+   "publicado": "2026-11-23T12:11:06-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3243315": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada Amarelo",
+   "preco": 369.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3243315/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "LIVROSJOGOS2311",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243315",
+   "publicado": "2026-11-23T12:10:38-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3243311": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Ea Sports Fc 27 - Playstation 5",
+   "preco": 274.55,
+   "link": "https://www.promobit.com.br/oferta/ea-sports-fc-27-playstation-5-3243311/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243311",
+   "publicado": "2026-11-23T12:10:33-0300",
+   "idade_h": 0.3
   }
  },
  "alertados": {},
@@ -668,81 +753,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 9,
+   "falhas": 10,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
-   "barradas": 61
+   "buscas": 76,
+   "barradas": 62
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T12:17:18-03:00",
+ "ultima": "2026-11-23T12:30:23-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
