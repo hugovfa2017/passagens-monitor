@@ -1,8 +1,8 @@
-# Passagens: última busca em 2026-11-23 00:30
+# Passagens: última busca em 2026-11-23 01:29
 
-✈️ Passagens · seg 23/11, 00:30
+✈️ Passagens · seg 23/11, 01:29
 Preço por pessoa, sem mala, conferido nesta busca.
-↕️ V, volta −R$14 · G, ida em dezembro −R$135 · G, ida em janeiro −R$38 · W + K, ida −R$140 · W + K, volta +R$27
+↘️ W + K, ida −R$22
 
 👩 V
 Volta · 18 a 22/01
@@ -18,7 +18,7 @@ Volta depois · 23/01 a 31/03
 └ 02h25 Fortaleza → 06h05 Guarulhos · Vai de Promo
 💸 Mais barata: R$332 · sáb 06/03 · LATAM 3889, direto
 └ 03h20 Juazeiro → 06h25 Guarulhos · Vai de Promo
-Outras datas, preço ainda não conferido: sex 19/03 R$367 · sáb 20/03 R$367
+Outras datas, preço ainda não conferido: seg 22/03 R$367 · qua 24/03 R$367
 ↔️ Volta depois sai R$336 mais barato que volta junto
 
 🧑 G
@@ -38,17 +38,16 @@ R$711 · qua 20/01 · mesmo voo de V
 
 👭 W + K · 2 lugares no mesmo voo
 Ida · 22 a 23/12 e 26 a 30/12
-⭐ R$1.252 por pessoa · dom 27/12 · LATAM 3888, direto
+⭐ R$1.230 por pessoa · dom 27/12 · LATAM 3888, direto
 └ 20h20 Guarulhos → 23h20 Juazeiro · Zupper
 🎯 Voo já comprado (Gol 1678, ter 22/12 14h05): sem lugar à venda nesta busca
 Volta · 07 a 12/01
 ⭐ R$842 por pessoa · sex 08/01 · Gol 1305, direto
 └ 05h20 Fortaleza → 08h45 Congonhas · Vai de Promo
-🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$975 e R$3.000) · R$192 acima do alvo (R$650)
-📦 Ida + volta: R$2.094 por pessoa · R$4.188 no total
-🔁 Os mesmos voos numa compra só na Zupper: R$2.009 por pessoa (R$85 a menos) · R$4.018 no total
+📦 Ida + volta: R$2.072 por pessoa · R$4.144 no total
+🔁 Os mesmos voos numa compra só na Zupper: R$1.988 por pessoa (R$84 a menos) · R$3.976 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$70 a R$136 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$74 a R$136 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 

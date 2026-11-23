@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-23 00:30",
+  "quando": "2026-11-23 01:29",
   "alerta": null,
   "ordem": [
    "FOR",
@@ -67,12 +67,12 @@
   "fontes": {
    "Google": {
     "buscas": 42,
-    "voos": 26,
-    "conferidos": 2,
+    "voos": 93,
+    "conferidos": 4,
     "ofertas": 0,
     "bloqueio": null,
     "listas": {
-     "vazias": 41,
+     "vazias": 37,
      "repetidas": 20,
      "exemplo": "dos | Pesquisa de voo | Só ida | 1 | Econômica | São Paulo GRU CGH · Campinas VCP | Fortaleza FOR · Mossoró MVF · Juazeiro do Norte JDO · Natal NAT | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca |  @ /travel/flights/search"
     },
@@ -81,21 +81,22 @@
      "lidas": 0
     },
     "sem_preco": {
-     "a lista não abriu": 2
+     "a lista não abriu": 3,
+     "tela de compra sem vendedores": 1
     },
     "comprado": {
      "telas": 2,
      "a_venda": 0
     },
-    "seg": 390
+    "seg": 366
    },
    "123milhas": {
     "buscas": 12,
-    "com_voo": 8
+    "com_voo": 9
    },
    "MaxMilhas": {
     "buscas": 14,
-    "com_voo": 13
+    "com_voo": 12
    },
    "Vai de Promo": {
     "buscas": 12,
@@ -113,12 +114,12 @@
   },
   "mossoro": {
    "buscas": 2,
-   "voos": 1
+   "voos": 0
   },
   "taxa_mala": {
    "Azul": 108,
    "Gol": 136,
-   "LATAM": 70
+   "LATAM": 74
   },
   "grupos": [
    {
@@ -479,8 +480,35 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "NAT",
-  "pp": 1352,
+  "pp": 1339,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "JDO",
+  "pp": 1368,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "FOR",
+  "pp": 1614,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "NAT",
+  "pp": 1987,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -490,6 +518,24 @@
   "ne": "JDO",
   "pp": 1209,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "NAT",
+  "pp": 2013,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "g.ida_dez",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "FOR",
+  "pp": 2026,
+  "conf": false
  },
  {
   "tipo": "trecho",
@@ -676,7 +722,7 @@
    "saida": "20:20",
    "chegada": "23:20",
    "tipo": "direto",
-   "pp": 1252,
+   "pp": 1230,
    "vend": "Zupper",
    "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-27%22%7D%5D",
    "dia": "dom 27/12"
@@ -778,6 +824,10 @@
    [
     "2026-11-23 00:30",
     1252
+   ],
+   [
+    "2026-11-23 01:29",
+    1230
    ]
   ]
  },
@@ -787,8 +837,35 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "NAT",
-  "pp": 1352,
+  "pp": 1339,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "JDO",
+  "pp": 1813,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "NAT",
+  "pp": 2310,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-26",
+  "dia": "sáb 26/12",
+  "ne": "FOR",
+  "pp": 2716,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -796,8 +873,53 @@
   "d": "2026-12-27",
   "dia": "dom 27/12",
   "ne": "JDO",
-  "pp": 1252,
+  "pp": 1230,
   "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "FOR",
+  "pp": 1614,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-27",
+  "dia": "dom 27/12",
+  "ne": "NAT",
+  "pp": 1986,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "JDO",
+  "pp": 1368,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "NAT",
+  "pp": 2019,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "wk.ida",
+  "d": "2026-12-28",
+  "dia": "seg 28/12",
+  "ne": "FOR",
+  "pp": 2026,
+  "conf": false
  },
  {
   "tipo": "trecho",
@@ -825,13 +947,7 @@
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": {
-   "sinal": "acompanhar",
-   "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$975 e R$3.000)",
-    "R$192 acima do alvo (R$650)"
-   ]
-  },
+  "momento": null,
   "fora": null,
   "historico": [
    [
@@ -934,51 +1050,6 @@
   "conf": true
  },
  {
-  "tipo": "celula",
-  "serie": "wk.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "FOR",
-  "pp": 1019,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "wk.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "NAT",
-  "pp": 1097,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "wk.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "JPA",
-  "pp": 1317,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "JDO",
-  "pp": 1381,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "wk.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "REC",
-  "pp": 1514,
-  "conf": false
- },
- {
   "tipo": "pacote",
   "grupo": "g",
   "id": "A",
@@ -1051,7 +1122,7 @@
   "grupo": "wk",
   "id": "U",
   "nome": "U",
-  "pp": 2094,
+  "pp": 2072,
   "ida": {
    "d": "2026-12-27",
    "orig": "GRU",
@@ -1060,7 +1131,7 @@
    "saida": "20:20",
    "chegada": "23:20",
    "tipo": "direto",
-   "pp": 1252,
+   "pp": 1230,
    "vend": "Zupper",
    "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-27%22%7D%5D",
    "dia": "dom 27/12"
@@ -1079,10 +1150,10 @@
    "dia": "sex 08/01"
   },
   "juntas": {
-   "pp": 2009,
+   "pp": 1988,
    "vend": "Zupper",
    "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=2&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22JDO%22%2C%22departureDate%22%3A%222026-12-27%22%7D%2C%7B%22originAirport%22%3A%22FOR%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-08%22%7D%5D",
-   "economia": 85,
+   "economia": 84,
    "mesmos": true,
    "ida": {
     "d": "2026-12-27",
