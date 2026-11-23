@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-23 14:48 (hora de Brasília)
+# PS5 — última varredura: 2026-11-23 15:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon · postado há 19h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 3 lugares
 - **PS5 Digital**: R$ 4.047 na Amazon · postado há 19h
-- **PS5 Pro**: R$ 7.699 na Amazon · à vista
+- **PS5 Pro**: R$ 7.699 na Amazon · visto em 2 lugares
 
 ## Alertas
 
@@ -14,19 +14,23 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.094,40 por ~R$ 3.275,52
 - KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.184,07 por ~R$ 3.681,98; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.184,07 por ~R$ 3.765,66
-- Amazon: `RELAMPAGO20` (Cupom de desconto Amazon: 20% OFF em todo o site) → PS5 Digital de R$ 4.499 por ~R$ 3.599,20
 
 ## À parte: importado
 
+- PS5 Digital: R$ 4.369,90 na Amazon
+- PS5 Digital: R$ 4.369,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.319,90 na Amazon
+- PS5 com leitor de disco: R$ 5.367,40 na Amazon
 
 ## Fontes
 
-- KaBuM!: ok, 36 itens · barrada em 1 de 90 buscas hoje
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 75 de 90 buscas hoje
+- KaBuM!: ok, 36 itens · barrada em 1 de 91 buscas hoje
+- Amazon: ok, 45 itens · barrada em 75 de 91 buscas hoje
 - Americanas: ok, 13 itens
-- Fast Shop: ok, 7 itens
+- Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 4 itens
 - Zoom: ok, 27 itens
@@ -35,6 +39,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 5 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 138 não é console PS5
+Descartados: 160 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
