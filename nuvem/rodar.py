@@ -141,7 +141,7 @@ def fila_da_lupa(lista, ts, v, estado, hora):
     """O que buscar nos vendedores, por ordem de importância: [(sentido, data, aeroporto do Nordeste, lugares)].
     Primeiro a melhor (data, aeroporto) de cada trecho, depois a segunda. Sem lista do Google (bloqueio), vale a
     recomendada da rodada anterior. No fim, uma data de Mossoró em cada sentido: o Google não vende voo para lá, então
-    só os vendedores podem dizer se apareceu algum (as datas giram a cada hora)."""
+    só os vendedores podem dizer se apareceu algum (as datas giram a cada hora; hora = contador de horas)."""
     por_ordem = []
     for t in ts:
         if t['igual_a'] or not t['datas']:
@@ -155,7 +155,8 @@ def fila_da_lupa(lista, ts, v, estado, hora):
     fila = [c for nivel in range(max(map(len, por_ordem), default=0)) for cs in por_ordem for c in cs[nivel:nivel + 1]]
     if 'MVF' in v['aeroportos']:
         for sentido in ('ida', 'volta'):
-            ds = sorted({d for t in ts if t['sentido'] == sentido and not t['rodizio'] for d in t['datas']})
+            ds = sorted({d for t in ts if t['sentido'] == sentido and not t['rodizio'] for d in t['datas']}) \
+                or sorted({d for t in ts if t['sentido'] == sentido for d in t['datas']})      # só janela longa: gira nela
             if ds and 'MVF' in plano.aeroportos(v, sentido)[0 if sentido == 'volta' else 1]:
                 fila.append((sentido, ds[hora % len(ds)], 'MVF', 1))
     vistos = set()
@@ -558,7 +559,7 @@ async def varrer(v, estado, agora):
         google['seg'] = round(time.monotonic() - t0)
         print('GOOGLE:', json.dumps(google, ensure_ascii=False))
         t0 = time.monotonic()
-        fila = fila_da_lupa(lista, ts, v, estado, agora.hour)
+        fila = fila_da_lupa(lista, ts, v, estado, agora.toordinal() * 24 + agora.hour)   # gira a cada hora, dia após dia
         do_vendedor, fontes = await lupa(nav, fila)
         print(f'VENDEDORES: {len(fila)} chaves em {round(time.monotonic() - t0)}s |', json.dumps(fontes, ensure_ascii=False))
         ofertas = completar_numeros(ofertas + do_vendedor, estado.get('voos'))
@@ -580,7 +581,7 @@ async def varrer(v, estado, agora):
 
 # ---------------------------------------------------------------- auto-checagem
 def _teste():
-    v = plano.carregar()
+    v = plano.carregar_teste()
     hoje = '2026-11-20'
     ts = plano.trechos(v, hoje)
     bs = plano.buscas(v, hoje)
