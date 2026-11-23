@@ -1,7 +1,6 @@
-# Passagens: última busca em 2026-11-23 19:27
+# Passagens: última busca em 2026-11-23 20:30
 
-✈️ Passagens · seg 23/11, 19:27 · por pessoa, sem mala
-↘️ São Paulo ⇄ Recife, ida −R$9 · São Paulo ⇄ Recife, volta −R$62
+✈️ Passagens · seg 23/11, 20:30 · por pessoa, sem mala
 
 🧳 São Paulo ⇄ Recife
 🛫 Ida: R$1.024 · seg 21/12 · Azul 4662, direto
