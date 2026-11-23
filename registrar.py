@@ -173,6 +173,8 @@ def telegram(texto, silencioso=False, botoes=(), _envio=_enviar_um, so_dono=Fals
     """Manda para todos os chats. botoes: linhas de botões com link, ex. [[{'text': 'Abrir', 'url': 'https://...'}]]
     O resultado vai para arquivos públicos (ultimo.md, painel.json): nunca põe o id do chat nele."""
     token, chats = _token(), _chats(so_dono)   # so_dono: rodada de teste, só o dono
+    if token and not chats and BOT != 'passagens':
+        return 'TELEGRAM_SEM_INSCRITOS (ninguém mandou /start no bot desta viagem ainda)'
     if not token or not chats:
         return 'TELEGRAM_NAO_CONFIGURADO'
     falhas = []
@@ -375,6 +377,39 @@ def linhas_juntas(p, g, v, varios):
     return [f"🔁 {prefixo}{'ida' if varios else 'Ida'} e volta numa compra só na {onde}, em outros voos: {preco}", perna('ida', j['ida']), perna('volta', j['volta'])]
 
 
+def clique(link):
+    """'clique aqui' com o link de compra (só http/https: o endereço vem de sites de terceiros)."""
+    return f'<a href="{html.escape(link, quote=True)}">clique aqui</a>' if re.match(r'https?://', link or '') else ''
+
+
+def bloco_curto(g, ts, scan, v, nomes):
+    """O bloco de um grupo no formato curto (viagem.json: "mensagem": "curta"): por trecho, a melhor opção em duas linhas
+    (preço, dia e voo; horários e um 'clique aqui' para comprar) e, no fim, o pacote de ida e volta."""
+    series, meus = scan['series'], [t for t in ts if t['grupo'] == g['id']]
+    cada = ' por pessoa' if g['assentos'] > 1 else ''
+    linhas = [(f"{g.get('emoji', '•')} <b>{html.escape(nomes[g['id']])}</b>" + (f" · {g['assentos']} lugares no mesmo voo" if g['assentos'] > 1 else ''), 0)]
+    for t in meus:
+        rotulo = f"{ {'ida': '🛫', 'volta': '🛬'}.get(t['sentido'], '•') } {t['nome']}"
+        rec = (series.get(t['igual_a'] or t['serie']) or {}).get('recomendada')
+        if not t['datas'] or not rec:
+            linhas.append((f"{rotulo}: " + ('as datas já passaram' if not t['datas'] else 'sem preço conferido nesta busca'), 0))
+            continue
+        ok = '✅ ' if t['alvo'] and rec['pp'] <= t['alvo'] else ''
+        onde = clique(rec.get('link'))
+        linhas += [(f"{rotulo}: {ok}<b>{brl(rec['pp'])}</b>{cada} · {dia(rec['d'])} · {voo_txt(rec)}", 0),
+                   (f"└ {horarios(rec, v)} · " + (f"{onde} ({html.escape(nome_vendedor(rec['vend']))})" if onde else html.escape(nome_vendedor(rec['vend']))), 0)]
+    pacs = pacotes_do_grupo(g, ts, scan, v)
+    for p in pacs:
+        nome = f" {p['nome']}" if len(pacs) > 1 else ''
+        total = f" · {brl(p['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else ''
+        linhas.append((f"📦 Ida + volta{nome}: <b>{brl(p['pp'])}</b>{cada}{total}", 0))
+        j = p['juntas']
+        if j:
+            outros = '' if j['mesmos'] else ', em outros voos'
+            linhas.append((f"🔁 Numa compra só{outros}: <b>{brl(j['pp'])}</b>{cada} ({brl(j['economia'])} a menos) · {clique(j['link'])}", 0))
+    return linhas
+
+
 def de_fora(r, v):
     """A agência de fora do Brasil que vende o voo recomendado bem mais barato (viagem.json: margem_fora), ou None."""
     rec, fora = r.get('recomendada'), r.get('fora')
@@ -474,7 +509,7 @@ def montar_mensagem(cabecalho, topo, blocos, rodape, limite=LIMITE_MENSAGEM):
     """Junta tudo; se passar do limite, tira primeiro o rodapé, depois as linhas de nível 2, depois as de nível 1."""
     def texto(nivel, com_rodape):
         corpo = '\n\n'.join('\n'.join(l for l, n in b if n <= nivel) for b in blocos)
-        return f"{cabecalho}\n{topo}\n\n{corpo}" + (f"\n\n<i>{rodape}</i>" if com_rodape and rodape else '')
+        return f"{cabecalho}" + (f"\n{topo}" if topo else '') + f"\n\n{corpo}" + (f"\n\n<i>{rodape}</i>" if com_rodape and rodape else '')
     for nivel, com_rodape in ((2, True), (2, False), (1, False), (0, False)):
         t = texto(nivel, com_rodape)
         if len(t) <= limite:
@@ -653,7 +688,9 @@ def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
     enviar = enviar or envio_padrao()
     agora = agora or hora_do_scan(scan)
     ultimo, painel, precos = (os.path.join(pasta, f) for f in ('ultimo.md', 'painel.json', 'precos.csv'))
-    cabecalho = f"✈️ <b>Passagens</b> · {quando_tg(agora)}\n<i>Preço por pessoa, sem mala, conferido nesta busca.</i>"
+    curta = v.get('mensagem') == 'curta'
+    cabecalho = (f"✈️ <b>Passagens</b> · {quando_tg(agora)} · <i>sem mala</i>" if curta else
+                 f"✈️ <b>Passagens</b> · {quando_tg(agora)}\n<i>Preço por pessoa, sem mala, conferido nesta busca.</i>")
     if scan.get('status') != 'ok':
         erro = scan.get('erro') or 'nenhum voo encontrado'
         with open(ultimo, 'a', encoding='utf-8') as f:
@@ -675,11 +712,14 @@ def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
         w.writerows(linhas_csv)
 
     def mensagem(n):
+        if curta:   # formato curto: sem "sem mudança", sem rodapé
+            topo = montar_topo(alertas, mudancas, primeira, ts, n)
+            return montar_mensagem(cabecalho, '' if topo.startswith('😌') else topo, [bloco_curto(g, ts, scan, v, n) for g in v['grupos']], '')
         blocos = [bloco_do_grupo(g, ts, scan, v, estado, n, agora) for g in v['grupos']]
         return montar_mensagem(cabecalho, montar_topo(alertas, mudancas, primeira, ts, n), blocos, montar_rodape(scan, v))
 
     toca = any(a['toca'] for a in alertas)
-    st = enviar(mensagem(nomes), not toca, montar_botoes(v, ts, scan))
+    st = enviar(mensagem(nomes), not toca, [PAINEL_BOTAO] if curta else montar_botoes(v, ts, scan))   # no curto, o link vai no texto
     alerta_publico = montar_topo(alertas, mudancas, primeira, ts, publico) if alertas else None
     gravar_json(painel, linhas_do_painel(scan, v, ts, agora, alerta_publico and re.sub(r'<[^>]+>', '', alerta_publico), estado))
     gravar_json(os.path.join(pasta, 'estado.json'), estado)
@@ -763,6 +803,9 @@ def _teste():
                 assert telegram('oi', _envio=lambda t, c: None) == 'TELEGRAM_NAO_CONFIGURADO'
                 os.environ['TELEGRAM_TOKEN_REC'] = tk2
                 assert _token() == tk2 and _chats() == ['444444444'] and _chats(so_dono=True) == ['111111111']
+                os.rename(os.path.join(d, 'viagens', 'rec', 'assinantes.cif'), os.path.join(d, 'viagens', 'rec', 'fora.cif'))
+                assert telegram('oi', _envio=lambda t, c: None).startswith('TELEGRAM_SEM_INSCRITOS')   # bot certo, ninguém inscrito ainda
+                os.rename(os.path.join(d, 'viagens', 'rec', 'fora.cif'), os.path.join(d, 'viagens', 'rec', 'assinantes.cif'))
                 foram = []
                 assert telegram('oi', _envio=lambda t, c: foram.append((t, c['chat_id']))) == 'TELEGRAM_ENVIADO' and foram == [(tk2, '444444444')]
                 assert PAINEL_URL == 'https://hugovfa2017.github.io/passagens-monitor/rec/' and PAINEL_BOTAO[0]['url'] == PAINEL_URL
@@ -1069,6 +1112,27 @@ def _teste_registro():
         assert not enviados[-1][1]                                   # bateu o alvo: toca mesmo de madrugada
         # Google fora do ar ou pedindo verificação: não manda nada
         assert registrar_rapida({'status': 'erro', 'fontes': {'Google': {'bloqueio': 'tráfego incomum'}}}, v, d, fake, nomes, '2026-11-21 06:47') == ['RAPIDA_SEM_GOOGLE tráfego incomum']
+
+    # ---- formato curto (viagem.json: "mensagem": "curta"): só a melhor de cada trecho, com "clique aqui" para comprar
+    curta = {**json.loads(json.dumps(v)), 'mensagem': 'curta'}
+    with tempfile.TemporaryDirectory() as d:
+        enviados.clear()
+        s = scan()
+        s['series']['wk.volta']['recomendada']['link'] = 'https://loja/x?a=1&b=2'
+        s['series']['wk.volta']['recomendada']['vend'] = 'javascript:alert(1)'   # nome de vendedor vem de fora: vai escapado
+        s['series']['g.ida_jan']['recomendada']['link'] = 'javascript:alert(1)'  # link que não é http não vira link
+        registrar(s, curta, d, fake, nomes, '2026-11-20 20:17')
+        registrar(s, curta, d, fake, nomes, '2026-11-20 21:17')
+        msg, mudo, bt = enviados[-1]
+        assert msg.startswith('✈️ <b>Passagens</b> · sex 20/11, 21:17 · <i>sem mala</i>\n\n👩 <b>Ana</b>'), msg      # "sem mudança" não aparece
+        assert ('👭 <b>Duda + Eva</b> · 2 lugares no mesmo voo\n🛫 Ida: <b>R$1.150</b> por pessoa · seg 28/12 · Gol, direto\n'
+                '└ 14h05 Guarulhos → 17h25 Fortaleza · <a href="https://exemplo/GRUFOR2026-12-28">clique aqui</a> (123milhas)\n'
+                '🛬 Volta: <b>R$540</b> por pessoa · seg 11/01 · LATAM, direto\n'
+                '└ 03h20 Juazeiro → 06h50 Guarulhos · <a href="https://loja/x?a=1&amp;b=2">clique aqui</a> (javascript:alert(1))\n'
+                '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total') in msg, msg
+        assert '└ 22h40 Campinas (Viracopos) → 03h05 (+1 dia) Juazeiro · Azul\n' in msg            # sem link válido: só o vendedor
+        assert '🧍 <b>Beto</b>\n🛬 Volta junto: <b>R$612</b> · qua 20/01' in msg and '🎯' not in msg and '📅' not in msg and 'mala' not in msg.split('</i>', 1)[1]
+        assert bt == [PAINEL_BOTAO] and len(msg) < 2000, len(msg)
 
     # ---- mensagem grande demais: sai primeiro o rodapé, depois as linhas extras; nunca passa do limite
     blocos = [[('linha fixa ' * 20, 0), ('extra nível 1 ' * 20, 1), ('extra nível 2 ' * 20, 2)] for _ in range(4)]

@@ -1,8 +1,10 @@
 {
-  "_leia": "Segunda viagem do monitor: São Paulo ⇄ Recife, ida entre 19 e 23/12 e volta entre 10 e 13/01, 1 pessoa. Tudo dela fica nesta pasta (histórico, estado, resumo e a lista cifrada de quem recebe). As mensagens saem pelo bot 'rec' (atendimento.py, segredo TELEGRAM_TOKEN_REC); o painel fica em docs/rec/. Arquivo público: sem nomes. Depois de mexer, rode: python3 nuvem/plano.py --teste",
+  "_leia": "Segunda viagem do monitor: São Paulo ⇄ Recife, ida entre 19 e 23/12 e volta entre 10 e 13/01, 4 pessoas no mesmo voo (casal e 2 crianças). Tudo dela fica nesta pasta (histórico, estado, resumo e a lista cifrada de quem recebe). As mensagens saem pelo bot 'rec' (atendimento.py, segredo TELEGRAM_TOKEN_REC); o painel fica em docs/rec/. Arquivo público: sem nomes. Depois de mexer, rode: python3 nuvem/plano.py --teste",
 
   "bot": "rec",
   "painel": "rec/",
+  "_mensagem": "curta = só a melhor opção de cada trecho (preço, dia, voo, horários e um 'clique aqui' para comprar) e o pacote; sem veredito, outras datas nem rodapé.",
+  "mensagem": "curta",
 
   "sp": ["GRU", "CGH", "VCP"],
   "ida_destinos": ["REC"],
@@ -23,9 +25,9 @@
   "selecao": {"validar_por_trecho": 6, "lupa_por_trecho": 4, "margem_mais_barata": 30, "queda_min": 20, "horas_para_recorde": 72,
               "margem_lugares": 15, "margem_juntas": 30, "margem_fora": 50, "queda_rapida": 40},
 
-  "_grupos": "Um grupo, 1 lugar, ida e volta com algumas datas possíveis. Sem alvo: o alerta toca quando o preço bate o menor já visto. ida_e_volta = confere também a ida e a volta numa compra só.",
+  "_grupos": "Um grupo, 4 lugares no mesmo voo (casal e 2 crianças de idade ainda não informada; a busca é feita como 4 adultos: em voo nacional, criança a partir de 2 anos costuma pagar o mesmo que adulto), ida e volta com algumas datas possíveis. Sem alvo: o alerta toca quando o preço bate o menor já visto. ida_e_volta = confere também a ida e a volta numa compra só.",
   "grupos": [
-    {"id": "r", "rotulo": "São Paulo ⇄ Recife", "emoji": "🧳", "assentos": 1, "ida_e_volta": true,
+    {"id": "r", "rotulo": "São Paulo ⇄ Recife", "emoji": "🧳", "assentos": 4, "ida_e_volta": true,
      "trechos": [
        {"id": "ida", "sentido": "ida", "nome": "Ida", "datas": {"de": "2026-12-19", "ate": "2026-12-23"}},
        {"id": "volta", "sentido": "volta", "nome": "Volta", "datas": {"de": "2027-01-10", "ate": "2027-01-13"}}
