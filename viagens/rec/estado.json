@@ -1,0 +1,163 @@
+{
+ "series": {
+  "r.ida": {
+   "datas": {
+    "2026-12-19": {
+     "pp": 1860,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2026-12-20": {
+     "pp": 1507,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2026-12-21": {
+     "pp": 1037,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2026-12-22": {
+     "pp": 1390,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2026-12-23": {
+     "pp": 1579,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    }
+   },
+   "desde": "2026-11-23 15:27",
+   "min": 1037,
+   "hist": [
+    [
+     "2026-11-23 15:27",
+     1037
+    ]
+   ],
+   "rec": {
+    "ident": [
+     "2026-12-21",
+     "Azul",
+     "CGH",
+     "REC",
+     "16:45"
+    ],
+    "d": "2026-12-21",
+    "ne": "REC",
+    "pp": 1037,
+    "vend": "Vai de Promo",
+    "chegada": "19:50",
+    "tipo": "direto"
+   },
+   "barata": null
+  },
+  "r.volta": {
+   "datas": {
+    "2027-01-10": {
+     "pp": 1066,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2027-01-11": {
+     "pp": 937,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2027-01-12": {
+     "pp": 791,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    },
+    "2027-01-13": {
+     "pp": 830,
+     "ne": "REC",
+     "conf": true,
+     "visto": "2026-11-23 15:27"
+    }
+   },
+   "desde": "2026-11-23 15:27",
+   "min": 791,
+   "hist": [
+    [
+     "2026-11-23 15:27",
+     791
+    ]
+   ],
+   "rec": {
+    "ident": [
+     "2027-01-12",
+     "Azul",
+     "REC",
+     "CGH",
+     "16:35"
+    ],
+    "d": "2027-01-12",
+    "ne": "REC",
+    "pp": 791,
+    "vend": "Vai de Promo",
+    "chegada": "20:05",
+    "tipo": "direto"
+   },
+   "barata": null
+  }
+ },
+ "voos": {
+  "ida|2026-12-21|LATAM|CGH|REC|19:10|00:30": "CGH>BSB 2026-12-21 LA 4736;BSB>REC 2026-12-21 LA 3496",
+  "ida|2026-12-23|LATAM|GRU|REC|17:35|20:40": "GRU>REC 2026-12-23 LA 3376",
+  "ida|2026-12-20|LATAM|CGH|REC|18:25|00:30": "CGH>BSB 2026-12-20 LA 3581;BSB>REC 2026-12-20 LA 3496",
+  "ida|2026-12-19|Azul|CGH|REC|21:55|01:00": "CGH>REC 2026-12-19 AD 4662",
+  "volta|2027-01-12|Azul|REC|CGH|16:35|20:05": "REC>CGH 2027-01-12 AD 4277",
+  "volta|2027-01-13|Azul|REC|CGH|12:50|16:10": "REC>CGH 2027-01-13 AD 4145",
+  "volta|2027-01-11|Azul|REC|CGH|12:50|16:10": "REC>CGH 2027-01-11 AD 4145",
+  "volta|2027-01-10|Azul|REC|GRU|10:00|13:15": "REC>GRU 2027-01-10 AD 2748",
+  "volta|2027-01-12|Azul|REC|GRU|04:30|07:45": "REC>GRU 2027-01-12 AD 4153",
+  "ida|2026-12-21|Azul|CGH|REC|16:45|19:50": "CGH>REC 2026-12-21 AD 6084",
+  "ida|2026-12-21|Azul|CGH|REC|12:40|15:45": "CGH>REC 2026-12-21 AD 4269",
+  "ida|2026-12-21|Azul|VCP|REC|06:05|09:10": "VCP>REC 2026-12-21 AD 4079",
+  "volta|2027-01-11|Azul|REC|GRU|10:00|13:15": "REC>GRU 2027-01-11 AD 2748",
+  "volta|2027-01-11|Azul|REC|GRU|20:35|23:50": "REC>GRU 2027-01-11 AD 4320",
+  "volta|2027-01-11|Gol|REC|GRU|17:10|20:35": "REC>GRU 2027-01-11 G3 1589",
+  "volta|2027-01-11|Gol|REC|CGH|16:10|19:30": "REC>CGH 2027-01-11 G3 1617",
+  "volta|2027-01-11|Azul|REC|CGH|16:35|20:05": "REC>CGH 2027-01-11 AD 4277",
+  "volta|2027-01-11|Azul|REC|GRU|03:55|07:10": "REC>GRU 2027-01-11 AD 4153",
+  "volta|2027-01-13|Azul|REC|VCP|03:25|06:40": "REC>VCP 2027-01-13 AD 4335",
+  "volta|2027-01-13|Azul|REC|CGH|02:45|06:05": "REC>CGH 2027-01-13 AD 4716",
+  "volta|2027-01-13|Azul|REC|GRU|03:05|06:20": "REC>GRU 2027-01-13 AD 4153",
+  "volta|2027-01-13|Azul|REC|GRU|20:35|23:50": "REC>GRU 2027-01-13 AD 4320",
+  "volta|2027-01-13|Azul|REC|GRU|10:00|13:15": "REC>GRU 2027-01-13 AD 2748",
+  "volta|2027-01-13|Azul|REC|CGH|18:05|21:35": "REC>CGH 2027-01-13 AD 6085",
+  "volta|2027-01-12|Azul|REC|GRU|10:00|13:15": "REC>GRU 2027-01-12 AD 2748",
+  "volta|2027-01-12|Gol|REC|GRU|03:30|06:55": "REC>GRU 2027-01-12 G3 1561",
+  "volta|2027-01-12|LATAM|REC|CGH|17:50|21:10": "REC>CGH 2027-01-12 LA 3615",
+  "volta|2027-01-12|Azul|REC|VCP|18:30|21:45": "REC>VCP 2027-01-12 AD 4493",
+  "ida|2026-12-22|Azul|CGH|REC|08:35|11:40": "CGH>REC 2026-12-22 AD 4004",
+  "ida|2026-12-22|Azul|GRU|REC|08:30|11:30": "GRU>REC 2026-12-22 AD 2744",
+  "ida|2026-12-23|Azul|CGH|REC|22:15|01:20": "CGH>REC 2026-12-23 AD 4662",
+  "ida|2026-12-23|Azul|CGH|REC|17:20|20:25": "CGH>REC 2026-12-23 AD 4243",
+  "ida|2026-12-23|LATAM|GRU|REC|15:40|18:45": "GRU>REC 2026-12-23 LA 3676",
+  "ida|2026-12-20|Azul|CGH|REC|16:45|19:50": "CGH>REC 2026-12-20 AD 6084",
+  "ida|2026-12-20|Azul|CGH|REC|17:30|20:35": "CGH>REC 2026-12-20 AD 4243",
+  "ida|2026-12-20|Azul|VCP|REC|23:10|02:15": "VCP>REC 2026-12-20 AD 4092",
+  "ida|2026-12-20|Azul|GRU|REC|22:45|01:55": "GRU>REC 2026-12-20 AD 4122",
+  "ida|2026-12-20|Azul|VCP|REC|06:05|09:10": "VCP>REC 2026-12-20 AD 4079",
+  "volta|2027-01-10|Azul|REC|CGH|10:05|13:25": "REC>CGH 2027-01-10 AD 4145",
+  "volta|2027-01-10|Gol|REC|GRU|03:50|07:10": "REC>GRU 2027-01-10 G3 1561",
+  "volta|2027-01-10|Azul|REC|GRU|08:55|12:10": "REC>GRU 2027-01-10 AD 4674",
+  "volta|2027-01-10|Azul|REC|GRU|17:25|20:40": "REC>GRU 2027-01-10 AD 4044",
+  "ida|2026-12-22|Azul|GRU|REC|10:55|14:05": "GRU>REC 2026-12-22 AD 4064",
+  "ida|2026-12-22|Gol|GRU|REC|09:05|12:15": "GRU>REC 2026-12-22 G3 1586",
+  "volta|2027-01-10|Azul|REC|GRU|12:25|15:40": "REC>GRU 2027-01-10 AD 2768",
+  "volta|2027-01-10|Azul|REC|GRU|03:00|06:20": "REC>GRU 2027-01-10 AD 4153"
+ },
+ "quando": "2026-11-23 15:27"
+}
