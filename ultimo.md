@@ -1,8 +1,8 @@
-# Passagens: última busca em 2026-11-23 13:24
+# Passagens: última busca em 2026-11-23 14:22
 
-✈️ Passagens · seg 23/11, 13:24
+✈️ Passagens · seg 23/11, 14:22
 Preço por pessoa, sem mala, conferido nesta busca.
-↘️ H, volta −R$3
+😌 Sem mudança desde a última busca.
 
 🧍 H
 Volta · 01/02 a 31/03
@@ -11,10 +11,10 @@ Volta · 01/02 a 31/03
 💸 Mais barata: ✅ R$329 · ter 02/02 · Azul 4145, direto
 └ 12h50 Recife → 16h10 Congonhas · Vai de Promo
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$660 e R$2.200) · R$20 acima do alvo (R$350)
-📅 Outras datas conferidas: qua 17/02 R$329 (Recife) · qua 31/03 R$359 (Fortaleza) · sex 05/03 R$370 (Fortaleza) · sex 19/03 R$375 (Fortaleza)
-Outras datas, preço ainda não conferido: qui 18/02 R$366 · ter 23/02 R$366
+📅 Outras datas conferidas: qua 31/03 R$359 (Fortaleza) · sex 05/03 R$370 (Fortaleza) · seg 22/03 R$370 (Fortaleza) · ter 23/02 R$379 (Juazeiro)
+Outras datas, preço ainda não conferido: qua 24/02 R$366 · qui 25/02 R$366
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$94 a R$135 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$97 a R$135 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
