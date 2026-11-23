@@ -384,10 +384,11 @@ def clique(link):
 
 def bloco_curto(g, ts, scan, v, nomes):
     """O bloco de um grupo no formato curto (viagem.json: "mensagem": "curta"): por trecho, a melhor opção em duas linhas
-    (preço, dia e voo; horários e um 'clique aqui' para comprar) e, no fim, o pacote de ida e volta."""
+    (preço, dia e voo; horários e um 'clique aqui' para comprar) e, no fim, o pacote de ida e volta. Todo preço é por
+    pessoa (o cabeçalho diz isso uma vez): sem total e sem o número de lugares, que fica só na busca."""
     series, meus = scan['series'], [t for t in ts if t['grupo'] == g['id']]
-    cada = ' por pessoa' if g['assentos'] > 1 else ''
-    linhas = [(f"{g.get('emoji', '•')} <b>{html.escape(nomes[g['id']])}</b>" + (f" · {g['assentos']} lugares no mesmo voo" if g['assentos'] > 1 else ''), 0)]
+    cada = ''
+    linhas = [(f"{g.get('emoji', '•')} <b>{html.escape(nomes[g['id']])}</b>", 0)]
     for t in meus:
         rotulo = f"{ {'ida': '🛫', 'volta': '🛬'}.get(t['sentido'], '•') } {t['nome']}"
         rec = (series.get(t['igual_a'] or t['serie']) or {}).get('recomendada')
@@ -401,8 +402,7 @@ def bloco_curto(g, ts, scan, v, nomes):
     pacs = pacotes_do_grupo(g, ts, scan, v)
     for p in pacs:
         nome = f" {p['nome']}" if len(pacs) > 1 else ''
-        total = f" · {brl(p['pp'] * g['assentos'])} no total" if g['assentos'] > 1 else ''
-        linhas.append((f"📦 Ida + volta{nome}: <b>{brl(p['pp'])}</b>{cada}{total}", 0))
+        linhas.append((f"📦 Ida + volta{nome}: <b>{brl(p['pp'])}</b>", 0))
         j = p['juntas']
         if j:
             outros = '' if j['mesmos'] else ', em outros voos'
@@ -689,7 +689,7 @@ def registrar(scan, v, pasta=AQUI, enviar=None, nomes=None, agora=None):
     agora = agora or hora_do_scan(scan)
     ultimo, painel, precos = (os.path.join(pasta, f) for f in ('ultimo.md', 'painel.json', 'precos.csv'))
     curta = v.get('mensagem') == 'curta'
-    cabecalho = (f"✈️ <b>Passagens</b> · {quando_tg(agora)} · <i>sem mala</i>" if curta else
+    cabecalho = (f"✈️ <b>Passagens</b> · {quando_tg(agora)} · <i>por pessoa, sem mala</i>" if curta else
                  f"✈️ <b>Passagens</b> · {quando_tg(agora)}\n<i>Preço por pessoa, sem mala, conferido nesta busca.</i>")
     if scan.get('status') != 'ok':
         erro = scan.get('erro') or 'nenhum voo encontrado'
@@ -1124,12 +1124,14 @@ def _teste_registro():
         registrar(s, curta, d, fake, nomes, '2026-11-20 20:17')
         registrar(s, curta, d, fake, nomes, '2026-11-20 21:17')
         msg, mudo, bt = enviados[-1]
-        assert msg.startswith('✈️ <b>Passagens</b> · sex 20/11, 21:17 · <i>sem mala</i>\n\n👩 <b>Ana</b>'), msg      # "sem mudança" não aparece
-        assert ('👭 <b>Duda + Eva</b> · 2 lugares no mesmo voo\n🛫 Ida: <b>R$1.150</b> por pessoa · seg 28/12 · Gol, direto\n'
+        assert msg.startswith('✈️ <b>Passagens</b> · sex 20/11, 21:17 · <i>por pessoa, sem mala</i>\n\n👩 <b>Ana</b>'), msg  # "sem mudança" não aparece
+        # só preço por pessoa: sem "2 lugares no mesmo voo", sem "por pessoa" em cada linha, sem total
+        assert ('👭 <b>Duda + Eva</b>\n🛫 Ida: <b>R$1.150</b> · seg 28/12 · Gol, direto\n'
                 '└ 14h05 Guarulhos → 17h25 Fortaleza · <a href="https://exemplo/GRUFOR2026-12-28">clique aqui</a> (123milhas)\n'
-                '🛬 Volta: <b>R$540</b> por pessoa · seg 11/01 · LATAM, direto\n'
+                '🛬 Volta: <b>R$540</b> · seg 11/01 · LATAM, direto\n'
                 '└ 03h20 Juazeiro → 06h50 Guarulhos · <a href="https://loja/x?a=1&amp;b=2">clique aqui</a> (javascript:alert(1))\n'
-                '📦 Ida + volta: <b>R$1.690</b> por pessoa · R$3.380 no total') in msg, msg
+                '📦 Ida + volta: <b>R$1.690</b>') in msg, msg
+        assert 'lugares' not in msg and 'no total' not in msg and msg.count('por pessoa') == 1
         assert '└ 22h40 Campinas (Viracopos) → 03h05 (+1 dia) Juazeiro · Azul\n' in msg            # sem link válido: só o vendedor
         assert '🧍 <b>Beto</b>\n🛬 Volta junto: <b>R$612</b> · qua 20/01' in msg and '🎯' not in msg and '📅' not in msg and 'mala' not in msg.split('</i>', 1)[1]
         assert bt == [PAINEL_BOTAO] and len(msg) < 2000, len(msg)
