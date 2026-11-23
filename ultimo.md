@@ -1,14 +1,14 @@
-# Passagens: última busca em 2026-11-22 22:26
+# Passagens: última busca em 2026-11-22 23:26
 
-✈️ Passagens · dom 22/11, 22:26
+✈️ Passagens · dom 22/11, 23:26
 Preço por pessoa, sem mala, conferido nesta busca.
-📈 W + K, volta +R$5
+😌 Sem mudança desde a última busca.
 
 👩 V
 Volta · 18 a 22/01
 ⭐ R$725 · qua 20/01 · Gol, 1 conexão (espera de 1h05)
 └ 00h40 Fortaleza → 06h15 Congonhas · Gol
-👥 Nesse voo, 2 ou 3 lugares juntos saem pelo mesmo preço por pessoa
+👥 Nesse voo, 2 lugares juntos saem pelo mesmo preço por pessoa
 🟡 Acompanhar: para o Google, preço baixo (a rota costuma ficar entre R$1.100 e R$3.000) · R$75 acima do alvo (R$650)
 
 🧍 H
@@ -59,7 +59,7 @@ Volta · 07 a 12/01
 📦 Ida + volta: R$2.207 por pessoa · R$4.414 no total
 🔁 Os mesmos voos numa compra só na Zupper: R$1.983 por pessoa (R$224 a menos) · R$3.966 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$77 a R$144 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$76 a R$144 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
