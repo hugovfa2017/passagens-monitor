@@ -236,7 +236,7 @@
    "ressalvas": [],
    "id": "promobit-3240889",
    "publicado": "2026-11-22T16:52:07-0300",
-   "idade_h": 15.9
+   "idade_h": 16.5
   },
   "promobit-3240879": {
    "fonte": "Promobit",
@@ -253,7 +253,7 @@
    "ressalvas": [],
    "id": "promobit-3240879",
    "publicado": "2026-11-22T16:47:22-0300",
-   "idade_h": 3.9
+   "idade_h": 16.6
   },
   "promobit-3241073": {
    "fonte": "Promobit",
@@ -270,7 +270,7 @@
    "ressalvas": [],
    "id": "promobit-3241073",
    "publicado": "2026-11-22T17:55:07-0300",
-   "idade_h": 15.3
+   "idade_h": 15.4
   },
   "promobit-3241119": {
    "fonte": "Promobit",
@@ -287,7 +287,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 14.9
+   "idade_h": 15.1
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -355,7 +355,7 @@
    "ressalvas": [],
    "id": "promobit-3241363",
    "publicado": "2026-11-22T19:30:55-0300",
-   "idade_h": 13.7
+   "idade_h": 13.8
   },
   "promobit-3241404": {
    "fonte": "Promobit",
@@ -389,7 +389,7 @@
    "ressalvas": [],
    "id": "promobit-3241401",
    "publicado": "2026-11-22T19:45:29-0300",
-   "idade_h": 13.4
+   "idade_h": 13.6
   },
   "promobit-3241495": {
    "fonte": "Promobit",
@@ -406,7 +406,7 @@
    "ressalvas": [],
    "id": "promobit-3241495",
    "publicado": "2026-11-22T20:44:15-0300",
-   "idade_h": 12.4
+   "idade_h": 12.6
   },
   "promobit-3241488": {
    "fonte": "Promobit",
@@ -423,7 +423,7 @@
    "ressalvas": [],
    "id": "promobit-3241488",
    "publicado": "2026-11-22T20:39:03-0300",
-   "idade_h": 12.5
+   "idade_h": 12.7
   },
   "promobit-3241489": {
    "fonte": "Promobit",
@@ -440,7 +440,7 @@
    "ressalvas": [],
    "id": "promobit-3241489",
    "publicado": "2026-11-22T20:39:04-0300",
-   "idade_h": 12.5
+   "idade_h": 12.7
   },
   "tg-OfertasDoDia/485621-0": {
    "fonte": "Telegram",
@@ -459,7 +459,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.3
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -478,7 +478,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.3
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -495,7 +495,24 @@
    "ressalvas": [],
    "id": "promobit-3242121",
    "publicado": "2026-11-23T08:53:46-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
+  },
+  "promobit-3242182": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Controle sem fio PlayStation DualSense Midnight Black + Cabo USB para PC",
+   "preco": 371.91,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-playstation-dualsense-midnight-black-cabo-usb-para-pc-3242182/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3242182",
+   "publicado": "2026-11-23T09:09:35-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -532,81 +549,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 5,
+   "falhas": 6,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
-   "barradas": 46
+   "buscas": 57,
+   "barradas": 47
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 56,
+   "buscas": 57,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T09:10:19-03:00",
+ "ultima": "2026-11-23T09:20:22-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
