@@ -147,7 +147,7 @@ def cupons_para_testar(cupons, melhores, codigos_ps5=()):
     vistos = set()
     for c in cupons:
         chave = (c['loja'], c['codigo'].upper())
-        if chave in vistos or not cupom_plausivel(c, codigos_ps5):
+        if chave in vistos or chave[1] in config.CUPONS_QUE_NAO_VALEM or not cupom_plausivel(c, codigos_ps5):
             continue
         vistos.add(chave)
         item = {k: c.get(k) for k in ('loja', 'codigo', 'titulo', 'validade', 'origem', 'link')}
@@ -1010,7 +1010,9 @@ def _teste():
                 {'loja': 'Magazine Luiza', 'codigo': 'LU300', 'titulo': 'Cupom Magazine Luiza concede desconto de R$ 300',
                  'validade': None, 'regra': {'valor': 300}},
                 {'loja': 'Magazine Luiza', 'codigo': 'GAMES10', 'titulo': '10% OFF em Games e Consoles no Magalu',
-                 'validade': None, 'regra': {'pct': 10}}], []
+                 'validade': None, 'regra': {'pct': 10}},
+                {'loja': 'Magazine Luiza', 'codigo': 'relampago20', 'titulo': '20% OFF em todo o site',   # testado: não vale
+                 'validade': None, 'regra': {'pct': 20}}], []
 
     enviadas = []
 
@@ -1052,7 +1054,7 @@ def _teste():
         assert all(o['preco'] not in (3650, 4369.9) for m in d['modelos'] for o in m['ofertas']), 'open box e importado ficam fora do principal'
         assert [l['lote'] for l in d['leiloes']] == ['Lance360-1']
         teste = {loja: [c['codigo'] for c in v['cupons']] for loja, v in d['cupons_teste'].items() if v['cupons']}
-        assert teste == {'Magazine Luiza': ['GAMES10'], 'KaBuM!': ['MAGALUPS5'], 'Mercado Livre': ['MP500PS']}, teste   # JBL25 e LU300 ficam fora
+        assert teste == {'Magazine Luiza': ['GAMES10'], 'KaBuM!': ['MAGALUPS5'], 'Mercado Livre': ['MP500PS']}, teste   # JBL25, LU300 e o testado ficam fora
         assert d['cupons_teste']['Magazine Luiza']['cupons'][0]['preco_estimado'] == 3718.4
         assert len(enviadas) == 1 and enviadas[0][1] and 'ligado' in enviadas[0][0], 'primeira varredura: só o resumo, sem som'
         assert enviadas[0][0].startswith('🏆 <b>R$ 3.991,88 · PS5 Digital</b> na <a href="'), 'resumo começa pelo mais barato'
