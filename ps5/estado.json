@@ -423,7 +423,7 @@
    "ressalvas": [],
    "id": "promobit-3241073",
    "publicado": "2026-11-22T17:55:07-0300",
-   "idade_h": 4.8
+   "idade_h": 4.9
   },
   "promobit-3241119": {
    "fonte": "Promobit",
@@ -440,7 +440,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 4.4
+   "idade_h": 4.6
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -457,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3241300",
    "publicado": "2026-11-22T19:12:45-0300",
-   "idade_h": 3.5
+   "idade_h": 3.6
   },
   "promobit-3241261": {
    "fonte": "Promobit",
@@ -474,7 +474,7 @@
    "ressalvas": [],
    "id": "promobit-3241261",
    "publicado": "2026-11-22T19:06:04-0300",
-   "idade_h": 3.6
+   "idade_h": 3.7
   },
   "promobit-3241274": {
    "fonte": "Promobit",
@@ -491,7 +491,7 @@
    "ressalvas": [],
    "id": "promobit-3241274",
    "publicado": "2026-11-22T19:08:04-0300",
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3241363": {
    "fonte": "Promobit",
@@ -508,7 +508,7 @@
    "ressalvas": [],
    "id": "promobit-3241363",
    "publicado": "2026-11-22T19:30:55-0300",
-   "idade_h": 3.2
+   "idade_h": 3.3
   },
   "promobit-3241404": {
    "fonte": "Promobit",
@@ -525,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3241404",
    "publicado": "2026-11-22T19:46:45-0300",
-   "idade_h": 2.9
+   "idade_h": 3.1
   },
   "promobit-3241401": {
    "fonte": "Promobit",
@@ -542,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3241401",
    "publicado": "2026-11-22T19:45:29-0300",
-   "idade_h": 2.9
+   "idade_h": 3.1
   },
   "tg-cupons_desconto/84729-0": {
    "fonte": "Telegram",
@@ -561,7 +561,7 @@
    "publicado": "2026-11-22T19:40:14-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "promobit-3241495": {
    "fonte": "Promobit",
@@ -578,7 +578,7 @@
    "ressalvas": [],
    "id": "promobit-3241495",
    "publicado": "2026-11-22T20:44:15-0300",
-   "idade_h": 1.9
+   "idade_h": 2.1
   },
   "promobit-3241488": {
    "fonte": "Promobit",
@@ -595,7 +595,7 @@
    "ressalvas": [],
    "id": "promobit-3241488",
    "publicado": "2026-11-22T20:39:03-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "promobit-3241489": {
    "fonte": "Promobit",
@@ -612,7 +612,7 @@
    "ressalvas": [],
    "id": "promobit-3241489",
    "publicado": "2026-11-22T20:39:04-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   }
  },
  "alertados": {},
@@ -649,81 +649,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
-   "barradas": 107
+   "buscas": 138,
+   "barradas": 108
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 137,
+   "buscas": 138,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T22:40:18-03:00",
+ "ultima": "2026-11-22T22:50:25-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
