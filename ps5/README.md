@@ -78,6 +78,8 @@ recebendo as mensagens do Telegram (webhook).
 ## Ajustes e uso
 
 - Alvos, seções ligadas e prazos: [`config.py`](config.py) (dá para editar direto no GitHub).
+- Cupom testado no carrinho que não vale para console: acrescente o código em `CUPONS_QUE_NAO_VALEM`, no mesmo arquivo,
+  e ele deixa de aparecer em "para testar".
 - Rodar na mão: Actions → **Buscador PS5** → Run workflow; ou `python3 ps5/monitor.py` no computador.
 - Auto-checagem sem internet: `python3 ps5/monitor.py --teste`.
 

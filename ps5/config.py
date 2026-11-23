@@ -19,6 +19,11 @@ QUEDA_MINIMA = 50
 # Cupom que economiza menos que isto não vale o trabalho: o melhor preço passa a ser a oferta sem cupom.
 ECONOMIA_MINIMA_CUPOM = 10
 
+# Cupons que você testou no carrinho e não valem para console: saem da lista "cupons para testar".
+CUPONS_QUE_NAO_VALEM = {
+    'RELAMPAGO20',   # Amazon, 20% no site todo: inválido para PS5 (23/11/2026)
+}
+
 # Modelos que podem disparar alerta (tire da lista o que não interessa; o painel continua mostrando todos).
 MODELOS_COM_ALERTA = ['leitor', 'digital']   # Pro fora do orçamento (20/11/2026)
 
