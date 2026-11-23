@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3237729": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Jogo Call of Duty: Modern Warfare 3 Activision PS5 Físico",
-   "preco": 254.4,
-   "link": "https://www.promobit.com.br/oferta/jogo-call-of-duty-modern-warfare-3-activision-ps5-fisico-3237729/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3237729",
-   "publicado": "2026-11-21T10:22:05-0300",
-   "idade_h": 23.3
-  },
   "promobit-3237780": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -457,7 +440,7 @@
    "ressalvas": [],
    "id": "promobit-3241073",
    "publicado": "2026-11-22T17:55:07-0300",
-   "idade_h": 4.4
+   "idade_h": 4.6
   },
   "promobit-3241119": {
    "fonte": "Promobit",
@@ -474,7 +457,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 4.1
+   "idade_h": 4.2
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -491,7 +474,7 @@
    "ressalvas": [],
    "id": "promobit-3241300",
    "publicado": "2026-11-22T19:12:45-0300",
-   "idade_h": 3.1
+   "idade_h": 3.3
   },
   "promobit-3241261": {
    "fonte": "Promobit",
@@ -508,7 +491,7 @@
    "ressalvas": [],
    "id": "promobit-3241261",
    "publicado": "2026-11-22T19:06:04-0300",
-   "idade_h": 3.2
+   "idade_h": 3.4
   },
   "promobit-3241274": {
    "fonte": "Promobit",
@@ -525,7 +508,7 @@
    "ressalvas": [],
    "id": "promobit-3241274",
    "publicado": "2026-11-22T19:08:04-0300",
-   "idade_h": 3.2
+   "idade_h": 3.4
   },
   "promobit-3241363": {
    "fonte": "Promobit",
@@ -542,7 +525,7 @@
    "ressalvas": [],
    "id": "promobit-3241363",
    "publicado": "2026-11-22T19:30:55-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3241404": {
    "fonte": "Promobit",
@@ -559,7 +542,7 @@
    "ressalvas": [],
    "id": "promobit-3241404",
    "publicado": "2026-11-22T19:46:45-0300",
-   "idade_h": 2.6
+   "idade_h": 2.7
   },
   "promobit-3241401": {
    "fonte": "Promobit",
@@ -576,7 +559,7 @@
    "ressalvas": [],
    "id": "promobit-3241401",
    "publicado": "2026-11-22T19:45:29-0300",
-   "idade_h": 2.6
+   "idade_h": 2.7
   },
   "tg-cupons_desconto/84729-0": {
    "fonte": "Telegram",
@@ -595,7 +578,7 @@
    "publicado": "2026-11-22T19:40:14-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 2.7
+   "idade_h": 2.8
   },
   "promobit-3241495": {
    "fonte": "Promobit",
@@ -612,7 +595,7 @@
    "ressalvas": [],
    "id": "promobit-3241495",
    "publicado": "2026-11-22T20:44:15-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3241488": {
    "fonte": "Promobit",
@@ -629,7 +612,7 @@
    "ressalvas": [],
    "id": "promobit-3241488",
    "publicado": "2026-11-22T20:39:03-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
   },
   "promobit-3241489": {
    "fonte": "Promobit",
@@ -646,7 +629,7 @@
    "ressalvas": [],
    "id": "promobit-3241489",
    "publicado": "2026-11-22T20:39:04-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
   }
  },
  "alertados": {},
@@ -683,81 +666,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Amazon": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 107
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-22",
-   "buscas": 135,
+   "buscas": 136,
    "barradas": 0
   }
  },
- "ultima": "2026-11-22T22:20:21-03:00",
+ "ultima": "2026-11-22T22:30:28-03:00",
  "pular": [],
  "resumo_dia": "2026-11-22"
 }
