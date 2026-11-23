@@ -391,7 +391,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 11.3
+   "idade_h": 11.4
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -410,7 +410,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 11.3
+   "idade_h": 11.4
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -903,7 +903,7 @@
    "ressalvas": [],
    "id": "promobit-3244409",
    "publicado": "2026-11-23T16:20:05-0300",
-   "idade_h": 1.0
+   "idade_h": 1.2
   },
   "promobit-3244423": {
    "fonte": "Promobit",
@@ -920,7 +920,7 @@
    "ressalvas": [],
    "id": "promobit-3244423",
    "publicado": "2026-11-23T16:23:06-0300",
-   "idade_h": 1.0
+   "idade_h": 1.1
   },
   "promobit-3244451": {
    "fonte": "Promobit",
@@ -937,7 +937,7 @@
    "ressalvas": [],
    "id": "promobit-3244451",
    "publicado": "2026-11-23T16:30:05-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3244483": {
    "fonte": "Promobit",
@@ -971,7 +971,7 @@
    "ressalvas": [],
    "id": "promobit-3244487",
    "publicado": "2026-11-23T16:38:21-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "promobit-3244470": {
    "fonte": "Promobit",
@@ -988,7 +988,7 @@
    "ressalvas": [],
    "id": "promobit-3244470",
    "publicado": "2026-11-23T16:34:05-0300",
-   "idade_h": 0.8
+   "idade_h": 0.9
   },
   "promobit-3244562": {
    "fonte": "Promobit",
@@ -1005,7 +1005,7 @@
    "ressalvas": [],
    "id": "promobit-3244562",
    "publicado": "2026-11-23T16:50:06-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3244555": {
    "fonte": "Promobit",
@@ -1022,7 +1022,7 @@
    "ressalvas": [],
    "id": "promobit-3244555",
    "publicado": "2026-11-23T16:48:58-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3244533": {
    "fonte": "Promobit",
@@ -1039,7 +1039,7 @@
    "ressalvas": [],
    "id": "promobit-3244533",
    "publicado": "2026-11-23T16:44:51-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "promobit-3244607": {
    "fonte": "Promobit",
@@ -1056,7 +1056,7 @@
    "ressalvas": [],
    "id": "promobit-3244607",
    "publicado": "2026-11-23T16:59:06-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
   },
   "promobit-3244617": {
    "fonte": "Promobit",
@@ -1073,7 +1073,41 @@
    "ressalvas": [],
    "id": "promobit-3244617",
    "publicado": "2026-11-23T17:01:54-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
+  },
+  "promobit-3244737": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Silent Hill 2 - Playstation 5",
+   "preco": 180.44,
+   "link": "https://www.promobit.com.br/oferta/silent-hill-2-playstation-5-3244737/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3244737",
+   "publicado": "2026-11-23T17:25:31-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3244683": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Split Fiction PS5",
+   "preco": 248.0,
+   "link": "https://www.promobit.com.br/oferta/split-fiction-ps5-3244683/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3244683",
+   "publicado": "2026-11-23T17:17:03-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -1110,81 +1144,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 14,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 89
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 105,
+   "buscas": 106,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T17:20:20-03:00",
+ "ultima": "2026-11-23T17:30:29-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
