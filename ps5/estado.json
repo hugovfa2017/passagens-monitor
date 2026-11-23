@@ -219,7 +219,7 @@
    "ressalvas": [],
    "id": "promobit-3241119",
    "publicado": "2026-11-22T18:17:17-0300",
-   "idade_h": 18.9
+   "idade_h": 19.0
   },
   "promobit-3241300": {
    "fonte": "Promobit",
@@ -391,7 +391,7 @@
    "publicado": "2026-11-23T06:04:08-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 7.1
+   "idade_h": 7.2
   },
   "tg-hardmob_promo/475561-0": {
    "fonte": "Telegram",
@@ -410,7 +410,7 @@
    "publicado": "2026-11-23T06:04:21-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 7.1
+   "idade_h": 7.2
   },
   "promobit-3242121": {
    "fonte": "Promobit",
@@ -529,7 +529,7 @@
    "ressalvas": [],
    "id": "promobit-3242449",
    "publicado": "2026-11-23T09:43:11-0300",
-   "idade_h": 3.4
+   "idade_h": 3.6
   },
   "promobit-3242402": {
    "fonte": "Promobit",
@@ -563,7 +563,7 @@
    "ressalvas": [],
    "id": "promobit-3242530",
    "publicado": "2026-11-23T09:54:23-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "promobit-3242933": {
    "fonte": "Promobit",
@@ -580,7 +580,7 @@
    "ressalvas": [],
    "id": "promobit-3242933",
    "publicado": "2026-11-23T10:59:07-0300",
-   "idade_h": 2.2
+   "idade_h": 2.3
   },
   "promobit-3243171": {
    "fonte": "Promobit",
@@ -614,7 +614,7 @@
    "ressalvas": [],
    "id": "promobit-3243291",
    "publicado": "2026-11-23T12:07:30-0300",
-   "idade_h": 1.0
+   "idade_h": 1.2
   },
   "promobit-3243391": {
    "fonte": "Promobit",
@@ -665,7 +665,7 @@
    "ressalvas": [],
    "id": "promobit-3243364",
    "publicado": "2026-11-23T12:16:25-0300",
-   "idade_h": 0.9
+   "idade_h": 1.0
   },
   "promobit-3243321": {
    "fonte": "Promobit",
@@ -716,7 +716,7 @@
    "ressalvas": [],
    "id": "promobit-3243311",
    "publicado": "2026-11-23T12:10:33-0300",
-   "idade_h": 1.0
+   "idade_h": 1.1
   },
   "promobit-3243532": {
    "fonte": "Promobit",
@@ -733,7 +733,7 @@
    "ressalvas": [],
    "id": "promobit-3243532",
    "publicado": "2026-11-23T12:54:03-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
   },
   "promobit-3243520": {
    "fonte": "Promobit",
@@ -750,7 +750,7 @@
    "ressalvas": [],
    "id": "promobit-3243520",
    "publicado": "2026-11-23T12:51:04-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
   },
   "promobit-3243504": {
    "fonte": "Promobit",
@@ -767,7 +767,7 @@
    "ressalvas": [],
    "id": "promobit-3243504",
    "publicado": "2026-11-23T12:48:04-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
   },
   "promobit-3243499": {
    "fonte": "Promobit",
@@ -784,7 +784,24 @@
    "ressalvas": [],
    "id": "promobit-3243499",
    "publicado": "2026-11-23T12:46:07-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
+  },
+  "promobit-3243567": {
+   "fonte": "Promobit",
+   "loja": "Aliexpress",
+   "titulo": "Jogo Marvels Spider Man 2 PlayStation 5",
+   "preco": 132.25,
+   "link": "https://www.promobit.com.br/oferta/jogo-marvels-spider-man-2-playstation-5-3243567/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "BLACKAE1",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3243567",
+   "publicado": "2026-11-23T13:04:53-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -821,81 +838,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
-   "barradas": 65
+   "buscas": 81,
+   "barradas": 66
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-23",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   }
  },
- "ultima": "2026-11-23T13:09:31-03:00",
+ "ultima": "2026-11-23T13:17:15-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
