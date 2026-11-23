@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-23 02:25
+# Passagens: última busca em 2026-11-23 03:26
 
-✈️ Passagens · seg 23/11, 02:25
+✈️ Passagens · seg 23/11, 03:26
 Preço por pessoa, sem mala, conferido nesta busca.
 😌 Sem mudança desde a última busca.
 
@@ -18,8 +18,6 @@ R$711 · qua 20/01 · mesmo voo de V
 Volta depois · 23/01 a 31/03
 ⭐ R$375 · sáb 06/03 · Gol 1559, direto
 └ 02h25 Fortaleza → 06h05 Guarulhos · Vai de Promo
-💸 Mais barata: R$332 · sáb 06/03 · LATAM 3889, direto
-└ 03h20 Juazeiro → 06h25 Guarulhos · Vai de Promo
 🟢 Bom momento: para o Google, preço baixo (a rota costuma ficar entre R$660 e R$2.200)
 Outras datas, preço ainda não conferido: dom 07/03 R$373 · sáb 13/03 R$373
 ↔️ Volta depois sai R$336 mais barato que volta junto
@@ -56,7 +54,7 @@ Volta · 07 a 12/01
 📦 Ida + volta: R$2.072 por pessoa · R$4.144 no total
 🔁 Os mesmos voos numa compra só na Zupper: R$1.988 por pessoa (R$84 a menos) · R$3.976 no total
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$68 a R$153 por trecho · Viaza não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$68 a R$153 por trecho · Viaza não respondeu
 
 Telegram: TELEGRAM_ENVIADO
 
