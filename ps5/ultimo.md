@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-24 09:49 (hora de Brasília)
+# PS5 — última varredura: 2026-11-24 10:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.179,05 na Magazine Luiza · à vista
 
@@ -19,22 +19,26 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
+- PS5 Digital: R$ 4.369,90 na Amazon
+- PS5 Digital: R$ 4.369,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.319,90 na Amazon
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 50 de 60 buscas hoje
+- Amazon: ok, 46 itens · barrada em 50 de 61 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 7 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 4 itens
-- Zoom: ok, 27 itens
+- Zoom: ok, 29 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 4 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 145 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 169 não é console PS5, 3 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
