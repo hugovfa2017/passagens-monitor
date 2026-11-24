@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-23 23:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-23 23:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon · postado há 27h
 
@@ -23,13 +23,13 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 34 itens · barrada em 1 de 139 buscas hoje
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 112 de 139 buscas hoje
+- KaBuM!: ok, 34 itens · barrada em 1 de 140 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 113 de 140 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 4 itens
-- Zoom: ok, 27 itens
+- Zoom: ok, 29 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 7 itens (22 de 22 canais)
