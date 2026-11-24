@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 08:29",
+  "quando": "2026-11-24 09:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,41 +37,42 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 342,
-    "conferidos": 11,
-    "ofertas": 11,
+    "voos": 306,
+    "conferidos": 12,
+    "ofertas": 12,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
-     "repetidas": 0,
-     "exemplo": null
+     "vazias": 1,
+     "repetidas": 2,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 10
+     "telas": 12,
+     "lidas": 12
     },
     "sem_preco": {},
-    "seg": 36
+    "seg": 80
    },
    "123milhas": {
-    "buscas": 8,
+    "buscas": 7,
     "com_voo": 6
    },
-   "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
-   },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
+   },
+   "Vai de Promo": {
+    "buscas": 7,
+    "com_voo": 7
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Viaza": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -103,25 +104,25 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-22",
-   "orig": "GRU",
+   "d": "2026-12-21",
+   "orig": "VCP",
    "dest": "REC",
    "cia": "Azul",
-   "saida": "13:05",
-   "chegada": "16:10",
+   "saida": "23:10",
+   "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1467,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
-   "dia": "ter 22/12"
+   "pp": 834,
+   "vend": "123milhas",
+   "link": "https://123milhas.com/v2/busca?de=VCP&para=REC&adultos=4&criancas=0&bebes=0&ida=21-12-2026&classe=3",
+   "dia": "seg 21/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.725 e R$4.875)"
    ]
   },
   "fora": null,
@@ -169,6 +170,10 @@
    [
     "2026-11-24 08:29",
     1467
+   ],
+   [
+    "2026-11-24 09:28",
+    834
    ]
   ]
  },
@@ -187,7 +192,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1675,
+  "pp": 942,
   "conf": true
  },
  {
@@ -196,7 +201,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1507,
+  "pp": 834,
   "conf": true
  },
  {
@@ -205,7 +210,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1467,
+  "pp": 1382,
   "conf": true
  },
  {
@@ -214,7 +219,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1668,
+  "pp": 1636,
   "conf": true
  },
  {
@@ -284,19 +289,10 @@
  {
   "tipo": "celula",
   "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
-  "ne": "REC",
-  "pp": 1098,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1049,
+  "pp": 818,
   "conf": true
  },
  {
@@ -305,7 +301,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 918,
+  "pp": 861,
   "conf": true
  },
  {
@@ -322,19 +318,19 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2287,
+  "pp": 1654,
   "ida": {
-   "d": "2026-12-22",
-   "orig": "GRU",
+   "d": "2026-12-21",
+   "orig": "VCP",
    "dest": "REC",
    "cia": "Azul",
-   "saida": "13:05",
-   "chegada": "16:10",
+   "saida": "23:10",
+   "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1467,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
-   "dia": "ter 22/12"
+   "pp": 834,
+   "vend": "123milhas",
+   "link": "https://123milhas.com/v2/busca?de=VCP&para=REC&adultos=4&criancas=0&bebes=0&ida=21-12-2026&classe=3",
+   "dia": "seg 21/12"
   },
   "volta": {
    "d": "2027-01-13",
