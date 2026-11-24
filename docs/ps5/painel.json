@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24 10:50",
+ "atualizado": "2026-11-24 11:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Zoom",
@@ -46,7 +46,7 @@
     "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
     "obs": "à vista no Pix",
     "detalhes": "com jogo/extra",
-    "idade_h": 24.9,
+    "idade_h": 25.1,
     "tipo": "loja",
     "condicao": "novo",
     "confianca": "A",
@@ -67,7 +67,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-      "idade_h": 24.9,
+      "idade_h": 25.1,
       "tipo": "postada"
      }
     ],
@@ -86,7 +86,7 @@
     "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
     "obs": "à vista no Pix",
     "detalhes": "com jogo/extra",
-    "idade_h": 24.9,
+    "idade_h": 25.1,
     "tipo": "loja",
     "condicao": "novo",
     "confianca": "A",
@@ -107,7 +107,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-      "idade_h": 24.9,
+      "idade_h": 25.1,
       "tipo": "postada"
      }
     ],
@@ -126,7 +126,7 @@
     "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
     "obs": "postado no Promobit",
     "detalhes": "",
-    "idade_h": 0.9,
+    "idade_h": 1.1,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -135,7 +135,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-      "idade_h": 0.9,
+      "idade_h": 1.1,
       "tipo": "postada"
      }
     ],
@@ -164,7 +164,7 @@
      "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
      "obs": "à vista no Pix",
      "detalhes": "com jogo/extra",
-     "idade_h": 24.9,
+     "idade_h": 25.1,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -185,7 +185,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-       "idade_h": 24.9,
+       "idade_h": 25.1,
        "tipo": "postada"
       }
      ],
@@ -204,7 +204,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3244483/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 18.2,
+     "idade_h": 18.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -215,7 +215,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3244483/",
-       "idade_h": 18.2,
+       "idade_h": 18.4,
        "tipo": "postada"
       }
      ],
@@ -262,7 +262,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
      "obs": "postado no Promobit",
      "detalhes": "",
-     "idade_h": 0.9,
+     "idade_h": 1.1,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -271,7 +271,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-       "idade_h": 0.9,
+       "idade_h": 1.1,
        "tipo": "postada"
       }
      ],
@@ -7731,6 +7731,18 @@
    "pro": "7799",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-24 11:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "4480.55",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4179.05",
+   "digital_cupom": "",
+   "digital_loja": "Magazine Luiza",
+   "pro": "7799",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -7875,66 +7887,66 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.5,
    "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.2,
+   "segundos": 0.4,
    "tipo": "loja",
-   "falhas_seguidas": 4,
-   "barradas_hoje": 54,
-   "buscas_hoje": 66
+   "falhas_seguidas": 5,
+   "barradas_hoje": 55,
+   "buscas_hoje": 67
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 1.3,
    "ofertas": 13,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 1.2,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.8,
-   "ofertas": 50,
+   "segundos": 1.5,
+   "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 1.3,
    "ofertas": 3,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.3,
+   "segundos": 8.3,
    "ofertas": 30,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Promobit": {
    "ok": true,
@@ -7943,7 +7955,7 @@
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Gatry": {
    "ok": true,
@@ -7953,27 +7965,27 @@
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Telegram": {
    "ok": true,
-   "segundos": 17.6,
+   "segundos": 24.4,
    "ofertas": 4,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.0,
+   "segundos": 4.9,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 66
+   "buscas_hoje": 67
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -7982,7 +7994,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 147,
+  "não é console PS5": 152,
   "preço fora da faixa de PS5 com leitor de disco": 1
  },
  "config": {
