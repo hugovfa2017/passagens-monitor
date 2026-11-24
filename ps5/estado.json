@@ -253,7 +253,7 @@
    "ressalvas": [],
    "id": "promobit-3243364",
    "publicado": "2026-11-24T16:05:34-0300",
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3243321": {
    "fonte": "Promobit",
@@ -1069,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3247806",
    "publicado": "2026-11-24T12:14:07-0300",
-   "idade_h": 5.4
+   "idade_h": 5.6
   },
   "promobit-3247750": {
    "fonte": "Promobit",
@@ -1154,7 +1154,7 @@
    "ressalvas": [],
    "id": "promobit-3247837",
    "publicado": "2026-11-24T12:18:38-0300",
-   "idade_h": 5.4
+   "idade_h": 5.5
   },
   "promobit-3247961": {
    "fonte": "Promobit",
@@ -1171,7 +1171,7 @@
    "ressalvas": [],
    "id": "promobit-3247961",
    "publicado": "2026-11-24T12:41:12-0300",
-   "idade_h": 5.0
+   "idade_h": 5.2
   },
   "promobit-3248204": {
    "fonte": "Promobit",
@@ -1188,7 +1188,7 @@
    "ressalvas": [],
    "id": "promobit-3248204",
    "publicado": "2026-11-24T13:21:29-0300",
-   "idade_h": 4.3
+   "idade_h": 4.5
   },
   "promobit-3248303": {
    "fonte": "Promobit",
@@ -1205,7 +1205,7 @@
    "ressalvas": [],
    "id": "promobit-3248303",
    "publicado": "2026-11-24T13:39:04-0300",
-   "idade_h": 4.0
+   "idade_h": 4.2
   },
   "promobit-3248510": {
    "fonte": "Promobit",
@@ -1222,7 +1222,7 @@
    "ressalvas": [],
    "id": "promobit-3248510",
    "publicado": "2026-11-24T14:22:04-0300",
-   "idade_h": 3.3
+   "idade_h": 3.5
   },
   "promobit-3248644": {
    "fonte": "Promobit",
@@ -1239,7 +1239,7 @@
    "ressalvas": [],
    "id": "promobit-3248644",
    "publicado": "2026-11-24T14:48:04-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "tg-jogobarato/110989-0": {
    "fonte": "Telegram",
@@ -1258,7 +1258,7 @@
    "publicado": "2026-11-24T15:30:02-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.2
+   "idade_h": 2.3
   },
   "promobit-3248482": {
    "fonte": "Promobit",
@@ -1275,7 +1275,58 @@
    "ressalvas": [],
    "id": "promobit-3248482",
    "publicado": "2026-11-24T15:26:48-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
+  },
+  "promobit-3249558": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Controle sem fio PlayStation DualSense Edição Limitada Adamantium de Marvel's Wolver",
+   "preco": 439.0,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-playstation-dualsense-edicao-limitada-adamantium-de-marvels-wolver-3249558/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "BLACK25PRIME",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3249558",
+   "publicado": "2026-11-24T17:38:47-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3249531": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sem Fio Sony Dualsense Marvel's Wolverine - PS5",
+   "preco": 417.66,
+   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-sony-dualsense-marvels-wolverine-ps5-3249531/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "CURTAMELI",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3249531",
+   "publicado": "2026-11-24T17:34:47-0300",
+   "idade_h": 0.3
+  },
+  "promobit-3249534": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Volante Logitech G29 Driving Force Para Ps5, Ps4, Ps3 E Pc",
+   "preco": 1277.0,
+   "link": "https://www.promobit.com.br/oferta/volante-logitech-g29-driving-force-para-ps5-ps4-ps3-e-pc-3249534/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "TECHHOME",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3249534",
+   "publicado": "2026-11-24T17:35:08-0300",
+   "idade_h": 0.3
   }
  },
  "alertados": {
@@ -1314,81 +1365,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
-   "barradas": 85
+   "buscas": 108,
+   "barradas": 86
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 107,
+   "buscas": 108,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T17:40:20-03:00",
+ "ultima": "2026-11-24T17:50:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
