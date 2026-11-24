@@ -950,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3247403",
    "publicado": "2026-11-24T10:54:11-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3247395": {
    "fonte": "Promobit",
@@ -967,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3247395",
    "publicado": "2026-11-24T10:52:20-0300",
-   "idade_h": 1.5
+   "idade_h": 1.6
   },
   "promobit-3247391": {
    "fonte": "Promobit",
@@ -984,7 +984,7 @@
    "ressalvas": [],
    "id": "promobit-3247391",
    "publicado": "2026-11-24T10:51:37-0300",
-   "idade_h": 1.5
+   "idade_h": 1.6
   },
   "promobit-3247386": {
    "fonte": "Promobit",
@@ -1001,7 +1001,7 @@
    "ressalvas": [],
    "id": "promobit-3247386",
    "publicado": "2026-11-24T10:50:21-0300",
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "promobit-3247388": {
    "fonte": "Promobit",
@@ -1018,7 +1018,7 @@
    "ressalvas": [],
    "id": "promobit-3247388",
    "publicado": "2026-11-24T10:50:53-0300",
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "promobit-3247377": {
    "fonte": "Promobit",
@@ -1052,7 +1052,7 @@
    "ressalvas": [],
    "id": "promobit-3247526",
    "publicado": "2026-11-24T11:16:08-0300",
-   "idade_h": 1.1
+   "idade_h": 1.2
   },
   "promobit-3247806": {
    "fonte": "Promobit",
@@ -1069,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3247806",
    "publicado": "2026-11-24T12:14:07-0300",
-   "idade_h": 0.1
+   "idade_h": 0.3
   },
   "promobit-3247750": {
    "fonte": "Promobit",
@@ -1086,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3247750",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
   },
   "promobit-3247751": {
    "fonte": "Promobit",
@@ -1103,7 +1103,58 @@
    "ressalvas": [],
    "id": "promobit-3247751",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
+  },
+  "promobit-3247887": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Base De Carregamento Playstation Dualsense Para 2 Controles – Branco",
+   "preco": 136.54,
+   "link": "https://www.promobit.com.br/oferta/base-de-carregamento-playstation-dualsense-para-2-controles-branco-3247887/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "TODOSITE2411",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3247887",
+   "publicado": "2026-11-24T12:27:09-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3247846": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Jogo Silent Hill 2 - PlayStation 5",
+   "preco": 136.97,
+   "link": "https://www.promobit.com.br/oferta/jogo-silent-hill-2-playstation-5-3247846/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "CUPOMLU",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3247846",
+   "publicado": "2026-11-24T12:20:05-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3247837": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Jogo Jujutsu Kaisen Cursed Clash Ps5 Midia Fisica",
+   "preco": 180.0,
+   "link": "https://www.promobit.com.br/oferta/jogo-jujutsu-kaisen-cursed-clash-ps5-midia-fisica-3247837/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3247837",
+   "publicado": "2026-11-24T12:18:38-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -1140,81 +1191,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 62
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 75,
+   "buscas": 76,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T12:20:21-03:00",
+ "ultima": "2026-11-24T12:30:34-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
