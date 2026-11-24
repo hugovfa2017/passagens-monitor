@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 07:28",
+  "quando": "2026-11-24 08:29",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,9 +37,9 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 339,
-    "conferidos": 12,
-    "ofertas": 12,
+    "voos": 342,
+    "conferidos": 11,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
@@ -47,21 +47,21 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 11,
+     "telas": 10,
      "lidas": 10
     },
     "sem_preco": {},
-    "seg": 52
-   },
-   "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "seg": 36
    },
    "123milhas": {
     "buscas": 8,
-    "com_voo": 7
+    "com_voo": 6
    },
    "Vai de Promo": {
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -70,9 +70,8 @@
     "com_voo": 8
    },
    "Viaza": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 8,
+    "com_voo": 8
    }
   },
   "mossoro": {
@@ -105,21 +104,26 @@
   "igual_a": null,
   "recomendada": {
    "d": "2026-12-22",
-   "orig": "VCP",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:25",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1354,
+   "cia": "Azul",
+   "saida": "13:05",
+   "chegada": "16:10",
+   "tipo": "direto",
+   "pp": 1467,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261222/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": null,
+  "momento": {
+   "sinal": "bom",
+   "motivos": [
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
+   ]
+  },
   "fora": null,
   "historico": [
    [
@@ -161,6 +165,10 @@
    [
     "2026-11-24 07:28",
     1354
+   ],
+   [
+    "2026-11-24 08:29",
+    1467
    ]
   ]
  },
@@ -179,7 +187,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1694,
+  "pp": 1675,
   "conf": true
  },
  {
@@ -197,7 +205,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1354,
+  "pp": 1467,
   "conf": true
  },
  {
@@ -206,7 +214,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1501,
+  "pp": 1668,
   "conf": true
  },
  {
@@ -236,9 +244,9 @@
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.475 e R$4.250)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.475 e R$4.250)"
    ]
   },
   "fora": null,
@@ -288,7 +296,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1066,
+  "pp": 1049,
   "conf": true
  },
  {
@@ -297,7 +305,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 953,
+  "pp": 918,
   "conf": true
  },
  {
@@ -314,18 +322,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2174,
+  "pp": 2287,
   "ida": {
    "d": "2026-12-22",
-   "orig": "VCP",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:25",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1354,
+   "cia": "Azul",
+   "saida": "13:05",
+   "chegada": "16:10",
+   "tipo": "direto",
+   "pp": 1467,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261222/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "volta": {
