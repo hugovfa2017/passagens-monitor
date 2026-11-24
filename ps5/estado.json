@@ -865,7 +865,7 @@
    "ressalvas": [],
    "id": "promobit-3246211",
    "publicado": "2026-11-24T00:40:03-0300",
-   "idade_h": 10.7
+   "idade_h": 10.8
   },
   "promobit-3246785": {
    "fonte": "Promobit",
@@ -899,7 +899,7 @@
    "ressalvas": [],
    "id": "promobit-3247033",
    "publicado": "2026-11-24T09:56:57-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3247371": {
    "fonte": "Promobit",
@@ -916,7 +916,7 @@
    "ressalvas": [],
    "id": "promobit-3247371",
    "publicado": "2026-11-24T10:47:08-0300",
-   "idade_h": 0.6
+   "idade_h": 0.7
   },
   "promobit-3247324": {
    "fonte": "Promobit",
@@ -933,7 +933,7 @@
    "ressalvas": [],
    "id": "promobit-3247324",
    "publicado": "2026-11-24T10:40:26-0300",
-   "idade_h": 0.7
+   "idade_h": 0.8
   },
   "promobit-3247403": {
    "fonte": "Promobit",
@@ -950,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3247403",
    "publicado": "2026-11-24T10:54:11-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3247395": {
    "fonte": "Promobit",
@@ -967,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3247395",
    "publicado": "2026-11-24T10:52:20-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "promobit-3247391": {
    "fonte": "Promobit",
@@ -984,7 +984,7 @@
    "ressalvas": [],
    "id": "promobit-3247391",
    "publicado": "2026-11-24T10:51:37-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "promobit-3247386": {
    "fonte": "Promobit",
@@ -1001,7 +1001,7 @@
    "ressalvas": [],
    "id": "promobit-3247386",
    "publicado": "2026-11-24T10:50:21-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3247388": {
    "fonte": "Promobit",
@@ -1018,7 +1018,7 @@
    "ressalvas": [],
    "id": "promobit-3247388",
    "publicado": "2026-11-24T10:50:53-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "promobit-3247377": {
    "fonte": "Promobit",
@@ -1035,7 +1035,24 @@
    "ressalvas": [],
    "id": "promobit-3247377",
    "publicado": "2026-11-24T10:48:04-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
+  },
+  "promobit-3247526": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "PRAGMATA - PlayStation 5",
+   "preco": 203.0,
+   "link": "https://www.promobit.com.br/oferta/pragmata-playstation-5-3247526/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3247526",
+   "publicado": "2026-11-24T11:16:08-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -1072,81 +1089,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 7,
+   "falhas": 8,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
-   "barradas": 57
+   "buscas": 70,
+   "barradas": 58
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 69,
+   "buscas": 70,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T11:20:19-03:00",
+ "ultima": "2026-11-24T11:30:26-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
