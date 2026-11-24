@@ -1258,7 +1258,7 @@
    "publicado": "2026-11-24T15:30:02-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 0.2
+   "idade_h": 0.3
   },
   "promobit-3248482": {
    "fonte": "Promobit",
@@ -1314,81 +1314,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
-   "barradas": 75
+   "buscas": 96,
+   "barradas": 76
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 95,
+   "buscas": 96,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T15:40:20-03:00",
+ "ultima": "2026-11-24T15:50:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
