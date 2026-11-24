@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24 10:00",
+ "atualizado": "2026-11-24 10:10",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Zoom",
@@ -46,7 +46,7 @@
     "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
     "obs": "à vista no Pix",
     "detalhes": "com jogo/extra",
-    "idade_h": 24.1,
+    "idade_h": 24.3,
     "tipo": "loja",
     "condicao": "novo",
     "confianca": "A",
@@ -67,7 +67,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-      "idade_h": 24.1,
+      "idade_h": 24.3,
       "tipo": "postada"
      }
     ],
@@ -86,7 +86,7 @@
     "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
     "obs": "à vista no Pix",
     "detalhes": "com jogo/extra",
-    "idade_h": 24.1,
+    "idade_h": 24.3,
     "tipo": "loja",
     "condicao": "novo",
     "confianca": "A",
@@ -107,14 +107,41 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-      "idade_h": 24.1,
+      "idade_h": 24.3,
       "tipo": "postada"
      }
     ],
     "n_vistos": 3,
     "cupom_citado": null
    },
-   "com": null,
+   "com": {
+    "modelo": "leitor",
+    "fonte": "Promobit",
+    "loja": "Magazine Luiza",
+    "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Branco Sony",
+    "preco": 4480.55,
+    "preco_sem_cupom": null,
+    "cupom": "PLAY50OFF",
+    "cupom_origem": "postado",
+    "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
+    "obs": "postado no Promobit",
+    "detalhes": "",
+    "idade_h": 0.2,
+    "tipo": "postada",
+    "condicao": "novo",
+    "confianca": "B",
+    "ressalvas": [],
+    "visto_em": [
+     {
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
+      "idade_h": 0.2,
+      "tipo": "postada"
+     }
+    ],
+    "n_vistos": 1,
+    "cupom_citado": null
+   },
    "nao_confirmada": null,
    "recorde": {
     "preco": 4049.91,
@@ -137,7 +164,7 @@
      "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
      "obs": "à vista no Pix",
      "detalhes": "com jogo/extra",
-     "idade_h": 24.1,
+     "idade_h": 24.3,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -158,7 +185,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-3242530/",
-       "idade_h": 24.1,
+       "idade_h": 24.3,
        "tipo": "postada"
       }
      ],
@@ -177,7 +204,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3244483/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 17.4,
+     "idade_h": 17.5,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -188,7 +215,35 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3244483/",
-       "idade_h": 17.4,
+       "idade_h": 17.5,
+       "tipo": "postada"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Promobit",
+     "loja": "Magazine Luiza",
+     "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Branco Sony",
+     "preco": 4480.55,
+     "preco_sem_cupom": null,
+     "cupom": "PLAY50OFF",
+     "cupom_origem": "postado",
+     "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
+     "obs": "postado no Promobit",
+     "detalhes": "",
+     "idade_h": 0.2,
+     "tipo": "postada",
+     "condicao": "novo",
+     "confianca": "B",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Promobit",
+       "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
+       "idade_h": 0.2,
        "tipo": "postada"
       }
      ],
@@ -272,6 +327,34 @@
       {
        "fonte": "KaBuM!",
        "link": "https://www.kabum.com.br/produto/1049973/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astro-s-playroom-branco-1000049892",
+       "idade_h": null,
+       "tipo": "loja"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "KaBuM!",
+     "loja": "KaBuM! · Magalu",
+     "titulo": "Console Playstation 5 1TB – Astro Bot E Gran Turismo 7",
+     "preco": 4742.07,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.kabum.com.br/produto/953109/console-playstation-5-1tb-astro-bot-e-gran-turismo-7",
+     "obs": "à vista no Pix",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "KaBuM!",
+       "link": "https://www.kabum.com.br/produto/953109/console-playstation-5-1tb-astro-bot-e-gran-turismo-7",
        "idade_h": null,
        "tipo": "loja"
       }
@@ -648,62 +731,6 @@
       {
        "fonte": "Amazon",
        "link": "https://www.amazon.com.br/dp/B0H6LPVFWQ",
-       "idade_h": null,
-       "tipo": "loja"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Amazon",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 + God of War Ragnarök",
-     "preco": 5319.9,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.amazon.com.br/dp/B0BLW5C5KN",
-     "obs": "",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Amazon",
-       "link": "https://www.amazon.com.br/dp/B0BLW5C5KN",
-       "idade_h": null,
-       "tipo": "loja"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Amazon",
-     "loja": "Amazon",
-     "titulo": "PlayStation®5 Slim Disk + 2 Jogos",
-     "preco": 5414.05,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.amazon.com.br/dp/B0CSPNDPKG",
-     "obs": "",
-     "detalhes": "com jogo/extra",
-     "idade_h": null,
-     "tipo": "loja",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Amazon",
-       "link": "https://www.amazon.com.br/dp/B0CSPNDPKG",
        "idade_h": null,
        "tipo": "loja"
       }
@@ -7768,6 +7795,18 @@
    "pro": "7799",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-24 10:10",
+   "leitor": "4284.0",
+   "leitor_cupom": "4480.55",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4179.05",
+   "digital_cupom": "",
+   "digital_loja": "Magazine Luiza",
+   "pro": "7799",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -8007,12 +8046,12 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.5,
-   "ofertas": 36,
+   "segundos": 0.4,
+   "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Amazon": {
    "ok": true,
@@ -8021,91 +8060,91 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 50,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.2,
+   "segundos": 1.5,
    "ofertas": 13,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 1.0,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 0.9,
+   "segundos": 2.9,
    "ofertas": 50,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 1.4,
    "ofertas": 4,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Zoom": {
    "ok": true,
-   "segundos": 7.5,
+   "segundos": 6.4,
    "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.5,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.2,
+   "segundos": 0.3,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Telegram": {
    "ok": true,
-   "segundos": 20.6,
+   "segundos": 23.9,
    "ofertas": 4,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.0,
+   "segundos": 4.7,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 61
+   "buscas_hoje": 62
   },
   "Cupons (Promobit)": {
    "ok": true,
