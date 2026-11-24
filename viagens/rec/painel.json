@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-23 20:30",
+  "quando": "2026-11-23 21:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,31 +37,31 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 320,
+    "voos": 323,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
-     "repetidas": 3,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 8,
-     "lidas": 8
+     "telas": 11,
+     "lidas": 11
     },
     "sem_preco": {},
-    "seg": 56
+    "seg": 37
    },
    "123milhas": {
     "buscas": 8,
     "com_voo": 7
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -155,7 +155,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1638,
+  "pp": 1989,
   "conf": true
  },
  {
@@ -182,7 +182,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1287,
+  "pp": 1278,
   "conf": true
  },
  {
@@ -205,25 +205,37 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-12",
+   "d": "2027-01-10",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "Azul",
-   "saida": "16:35",
-   "chegada": "20:05",
+   "cia": "Gol",
+   "saida": "09:40",
+   "chegada": "12:55",
    "tipo": "direto",
-   "pp": 729,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "dia": "ter 12/01"
+   "pp": 856,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270110/4/0/0/Y/",
+   "dia": "dom 10/01"
   },
-  "mais_barata": null,
+  "mais_barata": {
+   "d": "2027-01-13",
+   "orig": "REC",
+   "dest": "VCP",
+   "cia": "Azul",
+   "saida": "03:25",
+   "chegada": "06:40",
+   "tipo": "direto",
+   "pp": 818,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
+   "dia": "qua 13/01"
+  },
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.475 e R$3.875)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
    ]
   },
   "fora": null,
@@ -235,6 +247,10 @@
    [
     "2026-11-23 19:27",
     729
+   ],
+   [
+    "2026-11-23 21:27",
+    856
    ]
   ]
  },
@@ -244,7 +260,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 857,
+  "pp": 856,
   "conf": true
  },
  {
@@ -262,7 +278,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 729,
+  "pp": 877,
   "conf": true
  },
  {
@@ -279,7 +295,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1753,
+  "pp": 1880,
   "ida": {
    "d": "2026-12-21",
    "orig": "CGH",
@@ -294,17 +310,17 @@
    "dia": "seg 21/12"
   },
   "volta": {
-   "d": "2027-01-12",
+   "d": "2027-01-10",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "Azul",
-   "saida": "16:35",
-   "chegada": "20:05",
+   "cia": "Gol",
+   "saida": "09:40",
+   "chegada": "12:55",
    "tipo": "direto",
-   "pp": 729,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "dia": "ter 12/01"
+   "pp": 856,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270110/4/0/0/Y/",
+   "dia": "dom 10/01"
   },
   "juntas": null
  }
