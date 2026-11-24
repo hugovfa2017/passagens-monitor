@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3241363": {
-   "fonte": "Promobit",
-   "loja": "Shopee",
-   "titulo": "Console PlayStation 5 Sony SSD 1TB Leitor de Discos Controle DualSense Astro's Playroom Branco - 1000049892",
-   "preco": 4599.0,
-   "link": "https://www.promobit.com.br/oferta/console-playstation-5-sony-ssd-1tb-leitor-de-discos-controle-dualsense-astros-playroom-branco-1000049892-3241363/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3241363",
-   "publicado": "2026-11-22T19:30:55-0300",
-   "idade_h": 14.2
-  },
   "promobit-3241404": {
    "fonte": "Promobit",
    "loja": "Mercado Livre",
@@ -712,7 +695,7 @@
    "ressalvas": [],
    "id": "promobit-3244555",
    "publicado": "2026-11-23T16:48:58-0300",
-   "idade_h": 14.7
+   "idade_h": 14.9
   },
   "promobit-3244533": {
    "fonte": "Promobit",
@@ -729,7 +712,7 @@
    "ressalvas": [],
    "id": "promobit-3244533",
    "publicado": "2026-11-23T16:44:51-0300",
-   "idade_h": 14.8
+   "idade_h": 14.9
   },
   "promobit-3244607": {
    "fonte": "Promobit",
@@ -763,7 +746,7 @@
    "ressalvas": [],
    "id": "promobit-3244617",
    "publicado": "2026-11-23T17:01:54-0300",
-   "idade_h": 14.5
+   "idade_h": 14.6
   },
   "promobit-3244737": {
    "fonte": "Promobit",
@@ -780,7 +763,7 @@
    "ressalvas": [],
    "id": "promobit-3244737",
    "publicado": "2026-11-23T17:25:31-0300",
-   "idade_h": 14.1
+   "idade_h": 14.2
   },
   "promobit-3244683": {
    "fonte": "Promobit",
@@ -848,7 +831,7 @@
    "ressalvas": [],
    "id": "promobit-3244762",
    "publicado": "2026-11-23T17:32:08-0300",
-   "idade_h": 14.0
+   "idade_h": 14.1
   },
   "promobit-3245009": {
    "fonte": "Promobit",
@@ -865,7 +848,7 @@
    "ressalvas": [],
    "id": "promobit-3245009",
    "publicado": "2026-11-23T18:36:49-0300",
-   "idade_h": 12.9
+   "idade_h": 13.1
   },
   "promobit-3245040": {
    "fonte": "Promobit",
@@ -882,26 +865,7 @@
    "ressalvas": [],
    "id": "promobit-3245040",
    "publicado": "2026-11-23T18:44:24-0300",
-   "idade_h": 12.8
-  },
-  "tg-cupons_desconto/84756-0": {
-   "fonte": "Telegram",
-   "loja": "Webcontinental",
-   "titulo": "Playstation 5 So00010 825gb Controle Sem Fio Fc 24 Ea Sports Sony Branco",
-   "preco": 4284.0,
-   "link": "https://t.me/cupons_desconto/84756",
-   "tipo": "grupo",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Promobit (Telegram)",
-   "ressalvas": [],
-   "id": "tg-cupons_desconto/84756-0",
-   "publicado": "2026-11-23T19:40:14-0300",
-   "canal": "Promobit (Telegram)",
-   "preco_de": null,
-   "idade_h": 11.8
+   "idade_h": 12.9
   },
   "promobit-3245424": {
    "fonte": "Promobit",
@@ -918,7 +882,7 @@
    "ressalvas": [],
    "id": "promobit-3245424",
    "publicado": "2026-11-23T20:29:06-0300",
-   "idade_h": 11.0
+   "idade_h": 11.2
   },
   "promobit-3246006": {
    "fonte": "Promobit",
@@ -935,7 +899,7 @@
    "ressalvas": [],
    "id": "promobit-3246006",
    "publicado": "2026-11-23T23:36:10-0300",
-   "idade_h": 7.9
+   "idade_h": 8.1
   },
   "promobit-3246033": {
    "fonte": "Promobit",
@@ -952,7 +916,7 @@
    "ressalvas": [],
    "id": "promobit-3246033",
    "publicado": "2026-11-23T23:40:12-0300",
-   "idade_h": 7.8
+   "idade_h": 8.0
   },
   "promobit-3246102": {
    "fonte": "Promobit",
@@ -969,7 +933,7 @@
    "ressalvas": [],
    "id": "promobit-3246102",
    "publicado": "2026-11-23T23:52:52-0300",
-   "idade_h": 7.6
+   "idade_h": 7.8
   },
   "promobit-3246211": {
    "fonte": "Promobit",
@@ -986,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3246211",
    "publicado": "2026-11-24T00:40:03-0300",
-   "idade_h": 6.8
+   "idade_h": 7.0
   }
  },
  "alertados": {},
@@ -1023,81 +987,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 38
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 46,
+   "buscas": 47,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T07:30:26-03:00",
+ "ultima": "2026-11-24T07:40:28-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
