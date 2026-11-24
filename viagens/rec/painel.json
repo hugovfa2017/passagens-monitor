@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 01:31",
+  "quando": "2026-11-24 02:34",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,37 +37,39 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 300,
+    "voos": 228,
     "conferidos": 12,
-    "ofertas": 12,
+    "ofertas": 10,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 2,
+     "vazias": 3,
+     "repetidas": 4,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 12
+     "telas": 9,
+     "lidas": 7
     },
-    "sem_preco": {},
-    "seg": 83
+    "sem_preco": {
+     "tela de compra sem vendedores": 2
+    },
+    "seg": 121
    },
    "123milhas": {
-    "buscas": 7,
-    "com_voo": 6
+    "buscas": 6,
+    "com_voo": 5
    },
    "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "Viaza": {
     "buscas": 4,
@@ -80,7 +82,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 96,
+   "Azul": 101,
    "Gol": 136,
    "LATAM": 96
   },
@@ -119,7 +121,12 @@
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": null,
+  "momento": {
+   "sinal": "bom",
+   "motivos": [
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
+   ]
+  },
   "fora": null,
   "historico": [
    [
@@ -163,28 +170,10 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
-  "d": "2026-12-19",
-  "dia": "sáb 19/12",
-  "ne": "REC",
-  "pp": 2058,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
   "pp": 1694,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-21",
-  "dia": "seg 21/12",
-  "ne": "REC",
-  "pp": 1384,
   "conf": true
  },
  {
