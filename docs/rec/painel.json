@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 18:26",
+  "quando": "2026-11-24 19:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 331,
+    "voos": 332,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
@@ -47,21 +47,21 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 9,
-     "lidas": 9
+     "telas": 10,
+     "lidas": 10
     },
     "sem_preco": {},
-    "seg": 43
+    "seg": 40
    },
    "123milhas": {
     "buscas": 8,
     "com_voo": 7
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -70,8 +70,9 @@
     "com_voo": 8
    },
    "Viaza": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -79,9 +80,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 106,
+   "Azul": 100,
    "Gol": 136,
-   "LATAM": 84
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -104,15 +105,15 @@
   "igual_a": null,
   "recomendada": {
    "d": "2026-12-22",
-   "orig": "VCP",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:25",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1318,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/vcp/rec?p=4-0-0&dd=2026-12-22",
+   "cia": "Azul",
+   "saida": "23:15",
+   "chegada": "02:15",
+   "tipo": "direto",
+   "pp": 1345,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -200,6 +201,10 @@
    [
     "2026-11-24 18:26",
     1318
+   ],
+   [
+    "2026-11-24 19:28",
+    1345
    ]
   ]
  },
@@ -209,7 +214,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1948,
+  "pp": 2058,
   "conf": true
  },
  {
@@ -218,7 +223,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1673,
+  "pp": 1730,
   "conf": true
  },
  {
@@ -227,7 +232,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1581,
+  "pp": 1505,
   "conf": true
  },
  {
@@ -236,7 +241,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1318,
+  "pp": 1345,
   "conf": true
  },
  {
@@ -245,7 +250,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1534,
+  "pp": 1407,
   "conf": true
  },
  {
@@ -342,7 +347,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1322,
+  "pp": 1393,
   "conf": true
  },
  {
@@ -351,7 +356,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1204,
+  "pp": 1316,
   "conf": true
  },
  {
@@ -377,18 +382,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2201,
+  "pp": 2228,
   "ida": {
    "d": "2026-12-22",
-   "orig": "VCP",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:25",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1318,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/vcp/rec?p=4-0-0&dd=2026-12-22",
+   "cia": "Azul",
+   "saida": "23:15",
+   "chegada": "02:15",
+   "tipo": "direto",
+   "pp": 1345,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "volta": {
