@@ -950,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3247403",
    "publicado": "2026-11-24T10:54:11-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3247395": {
    "fonte": "Promobit",
@@ -967,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3247395",
    "publicado": "2026-11-24T10:52:20-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3247391": {
    "fonte": "Promobit",
@@ -984,7 +984,7 @@
    "ressalvas": [],
    "id": "promobit-3247391",
    "publicado": "2026-11-24T10:51:37-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3247386": {
    "fonte": "Promobit",
@@ -1001,7 +1001,7 @@
    "ressalvas": [],
    "id": "promobit-3247386",
    "publicado": "2026-11-24T10:50:21-0300",
-   "idade_h": 1.7
+   "idade_h": 1.8
   },
   "promobit-3247388": {
    "fonte": "Promobit",
@@ -1018,7 +1018,7 @@
    "ressalvas": [],
    "id": "promobit-3247388",
    "publicado": "2026-11-24T10:50:53-0300",
-   "idade_h": 1.7
+   "idade_h": 1.8
   },
   "promobit-3247377": {
    "fonte": "Promobit",
@@ -1052,7 +1052,7 @@
    "ressalvas": [],
    "id": "promobit-3247526",
    "publicado": "2026-11-24T11:16:08-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   },
   "promobit-3247806": {
    "fonte": "Promobit",
@@ -1069,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3247806",
    "publicado": "2026-11-24T12:14:07-0300",
-   "idade_h": 0.3
+   "idade_h": 0.4
   },
   "promobit-3247750": {
    "fonte": "Promobit",
@@ -1086,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3247750",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3247751": {
    "fonte": "Promobit",
@@ -1103,7 +1103,7 @@
    "ressalvas": [],
    "id": "promobit-3247751",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3247887": {
    "fonte": "Promobit",
@@ -1120,7 +1120,7 @@
    "ressalvas": [],
    "id": "promobit-3247887",
    "publicado": "2026-11-24T12:27:09-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3247846": {
    "fonte": "Promobit",
@@ -1137,7 +1137,7 @@
    "ressalvas": [],
    "id": "promobit-3247846",
    "publicado": "2026-11-24T12:20:05-0300",
-   "idade_h": 0.2
+   "idade_h": 0.3
   },
   "promobit-3247837": {
    "fonte": "Promobit",
@@ -1154,7 +1154,7 @@
    "ressalvas": [],
    "id": "promobit-3247837",
    "publicado": "2026-11-24T12:18:38-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   }
  },
  "alertados": {},
@@ -1191,81 +1191,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
-   "barradas": 62
+   "buscas": 77,
+   "barradas": 63
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 76,
+   "buscas": 77,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T12:30:34-03:00",
+ "ultima": "2026-11-24T12:40:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
