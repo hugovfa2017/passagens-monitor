@@ -1069,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3247806",
    "publicado": "2026-11-24T12:14:07-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3247750": {
    "fonte": "Promobit",
@@ -1086,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3247750",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 2.8
+   "idade_h": 2.9
   },
   "promobit-3247751": {
    "fonte": "Promobit",
@@ -1103,7 +1103,7 @@
    "ressalvas": [],
    "id": "promobit-3247751",
    "publicado": "2026-11-24T12:04:11-0300",
-   "idade_h": 2.8
+   "idade_h": 2.9
   },
   "promobit-3247887": {
    "fonte": "Promobit",
@@ -1120,7 +1120,7 @@
    "ressalvas": [],
    "id": "promobit-3247887",
    "publicado": "2026-11-24T12:27:09-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3247846": {
    "fonte": "Promobit",
@@ -1137,7 +1137,7 @@
    "ressalvas": [],
    "id": "promobit-3247846",
    "publicado": "2026-11-24T12:20:05-0300",
-   "idade_h": 2.5
+   "idade_h": 2.7
   },
   "promobit-3247837": {
    "fonte": "Promobit",
@@ -1154,7 +1154,7 @@
    "ressalvas": [],
    "id": "promobit-3247837",
    "publicado": "2026-11-24T12:18:38-0300",
-   "idade_h": 2.5
+   "idade_h": 2.7
   },
   "promobit-3247961": {
    "fonte": "Promobit",
@@ -1171,7 +1171,7 @@
    "ressalvas": [],
    "id": "promobit-3247961",
    "publicado": "2026-11-24T12:41:12-0300",
-   "idade_h": 2.1
+   "idade_h": 2.3
   },
   "promobit-3248204": {
    "fonte": "Promobit",
@@ -1188,7 +1188,7 @@
    "ressalvas": [],
    "id": "promobit-3248204",
    "publicado": "2026-11-24T13:21:29-0300",
-   "idade_h": 1.5
+   "idade_h": 1.6
   },
   "promobit-3248303": {
    "fonte": "Promobit",
@@ -1205,7 +1205,7 @@
    "ressalvas": [],
    "id": "promobit-3248303",
    "publicado": "2026-11-24T13:39:04-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   },
   "promobit-3248510": {
    "fonte": "Promobit",
@@ -1222,7 +1222,24 @@
    "ressalvas": [],
    "id": "promobit-3248510",
    "publicado": "2026-11-24T14:22:04-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
+  },
+  "promobit-3248644": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Hollow Knight - PS5",
+   "preco": 242.96,
+   "link": "https://www.promobit.com.br/oferta/hollow-knight-ps5-3248644/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "VOCEDEZ",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3248644",
+   "publicado": "2026-11-24T14:48:04-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {},
@@ -1259,81 +1276,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
-   "barradas": 72
+   "buscas": 91,
+   "barradas": 73
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 90,
+   "buscas": 91,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T14:49:58-03:00",
+ "ultima": "2026-11-24T15:00:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
