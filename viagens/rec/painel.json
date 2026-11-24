@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 10:29",
+  "quando": "2026-11-24 11:31",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,44 +37,44 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 181,
-    "conferidos": 10,
-    "ofertas": 10,
+    "voos": 337,
+    "conferidos": 11,
+    "ofertas": 9,
     "bloqueio": null,
     "listas": {
-     "vazias": 4,
-     "repetidas": 6,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 1,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 8,
-     "lidas": 8
+     "telas": 7,
+     "lidas": 7
     },
     "sem_preco": {
-     "a lista não abriu": 1,
-     "tela de compra sem vendedores": 1
+     "a lista não abriu": 2
     },
-    "seg": 173
+    "seg": 126
    },
    "123milhas": {
-    "buscas": 7,
-    "com_voo": 6
-   },
-   "MaxMilhas": {
-    "buscas": 7,
+    "buscas": 8,
     "com_voo": 7
    },
    "Vai de Promo": {
-    "buscas": 7,
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "MaxMilhas": {
+    "buscas": 8,
     "com_voo": 7
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -184,7 +184,16 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1910,
+  "pp": 1842,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1694,
   "conf": true
  },
  {
@@ -206,6 +215,15 @@
   "conf": true
  },
  {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
+  "ne": "REC",
+  "pp": 1501,
+  "conf": true
+ },
+ {
   "tipo": "trecho",
   "serie": "r.volta",
   "grupo": "r",
@@ -223,9 +241,9 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 906,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/vcp?p=4-0-0&dd=2027-01-13",
+   "pp": 886,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
   },
   "mais_barata": null,
@@ -270,6 +288,10 @@
    [
     "2026-11-24 10:29",
     906
+   ],
+   [
+    "2026-11-24 11:31",
+    886
    ]
   ]
  },
@@ -279,7 +301,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1295,
+  "pp": 1296,
   "conf": true
  },
  {
@@ -288,7 +310,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1295,
+  "pp": 1289,
   "conf": true
  },
  {
@@ -297,7 +319,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 955,
+  "pp": 972,
   "conf": true
  },
  {
@@ -306,7 +328,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 906,
+  "pp": 886,
   "conf": true
  },
  {
@@ -314,7 +336,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2291,
+  "pp": 2271,
   "ida": {
    "d": "2026-12-22",
    "orig": "VCP",
@@ -336,9 +358,9 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 906,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/vcp?p=4-0-0&dd=2027-01-13",
+   "pp": 886,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
   },
   "juntas": null
