@@ -17,23 +17,6 @@
    "publicado": "2026-11-22T16:52:07-0300",
    "idade_h": 16.5
   },
-  "promobit-3240879": {
-   "fonte": "Promobit",
-   "loja": "Netshoes",
-   "titulo": "PlayStation 5 Slim 1TB 1 Controle Branco Sony com 2 Jogos",
-   "preco": 4499.0,
-   "link": "https://www.promobit.com.br/oferta/playstation-5-slim-1tb-1-controle-branco-sony-com-2-jogos-3240879/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3240879",
-   "publicado": "2026-11-22T16:47:22-0300",
-   "idade_h": 16.6
-  },
   "promobit-3241073": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -831,7 +814,7 @@
    "ressalvas": [],
    "id": "promobit-3244555",
    "publicado": "2026-11-23T16:48:58-0300",
-   "idade_h": 11.9
+   "idade_h": 12.0
   },
   "promobit-3244533": {
    "fonte": "Promobit",
@@ -848,7 +831,7 @@
    "ressalvas": [],
    "id": "promobit-3244533",
    "publicado": "2026-11-23T16:44:51-0300",
-   "idade_h": 11.9
+   "idade_h": 12.1
   },
   "promobit-3244607": {
    "fonte": "Promobit",
@@ -882,7 +865,7 @@
    "ressalvas": [],
    "id": "promobit-3244617",
    "publicado": "2026-11-23T17:01:54-0300",
-   "idade_h": 11.6
+   "idade_h": 11.8
   },
   "promobit-3244737": {
    "fonte": "Promobit",
@@ -899,7 +882,7 @@
    "ressalvas": [],
    "id": "promobit-3244737",
    "publicado": "2026-11-23T17:25:31-0300",
-   "idade_h": 11.2
+   "idade_h": 11.4
   },
   "promobit-3244683": {
    "fonte": "Promobit",
@@ -967,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3244762",
    "publicado": "2026-11-23T17:32:08-0300",
-   "idade_h": 11.1
+   "idade_h": 11.3
   },
   "promobit-3245009": {
    "fonte": "Promobit",
@@ -984,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3245009",
    "publicado": "2026-11-23T18:36:49-0300",
-   "idade_h": 10.1
+   "idade_h": 10.2
   },
   "promobit-3245040": {
    "fonte": "Promobit",
@@ -1001,7 +984,7 @@
    "ressalvas": [],
    "id": "promobit-3245040",
    "publicado": "2026-11-23T18:44:24-0300",
-   "idade_h": 9.9
+   "idade_h": 10.1
   },
   "tg-cupons_desconto/84756-0": {
    "fonte": "Telegram",
@@ -1020,7 +1003,7 @@
    "publicado": "2026-11-23T19:40:14-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 9.0
+   "idade_h": 9.2
   },
   "promobit-3245424": {
    "fonte": "Promobit",
@@ -1037,7 +1020,7 @@
    "ressalvas": [],
    "id": "promobit-3245424",
    "publicado": "2026-11-23T20:29:06-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3246006": {
    "fonte": "Promobit",
@@ -1054,7 +1037,7 @@
    "ressalvas": [],
    "id": "promobit-3246006",
    "publicado": "2026-11-23T23:36:10-0300",
-   "idade_h": 5.1
+   "idade_h": 5.2
   },
   "promobit-3246033": {
    "fonte": "Promobit",
@@ -1071,7 +1054,7 @@
    "ressalvas": [],
    "id": "promobit-3246033",
    "publicado": "2026-11-23T23:40:12-0300",
-   "idade_h": 5.0
+   "idade_h": 5.2
   },
   "promobit-3246102": {
    "fonte": "Promobit",
@@ -1088,7 +1071,7 @@
    "ressalvas": [],
    "id": "promobit-3246102",
    "publicado": "2026-11-23T23:52:52-0300",
-   "idade_h": 4.8
+   "idade_h": 5.0
   },
   "promobit-3246211": {
    "fonte": "Promobit",
@@ -1105,7 +1088,7 @@
    "ressalvas": [],
    "id": "promobit-3246211",
    "publicado": "2026-11-24T00:40:03-0300",
-   "idade_h": 4.0
+   "idade_h": 4.2
   }
  },
  "alertados": {},
@@ -1142,81 +1125,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 8,
+   "falhas": 9,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
-   "barradas": 23
+   "buscas": 30,
+   "barradas": 24
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 29,
+   "buscas": 30,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T04:40:19-03:00",
+ "ultima": "2026-11-24T04:50:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-23"
 }
