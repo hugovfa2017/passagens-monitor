@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 11:31",
+  "quando": "2026-11-24 12:31",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,39 +37,39 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 337,
+    "voos": 221,
     "conferidos": 11,
     "ofertas": 9,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
-     "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 3,
+     "repetidas": 3,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 7,
-     "lidas": 7
+     "telas": 9,
+     "lidas": 9
     },
     "sem_preco": {
-     "a lista não abriu": 2
+     "tela de compra sem vendedores": 2
     },
-    "seg": 126
+    "seg": 124
    },
    "123milhas": {
-    "buscas": 8,
+    "buscas": 7,
+    "com_voo": 6
+   },
+   "MaxMilhas": {
+    "buscas": 7,
     "com_voo": 7
    },
    "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
-   },
-   "MaxMilhas": {
-    "buscas": 8,
+    "buscas": 7,
     "com_voo": 7
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Viaza": {
     "buscas": 4,
@@ -82,8 +82,8 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 104,
-   "Gol": 119,
+   "Azul": 106,
+   "Gol": 136,
    "LATAM": 107
   },
   "grupos": [
@@ -113,9 +113,9 @@
    "saida": "11:25",
    "chegada": "16:05",
    "tipo": "com escala",
-   "pp": 1385,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22VCP%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
+   "pp": 1382,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/VCP/REC/2026-12-22/4/0/0/EC",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -175,6 +175,10 @@
    [
     "2026-11-24 10:29",
     1385
+   ],
+   [
+    "2026-11-24 12:31",
+    1382
    ]
   ]
  },
@@ -193,7 +197,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1694,
+  "pp": 1535,
   "conf": true
  },
  {
@@ -211,16 +215,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1385,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
-  "ne": "REC",
-  "pp": 1501,
+  "pp": 1382,
   "conf": true
  },
  {
@@ -241,7 +236,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 886,
+   "pp": 887,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
@@ -292,6 +287,10 @@
    [
     "2026-11-24 11:31",
     886
+   ],
+   [
+    "2026-11-24 12:31",
+    887
    ]
   ]
  },
@@ -301,7 +300,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1296,
+  "pp": 1322,
   "conf": true
  },
  {
@@ -310,16 +309,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1289,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-12",
-  "dia": "ter 12/01",
-  "ne": "REC",
-  "pp": 972,
+  "pp": 1304,
   "conf": true
  },
  {
@@ -328,7 +318,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 886,
+  "pp": 887,
   "conf": true
  },
  {
@@ -336,7 +326,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2271,
+  "pp": 2269,
   "ida": {
    "d": "2026-12-22",
    "orig": "VCP",
@@ -345,9 +335,9 @@
    "saida": "11:25",
    "chegada": "16:05",
    "tipo": "com escala",
-   "pp": 1385,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22VCP%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
+   "pp": 1382,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/VCP/REC/2026-12-22/4/0/0/EC",
    "dia": "ter 22/12"
   },
   "volta": {
@@ -358,7 +348,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 886,
+   "pp": 887,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
