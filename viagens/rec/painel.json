@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-23 23:28",
+  "quando": "2026-11-24 00:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,37 +37,37 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 286,
-    "conferidos": 11,
+    "voos": 337,
+    "conferidos": 12,
     "ofertas": 12,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 12
+     "telas": 9,
+     "lidas": 9
     },
     "sem_preco": {},
-    "seg": 82
+    "seg": 34
    },
    "123milhas": {
-    "buscas": 7,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 7
    },
    "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
     "buscas": 4,
@@ -82,7 +82,7 @@
   "taxa_mala": {
    "Azul": 101,
    "Gol": 136,
-   "LATAM": 86
+   "LATAM": 96
   },
   "grupos": [
    {
@@ -111,7 +111,7 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1020,
+   "pp": 1024,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
    "dia": "seg 21/12"
@@ -154,6 +154,10 @@
    [
     "2026-11-23 23:28",
     1020
+   ],
+   [
+    "2026-11-24 00:30",
+    1024
    ]
   ]
  },
@@ -163,7 +167,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1989,
+  "pp": 2058,
   "conf": true
  },
  {
@@ -172,7 +176,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1508,
+  "pp": 1694,
   "conf": true
  },
  {
@@ -181,7 +185,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1020,
+  "pp": 1024,
   "conf": true
  },
  {
@@ -260,7 +264,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 895,
+  "pp": 1010,
   "conf": true
  },
  {
@@ -270,6 +274,15 @@
   "dia": "seg 11/01",
   "ne": "REC",
   "pp": 980,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-12",
+  "dia": "ter 12/01",
+  "ne": "REC",
+  "pp": 877,
   "conf": true
  },
  {
@@ -286,7 +299,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1838,
+  "pp": 1842,
   "ida": {
    "d": "2026-12-21",
    "orig": "CGH",
@@ -295,7 +308,7 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1020,
+   "pp": 1024,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
    "dia": "seg 21/12"
