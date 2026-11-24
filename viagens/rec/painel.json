@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 14:28",
+  "quando": "2026-11-24 15:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,41 +37,42 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 189,
-    "conferidos": 10,
-    "ofertas": 10,
+    "voos": 333,
+    "conferidos": 11,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 4,
-     "repetidas": 5,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 9,
-     "lidas": 9
+     "telas": 11,
+     "lidas": 11
     },
     "sem_preco": {},
-    "seg": 90
-   },
-   "MaxMilhas": {
-    "buscas": 5,
-    "com_voo": 5
+    "seg": 35
    },
    "123milhas": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 8,
+    "com_voo": 7
+   },
+   "MaxMilhas": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Vai de Promo": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -79,7 +80,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 104,
+   "Azul": 110,
    "Gol": 136,
    "LATAM": 84
   },
@@ -106,34 +107,22 @@
    "d": "2026-12-22",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "LATAM",
-   "saida": "15:40",
-   "chegada": "18:45",
+   "cia": "Azul",
+   "saida": "14:10",
+   "chegada": "17:15",
    "tipo": "direto",
-   "pp": 1381,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/gru/rec?p=4-0-0&dd=2026-12-22",
+   "pp": 1369,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
-  "mais_barata": {
-   "d": "2026-12-22",
-   "orig": "VCP",
-   "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:25",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1342,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/vcp/rec?p=4-0-0&dd=2026-12-22",
-   "dia": "ter 22/12"
-  },
+  "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
    ]
   },
   "fora": null,
@@ -201,8 +190,39 @@
    [
     "2026-11-24 14:28",
     1381
+   ],
+   [
+    "2026-11-24 15:27",
+    1369
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 1948,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1535,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-21",
+  "dia": "seg 21/12",
+  "ne": "REC",
+  "pp": 1535,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -210,7 +230,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1342,
+  "pp": 1369,
   "conf": true
  },
  {
@@ -219,7 +239,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1488,
+  "pp": 1507,
   "conf": true
  },
  {
@@ -308,7 +328,16 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1184,
+  "pp": 1322,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "REC",
+  "pp": 1263,
   "conf": true
  },
  {
@@ -334,18 +363,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2273,
+  "pp": 2261,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "LATAM",
-   "saida": "15:40",
-   "chegada": "18:45",
+   "cia": "Azul",
+   "saida": "14:10",
+   "chegada": "17:15",
    "tipo": "direto",
-   "pp": 1381,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/gru/rec?p=4-0-0&dd=2026-12-22",
+   "pp": 1369,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "volta": {
