@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-23 22:36",
+  "quando": "2026-11-23 23:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,25 +37,25 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 251,
+    "voos": 286,
     "conferidos": 11,
-    "ofertas": 13,
+    "ofertas": 12,
     "bloqueio": null,
     "listas": {
-     "vazias": 2,
-     "repetidas": 6,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 1,
+     "repetidas": 1,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 13,
+     "telas": 12,
      "lidas": 12
     },
     "sem_preco": {},
-    "seg": 93
+    "seg": 82
    },
    "123milhas": {
     "buscas": 7,
-    "com_voo": 7
+    "com_voo": 6
    },
    "MaxMilhas": {
     "buscas": 7,
@@ -70,8 +70,9 @@
     "com_voo": 7
    },
    "Viaza": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -79,9 +80,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 100,
+   "Azul": 101,
    "Gol": 136,
-   "LATAM": 80
+   "LATAM": 86
   },
   "grupos": [
    {
@@ -110,9 +111,9 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1007,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-21",
+   "pp": 1020,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
    "dia": "seg 21/12"
   },
   "mais_barata": null,
@@ -149,6 +150,10 @@
    [
     "2026-11-23 22:36",
     1007
+   ],
+   [
+    "2026-11-23 23:28",
+    1020
    ]
   ]
  },
@@ -176,7 +181,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1007,
+  "pp": 1020,
   "conf": true
  },
  {
@@ -185,7 +190,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1337,
+  "pp": 1345,
   "conf": true
  },
  {
@@ -194,7 +199,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1453,
+  "pp": 1464,
   "conf": true
  },
  {
@@ -208,19 +213,6 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-10",
-   "orig": "REC",
-   "dest": "CGH",
-   "cia": "Gol",
-   "saida": "09:40",
-   "chegada": "12:55",
-   "tipo": "direto",
-   "pp": 856,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270110/4/0/0/Y/",
-   "dia": "dom 10/01"
-  },
-  "mais_barata": {
    "d": "2027-01-13",
    "orig": "REC",
    "dest": "VCP",
@@ -228,17 +220,18 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 807,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/vcp?p=4-0-0&dd=2027-01-13",
+   "pp": 818,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
   },
+  "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.375 e R$3.375)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.475 e R$4.250)"
    ]
   },
   "fora": null,
@@ -254,6 +247,10 @@
    [
     "2026-11-23 21:27",
     856
+   ],
+   [
+    "2026-11-23 23:28",
+    818
    ]
   ]
  },
@@ -263,16 +260,16 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 856,
+  "pp": 895,
   "conf": true
  },
  {
   "tipo": "celula",
   "serie": "r.volta",
-  "d": "2027-01-12",
-  "dia": "ter 12/01",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 877,
+  "pp": 980,
   "conf": true
  },
  {
@@ -281,7 +278,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 807,
+  "pp": 818,
   "conf": true
  },
  {
@@ -289,7 +286,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1863,
+  "pp": 1838,
   "ida": {
    "d": "2026-12-21",
    "orig": "CGH",
@@ -298,23 +295,23 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1007,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-21",
+   "pp": 1020,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261221/4/0/0/Y/",
    "dia": "seg 21/12"
   },
   "volta": {
-   "d": "2027-01-10",
+   "d": "2027-01-13",
    "orig": "REC",
-   "dest": "CGH",
-   "cia": "Gol",
-   "saida": "09:40",
-   "chegada": "12:55",
+   "dest": "VCP",
+   "cia": "Azul",
+   "saida": "03:25",
+   "chegada": "06:40",
    "tipo": "direto",
-   "pp": 856,
+   "pp": 818,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270110/4/0/0/Y/",
-   "dia": "dom 10/01"
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
+   "dia": "qua 13/01"
   },
   "juntas": null
  }
