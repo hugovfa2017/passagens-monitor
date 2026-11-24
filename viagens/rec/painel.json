@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 05:27",
+  "quando": "2026-11-24 06:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 340,
+    "voos": 338,
     "conferidos": 12,
     "ofertas": 12,
     "bloqueio": null,
@@ -51,7 +51,7 @@
      "lidas": 12
     },
     "sem_preco": {},
-    "seg": 36
+    "seg": 31
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -61,11 +61,11 @@
     "buscas": 8,
     "com_voo": 8
    },
-   "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
-   },
    "123milhas": {
+    "buscas": 8,
+    "com_voo": 7
+   },
+   "Zupper": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -80,9 +80,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 101,
+   "Azul": 96,
    "Gol": 136,
-   "LATAM": 96
+   "LATAM": 107
   },
   "grupos": [
    {
@@ -189,7 +189,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1491,
+  "pp": 1384,
   "conf": true
  },
  {
@@ -207,7 +207,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1574,
+  "pp": 1581,
   "conf": true
  },
  {
@@ -228,7 +228,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 818,
+   "pp": 820,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
@@ -267,6 +267,10 @@
    [
     "2026-11-24 05:27",
     818
+   ],
+   [
+    "2026-11-24 06:30",
+    820
    ]
   ]
  },
@@ -285,7 +289,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 980,
+  "pp": 1066,
   "conf": true
  },
  {
@@ -303,7 +307,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 818,
+  "pp": 820,
   "conf": true
  },
  {
@@ -311,7 +315,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2163,
+  "pp": 2165,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -333,7 +337,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 818,
+   "pp": 820,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
