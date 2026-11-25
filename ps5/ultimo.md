@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-25 07:40 (hora de Brasília)
+# PS5 — última varredura: 2026-11-25 07:50 (hora de Brasília)
 
 **Mais barato agora:** PS5 com leitor de disco por R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 4 lugares
 
@@ -27,7 +27,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 38 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 36 de 47 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 37 de 48 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
