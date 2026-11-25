@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 23:32",
+  "quando": "2026-11-25 00:29",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,13 +37,13 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 216,
+    "voos": 298,
     "conferidos": 11,
-    "ofertas": 9,
+    "ofertas": 10,
     "bloqueio": null,
     "listas": {
-     "vazias": 3,
-     "repetidas": 4,
+     "vazias": 1,
+     "repetidas": 6,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
@@ -51,25 +51,25 @@
      "lidas": 9
     },
     "sem_preco": {
-     "a lista não abriu": 2
+     "a lista não abriu": 1
     },
-    "seg": 156
+    "seg": 154
    },
    "123milhas": {
-    "buscas": 6,
-    "com_voo": 5
-   },
-   "Vai de Promo": {
-    "buscas": 6,
+    "buscas": 8,
     "com_voo": 6
    },
    "MaxMilhas": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "Vai de Promo": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
     "buscas": 4,
@@ -82,9 +82,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 97,
+   "Azul": 100,
    "Gol": 136,
-   "LATAM": 105
+   "LATAM": 86
   },
   "grupos": [
    {
@@ -221,7 +221,16 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 2057,
+  "pp": 1848,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1727,
   "conf": true
  },
  {
@@ -239,7 +248,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1582,
+  "pp": 1545,
   "conf": true
  },
  {
@@ -349,6 +358,15 @@
  {
   "tipo": "celula",
   "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 1393,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
@@ -361,7 +379,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 975,
+  "pp": 933,
   "conf": true
  },
  {
