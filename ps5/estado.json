@@ -799,7 +799,7 @@
    "publicado": "2026-11-24T23:45:53-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 9.9
+   "idade_h": 10.1
   },
   "tg-OfertasDoDia/487992-0": {
    "fonte": "Telegram",
@@ -818,7 +818,7 @@
    "publicado": "2026-11-24T23:45:41-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 9.9
+   "idade_h": 10.1
   },
   "promobit-3250760": {
    "fonte": "Promobit",
@@ -854,7 +854,7 @@
    "publicado": "2026-11-25T03:52:49-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "tg-OfertasDoDia/488239-0": {
    "fonte": "Telegram",
@@ -873,7 +873,7 @@
    "publicado": "2026-11-25T03:52:38-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "promobit-3251436": {
    "fonte": "Promobit",
@@ -926,7 +926,7 @@
    "publicado": "2026-11-25T09:22:21-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3251577": {
    "fonte": "Promobit",
@@ -943,7 +943,7 @@
    "ressalvas": [],
    "id": "promobit-3251577",
    "publicado": "2026-11-25T09:32:05-0300",
-   "idade_h": 0.1
+   "idade_h": 0.3
   },
   "promobit-3251616": {
    "fonte": "Promobit",
@@ -960,7 +960,7 @@
    "ressalvas": [],
    "id": "promobit-3251616",
    "publicado": "2026-11-25T09:35:45-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3251615": {
    "fonte": "Promobit",
@@ -977,7 +977,7 @@
    "ressalvas": [],
    "id": "promobit-3251615",
    "publicado": "2026-11-25T09:35:42-0300",
-   "idade_h": 0.1
+   "idade_h": 0.2
   },
   "promobit-3251613": {
    "fonte": "Promobit",
@@ -1029,6 +1029,197 @@
    "id": "promobit-3251607",
    "publicado": "2026-11-25T09:34:44-0300",
    "idade_h": 0.1
+  },
+  "promobit-3251659": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Demon's Souls PS5",
+   "preco": 133.59,
+   "link": "https://www.promobit.com.br/oferta/jogo-demons-souls-ps5-3251659/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251659",
+   "publicado": "2026-11-25T09:40:48-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251639": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Sony Dualsense Adamantium Wolverine Edição Limitada",
+   "preco": 417.66,
+   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-adamantium-wolverine-edicao-limitada-3251639/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "ELETROTECHMELI",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251639",
+   "publicado": "2026-11-25T09:38:18-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251649": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Uncharted: Coleção Legado dos Ladrões PS5",
+   "preco": 90.12,
+   "link": "https://www.promobit.com.br/oferta/jogo-uncharted-colecao-legado-dos-ladroes-ps5-3251649/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251649",
+   "publicado": "2026-11-25T09:39:40-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251647": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Astro Bot PS5 - 1000044301",
+   "preco": 181.02,
+   "link": "https://www.promobit.com.br/oferta/jogo-astro-bot-ps5-1000044301-3251647/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251647",
+   "publicado": "2026-11-25T09:39:13-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251640": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Marvels Spider-Man: Miles Morales PS5",
+   "preco": 90.12,
+   "link": "https://www.promobit.com.br/oferta/jogo-marvels-spider-man-miles-morales-ps5-3251640/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251640",
+   "publicado": "2026-11-25T09:38:24-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251643": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo The Last of US Parte 1 PS5",
+   "preco": 133.59,
+   "link": "https://www.promobit.com.br/oferta/jogo-the-last-of-us-parte-1-ps5-3251643/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251643",
+   "publicado": "2026-11-25T09:38:48-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251630": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Horizon Forbidden West Complete Edition PS5 - 1000030398",
+   "preco": 181.02,
+   "link": "https://www.promobit.com.br/oferta/jogo-horizon-forbidden-west-complete-edition-ps5-1000030398-3251630/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251630",
+   "publicado": "2026-11-25T09:37:25-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251624": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo God of War Ragnarök Edição Standard PS5",
+   "preco": 133.59,
+   "link": "https://www.promobit.com.br/oferta/jogo-god-of-war-ragnarok-edicao-standard-ps5-3251624/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251624",
+   "publicado": "2026-11-25T09:36:33-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3251626": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Death Stranding: Versão do Diretor PS5",
+   "preco": 90.12,
+   "link": "https://www.promobit.com.br/oferta/jogo-death-stranding-versao-do-diretor-ps5-3251626/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251626",
+   "publicado": "2026-11-25T09:36:55-0300",
+   "idade_h": 0.2
+  },
+  "tg-hardmob_promo/478887-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Sem Leitor❗",
+   "preco": 3875.15,
+   "link": "https://t.me/hardmob_promo/478887",
+   "tipo": "grupo",
+   "origem": "hardmob",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Hardmob Promo",
+   "ressalvas": [],
+   "id": "tg-hardmob_promo/478887-0",
+   "publicado": "2026-11-25T09:38:50-0300",
+   "canal": "Hardmob Promo",
+   "preco_de": null,
+   "idade_h": 0.2
+  },
+  "tg-OfertasDoDia/488586-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Sem Leitor❗",
+   "preco": 3875.15,
+   "link": "https://t.me/OfertasDoDia/488586",
+   "tipo": "grupo",
+   "origem": "hardmob",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Ofertas do Dia",
+   "ressalvas": [],
+   "id": "tg-OfertasDoDia/488586-0",
+   "publicado": "2026-11-25T09:38:42-0300",
+   "canal": "Ofertas do Dia",
+   "preco_de": null,
+   "idade_h": 0.2
   }
  },
  "alertados": {
@@ -1068,81 +1259,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
-   "barradas": 47
+   "buscas": 60,
+   "barradas": 48
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 59,
+   "buscas": 60,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T09:40:20-03:00",
+ "ultima": "2026-11-25T09:50:21-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
