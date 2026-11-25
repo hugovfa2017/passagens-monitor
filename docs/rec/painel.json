@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 06:27",
+  "quando": "2026-11-25 07:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -38,8 +38,8 @@
    "Google": {
     "buscas": 9,
     "voos": 327,
-    "conferidos": 11,
-    "ofertas": 11,
+    "conferidos": 12,
+    "ofertas": 13,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
@@ -47,11 +47,11 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 11,
-     "lidas": 11
+     "telas": 13,
+     "lidas": 13
     },
     "sem_preco": {},
-    "seg": 79
+    "seg": 46
    },
    "Vai de Promo": {
     "buscas": 8,
@@ -61,13 +61,13 @@
     "buscas": 8,
     "com_voo": 8
    },
-   "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
-   },
    "123milhas": {
     "buscas": 8,
     "com_voo": 7
+   },
+   "Zupper": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
     "buscas": 4,
@@ -80,7 +80,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 100,
+   "Azul": 110,
    "Gol": 136,
    "LATAM": 81
   },
@@ -111,9 +111,9 @@
    "saida": "23:15",
    "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1345,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
+   "pp": 1467,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -210,6 +210,10 @@
    [
     "2026-11-24 19:28",
     1345
+   ],
+   [
+    "2026-11-25 07:30",
+    1467
    ]
   ]
  },
@@ -237,7 +241,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1659,
+  "pp": 1727,
   "conf": true
  },
  {
@@ -246,7 +250,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1345,
+  "pp": 1467,
   "conf": true
  },
  {
@@ -269,19 +273,6 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-12",
-   "orig": "REC",
-   "dest": "GRU",
-   "cia": "Azul",
-   "saida": "04:30",
-   "chegada": "07:45",
-   "tipo": "direto",
-   "pp": 933,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
-   "dia": "ter 12/01"
-  },
-  "mais_barata": {
    "d": "2027-01-13",
    "orig": "REC",
    "dest": "VCP",
@@ -289,17 +280,18 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 886,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
+   "pp": 824,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
    "dia": "qua 13/01"
   },
+  "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.400 e R$3.875)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.475 e R$4.250)"
    ]
   },
   "fora": null,
@@ -395,6 +387,10 @@
    [
     "2026-11-25 06:27",
     933
+   ],
+   [
+    "2026-11-25 07:30",
+    824
    ]
   ]
  },
@@ -404,7 +400,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1393,
+  "pp": 1518,
   "conf": true
  },
  {
@@ -413,7 +409,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1316,
+  "pp": 1433,
   "conf": true
  },
  {
@@ -422,7 +418,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 933,
+  "pp": 934,
   "conf": true
  },
  {
@@ -431,7 +427,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 886,
+  "pp": 824,
   "conf": true
  },
  {
@@ -439,7 +435,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2278,
+  "pp": 2291,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -448,23 +444,23 @@
    "saida": "23:15",
    "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1345,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
+   "pp": 1467,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "volta": {
-   "d": "2027-01-12",
+   "d": "2027-01-13",
    "orig": "REC",
-   "dest": "GRU",
+   "dest": "VCP",
    "cia": "Azul",
-   "saida": "04:30",
-   "chegada": "07:45",
+   "saida": "03:25",
+   "chegada": "06:40",
    "tipo": "direto",
-   "pp": 933,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
-   "dia": "ter 12/01"
+   "pp": 824,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
+   "dia": "qua 13/01"
   },
   "juntas": null
  }
