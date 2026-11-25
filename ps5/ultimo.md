@@ -1,17 +1,18 @@
-# PS5 — última varredura: 2026-11-25 18:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-25 18:10 (hora de Brasília)
 
-**Mais barato agora:** PS5 com leitor de disco por R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
+**Mais barato agora:** PS5 Digital por R$ 3.369 no Mercado Livre com cupom PM52MP66 · postado há 0h
 
-- **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 3.650 no Mercado Livre com cupom PM52MP66 · postado há 0h
-- **PS5 Digital**: R$ 4.289,90 na Amazon · à vista
-   não confirmada: R$ 3.875,15 no Mercado Livre · visto em 2 lugares, postado há 8h
+- **PS5 com leitor de disco**: R$ 3.650 no Mercado Livre com cupom MENOSPRATECH · cartão Mercado Pago, visto em 3 lugares, postado há 0h
+   sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
+- **PS5 Digital**: R$ 3.369 no Mercado Livre com cupom PM52MP66 · postado há 0h
+   sem cupom: R$ 4.289,90 na Amazon
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
    não confirmada: R$ 7.083,08 na Shopee · confira se é a versão nacional, postado há 6h
 
 ## Alertas
 
-- PS5 com leitor de disco: oferta de grupo ainda NÃO confirmada (confira antes de se animar)
+- PS5 com leitor de disco: abaixo do alvo de R$ 3.699
+- PS5 Digital: abaixo de R$ 3.600
 
 Telegram: TELEGRAM_ENVIADO
 
@@ -30,17 +31,17 @@ Telegram: TELEGRAM_ENVIADO
 ## Fontes
 
 - KaBuM!: ok, 35 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 86 de 108 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 87 de 109 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 6 itens
-- Webcontinental: ok, 50 itens
+- Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 29 itens
 - Promobit: ok, 11 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 18 itens (22 de 22 canais)
+- Telegram: ok, 21 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 169 não é console PS5
+Descartados: 168 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/

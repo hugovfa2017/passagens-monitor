@@ -782,7 +782,7 @@
    "publicado": "2026-11-25T09:22:21-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.6
+   "idade_h": 8.8
   },
   "promobit-3251577": {
    "fonte": "Promobit",
@@ -1056,7 +1056,7 @@
    "publicado": "2026-11-25T09:38:50-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 8.4
+   "idade_h": 8.5
   },
   "tg-OfertasDoDia/488586-0": {
    "fonte": "Telegram",
@@ -1075,7 +1075,7 @@
    "publicado": "2026-11-25T09:38:42-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 8.4
+   "idade_h": 8.5
   },
   "promobit-3251681": {
    "fonte": "Promobit",
@@ -1145,7 +1145,7 @@
    "publicado": "2026-11-25T12:25:58-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 5.6
+   "idade_h": 5.7
   },
   "promobit-3252777": {
    "fonte": "Promobit",
@@ -1200,7 +1200,7 @@
    "publicado": "2026-11-25T13:19:45-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.7
+   "idade_h": 4.8
   },
   "promobit-3252972": {
    "fonte": "Promobit",
@@ -1285,7 +1285,7 @@
    "ressalvas": [],
    "id": "promobit-3253493",
    "publicado": "2026-11-25T15:12:10-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3253451": {
    "fonte": "Promobit",
@@ -1302,7 +1302,7 @@
    "ressalvas": [],
    "id": "promobit-3253451",
    "publicado": "2026-11-25T15:05:49-0300",
-   "idade_h": 2.9
+   "idade_h": 3.1
   },
   "promobit-3253801": {
    "fonte": "Promobit",
@@ -1319,7 +1319,7 @@
    "ressalvas": [],
    "id": "promobit-3253801",
    "publicado": "2026-11-25T16:09:05-0300",
-   "idade_h": 1.9
+   "idade_h": 2.0
   },
   "promobit-3253856": {
    "fonte": "Promobit",
@@ -1336,7 +1336,7 @@
    "ressalvas": [],
    "id": "promobit-3253856",
    "publicado": "2026-11-25T16:23:11-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3253952": {
    "fonte": "Promobit",
@@ -1353,7 +1353,7 @@
    "ressalvas": [],
    "id": "promobit-3253952",
    "publicado": "2026-11-25T16:38:25-0300",
-   "idade_h": 1.4
+   "idade_h": 1.5
   },
   "promobit-3253925": {
    "fonte": "Promobit",
@@ -1387,7 +1387,7 @@
    "ressalvas": [],
    "id": "promobit-3254012",
    "publicado": "2026-11-25T16:49:06-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   },
   "promobit-3254123": {
    "fonte": "Promobit",
@@ -1404,7 +1404,7 @@
    "ressalvas": [],
    "id": "promobit-3254123",
    "publicado": "2026-11-25T17:07:27-0300",
-   "idade_h": 0.9
+   "idade_h": 1.0
   },
   "promobit-3254118": {
    "fonte": "Promobit",
@@ -1421,7 +1421,7 @@
    "ressalvas": [],
    "id": "promobit-3254118",
    "publicado": "2026-11-25T17:07:03-0300",
-   "idade_h": 0.9
+   "idade_h": 1.1
   },
   "promobit-3254228": {
    "fonte": "Promobit",
@@ -1438,7 +1438,7 @@
    "ressalvas": [],
    "id": "promobit-3254228",
    "publicado": "2026-11-25T17:27:29-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "tg-cjpromos/82996-0": {
    "fonte": "Telegram",
@@ -1457,30 +1457,127 @@
    "publicado": "2026-11-25T18:00:41-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 0.0
+   "idade_h": 0.2
+  },
+  "promobit-3254427": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Digital - Pacote Astro Bot e Gran Turismo 7",
+   "preco": 3369.0,
+   "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-3254427/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3254427",
+   "publicado": "2026-11-25T18:03:07-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3254426": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Playstation 5 Slim Disk 1TB 1 Controle Branco Sony",
+   "preco": 3650.0,
+   "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3254426/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MENOSPRATECH",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3254426",
+   "publicado": "2026-11-25T18:03:06-0300",
+   "idade_h": 0.1
+  },
+  "tg-jogobarato/111427-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Bundle Console PlayStation 5 Slim Digital + 2 Jogos",
+   "preco": 3599.0,
+   "link": "https://t.me/jogobarato/111427",
+   "tipo": "grupo",
+   "origem": "jogobarato",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Jogo Barato",
+   "ressalvas": [
+    "cartão Mercado Pago"
+   ],
+   "id": "tg-jogobarato/111427-0",
+   "publicado": "2026-11-25T18:04:19-0300",
+   "canal": "Jogo Barato",
+   "preco_de": null,
+   "idade_h": 0.1
+  },
+  "tg-ofertasdogui/31493-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Digital - Pacote Astro Bot e Gran Turismo 7 - Branco Ps5",
+   "preco": 3599.0,
+   "link": "https://t.me/ofertasdogui/31493",
+   "tipo": "grupo",
+   "origem": "ofertasdogui",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Ofertas do Gui",
+   "ressalvas": [],
+   "id": "tg-ofertasdogui/31493-0",
+   "publicado": "2026-11-25T18:02:31-0300",
+   "canal": "Ofertas do Gui",
+   "preco_de": null,
+   "idade_h": 0.1
+  },
+  "tg-ofertasdogui/31494-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Playstation 5 Slim Disk 1tb 1 Controle Branco Sony Branco",
+   "preco": 3650.0,
+   "link": "https://t.me/ofertasdogui/31494",
+   "tipo": "grupo",
+   "origem": "ofertasdogui",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Ofertas do Gui",
+   "ressalvas": [
+    "cartão Mercado Pago"
+   ],
+   "id": "tg-ofertasdogui/31494-0",
+   "publicado": "2026-11-25T18:03:37-0300",
+   "canal": "Ofertas do Gui",
+   "preco_de": null,
+   "idade_h": 0.1
   }
  },
  "alertados": {
   "nc|digital|mercado livre|390": "2026-11-24T15:30:24-03:00",
   "nc|digital|mercado livre|387": "2026-11-25T04:10:19-03:00",
-  "nc|leitor|mercado livre|365": "2026-11-25T18:00:28-03:00"
+  "nc|leitor|mercado livre|365": "2026-11-25T18:00:28-03:00",
+  "leitor|mercado livre|365": "2026-11-25T18:10:20-03:00",
+  "digital|mercado livre|336": "2026-11-25T18:10:20-03:00"
  },
  "menor": {
   "leitor": {
-   "preco": 4049.91,
-   "quando": "2026-11-20 17:16",
-   "loja": "Amazon",
-   "cupom": null,
-   "titulo": "PlayStation®5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7",
-   "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7"
+   "preco": 3650.0,
+   "quando": "2026-11-25 18:10",
+   "loja": "Mercado Livre",
+   "cupom": "MENOSPRATECH",
+   "titulo": "Playstation 5 Slim Disk 1TB 1 Controle Branco Sony",
+   "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3254426/"
   },
   "digital": {
-   "preco": 3905.0,
-   "quando": "2026-11-20 20:04",
-   "loja": "KaBuM!",
-   "cupom": "JOGAMUITO",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-   "link": "https://t.me/cupons_desconto/84689"
+   "preco": 3369.0,
+   "quando": "2026-11-25 18:10",
+   "loja": "Mercado Livre",
+   "cupom": "PM52MP66",
+   "titulo": "Console PlayStation 5 Slim Digital - Pacote Astro Bot e Gran Turismo 7",
+   "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-3254427/"
   },
   "pro": {
    "preco": 7079.9,
@@ -1498,81 +1595,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 5,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
-   "barradas": 86
+   "buscas": 109,
+   "barradas": 87
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 108,
+   "buscas": 109,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T18:00:28-03:00",
+ "ultima": "2026-11-25T18:10:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
