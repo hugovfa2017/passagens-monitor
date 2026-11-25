@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-24 20:28",
+  "quando": "2026-11-24 21:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,31 +37,33 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 331,
+    "voos": 327,
     "conferidos": 12,
-    "ofertas": 12,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
-     "repetidas": 1,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 9
+     "telas": 11,
+     "lidas": 11
     },
-    "sem_preco": {},
-    "seg": 112
+    "sem_preco": {
+     "tela de compra sem vendedores": 1
+    },
+    "seg": 72
    },
    "123milhas": {
     "buscas": 8,
     "com_voo": 7
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -82,7 +84,7 @@
   "taxa_mala": {
    "Azul": 97,
    "Gol": 136,
-   "LATAM": 79
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -228,7 +230,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1730,
+  "pp": 1747,
   "conf": true
  },
  {
@@ -276,9 +278,9 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 824,
-   "vend": "MaxMilhas",
-   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
+   "pp": 888,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
   },
   "mais_barata": null,
@@ -347,6 +349,10 @@
    [
     "2026-11-24 20:28",
     824
+   ],
+   [
+    "2026-11-24 21:28",
+    888
    ]
   ]
  },
@@ -356,7 +362,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1367,
+  "pp": 1349,
   "conf": true
  },
  {
@@ -374,7 +380,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 931,
+  "pp": 963,
   "conf": true
  },
  {
@@ -383,7 +389,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 824,
+  "pp": 888,
   "conf": true
  },
  {
@@ -391,7 +397,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2169,
+  "pp": 2233,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -413,11 +419,37 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 824,
-   "vend": "MaxMilhas",
-   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
+   "pp": 888,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
    "dia": "qua 13/01"
   },
-  "juntas": null
+  "juntas": {
+   "pp": 2196,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "economia": 37,
+   "mesmos": false,
+   "ida": {
+    "d": "2026-12-22",
+    "orig": "GRU",
+    "dest": "REC",
+    "cia": "Azul",
+    "saida": "23:15",
+    "chegada": "02:15",
+    "tipo": "direto",
+    "dia": "ter 22/12"
+   },
+   "volta": {
+    "d": "2027-01-13",
+    "orig": "REC",
+    "dest": "CGH",
+    "cia": "Azul",
+    "saida": "02:45",
+    "chegada": "06:05",
+    "tipo": "direto",
+    "dia": "qua 13/01"
+   }
+  }
  }
 ]
