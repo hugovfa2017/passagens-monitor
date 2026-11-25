@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 12:32",
+  "quando": "2026-11-25 13:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,23 +37,21 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 321,
+    "voos": 323,
     "conferidos": 12,
-    "ofertas": 10,
+    "ofertas": 12,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
-     "repetidas": 4,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 9
+     "telas": 11,
+     "lidas": 11
     },
-    "sem_preco": {
-     "a lista não abriu": 2
-    },
-    "seg": 136
+    "sem_preco": {},
+    "seg": 43
    },
    "Vai de Promo": {
     "buscas": 8,
@@ -63,11 +61,11 @@
     "buscas": 8,
     "com_voo": 8
    },
-   "123milhas": {
+   "Zupper": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Zupper": {
+   "123milhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -84,7 +82,7 @@
   "taxa_mala": {
    "Azul": 104,
    "Gol": 136,
-   "LATAM": 81
+   "LATAM": 80
   },
   "grupos": [
    {
@@ -114,8 +112,8 @@
    "chegada": "17:15",
    "tipo": "direto",
    "pp": 1467,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -234,7 +232,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1768,
+  "pp": 1747,
   "conf": true
  },
  {
@@ -243,7 +241,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1768,
+  "pp": 1747,
   "conf": true
  },
  {
@@ -422,7 +420,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1518,
+  "pp": 1452,
   "conf": true
  },
  {
@@ -467,8 +465,8 @@
    "chegada": "17:15",
    "tipo": "direto",
    "pp": 1467,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "volta": {
