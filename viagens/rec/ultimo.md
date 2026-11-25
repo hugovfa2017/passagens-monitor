@@ -1,13 +1,15 @@
-# Passagens: última busca em 2026-11-25 00:29
+# Passagens: última busca em 2026-11-25 01:30
 
-✈️ Passagens · qua 25/11, 00:29 · por pessoa, sem mala
+✈️ Passagens · qua 25/11, 01:30 · por pessoa, sem mala
+📈 São Paulo ⇄ Recife, volta +R$85
 
 🧳 São Paulo ⇄ Recife
 🛫 Ida: R$1.345 · ter 22/12 · Azul 4152, direto
 └ 23h15 Guarulhos → 02h15 (+1 dia) Recife · clique aqui (Zupper)
-🛬 Volta: R$824 · qua 13/01 · Azul 4335, direto
-└ 03h25 Recife → 06h40 Campinas (Viracopos) · clique aqui (MaxMilhas)
-📦 Ida + volta: R$2.169
+🛬 Volta: R$909 · qua 13/01 · LATAM 3733, direto
+└ 04h00 Recife → 07h25 Guarulhos · clique aqui (Zupper)
+📦 Ida + volta: R$2.254
+🔁 Numa compra só: R$2.224 (R$30 a menos) · clique aqui
 
 Telegram: TELEGRAM_ENVIADO
 
