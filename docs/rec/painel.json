@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 17:27",
+  "quando": "2026-11-25 18:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,9 +37,9 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 323,
-    "conferidos": 11,
-    "ofertas": 11,
+    "voos": 321,
+    "conferidos": 12,
+    "ofertas": 12,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
@@ -47,11 +47,11 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 10
+     "telas": 11,
+     "lidas": 11
     },
     "sem_preco": {},
-    "seg": 48
+    "seg": 47
    },
    "Vai de Promo": {
     "buscas": 8,
@@ -108,13 +108,13 @@
    "d": "2026-12-22",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "22:05",
-   "chegada": "01:15",
+   "cia": "Azul",
+   "saida": "14:10",
+   "chegada": "17:15",
    "tipo": "direto",
-   "pp": 1145,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
+   "pp": 1503,
+   "vend": "CIA Azul",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJBRDIEMjk1OWoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -123,7 +123,7 @@
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.950 e R$3.500)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
    ]
   },
   "fora": null,
@@ -223,6 +223,10 @@
    [
     "2026-11-25 17:27",
     1145
+   ],
+   [
+    "2026-11-25 18:28",
+    1503
    ]
   ]
  },
@@ -250,7 +254,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1768,
+  "pp": 1764,
   "conf": true
  },
  {
@@ -259,7 +263,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1145,
+  "pp": 1503,
   "conf": true
  },
  {
@@ -289,7 +293,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 932,
+   "pp": 931,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -424,6 +428,10 @@
    [
     "2026-11-25 17:27",
     932
+   ],
+   [
+    "2026-11-25 18:28",
+    931
    ]
   ]
  },
@@ -442,7 +450,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1334,
+  "pp": 1336,
   "conf": true
  },
  {
@@ -451,7 +459,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 932,
+  "pp": 931,
   "conf": true
  },
  {
@@ -460,7 +468,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 983,
+  "pp": 979,
   "conf": true
  },
  {
@@ -468,18 +476,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2077,
+  "pp": 2434,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "22:05",
-   "chegada": "01:15",
+   "cia": "Azul",
+   "saida": "14:10",
+   "chegada": "17:15",
    "tipo": "direto",
-   "pp": 1145,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
+   "pp": 1503,
+   "vend": "CIA Azul",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJBRDIEMjk1OWoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "ter 22/12"
   },
   "volta": {
@@ -490,11 +498,37 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 932,
+   "pp": 931,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
-  "juntas": null
+  "juntas": {
+   "pp": 2074,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
+   "economia": 360,
+   "mesmos": false,
+   "ida": {
+    "d": "2026-12-22",
+    "orig": "GRU",
+    "dest": "REC",
+    "cia": "Gol",
+    "saida": "22:05",
+    "chegada": "01:15",
+    "tipo": "direto",
+    "dia": "ter 22/12"
+   },
+   "volta": {
+    "d": "2027-01-12",
+    "orig": "REC",
+    "dest": "CGH",
+    "cia": "Gol",
+    "saida": "07:05",
+    "chegada": "12:30",
+    "tipo": "com escala",
+    "dia": "ter 12/01"
+   }
+  }
  }
 ]
