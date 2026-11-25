@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24 23:20",
+ "atualizado": "2026-11-24 23:30",
  "mais_barato": {
   "modelo": "leitor",
   "fonte": "Webcontinental",
@@ -120,7 +120,7 @@
     "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 13.4,
+    "idade_h": 13.6,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -129,7 +129,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-      "idade_h": 13.4,
+      "idade_h": 13.6,
       "tipo": "postada"
      }
     ],
@@ -192,7 +192,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3249960/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 3.9,
+     "idade_h": 4.1,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -203,13 +203,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3249960/",
-       "idade_h": 3.9,
+       "idade_h": 4.1,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3244483/",
-       "idade_h": 30.7,
+       "idade_h": 30.9,
        "tipo": "postada"
       }
      ],
@@ -228,7 +228,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 13.4,
+     "idade_h": 13.6,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -237,7 +237,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-       "idade_h": 13.4,
+       "idade_h": 13.6,
        "tipo": "postada"
       }
      ],
@@ -826,7 +826,7 @@
     "link": "https://t.me/jogobarato/110989",
     "obs": "postado no canal Jogo Barato",
     "detalhes": "",
-    "idade_h": 7.8,
+    "idade_h": 8.0,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -835,7 +835,7 @@
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/110989",
-      "idade_h": 7.8,
+      "idade_h": 8.0,
       "tipo": "grupo"
      }
     ],
@@ -863,7 +863,7 @@
      "link": "https://t.me/jogobarato/110989",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "",
-     "idade_h": 7.8,
+     "idade_h": 8.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -872,7 +872,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/110989",
-       "idade_h": 7.8,
+       "idade_h": 8.0,
        "tipo": "grupo"
       }
      ],
@@ -8682,6 +8682,18 @@
    "pro": "7799",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-24 23:30",
+   "leitor": "4284.0",
+   "leitor_cupom": "4480.55",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4369.05",
+   "digital_cupom": "",
+   "digital_loja": "KaBuM!",
+   "pro": "7799",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -8866,66 +8878,66 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.4,
    "ofertas": 35,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.3,
+   "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 8,
-   "barradas_hoje": 111,
-   "buscas_hoje": 141
+   "falhas_seguidas": 9,
+   "barradas_hoje": 112,
+   "buscas_hoje": 142
   },
   "Americanas": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.7,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.6,
    "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Webcontinental": {
    "ok": true,
    "segundos": 0.7,
-   "ofertas": 50,
+   "ofertas": 48,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.6,
    "ofertas": 3,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Zoom": {
    "ok": true,
-   "segundos": 4.0,
+   "segundos": 4.5,
    "ofertas": 29,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Promobit": {
    "ok": true,
@@ -8934,7 +8946,7 @@
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Gatry": {
    "ok": true,
@@ -8944,7 +8956,7 @@
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Telegram": {
    "ok": true,
@@ -8954,17 +8966,17 @@
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Leilões": {
    "ok": true,
-   "segundos": 3.7,
+   "segundos": 3.9,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 141
+   "buscas_hoje": 142
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -8973,7 +8985,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 174,
+  "não é console PS5": 172,
   "preço fora da faixa de PS5 com leitor de disco": 1
  },
  "config": {
