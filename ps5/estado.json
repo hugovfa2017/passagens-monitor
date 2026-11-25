@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3242337": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada - Amarelo",
-   "preco": 378.0,
-   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3242337/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "MELIMAISXPT1122",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3242337",
-   "publicado": "2026-11-23T09:26:07-0300",
-   "idade_h": 3.4
-  },
-  "promobit-3242339": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada Amarelo",
-   "preco": 389.0,
-   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3242339/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "MELIMAISXPT1122",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3242339",
-   "publicado": "2026-11-23T09:26:11-0300",
-   "idade_h": 0.1
-  },
   "promobit-3242403": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -219,7 +185,7 @@
    "ressalvas": [],
    "id": "promobit-3243364",
    "publicado": "2026-11-24T16:05:34-0300",
-   "idade_h": 5.2
+   "idade_h": 5.4
   },
   "promobit-3243321": {
    "fonte": "Promobit",
@@ -1120,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3247837",
    "publicado": "2026-11-24T12:18:38-0300",
-   "idade_h": 9.0
+   "idade_h": 9.2
   },
   "promobit-3247961": {
    "fonte": "Promobit",
@@ -1171,7 +1137,7 @@
    "ressalvas": [],
    "id": "promobit-3248303",
    "publicado": "2026-11-24T13:39:04-0300",
-   "idade_h": 7.7
+   "idade_h": 7.9
   },
   "promobit-3248510": {
    "fonte": "Promobit",
@@ -1188,7 +1154,7 @@
    "ressalvas": [],
    "id": "promobit-3248510",
    "publicado": "2026-11-24T14:22:04-0300",
-   "idade_h": 7.0
+   "idade_h": 7.1
   },
   "promobit-3248644": {
    "fonte": "Promobit",
@@ -1205,7 +1171,7 @@
    "ressalvas": [],
    "id": "promobit-3248644",
    "publicado": "2026-11-24T14:48:04-0300",
-   "idade_h": 6.5
+   "idade_h": 6.7
   },
   "tg-jogobarato/110989-0": {
    "fonte": "Telegram",
@@ -1224,7 +1190,7 @@
    "publicado": "2026-11-24T15:30:02-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "promobit-3248482": {
    "fonte": "Promobit",
@@ -1241,7 +1207,7 @@
    "ressalvas": [],
    "id": "promobit-3248482",
    "publicado": "2026-11-24T15:26:48-0300",
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "promobit-3249558": {
    "fonte": "Promobit",
@@ -1258,7 +1224,7 @@
    "ressalvas": [],
    "id": "promobit-3249558",
    "publicado": "2026-11-24T17:38:47-0300",
-   "idade_h": 3.7
+   "idade_h": 3.9
   },
   "promobit-3249531": {
    "fonte": "Promobit",
@@ -1275,7 +1241,7 @@
    "ressalvas": [],
    "id": "promobit-3249531",
    "publicado": "2026-11-24T17:34:47-0300",
-   "idade_h": 3.8
+   "idade_h": 3.9
   },
   "promobit-3249534": {
    "fonte": "Promobit",
@@ -1326,7 +1292,7 @@
    "ressalvas": [],
    "id": "promobit-3249807",
    "publicado": "2026-11-24T18:49:07-0300",
-   "idade_h": 2.5
+   "idade_h": 2.7
   },
   "promobit-3249960": {
    "fonte": "Promobit",
@@ -1360,7 +1326,7 @@
    "ressalvas": [],
    "id": "promobit-3250106",
    "publicado": "2026-11-24T20:14:21-0300",
-   "idade_h": 1.1
+   "idade_h": 1.3
   },
   "promobit-3250237": {
    "fonte": "Promobit",
@@ -1377,7 +1343,7 @@
    "ressalvas": [],
    "id": "promobit-3250237",
    "publicado": "2026-11-24T20:44:51-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "promobit-3250226": {
    "fonte": "Promobit",
@@ -1394,7 +1360,7 @@
    "ressalvas": [],
    "id": "promobit-3250226",
    "publicado": "2026-11-24T20:43:52-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   }
  },
  "alertados": {
@@ -1433,81 +1399,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
-   "barradas": 101
+   "buscas": 130,
+   "barradas": 102
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 129,
+   "buscas": 130,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T21:20:27-03:00",
+ "ultima": "2026-11-24T21:30:23-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
