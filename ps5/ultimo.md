@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-25 10:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-25 10:20 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 4.047 na Amazon
+**Mais barato agora:** PS5 Digital por R$ 4.259 na Amazon
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 4 lugares
-- **PS5 Digital**: R$ 4.047 na Amazon
-   não confirmada: R$ 3.875,15 no Mercado Livre com cupom (na página) · visto em 4 lugares, postado há 0h
+- **PS5 Digital**: R$ 4.259 na Amazon
+   não confirmada: R$ 3.875,15 no Mercado Livre com cupom (na página) · visto em 4 lugares, postado há 1h
 - **PS5 Pro**: R$ 7.799 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
@@ -31,17 +31,17 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 37 itens
-- Amazon: ok, 44 itens · barrada em 49 de 62 buscas hoje
+- Amazon: ok, 56 itens · barrada em 49 de 63 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 28 itens
+- Zoom: ok, 29 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 17 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 183 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 196 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
