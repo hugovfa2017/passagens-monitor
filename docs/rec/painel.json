@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 03:28",
+  "quando": "2026-11-25 04:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,35 +37,35 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 330,
-    "conferidos": 12,
-    "ofertas": 12,
+    "voos": 329,
+    "conferidos": 11,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
      "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 12
+     "telas": 11,
+     "lidas": 11
     },
     "sem_preco": {},
-    "seg": 60
-   },
-   "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "seg": 45
    },
    "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Zupper": {
+   "123milhas": {
+    "buscas": 8,
+    "com_voo": 7
+   },
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "123milhas": {
+   "Zupper": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -271,23 +271,23 @@
   "recomendada": {
    "d": "2027-01-13",
    "orig": "REC",
-   "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "04:00",
-   "chegada": "07:25",
+   "dest": "VCP",
+   "cia": "Azul",
+   "saida": "03:25",
+   "chegada": "06:40",
    "tipo": "direto",
-   "pp": 909,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "pp": 824,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
    "dia": "qua 13/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.300 e R$3.500)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.475 e R$4.250)"
    ]
   },
   "fora": null,
@@ -371,6 +371,10 @@
    [
     "2026-11-25 03:28",
     909
+   ],
+   [
+    "2026-11-25 04:27",
+    824
    ]
   ]
  },
@@ -398,7 +402,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 933,
+  "pp": 1171,
   "conf": true
  },
  {
@@ -407,7 +411,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 886,
+  "pp": 824,
   "conf": true
  },
  {
@@ -415,7 +419,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2254,
+  "pp": 2169,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -432,42 +436,16 @@
   "volta": {
    "d": "2027-01-13",
    "orig": "REC",
-   "dest": "GRU",
-   "cia": "LATAM",
-   "saida": "04:00",
-   "chegada": "07:25",
+   "dest": "VCP",
+   "cia": "Azul",
+   "saida": "03:25",
+   "chegada": "06:40",
    "tipo": "direto",
-   "pp": 909,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "pp": 824,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/REC/VCP/2027-01-13/4/0/0/EC",
    "dia": "qua 13/01"
   },
-  "juntas": {
-   "pp": 2224,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
-   "economia": 30,
-   "mesmos": true,
-   "ida": {
-    "d": "2026-12-22",
-    "orig": "GRU",
-    "dest": "REC",
-    "cia": "Azul",
-    "saida": "23:15",
-    "chegada": "02:15",
-    "tipo": "direto",
-    "dia": "ter 22/12"
-   },
-   "volta": {
-    "d": "2027-01-13",
-    "orig": "REC",
-    "dest": "GRU",
-    "cia": "LATAM",
-    "saida": "04:00",
-    "chegada": "07:25",
-    "tipo": "direto",
-    "dia": "qua 13/01"
-   }
-  }
+  "juntas": null
  }
 ]
