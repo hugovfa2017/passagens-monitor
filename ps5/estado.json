@@ -884,7 +884,7 @@
    "publicado": "2026-11-24T15:30:02-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 10.0
   },
   "promobit-3248482": {
    "fonte": "Promobit",
@@ -986,7 +986,7 @@
    "ressalvas": [],
    "id": "promobit-3249807",
    "publicado": "2026-11-24T18:49:07-0300",
-   "idade_h": 6.5
+   "idade_h": 6.7
   },
   "promobit-3249960": {
    "fonte": "Promobit",
@@ -1037,7 +1037,7 @@
    "ressalvas": [],
    "id": "promobit-3250237",
    "publicado": "2026-11-24T20:44:51-0300",
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3250226": {
    "fonte": "Promobit",
@@ -1054,7 +1054,7 @@
    "ressalvas": [],
    "id": "promobit-3250226",
    "publicado": "2026-11-24T20:43:52-0300",
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3250441": {
    "fonte": "Promobit",
@@ -1071,7 +1071,7 @@
    "ressalvas": [],
    "id": "promobit-3250441",
    "publicado": "2026-11-24T21:47:31-0300",
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3250446": {
    "fonte": "Promobit",
@@ -1088,7 +1088,7 @@
    "ressalvas": [],
    "id": "promobit-3250446",
    "publicado": "2026-11-24T21:49:48-0300",
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3250436": {
    "fonte": "Promobit",
@@ -1105,7 +1105,7 @@
    "ressalvas": [],
    "id": "promobit-3250436",
    "publicado": "2026-11-24T21:46:01-0300",
-   "idade_h": 3.6
+   "idade_h": 3.7
   },
   "promobit-3250480": {
    "fonte": "Promobit",
@@ -1122,7 +1122,7 @@
    "ressalvas": [],
    "id": "promobit-3250480",
    "publicado": "2026-11-24T22:02:05-0300",
-   "idade_h": 3.3
+   "idade_h": 3.5
   },
   "promobit-3250456": {
    "fonte": "Promobit",
@@ -1139,7 +1139,7 @@
    "ressalvas": [],
    "id": "promobit-3250456",
    "publicado": "2026-11-24T21:54:07-0300",
-   "idade_h": 3.4
+   "idade_h": 3.6
   },
   "promobit-3250533": {
    "fonte": "Promobit",
@@ -1156,7 +1156,7 @@
    "ressalvas": [],
    "id": "promobit-3250533",
    "publicado": "2026-11-24T22:21:05-0300",
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "promobit-3250550": {
    "fonte": "Promobit",
@@ -1173,7 +1173,7 @@
    "ressalvas": [],
    "id": "promobit-3250550",
    "publicado": "2026-11-24T22:28:12-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3250556": {
    "fonte": "Promobit",
@@ -1190,7 +1190,7 @@
    "ressalvas": [],
    "id": "promobit-3250556",
    "publicado": "2026-11-24T22:30:35-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3250580": {
    "fonte": "Promobit",
@@ -1226,7 +1226,7 @@
    "publicado": "2026-11-24T23:45:53-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "tg-OfertasDoDia/487992-0": {
    "fonte": "Telegram",
@@ -1245,7 +1245,7 @@
    "publicado": "2026-11-24T23:45:41-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3250760": {
    "fonte": "Promobit",
@@ -1262,7 +1262,7 @@
    "ressalvas": [],
    "id": "promobit-3250760",
    "publicado": "2026-11-25T00:11:03-0300",
-   "idade_h": 1.2
+   "idade_h": 1.3
   }
  },
  "alertados": {
@@ -1301,81 +1301,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
-   "barradas": 6
+   "buscas": 10,
+   "barradas": 7
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 9,
+   "buscas": 10,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T01:20:28-03:00",
+ "ultima": "2026-11-25T01:30:25-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
