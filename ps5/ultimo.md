@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-25 11:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-25 12:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 4.179,05 na Magazine Luiza · à vista
 
@@ -27,7 +27,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 58 de 72 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 59 de 73 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
@@ -38,6 +38,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 17 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 158 não é console PS5
+Descartados: 157 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
