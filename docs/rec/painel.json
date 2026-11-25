@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 10:31",
+  "quando": "2026-11-25 11:33",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,9 +37,9 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 286,
-    "conferidos": 11,
-    "ofertas": 12,
+    "voos": 288,
+    "conferidos": 12,
+    "ofertas": 9,
     "bloqueio": null,
     "listas": {
      "vazias": 1,
@@ -47,27 +47,29 @@
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 10
+     "telas": 9,
+     "lidas": 6
     },
-    "sem_preco": {},
-    "seg": 84
+    "sem_preco": {
+     "tela de compra sem vendedores": 3
+    },
+    "seg": 135
    },
    "123milhas": {
-    "buscas": 8,
-    "com_voo": 7
+    "buscas": 7,
+    "com_voo": 6
    },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Viaza": {
     "buscas": 4,
@@ -80,9 +82,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 111,
+   "Azul": 104,
    "Gol": 136,
-   "LATAM": 81
+   "LATAM": 96
   },
   "grupos": [
    {
@@ -223,8 +225,8 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 2058,
-  "conf": true
+  "pp": 2034,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -241,7 +243,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1736,
+  "pp": 1747,
   "conf": true
  },
  {
@@ -280,7 +282,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 788,
+   "pp": 814,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270110/4/0/0/Y/",
    "dia": "dom 10/01"
@@ -403,6 +405,10 @@
    [
     "2026-11-25 10:31",
     788
+   ],
+   [
+    "2026-11-25 11:33",
+    814
    ]
   ]
  },
@@ -412,7 +418,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 788,
+  "pp": 814,
   "conf": true
  },
  {
@@ -421,7 +427,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 813,
+  "pp": 1334,
   "conf": true
  },
  {
@@ -434,20 +440,11 @@
   "conf": true
  },
  {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-13",
-  "dia": "qua 13/01",
-  "ne": "REC",
-  "pp": 978,
-  "conf": true
- },
- {
   "tipo": "pacote",
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2255,
+  "pp": 2281,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -469,7 +466,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 788,
+   "pp": 814,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270110/4/0/0/Y/",
    "dia": "dom 10/01"
