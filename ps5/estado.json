@@ -782,7 +782,7 @@
    "publicado": "2026-11-25T09:22:21-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 7.4
+   "idade_h": 7.6
   },
   "promobit-3251577": {
    "fonte": "Promobit",
@@ -1056,7 +1056,7 @@
    "publicado": "2026-11-25T09:38:50-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 7.2
+   "idade_h": 7.4
   },
   "tg-OfertasDoDia/488586-0": {
    "fonte": "Telegram",
@@ -1075,7 +1075,7 @@
    "publicado": "2026-11-25T09:38:42-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 7.2
+   "idade_h": 7.4
   },
   "promobit-3251681": {
    "fonte": "Promobit",
@@ -1092,7 +1092,7 @@
    "ressalvas": [],
    "id": "promobit-3251681",
    "publicado": "2026-11-25T09:43:28-0300",
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3251686": {
    "fonte": "Promobit",
@@ -1145,7 +1145,7 @@
    "publicado": "2026-11-25T12:25:58-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.4
+   "idade_h": 4.6
   },
   "promobit-3252777": {
    "fonte": "Promobit",
@@ -1200,7 +1200,7 @@
    "publicado": "2026-11-25T13:19:45-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "promobit-3252972": {
    "fonte": "Promobit",
@@ -1217,7 +1217,7 @@
    "ressalvas": [],
    "id": "promobit-3252972",
    "publicado": "2026-11-25T13:34:04-0300",
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "promobit-3253036": {
    "fonte": "Promobit",
@@ -1234,7 +1234,7 @@
    "ressalvas": [],
    "id": "promobit-3253036",
    "publicado": "2026-11-25T13:46:41-0300",
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "promobit-3253270": {
    "fonte": "Promobit",
@@ -1251,7 +1251,7 @@
    "ressalvas": [],
    "id": "promobit-3253270",
    "publicado": "2026-11-25T14:27:16-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3253252": {
    "fonte": "Promobit",
@@ -1268,7 +1268,7 @@
    "ressalvas": [],
    "id": "promobit-3253252",
    "publicado": "2026-11-25T14:25:42-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3253493": {
    "fonte": "Promobit",
@@ -1285,7 +1285,7 @@
    "ressalvas": [],
    "id": "promobit-3253493",
    "publicado": "2026-11-25T15:12:10-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "promobit-3253451": {
    "fonte": "Promobit",
@@ -1302,7 +1302,7 @@
    "ressalvas": [],
    "id": "promobit-3253451",
    "publicado": "2026-11-25T15:05:49-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
   },
   "promobit-3253801": {
    "fonte": "Promobit",
@@ -1319,7 +1319,7 @@
    "ressalvas": [],
    "id": "promobit-3253801",
    "publicado": "2026-11-25T16:09:05-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "promobit-3253856": {
    "fonte": "Promobit",
@@ -1336,7 +1336,7 @@
    "ressalvas": [],
    "id": "promobit-3253856",
    "publicado": "2026-11-25T16:23:11-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3253952": {
    "fonte": "Promobit",
@@ -1353,7 +1353,7 @@
    "ressalvas": [],
    "id": "promobit-3253952",
    "publicado": "2026-11-25T16:38:25-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "promobit-3253925": {
    "fonte": "Promobit",
@@ -1370,7 +1370,24 @@
    "ressalvas": [],
    "id": "promobit-3253925",
    "publicado": "2026-11-25T16:33:08-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
+  },
+  "promobit-3254012": {
+   "fonte": "Promobit",
+   "loja": "Shopee",
+   "titulo": "Jogo Ghost of Yõtei, PS5 - 1000047665",
+   "preco": 175.0,
+   "link": "https://www.promobit.com.br/oferta/jogo-ghost-of-yotei-ps5-1000047665-3254012/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3254012",
+   "publicado": "2026-11-25T16:49:06-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {
@@ -1410,81 +1427,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
-   "barradas": 81
+   "buscas": 102,
+   "barradas": 82
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 101,
+   "buscas": 102,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T16:49:12-03:00",
+ "ultima": "2026-11-25T17:00:28-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
