@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 16:27",
+  "quando": "2026-11-25 17:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,9 +37,9 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 322,
-    "conferidos": 12,
-    "ofertas": 12,
+    "voos": 323,
+    "conferidos": 11,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
@@ -47,17 +47,17 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 11,
-     "lidas": 11
+     "telas": 10,
+     "lidas": 10
     },
     "sem_preco": {},
-    "seg": 41
+    "seg": 48
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -112,9 +112,9 @@
    "saida": "22:05",
    "chegada": "01:15",
    "tipo": "direto",
-   "pp": 1112,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJHMzIEMTU2MGoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 1145,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -219,6 +219,10 @@
    [
     "2026-11-25 16:27",
     1112
+   ],
+   [
+    "2026-11-25 17:27",
+    1145
    ]
   ]
  },
@@ -237,7 +241,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1768,
+  "pp": 1625,
   "conf": true
  },
  {
@@ -255,7 +259,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1112,
+  "pp": 1145,
   "conf": true
  },
  {
@@ -285,7 +289,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 935,
+   "pp": 932,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -416,6 +420,10 @@
    [
     "2026-11-25 12:32",
     935
+   ],
+   [
+    "2026-11-25 17:27",
+    932
    ]
   ]
  },
@@ -443,7 +451,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 935,
+  "pp": 932,
   "conf": true
  },
  {
@@ -460,7 +468,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2047,
+  "pp": 2077,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -469,9 +477,9 @@
    "saida": "22:05",
    "chegada": "01:15",
    "tipo": "direto",
-   "pp": 1112,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJHMzIEMTU2MGoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 1145,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
   },
   "volta": {
@@ -482,7 +490,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 935,
+   "pp": 932,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
