@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 08:27",
+  "quando": "2026-11-25 09:31",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,29 +37,32 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 302,
+    "voos": 294,
     "conferidos": 11,
-    "ofertas": 11,
+    "ofertas": 7,
     "bloqueio": null,
     "listas": {
      "vazias": 1,
-     "repetidas": 4,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
      "telas": 11,
-     "lidas": 11
+     "lidas": 5
     },
-    "sem_preco": {},
-    "seg": 85
+    "sem_preco": {
+     "a lista não abriu": 3,
+     "tela de compra sem vendedores": 1
+    },
+    "seg": 176
    },
    "123milhas": {
     "buscas": 8,
-    "com_voo": 6
+    "com_voo": 7
    },
    "MaxMilhas": {
     "buscas": 8,
-    "com_voo": 7
+    "com_voo": 8
    },
    "Vai de Promo": {
     "buscas": 8,
@@ -80,9 +83,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 115,
+   "Azul": 118,
    "Gol": 136,
-   "LATAM": 81
+   "LATAM": 86
   },
   "grupos": [
    {
@@ -119,12 +122,7 @@
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": {
-   "sinal": "bom",
-   "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.900 e R$4.250)"
-   ]
-  },
+  "momento": null,
   "fora": null,
   "historico": [
    [
@@ -220,6 +218,15 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 1942,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
@@ -245,15 +252,6 @@
   "conf": true
  },
  {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
-  "ne": "REC",
-  "pp": 1582,
-  "conf": true
- },
- {
   "tipo": "trecho",
   "serie": "r.volta",
   "grupo": "r",
@@ -264,17 +262,17 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-13",
+   "d": "2027-01-10",
    "orig": "REC",
    "dest": "VCP",
    "cia": "Azul",
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 886,
+   "pp": 790,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
-   "dia": "qua 13/01"
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270110/4/0/0/Y/",
+   "dia": "dom 10/01"
   },
   "mais_barata": null,
   "comprado": null,
@@ -386,6 +384,10 @@
    [
     "2026-11-25 08:27",
     886
+   ],
+   [
+    "2026-11-25 09:31",
+    790
    ]
   ]
  },
@@ -395,7 +397,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1518,
+  "pp": 790,
   "conf": true
  },
  {
@@ -404,7 +406,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1348,
+  "pp": 790,
   "conf": true
  },
  {
@@ -422,7 +424,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 886,
+  "pp": 981,
   "conf": true
  },
  {
@@ -430,7 +432,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2353,
+  "pp": 2257,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
@@ -445,17 +447,17 @@
    "dia": "ter 22/12"
   },
   "volta": {
-   "d": "2027-01-13",
+   "d": "2027-01-10",
    "orig": "REC",
    "dest": "VCP",
    "cia": "Azul",
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 886,
+   "pp": 790,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270113/4/0/0/Y/",
-   "dia": "qua 13/01"
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270110/4/0/0/Y/",
+   "dia": "dom 10/01"
   },
   "juntas": null
  }
