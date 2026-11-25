@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-25 16:10",
+ "atualizado": "2026-11-25 16:20",
  "mais_barato": {
   "modelo": "leitor",
   "fonte": "Webcontinental",
@@ -120,7 +120,7 @@
     "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 30.2,
+    "idade_h": 30.4,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -129,7 +129,7 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-      "idade_h": 30.2,
+      "idade_h": 30.4,
       "tipo": "postada"
      }
     ],
@@ -192,7 +192,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3249960/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 20.8,
+     "idade_h": 20.9,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -203,7 +203,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-3249960/",
-       "idade_h": 20.8,
+       "idade_h": 20.9,
        "tipo": "postada"
       }
      ],
@@ -222,7 +222,7 @@
      "link": "https://t.me/jogobarato/111295",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "",
-     "idade_h": 2.8,
+     "idade_h": 3.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -231,7 +231,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111295",
-       "idade_h": 2.8,
+       "idade_h": 3.0,
        "tipo": "grupo"
       }
      ],
@@ -250,7 +250,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 30.2,
+     "idade_h": 30.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -259,36 +259,8 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-disk-1tb-fisico-com-controle-dualsense-branco-sony-3247033/",
-       "idade_h": 30.2,
+       "idade_h": 30.4,
        "tipo": "postada"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Zoom",
-     "loja": "Magazine Luiza",
-     "titulo": "Console PlayStation 5 Slim Disk 1TB Físico com Controle DualSense Bran",
-     "preco": 4621.75,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
-     "obs": "à vista",
-     "detalhes": "",
-     "idade_h": null,
-     "tipo": "comparador",
-     "condicao": "novo",
-     "confianca": "A",
-     "ressalvas": [],
-     "visto_em": [
-      {
-       "fonte": "Zoom",
-       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
-       "idade_h": null,
-       "tipo": "comparador"
       }
      ],
      "n_vistos": 1,
@@ -334,7 +306,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3251846/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 5.9,
+     "idade_h": 6.0,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -343,7 +315,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3251846/",
-       "idade_h": 5.9,
+       "idade_h": 6.0,
        "tipo": "postada"
       }
      ],
@@ -719,6 +691,34 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "PlayStation 5 Console [videogame]",
+     "preco": 5999.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
+     "obs": "à vista",
+     "detalhes": "",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-sony",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
     }
    ]
   },
@@ -796,7 +796,7 @@
     "link": "https://t.me/hardmob_promo/478887",
     "obs": "postado no canal Hardmob Promo",
     "detalhes": "",
-    "idade_h": 6.5,
+    "idade_h": 6.7,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -805,13 +805,13 @@
      {
       "fonte": "Hardmob Promo",
       "link": "https://t.me/hardmob_promo/478887",
-      "idade_h": 6.5,
+      "idade_h": 6.7,
       "tipo": "grupo"
      },
      {
       "fonte": "Ofertas do Dia",
       "link": "https://t.me/OfertasDoDia/488586",
-      "idade_h": 6.5,
+      "idade_h": 6.7,
       "tipo": "grupo"
      }
     ],
@@ -839,7 +839,7 @@
      "link": "https://t.me/hardmob_promo/478887",
      "obs": "postado no canal Hardmob Promo",
      "detalhes": "",
-     "idade_h": 6.5,
+     "idade_h": 6.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -848,13 +848,13 @@
       {
        "fonte": "Hardmob Promo",
        "link": "https://t.me/hardmob_promo/478887",
-       "idade_h": 6.5,
+       "idade_h": 6.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Ofertas do Dia",
        "link": "https://t.me/OfertasDoDia/488586",
-       "idade_h": 6.5,
+       "idade_h": 6.7,
        "tipo": "grupo"
       }
      ],
@@ -997,7 +997,7 @@
      "link": "https://t.me/jogobarato/111291",
      "obs": "postado no canal Jogo Barato (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 2.9,
+     "idade_h": 3.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1006,7 +1006,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111291",
-       "idade_h": 2.9,
+       "idade_h": 3.1,
        "tipo": "grupo"
       }
      ],
@@ -1081,7 +1081,7 @@
      "link": "https://t.me/jogobarato/111187",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "",
-     "idade_h": 6.8,
+     "idade_h": 7.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1090,7 +1090,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111187",
-       "idade_h": 6.8,
+       "idade_h": 7.0,
        "tipo": "grupo"
       }
      ],
@@ -1176,9 +1176,15 @@
        "link": "https://www.americanas.com.br/console-playstation-5-edicao-digital--825gb-–-astro-bot-4-e-gran-turismo-7/p",
        "idade_h": null,
        "tipo": "loja"
+      },
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+       "idade_h": null,
+       "tipo": "comparador"
       }
      ],
-     "n_vistos": 1,
+     "n_vistos": 2,
      "cupom_citado": null
     },
     {
@@ -1381,7 +1387,7 @@
     "link": "https://t.me/jogobarato/111278",
     "obs": "postado no canal Jogo Barato",
     "detalhes": "",
-    "idade_h": 3.7,
+    "idade_h": 3.9,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -1392,7 +1398,7 @@
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/111278",
-      "idade_h": 3.7,
+      "idade_h": 3.9,
       "tipo": "grupo"
      }
     ],
@@ -1420,7 +1426,7 @@
      "link": "https://t.me/jogobarato/111278",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "",
-     "idade_h": 3.7,
+     "idade_h": 3.9,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1431,7 +1437,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111278",
-       "idade_h": 3.7,
+       "idade_h": 3.9,
        "tipo": "grupo"
       }
      ],
@@ -9979,6 +9985,18 @@
    "pro": "7899",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-25 16:20",
+   "leitor": "4284.0",
+   "leitor_cupom": "4480.55",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "4289.9",
+   "digital_cupom": "",
+   "digital_loja": "Amazon",
+   "pro": "7899",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -10200,66 +10218,66 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.3,
-   "ofertas": 36,
+   "segundos": 0.5,
+   "ofertas": 35,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.2,
+   "segundos": 0.1,
    "tipo": "loja",
-   "falhas_seguidas": 2,
-   "barradas_hoje": 78,
-   "buscas_hoje": 97
+   "falhas_seguidas": 3,
+   "barradas_hoje": 79,
+   "buscas_hoje": 98
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 0.8,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.7,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Webcontinental": {
    "ok": true,
    "segundos": 0.8,
-   "ofertas": 49,
+   "ofertas": 48,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.7,
+   "segundos": 1.0,
    "ofertas": 3,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Zoom": {
    "ok": true,
-   "segundos": 4.2,
+   "segundos": 4.3,
    "ofertas": 30,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Promobit": {
    "ok": true,
@@ -10268,37 +10286,37 @@
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.1,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Telegram": {
    "ok": true,
-   "segundos": 18.6,
+   "segundos": 20.9,
    "ofertas": 17,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Leilões": {
    "ok": true,
-   "segundos": 5.5,
+   "segundos": 5.0,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 97
+   "buscas_hoje": 98
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -10307,7 +10325,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 161
+  "não é console PS5": 160
  },
  "config": {
   "queda_minima": 50,
