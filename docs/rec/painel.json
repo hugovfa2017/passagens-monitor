@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 18:28",
+  "quando": "2026-11-25 19:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -53,11 +53,11 @@
     "sem_preco": {},
     "seg": 47
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -81,9 +81,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 109,
+   "Azul": 101,
    "Gol": 136,
-   "LATAM": 94
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -109,12 +109,12 @@
    "orig": "GRU",
    "dest": "REC",
    "cia": "Azul",
-   "saida": "14:10",
-   "chegada": "17:15",
+   "saida": "23:15",
+   "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1503,
-   "vend": "CIA Azul",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJBRDIEMjk1OWoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 1414,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
@@ -227,6 +227,10 @@
    [
     "2026-11-25 18:28",
     1503
+   ],
+   [
+    "2026-11-25 19:28",
+    1414
    ]
   ]
  },
@@ -254,7 +258,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1764,
+  "pp": 1659,
   "conf": true
  },
  {
@@ -263,7 +267,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1503,
+  "pp": 1414,
   "conf": true
  },
  {
@@ -441,7 +445,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1452,
+  "pp": 1393,
   "conf": true
  },
  {
@@ -450,7 +454,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1336,
+  "pp": 1238,
   "conf": true
  },
  {
@@ -468,7 +472,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 979,
+  "pp": 974,
   "conf": true
  },
  {
@@ -476,18 +480,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2434,
+  "pp": 2345,
   "ida": {
    "d": "2026-12-22",
    "orig": "GRU",
    "dest": "REC",
    "cia": "Azul",
-   "saida": "14:10",
-   "chegada": "17:15",
+   "saida": "23:15",
+   "chegada": "02:15",
    "tipo": "direto",
-   "pp": 1503,
-   "vend": "CIA Azul",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI2LTEyLTIyIiAKA0dSVRIKMjAyNi0xMi0yMhoDUkVDKgJBRDIEMjk1OWoHCAESA0dSVWoHCAESA0NHSGoHCAESA1ZDUHIHCAESA1JFQ0ABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 1414,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "volta": {
@@ -504,29 +508,29 @@
    "dia": "ter 12/01"
   },
   "juntas": {
-   "pp": 2074,
+   "pp": 2063,
    "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "economia": 360,
+   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
+   "economia": 282,
    "mesmos": false,
    "ida": {
     "d": "2026-12-22",
     "orig": "GRU",
     "dest": "REC",
-    "cia": "Gol",
-    "saida": "22:05",
-    "chegada": "01:15",
+    "cia": "Azul",
+    "saida": "23:15",
+    "chegada": "02:15",
     "tipo": "direto",
     "dia": "ter 22/12"
    },
    "volta": {
     "d": "2027-01-12",
     "orig": "REC",
-    "dest": "CGH",
-    "cia": "Gol",
-    "saida": "07:05",
-    "chegada": "12:30",
-    "tipo": "com escala",
+    "dest": "GRU",
+    "cia": "Azul",
+    "saida": "20:35",
+    "chegada": "23:50",
+    "tipo": "direto",
     "dia": "ter 12/01"
    }
   }
