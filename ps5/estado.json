@@ -782,7 +782,7 @@
    "publicado": "2026-11-25T09:22:21-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.8
+   "idade_h": 9.0
   },
   "promobit-3251577": {
    "fonte": "Promobit",
@@ -1056,7 +1056,7 @@
    "publicado": "2026-11-25T09:38:50-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 8.5
+   "idade_h": 8.7
   },
   "tg-OfertasDoDia/488586-0": {
    "fonte": "Telegram",
@@ -1075,7 +1075,7 @@
    "publicado": "2026-11-25T09:38:42-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 8.5
+   "idade_h": 8.7
   },
   "promobit-3251681": {
    "fonte": "Promobit",
@@ -1145,7 +1145,7 @@
    "publicado": "2026-11-25T12:25:58-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 5.7
+   "idade_h": 5.9
   },
   "promobit-3252777": {
    "fonte": "Promobit",
@@ -1200,7 +1200,7 @@
    "publicado": "2026-11-25T13:19:45-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.8
+   "idade_h": 5.0
   },
   "promobit-3252972": {
    "fonte": "Promobit",
@@ -1251,7 +1251,7 @@
    "ressalvas": [],
    "id": "promobit-3253270",
    "publicado": "2026-11-25T14:27:16-0300",
-   "idade_h": 3.6
+   "idade_h": 3.9
   },
   "promobit-3253252": {
    "fonte": "Promobit",
@@ -1285,7 +1285,7 @@
    "ressalvas": [],
    "id": "promobit-3253493",
    "publicado": "2026-11-25T15:12:10-0300",
-   "idade_h": 3.0
+   "idade_h": 3.1
   },
   "promobit-3253451": {
    "fonte": "Promobit",
@@ -1302,7 +1302,7 @@
    "ressalvas": [],
    "id": "promobit-3253451",
    "publicado": "2026-11-25T15:05:49-0300",
-   "idade_h": 3.1
+   "idade_h": 3.2
   },
   "promobit-3253801": {
    "fonte": "Promobit",
@@ -1319,7 +1319,7 @@
    "ressalvas": [],
    "id": "promobit-3253801",
    "publicado": "2026-11-25T16:09:05-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "promobit-3253856": {
    "fonte": "Promobit",
@@ -1336,7 +1336,7 @@
    "ressalvas": [],
    "id": "promobit-3253856",
    "publicado": "2026-11-25T16:23:11-0300",
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "promobit-3253952": {
    "fonte": "Promobit",
@@ -1353,7 +1353,7 @@
    "ressalvas": [],
    "id": "promobit-3253952",
    "publicado": "2026-11-25T16:38:25-0300",
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "promobit-3253925": {
    "fonte": "Promobit",
@@ -1387,7 +1387,7 @@
    "ressalvas": [],
    "id": "promobit-3254012",
    "publicado": "2026-11-25T16:49:06-0300",
-   "idade_h": 1.4
+   "idade_h": 1.5
   },
   "promobit-3254123": {
    "fonte": "Promobit",
@@ -1404,7 +1404,7 @@
    "ressalvas": [],
    "id": "promobit-3254123",
    "publicado": "2026-11-25T17:07:27-0300",
-   "idade_h": 1.0
+   "idade_h": 1.2
   },
   "promobit-3254118": {
    "fonte": "Promobit",
@@ -1421,7 +1421,7 @@
    "ressalvas": [],
    "id": "promobit-3254118",
    "publicado": "2026-11-25T17:07:03-0300",
-   "idade_h": 1.1
+   "idade_h": 1.2
   },
   "promobit-3254228": {
    "fonte": "Promobit",
@@ -1438,7 +1438,7 @@
    "ressalvas": [],
    "id": "promobit-3254228",
    "publicado": "2026-11-25T17:27:29-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "tg-cjpromos/82996-0": {
    "fonte": "Telegram",
@@ -1457,7 +1457,7 @@
    "publicado": "2026-11-25T18:00:41-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 0.2
+   "idade_h": 0.3
   },
   "promobit-3254427": {
    "fonte": "Promobit",
@@ -1491,7 +1491,7 @@
    "ressalvas": [],
    "id": "promobit-3254426",
    "publicado": "2026-11-25T18:03:06-0300",
-   "idade_h": 0.1
+   "idade_h": 0.3
   },
   "tg-jogobarato/111427-0": {
    "fonte": "Telegram",
@@ -1512,7 +1512,7 @@
    "publicado": "2026-11-25T18:04:19-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 0.1
+   "idade_h": 0.3
   },
   "tg-ofertasdogui/31493-0": {
    "fonte": "Telegram",
@@ -1531,7 +1531,7 @@
    "publicado": "2026-11-25T18:02:31-0300",
    "canal": "Ofertas do Gui",
    "preco_de": null,
-   "idade_h": 0.1
+   "idade_h": 0.3
   },
   "tg-ofertasdogui/31494-0": {
    "fonte": "Telegram",
@@ -1552,7 +1552,146 @@
    "publicado": "2026-11-25T18:03:37-0300",
    "canal": "Ofertas do Gui",
    "preco_de": null,
-   "idade_h": 0.1
+   "idade_h": 0.3
+  },
+  "tg-xetdaspromocoes/96063-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "PS5 COM LEITOR PARCELADO, pagamento exclusivo com cartão mercado pago",
+   "preco": 3650.0,
+   "link": "https://t.me/xetdaspromocoes/96063",
+   "tipo": "grupo",
+   "origem": "xetdaspromocoes",
+   "cupom": "MENOSPRATECH",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Xet das Promoções",
+   "ressalvas": [
+    "cartão Mercado Pago",
+    "parcelado"
+   ],
+   "id": "tg-xetdaspromocoes/96063-0",
+   "publicado": "2026-11-25T18:01:40-0300",
+   "canal": "Xet das Promoções",
+   "preco_de": 4950.0,
+   "idade_h": 0.3
+  },
+  "tg-promotop/262763-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Digital - Pacote Astro Bot e Gran Turismo 7 - Branco",
+   "preco": 3599.0,
+   "link": "https://t.me/promotop/262763",
+   "tipo": "grupo",
+   "origem": "promotop",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal PromoTop",
+   "ressalvas": [
+    "cartão Mercado Pago",
+    "parcelado"
+   ],
+   "id": "tg-promotop/262763-0",
+   "publicado": "2026-11-25T18:03:34-0300",
+   "canal": "PromoTop",
+   "preco_de": null,
+   "idade_h": 0.3
+  },
+  "tg-nerdofertas/155191-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Digital Pacote Astro Bot e Gran Turismo 7 Branco Ps5",
+   "preco": 3599.0,
+   "link": "https://t.me/nerdofertas/155191",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Nerd Ofertas",
+   "ressalvas": [],
+   "id": "tg-nerdofertas/155191-0",
+   "publicado": "2026-11-25T18:01:38-0300",
+   "canal": "Nerd Ofertas",
+   "preco_de": null,
+   "idade_h": 0.3
+  },
+  "tg-nerdofertas/155190-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Playstation 5 Slim Disk 1tb 1 Controle Branco Sony",
+   "preco": 3650.0,
+   "link": "https://t.me/nerdofertas/155190",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Nerd Ofertas",
+   "ressalvas": [],
+   "id": "tg-nerdofertas/155190-0",
+   "publicado": "2026-11-25T18:00:41-0300",
+   "canal": "Nerd Ofertas",
+   "preco_de": null,
+   "idade_h": 0.3
+  },
+  "tg-superofertasbr/14931-0": {
+   "fonte": "Telegram",
+   "loja": "?",
+   "titulo": "Console PlayStation 5 Slim Digital Pacote Astro Bot e Gran Turismo 7 Branco Ps5",
+   "preco": 3599.0,
+   "link": "https://t.me/superofertasbr/14931",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Super Ofertas BR",
+   "ressalvas": [],
+   "id": "tg-superofertasbr/14931-0",
+   "publicado": "2026-11-25T18:01:41-0300",
+   "canal": "Super Ofertas BR",
+   "preco_de": null,
+   "idade_h": 0.3
+  },
+  "tg-superofertasbr/14930-0": {
+   "fonte": "Telegram",
+   "loja": "?",
+   "titulo": "Playstation 5 Slim Disk 1tb 1 Controle Branco Sony",
+   "preco": 3650.0,
+   "link": "https://t.me/superofertasbr/14930",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Super Ofertas BR",
+   "ressalvas": [],
+   "id": "tg-superofertasbr/14930-0",
+   "publicado": "2026-11-25T18:00:45-0300",
+   "canal": "Super Ofertas BR",
+   "preco_de": null,
+   "idade_h": 0.3
+  },
+  "tg-cjpromos/82999-0": {
+   "fonte": "Telegram",
+   "loja": "Mercado Livre",
+   "titulo": "Console PlayStation 5 Slim Digital Pacote Astro Bot e Gran Turismo 7 Branco Ps5",
+   "preco": 3599.0,
+   "link": "https://t.me/cjpromos/82999",
+   "tipo": "grupo",
+   "origem": "cjpromos",
+   "cupom": "PM52MP66",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal CJ Promoções",
+   "ressalvas": [],
+   "id": "tg-cjpromos/82999-0",
+   "publicado": "2026-11-25T18:01:38-0300",
+   "canal": "CJ Promoções",
+   "preco_de": null,
+   "idade_h": 0.3
   }
  },
  "alertados": {
@@ -1595,81 +1734,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 5,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 87
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 109,
+   "buscas": 110,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T18:10:20-03:00",
+ "ultima": "2026-11-25T18:20:22-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
