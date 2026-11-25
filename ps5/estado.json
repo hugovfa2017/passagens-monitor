@@ -17,23 +17,6 @@
    "publicado": "2026-11-24T16:05:34-0300",
    "idade_h": 6.2
   },
-  "promobit-3244333": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "Metal Gear Solid Delta Snake Eater Deluxe Edition - PS5",
-   "preco": 345.1,
-   "link": "https://www.promobit.com.br/oferta/metal-gear-solid-delta-snake-eater-deluxe-edition-ps5-3244333/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3244333",
-   "publicado": "2026-11-23T16:00:00-0300",
-   "idade_h": 7.8
-  },
   "promobit-3244412": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -916,7 +899,7 @@
    "ressalvas": [],
    "id": "promobit-3249807",
    "publicado": "2026-11-24T18:49:07-0300",
-   "idade_h": 9.0
+   "idade_h": 9.2
   },
   "promobit-3249960": {
    "fonte": "Promobit",
@@ -967,7 +950,7 @@
    "ressalvas": [],
    "id": "promobit-3250237",
    "publicado": "2026-11-24T20:44:51-0300",
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3250226": {
    "fonte": "Promobit",
@@ -984,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3250226",
    "publicado": "2026-11-24T20:43:52-0300",
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3250441": {
    "fonte": "Promobit",
@@ -1001,7 +984,7 @@
    "ressalvas": [],
    "id": "promobit-3250441",
    "publicado": "2026-11-24T21:47:31-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3250446": {
    "fonte": "Promobit",
@@ -1018,7 +1001,7 @@
    "ressalvas": [],
    "id": "promobit-3250446",
    "publicado": "2026-11-24T21:49:48-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3250436": {
    "fonte": "Promobit",
@@ -1035,7 +1018,7 @@
    "ressalvas": [],
    "id": "promobit-3250436",
    "publicado": "2026-11-24T21:46:01-0300",
-   "idade_h": 6.1
+   "idade_h": 6.2
   },
   "promobit-3250480": {
    "fonte": "Promobit",
@@ -1052,7 +1035,7 @@
    "ressalvas": [],
    "id": "promobit-3250480",
    "publicado": "2026-11-24T22:02:05-0300",
-   "idade_h": 5.8
+   "idade_h": 6.0
   },
   "promobit-3250456": {
    "fonte": "Promobit",
@@ -1069,7 +1052,7 @@
    "ressalvas": [],
    "id": "promobit-3250456",
    "publicado": "2026-11-24T21:54:07-0300",
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "promobit-3250533": {
    "fonte": "Promobit",
@@ -1086,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3250533",
    "publicado": "2026-11-24T22:21:05-0300",
-   "idade_h": 5.5
+   "idade_h": 5.7
   },
   "promobit-3250550": {
    "fonte": "Promobit",
@@ -1103,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3250550",
    "publicado": "2026-11-24T22:28:12-0300",
-   "idade_h": 5.4
+   "idade_h": 5.5
   },
   "promobit-3250556": {
    "fonte": "Promobit",
@@ -1120,7 +1103,7 @@
    "ressalvas": [],
    "id": "promobit-3250556",
    "publicado": "2026-11-24T22:30:35-0300",
-   "idade_h": 5.3
+   "idade_h": 5.5
   },
   "promobit-3250580": {
    "fonte": "Promobit",
@@ -1156,7 +1139,7 @@
    "publicado": "2026-11-24T23:45:53-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 4.1
+   "idade_h": 4.2
   },
   "tg-OfertasDoDia/487992-0": {
    "fonte": "Telegram",
@@ -1175,7 +1158,7 @@
    "publicado": "2026-11-24T23:45:41-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 4.1
+   "idade_h": 4.2
   },
   "promobit-3250760": {
    "fonte": "Promobit",
@@ -1192,7 +1175,7 @@
    "ressalvas": [],
    "id": "promobit-3250760",
    "publicado": "2026-11-25T00:11:03-0300",
-   "idade_h": 3.7
+   "idade_h": 3.8
   }
  },
  "alertados": {
@@ -1231,81 +1214,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 7,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 18
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T03:50:10-03:00",
+ "ultima": "2026-11-25T04:00:29-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
