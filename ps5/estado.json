@@ -661,7 +661,7 @@
    "ressalvas": [],
    "id": "promobit-3250446",
    "publicado": "2026-11-24T21:49:48-0300",
-   "idade_h": 11.7
+   "idade_h": 11.8
   },
   "promobit-3250436": {
    "fonte": "Promobit",
@@ -678,7 +678,7 @@
    "ressalvas": [],
    "id": "promobit-3250436",
    "publicado": "2026-11-24T21:46:01-0300",
-   "idade_h": 11.7
+   "idade_h": 11.9
   },
   "promobit-3250480": {
    "fonte": "Promobit",
@@ -712,7 +712,7 @@
    "ressalvas": [],
    "id": "promobit-3250456",
    "publicado": "2026-11-24T21:54:07-0300",
-   "idade_h": 11.6
+   "idade_h": 11.8
   },
   "promobit-3250533": {
    "fonte": "Promobit",
@@ -763,7 +763,7 @@
    "ressalvas": [],
    "id": "promobit-3250556",
    "publicado": "2026-11-24T22:30:35-0300",
-   "idade_h": 11.0
+   "idade_h": 11.2
   },
   "promobit-3250580": {
    "fonte": "Promobit",
@@ -799,7 +799,7 @@
    "publicado": "2026-11-24T23:45:53-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-OfertasDoDia/487992-0": {
    "fonte": "Telegram",
@@ -818,7 +818,7 @@
    "publicado": "2026-11-24T23:45:41-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "promobit-3250760": {
    "fonte": "Promobit",
@@ -854,7 +854,7 @@
    "publicado": "2026-11-25T03:52:49-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 5.6
+   "idade_h": 5.8
   },
   "tg-OfertasDoDia/488239-0": {
    "fonte": "Telegram",
@@ -873,7 +873,7 @@
    "publicado": "2026-11-25T03:52:38-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 5.6
+   "idade_h": 5.8
   },
   "promobit-3251436": {
    "fonte": "Promobit",
@@ -890,7 +890,7 @@
    "ressalvas": [],
    "id": "promobit-3251436",
    "publicado": "2026-11-25T09:12:08-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3251426": {
    "fonte": "Promobit",
@@ -907,7 +907,7 @@
    "ressalvas": [],
    "id": "promobit-3251426",
    "publicado": "2026-11-25T09:10:04-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "tg-jogobarato/111187-0": {
    "fonte": "Telegram",
@@ -926,6 +926,108 @@
    "publicado": "2026-11-25T09:22:21-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
+   "idade_h": 0.3
+  },
+  "promobit-3251577": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Marvel's Spider-Man 2 PS5",
+   "preco": 124.24,
+   "link": "https://www.promobit.com.br/oferta/marvels-spider-man-2-ps5-3251577/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251577",
+   "publicado": "2026-11-25T09:32:05-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3251616": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo The Last of Us Part II Remastered PS5 - 1000030252",
+   "preco": 133.59,
+   "link": "https://www.promobit.com.br/oferta/jogo-the-last-of-us-part-ii-remastered-ps5-1000030252-3251616/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251616",
+   "publicado": "2026-11-25T09:35:45-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3251615": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Lost Soul Aside PS5",
+   "preco": 90.12,
+   "link": "https://www.promobit.com.br/oferta/jogo-lost-soul-aside-ps5-3251615/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251615",
+   "publicado": "2026-11-25T09:35:42-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3251613": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Marvel's Spider-Man 2 PS5",
+   "preco": 133.59,
+   "link": "https://www.promobit.com.br/oferta/jogo-marvels-spider-man-2-ps5-3251613/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251613",
+   "publicado": "2026-11-25T09:35:19-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3251606": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo Marvel Tokon: Fighting Souls para PS5 - 1000052661",
+   "preco": 181.02,
+   "link": "https://www.promobit.com.br/oferta/jogo-marvel-tokon-fighting-souls-para-ps5-1000052661-3251606/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251606",
+   "publicado": "2026-11-25T09:34:35-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3251607": {
+   "fonte": "Promobit",
+   "loja": "KaBuM!",
+   "titulo": "Jogo SAROS Edição Standard para PS5",
+   "preco": 181.02,
+   "link": "https://www.promobit.com.br/oferta/jogo-saros-edicao-standard-para-ps5-3251607/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PLAYCLASSIC",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3251607",
+   "publicado": "2026-11-25T09:34:44-0300",
    "idade_h": 0.1
   }
  },
@@ -966,81 +1068,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 2,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
-   "barradas": 46
+   "buscas": 59,
+   "barradas": 47
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 58,
+   "buscas": 59,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T09:30:26-03:00",
+ "ultima": "2026-11-25T09:40:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
