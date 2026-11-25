@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3242449": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sem Fio Sony Dualsense Hyperpop, Ps5, Techno Red",
-   "preco": 349.0,
-   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-sony-dualsense-hyperpop-ps5-techno-red-3242449/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "OFERTAML",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3242449",
-   "publicado": "2026-11-23T09:43:11-0300",
-   "idade_h": 3.6
-  },
   "promobit-3242530": {
    "fonte": "Promobit",
    "loja": "WebContinental",
@@ -134,7 +117,7 @@
    "ressalvas": [],
    "id": "promobit-3243364",
    "publicado": "2026-11-24T16:05:34-0300",
-   "idade_h": 5.6
+   "idade_h": 5.7
   },
   "promobit-3243321": {
    "fonte": "Promobit",
@@ -1035,7 +1018,7 @@
    "ressalvas": [],
    "id": "promobit-3247837",
    "publicado": "2026-11-24T12:18:38-0300",
-   "idade_h": 9.4
+   "idade_h": 9.5
   },
   "promobit-3247961": {
    "fonte": "Promobit",
@@ -1086,7 +1069,7 @@
    "ressalvas": [],
    "id": "promobit-3248303",
    "publicado": "2026-11-24T13:39:04-0300",
-   "idade_h": 8.0
+   "idade_h": 8.2
   },
   "promobit-3248510": {
    "fonte": "Promobit",
@@ -1103,7 +1086,7 @@
    "ressalvas": [],
    "id": "promobit-3248510",
    "publicado": "2026-11-24T14:22:04-0300",
-   "idade_h": 7.3
+   "idade_h": 7.5
   },
   "promobit-3248644": {
    "fonte": "Promobit",
@@ -1120,7 +1103,7 @@
    "ressalvas": [],
    "id": "promobit-3248644",
    "publicado": "2026-11-24T14:48:04-0300",
-   "idade_h": 6.9
+   "idade_h": 7.0
   },
   "tg-jogobarato/110989-0": {
    "fonte": "Telegram",
@@ -1139,7 +1122,7 @@
    "publicado": "2026-11-24T15:30:02-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 6.2
+   "idade_h": 6.3
   },
   "promobit-3248482": {
    "fonte": "Promobit",
@@ -1156,7 +1139,7 @@
    "ressalvas": [],
    "id": "promobit-3248482",
    "publicado": "2026-11-24T15:26:48-0300",
-   "idade_h": 6.2
+   "idade_h": 6.4
   },
   "promobit-3249558": {
    "fonte": "Promobit",
@@ -1173,7 +1156,7 @@
    "ressalvas": [],
    "id": "promobit-3249558",
    "publicado": "2026-11-24T17:38:47-0300",
-   "idade_h": 4.0
+   "idade_h": 4.2
   },
   "promobit-3249531": {
    "fonte": "Promobit",
@@ -1190,7 +1173,7 @@
    "ressalvas": [],
    "id": "promobit-3249531",
    "publicado": "2026-11-24T17:34:47-0300",
-   "idade_h": 4.1
+   "idade_h": 4.2
   },
   "promobit-3249534": {
    "fonte": "Promobit",
@@ -1241,7 +1224,7 @@
    "ressalvas": [],
    "id": "promobit-3249807",
    "publicado": "2026-11-24T18:49:07-0300",
-   "idade_h": 2.9
+   "idade_h": 3.0
   },
   "promobit-3249960": {
    "fonte": "Promobit",
@@ -1275,7 +1258,7 @@
    "ressalvas": [],
    "id": "promobit-3250106",
    "publicado": "2026-11-24T20:14:21-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3250237": {
    "fonte": "Promobit",
@@ -1292,7 +1275,7 @@
    "ressalvas": [],
    "id": "promobit-3250237",
    "publicado": "2026-11-24T20:44:51-0300",
-   "idade_h": 0.9
+   "idade_h": 1.1
   },
   "promobit-3250226": {
    "fonte": "Promobit",
@@ -1309,7 +1292,7 @@
    "ressalvas": [],
    "id": "promobit-3250226",
    "publicado": "2026-11-24T20:43:52-0300",
-   "idade_h": 0.9
+   "idade_h": 1.1
   }
  },
  "alertados": {
@@ -1348,81 +1331,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 0,
+   "falhas": 1,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
-   "barradas": 102
+   "buscas": 132,
+   "barradas": 103
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-24",
-   "buscas": 131,
+   "buscas": 132,
    "barradas": 0
   }
  },
- "ultima": "2026-11-24T21:40:21-03:00",
+ "ultima": "2026-11-24T21:49:38-03:00",
  "pular": [],
  "resumo_dia": "2026-11-24"
 }
