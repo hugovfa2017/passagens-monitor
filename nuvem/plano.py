@@ -72,6 +72,7 @@ def trechos(v, hoje):
                  'pax': g['assentos'],
                  'alvo': t.get('alvo'), 'rodizio': t.get('rodizio'), 'voo_comprado': bool(t.get('voo_comprado')),
                  'igual_a': t.get('igual_a'), 'sentido': t.get('sentido'), 'lugares': t.get('lugares', []),
+                 'listar_ate': t.get('listar_ate'),
                  'datas': [d for d in datas(t['datas']) if d > hoje] if 'datas' in t else []}
             saida.append(x)
             por_serie[serie] = x

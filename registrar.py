@@ -47,6 +47,7 @@ def configurar(v):
     PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
 SINAL = {'bom': '🟢 Bom momento', 'acompanhar': '🟡 Acompanhar', 'esperar': '⏳ Esperar'}   # nuvem/momento.py
 OUTRAS_DATAS = 4                # quantas outras datas com preço conferido a mensagem lista por trecho
+MAX_BOAS = 15                   # no máximo tantas opções na lista "todas até R$X" (viagem.json: listar_ate)
 
 
 def dia(d):  # '2026-12-18' -> 'sex 18/12'
@@ -470,9 +471,22 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
         fora = de_fora(r, v)
         if fora:
             linhas.append((f"🌐 Na {html.escape(fora['vend'])}, agência de fora do Brasil, esse voo aparece por {brl(fora['pp'])} (não entra na escolha)", 2))
+        # todas as opções conferidas até um preço (viagem.json: listar_ate), uma por linha e com link: para decidir
+        boas = r.get('boas') or []
+        if boas:
+            ate = f"{brl(t['listar_ate'])}{cada}"
+            linhas.append((f"🔗 <b>Todas até {ate} nesta busca ({len(boas)})</b>, da mais barata:", 0))
+            for o in boas[:MAX_BOAS]:
+                marca = '⭐ ' if selecao.ident(o) == selecao.ident(rec) else '• '
+                onde = clique(o.get('link'))
+                vend = html.escape(nome_vendedor(o['vend']))
+                linhas.append((f"{marca}<b>{brl(o['pp'])}</b> · {dia(o['d'])} · {horarios(o, v)} · {voo_txt(o)} · "
+                               + (f"{onde} ({vend})" if onde else vend), 0))
+            if len(boas) > MAX_BOAS:
+                linhas.append((f"… e mais {len(boas) - MAX_BOAS}, as mais caras até {ate}", 0))
         # outras datas com preço conferido nesta busca (o melhor de cada data, com o aeroporto): numa janela longa, é o
         # que mostra as alternativas à recomendada
-        mostradas = {rec['d']} | ({r['mais_barata']['d']} if r.get('mais_barata') else set())
+        mostradas = {rec['d']} | ({r['mais_barata']['d']} if r.get('mais_barata') else set()) | {o['d'] for o in boas}
         conferidas = sorted((min((c['pp'], ne) for ne, c in cel.items() if c['conf']) + (d,) for d, cel in (r.get('celulas') or {}).items()
                              if d not in mostradas and d in t['datas'] and any(c['conf'] for c in cel.values())))[:OUTRAS_DATAS]
         if conferidas:
@@ -820,7 +834,39 @@ def _teste():
         os.environ.pop('TELEGRAM_CHAT_ID', None)
         os.environ.pop('TELEGRAM_TOKEN', None) if antes is None else os.environ.update(TELEGRAM_TOKEN=antes)
     _teste_registro()
+    _teste_boas()
     print('ok')
+
+
+def _teste_boas():
+    """A lista "todas até R$X" (viagem.json: listar_ate): uma opção por linha, com link, a recomendada marcada, no máximo
+    MAX_BOAS; link que não é http não vira link; as datas da lista não se repetem em "outras datas"."""
+    v = plano.carregar_teste()
+    h = next(g for g in v['grupos'] if g['id'] == 'h')
+    next(t for t in h['trechos'] if t['id'] == 'depois')['listar_ate'] = 400
+    ts = plano.trechos(v, '2026-11-26')
+
+    def of(d, orig, saida, pp, vend='Vai de Promo', cia='Gol', voos='', link='https://exemplo/x'):
+        return {'sentido': 'volta', 'd': d, 'pax': 1, 'orig': orig, 'dest': 'CGH', 'cia': cia, 'saida': saida, 'chegada': '19:45',
+                'tipo': 'direto', 'pp': pp, 'vend': vend, 'voos': voos, 'fonte': 'google', 'link': link}
+    rec = of('2027-03-23', 'FOR', '16:05', 362, voos='FOR>CGH 2027-03-23 G3 1513')
+    barata = of('2027-03-07', 'JPA', '09:55', 300, cia='Azul')
+    boas = [barata, of('2027-03-19', 'REC', '10:00', 358, 'Zupper', link='javascript:alert(1)'), rec] + \
+        [of(f'2027-02-{10 + i:02d}', 'FOR', '08:00', 370 + i, 'Zupper') for i in range(14)]
+    celulas = {o['d']: {'FOR': {'pp': o['pp'], 'conf': True}} for o in boas} | {'2027-03-30': {'FOR': {'pp': 420, 'conf': True}}}
+    scan = {'series': {'h.depois': {'recomendada': rec, 'mais_barata': barata, 'celulas': celulas, 'olhadas': [], 'boas': boas}}}
+    linhas = [l for l, _ in bloco_do_grupo(h, ts, scan, v, {}, {'h': 'Beto'}, '2026-11-26 00:10')]
+    i = linhas.index('🔗 <b>Todas até R$400 nesta busca (17)</b>, da mais barata:')
+    assert linhas[i + 1] == ('• <b>R$300</b> · dom 07/03 · 09h55 J. Pessoa → 19h45 Congonhas · Azul, direto · '
+                             '<a href="https://exemplo/x">clique aqui</a> (Vai de Promo)'), linhas[i + 1]
+    assert linhas[i + 2] == '• <b>R$358</b> · sex 19/03 · 10h00 Recife → 19h45 Congonhas · Gol, direto · Zupper', 'só link http vira link'
+    assert linhas[i + 3].startswith('⭐ <b>R$362</b> · ter 23/03 · 16h05 Fortaleza → 19h45 Congonhas · Gol 1513, direto · <a href=')
+    assert linhas[i + 16] == '… e mais 2, as mais caras até R$400' and linhas[i + 15].startswith('• <b>R$381</b>'), linhas[i + 14:i + 17]
+    assert '📅 Outras datas conferidas: ter 30/03 R$420 (Fortaleza)' in linhas, 'as datas da lista não se repetem; acima do limite continua ali'
+    assert len('\n'.join(linhas)) < 3000
+    # sem listar_ate no trecho (ou nada até o preço), o bloco fica como antes
+    scan['series']['h.depois']['boas'] = []
+    assert not any(l.startswith('🔗') for l, _ in bloco_do_grupo(h, ts, scan, v, {}, {'h': 'Beto'}, '2026-11-26 00:10'))
 
 
 def _teste_registro():

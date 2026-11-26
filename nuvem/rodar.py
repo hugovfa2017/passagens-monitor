@@ -265,6 +265,7 @@ def montar(v, ts, lista, ofertas, estado, olhadas):
             r['comprado'] = min(meus, key=lambda o: o['pp']) if meus else None
         r['celulas'] = celulas(lista, ofertas, t, v)
         r['olhadas'] = olhadas.get(t['serie'], [])
+        r['boas'] = selecao.boas(ofertas, t, t['listar_ate']) if t.get('listar_ate') else []   # todas até um preço, com link
         # o que o Google diz do preço do voo recomendado (baixo, normal, alto), se ele passou pela tela de compra nesta rodada
         rec = r['recomendada']
         do_voo = [o for o in selecao.do_trecho(ofertas, t) if rec and selecao.ident(o) == selecao.ident(rec)]
