@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 10:40 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 10:49 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.955,91 na Shopee · confira se é a versão nacional, visto em 2 lugares, postado há 0h
 
@@ -22,14 +22,14 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
-- PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
 - PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 53 de 64 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 54 de 65 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 49 itens
@@ -37,7 +37,7 @@ Telegram: sem mensagem nesta varredura
 - Zoom: ok, 31 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 40 itens (22 de 22 canais)
+- Telegram: ok, 42 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
 Descartados: 154 não é console PS5
