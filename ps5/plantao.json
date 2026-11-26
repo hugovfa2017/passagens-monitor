@@ -27,24 +27,25 @@
   "nc|digital|kabum!|269": "2026-11-26T16:52:23-03:00",
   "nc|digital|kabum!|281": "2026-11-26T16:54:24-03:00",
   "nc|digital|kabum!|273": "2026-11-26T17:09:34-03:00",
-  "nc|digital|?|273": "2026-11-26T17:11:34-03:00"
+  "nc|digital|?|273": "2026-11-26T17:11:34-03:00",
+  "digital|shopee|354": "2026-11-26T20:02:26-03:00"
  },
  "anuncios": {
   "Mercado Livre|2026-11-26T20:00": {
-   "loja": "Mercado Livre",
-   "quando": "2026-11-26T20:00-03:00",
+   "avisado": "2026-11-26T19:58:27-03:00",
+   "canal": "CJ Promoções",
+   "desconto": "40% OFF",
+   "destino": "https://meli.la/1Bax8UG",
    "horas": [
     "20h"
    ],
-   "desconto": "40% OFF",
-   "valor": 1520,
+   "lembrado": null,
+   "link": "https://t.me/cjpromos/83798",
+   "loja": "Mercado Livre",
+   "quando": "2026-11-26T20:00-03:00",
    "ressalvas": [],
    "resumo": "Próximo Cupom 40% OFF Mercado Livre 🕐 ATIVA 20H •Tutorial: 1 Entre no APP do Meli aqui: https://meli.la/1Bax8UG 2 Clique em \"Mais\" no rodapé do APP 3 Depois clique em \"Cupons Black Friday\" 4 Resgate o",
-   "destino": "https://meli.la/1Bax8UG",
-   "link": "https://t.me/cjpromos/83798",
-   "canal": "CJ Promoções",
-   "avisado": "2026-11-26T19:58:27-03:00",
-   "lembrado": null
+   "valor": 1520
   }
  }
 }
