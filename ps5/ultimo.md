@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 18:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 18:40 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 4h
 
@@ -18,25 +18,22 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.299 por ~R$ 4.099; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.299 por ~R$ 4.199
 - Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.364,90 por ~R$ 3.491,92
 - KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.369,05 por ~R$ 4.269,05
-- Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.451,82 por ~R$ 4.251,82; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.451,82 por ~R$ 4.351,82
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Mercado Livre: `TECHVIP` (Mercado Livre: cupom de 12% OFF em Eletrônicos); `PROMOTOP` (Mercado Livre: cupom de 25% OFF em produtos selecionados); `LIVREHOJE` (10% OFF em compras acima de R$199, limite de R$100 Cupom: «LIVREHOJE»); `ELETROTECHMELI` (R$250 OFF em compras acima de R$2.499 Cupom: «ELETROTECHMELI»); `75MAIS1125MELI` (10% OFF em compras acima de R$199, limite de R$200 em Eletrônicos Cupo)
 
 ## À parte: importado
 
-- PS5 Digital: R$ 4.654,90 na Amazon
-- PS5 Digital: R$ 4.654,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: ok, 44 itens · barrada em 92 de 112 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 93 de 113 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 49 itens
@@ -47,6 +44,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 96 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 196 não é console PS5
+Descartados: 173 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
