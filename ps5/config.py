@@ -28,7 +28,8 @@ CUPONS_QUE_NAO_VALEM = {
 MODELOS_COM_ALERTA = ['leitor', 'digital']   # Pro fora do orçamento (20/11/2026)
 
 # Modo caçador (Black Friday): até esta data (exclusiva), oferta de grupo ainda não confirmada que esteja no alvo toca com
-# som, e o workflow roda de 10 em 10 minutos (guarda de 7 min). Depois volta sozinho: sem som e uma rodada a cada 30 min.
+# som, o workflow roda de 10 em 10 minutos (guarda de 7 min) e o Plantão PS5 lê os posts novos uma vez por minuto.
+# Depois volta sozinho: sem som, sem plantão e uma rodada a cada 30 min.
 CACADOR_ATE = date(2026, 12, 1)   # None desliga na hora
 
 # Resumo diário, sem som, com o melhor preço de cada modelo (hora de Brasília). None desliga.

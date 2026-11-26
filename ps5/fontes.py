@@ -299,6 +299,15 @@ def promobit():
     return out
 
 
+def promobit_encerrada(link):
+    """A página da oferta no Promobit diz que ela acabou ("Oferta encerrada")? True | False; None se não deu para ler."""
+    try:
+        o = next_data(baixar(link, tentativas=1, timeout=15))['props']['pageProps'].get('serverOffer') or {}
+    except Exception:
+        return None
+    return bool(ENCERRADA.search(o.get('offerStatusName') or '')) if o.get('offerStatusName') else None
+
+
 # ---------------------------------------------------------------- Gatry
 GATRY = 'https://gatry.com'
 
@@ -333,16 +342,17 @@ def _posts_telegram(pagina):
             yield post[1], datetime.fromisoformat(hora[1]).astimezone(BRT), corpo[1]
 
 
-def telegram(canais=None, agora=None):
-    """Posts de PS5 dos canais públicos de oferta. Devolve ofertas (tipo 'grupo') e cupons anunciados com regra."""
+def telegram(canais=None, agora=None, buscas=None):
+    """Posts de PS5 dos canais públicos de oferta. Devolve ofertas (tipo 'grupo') e cupons anunciados com regra.
+    buscas: termos procurados em cada canal; (None,) lê só a primeira página (os posts mais novos), como no plantão."""
     canais = lojas.CANAIS if canais is None else canais
     agora = agora or datetime.now(BRT)
     out, falhas, vistos = [], [], set()
     for c in canais:
         achou = False
-        for q in lojas.BUSCAS_TELEGRAM:
+        for q in buscas or lojas.BUSCAS_TELEGRAM:
             try:
-                pagina = baixar(f"https://t.me/s/{c['canal']}?q={urllib.parse.quote(q)}", tentativas=2)
+                pagina = baixar(f"https://t.me/s/{c['canal']}" + (f"?q={urllib.parse.quote(q)}" if q else ''), tentativas=2)
             except TimeoutError:
                 raise
             except Exception as e:

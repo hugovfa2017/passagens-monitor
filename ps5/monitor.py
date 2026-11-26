@@ -17,9 +17,11 @@ fica em ps5/assinantes.cif, cifrada; ver atendimento.py na raiz). PS5_ENVIAR=0 n
 Uso:  python ps5/monitor.py                    -> varredura completa (fontes.py), grava e alerta
       python ps5/monitor.py --teste            -> auto-checagem sem internet
       python ps5/monitor.py --teste-telegram   -> manda uma mensagem de teste pelo bot do PS5
-Saídas: ps5/historico.csv, ps5/estado.json, ps5/ultimo.md, docs/ps5/index.html e docs/ps5/painel.json.
+      python ps5/monitor.py --plantao          -> uma passada do plantão (modo caçador): avisa na hora post novo no preço
+Saídas: ps5/historico.csv, ps5/estado.json, ps5/ultimo.md, docs/ps5/index.html e docs/ps5/painel.json (o plantão grava
+só ps5/plantao.json).
 """
-import csv, html, json, os, re, sys, urllib.parse, urllib.request
+import csv, html, json, os, re, sys, time, urllib.parse, urllib.request
 from datetime import datetime, timedelta
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -247,8 +249,10 @@ def fundir(ofertas):
     return sorted((_fundida(g) for g in grupos), key=lambda o: (o['preco'], o['confianca']))
 
 
-def lembrar_postadas(ofertas, estado, agora):
-    """Guarda as ofertas postadas (somem da 1ª página em poucas horas) e devolve as atuais mais as lembradas ainda válidas."""
+def lembrar_postadas(ofertas, estado, agora, conferir=None, maximo=6, prazo_s=25):
+    """Guarda as ofertas postadas (somem da 1ª página em poucas horas) e devolve as atuais mais as lembradas ainda válidas.
+    conferir(link) -> True quando a página diz que a oferta acabou: a lembrada do Promobit que saiu da lista é conferida
+    (as `maximo` mais baratas, em até `prazo_s` segundos) e, se acabou, é esquecida na hora."""
     mem = estado.pop('promobit', None) or {}
     mem.update(estado.get('postadas') or {})
     atuais = set()
@@ -260,6 +264,14 @@ def lembrar_postadas(ofertas, estado, agora):
             atuais.add(o['id'])
     validade = lambda o: timedelta(hours=config.HORAS_OFERTA_GRUPO if o.get('tipo') == 'grupo' else config.HORAS_OFERTA_POSTADA)
     estado['postadas'] = mem = {k: o for k, o in mem.items() if agora - fontes._quando(o['publicado']) <= validade(o)}
+    if conferir:   # saiu da 1ª página: pode ter só sido empurrada por posts mais novos, ou pode ter acabado
+        fim = time.monotonic() + prazo_s
+        saidas = sorted((o['preco'], k) for k, o in mem.items() if k not in atuais and o.get('origem') == 'promobit')
+        for _, k in saidas[:maximo]:
+            if time.monotonic() > fim:
+                break
+            if conferir(mem[k]['link']):
+                del mem[k]
     lembradas = [{**o, 'tipo': o.get('tipo', 'postada'), 'origem': o.get('origem', 'promobit'), 'ressalvas': o.get('ressalvas', []),
                   'obs': o.get('obs', '') + ' (saiu da lista; pode ter acabado)'} for k, o in mem.items() if k not in atuais]
     return ofertas + lembradas
@@ -560,13 +572,15 @@ def limite(m):
     return max(config.ALVOS.get(m, 0), config.AVISAR_ABAIXO or 0)
 
 
-def decidir_alertas(resumo, estado, agora):
+def decidir_alertas(resumo, estado, agora, plantao=None):
     """Com som: melhor preço confirmado abaixo do alvo ou menor já visto. Sem som: oferta de grupo ainda não confirmada.
-    Não repete a mesma oferta (mesma loja, mesmo preço) por 24 h. Oferta só vista em post antigo não toca nem vira recorde."""
+    Não repete a mesma oferta (mesma loja, mesmo preço) por 24 h, nem a que o plantão já avisou (plantao: {chave: quando}).
+    Oferta só vista em post antigo não toca nem vira recorde."""
     alertas = []
     ja = estado.setdefault('alertados', {})
     estado.setdefault('menor', {})
-    recente = lambda chave: chave in ja and agora - datetime.fromisoformat(ja[chave]) < timedelta(hours=24)
+    plantao = plantao or {}
+    recente = lambda chave: any(chave in d and agora - datetime.fromisoformat(d[chave]) < timedelta(hours=24) for d in (ja, plantao))
     for m, r in resumo.items():
         o = r['melhor']
         if o:
@@ -714,8 +728,11 @@ def avisos_da_fonte(nome, s, h, agora):
     return avisos
 
 
-def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=None, painel=None, resumo_agora=False):
+def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=None, painel=None, resumo_agora=False,
+          conferir=None):
+    """Varredura completa. conferir(link): a oferta do Promobit acabou? (na rodada de verdade, abre a página dela)"""
     agora = agora or datetime.now(fontes.BRT)
+    conferir = conferir if conferir is not None else (fontes.promobit_encerrada if coletar is None else None)
     painel = (pasta == AQUI) if painel is None else painel
     fontes.ORCAMENTO_S = config.ORCAMENTO_S
     estado = ler_json(os.path.join(pasta, 'estado.json'), {})
@@ -726,7 +743,7 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     for o in ofertas:                                            # fontes de teste ou antigas podem vir sem estes campos
         o.setdefault('tipo', 'loja')
         o.setdefault('origem', o['fonte'])
-    ofertas = lembrar_postadas(ofertas, estado, agora)
+    ofertas = lembrar_postadas(ofertas, estado, agora, conferir)
 
     lojas_vistas = {'KaBuM!'} | {loja_base(o) for o in ofertas}
     cupons, erros_cupons = (buscar_cupons or fontes.cupons_promobit)(sorted(lojas_vistas & set(fontes.LOJAS_CUPOM)))
@@ -739,7 +756,7 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
         | {o['cupom_citado'].upper() for o in ps5 if o.get('cupom_citado')}
     teste = cupons_para_testar(cupons, melhores_sem, codigos_ps5)
 
-    alertas = decidir_alertas(resumo, estado, agora)
+    alertas = decidir_alertas(resumo, estado, agora, ler_json(os.path.join(pasta, 'plantao.json'), {}).get('avisados'))
     status = []
     if alertas:
         botoes = [botao(a['oferta']) for a in alertas][:3] + [PAINEL_BOTAO]
@@ -825,6 +842,71 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     print('FONTES', ' '.join(f"{n}={'ok' if s['ok'] else 'falhou'}" for n, s in situacao.items()))
     print(tg)
     return dados
+
+
+# ---------------------------------------------------------------- plantão (modo caçador)
+# Cupom de console na Black Friday acaba em minutos. Entre as varreduras completas, o plantão lê a cada minuto só o que
+# muda rápido (lista do Promobit, feed do Gatry e a primeira página de cada canal) e avisa na hora o post novo de console
+# no preço que toca. Não mexe no painel, no histórico nem no estado: anota o que avisou em plantao.json, que a varredura
+# completa lê para não avisar de novo.
+PLANTAO_FONTES = {'Promobit': fontes.promobit, 'Gatry': fontes.gatry, 'Telegram': lambda: fontes.telegram(buscas=(None,))}
+PLANTAO_HORAS = 1      # post mais velho que isso já não é novidade
+PLANTAO_ORCAMENTO_S = 50
+
+
+def novidades(itens, estado, avisados, agora):
+    """Alertas para o que é novo: post que a varredura completa ainda não guardou, de até PLANTAO_HORAS, de modelo com
+    alerta e no preço que toca (alvo ou AVISAR_ABAIXO), sem ter sido avisado (pelo plantão ou pela varredura) em 24 h.
+    Mesmas chaves da varredura: 'nc|' + chave para a oferta ainda não confirmada."""
+    conhecidas = set(estado.get('postadas') or {})
+    novas = []
+    for x in itens:
+        if 'preco' in x and x.get('id') not in conhecidas:
+            o = {**x}
+            o.setdefault('tipo', 'grupo')
+            o.setdefault('origem', o['fonte'])
+            o['publicado'] = o.get('publicado') or agora.strftime('%Y-%m-%dT%H:%M:%S%z')   # Gatry: novo é de agora
+            novas.append(o)
+    ps5, _, _ = preparar(novas, agora)
+    ja = {**(estado.get('alertados') or {}), **avisados}
+    recente = lambda chave: chave in ja and agora - datetime.fromisoformat(ja[chave]) < timedelta(hours=24)
+    alertas = []
+    for o in ps5:
+        m = o['modelo']
+        if m not in config.MODELOS_COM_ALERTA or o['tipo'] not in ('postada', 'grupo') or (o.get('idade_h') or 0) > PLANTAO_HORAS \
+                or o['preco'] > limite(m) or 'o post não diz o modelo' in o['ressalvas']:
+            continue
+        chave = ('nc|' if o['confianca'] == 'C' else '') + o['chave']
+        if recente(chave) or recente(o['chave']):
+            continue
+        motivo = 'oferta de grupo ainda NÃO confirmada (confira antes de se animar)' if o['confianca'] == 'C' else \
+            f"abaixo do alvo de {brl(config.ALVOS[m])}" if o['preco'] <= config.ALVOS.get(m, 0) else f"abaixo de {brl(config.AVISAR_ABAIXO)}"
+        alertas.append({'modelo': m, 'motivo': motivo, 'oferta': o, 'som': True, 'chave': chave})
+        ja[chave] = agora.isoformat(timespec='seconds')
+    return alertas
+
+
+def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
+    """Uma passada do plantão. Devolve as linhas do registro (sem dado pessoal)."""
+    agora = agora or datetime.now(fontes.BRT)
+    if not cacador(agora):
+        return ['plantão desligado (fora do modo caçador)']
+    estado = ler_json(os.path.join(pasta, 'estado.json'), {})
+    caminho = os.path.join(pasta, 'plantao.json')
+    antes = ler_json(caminho, {}).get('avisados') or {}
+    avisados = {k: v for k, v in antes.items() if agora - datetime.fromisoformat(v) < timedelta(days=2)}
+    itens, situacao = (ler or (lambda: fontes.coletar(PLANTAO_FONTES, orcamento=PLANTAO_ORCAMENTO_S)))()
+    linhas = ['fontes: ' + ' '.join(f"{n}={'ok' if s['ok'] else 'falhou'}" for n, s in situacao.items())]
+    alertas = novidades(itens, estado, avisados, agora)
+    if alertas:
+        st = enviar(texto_alerta(alertas, agora) + '\n⚡ <i>Plantão da Black Friday: aviso logo depois do post.</i>',
+                    botoes=[botao(a['oferta']) for a in alertas][:3] + [PAINEL_BOTAO])   # 1ª linha = preço (notificação)
+        linhas += [f"ALERTA {a['modelo']} {a['oferta']['preco']} {a['motivo']}" for a in alertas] + [st]
+        if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):   # falha de rede: tenta na próxima passada
+            avisados.update({a['chave']: agora.isoformat(timespec='seconds') for a in alertas})
+    if avisados != antes:
+        gravar_json(caminho, {'avisados': avisados})
+    return linhas
 
 
 # ---------------------------------------------------------------- auto-checagem
@@ -1170,6 +1252,53 @@ def _teste():
     finally:
         config.CACADOR_ATE = ate
 
+    # ---- oferta do Promobit que saiu da lista: a página dela diz se acabou; a que acabou é esquecida na hora
+    def postada(id_, preco, quando_=agora, **kw):
+        return of('Promobit', 'Mercado Livre', 'Console PlayStation 5 Slim Digital', preco, id_,
+                  publicado=quando_.strftime('%Y-%m-%dT%H:%M:%S%z'), origem='promobit', **kw)
+    est = {}
+    lembrar_postadas([postada('promobit-1', 3369), postada('promobit-2', 3500), postada('promobit-3', 3600),
+                      grupo('jogobarato', 'Mercado Livre', 'PS5 Slim Digital', 3399, 0)], est, agora)
+    abertas = []
+    conferir = lambda link: abertas.append(link.rsplit('/', 1)[1]) or (True if link.endswith('-1') else None)   # None: não abriu
+    r = lembrar_postadas([], est, agora + timedelta(minutes=10), conferir, maximo=2)
+    assert abertas == ['promobit-1', 'promobit-2'], 'só as do Promobit, da mais barata, até o máximo'
+    assert sorted(o['id'] for o in r) == ['promobit-2', 'promobit-3', 'tg-jogobarato-0-3399'] and 'promobit-1' not in est['postadas']
+    assert all('saiu da lista' in o['obs'] for o in r)
+    abertas.clear()
+    r = lembrar_postadas([postada('promobit-2', 3500)], est, agora + timedelta(minutes=20), conferir)
+    assert abertas == ['promobit-3'] and sorted(o['id'] for o in r) == ['promobit-2', 'promobit-3', 'tg-jogobarato-0-3399'], abertas
+
+    # ---- plantão: post novo no preço toca na hora, uma vez só; a varredura completa não repete o aviso
+    with tempfile.TemporaryDirectory() as pasta:
+        rodar(coleta(), cupons, enviar, pasta, agora)
+        conhecida = next(k for k in ler_json(os.path.join(pasta, 'estado.json'), {})['postadas'] if k.startswith('promobit-'))
+        t = agora + timedelta(minutes=52)
+        frescos = [postada('promobit-77', 3250, t - timedelta(minutes=3)),                              # alvo: toca
+                   grupo('nerdofertas', 'Mercado Livre', leitor, 3500, 49),                              # 1 canal: não confirmada
+                   grupo('pelandobr', 'Mercado Livre', 'PS5 Slim Digital 825GB', 3200, -70),             # post de 2 h: velho
+                   grupo('promotop', 'Mercado Livre', 'PS5 Slim Digital 825GB', 3700, 50),               # acima do limite
+                   postada(conhecida, 3100, t - timedelta(minutes=1))]                                    # a varredura já viu
+        ler = lambda: (frescos, {'Promobit': {'ok': True}, 'Gatry': {'ok': True}, 'Telegram': {'ok': True}})
+        enviadas.clear()
+        linhas = plantao(ler, enviar, pasta, t)
+        assert config.ALVOS['digital'] >= 3250 and linhas[1:] == [f"ALERTA digital 3250 abaixo do alvo de {brl(config.ALVOS['digital'])}",
+                              'ALERTA leitor 3500 oferta de grupo ainda NÃO confirmada (confira antes de se animar)',
+                              'TELEGRAM_ENVIADO'], linhas
+        assert len(enviadas) == 1 and not enviadas[0][1] and 'Plantão da Black Friday' in enviadas[0][0], 'toca, com som'
+        avisados = ler_json(os.path.join(pasta, 'plantao.json'), {})['avisados']
+        assert sorted(k.split('|')[0] for k in avisados) == ['digital', 'nc'], avisados
+        assert plantao(ler, enviar, pasta, t + timedelta(minutes=1)) == [linhas[0]] and len(enviadas) == 1, 'não repete'
+        d = rodar(coleta(extras=frescos[:2]), cupons, enviar, pasta, t + timedelta(minutes=5))
+        assert d['modelos'][1]['melhor']['preco'] == 3250 and not any(a['oferta']['preco'] in (3250, 3500) for a in d['alertas']), \
+            'o plantão já avisou: a varredura não repete'
+        # Telegram fora do ar: não anota, e a passada seguinte tenta de novo
+        outro = [postada('promobit-78', 3280, t + timedelta(minutes=8))]
+        falhou = lambda *a, **k: 'TELEGRAM_FALHOU rede'
+        assert plantao(lambda: (outro, {}), falhou, pasta, t + timedelta(minutes=9))[-1] == 'TELEGRAM_FALHOU rede'
+        assert plantao(lambda: (outro, {}), enviar, pasta, t + timedelta(minutes=10))[-1] == 'TELEGRAM_ENVIADO'
+        assert plantao(ler, enviar, pasta, datetime(2026, 12, 2, tzinfo=fontes.BRT)) == ['plantão desligado (fora do modo caçador)']
+
     # ---- Telegram: só o bot do PS5; sem o segredo dele, nada é enviado (nem pelo bot das passagens)
     amb = dict(os.environ)
     try:
@@ -1255,6 +1384,8 @@ def _teste():
 if __name__ == '__main__':
     if '--teste' in sys.argv:
         _teste()
+    elif '--plantao' in sys.argv:
+        print('\n'.join(plantao()))
     elif '--teste-telegram' in sys.argv:
         r = telegram('✅ Teste do buscador do PS5: este é o bot novo, separado do bot das passagens.', botoes=[PAINEL_BOTAO])
         print(r)

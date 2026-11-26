@@ -1,0 +1,66 @@
+name: Plantão PS5
+
+# Só no modo caçador (ps5/config.py, CACADOR_ATE). Cupom de console na Black Friday acaba em minutos: entre as varreduras
+# completas, uma passada por minuto lê só o que muda rápido (lista do Promobit, feed do Gatry, primeira página de cada canal
+# do Telegram) e avisa na hora o post novo no preço que toca. Não mexe no painel nem no histórico; grava só ps5/plantao.json.
+on:
+  workflow_run:                 # depois de cada rodada do buscador (de 10 em 10 min no modo caçador)
+    workflows: ['Buscador PS5']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write               # para guardar ps5/plantao.json (o que já foi avisado)
+
+concurrency:
+  group: ps5-plantao            # um plantão por vez: o seguinte fica na fila e começa quando este termina
+  cancel-in-progress: false
+
+jobs:
+  plantao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Só no modo caçador
+        id: liga
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'FIM'
+          import sys, datetime as dt
+          sys.path.insert(0, 'ps5')
+          import monitor
+          print('liga=' + str(monitor.cacador(dt.datetime.now(monitor.fontes.BRT))).lower())
+          FIM
+      - name: Auto-checagem
+        if: steps.liga.outputs.liga == 'true'
+        run: python3 ps5/monitor.py --teste
+      - name: Plantão (25 min, uma passada por minuto)
+        if: steps.liga.outputs.liga == 'true'
+        env:
+          TELEGRAM_TOKEN_PS5: ${{ secrets.TELEGRAM_TOKEN_PS5 || secrets.PS5_BOT || secrets.PS5_TOKEN }}
+          TELEGRAM_CHAT_ID_PS5: ${{ secrets.TELEGRAM_CHAT_ID_PS5 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PS5_ENVIAR: ${{ github.ref_name == 'main' && '1' || '0' }}   # fora da main, não manda Telegram
+        run: |
+          git config user.name "plantao-ps5"
+          git config user.email "plantao-ps5@users.noreply.github.com"
+          fim=$(( $(date +%s) + 25 * 60 ))
+          while [ "$(date +%s)" -lt "$fim" ]; do
+            inicio=$(date +%s)
+            git pull -q --rebase origin "$GITHUB_REF_NAME" || true   # traz o estado.json da última varredura completa
+            python3 ps5/monitor.py --plantao || true
+            if [ -n "$(git status --porcelain ps5/plantao.json)" ]; then
+              git add ps5/plantao.json
+              git commit -q -m "PS5 plantão $(date '+%d/%m %H:%M')"
+              for i in 1 2 3; do
+                git pull -q --rebase origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && break
+                sleep 3
+              done
+            fi
+            resto=$(( 60 - ($(date +%s) - inicio) ))
+            sleep $(( resto > 5 ? resto : 5 ))
+          done
