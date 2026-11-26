@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 20:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 20:40 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 6h
 
@@ -18,22 +18,24 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.259 por ~R$ 3.407,20
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.299 por ~R$ 4.099; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.299 por ~R$ 4.199
-- KaBuM!: `MUSTPLAY` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥 🎟 Código: «MUSTPLAY» (toque) → PS5 Digital de R$ 4.369,05 por ~R$ 2.621,43; `B760MSI` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 34% OFF 🔥 🎟 Código: «B760MSI» (toque ) → PS5 Digital de R$ 4.369,05 por ~R$ 2.883,57; `ZAFADINHO13` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 13% OFF 🔥 🎟 Código: «ZAFADINHO13» (to) → PS5 Digital de R$ 4.369,05 por ~R$ 3.801,07; `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `ELGATOMIAU` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 12% OFF 🔥 🎟 Código: «ELGATOMIAU» (toq) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76
-- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.599 por ~R$ 3.679,20
+- KaBuM!: `FIMDEJOGO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 51% OFF 🔥 🎟 Código: «FIMDEJOGO» (toqu) → PS5 Digital de R$ 4.369,05 por ~R$ 2.140,83; `TAPETEGRANDAO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 43% OFF 🔥 🎟 Código: «TAPETEGRANDAO» () → PS5 Digital de R$ 4.369,05 por ~R$ 2.490,36; `MUSTPLAY` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥 🎟 Código: «MUSTPLAY» (toque) → PS5 Digital de R$ 4.369,05 por ~R$ 2.621,43; `B760MSI` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 34% OFF 🔥 🎟 Código: «B760MSI» (toque ) → PS5 Digital de R$ 4.369,05 por ~R$ 2.883,57; `NUNCANEMVI` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 30% OFF 🔥 🎟 Código: «NUNCANEMVI» (toq) → PS5 Digital de R$ 4.369,05 por ~R$ 3.058,34
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
-- Mercado Livre: `TECHVIP` (Mercado Livre: cupom de 12% OFF em Eletrônicos); `PROMOEXTRA` (30% OFF em produtos selecionados com cupom Mercado Livre); `PROMOTOP` (Mercado Livre: cupom de 25% OFF em produtos selecionados); `LIVREHOJE` (10% OFF em compras acima de R$199, limite de R$100 Cupom: «LIVREHOJE»); `ELETROTECHMELI` (R$250 OFF em compras acima de R$2.499 Cupom: «ELETROTECHMELI»)
+- Mercado Livre: `CORREHOJEAGORA` (Cupom Mercado Livre: 30% OFF em produtos selecionados); `TECHVIP` (Mercado Livre: cupom de 12% OFF em Eletrônicos); `PROMOEXTRA` (30% OFF em produtos selecionados com cupom Mercado Livre); `PROMOTOP` (Mercado Livre: cupom de 25% OFF em produtos selecionados); `LIVREHOJE` (10% OFF em compras acima de R$199, limite de R$100 Cupom: «LIVREHOJE»)
 
 ## À parte: importado
 
+- PS5 Digital: R$ 4.654,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 100 de 124 buscas hoje
+- Amazon: ok, 55 itens · barrada em 100 de 125 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
@@ -41,9 +43,9 @@ Telegram: sem mensagem nesta varredura
 - Zoom: ok, 31 itens
 - Promobit: ok, 11 itens
 - Gatry: ok, 0 itens (39 ofertas no feed)
-- Telegram: ok, 106 itens (22 de 22 canais)
+- Telegram: ok, 115 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 180 não é console PS5
+Descartados: 217 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
