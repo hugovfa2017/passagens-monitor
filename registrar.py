@@ -34,7 +34,7 @@ BOT = 'passagens'              # qual bot de atendimento.BOTS manda as mensagens
 DICA_24H = "Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata."
 SEMANA = ['seg', 'ter', 'qua', 'qui', 'sex', 'sáb', 'dom']
 CAMPOS = ['quando', 'serie', 'd', 'ne', 'pax', 'pp', 'conf']   # precos.csv
-LIMITE_MENSAGEM = 3900          # o Telegram aceita 4.096 caracteres
+LIMITE_MENSAGEM = 3900          # o Telegram aceita 4.096 caracteres de texto visível (o endereço dos links não conta)
 HORAS_ENTRE_TOQUES = 6          # o mesmo trecho não toca de novo antes disso, a não ser que caia mais
 PAINEL_BOTAO = [{'text': '📊 Abrir o painel', 'url': PAINEL_URL}]
 
@@ -164,6 +164,10 @@ def _enviar_um(token, campos, api=None, espera=5):
                     desc = json.loads(e.read()).get('description', '')[:150]
                 except Exception:
                     pass
+                if 'parse entities' in desc and campos.get('parse_mode') and tentativa == 1:   # HTML recusado: vai sem formatação
+                    campos = {k: v for k, v in campos.items() if k != 'parse_mode'}
+                    campos['text'] = html.unescape(re.sub(r'<[^>]+>', '', campos['text']))
+                    continue
             elif tentativa == 1:     # sem resposta do Telegram: vale tentar de novo
                 time.sleep(espera)
                 continue
@@ -519,16 +523,25 @@ def bloco_do_grupo(g, ts, scan, v, estado, nomes, agora):
     return linhas
 
 
+def visivel(t):
+    """Quanto do texto o Telegram conta no limite: sem as marcas de HTML (nem o endereço dos links)."""
+    return len(html.unescape(re.sub(r'<[^>]+>', '', t)))
+
+
 def montar_mensagem(cabecalho, topo, blocos, rodape, limite=LIMITE_MENSAGEM):
-    """Junta tudo; se passar do limite, tira primeiro o rodapé, depois as linhas de nível 2, depois as de nível 1."""
+    """Junta tudo; se passar do limite, tira primeiro o rodapé, depois as linhas de nível 2, depois as de nível 1 e, por
+    fim, linhas inteiras do fim (nunca corta uma linha no meio: cortar uma marca de HTML faz o Telegram recusar tudo)."""
     def texto(nivel, com_rodape):
         corpo = '\n\n'.join('\n'.join(l for l, n in b if n <= nivel) for b in blocos)
         return f"{cabecalho}" + (f"\n{topo}" if topo else '') + f"\n\n{corpo}" + (f"\n\n<i>{rodape}</i>" if com_rodape and rodape else '')
     for nivel, com_rodape in ((2, True), (2, False), (1, False), (0, False)):
         t = texto(nivel, com_rodape)
-        if len(t) <= limite:
+        if visivel(t) <= limite:
             return t
-    return t[:limite - 1] + '…'
+    linhas = t.split('\n')
+    while len(linhas) > 1 and visivel('\n'.join(linhas) + '\n…') > limite:
+        linhas.pop()
+    return '\n'.join(linhas) + '\n…'
 
 
 def nome_curto(serie, ts, nomes):
@@ -793,6 +806,19 @@ def _teste():
             chamadas.append(metodo)
             raise Recusa()
         assert _enviar_um(tk, {}, api=recusado, espera=0) == 'Recusa 403 Forbidden: bot was blocked by the user' and len(chamadas) == 5
+
+        class SemHtml(Exception):
+            code = 400
+            read = lambda self: b'{"description": "Bad Request: can\'t parse entities: Unclosed end tag at byte offset 4031"}'
+        enviados_ = []
+
+        def exigente(token, metodo, campos):
+            enviados_.append(dict(campos))
+            if campos.get('parse_mode'):
+                raise SemHtml()
+            return {'ok': True}
+        assert _enviar_um(tk, {'text': '<b>R$ 362</b> · Gol &amp; Azul', 'parse_mode': 'HTML'}, api=exigente, espera=0) is None
+        assert [c.get('parse_mode') for c in enviados_] == ['HTML', None] and enviados_[1]['text'] == 'R$ 362 · Gol & Azul', enviados_
         # quem se inscreveu pelo /start entra depois da lista fixa, sem repetir; arquivo de outro bot não abre
         global AQUI
         aqui_real = AQUI
@@ -1186,12 +1212,19 @@ def _teste_registro():
     blocos = [[('linha fixa ' * 20, 0), ('extra nível 1 ' * 20, 1), ('extra nível 2 ' * 20, 2)] for _ in range(4)]
     cheia = montar_mensagem('cabeça', 'topo', blocos, 'rodapé')
     assert 'rodapé' in cheia and 'nível 2' in cheia
-    sem_rodape = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', len(cheia) - 1)
+    sem_rodape = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', visivel(cheia) - 1)
     assert 'rodapé' not in sem_rodape and 'nível 2' in sem_rodape
-    media = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', len(sem_rodape) - 1)
+    media = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', visivel(sem_rodape) - 1)
     assert 'nível 2' not in media and 'nível 1' in media and len(media) < len(sem_rodape)
-    curta = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', len(media) - 1)
-    assert 'nível 1' not in curta and 'linha fixa' in curta and len(montar_mensagem('cabeça', 'topo', blocos, 'rodapé', 300)) == 300
+    curta = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', visivel(media) - 1)
+    assert 'nível 1' not in curta and 'linha fixa' in curta
+    pouca = montar_mensagem('cabeça', 'topo', blocos, 'rodapé', 300)
+    assert visivel(pouca) <= 300 and pouca.endswith('\n…') and 'linha fixa' in pouca, 'tira linhas inteiras do fim'
+    # o limite conta o texto visível: link longo não conta, e linha com marca de HTML nunca é cortada no meio
+    longas = [[(f'• <b>R$ {i}</b> · <a href="https://exemplo/{"x" * 300}">clique aqui</a> (Vendedor)', 0) for i in range(30)]]
+    m = montar_mensagem('cabeça', '', longas, '', 600)
+    assert visivel(m) <= 600 and m.count('<a href=') == m.count('</a>') and m.count('<b>') == m.count('</b>') and len(m) > 600, visivel(m)
+    assert len(montar_mensagem('cabeça', '', longas[:1][:1], '')) > 3900, 'com os links, o texto cru passa de 3.900 e tudo bem'
 
     # ---- modo de teste: só o dono recebe, sem som, com a marca [TESTE]; modo 0 não envia
     amb = dict(os.environ)
