@@ -41,6 +41,12 @@ marcando "Mandar o resumo no Telegram agora".
   do Promobit, o feed do Gatry e a primeira página de cada canal do Telegram, e avisa com som o post de até 1 h, ainda não
   visto, de modelo com alerta e no preço que toca (alvo ou `AVISAR_ABAIXO`). A mensagem termina com "⚡ Plantão da Black
   Friday". O que ele avisou fica em `plantao.json`, e a varredura completa não repete. Fora do modo caçador, não roda.
+- **Aviso antecipado de cupom (no plantão):** os canais costumam anunciar o cupom antes de liberar ("🔥 Às 18h: CUPOM DE
+  4 DÍGITOS no Mercado Livre!", às 17h15 de 25/11; às 18h04 já tinha esgotado). Post que anuncia cupom ou oferta
+  relâmpago com hora marcada, numa loja que vende PS5 e que tira pelo menos `ANUNCIO_MINIMO` (R$ 150) de um console,
+  vira um aviso ⏰ na hora, com som, e um lembrete 🚨 `ANUNCIO_ANTES_MIN` (2) minutos antes de liberar. É um aviso por
+  loja e horário, mesmo que vários canais repitam. Não conta: hora que já passou, hora de "usar a partir de",
+  "liberado" e "esgotado", cupom de outra categoria (moda, casa, beleza...).
 - **Só para o dono (raro):** nenhuma oferta em 6 varreduras seguidas; uma fonte quebrou (6 falhas seguidas por erro
   que não é bloqueio, sem som); ou uma fonte passou um dia inteiro barrando todas as buscas (sem som). No máximo um aviso por fonte a cada 3 dias. Bloqueio que vai e volta não gera
   mensagem: a Amazon, por exemplo, barra o servidor do GitHub em boa parte das buscas e volta sozinha. A proporção de

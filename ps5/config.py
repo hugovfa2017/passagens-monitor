@@ -32,6 +32,11 @@ MODELOS_COM_ALERTA = ['leitor', 'digital']   # Pro fora do orçamento (20/11/202
 # Depois volta sozinho: sem som, sem plantão e uma rodada a cada 30 min.
 CACADOR_ATE = date(2026, 12, 1)   # None desliga na hora
 
+# Aviso antecipado (plantão): post de canal que anuncia cupom com hora marcada ("Às 18h: cupom de R$ 1.000 no Mercado
+# Livre") numa loja que vende PS5 vira aviso na hora, com som, e um lembrete uns minutos antes de liberar.
+ANUNCIO_MINIMO = 150      # reais que o cupom tira de um PS5 (cupom em %: sobre ~R$ 3.800, respeitando o teto do cupom)
+ANUNCIO_ANTES_MIN = 2     # minutos antes da hora marcada para o lembrete
+
 # Resumo diário, sem som, com o melhor preço de cada modelo (hora de Brasília). None desliga.
 RESUMO_DIARIO_HORA = 9
 
