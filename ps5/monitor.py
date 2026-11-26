@@ -252,7 +252,7 @@ def fundir(ofertas):
 def lembrar_postadas(ofertas, estado, agora, conferir=None, maximo=6, prazo_s=25):
     """Guarda as ofertas postadas (somem da 1ª página em poucas horas) e devolve as atuais mais as lembradas ainda válidas.
     conferir(link) -> True quando a página diz que a oferta acabou: a lembrada do Promobit que saiu da lista é conferida
-    (as `maximo` mais baratas, em até `prazo_s` segundos) e, se acabou, é esquecida na hora."""
+    (as `maximo` mais baratas que são console, em até `prazo_s` segundos) e, se acabou, é esquecida na hora."""
     mem = estado.pop('promobit', None) or {}
     mem.update(estado.get('postadas') or {})
     atuais = set()
@@ -266,7 +266,8 @@ def lembrar_postadas(ofertas, estado, agora, conferir=None, maximo=6, prazo_s=25
     estado['postadas'] = mem = {k: o for k, o in mem.items() if agora - fontes._quando(o['publicado']) <= validade(o)}
     if conferir:   # saiu da 1ª página: pode ter só sido empurrada por posts mais novos, ou pode ter acabado
         fim = time.monotonic() + prazo_s
-        saidas = sorted((o['preco'], k) for k, o in mem.items() if k not in atuais and o.get('origem') == 'promobit')
+        saidas = sorted((o['preco'], k) for k, o in mem.items() if k not in atuais and o['link'].startswith(fontes.PROMOBIT + '/oferta/')
+                        and avaliar(o['titulo'], o['preco'])['modelo'])      # jogo e acessório também aparecem na lista
         for _, k in saidas[:maximo]:
             if time.monotonic() > fim:
                 break
@@ -1254,20 +1255,24 @@ def _teste():
 
     # ---- oferta do Promobit que saiu da lista: a página dela diz se acabou; a que acabou é esquecida na hora
     def postada(id_, preco, quando_=agora, **kw):
-        return of('Promobit', 'Mercado Livre', 'Console PlayStation 5 Slim Digital', preco, id_,
+        return of('Promobit', 'Mercado Livre', 'Console PlayStation 5 Slim Digital', preco, id_, link=f'{fontes.PROMOBIT}/oferta/{id_}',
                   publicado=quando_.strftime('%Y-%m-%dT%H:%M:%S%z'), origem='promobit', **kw)
     est = {}
-    lembrar_postadas([postada('promobit-1', 3369), postada('promobit-2', 3500), postada('promobit-3', 3600),
+    jogo = of('Promobit', 'Mercado Livre', 'Jogo Grand Theft Auto VI PS5', 299, 'promobit-9', publicado=agora.strftime('%Y-%m-%dT%H:%M:%S%z'),
+              origem='promobit', link=f'{fontes.PROMOBIT}/oferta/promobit-9')
+    canal = {**grupo('cupons_desconto', 'Mercado Livre', 'PS5 Slim Digital', 3300, 0), 'origem': 'promobit'}   # canal do Promobit: t.me
+    lembrar_postadas([postada('promobit-1', 3369), postada('promobit-2', 3500), postada('promobit-3', 3600), jogo, canal,
                       grupo('jogobarato', 'Mercado Livre', 'PS5 Slim Digital', 3399, 0)], est, agora)
     abertas = []
     conferir = lambda link: abertas.append(link.rsplit('/', 1)[1]) or (True if link.endswith('-1') else None)   # None: não abriu
     r = lembrar_postadas([], est, agora + timedelta(minutes=10), conferir, maximo=2)
-    assert abertas == ['promobit-1', 'promobit-2'], 'só as do Promobit, da mais barata, até o máximo'
-    assert sorted(o['id'] for o in r) == ['promobit-2', 'promobit-3', 'tg-jogobarato-0-3399'] and 'promobit-1' not in est['postadas']
+    assert abertas == ['promobit-1', 'promobit-2'], 'só console do Promobit (o jogo, mais barato, não), da mais barata, até o máximo'
+    assert sorted(o['id'] for o in r) == ['promobit-2', 'promobit-3', 'promobit-9', 'tg-cupons_desconto-0-3300', 'tg-jogobarato-0-3399'] \
+        and 'promobit-1' not in est['postadas'], 'só a página de oferta do site do Promobit é aberta (não o canal dele)'
     assert all('saiu da lista' in o['obs'] for o in r)
     abertas.clear()
     r = lembrar_postadas([postada('promobit-2', 3500)], est, agora + timedelta(minutes=20), conferir)
-    assert abertas == ['promobit-3'] and sorted(o['id'] for o in r) == ['promobit-2', 'promobit-3', 'tg-jogobarato-0-3399'], abertas
+    assert abertas == ['promobit-3'] and len(r) == 5, abertas
 
     # ---- plantão: post novo no preço toca na hora, uma vez só; a varredura completa não repete o aviso
     with tempfile.TemporaryDirectory() as pasta:
