@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 15:32",
+  "quando": "2026-11-26 16:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,27 +37,29 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 244,
-    "conferidos": 10,
+    "voos": 321,
+    "conferidos": 12,
     "ofertas": 10,
     "bloqueio": null,
     "listas": {
-     "vazias": 2,
-     "repetidas": 3,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 8,
-     "lidas": 6
+     "telas": 10,
+     "lidas": 10
     },
-    "sem_preco": {},
-    "seg": 133
+    "sem_preco": {
+     "tela de compra sem vendedores": 2
+    },
+    "seg": 52
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -81,9 +83,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 104,
+   "Azul": 93,
    "Gol": 136,
-   "LATAM": 74
+   "LATAM": 85
   },
   "grupos": [
    {
@@ -300,7 +302,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1645,
+  "pp": 1854,
   "conf": true
  },
  {
@@ -309,7 +311,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1514,
+  "pp": 1625,
   "conf": true
  },
  {
@@ -318,7 +320,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1489,
+  "pp": 1525,
   "conf": true
  },
  {
@@ -583,6 +585,15 @@
   "serie": "r.volta",
   "d": "2027-01-12",
   "dia": "ter 12/01",
+  "ne": "REC",
+  "pp": 806,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
   "ne": "REC",
   "pp": 806,
   "conf": true
