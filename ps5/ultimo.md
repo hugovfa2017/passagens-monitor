@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-26 02:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 02:40 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 8h
+**Mais barato agora:** PS5 Digital por R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 9h
 
 - **PS5 com leitor de disco**: R$ 3.650 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 8h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-- **PS5 Digital**: R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 8h
+- **PS5 Digital**: R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 9h
    sem cupom: R$ 4.369,05 na KaBuM!
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
@@ -31,12 +31,12 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 33 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 11 de 15 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 12 de 16 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 7 itens
-- Webcontinental: ok, 50 itens
+- Fast Shop: ok, 8 itens
+- Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 29 itens
+- Zoom: ok, 30 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 34 itens (22 de 22 canais)
