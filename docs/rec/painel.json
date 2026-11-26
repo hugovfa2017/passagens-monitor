@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 03:08",
+  "quando": "2026-11-26 04:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,29 +37,27 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 209,
-    "conferidos": 10,
+    "voos": 321,
+    "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 3,
-     "repetidas": 4,
+     "vazias": 0,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
      "telas": 11,
-     "lidas": 10
+     "lidas": 11
     },
-    "sem_preco": {
-     "tela de compra sem vendedores": 1
-    },
-    "seg": 91
+    "sem_preco": {},
+    "seg": 57
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -82,9 +80,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 100,
+   "Azul": 96,
    "Gol": 136,
-   "LATAM": 73
+   "LATAM": 71
   },
   "grupos": [
    {
@@ -291,6 +289,15 @@
   "conf": true
  },
  {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
+  "ne": "REC",
+  "pp": 1659,
+  "conf": true
+ },
+ {
   "tipo": "trecho",
   "serie": "r.volta",
   "grupo": "r",
@@ -308,7 +315,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 928,
+   "pp": 930,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -467,6 +474,10 @@
    [
     "2026-11-26 01:07",
     928
+   ],
+   [
+    "2026-11-26 04:27",
+    930
    ]
   ]
  },
@@ -494,7 +505,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 928,
+  "pp": 930,
   "conf": true
  },
  {
@@ -511,7 +522,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2383,
+  "pp": 2385,
   "ida": {
    "d": "2026-12-22",
    "orig": "CGH",
@@ -533,7 +544,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 928,
+   "pp": 930,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
