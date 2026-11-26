@@ -34,7 +34,7 @@
   "grupos": [
     {"id": "h", "rotulo": "H", "emoji": "🧍", "assentos": 1,
      "trechos": [
-       {"id": "depois", "sentido": "volta", "nome": "Volta", "curto": "Volta", "datas": {"de": "2027-02-01", "ate": "2027-03-31"}, "alvo": 350, "listar_ate": 400,
+       {"id": "depois", "sentido": "volta", "nome": "Volta", "curto": "Volta", "datas": {"de": "2027-02-01", "ate": "2027-03-31"}, "alvo": 350, "listar_ate": 450,
         "rodizio": {"fixas": 10, "giro": 30}}
      ]}
   ]
