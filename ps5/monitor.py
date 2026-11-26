@@ -264,6 +264,8 @@ def lembrar_postadas(ofertas, estado, agora, conferir=None, maximo=6, prazo_s=25
             atuais.add(o['id'])
     validade = lambda o: timedelta(hours=config.HORAS_OFERTA_GRUPO if o.get('tipo') == 'grupo' else config.HORAS_OFERTA_POSTADA)
     estado['postadas'] = mem = {k: o for k, o in mem.items() if agora - fontes._quando(o['publicado']) <= validade(o)}
+    encerradas = {k: e for k, e in (estado.get('encerradas') or {}).items()
+                  if agora - datetime.fromisoformat(e['quando']) <= timedelta(hours=config.HORAS_OFERTA_POSTADA)}
     if conferir:   # saiu da 1ª página: pode ter só sido empurrada por posts mais novos, ou pode ter acabado
         fim = time.monotonic() + prazo_s
         saidas = sorted((o['preco'], k) for k, o in mem.items() if k not in atuais and o['link'].startswith(fontes.PROMOBIT + '/oferta/')
@@ -272,7 +274,18 @@ def lembrar_postadas(ofertas, estado, agora, conferir=None, maximo=6, prazo_s=25
             if time.monotonic() > fim:
                 break
             if conferir(mem[k]['link']):
-                del mem[k]
+                o = mem.pop(k)
+                if o.get('cupom') and not o['cupom'].startswith('cupom'):   # o negócio acabou: vale para as cópias dele
+                    encerradas[k] = {'loja': loja_base(o), 'cupom': o['cupom'].upper(), 'preco': o['preco'],
+                                     'quando': agora.isoformat(timespec='seconds')}
+    estado['encerradas'] = encerradas
+    # post de canal do mesmo negócio (mesma loja, mesmo cupom, preço a até R$ 15) que o Promobit deu como encerrado; o
+    # mesmo cupom em outro produto ou outro preço continua valendo
+    copia = lambda o: o.get('tipo') == 'grupo' and o.get('cupom') and any(
+        e['cupom'] == o['cupom'].upper() and e['loja'] == loja_base(o) and abs(e['preco'] - o['preco']) <= 15 for e in encerradas.values())
+    for k in [k for k, o in mem.items() if copia(o)]:
+        del mem[k]
+    ofertas = [o for o in ofertas if not copia(o)]
     lembradas = [{**o, 'tipo': o.get('tipo', 'postada'), 'origem': o.get('origem', 'promobit'), 'ressalvas': o.get('ressalvas', []),
                   'obs': o.get('obs', '') + ' (saiu da lista; pode ter acabado)'} for k, o in mem.items() if k not in atuais]
     return ofertas + lembradas
@@ -568,6 +581,16 @@ def guarda_min(agora):
     return 7 if cacador(agora) else 25
 
 
+def horas_alerta(agora):
+    """Até quantas horas um post toca alerta na varredura (no caçador, o plantão já pegou o post novo)."""
+    return config.HORAS_ALERTA_POSTADA_CACADOR if cacador(agora) else config.HORAS_ALERTA_POSTADA
+
+
+def sem_modelo_serve(preco):
+    """Post que não diz o modelo ("PS5 Slim") serve quando o preço está no limite de todos os modelos com alerta."""
+    return preco <= min((limite(m) for m in config.MODELOS_COM_ALERTA), default=0)
+
+
 def limite(m):
     """Preço que faz um modelo tocar: o alvo dele ou config.AVISAR_ABAIXO, o que for maior."""
     return max(config.ALVOS.get(m, 0), config.AVISAR_ABAIXO or 0)
@@ -586,7 +609,7 @@ def decidir_alertas(resumo, estado, agora, plantao=None):
         o = r['melhor']
         if o:
             recorde = estado['menor'].get(m)
-            velha = o['tipo'] in ('postada', 'grupo') and (o.get('idade_h') or 0) > config.HORAS_ALERTA_POSTADA
+            velha = o['tipo'] in ('postada', 'grupo') and (o.get('idade_h') or 0) > horas_alerta(agora)
             motivo = None
             if m in config.MODELOS_COM_ALERTA and not velha and not recente(o['chave']):
                 if o['preco'] <= config.ALVOS.get(m, 0):
@@ -602,11 +625,11 @@ def decidir_alertas(resumo, estado, agora, plantao=None):
                 estado['menor'][m] = {'preco': o['preco'], 'quando': agora.strftime('%Y-%m-%d %H:%M'), 'loja': o['loja'],
                                       'cupom': o['cupom'], 'titulo': o['titulo'], 'link': o['link']}
         d = r.get('nao_confirmada')
-        if d and m in config.MODELOS_COM_ALERTA and (d.get('idade_h') or 0) <= 3 and not recente('nc|' + d['chave']) \
+        if d and m in config.MODELOS_COM_ALERTA and (d.get('idade_h') or 0) <= min(3, horas_alerta(agora)) and not recente('nc|' + d['chave']) \
                 and (d['preco'] <= limite(m) or (o and d['preco'] <= o['preco'] - 150)):
             alertas.append({'modelo': m, 'motivo': 'oferta de grupo ainda NÃO confirmada (confira antes de se animar)', 'oferta': d,
                             'som': cacador(agora) and d['preco'] <= limite(m)
-                                   and 'o post não diz o modelo' not in (d.get('ressalvas') or [])})
+                                   and ('o post não diz o modelo' not in (d.get('ressalvas') or []) or sem_modelo_serve(d['preco']))})
             ja['nc|' + d['chave']] = agora.isoformat(timespec='seconds')
     estado['alertados'] = {k: v for k, v in ja.items() if agora - datetime.fromisoformat(v) < timedelta(days=7)}
     return alertas
@@ -875,7 +898,7 @@ def novidades(itens, estado, avisados, agora):
     for o in ps5:
         m = o['modelo']
         if m not in config.MODELOS_COM_ALERTA or o['tipo'] not in ('postada', 'grupo') or (o.get('idade_h') or 0) > PLANTAO_HORAS \
-                or o['preco'] > limite(m) or 'o post não diz o modelo' in o['ressalvas']:
+                or o['preco'] > limite(m) or ('o post não diz o modelo' in o['ressalvas'] and not sem_modelo_serve(o['preco'])):
             continue
         chave = ('nc|' if o['confianca'] == 'C' else '') + o['chave']
         if recente(chave) or recente(o['chave']):
@@ -1144,7 +1167,7 @@ def _teste():
                     of('Amazon', 'Amazon', 'Sony PlayStation 5 Slim Digital Edition Console - Middle East Version', 4369.9, 'amazon-ksa'),
                     of('KaBuM!', 'KaBuM!', 'Console PlayStation 5 Slim Digital 825GB', 3650, 'kabum-ob', openbox=True),
                     of('Promobit', 'Shopee', 'PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony', cupom_shopee, 'promobit-1',
-                       cupom='11DO11TECH', cupom_origem='postado', publicado='2026-11-13T08:38:00-0300', origem='promobit'),
+                       cupom='11DO11TECH', cupom_origem='postado', publicado='2026-11-13T09:38:00-0300', origem='promobit'),
                     of('Promobit', 'Mercado Livre', 'Unidade De Disco Playstation 5 Slim', 569.48, 'promobit-2',
                        publicado='2026-11-13T09:25:00-0300'),
                     of('Promobit', 'Aliexpress', 'PlayStation 5 Edição Digital 825GB', 3800, 'promobit-velho',
@@ -1345,6 +1368,41 @@ def _teste():
     abertas.clear()
     r = lembrar_postadas([postada('promobit-2', 3500)], est, agora + timedelta(minutes=20), conferir)
     assert abertas == ['promobit-3'] and len(r) == 5, abertas
+
+    # ---- negócio encerrado no Promobit derruba as cópias dele nos canais (mesma loja, mesmo cupom, preço a até R$ 15);
+    #      o mesmo cupom em outro produto, outra loja ou outro preço continua (00h06 de 26/11: tocou um pacote já acabado)
+    est = {}
+    fim = postada('promobit-50', 3369, cupom='PM52MP66', cupom_origem='postado')
+    copia_ = grupo('jogobarato', 'Mercado Livre', 'PS5 Slim Digital + 2 jogos', 3375, 0, cupom='PM52MP66', cupom_origem='postado')
+    outro_produto = grupo('promotop', 'Mercado Livre', 'PS5 Slim com leitor', 4199, 0, cupom='pm52mp66', cupom_origem='postado')
+    outra_loja = grupo('xet', 'Amazon', 'PS5 Slim Digital', 3370, 0, cupom='PM52MP66', cupom_origem='postado')
+    sem_cupom = grupo('cj', 'Mercado Livre', 'PS5 Slim Digital', 3369, 0)
+    canais_ = [copia_, outro_produto, outra_loja, sem_cupom]
+    lembrar_postadas([fim, *canais_], est, agora)
+    r = lembrar_postadas(list(canais_), est, agora + timedelta(minutes=10), lambda link: link.endswith('promobit-50'))
+    assert sorted(o['id'] for o in r) == sorted(o['id'] for o in canais_[1:]), [o['id'] for o in r]
+    assert copia_['id'] not in est['postadas'] and list(est['encerradas']) == ['promobit-50']
+    r = lembrar_postadas(list(canais_), est, agora + timedelta(minutes=20))   # rodada seguinte: a cópia continua fora
+    assert copia_['id'] not in [o['id'] for o in r] and len(r) == 3
+    r = lembrar_postadas(list(canais_), est, agora + timedelta(hours=37))     # a lembrança do encerrado vence com a oferta
+    assert est['encerradas'] == {} and copia_['id'] in [o['id'] for o in r]
+
+    # ---- no caçador, post de mais de 2 h não toca na varredura (o plantão já pegou o novo); fora dele, 6 h
+    assert horas_alerta(agora) == 2 and horas_alerta(datetime(2026, 12, 2, tzinfo=fontes.BRT)) == 6
+    alvos_, avisar_ = config.ALVOS, config.AVISAR_ABAIXO
+    try:
+        config.ALVOS, config.AVISAR_ABAIXO = {'leitor': 3699, 'digital': 3699, 'pro': 6299}, 3600
+        assert sem_modelo_serve(3699) and not sem_modelo_serve(3700)
+        # post que não diz o modelo ("PS5 Slim") no preço de qualquer modelo: o plantão avisa
+        with tempfile.TemporaryDirectory() as pasta:
+            gravar_json(os.path.join(pasta, 'estado.json'), {})
+            t = agora + timedelta(minutes=5)
+            vagos_ = [grupo('pechinchou', 'Amazon', 'PlayStation 5 Slim', 3499, 3), grupo('promotop', 'Amazon', 'PlayStation 5 Slim', 3800, 4)]
+            enviadas.clear()
+            linhas = plantao(lambda: (vagos_, {}), enviar, pasta, t)
+            assert [l.split()[2] for l in linhas if l.startswith('ALERTA')] == ['3499'], linhas
+    finally:
+        config.ALVOS, config.AVISAR_ABAIXO = alvos_, avisar_
 
     # ---- plantão: post novo no preço toca na hora, uma vez só; a varredura completa não repete o aviso
     with tempfile.TemporaryDirectory() as pasta:
