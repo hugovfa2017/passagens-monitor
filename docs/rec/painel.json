@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 08:42",
+  "quando": "2026-11-26 09:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,36 +37,36 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 170,
+    "voos": 286,
     "conferidos": 10,
-    "ofertas": 10,
+    "ofertas": 8,
     "bloqueio": null,
     "listas": {
-     "vazias": 4,
-     "repetidas": 6,
+     "vazias": 1,
+     "repetidas": 4,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 7
+     "telas": 8,
+     "lidas": 8
     },
     "sem_preco": {
-     "a lista não abriu": 1,
-     "tela de compra sem vendedores": 1
+     "tela de compra sem vendedores": 2,
+     "a lista não abriu": 1
     },
-    "seg": 208
+    "seg": 140
    },
    "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
     "buscas": 4,
@@ -86,7 +86,7 @@
   "taxa_mala": {
    "Azul": 104,
    "Gol": 136,
-   "LATAM": 96
+   "LATAM": 77
   },
   "grupos": [
    {
@@ -108,17 +108,17 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-22",
+   "d": "2026-12-23",
    "orig": "VCP",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "10:50",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1377,
+   "cia": "Azul",
+   "saida": "13:25",
+   "chegada": "16:30",
+   "tipo": "direto",
+   "pp": 1025,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261222/4/0/0/Y/",
-   "dia": "ter 22/12"
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261223/4/0/0/Y/",
+   "dia": "qua 23/12"
   },
   "mais_barata": null,
   "comprado": null,
@@ -265,6 +265,10 @@
    [
     "2026-11-26 08:42",
     1377
+   ],
+   [
+    "2026-11-26 09:28",
+    1025
    ]
   ]
  },
@@ -302,6 +306,15 @@
   "dia": "ter 22/12",
   "ne": "REC",
   "pp": 1377,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
+  "ne": "REC",
+  "pp": 1025,
   "conf": true
  },
  {
@@ -528,23 +541,32 @@
   "conf": true
  },
  {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
+  "ne": "REC",
+  "pp": 976,
+  "conf": true
+ },
+ {
   "tipo": "pacote",
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2305,
+  "pp": 1953,
   "ida": {
-   "d": "2026-12-22",
+   "d": "2026-12-23",
    "orig": "VCP",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "10:50",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1377,
+   "cia": "Azul",
+   "saida": "13:25",
+   "chegada": "16:30",
+   "tipo": "direto",
+   "pp": 1025,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261222/4/0/0/Y/",
-   "dia": "ter 22/12"
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/VCPREC261223/4/0/0/Y/",
+   "dia": "qua 23/12"
   },
   "volta": {
    "d": "2027-01-12",
