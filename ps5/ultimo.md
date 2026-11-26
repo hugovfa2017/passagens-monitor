@@ -1,19 +1,18 @@
-# PS5 — última varredura: 2026-11-26 13:49 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 14:00 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.210,25 na Magazine Luiza com cupom SQUAD300BF · só no app, visto em 3 lugares, postado há 0h
+**Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD300BF · visto em 3 lugares, postado há 0h
 
 - **PS5 com leitor de disco**: R$ 4.084 na KaBuM! com cupom CUPOMDOJASON · postado há 3h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-- **PS5 Digital**: R$ 3.210,25 na Magazine Luiza com cupom SQUAD300BF · só no app, visto em 3 lugares, postado há 0h
+- **PS5 Digital**: R$ 3.210 na Magazine Luiza com cupom SQUAD300BF · visto em 3 lugares, postado há 0h
    sem cupom: R$ 3.510 na Magazine Luiza
-   não confirmada: R$ 3.210 na Gazin com cupom SQUAD300BF · só no app, postado há 0h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
 
-- PS5 Digital: oferta de grupo ainda NÃO confirmada (confira antes de se animar)
+Nenhum alerta nesta varredura.
 
-Telegram: TELEGRAM_ENVIADO
+Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
@@ -32,7 +31,7 @@ Telegram: TELEGRAM_ENVIADO
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 70 de 84 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 71 de 85 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
@@ -40,7 +39,7 @@ Telegram: TELEGRAM_ENVIADO
 - Zoom: ok, 31 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 52 itens (22 de 22 canais)
+- Telegram: ok, 54 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
 Descartados: 163 não é console PS5
