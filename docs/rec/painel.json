@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 12:28",
+  "quando": "2026-11-26 13:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,35 +37,33 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 192,
+    "voos": 326,
     "conferidos": 11,
-    "ofertas": 9,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 4,
-     "repetidas": 6,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 6,
-     "lidas": 6
+     "telas": 10,
+     "lidas": 10
     },
-    "sem_preco": {
-     "tela de compra sem vendedores": 2
-    },
-    "seg": 90
-   },
-   "Vai de Promo": {
-    "buscas": 6,
-    "com_voo": 6
+    "sem_preco": {},
+    "seg": 50
    },
    "MaxMilhas": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "Vai de Promo": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
     "buscas": 4,
@@ -83,8 +81,8 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 87,
-   "Gol": 119,
+   "Azul": 93,
+   "Gol": 136,
    "LATAM": 79
   },
   "grupos": [
@@ -122,7 +120,12 @@
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": null,
+  "momento": {
+   "sinal": "acompanhar",
+   "motivos": [
+    "para o Google, preço normal (a rota costuma ficar entre R$1.650 e R$3.625)"
+   ]
+  },
   "fora": null,
   "historico": [
    [
@@ -286,10 +289,28 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 2262,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1625,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1581,
+  "pp": 1524,
   "conf": true
  },
  {
@@ -321,17 +342,17 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-12",
+   "d": "2027-01-13",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "LATAM",
-   "saida": "03:40",
-   "chegada": "09:50",
-   "tipo": "escala 1h45",
-   "pp": 932,
-   "vend": "CIA LATAM",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQlNCKgJMQTIEMzEyMyIgCgNCU0ISCjIwMjctMDEtMTIaA0NHSCoCTEEyBDM4NDVqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "ter 12/01"
+   "cia": "Gol",
+   "saida": "16:10",
+   "chegada": "19:30",
+   "tipo": "direto",
+   "pp": 836,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "dia": "qua 13/01"
   },
   "mais_barata": null,
   "comprado": null,
@@ -339,7 +360,7 @@
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.300 e R$3.375)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
    ]
   },
   "fora": null,
@@ -515,8 +536,21 @@
    [
     "2026-11-26 12:28",
     932
+   ],
+   [
+    "2026-11-26 13:27",
+    836
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 1420,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -542,7 +576,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 976,
+  "pp": 836,
   "conf": true
  },
  {
@@ -550,7 +584,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2102,
+  "pp": 2006,
   "ida": {
    "d": "2026-12-23",
    "orig": "CGH",
@@ -565,17 +599,17 @@
    "dia": "qua 23/12"
   },
   "volta": {
-   "d": "2027-01-12",
+   "d": "2027-01-13",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "LATAM",
-   "saida": "03:40",
-   "chegada": "09:50",
-   "tipo": "escala 1h45",
-   "pp": 932,
-   "vend": "CIA LATAM",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQlNCKgJMQTIEMzEyMyIgCgNCU0ISCjIwMjctMDEtMTIaA0NHSCoCTEEyBDM4NDVqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "ter 12/01"
+   "cia": "Gol",
+   "saida": "16:10",
+   "chegada": "19:30",
+   "tipo": "direto",
+   "pp": 836,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "dia": "qua 13/01"
   },
   "juntas": null
  }
