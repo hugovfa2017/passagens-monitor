@@ -1,14 +1,14 @@
-# PS5 — última varredura: 2026-11-26 20:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 20:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 6h
 
 - **PS5 com leitor de disco**: R$ 3.671 no Mercado Livre com cupom PROMOTOP · visto em 4 lugares, postado há 6h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-   não confirmada: R$ 3.383 na ? com cupom PROMOAGORA · visto em 3 lugares, postado há 5h
+   não confirmada: R$ 3.383 na ? com cupom PROMOAGORA · visto em 3 lugares, postado há 6h
 - **PS5 Digital**: R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 6h
    sem cupom: R$ 3.510,25 na Magazine Luiza
    não confirmada: R$ 2.699 na ? com cupom MUSTPLAY · preço muito abaixo do normal, postado há 3h
-- **PS5 Pro**: R$ 7.837,50 na Amazon · à vista
+- **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
 
@@ -26,27 +26,24 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
-- PS5 Digital: R$ 4.654,90 na Amazon
-- PS5 Digital: R$ 4.654,90 na Amazon
-- PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon
+- PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: ok, 45 itens · barrada em 98 de 121 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 99 de 122 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 32 itens
-- Promobit: ok, 11 itens
-- Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 100 itens (22 de 22 canais)
+- Promobit: ok, 10 itens
+- Gatry: ok, 0 itens (39 ofertas no feed)
+- Telegram: ok, 101 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 202 não é console PS5
+Descartados: 179 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
