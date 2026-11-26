@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 10:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 10:20 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.955,91 na Shopee · confira se é a versão nacional, postado há 0h
 
@@ -14,7 +14,7 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.370,07 por ~R$ 3.845,66; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.370,07 por ~R$ 3.933,06; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.370,07 por ~R$ 4.270,07
+- KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `CASATECH10` (Garanta 10% OFF em todo o site com cupom KaBuM!) → PS5 Digital de R$ 4.369,05 por ~R$ 3.932,15; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.369,05 por ~R$ 4.269,05
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.464,05 por ~R$ 4.214,05
 - Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.464,90 por ~R$ 3.571,92
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.558,03 por ~R$ 4.358,03
@@ -28,10 +28,10 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 35 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 50 de 61 buscas hoje
+- KaBuM!: ok, 36 itens
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 51 de 62 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 7 itens
+- Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 31 itens
