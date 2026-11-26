@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 06:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 06:40 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.947 na Amazon com cupom BLACK100OFF · visto em 2 lugares, postado há 6h
 
@@ -6,7 +6,7 @@
    não confirmada: R$ 3.650 no Mercado Livre com cupom PM52MP66 · o post não diz o modelo, postado há 12h
 - **PS5 Digital**: R$ 3.947 na Amazon com cupom BLACK100OFF · visto em 2 lugares, postado há 6h
    sem cupom: R$ 4.369,05 na KaBuM!
-   não confirmada: R$ 3.732,55 na Parcelado · postado há 10h
+   não confirmada: R$ 3.732,55 na Parcelado · postado há 11h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
@@ -32,7 +32,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 32 de 39 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 33 de 40 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
