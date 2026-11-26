@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 01:07",
+  "quando": "2026-11-26 03:08",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,40 +37,41 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 212,
+    "voos": 209,
     "conferidos": 10,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 3,
-     "repetidas": 5,
+     "repetidas": 4,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 8,
-     "lidas": 8
+     "telas": 11,
+     "lidas": 10
     },
-    "sem_preco": {},
-    "seg": 94
+    "sem_preco": {
+     "tela de compra sem vendedores": 1
+    },
+    "seg": 91
    },
    "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
-   },
-   "123milhas": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 8,
+    "com_voo": 8
    },
    "Viaza": {
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "123milhas": {
     "buscas": 4,
     "com_voo": 0,
     "pulado": true
@@ -81,7 +82,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 96,
+   "Azul": 100,
    "Gol": 136,
    "LATAM": 73
   },
@@ -108,24 +109,19 @@
    "d": "2026-12-22",
    "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:40",
-   "chegada": "14:50",
-   "tipo": "direto",
-   "pp": 1402,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
+   "cia": "LATAM",
+   "saida": "12:05",
+   "chegada": "17:00",
+   "tipo": "com escala",
+   "pp": 1455,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": {
-   "sinal": "acompanhar",
-   "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.750 e R$3.500)"
-   ]
-  },
+  "momento": null,
   "fora": null,
   "historico": [
    [
@@ -251,6 +247,10 @@
    [
     "2026-11-26 00:30",
     1402
+   ],
+   [
+    "2026-11-26 03:08",
+    1455
    ]
   ]
  },
@@ -261,6 +261,15 @@
   "dia": "sáb 19/12",
   "ne": "REC",
   "pp": 1926,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1533,
   "conf": true
  },
  {
@@ -278,16 +287,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1402,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
-  "ne": "REC",
-  "pp": 1659,
+  "pp": 1455,
   "conf": true
  },
  {
@@ -498,22 +498,31 @@
   "conf": true
  },
  {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
+  "ne": "REC",
+  "pp": 956,
+  "conf": true
+ },
+ {
   "tipo": "pacote",
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2330,
+  "pp": 2383,
   "ida": {
    "d": "2026-12-22",
    "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "11:40",
-   "chegada": "14:50",
-   "tipo": "direto",
-   "pp": 1402,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
+   "cia": "LATAM",
+   "saida": "12:05",
+   "chegada": "17:00",
+   "tipo": "com escala",
+   "pp": 1455,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%5D",
    "dia": "ter 22/12"
   },
   "volta": {
