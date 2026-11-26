@@ -122,6 +122,12 @@ def melhor_por_voo(ofertas):
     return list(melhor.values())
 
 
+def boas(ofertas, t, ate):
+    """Todas as opções do trecho com preço confirmado até `ate` por pessoa (o melhor preço de cada voo), da mais barata à
+    mais cara: para quem quer ver tudo o que está num preço aceitável, não só a recomendada (viagem.json: listar_ate)."""
+    return sorted((o for o in melhor_por_voo(do_trecho(ofertas, t)) if o['pp'] <= ate), key=lambda o: (o['pp'], o['d'], o['saida']))
+
+
 def recomendar(ofertas, v, t, anterior=None):
     """{'recomendada': oferta ou None, 'mais_barata': oferta ou None} de um trecho, só com preço confirmado.
     recomendada: menor preço + peso; se a da rodada anterior continua a até R$15 da melhor, fica ela (não fica trocando).
@@ -275,6 +281,9 @@ def _teste():
     par[1]['pp'] = 480
     assert recomendar(par, v, volta, anterior=('2027-01-19', 'Gol', 'FOR', 'GRU', '12:50'))['recomendada']['saida'] == '06:00'
     assert recomendar([], v, volta) == {'recomendada': None, 'mais_barata': None}
+    # todas até um preço: o melhor de cada voo, da mais barata à mais cara; acima do limite fica de fora
+    assert [(o['orig'], o['pp']) for o in boas(ofertas, volta, 505)] == [('REC', 400), ('JDO', 450), ('FOR', 505)]
+    assert [o['vend'] for o in boas(ofertas, volta, 505)][2] == 'MaxMilhas' and boas(ofertas, volta, 399) == []
     # voo comprado: com o bônus ganha de Fortaleza R$20 mais barata; preço só de lista nunca é recomendado (não entra aqui)
     r = recomendar([comprado, voo('2026-12-23', 'GRU', 'FOR', '07:00', 1630, pax=2, sentido='ida')], v, ida)
     assert eh_comprado(r['recomendada'], v) and r['mais_barata'] is None
