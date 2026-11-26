@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-25 23:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-25 23:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.369 no Mercado Livre com cupom PM52MP66 · postado há 5h
 
@@ -17,22 +17,22 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.369,04 por ~R$ 3.495,23
 - KaBuM!: `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.369,05 por ~R$ 3.844,76; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.369,05 por ~R$ 4.269,05
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.464,05 por ~R$ 4.214,05
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.558,03 por ~R$ 4.358,03
+- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.599 por ~R$ 3.679,20
 - Mercado Livre: `MENOSPRATECH` (30% OFF em Eletrônicos com cupom Mercado Livre); `LIVREHOJE` (10% OFF em compras acima de R$199, limite de R$100 Cupom: «LIVREHOJE»); `75MAIS1125MELI` (10% OFF em compras acima de R$199, limite de R$200 em Eletrônicos Cupo); `TODO2511SITE` (R$75 OFF em compras acima de R$499 exclusivo para assinantes Meli+ Cup); `SITETODO2511` (R$220 OFF em compras acima de R$1.299 Cupom: «SITETODO2511»)
 
 ## À parte: importado
 
-- PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
 - PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## Fontes
 
 - KaBuM!: ok, 34 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 108 de 138 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 109 de 139 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
