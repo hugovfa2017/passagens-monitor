@@ -17,40 +17,6 @@
    "publicado": "2026-11-24T16:05:34-0300",
    "idade_h": 17.4
   },
-  "promobit-3247371": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "The Adventures Of Elliot The Millennium Tales - Ps5",
-   "preco": 184.0,
-   "link": "https://www.promobit.com.br/oferta/the-adventures-of-elliot-the-millennium-tales-ps5-3247371/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "OFICIAIS2411",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3247371",
-   "publicado": "2026-11-24T10:47:08-0300",
-   "idade_h": 1.6
-  },
-  "promobit-3247324": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Jogo Shinobi Art Of Vengeance Deluxe Edition Ps5 Midia Fisic",
-   "preco": 179.97,
-   "link": "https://www.promobit.com.br/oferta/jogo-shinobi-art-of-vengeance-deluxe-edition-ps5-midia-fisic-3247324/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "DESCONTOSMELI",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3247324",
-   "publicado": "2026-11-24T10:40:26-0300",
-   "idade_h": 1.7
-  },
   "promobit-3247403": {
    "fonte": "Promobit",
    "loja": "Aliexpress",
@@ -135,23 +101,6 @@
    "id": "promobit-3247388",
    "publicado": "2026-11-24T10:50:53-0300",
    "idade_h": 1.8
-  },
-  "promobit-3247377": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "Final Fantasy VII Rebirth - PlayStation 5",
-   "preco": 197.91,
-   "link": "https://www.promobit.com.br/oferta/final-fantasy-vii-rebirth-playstation-5-3247377/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3247377",
-   "publicado": "2026-11-24T10:48:04-0300",
-   "idade_h": 1.5
   },
   "promobit-3247526": {
    "fonte": "Promobit",
@@ -1054,7 +1003,7 @@
    "publicado": "2026-11-25T12:25:58-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.2
+   "idade_h": 10.4
   },
   "promobit-3252777": {
    "fonte": "Promobit",
@@ -1109,7 +1058,7 @@
    "publicado": "2026-11-25T13:19:45-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.3
+   "idade_h": 9.5
   },
   "promobit-3252972": {
    "fonte": "Promobit",
@@ -1194,7 +1143,7 @@
    "ressalvas": [],
    "id": "promobit-3253493",
    "publicado": "2026-11-25T15:12:10-0300",
-   "idade_h": 4.1
+   "idade_h": 7.6
   },
   "promobit-3253451": {
    "fonte": "Promobit",
@@ -1245,7 +1194,7 @@
    "ressalvas": [],
    "id": "promobit-3253856",
    "publicado": "2026-11-25T16:23:11-0300",
-   "idade_h": 6.3
+   "idade_h": 6.4
   },
   "promobit-3253952": {
    "fonte": "Promobit",
@@ -1262,7 +1211,7 @@
    "ressalvas": [],
    "id": "promobit-3253952",
    "publicado": "2026-11-25T16:38:25-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3253925": {
    "fonte": "Promobit",
@@ -1313,7 +1262,7 @@
    "ressalvas": [],
    "id": "promobit-3254123",
    "publicado": "2026-11-25T17:07:27-0300",
-   "idade_h": 5.5
+   "idade_h": 5.7
   },
   "promobit-3254118": {
    "fonte": "Promobit",
@@ -1330,7 +1279,7 @@
    "ressalvas": [],
    "id": "promobit-3254118",
    "publicado": "2026-11-25T17:07:03-0300",
-   "idade_h": 5.6
+   "idade_h": 5.7
   },
   "promobit-3254228": {
    "fonte": "Promobit",
@@ -1366,7 +1315,7 @@
    "publicado": "2026-11-25T18:00:41-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 4.7
+   "idade_h": 4.8
   },
   "promobit-3254427": {
    "fonte": "Promobit",
@@ -1421,7 +1370,7 @@
    "publicado": "2026-11-25T18:04:19-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-ofertasdogui/31493-0": {
    "fonte": "Telegram",
@@ -1440,7 +1389,7 @@
    "publicado": "2026-11-25T18:02:31-0300",
    "canal": "Ofertas do Gui",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-ofertasdogui/31494-0": {
    "fonte": "Telegram",
@@ -1461,7 +1410,7 @@
    "publicado": "2026-11-25T18:03:37-0300",
    "canal": "Ofertas do Gui",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-xetdaspromocoes/96063-0": {
    "fonte": "Telegram",
@@ -1483,7 +1432,7 @@
    "publicado": "2026-11-25T18:01:40-0300",
    "canal": "Xet das Promoções",
    "preco_de": 4950.0,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-promotop/262763-0": {
    "fonte": "Telegram",
@@ -1505,7 +1454,7 @@
    "publicado": "2026-11-25T18:03:34-0300",
    "canal": "PromoTop",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-nerdofertas/155191-0": {
    "fonte": "Telegram",
@@ -1524,7 +1473,7 @@
    "publicado": "2026-11-25T18:01:38-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-nerdofertas/155190-0": {
    "fonte": "Telegram",
@@ -1543,7 +1492,7 @@
    "publicado": "2026-11-25T18:00:41-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 4.7
+   "idade_h": 4.8
   },
   "tg-superofertasbr/14931-0": {
    "fonte": "Telegram",
@@ -1562,7 +1511,7 @@
    "publicado": "2026-11-25T18:01:41-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-superofertasbr/14930-0": {
    "fonte": "Telegram",
@@ -1581,7 +1530,7 @@
    "publicado": "2026-11-25T18:00:45-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 4.7
+   "idade_h": 4.8
   },
   "tg-cjpromos/82999-0": {
    "fonte": "Telegram",
@@ -1600,7 +1549,7 @@
    "publicado": "2026-11-25T18:01:38-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "tg-achadosdotb/12391-0": {
    "fonte": "Telegram",
@@ -1619,7 +1568,7 @@
    "publicado": "2026-11-25T18:58:59-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": null,
-   "idade_h": 3.7
+   "idade_h": 3.9
   },
   "tg-nerdofertas/155212-0": {
    "fonte": "Telegram",
@@ -1640,7 +1589,7 @@
    "publicado": "2026-11-25T19:20:03-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 3.3
+   "idade_h": 3.5
   },
   "tg-superofertasbr/14952-0": {
    "fonte": "Telegram",
@@ -1661,7 +1610,7 @@
    "publicado": "2026-11-25T19:20:06-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 3.3
+   "idade_h": 3.5
   },
   "promobit-3254901": {
    "fonte": "Promobit",
@@ -1695,7 +1644,7 @@
    "ressalvas": [],
    "id": "promobit-3254917",
    "publicado": "2026-11-25T19:28:13-0300",
-   "idade_h": 3.2
+   "idade_h": 3.4
   },
   "promobit-3254915": {
    "fonte": "Promobit",
@@ -1712,7 +1661,7 @@
    "ressalvas": [],
    "id": "promobit-3254915",
    "publicado": "2026-11-25T19:28:10-0300",
-   "idade_h": 3.2
+   "idade_h": 3.4
   },
   "promobit-3254868": {
    "fonte": "Promobit",
@@ -1729,7 +1678,7 @@
    "ressalvas": [],
    "id": "promobit-3254868",
    "publicado": "2026-11-25T19:19:08-0300",
-   "idade_h": 3.4
+   "idade_h": 3.5
   },
   "promobit-3255063": {
    "fonte": "Promobit",
@@ -1746,7 +1695,7 @@
    "ressalvas": [],
    "id": "promobit-3255063",
    "publicado": "2026-11-25T20:00:06-0300",
-   "idade_h": 2.7
+   "idade_h": 2.8
   },
   "tg-cupons_desconto/84825-0": {
    "fonte": "Telegram",
@@ -1765,7 +1714,7 @@
    "publicado": "2026-11-25T20:05:04-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3255184": {
    "fonte": "Promobit",
@@ -1816,7 +1765,7 @@
    "ressalvas": [],
    "id": "promobit-3255294",
    "publicado": "2026-11-25T20:59:08-0300",
-   "idade_h": 1.7
+   "idade_h": 1.8
   }
  },
  "alertados": {
@@ -1859,81 +1808,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 4,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
-   "barradas": 106
+   "buscas": 137,
+   "barradas": 107
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-25",
-   "buscas": 136,
+   "buscas": 137,
    "barradas": 0
   }
  },
- "ultima": "2026-11-25T22:40:20-03:00",
+ "ultima": "2026-11-25T22:50:06-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
