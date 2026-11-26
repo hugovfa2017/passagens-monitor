@@ -19,7 +19,9 @@ Três modelos (com leitor de disco, Digital e Pro), cada um com o melhor preço 
 | Cupons | páginas de cupom do Promobit e cupons anunciados nos grupos | "para testar no carrinho" |
 | À parte | open box, importados e leilões de logística reversa (Lance360, HISA, Bolsa de Leilões) | nunca entram no melhor preço |
 
-A mesma oferta vista em várias fontes vira uma só, com "visto em N lugares". Mercado Livre, Magazine Luiza (direto),
+A mesma oferta vista em várias fontes vira uma só, com "visto em N lugares". Oferta postada some da primeira página do
+Promobit em poucas horas e continua lembrada por 36 h ("saiu da lista; pode ter acabado"); a cada varredura, a página
+das mais baratas é aberta e a que o Promobit marca como encerrada sai na hora. Mercado Livre, Magazine Luiza (direto),
 Casas Bahia, Carrefour, Shopee e outras bloqueiam robôs: as ofertas delas chegam pelos grupos e pelo Promobit.
 A lista de lojas, canais e sites fica em [`lojas.py`](lojas.py); acrescentar um é acrescentar uma linha.
 `python3 ps5/sondar.py` mostra quem responde.
@@ -34,6 +36,11 @@ marcando "Mandar o resumo no Telegram agora".
 - **Com som:** o melhor preço confirmado de um modelo chegou ao alvo, ou é o menor já visto (pelo menos R$ 50 abaixo
   do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca.
 - **Sem som:** oferta de grupo ainda não confirmada que parece muito boa; lote novo de leilão com PS5; resumo diário às 9h.
+- **Plantão da Black Friday (modo caçador, `CACADOR_ATE` no [`config.py`](config.py)):** cupom de console acaba em
+  minutos, e a varredura completa roda de 10 em 10. Entre elas, o workflow **Plantão PS5** lê uma vez por minuto a lista
+  do Promobit, o feed do Gatry e a primeira página de cada canal do Telegram, e avisa com som o post de até 1 h, ainda não
+  visto, de modelo com alerta e no preço que toca (alvo ou `AVISAR_ABAIXO`). A mensagem termina com "⚡ Plantão da Black
+  Friday". O que ele avisou fica em `plantao.json`, e a varredura completa não repete. Fora do modo caçador, não roda.
 - **Só para o dono (raro):** nenhuma oferta em 6 varreduras seguidas; uma fonte quebrou (6 falhas seguidas por erro
   que não é bloqueio, sem som); ou uma fonte passou um dia inteiro barrando todas as buscas (sem som). No máximo um aviso por fonte a cada 3 dias. Bloqueio que vai e volta não gera
   mensagem: a Amazon, por exemplo, barra o servidor do GitHub em boa parte das buscas e volta sozinha. A proporção de
