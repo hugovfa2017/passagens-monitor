@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 20:28",
+  "quando": "2026-11-25 21:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,21 +37,24 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 320,
-    "conferidos": 12,
-    "ofertas": 12,
+    "voos": 281,
+    "conferidos": 10,
+    "ofertas": 9,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
-     "repetidas": 3,
+     "vazias": 1,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 12
+     "telas": 8,
+     "lidas": 7
     },
-    "sem_preco": {},
-    "seg": 56
+    "sem_preco": {
+     "tela de compra sem vendedores": 1,
+     "a lista não abriu": 1
+    },
+    "seg": 145
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -81,7 +84,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 106,
+   "Azul": 101,
    "Gol": 136,
    "LATAM": 81
   },
@@ -112,7 +115,7 @@
    "saida": "11:40",
    "chegada": "14:50",
    "tipo": "direto",
-   "pp": 1422,
+   "pp": 1402,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
@@ -121,9 +124,9 @@
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.700 e R$3.875)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
    ]
   },
   "fora": null,
@@ -235,6 +238,10 @@
    [
     "2026-11-25 20:28",
     1422
+   ],
+   [
+    "2026-11-25 21:30",
+    1402
    ]
   ]
  },
@@ -244,8 +251,8 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1926,
-  "conf": true
+  "pp": 2030,
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -271,7 +278,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1422,
+  "pp": 1402,
   "conf": true
  },
  {
@@ -296,23 +303,23 @@
   "recomendada": {
    "d": "2027-01-12",
    "orig": "REC",
-   "dest": "GRU",
-   "cia": "Azul",
-   "saida": "04:30",
-   "chegada": "07:45",
+   "dest": "CGH",
+   "cia": "Gol",
+   "saida": "03:05",
+   "chegada": "06:30",
    "tipo": "direto",
-   "pp": 928,
+   "pp": 876,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.400 e R$3.875)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
    ]
   },
   "fora": null,
@@ -444,6 +451,10 @@
    [
     "2026-11-25 20:28",
     928
+   ],
+   [
+    "2026-11-25 21:30",
+    876
    ]
   ]
  },
@@ -471,7 +482,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 928,
+  "pp": 876,
   "conf": true
  },
  {
@@ -480,7 +491,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 978,
+  "pp": 976,
   "conf": true
  },
  {
@@ -488,7 +499,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2350,
+  "pp": 2278,
   "ida": {
    "d": "2026-12-22",
    "orig": "CGH",
@@ -497,7 +508,7 @@
    "saida": "11:40",
    "chegada": "14:50",
    "tipo": "direto",
-   "pp": 1422,
+   "pp": 1402,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
    "dia": "ter 22/12"
@@ -505,21 +516,21 @@
   "volta": {
    "d": "2027-01-12",
    "orig": "REC",
-   "dest": "GRU",
-   "cia": "Azul",
-   "saida": "04:30",
-   "chegada": "07:45",
+   "dest": "CGH",
+   "cia": "Gol",
+   "saida": "03:05",
+   "chegada": "06:30",
    "tipo": "direto",
-   "pp": 928,
+   "pp": 876,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "juntas": {
    "pp": 2168,
    "vend": "Zupper",
    "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "economia": 182,
+   "economia": 110,
    "mesmos": false,
    "ida": {
     "d": "2026-12-22",
