@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 00:30",
+  "quando": "2026-11-26 01:07",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,35 +37,33 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 283,
-    "conferidos": 11,
+    "voos": 212,
+    "conferidos": 10,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 3,
+     "vazias": 3,
+     "repetidas": 5,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 11,
-     "lidas": 9
+     "telas": 8,
+     "lidas": 8
     },
-    "sem_preco": {
-     "tela de compra sem vendedores": 1
-    },
-    "seg": 99
+    "sem_preco": {},
+    "seg": 94
    },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 7,
+    "com_voo": 7
    },
    "123milhas": {
     "buscas": 4,
@@ -85,7 +83,7 @@
   "taxa_mala": {
    "Azul": 96,
    "Gol": 136,
-   "LATAM": 71
+   "LATAM": 73
   },
   "grupos": [
    {
@@ -125,7 +123,7 @@
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.700 e R$3.875)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.750 e R$3.500)"
    ]
   },
   "fora": null,
@@ -268,15 +266,6 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
-  "d": "2026-12-20",
-  "dia": "dom 20/12",
-  "ne": "REC",
-  "pp": 1533,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
@@ -314,23 +303,23 @@
   "recomendada": {
    "d": "2027-01-12",
    "orig": "REC",
-   "dest": "CGH",
-   "cia": "Gol",
-   "saida": "03:05",
-   "chegada": "06:30",
+   "dest": "GRU",
+   "cia": "Azul",
+   "saida": "04:30",
+   "chegada": "07:45",
    "tipo": "direto",
-   "pp": 876,
+   "pp": 928,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
+    "para o Google, preço normal (a rota costuma ficar entre R$1.400 e R$3.875)"
    ]
   },
   "fora": null,
@@ -474,6 +463,10 @@
    [
     "2026-11-26 00:30",
     876
+   ],
+   [
+    "2026-11-26 01:07",
+    928
    ]
   ]
  },
@@ -501,16 +494,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 876,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-13",
-  "dia": "qua 13/01",
-  "ne": "REC",
-  "pp": 956,
+  "pp": 928,
   "conf": true
  },
  {
@@ -518,7 +502,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2278,
+  "pp": 2330,
   "ida": {
    "d": "2026-12-22",
    "orig": "CGH",
@@ -535,14 +519,14 @@
   "volta": {
    "d": "2027-01-12",
    "orig": "REC",
-   "dest": "CGH",
-   "cia": "Gol",
-   "saida": "03:05",
-   "chegada": "06:30",
+   "dest": "GRU",
+   "cia": "Azul",
+   "saida": "04:30",
+   "chegada": "07:45",
    "tipo": "direto",
-   "pp": 876,
+   "pp": 928,
    "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "juntas": null
