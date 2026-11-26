@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 11:33",
+  "quando": "2026-11-26 12:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,9 +37,9 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 187,
-    "conferidos": 10,
-    "ofertas": 7,
+    "voos": 192,
+    "conferidos": 11,
+    "ofertas": 9,
     "bloqueio": null,
     "listas": {
      "vazias": 4,
@@ -51,16 +51,15 @@
      "lidas": 6
     },
     "sem_preco": {
-     "a lista não abriu": 2,
      "tela de compra sem vendedores": 2
     },
-    "seg": 159
+    "seg": 90
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 6,
     "com_voo": 6
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 6,
     "com_voo": 6
    },
@@ -84,9 +83,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 104,
+   "Azul": 87,
    "Gol": 119,
-   "LATAM": 77
+   "LATAM": 79
   },
   "grupos": [
    {
@@ -115,9 +114,9 @@
    "saida": "07:20",
    "chegada": "10:30",
    "tipo": "direto",
-   "pp": 971,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D",
+   "pp": 1170,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
    "dia": "qua 23/12"
   },
   "mais_barata": null,
@@ -277,6 +276,10 @@
    [
     "2026-11-26 11:33",
     971
+   ],
+   [
+    "2026-11-26 12:28",
+    1170
    ]
   ]
  },
@@ -286,7 +289,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1582,
+  "pp": 1581,
   "conf": true
  },
  {
@@ -304,7 +307,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 971,
+  "pp": 1170,
   "conf": true
  },
  {
@@ -321,22 +324,22 @@
    "d": "2027-01-12",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "Azul",
-   "saida": "02:45",
-   "chegada": "06:05",
-   "tipo": "direto",
-   "pp": 976,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "cia": "LATAM",
+   "saida": "03:40",
+   "chegada": "09:50",
+   "tipo": "escala 1h45",
+   "pp": 932,
+   "vend": "CIA LATAM",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQlNCKgJMQTIEMzEyMyIgCgNCU0ISCjIwMjctMDEtMTIaA0NHSCoCTEEyBDM4NDVqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "para o Google, preço normal (a rota costuma ficar entre R$1.475 e R$3.875)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.300 e R$3.375)"
    ]
   },
   "fora": null,
@@ -508,17 +511,12 @@
    [
     "2026-11-26 11:33",
     976
+   ],
+   [
+    "2026-11-26 12:28",
+    932
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
-  "ne": "REC",
-  "pp": 1452,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -535,6 +533,15 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
+  "pp": 932,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
+  "ne": "REC",
   "pp": 976,
   "conf": true
  },
@@ -543,7 +550,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1947,
+  "pp": 2102,
   "ida": {
    "d": "2026-12-23",
    "orig": "CGH",
@@ -552,22 +559,22 @@
    "saida": "07:20",
    "chegada": "10:30",
    "tipo": "direto",
-   "pp": 971,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D",
+   "pp": 1170,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
    "dia": "qua 23/12"
   },
   "volta": {
    "d": "2027-01-12",
    "orig": "REC",
    "dest": "CGH",
-   "cia": "Azul",
-   "saida": "02:45",
-   "chegada": "06:05",
-   "tipo": "direto",
-   "pp": 976,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "cia": "LATAM",
+   "saida": "03:40",
+   "chegada": "09:50",
+   "tipo": "escala 1h45",
+   "pp": 932,
+   "vend": "CIA LATAM",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQlNCKgJMQTIEMzEyMyIgCgNCU0ISCjIwMjctMDEtMTIaA0NHSCoCTEEyBDM4NDVqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "ter 12/01"
   },
   "juntas": null
