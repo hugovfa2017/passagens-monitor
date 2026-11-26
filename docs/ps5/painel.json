@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-26 03:50",
+ "atualizado": "2026-11-26 04:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -12,7 +12,7 @@
   "link": "https://t.me/jogobarato/111427",
   "obs": "postado no canal Jogo Barato",
   "detalhes": "com jogo/extra",
-  "idade_h": 9.8,
+  "idade_h": 9.9,
   "tipo": "grupo",
   "condicao": "novo",
   "confianca": "B",
@@ -24,37 +24,37 @@
    {
     "fonte": "Jogo Barato",
     "link": "https://t.me/jogobarato/111427",
-    "idade_h": 9.8,
+    "idade_h": 9.9,
     "tipo": "grupo"
    },
    {
     "fonte": "PromoTop",
     "link": "https://t.me/promotop/262763",
-    "idade_h": 9.8,
+    "idade_h": 9.9,
     "tipo": "grupo"
    },
    {
     "fonte": "Nerd Ofertas",
     "link": "https://t.me/nerdofertas/155191",
-    "idade_h": 9.8,
+    "idade_h": 10.0,
     "tipo": "grupo"
    },
    {
     "fonte": "CJ Promoções",
     "link": "https://t.me/cjpromos/82999",
-    "idade_h": 9.8,
+    "idade_h": 10.0,
     "tipo": "grupo"
    },
    {
     "fonte": "Ofertas do Gui",
     "link": "https://t.me/ofertasdogui/31493",
-    "idade_h": 9.8,
+    "idade_h": 10.0,
     "tipo": "grupo"
    },
    {
     "fonte": "Super Ofertas BR",
     "link": "https://t.me/superofertasbr/14931",
-    "idade_h": 9.8,
+    "idade_h": 10.0,
     "tipo": "grupo"
    }
   ],
@@ -79,7 +79,7 @@
     "link": "https://t.me/achadosdotb/12391",
     "obs": "postado no canal Achados do Tecnoblog",
     "detalhes": "",
-    "idade_h": 8.9,
+    "idade_h": 9.0,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -91,37 +91,37 @@
      {
       "fonte": "Achados do Tecnoblog",
       "link": "https://t.me/achadosdotb/12391",
-      "idade_h": 8.9,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "Xet das Promoções",
-      "link": "https://t.me/xetdaspromocoes/96063",
-      "idade_h": 9.8,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "Nerd Ofertas",
-      "link": "https://t.me/nerdofertas/155190",
-      "idade_h": 9.8,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "CJ Promoções",
-      "link": "https://t.me/cjpromos/82996",
-      "idade_h": 9.8,
+      "idade_h": 9.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Ofertas do Gui",
       "link": "https://t.me/ofertasdogui/31494",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Xet das Promoções",
+      "link": "https://t.me/xetdaspromocoes/96063",
+      "idade_h": 10.0,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Nerd Ofertas",
+      "link": "https://t.me/nerdofertas/155190",
+      "idade_h": 10.0,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "CJ Promoções",
+      "link": "https://t.me/cjpromos/82996",
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/14930",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      }
     ],
@@ -174,7 +174,7 @@
     "link": "https://t.me/achadosdotb/12391",
     "obs": "postado no canal Achados do Tecnoblog",
     "detalhes": "",
-    "idade_h": 8.9,
+    "idade_h": 9.0,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -186,37 +186,37 @@
      {
       "fonte": "Achados do Tecnoblog",
       "link": "https://t.me/achadosdotb/12391",
-      "idade_h": 8.9,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "Xet das Promoções",
-      "link": "https://t.me/xetdaspromocoes/96063",
-      "idade_h": 9.8,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "Nerd Ofertas",
-      "link": "https://t.me/nerdofertas/155190",
-      "idade_h": 9.8,
-      "tipo": "grupo"
-     },
-     {
-      "fonte": "CJ Promoções",
-      "link": "https://t.me/cjpromos/82996",
-      "idade_h": 9.8,
+      "idade_h": 9.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Ofertas do Gui",
       "link": "https://t.me/ofertasdogui/31494",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Xet das Promoções",
+      "link": "https://t.me/xetdaspromocoes/96063",
+      "idade_h": 10.0,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "Nerd Ofertas",
+      "link": "https://t.me/nerdofertas/155190",
+      "idade_h": 10.0,
+      "tipo": "grupo"
+     },
+     {
+      "fonte": "CJ Promoções",
+      "link": "https://t.me/cjpromos/82996",
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/14930",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      }
     ],
@@ -245,7 +245,7 @@
      "link": "https://t.me/achadosdotb/12391",
      "obs": "postado no canal Achados do Tecnoblog",
      "detalhes": "",
-     "idade_h": 8.9,
+     "idade_h": 9.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -257,37 +257,37 @@
       {
        "fonte": "Achados do Tecnoblog",
        "link": "https://t.me/achadosdotb/12391",
-       "idade_h": 8.9,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Xet das Promoções",
-       "link": "https://t.me/xetdaspromocoes/96063",
-       "idade_h": 9.8,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Nerd Ofertas",
-       "link": "https://t.me/nerdofertas/155190",
-       "idade_h": 9.8,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "CJ Promoções",
-       "link": "https://t.me/cjpromos/82996",
-       "idade_h": 9.8,
+       "idade_h": 9.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Ofertas do Gui",
        "link": "https://t.me/ofertasdogui/31494",
-       "idade_h": 9.8,
+       "idade_h": 9.9,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "Xet das Promoções",
+       "link": "https://t.me/xetdaspromocoes/96063",
+       "idade_h": 10.0,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "Nerd Ofertas",
+       "link": "https://t.me/nerdofertas/155190",
+       "idade_h": 10.0,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "CJ Promoções",
+       "link": "https://t.me/cjpromos/82996",
+       "idade_h": 10.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/14930",
-       "idade_h": 9.8,
+       "idade_h": 10.0,
        "tipo": "grupo"
       }
      ],
@@ -396,7 +396,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3251846/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 17.5,
+     "idade_h": 17.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -405,7 +405,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3251846/",
-       "idade_h": 17.5,
+       "idade_h": 17.7,
        "tipo": "postada"
       }
      ],
@@ -542,7 +542,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1tb-sony-4k-hdr",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 2.1,
+     "idade_h": 2.3,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -559,7 +559,7 @@
       {
        "fonte": "MeuPlayStation",
        "link": "https://t.me/meups4/55885",
-       "idade_h": 2.1,
+       "idade_h": 2.3,
        "tipo": "grupo"
       }
      ],
@@ -865,7 +865,7 @@
     "link": "https://t.me/jogobarato/111427",
     "obs": "postado no canal Jogo Barato",
     "detalhes": "com jogo/extra",
-    "idade_h": 9.8,
+    "idade_h": 9.9,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -877,37 +877,37 @@
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/111427",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
       "tipo": "grupo"
      },
      {
       "fonte": "PromoTop",
       "link": "https://t.me/promotop/262763",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
       "tipo": "grupo"
      },
      {
       "fonte": "Nerd Ofertas",
       "link": "https://t.me/nerdofertas/155191",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "CJ Promoções",
       "link": "https://t.me/cjpromos/82999",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Ofertas do Gui",
       "link": "https://t.me/ofertasdogui/31493",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/14931",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      }
     ],
@@ -966,7 +966,7 @@
     "link": "https://t.me/jogobarato/111427",
     "obs": "postado no canal Jogo Barato",
     "detalhes": "com jogo/extra",
-    "idade_h": 9.8,
+    "idade_h": 9.9,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -978,37 +978,37 @@
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/111427",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
       "tipo": "grupo"
      },
      {
       "fonte": "PromoTop",
       "link": "https://t.me/promotop/262763",
-      "idade_h": 9.8,
+      "idade_h": 9.9,
       "tipo": "grupo"
      },
      {
       "fonte": "Nerd Ofertas",
       "link": "https://t.me/nerdofertas/155191",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "CJ Promoções",
       "link": "https://t.me/cjpromos/82999",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Ofertas do Gui",
       "link": "https://t.me/ofertasdogui/31493",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/14931",
-      "idade_h": 9.8,
+      "idade_h": 10.0,
       "tipo": "grupo"
      }
     ],
@@ -1037,7 +1037,7 @@
      "link": "https://t.me/jogobarato/111427",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 9.8,
+     "idade_h": 9.9,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -1049,37 +1049,37 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111427",
-       "idade_h": 9.8,
+       "idade_h": 9.9,
        "tipo": "grupo"
       },
       {
        "fonte": "PromoTop",
        "link": "https://t.me/promotop/262763",
-       "idade_h": 9.8,
+       "idade_h": 9.9,
        "tipo": "grupo"
       },
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/155191",
-       "idade_h": 9.8,
+       "idade_h": 10.0,
        "tipo": "grupo"
       },
       {
        "fonte": "CJ Promoções",
        "link": "https://t.me/cjpromos/82999",
-       "idade_h": 9.8,
+       "idade_h": 10.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Ofertas do Gui",
        "link": "https://t.me/ofertasdogui/31493",
-       "idade_h": 9.8,
+       "idade_h": 10.0,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/14931",
-       "idade_h": 9.8,
+       "idade_h": 10.0,
        "tipo": "grupo"
       }
      ],
@@ -1098,7 +1098,7 @@
      "link": "https://t.me/cupons_desconto/84825",
      "obs": "postado no canal Promobit (Telegram)",
      "detalhes": "",
-     "idade_h": 7.8,
+     "idade_h": 7.9,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1107,7 +1107,7 @@
       {
        "fonte": "Promobit (Telegram)",
        "link": "https://t.me/cupons_desconto/84825",
-       "idade_h": 7.8,
+       "idade_h": 7.9,
        "tipo": "grupo"
       }
      ],
@@ -1126,7 +1126,7 @@
      "link": "https://t.me/nerdofertas/155212",
      "obs": "postado no canal Nerd Ofertas",
      "detalhes": "",
-     "idade_h": 8.5,
+     "idade_h": 8.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1137,13 +1137,13 @@
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/155212",
-       "idade_h": 8.5,
+       "idade_h": 8.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/14952",
-       "idade_h": 8.5,
+       "idade_h": 8.7,
        "tipo": "grupo"
       }
      ],
@@ -1162,7 +1162,7 @@
      "link": "https://www.promobit.com.br/oferta/sony-playstation-5-edicao-digital-825gb-1-controle-branco-3256114/",
      "obs": "postado no Promobit",
      "detalhes": "",
-     "idade_h": 3.4,
+     "idade_h": 3.6,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1171,13 +1171,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/sony-playstation-5-edicao-digital-825gb-1-controle-branco-3256114/",
-       "idade_h": 3.4,
+       "idade_h": 3.6,
        "tipo": "postada"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111547",
-       "idade_h": 3.8,
+       "idade_h": 3.9,
        "tipo": "grupo"
       }
      ],
@@ -1494,7 +1494,7 @@
      "link": "https://t.me/jogobarato/111592",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "edição especial, com jogo/extra",
-     "idade_h": 3.3,
+     "idade_h": 3.5,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1505,8 +1505,36 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/111592",
-       "idade_h": 3.3,
+       "idade_h": 3.5,
        "tipo": "grupo"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
+    },
+    {
+     "modelo": "digital",
+     "fonte": "Fast Shop",
+     "loja": "Fast Shop · Webcontinental Marketplace",
+     "titulo": "Console Playstation 5 Slim Edição Digital 825GB com 2 Jogos Branco",
+     "preco": 5085.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+     "obs": "à vista no Pix",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "loja",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Fast Shop",
+       "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+       "idade_h": null,
+       "tipo": "loja"
       }
      ],
      "n_vistos": 1,
@@ -11007,6 +11035,18 @@
    "pro": "7899",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-26 04:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "3650.0",
+   "leitor_loja": "Mercado Livre",
+   "digital": "4369.05",
+   "digital_cupom": "3599.0",
+   "digital_loja": "Mercado Livre",
+   "pro": "7899",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -11105,6 +11145,10 @@
      "preco_base": 4558.03
     }
    ]
+  },
+  "Fast Shop": {
+   "pagina": "https://www.promobit.com.br/cupons/loja/fast-shop/",
+   "cupons": []
   },
   "Mercado Livre": {
    "pagina": null,
@@ -11265,57 +11309,57 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.3,
+   "segundos": 0.4,
    "ofertas": 34,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
+   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
    "segundos": 0.3,
    "tipo": "loja",
-   "falhas_seguidas": 1,
-   "barradas_hoje": 18,
-   "buscas_hoje": 23
+   "falhas_seguidas": 2,
+   "barradas_hoje": 19,
+   "buscas_hoje": 24
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.2,
+   "segundos": 1.4,
    "ofertas": 14,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.7,
-   "ofertas": 7,
+   "segundos": 0.9,
+   "ofertas": 8,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.0,
-   "ofertas": 50,
+   "segundos": 1.5,
+   "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Bemol": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.7,
    "ofertas": 3,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Zoom": {
    "ok": true,
@@ -11324,46 +11368,46 @@
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.1,
+   "segundos": 1.5,
    "ofertas": 12,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.1,
+   "segundos": 0.4,
    "ofertas": 0,
    "tipo": "postada",
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Telegram": {
    "ok": true,
-   "segundos": 22.2,
+   "segundos": 24.1,
    "ofertas": 34,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.7,
+   "segundos": 4.9,
    "ofertas": 0,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 23
+   "buscas_hoje": 24
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -11372,7 +11416,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 164
+  "não é console PS5": 163
  },
  "config": {
   "queda_minima": 50,
