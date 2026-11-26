@@ -29,6 +29,7 @@ BLOQUEIO = re.compile(r'captcha|account-verification|acesso bloqueado|access den
 BRT = timezone(timedelta(hours=-3))
 
 ORCAMENTO_S = 150                 # tempo máximo de uma varredura (o monitor troca pelo valor do config.py)
+ANUNCIO_MINIMO = 150              # anúncio de cupom que tira menos que isso de um PS5 não interessa (idem)
 PRAZO = None                      # limite (time.monotonic) da varredura em curso; depois dele nenhuma fonte começa pedido novo
 DETALHE = {}                      # recado de uma fonte para a situação (ex.: "20 de 22 canais")
 PULAR = set()                     # fontes que o monitor mandou pular nesta rodada (vêm barrando o robô há muito tempo)
@@ -365,6 +366,9 @@ def telegram(canais=None, agora=None, buscas=None):
                 vistos.add(post)
                 lido = texto.ler_post(corpo)
                 publicado = hora.strftime('%Y-%m-%dT%H:%M:%S%z')
+                anuncio = texto.ler_anuncio(corpo, hora, ANUNCIO_MINIMO)   # "cupom libera às 18h": o plantão avisa antes
+                if anuncio:
+                    out.append({'anuncio': anuncio, 'link': f'https://t.me/{post}', 'canal': c['nome'], 'publicado': publicado})
                 for k, x in enumerate(lido['ofertas']):
                     o = oferta('Telegram', x['loja'], x['titulo'], x['preco'], f'https://t.me/{post}', tipo='grupo',
                                id=f'tg-{post}-{k}', publicado=publicado, origem=c.get('origem') or c['canal'].lower(),

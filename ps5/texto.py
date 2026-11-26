@@ -12,6 +12,7 @@ Como decide o preço:
 Descarta: oferta encerrada/esgotada, sorteio, faixa "de R$ X a R$ Y" e post sem console de PS5 no título.
 """
 import html, re, unicodedata
+from datetime import timedelta
 
 FAIXA_GERAL = (2000, 12000)   # console novo; a faixa por modelo é conferida depois, em monitor.avaliar
 
@@ -228,6 +229,69 @@ def ler_post(h):
         if o:
             ofertas.append(o)
     return {'ofertas': ofertas, 'cupons': cupons, 'motivo': '' if ofertas else 'sem preço de console'}
+
+
+# ---------------------------------------------------------------- anúncio de cupom com hora marcada
+# Os canais avisam antes: "🔥 Às 18h: CUPOM DE 4 DÍGITOS no Mercado Livre!" (25/11/2026, 17h15; às 18h04 já tinha
+# esgotado). ler_anuncio acha esse aviso para o plantão poder avisar antes e lembrar na hora.
+LOJAS_PS5 = {'Mercado Livre', 'Amazon', 'Magazine Luiza', 'KaBuM!', 'Casas Bahia', 'Americanas', 'Shopee', 'Carrefour',
+             'Fast Shop', 'Ponto', 'Submarino'}
+HORA = re.compile(r'\b([01]?\d|2[0-3]) ?h ?([0-5]\d)?\b|\b([01]?\d|2[0-3]):([0-5]\d)\b|(meia[- ]noite)')
+SO_USO = re.compile(r'(?:\bus(?:ar|e|o)\b|utiliz\w*|valid\w*|\bate\b)\W*(?:\w+\W+){0,3}$')   # "para usar a partir da", "válidos até"
+OUTRA_CATEGORIA = re.compile(r'\bmoda\b|beleza|decoracao|supermercado|\bpet\b|farmacia|\blivros?\b|moveis|\bbebes?\b|'
+                             r'brinquedo|\bcasa\b|perfum|calcad|roupa|ferrament|automotiv|esporte')
+PRECO_REF = 3800      # para comparar cupom em % com cupom em reais (um PS5 custa por volta disso)
+
+
+def _valor(s):
+    """Quanto o cupom tira de um PS5, em reais, e como escrever: (valor, 'R$ 1.000') | (valor, '35% OFF') | (None, None)"""
+    reais = [int(m[1].replace('.', '')) for m in re.finditer(r'r\$ ?(\d{1,3}(?:\.\d{3})+|\d+)(?:,\d\d)?\s*(?:de\s+)?(?:off|desconto)', s)]
+    reais += [int(m[1].replace('.', '')) for m in re.finditer(r'cupo\w* de (?:mais (?:ou igual )?(?:de )?|ate )?r\$ ?(\d{1,3}(?:\.\d{3})+|\d+)', s)]
+    reais += [10 ** (int(m[1]) - 1) for m in re.finditer(r'\b([3-5]) digitos\b', s)] + [1000 for _ in re.finditer(r'\bmil reais\b', s)]
+    if reais:
+        v = max(reais)
+        return v, 'R$ ' + f'{v:,}'.replace(',', '.')
+    pct = [int(m[1]) for m in re.finditer(r'\b(\d{1,2}) ?% ?(?:de )?(?:off|desconto)', s)]
+    if not pct:
+        return None, None
+    teto = [int(m[1]) for m in re.finditer(r'limit\w*(?: de| a| em)? (?:r\$ ?)?(\d+)', s)]
+    v = round(max(pct) * PRECO_REF / 100)
+    return (min(v, max(teto)) if teto else v), f"{max(pct)}% OFF" + (f" (até R$ {max(teto)})" if teto else '')
+
+
+def ler_anuncio(h, publicado, minimo=150):
+    """Post que anuncia cupom (ou oferta relâmpago) com hora marcada, numa loja que vende PS5, que tira pelo menos `minimo`
+    reais de um console: {'loja', 'quando' (iso), 'horas' ['18h', ...], 'desconto', 'valor', 'ressalvas', 'resumo', 'destino'}
+    ou None. publicado: datetime do post. Hora já passada, hora de "usar a partir de" e post de "liberado"/"esgotado" não contam."""
+    linhas, links = linhas_de(h)
+    s = simples(' '.join(linhas))
+    if not re.search(r'cupo|relampago', s) or re.search(r'esgotad|encerrad|acabou|expirou', s) or OUTRA_CATEGORIA.search(s):
+        return None
+    loja = _loja(linhas, links)
+    if loja not in LOJAS_PS5:
+        return None
+    valor, desconto = _valor(s)
+    if not valor or valor < minimo:
+        return None
+    liberado = bool(re.search(r'\bliberad[oa]s?\b|resgate agora|ja liberou', s))
+    futuras = []
+    for m in HORA.finditer(s):
+        if SO_USO.search(s[max(0, m.start() - 40):m.start()]):
+            continue
+        hh, mm = (0, 0) if m[5] else (int(m[1] or m[3]), int(m[2] or m[4] or 0))
+        quando = publicado.replace(hour=hh, minute=mm, second=0, microsecond=0)
+        if quando <= publicado and (hh == 0 or re.search(r'\bamanha\b', s)):
+            quando += timedelta(days=1)
+        antecedencia = (quando - publicado).total_seconds() / 60
+        if antecedencia > (10 if liberado else 0) and antecedencia <= 18 * 60 and quando not in futuras:
+            futuras.append(quando)
+    if not futuras:
+        return None
+    futuras.sort()
+    hora_txt = lambda q: f"{q.hour}h" + (f"{q.minute:02d}" if q.minute else '')
+    return {'loja': loja, 'quando': futuras[0].isoformat(timespec='minutes'), 'horas': [hora_txt(q) for q in futuras],
+            'desconto': desconto, 'valor': valor, 'ressalvas': _ressalvas(linhas), 'resumo': re.sub(r'\s+', ' ', ' '.join(linhas))[:200],
+            'destino': next((u for u in links if re.match(r'https?://', u) and 't.me/' not in u), None)}
 
 
 def _cupons_do_post(linhas, links):

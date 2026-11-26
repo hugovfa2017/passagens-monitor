@@ -887,6 +887,65 @@ def novidades(itens, estado, avisados, agora):
     return alertas
 
 
+def hora_txt(quando_, agora):
+    """'18h', '18h30' ou 'amanhã às 10h' (quando o dia não é o de agora)"""
+    h = f"{quando_.hour}h" + (f"{quando_.minute:02d}" if quando_.minute else '')
+    return h if quando_.date() == agora.date() else f"amanhã às {h}" if quando_.date() == (agora + timedelta(days=1)).date() else \
+        f"{dia_mes(quando_.strftime('%Y-%m-%d'))} às {h}"
+
+
+def texto_anuncio(a, agora):
+    """Aviso de cupom com hora marcada. 1ª linha: desconto, loja e hora (é o que aparece na notificação)."""
+    q = datetime.fromisoformat(a['quando'])
+    quando_ = hora_txt(q, agora)
+    em = quando_ if quando_.startswith('amanhã') else f"às {quando_}"
+    linhas = [f"⏰ <b>{html.escape(a['desconto'])} · cupom {na(a['loja'])} {html.escape(a['loja'])} {em}</b>",
+              f"Anúncio do canal {html.escape(a['canal'])}" + (f" · {', '.join(a['ressalvas'])}" if a['ressalvas'] else '')]
+    if len(a['horas']) > 1:
+        linhas.append(f"Também às {', '.join(a['horas'][1:])}.")
+    linhas += [f"👉 Deixe o PS5 no carrinho e o pagamento pronto: cupom grande acaba em minutos. Lembro de novo "
+               f"{config.ANUNCIO_ANTES_MIN} min antes.", f"<i>{html.escape(a['resumo'][:180])}</i>"]
+    return '\n'.join(linhas)
+
+
+def texto_lembrete(a, agora):
+    q = datetime.fromisoformat(a['quando'])
+    falta = max(0, round((q - agora).total_seconds() / 60))
+    return (f"🚨 <b>{html.escape(a['desconto'])} · cupom {na(a['loja'])} {html.escape(a['loja'])} libera {'agora' if not falta else f'em {falta} min'} ({hora_txt(q, agora)})</b>\n"
+            f"Abra o app, confira o PS5 no carrinho e resgate o cupom assim que liberar. Anúncio do canal {html.escape(a['canal'])}.")
+
+
+def botoes_anuncio(a):
+    b = [[{'text': '📣 Ver o anúncio', 'url': a['link']}]]
+    if a.get('destino'):
+        b.append([{'text': f"🛒 Abrir {a['loja']}"[:40], 'url': a['destino']}])
+    return b
+
+
+def tratar_anuncios(itens, guardados, agora):
+    """Anúncios de cupom com hora marcada (texto.ler_anuncio): um aviso por loja e horário, assim que aparece, e um lembrete
+    config.ANUNCIO_ANTES_MIN minutos antes. guardados: {loja|quando: anúncio} de plantao.json (é alterado aqui).
+    -> [(chave, 'aviso' | 'lembrete', texto, botões)]"""
+    envios = []
+    for x in itens:
+        a = x.get('anuncio')
+        if not a or datetime.fromisoformat(a['quando']) <= agora:
+            continue
+        chave = f"{a['loja']}|{a['quando'][:16]}"
+        if chave not in guardados:
+            guardados[chave] = {**a, 'link': x['link'], 'canal': x['canal'], 'avisado': agora.isoformat(timespec='seconds'), 'lembrado': None}
+            envios.append((chave, 'aviso', texto_anuncio(guardados[chave], agora), botoes_anuncio(guardados[chave])))
+    antes = timedelta(minutes=config.ANUNCIO_ANTES_MIN)
+    for chave, a in guardados.items():
+        q = datetime.fromisoformat(a['quando'])
+        if not a['lembrado'] and q - antes <= agora < q + timedelta(minutes=1) and datetime.fromisoformat(a['avisado']) < q - antes:
+            a['lembrado'] = agora.isoformat(timespec='seconds')
+            envios.append((chave, 'lembrete', texto_lembrete(a, agora), botoes_anuncio(a)))
+    for chave in [k for k, a in guardados.items() if agora - datetime.fromisoformat(a['quando']) > timedelta(days=1)]:
+        del guardados[chave]
+    return envios
+
+
 def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
     """Uma passada do plantão. Devolve as linhas do registro (sem dado pessoal)."""
     agora = agora or datetime.now(fontes.BRT)
@@ -894,8 +953,12 @@ def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
         return ['plantão desligado (fora do modo caçador)']
     estado = ler_json(os.path.join(pasta, 'estado.json'), {})
     caminho = os.path.join(pasta, 'plantao.json')
-    antes = ler_json(caminho, {}).get('avisados') or {}
+    salvo = ler_json(caminho, {})
+    antes = salvo.get('avisados') or {}
     avisados = {k: v for k, v in antes.items() if agora - datetime.fromisoformat(v) < timedelta(days=2)}
+    anuncios_antes = json.dumps(salvo.get('anuncios') or {}, sort_keys=True)
+    anuncios = json.loads(anuncios_antes)
+    fontes.ANUNCIO_MINIMO = config.ANUNCIO_MINIMO
     itens, situacao = (ler or (lambda: fontes.coletar(PLANTAO_FONTES, orcamento=PLANTAO_ORCAMENTO_S)))()
     linhas = ['fontes: ' + ' '.join(f"{n}={'ok' if s['ok'] else 'falhou'}" for n, s in situacao.items())]
     alertas = novidades(itens, estado, avisados, agora)
@@ -905,8 +968,17 @@ def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
         linhas += [f"ALERTA {a['modelo']} {a['oferta']['preco']} {a['motivo']}" for a in alertas] + [st]
         if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):   # falha de rede: tenta na próxima passada
             avisados.update({a['chave']: agora.isoformat(timespec='seconds') for a in alertas})
-    if avisados != antes:
-        gravar_json(caminho, {'avisados': avisados})
+    for chave, tipo, texto_, botoes in tratar_anuncios(itens, anuncios, agora):
+        st = enviar(texto_, botoes=botoes)
+        a = anuncios[chave]
+        linhas.append(f"{'ANUNCIO' if tipo == 'aviso' else 'LEMBRETE'} {a['loja']} {a['quando'][11:16]} {a['desconto']} {st}")
+        if not (st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO')):   # falhou: a próxima passada tenta de novo
+            if tipo == 'aviso':
+                del anuncios[chave]
+            else:
+                a['lembrado'] = None
+    if avisados != antes or json.dumps(anuncios, sort_keys=True) != anuncios_antes:
+        gravar_json(caminho, {'avisados': avisados, 'anuncios': anuncios})
     return linhas
 
 
@@ -1115,7 +1187,7 @@ def _teste():
         html_do_telegram(texto_)
         assert so_dono == texto_.startswith('⚠️ <b>Buscador do PS5</b>'), 'aviso de manutenção vai só para o dono; o resto, para todos'
         assert len(texto_) < 4096, 'o Telegram corta mensagem com mais de 4096 caracteres'
-        if 'R$' in texto_ and not texto_.startswith('⚠️'):
+        if 'R$' in texto_ and not texto_.startswith(('⚠️', '⏰', '🚨')):   # aviso de cupom começa pelo desconto
             primeira_ = re.sub(r'<[^>]+>', '', texto_.split('\n')[0])
             assert re.match(r'^\W+ R\$ [\d.,]+ · ', primeira_), f'a notificação tem que começar pelo preço: {primeira_}'
         enviadas.append((texto_, silencioso, botoes))
@@ -1303,6 +1375,57 @@ def _teste():
         assert plantao(lambda: (outro, {}), falhou, pasta, t + timedelta(minutes=9))[-1] == 'TELEGRAM_FALHOU rede'
         assert plantao(lambda: (outro, {}), enviar, pasta, t + timedelta(minutes=10))[-1] == 'TELEGRAM_ENVIADO'
         assert plantao(ler, enviar, pasta, datetime(2026, 12, 2, tzinfo=fontes.BRT)) == ['plantão desligado (fora do modo caçador)']
+
+    # ---- anúncio de cupom com hora marcada, nos posts reais de 25/11 (o cupom das 18h esgotou às 18h04)
+    t25 = lambda h, m: datetime(2026, 11, 25, h, m, tzinfo=fontes.BRT)
+    a = texto.ler_anuncio('🔥 Às 18h: CUPOM DE 4 DÍGITOS no Mercado Livre! 🔥<br>💳 Atenção: cupom exclusivo para pagamentos com cartão de '
+                          'crédito Mercado Pago!<br>🛒 Já deixe seu carrinho preparado:<br>👉 https://mercadolivre.com/sec/2P5pupn', t25(17, 15))
+    assert (a['loja'], a['quando'], a['desconto'], a['ressalvas'], a['destino']) == \
+        ('Mercado Livre', '2026-11-25T18:00-03:00', 'R$ 1.000', ['cartão Mercado Pago'], 'https://mercadolivre.com/sec/2P5pupn'), a
+    b = texto.ler_anuncio('🚨 🚨 Cupom de mais ou igual mil reais de desconto<br>Libera 18h, apenas pagando com cartão mercado pago<br>'
+                          'TV https://meli.la/1uUxoFq', t25(17, 55))
+    assert (b['quando'], b['valor']) == (a['quando'], 1000)
+    nada = [('❌ CUPOM DE R$ 1.000 DO MERCADO LIVRE ESGOTADO! ❌<br>⚠️ Amanhã é dia de PRÉ-BLACK FRIDAY!', t25(18, 4)),       # esgotado
+            ('🔥 Resgate das 23h Liberado! Cupom 35% OFF Mercado Livre<br>⚠️ válidos até 23h59 para utilizar após a meia-noite.', t25(23, 5)),
+            ('RESGATE HOJE PARA USAR AMANHÃ A PARTIR DE 00H! HORÁRIO DE RESGATE: ⏰ 19h — 20% OFF limitado a 40 off no Mercado Livre',
+             t25(19, 1)),                                                                                # hora passou; teto de R$ 40
+            ('Cupom 35% OFF Mercado Livre - Tudo pra Sua Casa: libera às 22h', t25(21, 0)),            # outra categoria
+            ('Cupom 10% OFF limitado a R$ 100 na KaBuM! libera às 21h', t25(20, 0)),                   # tira pouco de um PS5
+            ('É HOJE! Super Live ⏰ Começa às 14h — Ofertas relâmpago na Pichau', t25(13, 32))]        # sem valor
+    assert [texto.ler_anuncio(h, q) for h, q in nada] == [None] * 6
+    c = texto.ler_anuncio('🔥 APP - 5 Cupons 35% OFF Mercado Livre<br>⚠️ Resgate às 19h, 20h, 21h, 22h e 23h para usar a partir de '
+                          'meia-noite!', t25(19, 7))
+    assert (c['quando'], c['horas'], c['desconto']) == ('2026-11-25T20:00-03:00', ['20h', '21h', '22h', '23h'], '35% OFF'), c
+    d = texto.ler_anuncio('Amanhã às 10h: cupom de R$ 500 OFF na Amazon em eletrônicos', t25(22, 10))
+    assert d['quando'] == '2026-11-26T10:00-03:00'
+
+    # ---- plantão: aviso na hora do anúncio, lembrete 2 min antes, um por loja e horário
+    with tempfile.TemporaryDirectory() as pasta:
+        item = lambda a_, post, canal: {'anuncio': a_, 'link': f'https://t.me/{post}', 'canal': canal, 'publicado': ''}
+        falhou = lambda *a_, **k: 'TELEGRAM_FALHOU rede'
+        itens = [item(a, 'promotop/1', 'PromoTop')]
+        enviadas.clear()
+        l1 = plantao(lambda: (itens, {}), enviar, pasta, t25(17, 16))
+        assert l1[1:] == ['ANUNCIO Mercado Livre 18:00 R$ 1.000 TELEGRAM_ENVIADO'], l1
+        msg, mudo, bt = enviadas[-1]
+        assert not mudo and msg.startswith('⏰ <b>R$ 1.000 · cupom no Mercado Livre às 18h</b>\nAnúncio do canal PromoTop · cartão Mercado Pago'), msg
+        assert [x['url'] for l in bt for x in l] == ['https://t.me/promotop/1', 'https://mercadolivre.com/sec/2P5pupn']
+        # o mesmo anúncio em outro canal não repete; às 17h57 ainda não é hora do lembrete
+        assert plantao(lambda: (itens + [item(b, 'nerdcupons/2', 'Nerd Cupons')], {}), enviar, pasta, t25(17, 57)) == [l1[0]] and len(enviadas) == 1
+        l2 = plantao(lambda: ([], {}), enviar, pasta, t25(17, 58))
+        assert l2[1:] == ['LEMBRETE Mercado Livre 18:00 R$ 1.000 TELEGRAM_ENVIADO'], l2
+        assert enviadas[-1][0].startswith('🚨 <b>R$ 1.000 · cupom no Mercado Livre libera em 2 min (18h)</b>') and not enviadas[-1][1], enviadas[-1][0]
+        assert plantao(lambda: ([], {}), enviar, pasta, t25(17, 59)) == [l1[0]] and len(enviadas) == 2, 'lembra uma vez só'
+        # anúncio visto já dentro dos 2 minutos: só o aviso
+        plantao(lambda: ([item({**c, 'quando': '2026-11-25T18:30-03:00', 'horas': ['18h30']}, 'cj/3', 'CJ Promoções')], {}), enviar, pasta, t25(18, 29))
+        plantao(lambda: ([], {}), enviar, pasta, t25(18, 29) + timedelta(seconds=30))
+        assert len(enviadas) == 3 and enviadas[-1][0].startswith('⏰ <b>35% OFF · cupom no Mercado Livre às 18h30</b>'), enviadas[-1][0]
+        # Telegram fora do ar: a passada seguinte tenta de novo; anúncio de amanhã diz "amanhã"
+        assert plantao(lambda: ([item(d, 'pelandobr/4', 'Pelando')], {}), falhou, pasta, t25(22, 11))[-1].endswith('TELEGRAM_FALHOU rede')
+        assert plantao(lambda: ([item(d, 'pelandobr/4', 'Pelando')], {}), enviar, pasta, t25(22, 12))[-1].endswith('TELEGRAM_ENVIADO')
+        assert enviadas[-1][0].startswith('⏰ <b>R$ 500 · cupom na Amazon amanhã às 10h</b>'), enviadas[-1][0]
+        assert sorted(ler_json(os.path.join(pasta, 'plantao.json'), {})['anuncios']) == \
+            ['Amazon|2026-11-26T10:00', 'Mercado Livre|2026-11-25T18:00', 'Mercado Livre|2026-11-25T18:30']
 
     # ---- Telegram: só o bot do PS5; sem o segredo dele, nada é enviado (nem pelo bot das passagens)
     amb = dict(os.environ)
