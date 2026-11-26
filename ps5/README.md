@@ -21,7 +21,8 @@ Três modelos (com leitor de disco, Digital e Pro), cada um com o melhor preço 
 
 A mesma oferta vista em várias fontes vira uma só, com "visto em N lugares". Oferta postada some da primeira página do
 Promobit em poucas horas e continua lembrada por 36 h ("saiu da lista; pode ter acabado"); a cada varredura, a página
-das mais baratas é aberta e a que o Promobit marca como encerrada sai na hora. Mercado Livre, Magazine Luiza (direto),
+das mais baratas é aberta e a que o Promobit marca como encerrada sai na hora, junto com as cópias do mesmo negócio nos
+canais (mesma loja, mesmo cupom, preço a até R$ 15; o mesmo cupom em outro produto ou preço continua valendo). Mercado Livre, Magazine Luiza (direto),
 Casas Bahia, Carrefour, Shopee e outras bloqueiam robôs: as ofertas delas chegam pelos grupos e pelo Promobit.
 A lista de lojas, canais e sites fica em [`lojas.py`](lojas.py); acrescentar um é acrescentar uma linha.
 `python3 ps5/sondar.py` mostra quem responde.
@@ -34,7 +35,9 @@ nome da loja como link e um botão por oferta. Para receber o resumo na hora: Ac
 marcando "Mandar o resumo no Telegram agora".
 
 - **Com som:** o melhor preço confirmado de um modelo chegou ao alvo, ou é o menor já visto (pelo menos R$ 50 abaixo
-  do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca.
+  do recorde). A mesma oferta não toca de novo por 24 h. Oferta só vista em post com mais de 6 h não toca (2 h no modo
+  caçador, quando o plantão já avisou o post novo no primeiro minuto e a varredura confere a cada 10). Post que não diz
+  o modelo ("PS5 Slim") toca quando o preço serve para qualquer modelo com alerta.
 - **Sem som:** oferta de grupo ainda não confirmada que parece muito boa; lote novo de leilão com PS5; resumo diário às 9h.
 - **Plantão da Black Friday (modo caçador, `CACADOR_ATE` no [`config.py`](config.py)):** cupom de console acaba em
   minutos, e a varredura completa roda de 10 em 10. Entre elas, o workflow **Plantão PS5** lê uma vez por minuto a lista

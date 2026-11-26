@@ -57,6 +57,7 @@ SECOES = {
 HORAS_OFERTA_POSTADA = 36   # Promobit e Gatry (comunidades com moderação)
 HORAS_OFERTA_GRUPO = 12     # canais do Telegram
 HORAS_ALERTA_POSTADA = 6    # oferta postada há mais que isso aparece no painel, mas não toca alerta
+HORAS_ALERTA_POSTADA_CACADOR = 2   # idem no modo caçador: o plantão vê o post novo em 1 min e a varredura, a cada 10 min
 
 # Oferta de grupo abaixo destes preços é boa demais para acreditar sem confirmação: fica como "não confirmada".
 PISO = {'leitor': 3000, 'digital': 2800, 'pro': 5200}
