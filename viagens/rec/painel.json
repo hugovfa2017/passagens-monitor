@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-26 10:30",
+  "quando": "2026-11-26 11:33",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,42 +37,43 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 215,
+    "voos": 187,
     "conferidos": 10,
     "ofertas": 7,
     "bloqueio": null,
     "listas": {
-     "vazias": 3,
+     "vazias": 4,
      "repetidas": 6,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 7,
+     "telas": 6,
      "lidas": 6
     },
     "sem_preco": {
-     "tela de compra sem vendedores": 2,
-     "a lista não abriu": 2
+     "a lista não abriu": 2,
+     "tela de compra sem vendedores": 2
     },
     "seg": 159
    },
    "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
-   },
-   "Viaza": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 6,
+    "com_voo": 6
    },
    "123milhas": {
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
+   },
+   "Viaza": {
     "buscas": 4,
     "com_voo": 0,
     "pulado": true
@@ -84,8 +85,8 @@
   },
   "taxa_mala": {
    "Azul": 104,
-   "Gol": 136,
-   "LATAM": 81
+   "Gol": 119,
+   "LATAM": 77
   },
   "grupos": [
    {
@@ -107,17 +108,17 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-22",
-   "orig": "VCP",
+   "d": "2026-12-23",
+   "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "10:50",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1309,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/vcp/rec?p=4-0-0&dd=2026-12-22",
-   "dia": "ter 22/12"
+   "cia": "LATAM",
+   "saida": "07:20",
+   "chegada": "10:30",
+   "tipo": "direto",
+   "pp": 971,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D",
+   "dia": "qua 23/12"
   },
   "mais_barata": null,
   "comprado": null,
@@ -272,17 +273,12 @@
    [
     "2026-11-26 10:30",
     1309
+   ],
+   [
+    "2026-11-26 11:33",
+    971
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-19",
-  "dia": "sáb 19/12",
-  "ne": "REC",
-  "pp": 1926,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -290,7 +286,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1507,
+  "pp": 1582,
   "conf": true
  },
  {
@@ -299,7 +295,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1309,
+  "pp": 1377,
   "conf": true
  },
  {
@@ -308,7 +304,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1309,
+  "pp": 971,
   "conf": true
  },
  {
@@ -329,9 +325,9 @@
    "saida": "02:45",
    "chegada": "06:05",
    "tipo": "direto",
-   "pp": 935,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/cgh?p=4-0-0&dd=2027-01-12",
+   "pp": 976,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
@@ -508,8 +504,21 @@
    [
     "2026-11-26 10:30",
     935
+   ],
+   [
+    "2026-11-26 11:33",
+    976
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 1452,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -517,7 +526,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 1189,
+  "pp": 1334,
   "conf": true
  },
  {
@@ -526,16 +535,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 935,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-13",
-  "dia": "qua 13/01",
-  "ne": "REC",
-  "pp": 935,
+  "pp": 976,
   "conf": true
  },
  {
@@ -543,19 +543,19 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2244,
+  "pp": 1947,
   "ida": {
-   "d": "2026-12-22",
-   "orig": "VCP",
+   "d": "2026-12-23",
+   "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "10:50",
-   "chegada": "16:05",
-   "tipo": "com escala",
-   "pp": 1309,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/vcp/rec?p=4-0-0&dd=2026-12-22",
-   "dia": "ter 22/12"
+   "cia": "LATAM",
+   "saida": "07:20",
+   "chegada": "10:30",
+   "tipo": "direto",
+   "pp": 971,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22CGH%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-23%22%7D%5D",
+   "dia": "qua 23/12"
   },
   "volta": {
    "d": "2027-01-12",
@@ -565,9 +565,9 @@
    "saida": "02:45",
    "chegada": "06:05",
    "tipo": "direto",
-   "pp": 935,
-   "vend": "Viaza",
-   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/cgh?p=4-0-0&dd=2027-01-12",
+   "pp": 976,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
   "juntas": null
