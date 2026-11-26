@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-26 12:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 12:40 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.955,91 na Shopee · confira se é a versão nacional, visto em 2 lugares, postado há 0h
+**Mais barato agora:** PS5 Digital por R$ 3.955,91 na Shopee · confira se é a versão nacional, visto em 2 lugares, postado há 1h
 
 - **PS5 com leitor de disco**: R$ 4.084 na KaBuM! com cupom CUPOMDOJASON · postado há 2h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-- **PS5 Digital**: R$ 3.955,91 na Shopee · confira se é a versão nacional, visto em 2 lugares, postado há 0h
+- **PS5 Digital**: R$ 3.955,91 na Shopee · confira se é a versão nacional, visto em 2 lugares, postado há 1h
    não confirmada: R$ 3.951,65 no Mercado Livre · visto em 2 lugares, postado há 1h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
@@ -34,7 +34,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: ok, 43 itens · barrada em 64 de 76 buscas hoje
+- Amazon: ok, 55 itens · barrada em 64 de 77 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
@@ -45,6 +45,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 48 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 176 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 188 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
