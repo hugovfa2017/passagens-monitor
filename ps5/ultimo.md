@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 04:49 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 05:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 11h
 
@@ -31,9 +31,9 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 22 de 29 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 23 de 30 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 8 itens
+- Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 31 itens
