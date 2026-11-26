@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-26 05:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 05:40 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 11h
+**Mais barato agora:** PS5 Digital por R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 12h
 
-- **PS5 com leitor de disco**: R$ 3.650 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 10h
+- **PS5 com leitor de disco**: R$ 3.650 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 11h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-- **PS5 Digital**: R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 11h
+- **PS5 Digital**: R$ 3.599 no Mercado Livre com cupom PM52MP66 · cartão Mercado Pago, parcelado, visto em 6 lugares, postado há 12h
    sem cupom: R$ 4.369,04 na Amazon
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
@@ -31,17 +31,17 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 26 de 33 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 27 de 34 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 8 itens
-- Webcontinental: ok, 50 itens
+- Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 31 itens
-- Promobit: ok, 0 itens
+- Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 34 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 163 não é console PS5
+Descartados: 159 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
