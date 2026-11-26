@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3250237": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "VR2 PlayStation",
-   "preco": 2603.07,
-   "link": "https://www.promobit.com.br/oferta/vr2-playstation-3250237/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3250237",
-   "publicado": "2026-11-24T20:44:51-0300",
-   "idade_h": 12.8
-  },
-  "promobit-3250226": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "Marvel's Wolverine - PlayStation 5",
-   "preco": 263.15,
-   "link": "https://www.promobit.com.br/oferta/marvels-wolverine-playstation-5-3250226/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3250226",
-   "publicado": "2026-11-24T20:43:52-0300",
-   "idade_h": 12.8
-  },
   "promobit-3250441": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -797,7 +763,7 @@
    "ressalvas": [],
    "id": "promobit-3254917",
    "publicado": "2026-11-25T19:28:13-0300",
-   "idade_h": 13.2
+   "idade_h": 13.4
   },
   "promobit-3254915": {
    "fonte": "Promobit",
@@ -814,7 +780,7 @@
    "ressalvas": [],
    "id": "promobit-3254915",
    "publicado": "2026-11-25T19:28:10-0300",
-   "idade_h": 13.2
+   "idade_h": 13.4
   },
   "promobit-3254868": {
    "fonte": "Promobit",
@@ -848,7 +814,7 @@
    "ressalvas": [],
    "id": "promobit-3255063",
    "publicado": "2026-11-25T20:00:06-0300",
-   "idade_h": 12.7
+   "idade_h": 12.8
   },
   "promobit-3255184": {
    "fonte": "Promobit",
@@ -899,7 +865,7 @@
    "ressalvas": [],
    "id": "promobit-3255294",
    "publicado": "2026-11-25T20:59:08-0300",
-   "idade_h": 11.7
+   "idade_h": 11.9
   },
   "tg-jogobarato/111547-0": {
    "fonte": "Telegram",
@@ -918,7 +884,7 @@
    "publicado": "2026-11-26T00:03:36-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.6
+   "idade_h": 8.8
   },
   "promobit-3256114": {
    "fonte": "Promobit",
@@ -935,7 +901,7 @@
    "ressalvas": [],
    "id": "promobit-3256114",
    "publicado": "2026-11-26T00:27:13-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3256123": {
    "fonte": "Promobit",
@@ -952,7 +918,7 @@
    "ressalvas": [],
    "id": "promobit-3256123",
    "publicado": "2026-11-26T00:28:11-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3256116": {
    "fonte": "Promobit",
@@ -969,7 +935,7 @@
    "ressalvas": [],
    "id": "promobit-3256116",
    "publicado": "2026-11-26T00:27:47-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3256224": {
    "fonte": "Promobit",
@@ -1003,7 +969,7 @@
    "ressalvas": [],
    "id": "promobit-3256181",
    "publicado": "2026-11-26T00:35:33-0300",
-   "idade_h": 8.1
+   "idade_h": 8.2
   },
   "promobit-3256171": {
    "fonte": "Promobit",
@@ -1020,7 +986,7 @@
    "ressalvas": [],
    "id": "promobit-3256171",
    "publicado": "2026-11-26T00:34:17-0300",
-   "idade_h": 8.1
+   "idade_h": 8.3
   },
   "tg-jogobarato/111592-0": {
    "fonte": "Telegram",
@@ -1041,7 +1007,7 @@
    "publicado": "2026-11-26T00:32:09-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.1
+   "idade_h": 8.3
   },
   "promobit-3256317": {
    "fonte": "Promobit",
@@ -1058,7 +1024,7 @@
    "ressalvas": [],
    "id": "promobit-3256317",
    "publicado": "2026-11-26T00:49:17-0300",
-   "idade_h": 7.9
+   "idade_h": 8.0
   },
   "promobit-3256326": {
    "fonte": "Promobit",
@@ -1075,7 +1041,7 @@
    "ressalvas": [],
    "id": "promobit-3256326",
    "publicado": "2026-11-26T00:51:11-0300",
-   "idade_h": 7.8
+   "idade_h": 8.0
   },
   "promobit-3256347": {
    "fonte": "Promobit",
@@ -1130,7 +1096,24 @@
    "publicado": "2026-11-26T01:42:24-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 7.0
+   "idade_h": 7.1
+  },
+  "promobit-3256966": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Volante e Pedais Logitech G29 Driving Force com Force Feedback para PS5 PS4 PS3 e PC",
+   "preco": 1319.13,
+   "link": "https://www.promobit.com.br/oferta/volante-e-pedais-logitech-g29-driving-force-com-force-feedback-para-ps5-ps4-ps3-e-pc-3256966/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3256966",
+   "publicado": "2026-11-26T08:37:24-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {
@@ -1174,81 +1157,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 3,
+   "falhas": 4,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
-   "barradas": 43
+   "buscas": 53,
+   "barradas": 44
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   }
  },
- "ultima": "2026-11-26T08:40:21-03:00",
+ "ultima": "2026-11-26T08:50:27-03:00",
  "pular": [],
  "resumo_dia": "2026-11-25"
 }
