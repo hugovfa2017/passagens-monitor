@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-25 22:27",
+  "quando": "2026-11-25 23:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,43 +37,31 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 320,
-    "conferidos": 10,
-    "ofertas": 10,
-    "bloqueio": null,
-    "listas": {
-     "vazias": 0,
-     "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
-    },
-    "diretos": {
-     "telas": 9,
-     "lidas": 9
-    },
-    "sem_preco": {},
-    "seg": 64
+    "voos": 0,
+    "conferidos": 0,
+    "ofertas": 0,
+    "bloqueio": " |  | Sobre esta página |  | Nossos sistemas detectaram tráfego incomum na sua rede de computadores. Esta página verifica se é realmente você, e não um robô, que está enviando as solicitações. Por que isso ac",
+    "seg": 13
    },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 2,
+    "com_voo": 2
    },
    "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 2,
+    "com_voo": 2
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
-   },
-   "123milhas": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 2,
+    "com_voo": 2
    },
    "Viaza": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 2,
+    "com_voo": 2
+   },
+   "123milhas": {
+    "buscas": 2,
+    "com_voo": 0
    }
   },
   "mossoro": {
@@ -81,9 +69,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 101,
-   "Gol": 136,
-   "LATAM": 85
+   "Azul": 85,
+   "Gol": 119,
+   "LATAM": 77
   },
   "grupos": [
    {
@@ -112,20 +100,15 @@
    "saida": "11:40",
    "chegada": "14:50",
    "tipo": "direto",
-   "pp": 1377,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
+   "pp": 1335,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-22",
    "dia": "ter 22/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": {
-   "sinal": "bom",
-   "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
-   ]
-  },
+  "momento": null,
   "fora": null,
   "historico": [
    [
@@ -243,35 +226,12 @@
    [
     "2026-11-25 22:27",
     1377
+   ],
+   [
+    "2026-11-25 23:30",
+    1335
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-19",
-  "dia": "sáb 19/12",
-  "ne": "REC",
-  "pp": 2030,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-20",
-  "dia": "dom 20/12",
-  "ne": "REC",
-  "pp": 1612,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-21",
-  "dia": "seg 21/12",
-  "ne": "REC",
-  "pp": 1659,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -279,16 +239,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1377,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-23",
-  "dia": "qua 23/12",
-  "ne": "REC",
-  "pp": 1497,
+  "pp": 1335,
   "conf": true
  },
  {
@@ -309,20 +260,15 @@
    "saida": "03:05",
    "chegada": "06:30",
    "tipo": "direto",
-   "pp": 876,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "pp": 840,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/cgh?p=4-0-0&dd=2027-01-12",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
-  "momento": {
-   "sinal": "bom",
-   "motivos": [
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
-   ]
-  },
+  "momento": null,
   "fora": null,
   "historico": [
    [
@@ -456,26 +402,12 @@
    [
     "2026-11-25 21:30",
     876
+   ],
+   [
+    "2026-11-25 23:30",
+    840
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
-  "ne": "REC",
-  "pp": 1393,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "REC",
-  "pp": 992,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -483,16 +415,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 876,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-13",
-  "dia": "qua 13/01",
-  "ne": "REC",
-  "pp": 976,
+  "pp": 840,
   "conf": true
  },
  {
@@ -500,7 +423,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2253,
+  "pp": 2175,
   "ida": {
    "d": "2026-12-22",
    "orig": "CGH",
@@ -509,9 +432,9 @@
    "saida": "11:40",
    "chegada": "14:50",
    "tipo": "direto",
-   "pp": 1377,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261222/4/0/0/Y/",
+   "pp": 1335,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/cgh/rec?p=4-0-0&dd=2026-12-22",
    "dia": "ter 22/12"
   },
   "volta": {
@@ -522,37 +445,11 @@
    "saida": "03:05",
    "chegada": "06:30",
    "tipo": "direto",
-   "pp": 876,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
+   "pp": 840,
+   "vend": "Viaza",
+   "link": "https://www.viaza.com.br/busca/passagens/ow/rec/cgh?p=4-0-0&dd=2027-01-12",
    "dia": "ter 12/01"
   },
-  "juntas": {
-   "pp": 2168,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-22%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "economia": 85,
-   "mesmos": false,
-   "ida": {
-    "d": "2026-12-22",
-    "orig": "GRU",
-    "dest": "REC",
-    "cia": "Azul",
-    "saida": "05:00",
-    "chegada": "08:00",
-    "tipo": "direto",
-    "dia": "ter 22/12"
-   },
-   "volta": {
-    "d": "2027-01-12",
-    "orig": "REC",
-    "dest": "GRU",
-    "cia": "Azul",
-    "saida": "20:35",
-    "chegada": "23:50",
-    "tipo": "direto",
-    "dia": "ter 12/01"
-   }
-  }
+  "juntas": null
  }
 ]
