@@ -1,15 +1,14 @@
-# Passagens: última busca em 2026-11-26 14:28
+# Passagens: última busca em 2026-11-26 15:32
 
-✈️ Passagens · qui 26/11, 14:28 · por pessoa, sem mala
-📈 São Paulo ⇄ Recife, ida +R$207 · São Paulo ⇄ Recife, volta +R$96
+✈️ Passagens · qui 26/11, 15:32 · por pessoa, sem mala
+↘️ São Paulo ⇄ Recife, ida −R$272 · São Paulo ⇄ Recife, volta −R$126
 
 🧳 São Paulo ⇄ Recife
-🛫 Ida: R$1.377 · qua 23/12 · Gol, 1 conexão
-└ 10h50 Campinas (Viracopos) → 16h05 Recife · clique aqui (Vai de Promo)
-🛬 Volta: R$932 · ter 12/01 · LATAM, 1 conexão (espera de 1h45)
-└ 03h40 Recife → 09h50 Congonhas · clique aqui (LATAM)
-📦 Ida + volta: R$2.309
-🔁 Numa compra só, em outros voos: R$2.239 (R$70 a menos) · clique aqui
+🛫 Ida: R$1.105 · ter 22/12 · Azul, direto
+└ 16h45 Congonhas → 19h50 Recife · clique aqui (Vai de Promo)
+🛬 Volta: R$806 · dom 10/01 · Azul 4335, direto
+└ 03h25 Recife → 06h40 Campinas (Viracopos) · clique aqui (Vai de Promo)
+📦 Ida + volta: R$1.911
 
 Telegram: TELEGRAM_ENVIADO
 
