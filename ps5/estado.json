@@ -867,27 +867,6 @@
    "publicado": "2026-11-26T01:07:50-0300",
    "idade_h": 6.8
   },
-  "tg-meups4/55885-0": {
-   "fonte": "Telegram",
-   "loja": "Amazon",
-   "titulo": "PlayStation 5 Slim com Leitor + Astro Bot + Gran Turismo + Marvel's Wolverine",
-   "preco": 4969.8,
-   "link": "https://t.me/meups4/55885",
-   "tipo": "grupo",
-   "origem": "meups4",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal MeuPlayStation",
-   "ressalvas": [
-    "parcelado"
-   ],
-   "id": "tg-meups4/55885-0",
-   "publicado": "2026-11-26T01:42:24-0300",
-   "canal": "MeuPlayStation",
-   "preco_de": null,
-   "idade_h": 12.0
-  },
   "promobit-3256966": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -988,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3257484",
    "publicado": "2026-11-26T11:59:17-0300",
-   "idade_h": 1.7
+   "idade_h": 1.8
   },
   "promobit-3257446": {
    "fonte": "Promobit",
@@ -1075,7 +1054,7 @@
    "publicado": "2026-11-26T10:24:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "tg-nerdofertas/155475-0": {
    "fonte": "Telegram",
@@ -1096,7 +1075,7 @@
    "publicado": "2026-11-26T10:30:21-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 3.2
+   "idade_h": 3.3
   },
   "promobit-3257751": {
    "fonte": "Promobit",
@@ -1149,7 +1128,7 @@
    "publicado": "2026-11-26T10:36:18-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.2
   },
   "tg-jogobarato/111657-1": {
    "fonte": "Telegram",
@@ -1168,7 +1147,7 @@
    "publicado": "2026-11-26T10:36:18-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.2
   },
   "tg-superofertasbr/15211-0": {
    "fonte": "Telegram",
@@ -1189,7 +1168,7 @@
    "publicado": "2026-11-26T10:30:25-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 3.2
+   "idade_h": 3.3
   },
   "tg-superofertasbr/15213-0": {
    "fonte": "Telegram",
@@ -1210,7 +1189,7 @@
    "publicado": "2026-11-26T10:35:58-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.2
   },
   "tg-pechinchou/241050-0": {
    "fonte": "Telegram",
@@ -1229,7 +1208,7 @@
    "publicado": "2026-11-26T10:37:59-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "tg-nerdofertas/155477-0": {
    "fonte": "Telegram",
@@ -1250,7 +1229,7 @@
    "publicado": "2026-11-26T10:35:54-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 3.1
+   "idade_h": 3.2
   },
   "tg-jogobarato/111671-0": {
    "fonte": "Telegram",
@@ -1269,7 +1248,7 @@
    "publicado": "2026-11-26T10:54:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 2.9
   },
   "tg-jogobarato/111671-1": {
    "fonte": "Telegram",
@@ -1288,7 +1267,7 @@
    "publicado": "2026-11-26T10:54:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 2.9
   },
   "promobit-3257950": {
    "fonte": "Promobit",
@@ -1324,7 +1303,7 @@
    "publicado": "2026-11-26T10:55:41-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 2.7
+   "idade_h": 2.9
   },
   "promobit-3258180": {
    "fonte": "Promobit",
@@ -1360,7 +1339,7 @@
    "publicado": "2026-11-26T11:36:53-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.1
+   "idade_h": 2.2
   },
   "promobit-3258330": {
    "fonte": "Promobit",
@@ -1413,7 +1392,7 @@
    "publicado": "2026-11-26T11:49:52-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-hardmob_promo/480583-0": {
    "fonte": "Telegram",
@@ -1432,7 +1411,7 @@
    "publicado": "2026-11-26T11:50:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "promobit-3258435": {
    "fonte": "Promobit",
@@ -1449,7 +1428,7 @@
    "ressalvas": [],
    "id": "promobit-3258435",
    "publicado": "2026-11-26T11:57:06-0300",
-   "idade_h": 1.7
+   "idade_h": 1.9
   },
   "promobit-3258383": {
    "fonte": "Promobit",
@@ -1483,7 +1462,7 @@
    "ressalvas": [],
    "id": "promobit-3258828",
    "publicado": "2026-11-26T12:52:26-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3258859": {
    "fonte": "Promobit",
@@ -1500,7 +1479,7 @@
    "ressalvas": [],
    "id": "promobit-3258859",
    "publicado": "2026-11-26T12:56:06-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "promobit-3258988": {
    "fonte": "Promobit",
@@ -1517,7 +1496,7 @@
    "ressalvas": [],
    "id": "promobit-3258988",
    "publicado": "2026-11-26T13:17:06-0300",
-   "idade_h": 0.4
+   "idade_h": 0.5
   },
   "promobit-3258915": {
    "fonte": "Promobit",
@@ -1534,7 +1513,7 @@
    "ressalvas": [],
    "id": "promobit-3258915",
    "publicado": "2026-11-26T13:05:07-0300",
-   "idade_h": 0.6
+   "idade_h": 0.7
   },
   "promobit-3258914": {
    "fonte": "Promobit",
@@ -1551,7 +1530,172 @@
    "ressalvas": [],
    "id": "promobit-3258914",
    "publicado": "2026-11-26T13:05:07-0300",
-   "idade_h": 0.6
+   "idade_h": 0.7
+  },
+  "promobit-3259122": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3510.25,
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-slim-digital-1tb-dualsense-branco-3259122/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3259122",
+   "publicado": "2026-11-26T13:44:37-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3259133": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3510.0,
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-slim-digital-1tb-dualsense-branco-3259133/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3259133",
+   "publicado": "2026-11-26T13:44:06-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3259132": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.25,
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-slim-digital-1tb-dualsense-branco-3259132/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "SQUAD300BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3259132",
+   "publicado": "2026-11-26T13:44:01-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3258863": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony",
+   "preco": 3695.23,
+   "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3258863/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "INFLUBLACK20",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3258863",
+   "publicado": "2026-11-26T13:40:16-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3259074": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Grand Theft Auto VI PlayStation 5",
+   "preco": 384.0,
+   "link": "https://www.promobit.com.br/oferta/grand-theft-auto-vi-playstation-5-3259074/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PROMOAGORA",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3259074",
+   "publicado": "2026-11-26T13:36:05-0300",
+   "idade_h": 0.2
+  },
+  "tg-cupons_desconto/84843-0": {
+   "fonte": "Telegram",
+   "loja": "Shopee",
+   "titulo": "Console PlayStation 5 Slim Digital 825GB",
+   "preco": 3955.91,
+   "link": "https://t.me/cupons_desconto/84843",
+   "tipo": "grupo",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Promobit (Telegram)",
+   "ressalvas": [],
+   "id": "tg-cupons_desconto/84843-0",
+   "publicado": "2026-11-26T13:40:23-0300",
+   "canal": "Promobit (Telegram)",
+   "preco_de": null,
+   "idade_h": 0.2
+  },
+  "tg-pechinchou/241156-0": {
+   "fonte": "Telegram",
+   "loja": "Gazin",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.0,
+   "link": "https://t.me/pechinchou/241156",
+   "tipo": "grupo",
+   "origem": "pechinchou",
+   "cupom": "SQUAD300BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Pechinchou",
+   "ressalvas": [
+    "só no app"
+   ],
+   "id": "tg-pechinchou/241156-0",
+   "publicado": "2026-11-26T13:48:32-0300",
+   "canal": "Pechinchou",
+   "preco_de": null,
+   "idade_h": 0.0
+  },
+  "tg-nerdofertas/155632-0": {
+   "fonte": "Telegram",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.0,
+   "link": "https://t.me/nerdofertas/155632",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "SQUAD300BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Nerd Ofertas",
+   "ressalvas": [],
+   "id": "tg-nerdofertas/155632-0",
+   "publicado": "2026-11-26T13:43:04-0300",
+   "canal": "Nerd Ofertas",
+   "preco_de": null,
+   "idade_h": 0.1
+  },
+  "tg-ofertasdogui/31641-0": {
+   "fonte": "Telegram",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.0,
+   "link": "https://t.me/ofertasdogui/31641",
+   "tipo": "grupo",
+   "origem": "ofertasdogui",
+   "cupom": "SQUAD300BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Ofertas do Gui",
+   "ressalvas": [
+    "só no app"
+   ],
+   "id": "tg-ofertasdogui/31641-0",
+   "publicado": "2026-11-26T13:45:48-0300",
+   "canal": "Ofertas do Gui",
+   "preco_de": null,
+   "idade_h": 0.1
   }
  },
  "alertados": {
@@ -1560,7 +1704,8 @@
   "nc|leitor|mercado livre|365": "2026-11-25T18:00:28-03:00",
   "leitor|mercado livre|365": "2026-11-25T18:10:20-03:00",
   "digital|mercado livre|336": "2026-11-25T18:10:20-03:00",
-  "digital|mercado livre|359": "2026-11-26T00:06:11-03:00"
+  "digital|mercado livre|359": "2026-11-26T00:06:11-03:00",
+  "nc|digital|gazin|321": "2026-11-26T13:49:36-03:00"
  },
  "menor": {
   "leitor": {
@@ -1572,12 +1717,12 @@
    "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-1tb-1-controle-branco-sony-3254426/"
   },
   "digital": {
-   "preco": 3369.0,
-   "quando": "2026-11-25 18:10",
-   "loja": "Mercado Livre",
-   "cupom": "PM52MP66",
-   "titulo": "Console PlayStation 5 Slim Digital - Pacote Astro Bot e Gran Turismo 7",
-   "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-3254427/"
+   "preco": 3210.25,
+   "quando": "2026-11-26 13:49",
+   "loja": "Magazine Luiza",
+   "cupom": "SQUAD300BF",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-slim-digital-1tb-dualsense-branco-3259132/"
   },
   "pro": {
    "preco": 7079.9,
@@ -1595,81 +1740,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
-   "barradas": 69
+   "buscas": 84,
+   "barradas": 70
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 83,
+   "buscas": 84,
    "barradas": 0
   }
  },
- "ultima": "2026-11-26T13:40:23-03:00",
+ "ultima": "2026-11-26T13:49:36-03:00",
  "pular": [],
  "resumo_dia": "2026-11-26",
  "encerradas": {}
