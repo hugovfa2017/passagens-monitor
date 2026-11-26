@@ -967,7 +967,7 @@
    "ressalvas": [],
    "id": "promobit-3257484",
    "publicado": "2026-11-26T11:59:17-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3257446": {
    "fonte": "Promobit",
@@ -1054,45 +1054,7 @@
    "publicado": "2026-11-26T10:24:16-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 3.8
-  },
-  "tg-nerdofertas/155475-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-   "preco": 4084.0,
-   "link": "https://t.me/nerdofertas/155475",
-   "tipo": "grupo",
-   "origem": "nerdofertas",
-   "cupom": "CUPOMDOJASON",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Nerd Ofertas",
-   "ressalvas": [
-    "parcelado"
-   ],
-   "id": "tg-nerdofertas/155475-0",
-   "publicado": "2026-11-26T10:30:21-0300",
-   "canal": "Nerd Ofertas",
-   "preco_de": null,
-   "idade_h": 3.7
-  },
-  "promobit-3257751": {
-   "fonte": "Promobit",
-   "loja": "KaBuM!",
-   "titulo": "Console Sony PlayStation 5 SSD 825GB Controle Sem Fio DualSense + 2 Jogos Digitais Edição Digital",
-   "preco": 4084.05,
-   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3257751/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "CUPOMDOJASON",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3257751",
-   "publicado": "2026-11-26T10:32:44-0300",
-   "idade_h": 2.6
+   "idade_h": 3.9
   },
   "promobit-3257714": {
    "fonte": "Promobit",
@@ -1111,25 +1073,6 @@
    "publicado": "2026-11-26T10:26:32-0300",
    "idade_h": 2.7
   },
-  "tg-jogobarato/111657-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Bundle Console PlayStation 5 Slim + ASTRO BOT + Gran Turismo 7 — Modelo Digital",
-   "preco": 4084.05,
-   "link": "https://t.me/jogobarato/111657",
-   "tipo": "grupo",
-   "origem": "jogobarato",
-   "cupom": "CUPOMDOJASON",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Jogo Barato",
-   "ressalvas": [],
-   "id": "tg-jogobarato/111657-0",
-   "publicado": "2026-11-26T10:36:18-0300",
-   "canal": "Jogo Barato",
-   "preco_de": null,
-   "idade_h": 3.6
-  },
   "tg-jogobarato/111657-1": {
    "fonte": "Telegram",
    "loja": "KaBuM!",
@@ -1147,7 +1090,7 @@
    "publicado": "2026-11-26T10:36:18-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.6
+   "idade_h": 3.7
   },
   "tg-superofertasbr/15211-0": {
    "fonte": "Telegram",
@@ -1168,7 +1111,7 @@
    "publicado": "2026-11-26T10:30:25-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 3.7
+   "idade_h": 3.8
   },
   "tg-superofertasbr/15213-0": {
    "fonte": "Telegram",
@@ -1189,26 +1132,7 @@
    "publicado": "2026-11-26T10:35:58-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 3.6
-  },
-  "tg-pechinchou/241050-0": {
-   "fonte": "Telegram",
-   "loja": "KaBuM!",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital",
-   "preco": 4083.0,
-   "link": "https://t.me/pechinchou/241050",
-   "tipo": "grupo",
-   "origem": "pechinchou",
-   "cupom": "CUPOMDOJASON",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Pechinchou",
-   "ressalvas": [],
-   "id": "tg-pechinchou/241050-0",
-   "publicado": "2026-11-26T10:37:59-0300",
-   "canal": "Pechinchou",
-   "preco_de": null,
-   "idade_h": 3.5
+   "idade_h": 3.7
   },
   "tg-nerdofertas/155477-0": {
    "fonte": "Telegram",
@@ -1229,7 +1153,7 @@
    "publicado": "2026-11-26T10:35:54-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 3.6
+   "idade_h": 3.7
   },
   "tg-jogobarato/111671-0": {
    "fonte": "Telegram",
@@ -1248,7 +1172,7 @@
    "publicado": "2026-11-26T10:54:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.3
+   "idade_h": 3.4
   },
   "tg-jogobarato/111671-1": {
    "fonte": "Telegram",
@@ -1267,24 +1191,7 @@
    "publicado": "2026-11-26T10:54:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 3.3
-  },
-  "promobit-3257950": {
-   "fonte": "Promobit",
-   "loja": "KaBuM!",
-   "titulo": "Console Sony Playstation 5 Ssd 825GB Controle Sem Fio Dualsense 2 Jogos Digitais Edicao",
-   "preco": 4084.0,
-   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-3257950/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "CUPOMDOJASON",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3257950",
-   "publicado": "2026-11-26T10:59:35-0300",
-   "idade_h": 2.7
+   "idade_h": 3.4
   },
   "tg-pechinchou/241060-0": {
    "fonte": "Telegram",
@@ -1303,7 +1210,7 @@
    "publicado": "2026-11-26T10:55:41-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 3.2
+   "idade_h": 3.4
   },
   "promobit-3258180": {
    "fonte": "Promobit",
@@ -1339,7 +1246,7 @@
    "publicado": "2026-11-26T11:36:53-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.6
+   "idade_h": 2.7
   },
   "promobit-3258330": {
    "fonte": "Promobit",
@@ -1392,7 +1299,7 @@
    "publicado": "2026-11-26T11:49:52-0300",
    "canal": "Ofertas do Dia",
    "preco_de": null,
-   "idade_h": 2.3
+   "idade_h": 2.5
   },
   "tg-hardmob_promo/480583-0": {
    "fonte": "Telegram",
@@ -1411,7 +1318,7 @@
    "publicado": "2026-11-26T11:50:01-0300",
    "canal": "Hardmob Promo",
    "preco_de": null,
-   "idade_h": 2.3
+   "idade_h": 2.5
   },
   "promobit-3258435": {
    "fonte": "Promobit",
@@ -1428,7 +1335,7 @@
    "ressalvas": [],
    "id": "promobit-3258435",
    "publicado": "2026-11-26T11:57:06-0300",
-   "idade_h": 2.2
+   "idade_h": 2.4
   },
   "promobit-3258383": {
    "fonte": "Promobit",
@@ -1445,7 +1352,7 @@
    "ressalvas": [],
    "id": "promobit-3258383",
    "publicado": "2026-11-26T11:49:26-0300",
-   "idade_h": 1.8
+   "idade_h": 2.5
   },
   "promobit-3258828": {
    "fonte": "Promobit",
@@ -1462,7 +1369,7 @@
    "ressalvas": [],
    "id": "promobit-3258828",
    "publicado": "2026-11-26T12:52:26-0300",
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "promobit-3258859": {
    "fonte": "Promobit",
@@ -1479,7 +1386,7 @@
    "ressalvas": [],
    "id": "promobit-3258859",
    "publicado": "2026-11-26T12:56:06-0300",
-   "idade_h": 1.2
+   "idade_h": 1.4
   },
   "promobit-3258988": {
    "fonte": "Promobit",
@@ -1496,7 +1403,7 @@
    "ressalvas": [],
    "id": "promobit-3258988",
    "publicado": "2026-11-26T13:17:06-0300",
-   "idade_h": 0.9
+   "idade_h": 1.1
   },
   "promobit-3258915": {
    "fonte": "Promobit",
@@ -1513,7 +1420,7 @@
    "ressalvas": [],
    "id": "promobit-3258915",
    "publicado": "2026-11-26T13:05:07-0300",
-   "idade_h": 1.1
+   "idade_h": 1.3
   },
   "promobit-3258914": {
    "fonte": "Promobit",
@@ -1530,7 +1437,7 @@
    "ressalvas": [],
    "id": "promobit-3258914",
    "publicado": "2026-11-26T13:05:07-0300",
-   "idade_h": 1.1
+   "idade_h": 1.3
   },
   "promobit-3259122": {
    "fonte": "Promobit",
@@ -1547,24 +1454,7 @@
    "ressalvas": [],
    "id": "promobit-3259122",
    "publicado": "2026-11-26T13:44:37-0300",
-   "idade_h": 0.4
-  },
-  "promobit-3258863": {
-   "fonte": "Promobit",
-   "loja": "Magazine Luiza",
-   "titulo": "PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony",
-   "preco": 3695.23,
-   "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3258863/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "INFLUBLACK20",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3258863",
-   "publicado": "2026-11-26T13:40:16-0300",
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "promobit-3259074": {
    "fonte": "Promobit",
@@ -1581,7 +1471,7 @@
    "ressalvas": [],
    "id": "promobit-3259074",
    "publicado": "2026-11-26T13:36:05-0300",
-   "idade_h": 0.6
+   "idade_h": 0.7
   },
   "tg-cupons_desconto/84843-0": {
    "fonte": "Telegram",
@@ -1600,7 +1490,7 @@
    "publicado": "2026-11-26T13:40:23-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 0.5
+   "idade_h": 0.7
   },
   "tg-pechinchou/241156-0": {
    "fonte": "Telegram",
@@ -1621,7 +1511,7 @@
    "publicado": "2026-11-26T13:48:32-0300",
    "canal": "Pechinchou",
    "preco_de": null,
-   "idade_h": 0.4
+   "idade_h": 0.5
   },
   "tg-nerdofertas/155632-0": {
    "fonte": "Telegram",
@@ -1640,24 +1530,7 @@
    "publicado": "2026-11-26T13:43:04-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 0.5
-  },
-  "promobit-3259176": {
-   "fonte": "Promobit",
-   "loja": "Magazine Luiza",
-   "titulo": "Console PlayStation 5 Slim Digital 1TB SSD - Sony",
-   "preco": 3510.0,
-   "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-1tb-ssd-sony-3259176/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3259176",
-   "publicado": "2026-11-26T14:00:39-0300",
-   "idade_h": 0.2
+   "idade_h": 0.6
   },
   "promobit-3259147": {
    "fonte": "Promobit",
@@ -1674,7 +1547,7 @@
    "ressalvas": [],
    "id": "promobit-3259147",
    "publicado": "2026-11-26T13:45:49-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "tg-jogobarato/111763-0": {
    "fonte": "Telegram",
@@ -1693,7 +1566,7 @@
    "publicado": "2026-11-26T13:44:19-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "tg-cjpromos/83519-0": {
    "fonte": "Telegram",
@@ -1712,7 +1585,7 @@
    "publicado": "2026-11-26T13:43:03-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 0.5
+   "idade_h": 0.6
   },
   "gatry-b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40": {
    "fonte": "Gatry",
@@ -1729,7 +1602,7 @@
    "ressalvas": [],
    "id": "gatry-b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40",
    "publicado": "2026-11-26T14:10:21-0300",
-   "idade_h": 0.0
+   "idade_h": 0.2
   },
   "tg-cupons_desconto/84844-0": {
    "fonte": "Telegram",
@@ -1748,7 +1621,7 @@
    "publicado": "2026-11-26T13:55:06-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 0.3
+   "idade_h": 0.4
   },
   "tg-cupons_desconto/84845-0": {
    "fonte": "Telegram",
@@ -1767,7 +1640,7 @@
    "publicado": "2026-11-26T13:57:05-0300",
    "canal": "Promobit (Telegram)",
    "preco_de": null,
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "tg-nerdofertas/155645-0": {
    "fonte": "Telegram",
@@ -1786,7 +1659,62 @@
    "publicado": "2026-11-26T14:08:17-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
+   "idade_h": 0.2
+  },
+  "promobit-3259283": {
+   "fonte": "Promobit",
+   "loja": "Magazine Luiza",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.0,
+   "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-slim-digital-1tb-dualsense-branco-3259283/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "PROMOBYTE200BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3259283",
+   "publicado": "2026-11-26T14:10:05-0300",
+   "idade_h": 0.2
+  },
+  "tg-jogobarato/111769-0": {
+   "fonte": "Telegram",
+   "loja": "Magazine Luiza",
+   "titulo": "Console PlayStation 5 Slim com Leitor",
+   "preco": 4433.95,
+   "link": "https://t.me/jogobarato/111769",
+   "tipo": "grupo",
+   "origem": "jogobarato",
+   "cupom": "200OFFBLACK",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Jogo Barato",
+   "ressalvas": [],
+   "id": "tg-jogobarato/111769-0",
+   "publicado": "2026-11-26T14:18:05-0300",
+   "canal": "Jogo Barato",
+   "preco_de": null,
    "idade_h": 0.0
+  },
+  "tg-superofertasbr/15350-0": {
+   "fonte": "Telegram",
+   "loja": "?",
+   "titulo": "Console Sony PlayStation 5 Slim Digital 1TB DualSense Branco",
+   "preco": 3210.0,
+   "link": "https://t.me/superofertasbr/15350",
+   "tipo": "grupo",
+   "origem": "nerdofertas",
+   "cupom": "SQUAD200BF",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no canal Super Ofertas BR",
+   "ressalvas": [],
+   "id": "tg-superofertasbr/15350-0",
+   "publicado": "2026-11-26T14:08:24-0300",
+   "canal": "Super Ofertas BR",
+   "preco_de": null,
+   "idade_h": 0.2
   }
  },
  "alertados": {
@@ -1831,81 +1759,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Amazon": {
-   "falhas": 5,
+   "falhas": 6,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
-   "barradas": 72
+   "buscas": 87,
+   "barradas": 73
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-26",
-   "buscas": 86,
+   "buscas": 87,
    "barradas": 0
   }
  },
- "ultima": "2026-11-26T14:10:21-03:00",
+ "ultima": "2026-11-26T14:20:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-26",
  "encerradas": {
@@ -1914,6 +1842,24 @@
    "cupom": "SQUAD300BF",
    "preco": 3210.25,
    "quando": "2026-11-26T14:00:29-03:00"
+  },
+  "promobit-3258863": {
+   "loja": "Magazine Luiza",
+   "cupom": "INFLUBLACK20",
+   "preco": 3695.23,
+   "quando": "2026-11-26T14:20:20-03:00"
+  },
+  "promobit-3257950": {
+   "loja": "KaBuM!",
+   "cupom": "CUPOMDOJASON",
+   "preco": 4084.0,
+   "quando": "2026-11-26T14:20:20-03:00"
+  },
+  "promobit-3257751": {
+   "loja": "KaBuM!",
+   "cupom": "CUPOMDOJASON",
+   "preco": 4084.05,
+   "quando": "2026-11-26T14:20:20-03:00"
   }
  }
 }
