@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 00:27",
+  "quando": "2026-11-27 01:27",
   "alerta": "🔥 Hora de comprar: H, volta R$316 (alvo R$350)\nCom 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.",
   "ordem": [
    "FOR",
@@ -67,36 +67,36 @@
   "fontes": {
    "Google": {
     "buscas": 40,
-    "voos": 116,
+    "voos": 74,
     "conferidos": 11,
-    "ofertas": 3,
+    "ofertas": 2,
     "bloqueio": null,
     "listas": {
-     "vazias": 37,
+     "vazias": 38,
      "repetidas": 20,
      "exemplo": "dos | Pesquisa de voo | Só ida | 1 | Econômica | Fortaleza FOR · Mossoró MVF · Juazeiro do Norte JDO · Natal NAT · João Pessoa JPA · Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conex @ /travel/flights/search"
     },
     "diretos": {
      "telas": 5,
-     "lidas": 2
+     "lidas": 0
     },
     "sem_preco": {
      "a lista não abriu": 8,
      "tela de compra sem vendedores": 1
     },
-    "seg": 412
+    "seg": 410
    },
    "MaxMilhas": {
-    "buscas": 11,
+    "buscas": 10,
     "com_voo": 10
    },
    "Vai de Promo": {
-    "buscas": 10,
-    "com_voo": 10
+    "buscas": 9,
+    "com_voo": 9
    },
    "Zupper": {
-    "buscas": 10,
-    "com_voo": 10
+    "buscas": 9,
+    "com_voo": 9
    },
    "123milhas": {
     "buscas": 4,
@@ -111,12 +111,12 @@
   },
   "mossoro": {
    "buscas": 1,
-   "voos": 0
+   "voos": 3
   },
   "taxa_mala": {
    "Azul": 120,
    "Gol": 135,
-   "LATAM": 91
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -354,62 +354,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-01",
-  "dia": "seg 01/02",
-  "ne": "FOR",
-  "pp": 386,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-05",
-  "dia": "sex 05/02",
-  "ne": "FOR",
-  "pp": 354,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-05",
-  "dia": "sex 05/02",
-  "ne": "JDO",
-  "pp": 389,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-05",
-  "dia": "sex 05/02",
-  "ne": "REC",
-  "pp": 553,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-05",
-  "dia": "sex 05/02",
-  "ne": "JPA",
-  "pp": 501,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-05",
-  "dia": "sex 05/02",
-  "ne": "NAT",
-  "pp": 795,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
+  "d": "2027-02-17",
+  "dia": "qua 17/02",
   "ne": "REC",
   "pp": 318,
   "conf": true
@@ -417,8 +363,8 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
+  "d": "2027-02-17",
+  "dia": "qua 17/02",
   "ne": "FOR",
   "pp": 324,
   "conf": true
@@ -426,20 +372,38 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-02-25",
-  "dia": "qui 25/02",
+  "d": "2027-02-17",
+  "dia": "qua 17/02",
   "ne": "JDO",
-  "pp": 346,
+  "pp": 363,
   "conf": true
  },
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-02",
-  "dia": "ter 02/03",
-  "ne": "REC",
-  "pp": 349,
+  "d": "2027-02-17",
+  "dia": "qua 17/02",
+  "ne": "NAT",
+  "pp": 429,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-17",
+  "dia": "qua 17/02",
+  "ne": "JPA",
+  "pp": 745,
   "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-02-25",
+  "dia": "qui 25/02",
+  "ne": "MVF",
+  "pp": 858,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -453,8 +417,26 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-02",
-  "dia": "ter 02/03",
+  "d": "2027-03-04",
+  "dia": "qui 04/03",
+  "ne": "REC",
+  "pp": 318,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-04",
+  "dia": "qui 04/03",
+  "ne": "FOR",
+  "pp": 324,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "h.depois",
+  "d": "2027-03-04",
+  "dia": "qui 04/03",
   "ne": "JDO",
   "pp": 331,
   "conf": true
@@ -462,28 +444,10 @@
  {
   "tipo": "celula",
   "serie": "h.depois",
-  "d": "2027-03-02",
-  "dia": "ter 02/03",
-  "ne": "NAT",
-  "pp": 386,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
-  "d": "2027-03-02",
-  "dia": "ter 02/03",
-  "ne": "JPA",
-  "pp": 625,
-  "conf": false
- },
- {
-  "tipo": "celula",
-  "serie": "h.depois",
   "d": "2027-03-04",
   "dia": "qui 04/03",
-  "ne": "REC",
-  "pp": 318,
+  "ne": "JPA",
+  "pp": 516,
   "conf": true
  }
 ]
