@@ -1,8 +1,8 @@
-# PS5 — última varredura: 2026-11-27 14:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 14:40 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 3h
 
-- **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
+- **PS5 com leitor de disco**: R$ 3.955,91 na Shopee · confira se é a versão nacional, postado há 0h
    não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 3h
 - **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 3h
    sem cupom: R$ 3.510,25 na Magazine Luiza
@@ -33,11 +33,11 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 34 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 78 de 91 buscas hoje
+- KaBuM!: ok, 37 itens
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 79 de 92 buscas hoje
 - Americanas: ok, 13 itens
-- Fast Shop: ok, 7 itens
-- Webcontinental: ok, 49 itens
+- Fast Shop: ok, 6 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 28 itens
 - Promobit: ok, 11 itens
@@ -45,6 +45,6 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 110 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 185 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 186 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
