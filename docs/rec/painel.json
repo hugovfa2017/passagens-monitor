@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 17:28",
+  "quando": "2026-11-27 18:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,21 +37,21 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 318,
+    "voos": 280,
     "conferidos": 10,
-    "ofertas": 10,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
+     "vazias": 1,
      "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 9,
-     "lidas": 9
+     "telas": 11,
+     "lidas": 10
     },
     "sem_preco": {},
-    "seg": 92
+    "seg": 116
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -81,9 +81,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 94,
+   "Azul": 105,
    "Gol": 136,
-   "LATAM": 81
+   "LATAM": 85
   },
   "grupos": [
    {
@@ -124,7 +124,7 @@
    "sinal": "bom",
    "motivos": [
     "R$81 acima do menor de 4 dias (R$834)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$2.075 e R$3.625)"
    ]
   },
   "fora": null,
@@ -418,19 +418,31 @@
    "saida": "16:10",
    "chegada": "19:30",
    "tipo": "direto",
-   "pp": 728,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270113/4/0/0/Y/",
+   "pp": 835,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEzIiAKA1JFQxIKMjAyNy0wMS0xMxoDQ0dIKgJHMzIEMTYxN2oHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "qua 13/01"
   },
-  "mais_barata": null,
+  "mais_barata": {
+   "d": "2027-01-12",
+   "orig": "REC",
+   "dest": "VCP",
+   "cia": "Azul",
+   "saida": "03:25",
+   "chegada": "06:40",
+   "tipo": "direto",
+   "pp": 796,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270112/4/0/0/Y/",
+   "dia": "ter 12/01"
+  },
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "R$340 acima do menor de 4 dias (R$388)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.375 e R$3.375)"
+    "R$447 acima do menor de 4 dias (R$388)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.375)"
    ]
   },
   "fora": null,
@@ -646,6 +658,10 @@
    [
     "2026-11-27 15:32",
     728
+   ],
+   [
+    "2026-11-27 18:30",
+    835
    ]
   ]
  },
@@ -673,7 +689,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 798,
+  "pp": 796,
   "conf": true
  },
  {
@@ -682,7 +698,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 728,
+  "pp": 835,
   "conf": true
  },
  {
@@ -690,7 +706,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1643,
+  "pp": 1750,
   "ida": {
    "d": "2026-12-20",
    "orig": "GRU",
@@ -712,9 +728,9 @@
    "saida": "16:10",
    "chegada": "19:30",
    "tipo": "direto",
-   "pp": 728,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270113/4/0/0/Y/",
+   "pp": 835,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEzIiAKA1JFQxIKMjAyNy0wMS0xMxoDQ0dIKgJHMzIEMTYxN2oHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "qua 13/01"
   },
   "juntas": null
