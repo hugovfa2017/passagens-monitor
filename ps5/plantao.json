@@ -39,7 +39,8 @@
   "nc|digital|mercado livre|359": "2026-11-27T11:18:55-03:00",
   "nc|digital|mercado livre|369": "2026-11-27T11:18:55-03:00",
   "nc|leitor|?|339": "2026-11-27T11:21:56-03:00",
-  "digital|mercado livre|369": "2026-11-27T11:28:56-03:00"
+  "digital|mercado livre|369": "2026-11-27T11:28:56-03:00",
+  "nc|digital|mercado livre|340": "2026-11-27T17:10:00-03:00"
  },
  "anuncios": {
   "Mercado Livre|2026-11-26T20:00": {
@@ -75,20 +76,20 @@
    "valor": 1520
   },
   "Mercado Livre|2026-11-27T12:00": {
-   "loja": "Mercado Livre",
-   "quando": "2026-11-27T12:00-03:00",
+   "avisado": "2026-11-27T11:59:12-03:00",
+   "canal": "Nerd Ofertas",
+   "desconto": "R$ 199",
+   "destino": "https://meli.la/17KfCRn",
    "horas": [
     "12h"
    ],
-   "desconto": "R$ 199",
-   "valor": 199,
+   "lembrado": null,
+   "link": "https://t.me/nerdofertas/156609",
+   "loja": "Mercado Livre",
+   "quando": "2026-11-27T12:00-03:00",
    "ressalvas": [],
    "resumo": "🚨 Cupom Mercado Livre 🏷 R$ 199 OFF acima de R$ 999: ⏳ Vou editar e colocar o código aqui às 12h 🔗 Abra já e confira os produtos da lista do cupom: https://meli.la/17KfCRn Total de 437 Cupons Meli Ativ",
-   "destino": "https://meli.la/17KfCRn",
-   "link": "https://t.me/nerdofertas/156609",
-   "canal": "Nerd Ofertas",
-   "avisado": "2026-11-27T11:59:12-03:00",
-   "lembrado": null
+   "valor": 199
   }
  },
  "cupons": {
