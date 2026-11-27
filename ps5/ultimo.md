@@ -1,12 +1,12 @@
-# PS5 — última varredura: 2026-11-27 15:40 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 15:50 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 4h
+**Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 5h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
    não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 4h
-- **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 4h
+- **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 5h
    sem cupom: R$ 3.510,25 na Magazine Luiza
-- **PS5 Pro**: R$ 7.899 na Amazon
+- **PS5 Pro**: R$ 7.999 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
 
@@ -24,10 +24,8 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
-- PS5 Digital: R$ 4.654,90 na Amazon
 - PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## À parte: leilões (lance não é preço final: há taxas, retirada e nenhum teste)
@@ -37,18 +35,18 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: ok, 41 itens · barrada em 84 de 98 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 85 de 99 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 28 itens
-- Promobit: ok, 11 itens
+- Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 106 itens (22 de 22 canais)
+- Telegram: ok, 105 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 224 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 206 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
