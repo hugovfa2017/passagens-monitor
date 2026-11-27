@@ -112,7 +112,7 @@ CUPOM_FORA = re.compile(r'jbl|impressora|scanner|note(?:book)?\d*|lenovo|asus|mo
                         r'processador|controle|dualsense|headset|monitor', re.I)
 # para o aviso de preço possível: só a categoria tira o cupom ("só no app" e "selecionados" podem valer para console)
 CUPOM_OUTRA_CATEGORIA = re.compile(CUPOM_FORA.pattern.replace(r'app\b|', '').replace('selecionados|', '') +
-                                   r'|\bssd\b|\bhd\b|suporte|memoria|gabinete|fontes? de alimentacao|placas?[- ]mae|perifer', re.I)
+                                   r'|\bssd\b|\bhd\b|suporte|memoria|gabinete|\bfontes?\b|\bpsu\b|placas?[- ]mae|perifer', re.I)
 CUPOM_PS5 = re.compile(r'ps ?5|playstation|console|video ?games?|\bgames?\b|gamer|eletronicos|tecnologia|todo o site|site todo|'
                        r'todo site|sitetodo|todosite')
 
@@ -193,14 +193,17 @@ def cupom_fresco(c, agora):
 
 
 def precos_possiveis(cupons, bases, agora, codigos_ps5=()):
-    """Cupom que pode valer para console aplicado ao preço sem cupom da loja: os que deixam um modelo com alerta no limite
-    (alvo ou AVISAR_ABAIXO). Para não perder oportunidade, conta todo cupom que não é de outra categoria (CUPOM_FORA),
-    mesmo sem dizer "site todo" ("R$ 150 OFF em R$ 1.499"). Não confirmado: o cupom pode não valer para console."""
+    """Cupom que diz valer para console aplicado ao preço sem cupom da loja: os que deixam um modelo com alerta no limite
+    (alvo ou AVISAR_ABAIXO). Só entra cupom com sinal de que vale: o texto dele (título e descrição, não os produtos de
+    exemplo) fala de console, games, eletrônicos ou site todo, sem citar outra categoria, "selecionados" ou "só no app";
+    ou o código já apareceu numa oferta de console. Cupom genérico ("15% OFF") ficou de fora em 27/11: na KaBuM!, quase
+    sempre é de uma marca ou categoria (fontes, periféricos) e não vale para PS5."""
     out, vistos = [], set()
     for c in cupons:
         cod = c['codigo'].upper()
-        outra = CUPOM_OUTRA_CATEGORIA.search(simples(f"{c['titulo']} {c.get('descricao', '')} {c['codigo']}")) and cod not in codigos_ps5
-        if cod in config.CUPONS_QUE_NAO_VALEM or not c.get('regra') or outra or not cupom_fresco(c, agora):
+        t = simples(f"{c['titulo']} {c.get('descricao', '')} {c['codigo']}")
+        vale = cod in codigos_ps5 or (CUPOM_PS5.search(t) and not CUPOM_FORA.search(t) and not CUPOM_OUTRA_CATEGORIA.search(t))
+        if cod in config.CUPONS_QUE_NAO_VALEM or not c.get('regra') or not vale or not cupom_fresco(c, agora):
             continue
         for b in bases:
             d = fontes.desconto(c['regra'], b['preco']) if b['loja'] == c['loja'] else 0
@@ -1539,7 +1542,10 @@ def _teste():
         cup = lambda cod, tit, loja='Amazon', origem='canal Nerd Cupons', m=30: {
             'codigo': cod, 'loja': loja, 'titulo': tit, 'regra': fontes.regra_cupom(tit), 'validade': None, 'publicado': pub(m),
             'origem': origem, 'link': 'https://t.me/nerdcupons/1'}
-        cs = [cup('BLACK150', '🚨 Cupom Amazon APP 🏷 R$ 150 OFF em R$ 1.499: «BLACK150»'),      # o de 26/11: só no app, sem categoria
+        cs = [cup('BLACK150', '🚨 Cupom Amazon APP 🏷 R$ 150 OFF em R$ 1.499: «BLACK150»'),      # não diz que vale para console
+              cup('ELETRO250', 'R$ 250 OFF em Eletrônicos e Games acima de R$ 2.000'),
+              cup('SAVINHO15', 'Cupom Kabum: 15% OFF'),                                       # genérico (27/11): na KaBuM!, quase sempre de marca
+              cup('NOVAFONTE', 'Cupom de desconto Kabum: 15% OFF em Fontes'),                # categoria (fontes)
               cup('NOVO100', 'R$ 100 OFF na primeira compra'),                                # só conta nova
               cup('SITE20', '20% OFF em todo o site, até R$ 100'),
               cup('JBL30', '30% OFF em produtos JBL'),                                       # outra categoria
@@ -1548,12 +1554,13 @@ def _teste():
               cup('KABUM300', 'R$ 300 OFF em todo o site', loja='KaBuM!'),                   # loja sem preço lido
               cup('PROMO200', 'R$ 200 OFF em todo o site acima de R$ 3.000', origem='Promobit', m=60 * 24 * 5),   # lista dos ativos
               cup('MIN5000', 'R$ 400 OFF acima de R$ 5.000'),                               # mínimo acima do preço
-              cup('MARCAX25', 'Use o cupom e ganhe 25% OFF em produtos selecionados', origem='Promobit')]   # chega, sem som
+              cup('MARCAX25', 'Use o cupom e ganhe 25% OFF em produtos selecionados', origem='Promobit')]   # selecionados: fora
         ps = precos_possiveis(cs, bs, agora)
-        assert [(p['codigo'], p['modelo'], p['preco']) for p in ps] == \
-            [('PROMO200', 'digital', 3532.55), ('BLACK150', 'digital', 3582.55), ('SITE20', 'digital', 3632.55),
-             ('MARCAX25', 'digital', 2799.41), ('MARCAX25', 'leitor', 3348.03)], ps
-        assert [restrito(p) for p in ps] == [False, False, False, True, True]
+        assert sorted((p['codigo'], p['modelo'], p['preco']) for p in ps) == \
+            [('ELETRO250', 'digital', 3482.55), ('PROMO200', 'digital', 3532.55), ('SITE20', 'digital', 3632.55)], ps
+        assert not any(map(restrito, ps))
+        # um cupom genérico vale quando o código já apareceu numa oferta de console
+        assert [p['codigo'] for p in precos_possiveis([cs[2]], bs, agora, codigos_ps5={'SAVINHO15'})] == ['SAVINHO15']
         assert not precos_possiveis([{**cs[-1], 'codigo': 'attackshark25'}], bs, agora), 'testado pelo dono: não vale (CUPONS_QUE_NAO_VALEM)'
         # "20% OFF em compras até R$ 1500" (INFLU20BLACK, Magalu, 27/11 00h04): é o valor máximo do pedido, não o teto do desconto
         assert fontes.regra_cupom('🏷 20% OFF em compras até R$ 1500: «INFLU20BLACK»') == {'pct': 20, 'maximo': 1500}
@@ -1563,46 +1570,41 @@ def _teste():
         assert not precos_possiveis([cup('B1GZ4F4D1NH0', 'CORRE 🚨 Novo Cupom KABUM 🏷 20% OFF em Placas de Vídeo seleciondas 🏷 Código: «B1GZ4F4D1NH0»')], bs, agora)
         assert restrito({'titulo': '20% OFF em itens seleciondas'})
         # posts reais de 26/11 (Super Ofertas BR): a descrição do cupom vem embaixo do código e decide; a lista de produtos
-        # de exemplo ("Já ficou barato com ele agora:") não conta
+        # de exemplo ("Já ficou barato com ele agora:", com jogos de PS5 e monitor) não conta, nem para incluir nem para tirar
         posts = {'ENDGAME40': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥<br>🎟 Código: <code>ENDGAME40</code> (toque para copiar)<br>'
                               '📌 40% OFF em produtos selecionados<br>🔥 Já ficou barato com ele agora:<br>➡️ Jogo EA Sports FC 26, PS5<br>'
                               '💸 R$ 61,34<br>🔗 https://ofertou.ai/SLOk-Kabum',
                  'TEMQUETER': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 28% OFF 🔥<br>🎟 Código: <code>TEMQUETER</code> (toque para copiar)<br>'
                               '📌 28% OFF — Suporte de Parede Articulado para Monitor de 17" a 32"<br>🔥 Já ficou barato com ele agora:<br>'
                               '➡️ Jogo EA Sports FC 26, PS5<br>🔗 https://ofertou.ai/SLOk-Kabum',
-                 'KABUM700': '🔥 [KaBuM!] R$ 700 OFF em compras acima de R$ 2.000<br>🎟 Cupom: <code>KABUM700</code><br>'
+                 'KABUM700': '🔥 [KaBuM!] R$ 700 OFF em todo o site acima de R$ 2.000<br>🎟 Cupom: <code>KABUM700</code><br>'
                              '🔥 Já ficou barato com ele agora:<br>➡️ Monitor Gamer LG 27"<br>🔗 https://ofertou.ai/x-Kabum'}
         lidos = [{**c, 'loja': 'KaBuM!', 'regra': fontes.regra_cupom(c['titulo']), 'publicado': pub(10), 'origem': 'canal Super Ofertas BR',
                   'link': 'https://t.me/superofertasbr/1'} for h in posts.values() for c in texto.ler_post(h)['cupons']]
         assert {c['codigo']: c['descricao'][-40:] for c in lidos}['ENDGAME40'].endswith('40% OFF em produtos selecionados'), lidos
         pk = precos_possiveis(lidos, [{'loja': 'KaBuM!', 'modelo': 'digital', 'preco': 4369.05, 'link': 'https://k', 'titulo': 'PS5'}], agora)
-        assert [(p['codigo'], restrito(p)) for p in pk] == [('KABUM700', False), ('ENDGAME40', True)], pk   # suporte de monitor: fora
+        assert [p['codigo'] for p in pk] == ['KABUM700'], pk   # selecionados e suporte de monitor: fora
         # repetição: mesmo cupom, loja e modelo só volta em 24 h, ou antes se ficar R$ 50 mais barato
-        reg = {ps[1]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3582.55}}
-        assert [p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))] == ['PROMO200', 'SITE20', 'MARCAX25', 'MARCAX25']
-        assert [p['codigo'] for p in cupons_novos([{**ps[1], 'preco': 3530}], reg, agora + timedelta(hours=1))] == ['BLACK150']
-        assert len(cupons_novos(ps, reg, agora + timedelta(hours=24))) == 5
-        t = texto_cupom(ps[1:2])
+        sitio = next(p for p in ps if p['codigo'] == 'SITE20')
+        reg = {sitio['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3632.55}}
+        assert sorted(p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))) == ['ELETRO250', 'PROMO200']
+        assert [p['codigo'] for p in cupons_novos([{**sitio, 'preco': 3580}], reg, agora + timedelta(hours=1))] == ['SITE20']
+        assert len(cupons_novos(ps, reg, agora + timedelta(hours=24))) == 3
+        t = texto_cupom([sitio])
         html_do_telegram(t)
-        assert t.startswith('🧪 <b>R$ 3.582,55 · PS5 Digital na Amazon, se o cupom valer</b>\n🎟 <code>BLACK150</code>') and '· só no app' in t, t
+        assert t.startswith('🧪 <b>R$ 3.632,55 · PS5 Digital na Amazon, se o cupom valer</b>\n🎟 <code>SITE20</code>'), t
         # plantão: usa o preço das lojas da última varredura (estado['bases']); não repete o que a varredura já avisou
         with tempfile.TemporaryDirectory() as pasta:
+            promo = next(p for p in ps if p['codigo'] == 'PROMO200')
             gravar_json(os.path.join(pasta, 'estado.json'), {'bases': bs, 'cupons_avisados': {
-                ps[0]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3532.55}}})
+                promo['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3532.55}}})
             enviadas.clear()
             linhas = plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=1))
-            assert [l for l in linhas if l.startswith('CUPOM')] == ['CUPOM_POSSIVEL digital 3582.55 Amazon BLACK150',
-                                                                    'CUPOM_POSSIVEL digital 3632.55 Amazon SITE20',
-                                                                    'CUPOM_POSSIVEL digital 2799.41 Amazon MARCAX25',
-                                                                    'CUPOM_POSSIVEL leitor 3348.03 Amazon MARCAX25'], linhas
+            assert [l for l in linhas if l.startswith('CUPOM')] == ['CUPOM_POSSIVEL digital 3482.55 Amazon ELETRO250',
+                                                                    'CUPOM_POSSIVEL digital 3632.55 Amazon SITE20'], linhas
             assert len(enviadas) == 1 and not enviadas[0][1] and [b[0]['url'] for b in enviadas[0][2]][0] == 'https://loja/digital'
             assert plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=2)) == [linhas[0]] and len(enviadas) == 1
-            assert sorted(ler_json(os.path.join(pasta, 'plantao.json'), {})['cupons']) == sorted(p['chave'] for p in ps[1:])
-            # só "produtos selecionados": chega sem som
-            gravar_json(os.path.join(pasta, 'estado.json'), {'bases': bs})
-            os.remove(os.path.join(pasta, 'plantao.json'))
-            plantao(lambda: (cs[-1:], {}), enviar, pasta, agora + timedelta(minutes=3))
-            assert len(enviadas) == 2 and enviadas[-1][1] and 'MARCAX25' in enviadas[-1][0], enviadas[-1][:2]
+            assert sorted(ler_json(os.path.join(pasta, 'plantao.json'), {})['cupons']) == sorted(p['chave'] for p in ps if p is not promo)
     finally:
         config.ALVOS, config.AVISAR_ABAIXO = alvos_, avisar_
 
