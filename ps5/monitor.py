@@ -111,7 +111,8 @@ CUPOM_FORA = re.compile(r'jbl|impressora|scanner|note(?:book)?\d*|lenovo|asus|mo
                         r'brinquedo|fralda|biscoito|lacta|sono|tablet|frete|primeira compra|app\b|selecionados|placa de video|'
                         r'processador|controle|dualsense|headset|monitor', re.I)
 # para o aviso de preço possível: só a categoria tira o cupom ("só no app" e "selecionados" podem valer para console)
-CUPOM_OUTRA_CATEGORIA = re.compile(CUPOM_FORA.pattern.replace(r'app\b|', '').replace('selecionados|', ''), re.I)
+CUPOM_OUTRA_CATEGORIA = re.compile(CUPOM_FORA.pattern.replace(r'app\b|', '').replace('selecionados|', '') +
+                                   r'|\bssd\b|\bhd\b|suporte|memoria|gabinete|fonte de alimentacao', re.I)
 CUPOM_PS5 = re.compile(r'ps ?5|playstation|console|video ?games?|\bgames?\b|gamer|eletronicos|tecnologia|todo o site|site todo|'
                        r'todo site|sitetodo|todosite')
 
@@ -198,7 +199,7 @@ def precos_possiveis(cupons, bases, agora, codigos_ps5=()):
     out, vistos = [], set()
     for c in cupons:
         cod = c['codigo'].upper()
-        outra = CUPOM_OUTRA_CATEGORIA.search(simples(f"{c['titulo']} {c['codigo']}")) and cod not in codigos_ps5
+        outra = CUPOM_OUTRA_CATEGORIA.search(simples(f"{c['titulo']} {c.get('descricao', '')} {c['codigo']}")) and cod not in codigos_ps5
         if cod in config.CUPONS_QUE_NAO_VALEM or not c.get('regra') or outra or not cupom_fresco(c, agora):
             continue
         for b in bases:
@@ -206,7 +207,8 @@ def precos_possiveis(cupons, bases, agora, codigos_ps5=()):
             k = f"cp|{simples(b['loja'])}|{cod}|{b['modelo']}"
             if d >= 30 and b['preco'] - d <= limite(b['modelo']) and k not in vistos:
                 vistos.add(k)
-                out.append({'chave': k, 'modelo': b['modelo'], 'loja': b['loja'], 'codigo': c['codigo'], 'titulo': c['titulo'],
+                out.append({'chave': k, 'modelo': b['modelo'], 'loja': b['loja'], 'codigo': c['codigo'],
+                            'titulo': c.get('descricao') or c['titulo'],
                             'origem': c.get('origem', ''), 'link_cupom': c.get('link'), 'base': b, 'desconto': round(d, 2),
                             'preco': round(b['preco'] - d, 2)})
     return sorted(out, key=lambda p: (restrito(p), p['preco']))     # o de "produtos selecionados" vai por último
@@ -1552,6 +1554,21 @@ def _teste():
             [('PROMO200', 'digital', 3532.55), ('BLACK150', 'digital', 3582.55), ('SITE20', 'digital', 3632.55),
              ('ATTACKSHARK25', 'digital', 2799.41), ('ATTACKSHARK25', 'leitor', 3348.03)], ps
         assert [restrito(p) for p in ps] == [False, False, False, True, True]
+        # posts reais de 26/11 (Super Ofertas BR): a descrição do cupom vem embaixo do código e decide; a lista de produtos
+        # de exemplo ("Já ficou barato com ele agora:") não conta
+        posts = {'ENDGAME40': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥<br>🎟 Código: <code>ENDGAME40</code> (toque para copiar)<br>'
+                              '📌 40% OFF em produtos selecionados<br>🔥 Já ficou barato com ele agora:<br>➡️ Jogo EA Sports FC 26, PS5<br>'
+                              '💸 R$ 61,34<br>🔗 https://ofertou.ai/SLOk-Kabum',
+                 'TEMQUETER': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 28% OFF 🔥<br>🎟 Código: <code>TEMQUETER</code> (toque para copiar)<br>'
+                              '📌 28% OFF — Suporte de Parede Articulado para Monitor de 17" a 32"<br>🔥 Já ficou barato com ele agora:<br>'
+                              '➡️ Jogo EA Sports FC 26, PS5<br>🔗 https://ofertou.ai/SLOk-Kabum',
+                 'KABUM700': '🔥 [KaBuM!] R$ 700 OFF em compras acima de R$ 2.000<br>🎟 Cupom: <code>KABUM700</code><br>'
+                             '🔥 Já ficou barato com ele agora:<br>➡️ Monitor Gamer LG 27"<br>🔗 https://ofertou.ai/x-Kabum'}
+        lidos = [{**c, 'loja': 'KaBuM!', 'regra': fontes.regra_cupom(c['titulo']), 'publicado': pub(10), 'origem': 'canal Super Ofertas BR',
+                  'link': 'https://t.me/superofertasbr/1'} for h in posts.values() for c in texto.ler_post(h)['cupons']]
+        assert {c['codigo']: c['descricao'][-40:] for c in lidos}['ENDGAME40'].endswith('40% OFF em produtos selecionados'), lidos
+        pk = precos_possiveis(lidos, [{'loja': 'KaBuM!', 'modelo': 'digital', 'preco': 4369.05, 'link': 'https://k', 'titulo': 'PS5'}], agora)
+        assert [(p['codigo'], restrito(p)) for p in pk] == [('KABUM700', False), ('ENDGAME40', True)], pk   # suporte de monitor: fora
         # repetição: mesmo cupom, loja e modelo só volta em 24 h, ou antes se ficar R$ 50 mais barato
         reg = {ps[1]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3582.55}}
         assert [p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))] == ['PROMO200', 'SITE20', 'ATTACKSHARK25', 'ATTACKSHARK25']

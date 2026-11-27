@@ -297,6 +297,11 @@ def ler_anuncio(h, publicado, minimo=150):
 def _cupons_do_post(linhas, links):
     """Cupons anunciados com regra ("R$500 OFF em compras acima de R$2.500 — cupom MP500PS"): [{codigo, titulo, loja, ps5}]"""
     out, s_todo = [], simples(' '.join(linhas))
+    # a descrição do cupom ("📌 40% OFF em produtos selecionados", "28% OFF — Suporte para Monitor") vem nas linhas de cima,
+    # antes da lista de produtos de exemplo ("Já ficou barato com ele agora:") e do primeiro link
+    fim = next((i for i, l in enumerate(linhas) if re.search(r'https?://|ficou barato|exemplos?\b|aproveite em|produtos? com', l, re.I)),
+               len(linhas))
+    descricao = re.sub(r'\s+', ' ', ' '.join(linhas[:fim]))[:220]
     for i, l in enumerate(linhas):
         codigo = _cupom([l])
         if not codigo or codigo.startswith('cupom'):
@@ -304,5 +309,6 @@ def _cupons_do_post(linhas, links):
         regra = next((x for x in (l, linhas[i - 1] if i else '') if re.search(r'(?:R\$\s?[\d.,]+|\d{1,2}\s?%)\s*(?:de\s+)?(?:OFF|desconto)', x, re.I)), None)
         if regra:
             out.append({'codigo': codigo, 'titulo': re.sub(r'\s+', ' ', regra if regra is l else f'{regra} {l}')[:160],
-                        'loja': _loja(linhas, links), 'ps5': bool(re.search(r'\bps ?5\b|playstation|console|games?\b', s_todo))})
+                        'descricao': descricao, 'loja': _loja(linhas, links),
+                        'ps5': bool(re.search(r'\bps ?5\b|playstation|console|games?\b', s_todo))})
     return out

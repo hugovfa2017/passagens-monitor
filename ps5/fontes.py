@@ -378,7 +378,8 @@ def telegram(canais=None, agora=None, buscas=None):
                         o.update(cupom=x['cupom'], cupom_origem='postado')
                     out.append(o)
                 for x in lido['cupons']:
-                    out.append({'codigo': x['codigo'], 'loja': x['loja'], 'titulo': x['titulo'], 'regra': regra_cupom(x['titulo']),
+                    out.append({'codigo': x['codigo'], 'loja': x['loja'], 'titulo': x['titulo'], 'descricao': x.get('descricao', ''),
+                                'regra': regra_cupom(x['titulo']),
                                 'validade': None, 'publicado': publicado, 'origem': f"canal {c['nome']}", 'link': f'https://t.me/{post}',
                                 'ps5': x['ps5']})
         if not achou and not any(f.startswith(c['canal'] + ':') for f in falhas):
