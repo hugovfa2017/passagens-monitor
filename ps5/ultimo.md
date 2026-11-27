@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 22:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 23:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 9h
 
@@ -33,17 +33,17 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 112 de 138 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 113 de 139 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 7 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 29 itens
-- Promobit: ok, 12 itens
+- Promobit: ok, 11 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 112 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 180 não é console PS5, 1 preço fora da faixa de PS5 Digital
+Descartados: 181 não é console PS5, 1 preço fora da faixa de PS5 Digital
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
