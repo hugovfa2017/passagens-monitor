@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 01:34",
+  "quando": "2026-11-27 02:29",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,35 +37,36 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 243,
-    "conferidos": 12,
-    "ofertas": 10,
+    "voos": 278,
+    "conferidos": 11,
+    "ofertas": 9,
     "bloqueio": null,
     "listas": {
-     "vazias": 2,
-     "repetidas": 5,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 1,
+     "repetidas": 1,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 12,
-     "lidas": 10
+     "telas": 11,
+     "lidas": 9
     },
     "sem_preco": {
-     "a lista não abriu": 2
+     "a lista não abriu": 2,
+     "tela de compra sem vendedores": 1
     },
-    "seg": 172
+    "seg": 155
    },
    "MaxMilhas": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
    },
    "Vai de Promo": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 6,
-    "com_voo": 6
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
     "buscas": 4,
@@ -114,7 +115,7 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1105,
+   "pp": 1097,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
    "dia": "qua 23/12"
@@ -125,7 +126,7 @@
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "R$271 acima do menor de 3 dias (R$834)",
+    "R$263 acima do menor de 3 dias (R$834)",
     "para o Google, preço normal (a rota costuma ficar entre R$1.700 e R$4.250)"
    ]
   },
@@ -318,6 +319,10 @@
    [
     "2026-11-26 23:31",
     1105
+   ],
+   [
+    "2026-11-27 02:29",
+    1097
    ]
   ]
  },
@@ -328,7 +333,7 @@
   "dia": "sáb 19/12",
   "ne": "REC",
   "pp": 2195,
-  "conf": false
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -336,7 +341,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1528,
+  "pp": 1660,
   "conf": true
  },
  {
@@ -345,7 +350,7 @@
   "d": "2026-12-21",
   "dia": "seg 21/12",
   "ne": "REC",
-  "pp": 1528,
+  "pp": 1644,
   "conf": true
  },
  {
@@ -363,7 +368,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1105,
+  "pp": 1097,
   "conf": true
  },
  {
@@ -594,10 +599,19 @@
  {
   "tipo": "celula",
   "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 955,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 899,
+  "pp": 860,
   "conf": true
  },
  {
@@ -610,11 +624,20 @@
   "conf": true
  },
  {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
+  "ne": "REC",
+  "pp": 846,
+  "conf": true
+ },
+ {
   "tipo": "pacote",
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1951,
+  "pp": 1943,
   "ida": {
    "d": "2026-12-23",
    "orig": "CGH",
@@ -623,7 +646,7 @@
    "saida": "22:15",
    "chegada": "01:20",
    "tipo": "direto",
-   "pp": 1105,
+   "pp": 1097,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
    "dia": "qua 23/12"
