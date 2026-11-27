@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-27 15:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 15:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 4h
 
@@ -17,7 +17,7 @@ Telegram: sem mensagem nesta varredura
 ## Cupons para testar no carrinho (não confirmados para console)
 
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.355,02 por ~R$ 4.155,02; `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.205,02; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.255,02
-- Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.599 por ~R$ 4.449
+- Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.369,90 por ~R$ 4.219,90
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Mercado Livre: `GANHEBLACK` (25% OFF em compras acima de R$79, limite de R$100 Cupom: «GANHEBLACK»); `MELI1CL` (R$150 OFF em compras acima de R$1.199 Cupom: «MELI1CL»); `K4RMELI` (R$110 OFF em compras acima de R$699 Cupom: «K4RMELI»); `MELIO7N` (R$60 OFF em compras acima de R$399 Cupom: «MELIO7N»); `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC)
 
@@ -34,7 +34,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 37 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 81 de 94 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 82 de 95 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 7 itens
 - Webcontinental: ok, 49 itens
