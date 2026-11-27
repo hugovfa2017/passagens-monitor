@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 16:26",
+  "quando": "2026-11-27 17:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,21 +37,21 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 322,
+    "voos": 318,
     "conferidos": 10,
     "ofertas": 10,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
-     "repetidas": 0,
-     "exemplo": null
+     "repetidas": 1,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 10
+     "telas": 9,
+     "lidas": 9
     },
     "sem_preco": {},
-    "seg": 39
+    "seg": 92
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -81,7 +81,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 105,
+   "Azul": 94,
    "Gol": 136,
    "LATAM": 81
   },
@@ -361,7 +361,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 1737,
+  "pp": 2406,
   "conf": true
  },
  {
@@ -430,7 +430,7 @@
    "sinal": "bom",
    "motivos": [
     "R$340 acima do menor de 4 dias (R$388)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.375 e R$3.375)"
    ]
   },
   "fora": null,
@@ -655,7 +655,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1061,
+  "pp": 1056,
   "conf": true
  },
  {
@@ -664,7 +664,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 832,
+  "pp": 829,
   "conf": true
  },
  {
@@ -673,7 +673,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 800,
+  "pp": 798,
   "conf": true
  },
  {
