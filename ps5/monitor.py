@@ -1548,12 +1548,13 @@ def _teste():
               cup('KABUM300', 'R$ 300 OFF em todo o site', loja='KaBuM!'),                   # loja sem preço lido
               cup('PROMO200', 'R$ 200 OFF em todo o site acima de R$ 3.000', origem='Promobit', m=60 * 24 * 5),   # lista dos ativos
               cup('MIN5000', 'R$ 400 OFF acima de R$ 5.000'),                               # mínimo acima do preço
-              cup('ATTACKSHARK25', 'Use o cupom e ganhe 25% OFF em produtos selecionados', origem='Promobit')]   # chega, sem som
+              cup('MARCAX25', 'Use o cupom e ganhe 25% OFF em produtos selecionados', origem='Promobit')]   # chega, sem som
         ps = precos_possiveis(cs, bs, agora)
         assert [(p['codigo'], p['modelo'], p['preco']) for p in ps] == \
             [('PROMO200', 'digital', 3532.55), ('BLACK150', 'digital', 3582.55), ('SITE20', 'digital', 3632.55),
-             ('ATTACKSHARK25', 'digital', 2799.41), ('ATTACKSHARK25', 'leitor', 3348.03)], ps
+             ('MARCAX25', 'digital', 2799.41), ('MARCAX25', 'leitor', 3348.03)], ps
         assert [restrito(p) for p in ps] == [False, False, False, True, True]
+        assert not precos_possiveis([{**cs[-1], 'codigo': 'attackshark25'}], bs, agora), 'testado pelo dono: não vale (CUPONS_QUE_NAO_VALEM)'
         # posts reais de 26/11 (Super Ofertas BR): a descrição do cupom vem embaixo do código e decide; a lista de produtos
         # de exemplo ("Já ficou barato com ele agora:") não conta
         posts = {'ENDGAME40': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥<br>🎟 Código: <code>ENDGAME40</code> (toque para copiar)<br>'
@@ -1571,7 +1572,7 @@ def _teste():
         assert [(p['codigo'], restrito(p)) for p in pk] == [('KABUM700', False), ('ENDGAME40', True)], pk   # suporte de monitor: fora
         # repetição: mesmo cupom, loja e modelo só volta em 24 h, ou antes se ficar R$ 50 mais barato
         reg = {ps[1]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3582.55}}
-        assert [p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))] == ['PROMO200', 'SITE20', 'ATTACKSHARK25', 'ATTACKSHARK25']
+        assert [p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))] == ['PROMO200', 'SITE20', 'MARCAX25', 'MARCAX25']
         assert [p['codigo'] for p in cupons_novos([{**ps[1], 'preco': 3530}], reg, agora + timedelta(hours=1))] == ['BLACK150']
         assert len(cupons_novos(ps, reg, agora + timedelta(hours=24))) == 5
         t = texto_cupom(ps[1:2])
@@ -1585,8 +1586,8 @@ def _teste():
             linhas = plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=1))
             assert [l for l in linhas if l.startswith('CUPOM')] == ['CUPOM_POSSIVEL digital 3582.55 Amazon BLACK150',
                                                                     'CUPOM_POSSIVEL digital 3632.55 Amazon SITE20',
-                                                                    'CUPOM_POSSIVEL digital 2799.41 Amazon ATTACKSHARK25',
-                                                                    'CUPOM_POSSIVEL leitor 3348.03 Amazon ATTACKSHARK25'], linhas
+                                                                    'CUPOM_POSSIVEL digital 2799.41 Amazon MARCAX25',
+                                                                    'CUPOM_POSSIVEL leitor 3348.03 Amazon MARCAX25'], linhas
             assert len(enviadas) == 1 and not enviadas[0][1] and [b[0]['url'] for b in enviadas[0][2]][0] == 'https://loja/digital'
             assert plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=2)) == [linhas[0]] and len(enviadas) == 1
             assert sorted(ler_json(os.path.join(pasta, 'plantao.json'), {})['cupons']) == sorted(p['chave'] for p in ps[1:])
@@ -1594,7 +1595,7 @@ def _teste():
             gravar_json(os.path.join(pasta, 'estado.json'), {'bases': bs})
             os.remove(os.path.join(pasta, 'plantao.json'))
             plantao(lambda: (cs[-1:], {}), enviar, pasta, agora + timedelta(minutes=3))
-            assert len(enviadas) == 2 and enviadas[-1][1] and 'ATTACKSHARK25' in enviadas[-1][0], enviadas[-1][:2]
+            assert len(enviadas) == 2 and enviadas[-1][1] and 'MARCAX25' in enviadas[-1][0], enviadas[-1][:2]
     finally:
         config.ALVOS, config.AVISAR_ABAIXO = alvos_, avisar_
 
