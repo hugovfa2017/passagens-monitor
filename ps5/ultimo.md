@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-27 15:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 15:30 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 4h
 
@@ -12,10 +12,11 @@
 
 Nenhum alerta nesta varredura.
 
-Telegram: sem mensagem nesta varredura
+Telegram: TELEGRAM_ENVIADO
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 4.274,05 por ~R$ 2.991,84; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 4.274,05 por ~R$ 3.774,05
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.355,02 por ~R$ 4.155,02; `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.205,02; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.255,02
 - Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.369,90 por ~R$ 4.219,90
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
@@ -34,17 +35,22 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 37 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 83 de 96 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 84 de 97 buscas hoje
 - Americanas: ok, 13 itens
-- Fast Shop: ok, 6 itens
+- Fast Shop: ok, 5 itens
 - Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 28 itens
-- Promobit: ok, 11 itens
+- Promobit: ok, 10 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 108 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 187 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 191 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
+
+## Cupom já valendo: preço possível (não confirmado)
+
+- PS5 Digital: R$ 2.991,84 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.274,05)
+- PS5 com leitor de disco: R$ 3.288,60 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.698)
