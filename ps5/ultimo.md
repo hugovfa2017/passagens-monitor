@@ -1,14 +1,14 @@
-# PS5 — última varredura: 2026-11-27 00:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 00:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 10h
 
 - **PS5 com leitor de disco**: R$ 3.671 no Mercado Livre com cupom PROMOTOP · visto em 4 lugares, postado há 10h
    sem cupom: R$ 4.284 na Webcontinental · Lojas Colombo SA
-   não confirmada: R$ 3.383 na ? com cupom PROMOAGORA · visto em 3 lugares, postado há 9h
+   não confirmada: R$ 3.383 na ? com cupom PROMOAGORA · visto em 3 lugares, postado há 10h
 - **PS5 Digital**: R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 10h
    sem cupom: R$ 3.510,25 na Magazine Luiza
    não confirmada: R$ 2.699 na ? com cupom MUSTPLAY · preço muito abaixo do normal, postado há 7h
-- **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
+- **PS5 Pro**: R$ 7.837,50 na Amazon · à vista
 
 ## Alertas
 
@@ -33,18 +33,18 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 1 de 1 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 2 de 2 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 7 itens
 - Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 30 itens
 - Promobit: ok, 12 itens
-- Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 108 itens (22 de 22 canais)
+- Gatry: ok, 1 itens (40 ofertas no feed)
+- Telegram: ok, 109 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 181 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 183 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
