@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 00:34",
+  "quando": "2026-11-27 01:34",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,44 +37,45 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 68,
-    "conferidos": 11,
-    "ofertas": 7,
+    "voos": 243,
+    "conferidos": 12,
+    "ofertas": 10,
     "bloqueio": null,
     "listas": {
-     "vazias": 7,
-     "repetidas": 8,
+     "vazias": 2,
+     "repetidas": 5,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 6
+     "telas": 12,
+     "lidas": 10
     },
     "sem_preco": {
-     "a lista não abriu": 3,
-     "tela de compra sem vendedores": 1
+     "a lista não abriu": 2
     },
-    "seg": 193
+    "seg": 172
    },
    "MaxMilhas": {
-    "buscas": 3,
-    "com_voo": 3
+    "buscas": 6,
+    "com_voo": 6
    },
    "Vai de Promo": {
-    "buscas": 3,
-    "com_voo": 3
+    "buscas": 6,
+    "com_voo": 6
    },
    "Zupper": {
-    "buscas": 3,
-    "com_voo": 3
+    "buscas": 6,
+    "com_voo": 6
    },
    "123milhas": {
-    "buscas": 3,
-    "com_voo": 0
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    },
    "Viaza": {
-    "buscas": 3,
-    "com_voo": 0
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -82,7 +83,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 95,
+   "Azul": 85,
    "Gol": 136,
    "LATAM": 68
   },
@@ -323,6 +324,42 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 2195,
+  "conf": false
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-20",
+  "dia": "dom 20/12",
+  "ne": "REC",
+  "pp": 1528,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-21",
+  "dia": "seg 21/12",
+  "ne": "REC",
+  "pp": 1528,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "REC",
+  "pp": 1484,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
@@ -356,9 +393,10 @@
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "R$117 acima do menor de 3 dias (R$729)"
+    "R$117 acima do menor de 3 dias (R$729)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.400 e R$3.875)"
    ]
   },
   "fora": null,
@@ -556,10 +594,10 @@
  {
   "tipo": "celula",
   "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 956,
+  "pp": 899,
   "conf": true
  },
  {
