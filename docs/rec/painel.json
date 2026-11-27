@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 18:30",
+  "quando": "2026-11-27 19:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,21 +37,21 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 280,
+    "voos": 317,
     "conferidos": 10,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 1,
+     "vazias": 0,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 11,
-     "lidas": 10
+     "telas": 9,
+     "lidas": 9
     },
     "sem_preco": {},
-    "seg": 116
+    "seg": 67
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -81,9 +81,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 105,
+   "Azul": 96,
    "Gol": 136,
-   "LATAM": 85
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -361,7 +361,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 2406,
+  "pp": 2391,
   "conf": true
  },
  {
@@ -411,38 +411,26 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-13",
-   "orig": "REC",
-   "dest": "CGH",
-   "cia": "Gol",
-   "saida": "16:10",
-   "chegada": "19:30",
-   "tipo": "direto",
-   "pp": 835,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEzIiAKA1JFQxIKMjAyNy0wMS0xMxoDQ0dIKgJHMzIEMTYxN2oHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "qua 13/01"
-  },
-  "mais_barata": {
-   "d": "2027-01-12",
+   "d": "2027-01-10",
    "orig": "REC",
    "dest": "VCP",
-   "cia": "Azul",
-   "saida": "03:25",
-   "chegada": "06:40",
-   "tipo": "direto",
-   "pp": 796,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270112/4/0/0/Y/",
-   "dia": "ter 12/01"
+   "cia": "Gol",
+   "saida": "04:45",
+   "chegada": "10:20",
+   "tipo": "escala 1h20",
+   "pp": 561,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEwIiAKA1JFQxIKMjAyNy0wMS0xMBoDQlNCKgJHMzIEMTcwMyIgCgNCU0ISCjIwMjctMDEtMTAaA1ZDUCoCRzMyBDE3MjRqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "dom 10/01"
   },
+  "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
    "sinal": "bom",
    "motivos": [
-    "R$447 acima do menor de 4 dias (R$388)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.375)"
+    "R$173 acima do menor de 4 dias (R$388)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.450 e R$3.375)"
    ]
   },
   "fora": null,
@@ -662,6 +650,10 @@
    [
     "2026-11-27 18:30",
     835
+   ],
+   [
+    "2026-11-27 19:28",
+    561
    ]
   ]
  },
@@ -671,7 +663,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 1056,
+  "pp": 561,
   "conf": true
  },
  {
@@ -698,7 +690,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 835,
+  "pp": 780,
   "conf": true
  },
  {
@@ -706,7 +698,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1750,
+  "pp": 1476,
   "ida": {
    "d": "2026-12-20",
    "orig": "GRU",
@@ -721,17 +713,17 @@
    "dia": "dom 20/12"
   },
   "volta": {
-   "d": "2027-01-13",
+   "d": "2027-01-10",
    "orig": "REC",
-   "dest": "CGH",
+   "dest": "VCP",
    "cia": "Gol",
-   "saida": "16:10",
-   "chegada": "19:30",
-   "tipo": "direto",
-   "pp": 835,
+   "saida": "04:45",
+   "chegada": "10:20",
+   "tipo": "escala 1h20",
+   "pp": 561,
    "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEzIiAKA1JFQxIKMjAyNy0wMS0xMxoDQ0dIKgJHMzIEMTYxN2oHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "qua 13/01"
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEwIiAKA1JFQxIKMjAyNy0wMS0xMBoDQlNCKgJHMzIEMTcwMyIgCgNCU0ISCjIwMjctMDEtMTAaA1ZDUCoCRzMyBDE3MjRqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "dom 10/01"
   },
   "juntas": null
  }
