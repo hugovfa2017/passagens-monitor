@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 21:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 21:30 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 7h
 
@@ -7,8 +7,8 @@
    não confirmada: R$ 3.383 na ? com cupom PROMOAGORA · visto em 3 lugares, postado há 7h
 - **PS5 Digital**: R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 7h
    sem cupom: R$ 3.510,25 na Magazine Luiza
-   não confirmada: R$ 2.699 na ? com cupom MUSTPLAY · preço muito abaixo do normal, postado há 4h
-- **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
+   não confirmada: R$ 2.699 na ? com cupom MUSTPLAY · preço muito abaixo do normal, postado há 5h
+- **PS5 Pro**: R$ 7.837,50 na Amazon · à vista
 
 ## Alertas
 
@@ -33,17 +33,17 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 104 de 129 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 105 de 130 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 7 itens
+- Fast Shop: ok, 8 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 31 itens
+- Zoom: ok, 30 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (39 ofertas no feed)
 - Telegram: ok, 112 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 191 não é console PS5, 1 preço fora da faixa de PS5 Digital
+Descartados: 192 não é console PS5
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
