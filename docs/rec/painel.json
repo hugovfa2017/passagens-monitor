@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 11:32",
+  "quando": "2026-11-27 12:29",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,30 +37,30 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 286,
-    "conferidos": 11,
+    "voos": 321,
+    "conferidos": 10,
     "ofertas": 8,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 2,
+     "vazias": 0,
+     "repetidas": 5,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 9,
+     "telas": 8,
      "lidas": 8
     },
     "sem_preco": {
-     "tela de compra sem vendedores": 2,
-     "voo não está mais na lista": 1
+     "tela de compra sem vendedores": 1,
+     "a lista não abriu": 1
     },
-    "seg": 111
+    "seg": 140
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -86,7 +86,7 @@
   "taxa_mala": {
    "Azul": 105,
    "Gol": 136,
-   "LATAM": 90
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -352,7 +352,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 2257,
+  "pp": 2376,
   "conf": true
  },
  {
@@ -367,10 +367,19 @@
  {
   "tipo": "celula",
   "serie": "r.ida",
+  "d": "2026-12-21",
+  "dia": "seg 21/12",
+  "ne": "REC",
+  "pp": 1644,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1660,
+  "pp": 1180,
   "conf": true
  },
  {
@@ -393,25 +402,26 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-12",
+   "d": "2027-01-13",
    "orig": "REC",
    "dest": "CGH",
    "cia": "Gol",
-   "saida": "10:15",
-   "chegada": "13:35",
+   "saida": "18:20",
+   "chegada": "21:45",
    "tipo": "direto",
    "pp": 433,
    "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "dia": "ter 12/01"
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "dia": "qua 13/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "R$45 acima do menor de 3 dias (R$388)"
+    "R$45 acima do menor de 3 dias (R$388)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
    ]
   },
   "fora": null,
@@ -624,7 +634,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 860,
+  "pp": 899,
   "conf": true
  },
  {
@@ -633,7 +643,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 783,
+  "pp": 769,
   "conf": true
  },
  {
@@ -642,7 +652,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 433,
+  "pp": 728,
   "conf": true
  },
  {
@@ -674,17 +684,17 @@
    "dia": "dom 20/12"
   },
   "volta": {
-   "d": "2027-01-12",
+   "d": "2027-01-13",
    "orig": "REC",
    "dest": "CGH",
    "cia": "Gol",
-   "saida": "10:15",
-   "chegada": "13:35",
+   "saida": "18:20",
+   "chegada": "21:45",
    "tipo": "direto",
    "pp": 433,
    "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "dia": "ter 12/01"
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-13%22%7D%5D",
+   "dia": "qua 13/01"
   },
   "juntas": null
  }
