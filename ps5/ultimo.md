@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-26 23:40 (hora de Brasília)
+# PS5 — última varredura: 2026-11-26 23:46 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.210 na Magazine Luiza com cupom SQUAD200BF · visto em 3 lugares, postado há 10h
 
@@ -14,7 +14,7 @@
 
 Nenhum alerta nesta varredura.
 
-Telegram: sem mensagem nesta varredura
+Telegram: TELEGRAM_ENVIADO
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
@@ -33,17 +33,23 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 116 de 143 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 117 de 144 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 6 itens
+- Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 30 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 110 itens (22 de 22 canais)
+- Telegram: ok, 109 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
 Descartados: 182 não é console PS5, 1 preço fora da faixa de PS5 Digital
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
+
+## Cupom já valendo: preço possível (não confirmado)
+
+- PS5 Digital: R$ 3.495,24 na Amazon com `BLACKNUPAY20` (sem cupom: R$ 4.369,05)
+- PS5 Digital: R$ 3.276,79 na KaBuM! com `ATTACKSHARK25` (sem cupom: R$ 4.369,05)
+- PS5 com leitor de disco: R$ 3.556,55 na KaBuM! com `ATTACKSHARK25` (sem cupom: R$ 4.742,07)
