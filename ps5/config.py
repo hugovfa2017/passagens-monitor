@@ -23,6 +23,7 @@ ECONOMIA_MINIMA_CUPOM = 10
 CUPONS_QUE_NAO_VALEM = {
     'RELAMPAGO20',   # Amazon, 20% no site todo: inválido para PS5 (23/11/2026)
     'ATTACKSHARK25', # KaBuM!, 25% em produtos selecionados (periféricos Attack Shark): não vale para PS5 (27/11/2026)
+    'BLACKNUPAY20',  # Amazon, 20% no site todo com NuPay: não vale para PS5 (27/11/2026)
 }
 
 # Modelos que podem disparar alerta (tire da lista o que não interessa; o painel continua mostrando todos).
