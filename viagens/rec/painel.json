@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 05:28",
+  "quando": "2026-11-27 06:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 317,
+    "voos": 319,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
@@ -51,7 +51,7 @@
      "lidas": 11
     },
     "sem_preco": {},
-    "seg": 28
+    "seg": 42
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -65,11 +65,12 @@
     "buscas": 8,
     "com_voo": 8
    },
-   "Viaza": {
-    "buscas": 8,
-    "com_voo": 8
-   },
    "123milhas": {
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
+   },
+   "Viaza": {
     "buscas": 4,
     "com_voo": 0,
     "pulado": true
@@ -80,9 +81,9 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 95,
+   "Azul": 96,
    "Gol": 136,
-   "LATAM": 68
+   "LATAM": 81
   },
   "grupos": [
    {
@@ -359,7 +360,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1484,
+  "pp": 1559,
   "conf": true
  },
  {
@@ -620,7 +621,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 860,
+  "pp": 905,
   "conf": true
  },
  {
