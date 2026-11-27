@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 13:27",
+  "quando": "2026-11-27 14:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,43 +37,31 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 322,
-    "conferidos": 10,
-    "ofertas": 10,
-    "bloqueio": null,
-    "listas": {
-     "vazias": 0,
-     "repetidas": 1,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
-    },
-    "diretos": {
-     "telas": 8,
-     "lidas": 8
-    },
-    "sem_preco": {},
-    "seg": 63
-   },
-   "Vai de Promo": {
-    "buscas": 8,
-    "com_voo": 8
+    "voos": 0,
+    "conferidos": 0,
+    "ofertas": 0,
+    "bloqueio": " |  | Sobre esta página |  | Nossos sistemas detectaram tráfego incomum na sua rede de computadores. Esta página verifica se é realmente você, e não um robô, que está enviando as solicitações. Por que isso ac",
+    "seg": 10
    },
    "MaxMilhas": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 2,
+    "com_voo": 2
    },
    "Zupper": {
-    "buscas": 8,
-    "com_voo": 8
+    "buscas": 2,
+    "com_voo": 2
+   },
+   "Vai de Promo": {
+    "buscas": 2,
+    "com_voo": 2
    },
    "123milhas": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 2,
+    "com_voo": 0
    },
    "Viaza": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
+    "buscas": 2,
+    "com_voo": 0
    }
   },
   "mossoro": {
@@ -106,25 +94,24 @@
   "igual_a": null,
   "recomendada": {
    "d": "2026-12-23",
-   "orig": "GRU",
+   "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "08:55",
-   "chegada": "14:35",
-   "tipo": "escala 0h45",
-   "pp": 915,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIzIiAKA0dSVRIKMjAyNi0xMi0yMxoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjMaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "cia": "Azul",
+   "saida": "22:15",
+   "chegada": "01:20",
+   "tipo": "direto",
+   "pp": 1180,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/CGH/REC/2026-12-23/4/0/0/EC",
    "dia": "qua 23/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "R$81 acima do menor de 3 dias (R$834)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
+    "R$346 acima do menor de 3 dias (R$834)"
    ]
   },
   "fora": null,
@@ -344,44 +331,12 @@
    [
     "2026-11-27 13:27",
     915
+   ],
+   [
+    "2026-11-27 14:28",
+    1180
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-19",
-  "dia": "sáb 19/12",
-  "ne": "REC",
-  "pp": 2376,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-20",
-  "dia": "dom 20/12",
-  "ne": "REC",
-  "pp": 1058,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-21",
-  "dia": "seg 21/12",
-  "ne": "REC",
-  "pp": 1058,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-22",
-  "dia": "ter 22/12",
-  "ne": "REC",
-  "pp": 1660,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -389,7 +344,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 915,
+  "pp": 1180,
   "conf": true
  },
  {
@@ -410,7 +365,7 @@
    "saida": "10:15",
    "chegada": "13:35",
    "tipo": "direto",
-   "pp": 728,
+   "pp": 904,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -419,10 +374,9 @@
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "R$340 acima do menor de 3 dias (R$388)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.425 e R$3.000)"
+    "R$516 acima do menor de 3 dias (R$388)"
    ]
   },
   "fora": null,
@@ -630,26 +584,12 @@
    [
     "2026-11-27 13:27",
     728
+   ],
+   [
+    "2026-11-27 14:28",
+    904
    ]
   ]
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-10",
-  "dia": "dom 10/01",
-  "ne": "REC",
-  "pp": 898,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-11",
-  "dia": "seg 11/01",
-  "ne": "REC",
-  "pp": 858,
-  "conf": true
  },
  {
   "tipo": "celula",
@@ -657,16 +597,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 728,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.volta",
-  "d": "2027-01-13",
-  "dia": "qua 13/01",
-  "ne": "REC",
-  "pp": 728,
+  "pp": 904,
   "conf": true
  },
  {
@@ -674,18 +605,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1643,
+  "pp": 2084,
   "ida": {
    "d": "2026-12-23",
-   "orig": "GRU",
+   "orig": "CGH",
    "dest": "REC",
-   "cia": "Gol",
-   "saida": "08:55",
-   "chegada": "14:35",
-   "tipo": "escala 0h45",
-   "pp": 915,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIzIiAKA0dSVRIKMjAyNi0xMi0yMxoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjMaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "cia": "Azul",
+   "saida": "22:15",
+   "chegada": "01:20",
+   "tipo": "direto",
+   "pp": 1180,
+   "vend": "MaxMilhas",
+   "link": "https://www.maxmilhas.com.br/busca-passagens-aereas/OW/CGH/REC/2026-12-23/4/0/0/EC",
    "dia": "qua 23/12"
   },
   "volta": {
@@ -696,7 +627,7 @@
    "saida": "10:15",
    "chegada": "13:35",
    "tipo": "direto",
-   "pp": 728,
+   "pp": 904,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECCGH270112/4/0/0/Y/",
    "dia": "ter 12/01"
