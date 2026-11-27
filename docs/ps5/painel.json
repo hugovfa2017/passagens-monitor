@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27 14:50",
+ "atualizado": "2026-11-27 15:00",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Telegram",
@@ -12,7 +12,7 @@
   "link": "https://t.me/nerdofertas/156580",
   "obs": "postado no canal Nerd Ofertas",
   "detalhes": "",
-  "idade_h": 3.6,
+  "idade_h": 3.7,
   "tipo": "grupo",
   "condicao": "novo",
   "confianca": "B",
@@ -21,19 +21,19 @@
    {
     "fonte": "Nerd Ofertas",
     "link": "https://t.me/nerdofertas/156580",
-    "idade_h": 3.6,
+    "idade_h": 3.7,
     "tipo": "grupo"
    },
    {
     "fonte": "CJ Promoções",
     "link": "https://t.me/cjpromos/84548",
-    "idade_h": 3.6,
+    "idade_h": 3.7,
     "tipo": "grupo"
    },
    {
     "fonte": "Super Ofertas BR",
     "link": "https://t.me/superofertasbr/18255",
-    "idade_h": 3.6,
+    "idade_h": 3.7,
     "tipo": "grupo"
    }
   ],
@@ -48,62 +48,70 @@
    "alerta": true,
    "melhor": {
     "modelo": "leitor",
-    "fonte": "Promobit",
-    "loja": "Shopee",
-    "titulo": "Console PlayStation 5 Slim Edição Disk 1TB SSD - PS5",
-    "preco": 3955.91,
+    "fonte": "Webcontinental",
+    "loja": "Webcontinental · Lojas Colombo SA",
+    "titulo": "Playstation 5 So00010 825gb Controle Sem Fio Fc 24 Ea Sports Sony Branco",
+    "preco": 4284.0,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
-    "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-    "obs": "postado no Promobit",
-    "detalhes": "",
-    "idade_h": 0.4,
-    "tipo": "postada",
+    "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
+    "obs": "à vista no Pix",
+    "detalhes": "com jogo/extra",
+    "idade_h": null,
+    "tipo": "loja",
     "condicao": "novo",
-    "confianca": "B",
-    "ressalvas": [
-     "confira se é a versão nacional"
-    ],
+    "confianca": "A",
+    "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Promobit",
-      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-      "idade_h": 0.4,
-      "tipo": "postada"
+      "fonte": "Webcontinental",
+      "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
+      "idade_h": null,
+      "tipo": "loja"
+     },
+     {
+      "fonte": "Zoom",
+      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-825-gb-sony-bundle-ea-sports-fc-24-4k",
+      "idade_h": null,
+      "tipo": "comparador"
      }
     ],
-    "n_vistos": 1,
+    "n_vistos": 2,
     "cupom_citado": null
    },
    "sem": {
     "modelo": "leitor",
-    "fonte": "Promobit",
-    "loja": "Shopee",
-    "titulo": "Console PlayStation 5 Slim Edição Disk 1TB SSD - PS5",
-    "preco": 3955.91,
+    "fonte": "Webcontinental",
+    "loja": "Webcontinental · Lojas Colombo SA",
+    "titulo": "Playstation 5 So00010 825gb Controle Sem Fio Fc 24 Ea Sports Sony Branco",
+    "preco": 4284.0,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
-    "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-    "obs": "postado no Promobit",
-    "detalhes": "",
-    "idade_h": 0.4,
-    "tipo": "postada",
+    "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
+    "obs": "à vista no Pix",
+    "detalhes": "com jogo/extra",
+    "idade_h": null,
+    "tipo": "loja",
     "condicao": "novo",
-    "confianca": "B",
-    "ressalvas": [
-     "confira se é a versão nacional"
-    ],
+    "confianca": "A",
+    "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Promobit",
-      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-      "idade_h": 0.4,
-      "tipo": "postada"
+      "fonte": "Webcontinental",
+      "link": "https://www.webcontinental.com.br/playstation-5-so00010-825gb-controle-sem-fio-fc-24-ea-sports-sony-branco-003082002443/p",
+      "idade_h": null,
+      "tipo": "loja"
+     },
+     {
+      "fonte": "Zoom",
+      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-825-gb-sony-bundle-ea-sports-fc-24-4k",
+      "idade_h": null,
+      "tipo": "comparador"
      }
     ],
-    "n_vistos": 1,
+    "n_vistos": 2,
     "cupom_citado": null
    },
    "com": {
@@ -118,7 +126,7 @@
     "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
     "obs": "postado no Promobit",
     "detalhes": "com jogo/extra",
-    "idade_h": 0.3,
+    "idade_h": 0.5,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -129,25 +137,25 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
-      "idade_h": 0.3,
+      "idade_h": 0.5,
       "tipo": "postada"
      },
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3266165/",
-      "idade_h": 4.4,
+      "idade_h": 4.5,
       "tipo": "postada"
      },
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/112379",
-      "idade_h": 0.5,
+      "idade_h": 0.7,
       "tipo": "grupo"
      },
      {
       "fonte": "Jogo Barato",
       "link": "https://t.me/jogobarato/112244",
-      "idade_h": 4.4,
+      "idade_h": 4.6,
       "tipo": "grupo"
      }
     ],
@@ -166,7 +174,7 @@
     "link": "https://t.me/TudoPromo/20702",
     "obs": "postado no canal TudoCelular",
     "detalhes": "",
-    "idade_h": 3.5,
+    "idade_h": 3.7,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "C",
@@ -177,7 +185,7 @@
      {
       "fonte": "TudoCelular",
       "link": "https://t.me/TudoPromo/20702",
-      "idade_h": 3.5,
+      "idade_h": 3.7,
       "tipo": "grupo"
      }
     ],
@@ -205,7 +213,7 @@
      "link": "https://t.me/TudoPromo/20702",
      "obs": "postado no canal TudoCelular",
      "detalhes": "",
-     "idade_h": 3.5,
+     "idade_h": 3.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -216,38 +224,8 @@
       {
        "fonte": "TudoCelular",
        "link": "https://t.me/TudoPromo/20702",
-       "idade_h": 3.5,
+       "idade_h": 3.7,
        "tipo": "grupo"
-      }
-     ],
-     "n_vistos": 1,
-     "cupom_citado": null
-    },
-    {
-     "modelo": "leitor",
-     "fonte": "Promobit",
-     "loja": "Shopee",
-     "titulo": "Console PlayStation 5 Slim Edição Disk 1TB SSD - PS5",
-     "preco": 3955.91,
-     "preco_sem_cupom": null,
-     "cupom": null,
-     "cupom_origem": null,
-     "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-     "obs": "postado no Promobit",
-     "detalhes": "",
-     "idade_h": 0.4,
-     "tipo": "postada",
-     "condicao": "novo",
-     "confianca": "B",
-     "ressalvas": [
-      "confira se é a versão nacional"
-     ],
-     "visto_em": [
-      {
-       "fonte": "Promobit",
-       "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-edicao-disk-1tb-ssd-ps5-3268033/",
-       "idade_h": 0.4,
-       "tipo": "postada"
       }
      ],
      "n_vistos": 1,
@@ -299,7 +277,7 @@
      "link": "https://t.me/pechinchou/241757",
      "obs": "postado no canal Pechinchou",
      "detalhes": "com jogo/extra",
-     "idade_h": 7.1,
+     "idade_h": 7.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -310,7 +288,7 @@
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/241757",
-       "idade_h": 7.1,
+       "idade_h": 7.3,
        "tipo": "grupo"
       }
      ],
@@ -329,7 +307,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-com-astro-bot-e-gt7-3258330/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 27.1,
+     "idade_h": 27.3,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -338,7 +316,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-slim-disk-com-astro-bot-e-gt7-3258330/",
-       "idade_h": 27.1,
+       "idade_h": 27.3,
        "tipo": "postada"
       }
      ],
@@ -357,7 +335,7 @@
      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
      "obs": "postado no Promobit",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.3,
+     "idade_h": 0.5,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -368,25 +346,25 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
-       "idade_h": 0.3,
+       "idade_h": 0.5,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3266165/",
-       "idade_h": 4.4,
+       "idade_h": 4.5,
        "tipo": "postada"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112379",
-       "idade_h": 0.5,
+       "idade_h": 0.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112244",
-       "idade_h": 4.4,
+       "idade_h": 4.6,
        "tipo": "grupo"
       }
      ],
@@ -405,7 +383,7 @@
      "link": "https://t.me/jogobarato/112213",
      "obs": "postado no canal Jogo Barato",
      "detalhes": "com jogo/extra",
-     "idade_h": 5.2,
+     "idade_h": 5.4,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -416,7 +394,7 @@
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112213",
-       "idade_h": 5.2,
+       "idade_h": 5.4,
        "tipo": "grupo"
       }
      ],
@@ -435,7 +413,7 @@
      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3260162/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 22.5,
+     "idade_h": 22.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -444,7 +422,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3260162/",
-       "idade_h": 22.5,
+       "idade_h": 22.7,
        "tipo": "postada"
       }
      ],
@@ -715,7 +693,7 @@
      "link": "https://www.kabum.com.br/produto/934759/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos",
      "obs": "à vista no Pix · oferta relâmpago · selo do produto: cupom DISCONELES (valor não encontrado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 13.9,
+     "idade_h": 14.0,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -736,7 +714,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3264423/",
-       "idade_h": 13.9,
+       "idade_h": 14.0,
        "tipo": "postada"
       }
      ],
@@ -798,6 +776,34 @@
      ],
      "n_vistos": 1,
      "cupom_citado": null
+    },
+    {
+     "modelo": "leitor",
+     "fonte": "Zoom",
+     "loja": "Amazon",
+     "titulo": "Sony PlayStation 5 Slim 1TB Spider-Man 2",
+     "preco": 5224.9,
+     "preco_sem_cupom": null,
+     "cupom": null,
+     "cupom_origem": null,
+     "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1-tb-sony-playstation-4k",
+     "obs": "à vista",
+     "detalhes": "com jogo/extra",
+     "idade_h": null,
+     "tipo": "comparador",
+     "condicao": "novo",
+     "confianca": "A",
+     "ressalvas": [],
+     "visto_em": [
+      {
+       "fonte": "Zoom",
+       "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-1-tb-sony-playstation-4k",
+       "idade_h": null,
+       "tipo": "comparador"
+      }
+     ],
+     "n_vistos": 1,
+     "cupom_citado": null
     }
    ]
   },
@@ -818,7 +824,7 @@
     "link": "https://t.me/nerdofertas/156580",
     "obs": "postado no canal Nerd Ofertas",
     "detalhes": "",
-    "idade_h": 3.6,
+    "idade_h": 3.7,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -827,19 +833,19 @@
      {
       "fonte": "Nerd Ofertas",
       "link": "https://t.me/nerdofertas/156580",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      },
      {
       "fonte": "CJ Promoções",
       "link": "https://t.me/cjpromos/84548",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/18255",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      }
     ],
@@ -858,7 +864,7 @@
     "link": "https://gatry.com/promocoes/b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40/console-sony-playstation-5-slim-digital-1tb-dualsense-branco",
     "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
     "detalhes": "",
-    "idade_h": 24.7,
+    "idade_h": 24.8,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -867,7 +873,7 @@
      {
       "fonte": "Gatry",
       "link": "https://gatry.com/promocoes/b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40/console-sony-playstation-5-slim-digital-1tb-dualsense-branco",
-      "idade_h": 24.7,
+      "idade_h": 24.8,
       "tipo": "postada"
      }
     ],
@@ -886,7 +892,7 @@
     "link": "https://t.me/nerdofertas/156580",
     "obs": "postado no canal Nerd Ofertas",
     "detalhes": "",
-    "idade_h": 3.6,
+    "idade_h": 3.7,
     "tipo": "grupo",
     "condicao": "novo",
     "confianca": "B",
@@ -895,19 +901,19 @@
      {
       "fonte": "Nerd Ofertas",
       "link": "https://t.me/nerdofertas/156580",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      },
      {
       "fonte": "CJ Promoções",
       "link": "https://t.me/cjpromos/84548",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      },
      {
       "fonte": "Super Ofertas BR",
       "link": "https://t.me/superofertasbr/18255",
-      "idade_h": 3.6,
+      "idade_h": 3.7,
       "tipo": "grupo"
      }
     ],
@@ -936,7 +942,7 @@
      "link": "https://t.me/nerdofertas/156580",
      "obs": "postado no canal Nerd Ofertas",
      "detalhes": "",
-     "idade_h": 3.6,
+     "idade_h": 3.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -945,19 +951,19 @@
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/156580",
-       "idade_h": 3.6,
+       "idade_h": 3.7,
        "tipo": "grupo"
       },
       {
        "fonte": "CJ Promoções",
        "link": "https://t.me/cjpromos/84548",
-       "idade_h": 3.6,
+       "idade_h": 3.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/18255",
-       "idade_h": 3.6,
+       "idade_h": 3.7,
        "tipo": "grupo"
       }
      ],
@@ -976,7 +982,7 @@
      "link": "https://t.me/nerdofertas/156568",
      "obs": "postado no canal Nerd Ofertas",
      "detalhes": "com jogo/extra",
-     "idade_h": 3.6,
+     "idade_h": 3.8,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -987,19 +993,19 @@
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/156568",
-       "idade_h": 3.6,
+       "idade_h": 3.8,
        "tipo": "grupo"
       },
       {
        "fonte": "CJ Promoções",
        "link": "https://t.me/cjpromos/84540",
-       "idade_h": 3.6,
+       "idade_h": 3.8,
        "tipo": "grupo"
       },
       {
        "fonte": "Ofertas do Gui",
        "link": "https://t.me/ofertasdogui/31932",
-       "idade_h": 3.6,
+       "idade_h": 3.8,
        "tipo": "grupo"
       }
      ],
@@ -1018,7 +1024,7 @@
      "link": "https://t.me/pechinchou/241904",
      "obs": "postado no canal Pechinchou",
      "detalhes": "com jogo/extra",
-     "idade_h": 3.5,
+     "idade_h": 3.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1029,7 +1035,7 @@
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/241904",
-       "idade_h": 3.5,
+       "idade_h": 3.7,
        "tipo": "grupo"
       }
      ],
@@ -1048,7 +1054,7 @@
      "link": "https://t.me/superofertasbr/18227",
      "obs": "postado no canal Super Ofertas BR",
      "detalhes": "com jogo/extra",
-     "idade_h": 3.6,
+     "idade_h": 3.8,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1059,7 +1065,7 @@
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/18227",
-       "idade_h": 3.6,
+       "idade_h": 3.8,
        "tipo": "grupo"
       }
      ],
@@ -1078,7 +1084,7 @@
      "link": "https://gatry.com/promocoes/b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40/console-sony-playstation-5-slim-digital-1tb-dualsense-branco",
      "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 24.7,
+     "idade_h": 24.8,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1087,7 +1093,7 @@
       {
        "fonte": "Gatry",
        "link": "https://gatry.com/promocoes/b2fd4ed7-15d2-4d8e-9eca-4c0ffbd9df40/console-sony-playstation-5-slim-digital-1tb-dualsense-branco",
-       "idade_h": 24.7,
+       "idade_h": 24.8,
        "tipo": "postada"
       }
      ],
@@ -1106,7 +1112,7 @@
      "link": "https://t.me/meups4/56100",
      "obs": "postado no canal MeuPlayStation",
      "detalhes": "",
-     "idade_h": 3.6,
+     "idade_h": 3.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1118,7 +1124,7 @@
       {
        "fonte": "MeuPlayStation",
        "link": "https://t.me/meups4/56100",
-       "idade_h": 3.6,
+       "idade_h": 3.7,
        "tipo": "grupo"
       }
      ],
@@ -1137,7 +1143,7 @@
      "link": "https://t.me/pechinchou/241745",
      "obs": "postado no canal Pechinchou",
      "detalhes": "",
-     "idade_h": 7.5,
+     "idade_h": 7.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1148,7 +1154,7 @@
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/241745",
-       "idade_h": 7.5,
+       "idade_h": 7.7,
        "tipo": "grupo"
       }
      ],
@@ -1167,7 +1173,7 @@
      "link": "https://t.me/superofertasbr/17202",
      "obs": "postado no canal Super Ofertas BR",
      "detalhes": "",
-     "idade_h": 7.3,
+     "idade_h": 7.5,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1176,7 +1182,7 @@
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/17202",
-       "idade_h": 7.3,
+       "idade_h": 7.5,
        "tipo": "grupo"
       }
      ],
@@ -1195,7 +1201,7 @@
      "link": "https://t.me/cupons_desconto/84888",
      "obs": "postado no canal Promobit (Telegram)",
      "detalhes": "com jogo/extra",
-     "idade_h": 1.2,
+     "idade_h": 1.3,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1204,7 +1210,7 @@
       {
        "fonte": "Promobit (Telegram)",
        "link": "https://t.me/cupons_desconto/84888",
-       "idade_h": 1.2,
+       "idade_h": 1.3,
        "tipo": "grupo"
       }
      ],
@@ -1223,7 +1229,7 @@
      "link": "https://t.me/ctofertasgames/30717",
      "obs": "postado no canal Canaltech Games",
      "detalhes": "com jogo/extra",
-     "idade_h": 4.0,
+     "idade_h": 4.2,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1234,7 +1240,7 @@
       {
        "fonte": "Canaltech Games",
        "link": "https://t.me/ctofertasgames/30717",
-       "idade_h": 4.0,
+       "idade_h": 4.2,
        "tipo": "grupo"
       }
      ],
@@ -1253,7 +1259,7 @@
      "link": "https://t.me/superofertasbr/17881",
      "obs": "postado no canal Super Ofertas BR",
      "detalhes": "com jogo/extra",
-     "idade_h": 5.0,
+     "idade_h": 5.1,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1264,7 +1270,7 @@
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/17881",
-       "idade_h": 5.0,
+       "idade_h": 5.1,
        "tipo": "grupo"
       }
      ],
@@ -1283,7 +1289,7 @@
      "link": "https://gatry.com/promocoes/49f35b7a-b81f-4849-9307-c8e2860a9fbd/playstation-5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7",
      "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 4.7,
+     "idade_h": 4.8,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1295,43 +1301,43 @@
       {
        "fonte": "Gatry",
        "link": "https://gatry.com/promocoes/49f35b7a-b81f-4849-9307-c8e2860a9fbd/playstation-5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7",
-       "idade_h": 14.7,
+       "idade_h": 14.8,
        "tipo": "postada"
       },
       {
        "fonte": "Pechinchou",
        "link": "https://t.me/pechinchou/241858",
-       "idade_h": 4.7,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "Xet das Promoções",
-       "link": "https://t.me/xetdaspromocoes/97099",
-       "idade_h": 4.9,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "MeuPlayStation",
-       "link": "https://t.me/meups4/56082",
-       "idade_h": 4.9,
+       "idade_h": 4.8,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112220",
-       "idade_h": 5.0,
+       "idade_h": 5.1,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "Xet das Promoções",
+       "link": "https://t.me/xetdaspromocoes/97099",
+       "idade_h": 5.1,
        "tipo": "grupo"
       },
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/156475",
-       "idade_h": 5.0,
+       "idade_h": 5.1,
        "tipo": "grupo"
       },
       {
        "fonte": "CJ Promoções",
        "link": "https://t.me/cjpromos/84472",
-       "idade_h": 5.0,
+       "idade_h": 5.1,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "MeuPlayStation",
+       "link": "https://t.me/meups4/56082",
+       "idade_h": 5.1,
        "tipo": "grupo"
       }
      ],
@@ -1350,7 +1356,7 @@
      "link": "https://t.me/hardmob_promo/481980",
      "obs": "postado no canal Hardmob Promo",
      "detalhes": "",
-     "idade_h": 5.4,
+     "idade_h": 5.6,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -1362,25 +1368,25 @@
       {
        "fonte": "Hardmob Promo",
        "link": "https://t.me/hardmob_promo/481980",
-       "idade_h": 5.4,
+       "idade_h": 5.6,
        "tipo": "grupo"
       },
       {
        "fonte": "Nerd Ofertas",
        "link": "https://t.me/nerdofertas/156394",
-       "idade_h": 6.1,
+       "idade_h": 6.3,
        "tipo": "grupo"
       },
       {
        "fonte": "CJ Promoções",
        "link": "https://t.me/cjpromos/84351",
-       "idade_h": 6.1,
+       "idade_h": 6.3,
        "tipo": "grupo"
       },
       {
        "fonte": "Super Ofertas BR",
        "link": "https://t.me/superofertasbr/17495",
-       "idade_h": 6.1,
+       "idade_h": 6.3,
        "tipo": "grupo"
       }
      ],
@@ -1461,7 +1467,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-branco-3266721/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 3.3,
+     "idade_h": 3.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1470,7 +1476,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-branco-3266721/",
-       "idade_h": 3.3,
+       "idade_h": 3.4,
        "tipo": "postada"
       }
      ],
@@ -1523,7 +1529,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3266247/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 4.2,
+     "idade_h": 4.4,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1532,7 +1538,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3266247/",
-       "idade_h": 4.2,
+       "idade_h": 4.4,
        "tipo": "postada"
       }
      ],
@@ -13642,6 +13648,18 @@
    "pro": "7999",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-27 15:00",
+   "leitor": "4284.0",
+   "leitor_cupom": "4499.0",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3510.25",
+   "digital_cupom": "3288.0",
+   "digital_loja": "Mercado Livre",
+   "pro": "7999",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -13801,7 +13819,7 @@
     "fonte": "Zoom",
     "loja": "Amazon",
     "titulo": "PlayStation 5 Disc Console (New 2023 Slim Model)- UAE Version, 1 Year Manufacturer Warranty",
-    "preco": 4999.9,
+    "preco": 4749.9,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
@@ -13857,7 +13875,7 @@
     "fonte": "Zoom",
     "loja": "Amazon",
     "titulo": "PlayStation 5 Slim Digital Edition Console + Blue Controller Bundle (KSA version)",
-    "preco": 6649.05,
+    "preco": 6999,
     "preco_sem_cupom": null,
     "cupom": null,
     "cupom_origem": null,
@@ -13900,21 +13918,21 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.4,
-   "ofertas": 36,
+   "segundos": 0.5,
+   "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Amazon": {
    "ok": false,
    "erro": "Bloqueado: HTTP 503 (barrou o robô)",
-   "segundos": 0.1,
+   "segundos": 0.2,
    "tipo": "loja",
-   "falhas_seguidas": 12,
-   "barradas_hoje": 80,
-   "buscas_hoje": 93
+   "falhas_seguidas": 13,
+   "barradas_hoje": 81,
+   "buscas_hoje": 94
   },
   "Americanas": {
    "ok": true,
@@ -13923,52 +13941,52 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.7,
    "ofertas": 7,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Webcontinental": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 2.1,
    "ofertas": 49,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Bemol": {
    "ok": true,
-   "segundos": 0.5,
+   "segundos": 0.8,
    "ofertas": 3,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Zoom": {
    "ok": true,
-   "segundos": 5.0,
+   "segundos": 4.9,
    "ofertas": 28,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.0,
+   "segundos": 1.8,
    "ofertas": 11,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Gatry": {
    "ok": true,
@@ -13978,27 +13996,27 @@
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Telegram": {
    "ok": true,
-   "segundos": 18.4,
+   "segundos": 21.7,
    "ofertas": 110,
    "tipo": "grupo",
    "detalhe": "22 de 22 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Leilões": {
    "ok": true,
-   "segundos": 4.2,
+   "segundos": 4.4,
    "ofertas": 1,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 93
+   "buscas_hoje": 94
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -14007,7 +14025,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 187,
+  "não é console PS5": 188,
   "preço fora da faixa de PS5 com leitor de disco": 1
  },
  "config": {
