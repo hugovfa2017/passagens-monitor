@@ -407,14 +407,18 @@ def regra_cupom(titulo):
         r['valor'] = reais(m[1])
     if m := re.search(r'acima de R\$\s*([\d.]+(?:,\d\d)?)', t, re.I):
         r['minimo'] = reais(m[1])
-    if m := re.search(r'(?:at[ée]|limite(?: de)?) R\$\s*([\d.]+(?:,\d\d)?)', t, re.I):
+    # "em compras até R$ 1.500" é o valor máximo do pedido (não vale para um PS5), não o teto do desconto ("até R$ 300")
+    pedido = re.search(r'(?:compras?|pedidos?|carrinho|produtos?)\s+(?:de\s+)?at[ée]\s+R\$\s*([\d.]+(?:,\d\d)?)', t, re.I)
+    if pedido:
+        r['maximo'] = reais(pedido[1])
+    if m := re.search(r'(?:at[ée]|limite(?: de)?) R\$\s*([\d.]+(?:,\d\d)?)', t[:pedido.start()] + t[pedido.end():] if pedido else t, re.I):
         r['teto'] = reais(m[1])
     return r
 
 
 def desconto(regra, preco):
     """Quanto o cupom tira de um preço (0 se não se aplica ou não dá para saber)."""
-    if preco < regra.get('minimo', 0):
+    if preco < regra.get('minimo', 0) or preco > regra.get('maximo', float('inf')):
         return 0
     if 'valor' in regra:
         return regra['valor'] if regra['valor'] >= 1 else 0
