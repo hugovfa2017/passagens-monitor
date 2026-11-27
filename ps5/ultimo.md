@@ -1,10 +1,10 @@
-# PS5 — última varredura: 2026-11-27 17:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 17:20 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 5 lugares, postado há 0h
+**Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 0h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
    não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 6h
-- **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 5 lugares, postado há 0h
+- **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 0h
    sem cupom: R$ 3.510,25 na Magazine Luiza
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
@@ -36,7 +36,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 93 de 107 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 94 de 108 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
