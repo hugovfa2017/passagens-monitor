@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-27 08:40 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 08:50 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 18h
+**Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 19h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-- **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 18h
+- **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 19h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
@@ -15,7 +15,7 @@ Telegram: sem mensagem nesta varredura
 ## Cupons para testar no carrinho (não confirmados para console)
 
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.355,02 por ~R$ 4.155,02; `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.205,02; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.255,02
-- KaBuM!: `MUITAPOTENCIA` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «MUITAPOTENCIA» () → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `LATIDO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «LATIDO» (toque p) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `SOLTAOSOM` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «SOLTAOSOM» (toqu) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.370,07 por ~R$ 3.845,66; `MIC12OFF` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 12% OFF 🔥 🎟 Código: «MIC12OFF» (toque) → PS5 Digital de R$ 4.370,07 por ~R$ 3.845,66
+- KaBuM!: `LATIDO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «LATIDO» (toque p) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `SOLTAOSOM` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «SOLTAOSOM» (toqu) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `WASTEDNO12` (Garanta 12% OFF em todo o site com cupom Kabum) → PS5 Digital de R$ 4.370,07 por ~R$ 3.845,66; `DRAMOFF11` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 11% OFF 🔥 🎟 Código: «DRAMOFF11» (toqu) → PS5 Digital de R$ 4.370,07 por ~R$ 3.889,36; `100OFFPS5` (Cupom KaBum! oferece R$100 de desconto no total da sua compra) → PS5 Digital de R$ 4.370,07 por ~R$ 4.270,07
 - Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 com leitor de disco de R$ 4.419 por ~R$ 3.535,20; `PRALERTUDO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 13% OFF 🔥 🎟 Código: «PRALERTUDO» (toq) → PS5 com leitor de disco de R$ 4.419 por ~R$ 3.844,53; `BLACK150` (R$ 150 OFF em compras acima de R$ 1499 com cupom Amazon) → PS5 com leitor de disco de R$ 4.419 por ~R$ 4.269
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Aliexpress: `RELAMP2` (Aliexpress: cupom de R$ 840 OFF acima de R$ 4.200)
@@ -30,18 +30,18 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 35 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 44 de 55 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 45 de 56 buscas hoje
 - Americanas: ok, 14 itens
 - Fast Shop: ok, 7 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 30 itens
-- Promobit: ok, 11 itens
+- Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (39 ofertas no feed)
-- Telegram: ok, 112 itens (22 de 22 canais)
+- Telegram: ok, 109 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 182 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 183 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
