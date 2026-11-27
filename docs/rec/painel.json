@@ -2,8 +2,8 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 10:33",
-  "alerta": "📉 Menor preço já visto: São Paulo ⇄ Recife, volta R$388 (era R$729)",
+  "quando": "2026-11-27 11:32",
+  "alerta": null,
   "ordem": [
    "REC"
   ],
@@ -37,35 +37,36 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 179,
+    "voos": 286,
     "conferidos": 11,
-    "ofertas": 9,
+    "ofertas": 8,
     "bloqueio": null,
     "listas": {
-     "vazias": 4,
-     "repetidas": 7,
+     "vazias": 1,
+     "repetidas": 2,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 9
+     "telas": 9,
+     "lidas": 8
     },
     "sem_preco": {
-     "a lista não abriu": 2
+     "tela de compra sem vendedores": 2,
+     "voo não está mais na lista": 1
     },
-    "seg": 168
-   },
-   "MaxMilhas": {
-    "buscas": 5,
-    "com_voo": 5
+    "seg": 111
    },
    "Vai de Promo": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "MaxMilhas": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 5,
-    "com_voo": 5
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
     "buscas": 4,
@@ -85,7 +86,7 @@
   "taxa_mala": {
    "Azul": 105,
    "Gol": 136,
-   "LATAM": 77
+   "LATAM": 90
   },
   "grupos": [
    {
@@ -107,26 +108,26 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-23",
-   "orig": "CGH",
+   "d": "2026-12-20",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Azul",
-   "saida": "22:15",
-   "chegada": "01:20",
-   "tipo": "direto",
-   "pp": 1095,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
-   "dia": "qua 23/12"
+   "cia": "Gol",
+   "saida": "08:55",
+   "chegada": "14:35",
+   "tipo": "escala 0h45",
+   "pp": 1058,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "dom 20/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
-    "R$261 acima do menor de 3 dias (R$834)",
-    "para o Google, preço normal (a rota costuma ficar entre R$1.700 e R$4.250)"
+    "R$224 acima do menor de 3 dias (R$834)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.750 e R$3.500)"
    ]
   },
   "fora": null,
@@ -338,8 +339,21 @@
    [
     "2026-11-27 10:33",
     1095
+   ],
+   [
+    "2026-11-27 11:32",
+    1058
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 2257,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -347,7 +361,16 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1625,
+  "pp": 1058,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "REC",
+  "pp": 1660,
   "conf": true
  },
  {
@@ -356,7 +379,7 @@
   "d": "2026-12-23",
   "dia": "qua 23/12",
   "ne": "REC",
-  "pp": 1095,
+  "pp": 1097,
   "conf": true
  },
  {
@@ -377,18 +400,18 @@
    "saida": "10:15",
    "chegada": "13:35",
    "tipo": "direto",
-   "pp": 388,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQ0dIKgJHMzIEMTYxNWoHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 433,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
    "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "menor preço em 3 dias"
+    "R$45 acima do menor de 3 dias (R$388)"
    ]
   },
   "fora": null,
@@ -588,6 +611,10 @@
    [
     "2026-11-27 10:33",
     388
+   ],
+   [
+    "2026-11-27 11:32",
+    433
    ]
   ]
  },
@@ -597,7 +624,16 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 899,
+  "pp": 860,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "REC",
+  "pp": 783,
   "conf": true
  },
  {
@@ -606,7 +642,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 388,
+  "pp": 433,
   "conf": true
  },
  {
@@ -615,7 +651,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 898,
+  "pp": 433,
   "conf": true
  },
  {
@@ -623,19 +659,19 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1483,
+  "pp": 1491,
   "ida": {
-   "d": "2026-12-23",
-   "orig": "CGH",
+   "d": "2026-12-20",
+   "orig": "GRU",
    "dest": "REC",
-   "cia": "Azul",
-   "saida": "22:15",
-   "chegada": "01:20",
-   "tipo": "direto",
-   "pp": 1095,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/CGHREC261223/4/0/0/Y/",
-   "dia": "qua 23/12"
+   "cia": "Gol",
+   "saida": "08:55",
+   "chegada": "14:35",
+   "tipo": "escala 0h45",
+   "pp": 1058,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "dom 20/12"
   },
   "volta": {
    "d": "2027-01-12",
@@ -645,9 +681,9 @@
    "saida": "10:15",
    "chegada": "13:35",
    "tipo": "direto",
-   "pp": 388,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpSEgoyMDI3LTAxLTEyIiAKA1JFQxIKMjAyNy0wMS0xMhoDQ0dIKgJHMzIEMTYxNWoHCAESA1JFQ3IHCAESA0dSVXIHCAESA0NHSHIHCAESA1ZDUEABQAFAAUABSAFwAYIBCwj___________8BmAEC&hl=pt-BR&gl=BR&curr=BRL",
+   "pp": 433,
+   "vend": "Zupper",
+   "link": "https://www.zupper.com.br/resultados?type=oneWay&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22CGH%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
    "dia": "ter 12/01"
   },
   "juntas": null
