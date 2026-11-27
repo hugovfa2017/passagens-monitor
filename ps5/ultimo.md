@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-27 07:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 07:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 17h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 4.278 no Mercado Livre com cupom CORREHOJEAGORA · postado há 10h
+   não confirmada: R$ 4.278 no Mercado Livre com cupom CORREHOJEAGORA · postado há 11h
 - **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 17h
 - **PS5 Pro**: R$ 7.837,50 na Amazon · à vista
 
@@ -15,9 +15,9 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 Digital de R$ 4.047 por ~R$ 3.237,60; `PRALERTUDO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 13% OFF 🔥 🎟 Código: «PRALERTUDO» (toq) → PS5 Digital de R$ 4.047 por ~R$ 3.520,89; `BLACK150` (R$ 150 OFF em compras acima de R$ 1499 com cupom Amazon) → PS5 Digital de R$ 4.047 por ~R$ 3.897
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.355,02 por ~R$ 4.155,02; `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.205,02; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.255,02
 - KaBuM!: `TEMQUETER` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 28% OFF 🔥 🎟 Código: «TEMQUETER» (toqu) → PS5 Digital de R$ 4.370,07 por ~R$ 3.146,45; `15OFFPCYES` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «15OFFPCYES» (toq) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `MODOTURBO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «MODOTURBO» (toqu) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `DOZE600K` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «DOZE600K» (toque) → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56; `MUITAPOTENCIA` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 15% OFF 🔥 🎟 Código: «MUITAPOTENCIA» () → PS5 Digital de R$ 4.370,07 por ~R$ 3.714,56
-- Amazon: `BLACKNUPAY20` (Cupom NuPay: 20% OFF em todo o site acima de R$50) → PS5 com leitor de disco de R$ 4.419 por ~R$ 3.535,20; `PRALERTUDO` (🤓🏷 OFERTAS BRASIL NERD OFERTAS · 13% OFF 🔥 🎟 Código: «PRALERTUDO» (toq) → PS5 com leitor de disco de R$ 4.419 por ~R$ 3.844,53; `BLACK150` (R$ 150 OFF em compras acima de R$ 1499 com cupom Amazon) → PS5 com leitor de disco de R$ 4.419 por ~R$ 4.269
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Aliexpress: `RELAMP2` (Aliexpress: cupom de R$ 840 OFF acima de R$ 4.200)
 - Mercado Livre: `LIVREHOJE` (10% OFF em compras acima de R$199, limite de R$100 Cupom: «LIVREHOJE»); `ELETROTECHMELI` (R$250 OFF em compras acima de R$2.499 Cupom: «ELETROTECHMELI»); `75MAIS1125MELI` (10% OFF em compras acima de R$199, limite de R$200 em Eletrônicos Cupo); `TODO2511SITE` (R$75 OFF em compras acima de R$499 exclusivo para assinantes Meli+ Cup); `SITETODO2511` (R$220 OFF em compras acima de R$1.299 Cupom: «SITETODO2511»)
@@ -33,9 +33,9 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: ok, 37 itens · barrada em 36 de 45 buscas hoje
+- Amazon: ok, 40 itens · barrada em 36 de 46 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 7 itens
+- Fast Shop: ok, 6 itens
 - Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
 - Zoom: ok, 28 itens
@@ -44,11 +44,11 @@ Telegram: sem mensagem nesta varredura
 - Telegram: ok, 116 itens (22 de 22 canais)
 - Leilões: ok, 0 itens (3 de 3 sites)
 
-Descartados: 210 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
+Descartados: 211 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
 ## Cupom já valendo: preço possível (não confirmado)
 
+- PS5 Digital: R$ 3.237,60 na Amazon com `BLACKNUPAY20` (sem cupom: R$ 4.047)
 - PS5 com leitor de disco: R$ 3.535,20 na Amazon com `BLACKNUPAY20` (sem cupom: R$ 4.419)
-- PS5 Digital: R$ 3.679,20 na Amazon com `BLACKNUPAY20` (sem cupom: R$ 4.599)
