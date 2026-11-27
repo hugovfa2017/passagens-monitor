@@ -1555,6 +1555,10 @@ def _teste():
              ('MARCAX25', 'digital', 2799.41), ('MARCAX25', 'leitor', 3348.03)], ps
         assert [restrito(p) for p in ps] == [False, False, False, True, True]
         assert not precos_possiveis([{**cs[-1], 'codigo': 'attackshark25'}], bs, agora), 'testado pelo dono: não vale (CUPONS_QUE_NAO_VALEM)'
+        # "20% OFF em compras até R$ 1500" (INFLU20BLACK, Magalu, 27/11 00h04): é o valor máximo do pedido, não o teto do desconto
+        assert fontes.regra_cupom('🏷 20% OFF em compras até R$ 1500: «INFLU20BLACK»') == {'pct': 20, 'maximo': 1500}
+        assert fontes.regra_cupom('30% OFF acima de R$ 2.699 (até R$ 300)') == {'pct': 30, 'minimo': 2699, 'teto': 300}
+        assert not precos_possiveis([cup('INFLU20BLACK', '🏷 20% OFF em compras até R$ 1500: «INFLU20BLACK»')], bs, agora)
         # posts reais de 26/11 (Super Ofertas BR): a descrição do cupom vem embaixo do código e decide; a lista de produtos
         # de exemplo ("Já ficou barato com ele agora:") não conta
         posts = {'ENDGAME40': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥<br>🎟 Código: <code>ENDGAME40</code> (toque para copiar)<br>'
