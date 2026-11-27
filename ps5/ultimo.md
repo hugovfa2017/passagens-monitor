@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-27 15:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 15:57 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 5h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 4h
+   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 5h
 - **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom BFIN2711XX · visto em 3 lugares, postado há 5h
    sem cupom: R$ 3.510,25 na Magazine Luiza
 - **PS5 Pro**: R$ 7.999 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -21,6 +21,7 @@ Telegram: sem mensagem nesta varredura
 - Magazine Luiza: `INFLU200` (Magazine Luiza: cupom de R$ 200 OFF em todo o site acima de R$ 2000) → PS5 Digital de R$ 4.355,02 por ~R$ 4.155,02; `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.205,02; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.355,02 por ~R$ 4.255,02
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Mercado Livre: `GANHEBLACK` (25% OFF em compras acima de R$79, limite de R$100 Cupom: «GANHEBLACK»); `MELI1CL` (R$150 OFF em compras acima de R$1.199 Cupom: «MELI1CL»); `K4RMELI` (R$110 OFF em compras acima de R$699 Cupom: «K4RMELI»); `MELIO7N` (R$60 OFF em compras acima de R$399 Cupom: «MELIO7N»); `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC)
+- ?: `LOTE3DE4` (📱 📱 📱 JOGOS com 20% OFF com cupom LOTE3DE4 na NUUVEM 🎮)
 
 ## À parte: importado
 
@@ -30,12 +31,12 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: leilões (lance não é preço final: há taxas, retirada e nenhum teste)
 
-- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 970,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
+- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 1.070,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
 
 ## Fontes
 
 - KaBuM!: ok, 36 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 85 de 99 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 86 de 100 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
@@ -43,7 +44,7 @@ Telegram: sem mensagem nesta varredura
 - Zoom: ok, 28 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 105 itens (22 de 22 canais)
+- Telegram: ok, 104 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
 Descartados: 206 não é console PS5, 1 preço fora da faixa de PS5 com leitor de disco
