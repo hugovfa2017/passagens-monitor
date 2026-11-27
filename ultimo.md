@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-27 04:22
+# Passagens: última busca em 2026-11-27 05:23
 
-✈️ Passagens · sex 27/11, 04:22
+✈️ Passagens · sex 27/11, 05:23
 Preço por pessoa, sem mala, conferido nesta busca.
 🔥 Hora de comprar: H, volta R$316 (alvo R$350)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
@@ -27,10 +27,10 @@ Volta · 01/02 a 31/03
 • R$341 · qua 17/02 · 20h35 Recife → 23h50 Guarulhos · Azul, direto · clique aqui (Vai de Promo)
 • R$346 · qui 25/02 · 18h30 Juazeiro → 21h35 Guarulhos · LATAM, direto · clique aqui (Zupper)
 … e mais 28, as mais caras até R$450
-📅 Outras datas conferidas: dom 28/02 R$767 (Mossoró)
-Outras datas, preço ainda não conferido: sáb 20/02 R$349 · sáb 27/02 R$349
+📅 Outras datas conferidas: dom 28/02 R$465 (J. Pessoa)
+Outras datas, preço ainda não conferido: qui 18/02 R$349 · sáb 20/02 R$349
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$91 a R$135 por trecho · 123milhas, Viaza não responderam
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$91 a R$135 por trecho · 123milhas, Viaza não responderam
 
 Telegram: TELEGRAM_ENVIADO
 
