@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-27 19:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 20:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 3h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 8h
+   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 9h
 - **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 3h
    sem cupom: R$ 3.510,25 na Magazine Luiza
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -16,9 +16,8 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.001,74; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74
 - KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 4.289 por ~R$ 3.002,30; `BLACKDASBLACKS` (Use o cupom Kabum e ganhe 15% OFF) → PS5 Digital de R$ 4.289 por ~R$ 3.645,65; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 4.289 por ~R$ 3.789
-- Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.326,67 por ~R$ 4.176,67
+- Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.369,91 por ~R$ 4.219,91
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
 - Mercado Livre: `GANHEBLACK` (25% OFF em compras acima de R$79, limite de R$100 Cupom: «GANHEBLACK»); `MELI1CL` (R$150 OFF em compras acima de R$1.199 Cupom: «MELI1CL»); `K4RMELI` (R$110 OFF em compras acima de R$699 Cupom: «K4RMELI»); `MELIO7N` (R$60 OFF em compras acima de R$399 Cupom: «MELIO7N»); `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC)
 - ?: `LOTE3DE4` (📱 📱 📱 JOGOS com 20% OFF com cupom LOTE3DE4 na NUUVEM 🎮)
@@ -38,18 +37,18 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 35 itens
-- Amazon: ok, 42 itens · barrada em 106 de 123 buscas hoje
+- Amazon: ok, 54 itens · barrada em 106 de 124 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 5 itens
+- Fast Shop: ok, 6 itens
 - Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 27 itens
+- Zoom: ok, 26 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 2 itens (40 ofertas no feed)
 - Telegram: ok, 106 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 244 não é console PS5, 4 preço fora da faixa de PS5 com leitor de disco
+Descartados: 256 não é console PS5, 4 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
