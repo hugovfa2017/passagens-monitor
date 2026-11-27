@@ -108,11 +108,11 @@ CUPOM_FORA = re.compile(r'jbl|impressora|scanner|note(?:book)?\d*|lenovo|asus|mo
                         r'mercado\b(?! livre| pago)|\bcasa\b|esporte|fitness|automotiv|ferrament|constru|jardim|papelaria|relogio|'
                         r'bolsa|carteira|vinil|instrument|celular|smartphone|\btv\b|telona|tela gigante|cafe|arfrio|ar condicionado|'
                         r'robo|aspirador|mouse|teclado|cadeira|mesa|husky|periferi|software|antena|precisao|nintendo|saude|'
-                        r'brinquedo|fralda|biscoito|lacta|sono|tablet|frete|primeira compra|app\b|selecionados|placa de video|'
+                        r'brinquedo|fralda|biscoito|lacta|sono|tablet|frete|primeira compra|app\b|selecionados|placas? de video|gpu|rtx|radeon|'
                         r'processador|controle|dualsense|headset|monitor', re.I)
 # para o aviso de preço possível: só a categoria tira o cupom ("só no app" e "selecionados" podem valer para console)
 CUPOM_OUTRA_CATEGORIA = re.compile(CUPOM_FORA.pattern.replace(r'app\b|', '').replace('selecionados|', '') +
-                                   r'|\bssd\b|\bhd\b|suporte|memoria|gabinete|fonte de alimentacao', re.I)
+                                   r'|\bssd\b|\bhd\b|suporte|memoria|gabinete|fontes? de alimentacao|placas?[- ]mae|perifer', re.I)
 CUPOM_PS5 = re.compile(r'ps ?5|playstation|console|video ?games?|\bgames?\b|gamer|eletronicos|tecnologia|todo o site|site todo|'
                        r'todo site|sitetodo|todosite')
 
@@ -216,7 +216,7 @@ def precos_possiveis(cupons, bases, agora, codigos_ps5=()):
 
 def restrito(p):
     """Cupom de "produtos selecionados": quase sempre de uma marca (ATTACKSHARK25 é de periféricos). Chega, mas sem som."""
-    return bool(re.search(r'selecionad', simples(p['titulo'])))
+    return bool(re.search(r'selecion', simples(p['titulo'])))       # inclui o erro de digitação "seleciondas"
 
 
 def juntar_registros(*dicts):
@@ -1559,6 +1559,9 @@ def _teste():
         assert fontes.regra_cupom('🏷 20% OFF em compras até R$ 1500: «INFLU20BLACK»') == {'pct': 20, 'maximo': 1500}
         assert fontes.regra_cupom('30% OFF acima de R$ 2.699 (até R$ 300)') == {'pct': 30, 'minimo': 2699, 'teto': 300}
         assert not precos_possiveis([cup('INFLU20BLACK', '🏷 20% OFF em compras até R$ 1500: «INFLU20BLACK»')], bs, agora)
+        # "20% OFF em Placas de Vídeo seleciondas" (KaBuM!, 27/11 00h26): plural e erro de digitação
+        assert not precos_possiveis([cup('B1GZ4F4D1NH0', 'CORRE 🚨 Novo Cupom KABUM 🏷 20% OFF em Placas de Vídeo seleciondas 🏷 Código: «B1GZ4F4D1NH0»')], bs, agora)
+        assert restrito({'titulo': '20% OFF em itens seleciondas'})
         # posts reais de 26/11 (Super Ofertas BR): a descrição do cupom vem embaixo do código e decide; a lista de produtos
         # de exemplo ("Já ficou barato com ele agora:") não conta
         posts = {'ENDGAME40': '🤓🏷 OFERTAS BRASIL NERD OFERTAS · 40% OFF 🔥<br>🎟 Código: <code>ENDGAME40</code> (toque para copiar)<br>'
