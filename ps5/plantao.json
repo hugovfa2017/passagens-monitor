@@ -48,20 +48,30 @@
    "valor": 1520
   },
   "Mercado Livre|2026-11-26T23:00": {
-   "loja": "Mercado Livre",
-   "quando": "2026-11-26T23:00-03:00",
+   "avisado": "2026-11-26T22:59:38-03:00",
+   "canal": "CJ Promoções",
+   "desconto": "40% OFF",
+   "destino": "https://meli.la/1Bax8UG",
    "horas": [
     "23h"
    ],
-   "desconto": "40% OFF",
-   "valor": 1520,
+   "lembrado": null,
+   "link": "https://t.me/cjpromos/84010",
+   "loja": "Mercado Livre",
+   "quando": "2026-11-26T23:00-03:00",
    "ressalvas": [],
    "resumo": "Próximo Cupom 40% OFF Mercado Livre 🕐 ATIVA 23H •Tutorial: 1 Entre no APP do Meli aqui: https://meli.la/1Bax8UG 2 Clique em \"Mais\" no rodapé do APP 3 Depois clique em \"Cupons Black Friday\" 4 Resgate o",
-   "destino": "https://meli.la/1Bax8UG",
-   "link": "https://t.me/cjpromos/84010",
-   "canal": "CJ Promoções",
-   "avisado": "2026-11-26T22:59:38-03:00",
-   "lembrado": null
+   "valor": 1520
+  }
+ },
+ "cupons": {
+  "cp|magazine luiza|INFLU20BLACK|digital": {
+   "quando": "2026-11-27T00:04:57-03:00",
+   "preco": 3561.46
+  },
+  "cp|magazine luiza|INFLU20BLACK|leitor": {
+   "quando": "2026-11-27T00:04:57-03:00",
+   "preco": 3580.64
   }
  }
 }
