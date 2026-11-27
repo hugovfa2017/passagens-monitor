@@ -110,6 +110,8 @@ CUPOM_FORA = re.compile(r'jbl|impressora|scanner|note(?:book)?\d*|lenovo|asus|mo
                         r'robo|aspirador|mouse|teclado|cadeira|mesa|husky|periferi|software|antena|precisao|nintendo|saude|'
                         r'brinquedo|fralda|biscoito|lacta|sono|tablet|frete|primeira compra|app\b|selecionados|placa de video|'
                         r'processador|controle|dualsense|headset|monitor', re.I)
+# para o aviso de preço possível: só a categoria tira o cupom ("só no app" e "selecionados" podem valer para console)
+CUPOM_OUTRA_CATEGORIA = re.compile(CUPOM_FORA.pattern.replace(r'app\b|', '').replace('selecionados|', ''), re.I)
 CUPOM_PS5 = re.compile(r'ps ?5|playstation|console|video ?games?|\bgames?\b|gamer|eletronicos|tecnologia|todo o site|site todo|'
                        r'todo site|sitetodo|todosite')
 
@@ -167,6 +169,93 @@ def cupons_para_testar(cupons, melhores, codigos_ps5=()):
     for v in out.values():
         v['cupons'] = sorted(v['cupons'], key=lambda c: -(c['desconto'] or 0))[:5]
     return out
+
+
+# ---------------------------------------------------------------- cupom já valendo: preço possível
+def bases_de(ps5):
+    """O preço sem cupom lido na própria loja (nível A), o menor de cada loja e modelo com alerta: é nele que um cupom geral
+    é testado. [{'loja', 'modelo', 'preco', 'link', 'titulo'}] (vai para o estado, para o plantão usar)."""
+    bases = {}
+    for o in ps5:
+        if o['confianca'] == 'A' and not o['cupom'] and o['modelo'] in config.MODELOS_COM_ALERTA:
+            k = (loja_base(o), o['modelo'])
+            if k not in bases or o['preco'] < bases[k]['preco']:
+                bases[k] = {'loja': k[0], 'modelo': o['modelo'], 'preco': o['preco'], 'link': o['link'], 'titulo': o['titulo']}
+    return sorted(bases.values(), key=lambda b: (b['loja'], b['modelo']))
+
+
+def cupom_fresco(c, agora):
+    """Cupom de canal vale pelo post (até horas_alerta); o da página de cupons do Promobit é a lista dos ativos."""
+    if not str(c.get('origem', '')).startswith('canal') or not c.get('publicado'):
+        return True
+    return agora - fontes._quando(c['publicado']) <= timedelta(hours=horas_alerta(agora))
+
+
+def precos_possiveis(cupons, bases, agora, codigos_ps5=()):
+    """Cupom que pode valer para console aplicado ao preço sem cupom da loja: os que deixam um modelo com alerta no limite
+    (alvo ou AVISAR_ABAIXO). Para não perder oportunidade, conta todo cupom que não é de outra categoria (CUPOM_FORA),
+    mesmo sem dizer "site todo" ("R$ 150 OFF em R$ 1.499"). Não confirmado: o cupom pode não valer para console."""
+    out, vistos = [], set()
+    for c in cupons:
+        cod = c['codigo'].upper()
+        outra = CUPOM_OUTRA_CATEGORIA.search(simples(f"{c['titulo']} {c['codigo']}")) and cod not in codigos_ps5
+        if cod in config.CUPONS_QUE_NAO_VALEM or not c.get('regra') or outra or not cupom_fresco(c, agora):
+            continue
+        for b in bases:
+            d = fontes.desconto(c['regra'], b['preco']) if b['loja'] == c['loja'] else 0
+            k = f"cp|{simples(b['loja'])}|{cod}|{b['modelo']}"
+            if d >= 30 and b['preco'] - d <= limite(b['modelo']) and k not in vistos:
+                vistos.add(k)
+                out.append({'chave': k, 'modelo': b['modelo'], 'loja': b['loja'], 'codigo': c['codigo'], 'titulo': c['titulo'],
+                            'origem': c.get('origem', ''), 'link_cupom': c.get('link'), 'base': b, 'desconto': round(d, 2),
+                            'preco': round(b['preco'] - d, 2)})
+    return sorted(out, key=lambda p: (restrito(p), p['preco']))     # o de "produtos selecionados" vai por último
+
+
+def restrito(p):
+    """Cupom de "produtos selecionados": quase sempre de uma marca (ATTACKSHARK25 é de periféricos). Chega, mas sem som."""
+    return bool(re.search(r'selecionad', simples(p['titulo'])))
+
+
+def juntar_registros(*dicts):
+    """{chave: {'quando', 'preco'}} de várias fontes (varredura, plantão): vale o aviso mais recente de cada chave."""
+    out = {}
+    for d in dicts:
+        for k, r in (d or {}).items():
+            if k not in out or r['quando'] > out[k]['quando']:
+                out[k] = r
+    return out
+
+
+def cupons_novos(possiveis, registros, agora):
+    """Os que ainda não foram avisados: o mesmo cupom na mesma loja e modelo só volta em 24 h, ou antes se ficar R$ 50 mais
+    barato. registros: {chave: {'quando', 'preco'}} (da varredura e do plantão)."""
+    novos = []
+    for p in possiveis:
+        r = registros.get(p['chave'])
+        if not r or agora - datetime.fromisoformat(r['quando']) >= timedelta(hours=24) or p['preco'] <= r['preco'] - 50:
+            novos.append(p)
+    return novos
+
+
+def texto_cupom(possiveis):
+    """Aviso de preço possível. 1ª linha: o preço que daria (é o que aparece na notificação)."""
+    linhas = []
+    for p in possiveis:
+        b = p['base']
+        linhas += [f"🧪 <b>{brl(p['preco'])} · {MODELOS[p['modelo']]} {na(p['loja'])} {html.escape(p['loja'])}, se o cupom valer</b>",
+                   f"🎟 <code>{html.escape(p['codigo'])}</code>: {html.escape(p['titulo'][:110])} ({html.escape(p['origem'] or 'Promobit')})",
+                   f"Preço na loja sem cupom: {brl(b['preco'])} · desconto de {brl(p['desconto'])}"
+                   + ''.join(f" · {x}" for rx, x in ((r'\bapp\b|aplicativo', 'só no app'), (r'selecionad', 'produtos selecionados'))
+                             if re.search(rx, simples(p['titulo']))), '']
+    linhas += ['Cupom geral às vezes não vale para console: teste no carrinho antes de pagar. Se não valer, me diga o código '
+               'que eu tiro da lista.']
+    return '\n'.join(linhas)
+
+
+def botoes_cupom(possiveis):
+    b = [[{'text': f"🛒 {MODELOS[p['modelo']]} {na(p['loja'])} {p['loja']}"[:40], 'url': p['base']['link']}] for p in possiveis[:3]]
+    return b + [PAINEL_BOTAO]
 
 
 # ---------------------------------------------------------------- juntar a mesma oferta vista em várias fontes
@@ -785,6 +874,18 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     if alertas:
         botoes = [botao(a['oferta']) for a in alertas][:3] + [PAINEL_BOTAO]
         status.append(enviar(texto_alerta(alertas, agora, resumo), silencioso=not any(a['som'] for a in alertas), botoes=botoes))
+    # cupom já valendo (sem anúncio antes) que deixa o preço sem cupom de uma loja no limite: não confirmado, teste no carrinho
+    estado['bases'] = bases_de(ps5)
+    meus = estado.get('cupons_avisados') or {}
+    possiveis = precos_possiveis(cupons, estado['bases'], agora, codigos_ps5)
+    do_plantao = ler_json(os.path.join(pasta, 'plantao.json'), {}).get('cupons')
+    novos = cupons_novos(possiveis, juntar_registros(meus, do_plantao), agora)
+    if novos:
+        st = enviar(texto_cupom(novos), silencioso=not cacador(agora) or all(map(restrito, novos)), botoes=botoes_cupom(novos))
+        status.append(st)
+        if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):   # falha de rede: tenta na próxima rodada
+            meus.update({p['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': p['preco']} for p in novos})
+    estado['cupons_avisados'] = {k: r for k, r in meus.items() if agora - datetime.fromisoformat(r['quando']) < timedelta(days=3)}
     hora = config.RESUMO_DIARIO_HORA
     hoje = agora.strftime('%Y-%m-%d')
     primeira = 'resumo_dia' not in estado
@@ -827,6 +928,10 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
     gravar_json(os.path.join(pasta, 'estado.json'), estado, copia=True)
     with open(os.path.join(pasta, 'ultimo.md'), 'w') as f:
         f.write(resumo_md(resumo, agora, alertas, situacao, fora, teste, tg, secoes, lotes))
+        if possiveis:
+            f.write('\n## Cupom já valendo: preço possível (não confirmado)\n\n' + ''.join(
+                f"- {MODELOS[p['modelo']]}: {brl(p['preco'])} {na(p['loja'])} {p['loja']} com `{p['codigo']}` "
+                f"(sem cupom: {brl(p['base']['preco'])})\n" for p in possiveis))
 
     situacao['Cupons (Promobit)'] = {'ok': False, 'erro': '; '.join(erros_cupons)[:200], 'tipo': 'cupom'} if erros_cupons else \
         {'ok': True, 'ofertas': len(cupons), 'tipo': 'cupom'}
@@ -845,6 +950,7 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
         'secoes': {k: [para_painel(o) for o in v[:12]] for k, v in secoes.items()},
         'leiloes': lotes[:20],
         'alertas': [{'modelo': a['modelo'], 'motivo': a['motivo'], 'som': a['som'], 'oferta': para_painel(a['oferta'])} for a in alertas],
+        'cupons_possiveis': [{k: p[k] for k in ('modelo', 'loja', 'codigo', 'titulo', 'preco', 'desconto')} for p in possiveis],
         'fontes': situacao,
         'descartados': fora,
         'config': {'queda_minima': config.QUEDA_MINIMA, 'horas_promobit': config.HORAS_OFERTA_POSTADA,
@@ -854,6 +960,8 @@ def rodar(coletar=None, buscar_cupons=None, enviar=telegram, pasta=AQUI, agora=N
         gerar_painel(dados)
     for a in alertas:
         print(f"{'ALERTA' if a['som'] else 'CONFERIR'} {a['modelo']} {a['oferta']['preco']} {a['motivo']}")
+    for p in possiveis:
+        print(f"CUPOM_POSSIVEL {p['modelo']} {p['preco']} {p['loja']} {p['codigo']}" + (' (avisado agora)' if p in novos else ''))
     for m, r in resumo.items():
         print(f"MELHOR {m}: " + (descricao(r['melhor'], html_=False) if r['melhor'] else 'nada'))
         if r['nao_confirmada']:
@@ -991,6 +1099,18 @@ def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
         linhas += [f"ALERTA {a['modelo']} {a['oferta']['preco']} {a['motivo']}" for a in alertas] + [st]
         if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):   # falha de rede: tenta na próxima passada
             avisados.update({a['chave']: agora.isoformat(timespec='seconds') for a in alertas})
+    # cupom já valendo postado agora há pouco, sobre o preço das lojas lido na última varredura (estado['bases'])
+    cupons_meus = salvo.get('cupons') or {}
+    cupons_antes = json.dumps(cupons_meus, sort_keys=True)
+    cups = [x for x in itens if 'codigo' in x]
+    novos_c = cupons_novos(precos_possiveis(cups, estado.get('bases') or [], agora),
+                           juntar_registros(estado.get('cupons_avisados'), cupons_meus), agora)
+    if novos_c:
+        st = enviar(texto_cupom(novos_c), silencioso=all(map(restrito, novos_c)), botoes=botoes_cupom(novos_c))
+        linhas += [f"CUPOM_POSSIVEL {p['modelo']} {p['preco']} {p['loja']} {p['codigo']}" for p in novos_c] + [st]
+        if st == 'TELEGRAM_ENVIADO' or st.startswith('TELEGRAM_NAO_CONFIGURADO'):
+            cupons_meus.update({p['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': p['preco']} for p in novos_c})
+    cupons_meus = {k: r for k, r in cupons_meus.items() if agora - datetime.fromisoformat(r['quando']) < timedelta(days=3)}
     for chave, tipo, texto_, botoes in tratar_anuncios(itens, anuncios, agora):
         st = enviar(texto_, botoes=botoes)
         a = anuncios[chave]
@@ -1000,8 +1120,8 @@ def plantao(ler=None, enviar=telegram, pasta=AQUI, agora=None):
                 del anuncios[chave]
             else:
                 a['lembrado'] = None
-    if avisados != antes or json.dumps(anuncios, sort_keys=True) != anuncios_antes:
-        gravar_json(caminho, {'avisados': avisados, 'anuncios': anuncios})
+    if avisados != antes or json.dumps(anuncios, sort_keys=True) != anuncios_antes or json.dumps(cupons_meus, sort_keys=True) != cupons_antes:
+        gravar_json(caminho, {'avisados': avisados, 'anuncios': anuncios, 'cupons': cupons_meus})
     return linhas
 
 
@@ -1401,6 +1521,63 @@ def _teste():
             enviadas.clear()
             linhas = plantao(lambda: (vagos_, {}), enviar, pasta, t)
             assert [l.split()[2] for l in linhas if l.startswith('ALERTA')] == ['3499'], linhas
+    finally:
+        config.ALVOS, config.AVISAR_ABAIXO = alvos_, avisar_
+
+    # ---- cupom já valendo (sem anúncio antes): preço sem cupom da loja menos o cupom, no limite -> aviso "teste no carrinho"
+    alvos_, avisar_ = config.ALVOS, config.AVISAR_ABAIXO
+    try:
+        config.ALVOS, config.AVISAR_ABAIXO = {'leitor': 3699, 'digital': 3699, 'pro': 6299}, 3600
+        loja_ = lambda loja, m, p, conf='A', cupom=None: {'loja': loja, 'modelo': m, 'preco': p, 'confianca': conf, 'cupom': cupom,
+                                                           'link': f'https://loja/{m}', 'titulo': 'Console', 'fonte': loja, 'tipo': 'loja'}
+        bs = bases_de([loja_('Amazon', 'digital', 3732.55), loja_('Amazon', 'digital', 3800), loja_('Amazon', 'leitor', 4464.04),
+                       loja_('Amazon', 'pro', 7000), loja_('KaBuM!', 'digital', 3600, 'B'), loja_('KaBuM!', 'digital', 3500, cupom='X')])
+        assert [(b['loja'], b['modelo'], b['preco']) for b in bs] == [('Amazon', 'digital', 3732.55), ('Amazon', 'leitor', 4464.04)], bs
+        pub = lambda m: (agora - timedelta(minutes=m)).strftime('%Y-%m-%dT%H:%M:%S%z')
+        cup = lambda cod, tit, loja='Amazon', origem='canal Nerd Cupons', m=30: {
+            'codigo': cod, 'loja': loja, 'titulo': tit, 'regra': fontes.regra_cupom(tit), 'validade': None, 'publicado': pub(m),
+            'origem': origem, 'link': 'https://t.me/nerdcupons/1'}
+        cs = [cup('BLACK150', '🚨 Cupom Amazon APP 🏷 R$ 150 OFF em R$ 1.499: «BLACK150»'),      # o de 26/11: só no app, sem categoria
+              cup('NOVO100', 'R$ 100 OFF na primeira compra'),                                # só conta nova
+              cup('SITE20', '20% OFF em todo o site, até R$ 100'),
+              cup('JBL30', '30% OFF em produtos JBL'),                                       # outra categoria
+              cup('RELAMPAGO20', '20% OFF em todo o site'),                                  # testado: não vale para console
+              cup('VELHO300', 'R$ 300 OFF em todo o site', m=180),                           # post de 3 h (caçador: 2 h)
+              cup('KABUM300', 'R$ 300 OFF em todo o site', loja='KaBuM!'),                   # loja sem preço lido
+              cup('PROMO200', 'R$ 200 OFF em todo o site acima de R$ 3.000', origem='Promobit', m=60 * 24 * 5),   # lista dos ativos
+              cup('MIN5000', 'R$ 400 OFF acima de R$ 5.000'),                               # mínimo acima do preço
+              cup('ATTACKSHARK25', 'Use o cupom e ganhe 25% OFF em produtos selecionados', origem='Promobit')]   # chega, sem som
+        ps = precos_possiveis(cs, bs, agora)
+        assert [(p['codigo'], p['modelo'], p['preco']) for p in ps] == \
+            [('PROMO200', 'digital', 3532.55), ('BLACK150', 'digital', 3582.55), ('SITE20', 'digital', 3632.55),
+             ('ATTACKSHARK25', 'digital', 2799.41), ('ATTACKSHARK25', 'leitor', 3348.03)], ps
+        assert [restrito(p) for p in ps] == [False, False, False, True, True]
+        # repetição: mesmo cupom, loja e modelo só volta em 24 h, ou antes se ficar R$ 50 mais barato
+        reg = {ps[1]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3582.55}}
+        assert [p['codigo'] for p in cupons_novos(ps, reg, agora + timedelta(hours=1))] == ['PROMO200', 'SITE20', 'ATTACKSHARK25', 'ATTACKSHARK25']
+        assert [p['codigo'] for p in cupons_novos([{**ps[1], 'preco': 3530}], reg, agora + timedelta(hours=1))] == ['BLACK150']
+        assert len(cupons_novos(ps, reg, agora + timedelta(hours=24))) == 5
+        t = texto_cupom(ps[1:2])
+        html_do_telegram(t)
+        assert t.startswith('🧪 <b>R$ 3.582,55 · PS5 Digital na Amazon, se o cupom valer</b>\n🎟 <code>BLACK150</code>') and '· só no app' in t, t
+        # plantão: usa o preço das lojas da última varredura (estado['bases']); não repete o que a varredura já avisou
+        with tempfile.TemporaryDirectory() as pasta:
+            gravar_json(os.path.join(pasta, 'estado.json'), {'bases': bs, 'cupons_avisados': {
+                ps[0]['chave']: {'quando': agora.isoformat(timespec='seconds'), 'preco': 3532.55}}})
+            enviadas.clear()
+            linhas = plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=1))
+            assert [l for l in linhas if l.startswith('CUPOM')] == ['CUPOM_POSSIVEL digital 3582.55 Amazon BLACK150',
+                                                                    'CUPOM_POSSIVEL digital 3632.55 Amazon SITE20',
+                                                                    'CUPOM_POSSIVEL digital 2799.41 Amazon ATTACKSHARK25',
+                                                                    'CUPOM_POSSIVEL leitor 3348.03 Amazon ATTACKSHARK25'], linhas
+            assert len(enviadas) == 1 and not enviadas[0][1] and [b[0]['url'] for b in enviadas[0][2]][0] == 'https://loja/digital'
+            assert plantao(lambda: (cs, {}), enviar, pasta, agora + timedelta(minutes=2)) == [linhas[0]] and len(enviadas) == 1
+            assert sorted(ler_json(os.path.join(pasta, 'plantao.json'), {})['cupons']) == sorted(p['chave'] for p in ps[1:])
+            # só "produtos selecionados": chega sem som
+            gravar_json(os.path.join(pasta, 'estado.json'), {'bases': bs})
+            os.remove(os.path.join(pasta, 'plantao.json'))
+            plantao(lambda: (cs[-1:], {}), enviar, pasta, agora + timedelta(minutes=3))
+            assert len(enviadas) == 2 and enviadas[-1][1] and 'ATTACKSHARK25' in enviadas[-1][0], enviadas[-1][:2]
     finally:
         config.ALVOS, config.AVISAR_ABAIXO = alvos_, avisar_
 

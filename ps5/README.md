@@ -44,6 +44,13 @@ marcando "Mandar o resumo no Telegram agora".
   do Promobit, o feed do Gatry e a primeira página de cada canal do Telegram, e avisa com som o post de até 1 h, ainda não
   visto, de modelo com alerta e no preço que toca (alvo ou `AVISAR_ABAIXO`). A mensagem termina com "⚡ Plantão da Black
   Friday". O que ele avisou fica em `plantao.json`, e a varredura completa não repete. Fora do modo caçador, não roda.
+- **Cupom já valendo, sem anúncio antes (varredura e plantão):** cupom de loja (página de cupons do Promobit ou post de
+  canal de até 2 h no modo caçador) aplicado ao preço sem cupom lido na própria loja (KaBuM!, Amazon, Americanas,
+  Fast Shop, Webcontinental, Zoom...). Se der no limite de um modelo com alerta, chega um aviso 🧪 "R$ X · PS5 Digital na
+  loja, se o cupom valer", com som no modo caçador, e "teste no carrinho". Conta todo cupom que não é de outra
+  categoria, mesmo sem dizer "site todo" (ex.: `BLACK150`, "R$ 150 OFF em R$ 1.499", só no app). Cupom de "produtos
+  selecionados" chega sem som e no fim (quase sempre é de uma marca). O mesmo cupom, loja e modelo só volta em 24 h, ou
+  antes se ficar R$ 50 mais barato. Cupom testado que não vale: ponha em `CUPONS_QUE_NAO_VALEM`.
 - **Aviso antecipado de cupom (no plantão):** os canais costumam anunciar o cupom antes de liberar ("🔥 Às 18h: CUPOM DE
   4 DÍGITOS no Mercado Livre!", às 17h15 de 25/11; às 18h04 já tinha esgotado). Post que anuncia cupom ou oferta
   relâmpago com hora marcada, numa loja que vende PS5 e que tira pelo menos `ANUNCIO_MINIMO` (R$ 150) de um console,
