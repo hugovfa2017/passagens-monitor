@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 20:27",
+  "quando": "2026-11-27 21:27",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 323,
+    "voos": 325,
     "conferidos": 10,
     "ofertas": 10,
     "bloqueio": null,
@@ -47,11 +47,11 @@
      "exemplo": null
     },
     "diretos": {
-     "telas": 8,
-     "lidas": 8
+     "telas": 10,
+     "lidas": 10
     },
     "sem_preco": {},
-    "seg": 50
+    "seg": 39
    },
    "Vai de Promo": {
     "buscas": 8,
@@ -65,12 +65,11 @@
     "buscas": 8,
     "com_voo": 8
    },
-   "123milhas": {
-    "buscas": 4,
-    "com_voo": 0,
-    "pulado": true
-   },
    "Viaza": {
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "123milhas": {
     "buscas": 4,
     "com_voo": 0,
     "pulado": true
@@ -83,7 +82,7 @@
   "taxa_mala": {
    "Azul": 96,
    "Gol": 136,
-   "LATAM": 90
+   "LATAM": 94
   },
   "grupos": [
    {
@@ -411,26 +410,26 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2027-01-10",
+   "d": "2027-01-12",
    "orig": "REC",
-   "dest": "VCP",
-   "cia": "Gol",
-   "saida": "04:45",
-   "chegada": "10:20",
-   "tipo": "escala 1h20",
-   "pp": 561,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEwIiAKA1JFQxIKMjAyNy0wMS0xMBoDQlNCKgJHMzIEMTcwMyIgCgNCU0ISCjIwMjctMDEtMTAaA1ZDUCoCRzMyBDE3MjRqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "dom 10/01"
+   "dest": "GRU",
+   "cia": "Azul",
+   "saida": "04:30",
+   "chegada": "07:45",
+   "tipo": "direto",
+   "pp": 780,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
+   "dia": "ter 12/01"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "bom",
+   "sinal": "acompanhar",
    "motivos": [
-    "R$173 acima do menor de 4 dias (R$388)",
-    "para o Google, preço baixo (a rota costuma ficar entre R$1.450 e R$3.375)"
+    "R$392 acima do menor de 4 dias (R$388)",
+    "para o Google, preço normal (a rota costuma ficar entre R$1.375 e R$3.875)"
    ]
   },
   "fora": null,
@@ -654,6 +653,10 @@
    [
     "2026-11-27 19:28",
     561
+   ],
+   [
+    "2026-11-27 21:27",
+    780
    ]
   ]
  },
@@ -663,7 +666,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 561,
+  "pp": 894,
   "conf": true
  },
  {
@@ -672,7 +675,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 702,
+  "pp": 781,
   "conf": true
  },
  {
@@ -681,7 +684,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 561,
+  "pp": 780,
   "conf": true
  },
  {
@@ -698,7 +701,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1476,
+  "pp": 1695,
   "ida": {
    "d": "2026-12-20",
    "orig": "GRU",
@@ -713,17 +716,17 @@
    "dia": "dom 20/12"
   },
   "volta": {
-   "d": "2027-01-10",
+   "d": "2027-01-12",
    "orig": "REC",
-   "dest": "VCP",
-   "cia": "Gol",
-   "saida": "04:45",
-   "chegada": "10:20",
-   "tipo": "escala 1h20",
-   "pp": 561,
-   "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI3LTAxLTEwIiAKA1JFQxIKMjAyNy0wMS0xMBoDQlNCKgJHMzIEMTcwMyIgCgNCU0ISCjIwMjctMDEtMTAaA1ZDUCoCRzMyBDE3MjRqBwgBEgNSRUNyBwgBEgNHUlVyBwgBEgNDR0hyBwgBEgNWQ1BAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "dom 10/01"
+   "dest": "GRU",
+   "cia": "Azul",
+   "saida": "04:30",
+   "chegada": "07:45",
+   "tipo": "direto",
+   "pp": 780,
+   "vend": "Vai de Promo",
+   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
+   "dia": "ter 12/01"
   },
   "juntas": null
  }
