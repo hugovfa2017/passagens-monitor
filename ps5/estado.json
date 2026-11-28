@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3261896": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sony Dualsense Adamantium Wolverine Edição Limitada",
-   "preco": 359.0,
-   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-adamantium-wolverine-edicao-limitada-3261896/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "SOHOJE",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3261896",
-   "publicado": "2026-11-26T20:31:04-0300",
-   "idade_h": 1.2
-  },
-  "promobit-3261899": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sony Dualsense Wolverine Edição Limitada - Amarelo",
-   "preco": 359.0,
-   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-wolverine-edicao-limitada-amarelo-3261899/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "SOHOJE",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3261899",
-   "publicado": "2026-11-26T20:31:06-0300",
-   "idade_h": 0.2
-  },
   "promobit-3262050": {
    "fonte": "Promobit",
    "loja": "Mercado Livre",
@@ -50,40 +16,6 @@
    "id": "promobit-3262050",
    "publicado": "2026-11-26T20:44:12-0300",
    "idade_h": 0.9
-  },
-  "promobit-3261928": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sem Fio CFI-ZCT1W Ps5 - Cosmic Red",
-   "preco": 303.24,
-   "link": "https://www.promobit.com.br/oferta/controle-sem-fio-cfi-zct1w-ps5-cosmic-red-3261928/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "SOHOJE",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3261928",
-   "publicado": "2026-11-26T20:34:14-0300",
-   "idade_h": 1.1
-  },
-  "promobit-3261923": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Dualsense Cfi-zct1 Sem Fio Ps5 Galactic Purpl",
-   "preco": 287.0,
-   "link": "https://www.promobit.com.br/oferta/controle-dualsense-cfi-zct1-sem-fio-ps5-galactic-purpl-3261923/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "SOHOJE",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3261923",
-   "publicado": "2026-11-26T20:34:04-0300",
-   "idade_h": 1.1
   },
   "promobit-3262138": {
    "fonte": "Promobit",
@@ -1804,7 +1736,7 @@
    "publicado": "2026-11-27T20:45:22-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 11.8
+   "idade_h": 11.9
   },
   "promobit-3271368": {
    "fonte": "Promobit",
@@ -1838,7 +1770,7 @@
    "ressalvas": [],
    "id": "promobit-3271552",
    "publicado": "2026-11-27T21:57:16-0300",
-   "idade_h": 10.6
+   "idade_h": 10.7
   },
   "promobit-3271537": {
    "fonte": "Promobit",
@@ -1855,7 +1787,7 @@
    "ressalvas": [],
    "id": "promobit-3271537",
    "publicado": "2026-11-27T21:55:04-0300",
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "promobit-3271526": {
    "fonte": "Promobit",
@@ -1872,7 +1804,7 @@
    "ressalvas": [],
    "id": "promobit-3271526",
    "publicado": "2026-11-27T21:53:39-0300",
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "promobit-3271517": {
    "fonte": "Promobit",
@@ -1889,7 +1821,7 @@
    "ressalvas": [],
    "id": "promobit-3271517",
    "publicado": "2026-11-27T21:52:06-0300",
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "promobit-3271502": {
    "fonte": "Promobit",
@@ -1906,7 +1838,7 @@
    "ressalvas": [],
    "id": "promobit-3271502",
    "publicado": "2026-11-27T21:50:43-0300",
-   "idade_h": 10.7
+   "idade_h": 10.8
   },
   "promobit-3271489": {
    "fonte": "Promobit",
@@ -1923,7 +1855,7 @@
    "ressalvas": [],
    "id": "promobit-3271489",
    "publicado": "2026-11-27T21:48:41-0300",
-   "idade_h": 10.7
+   "idade_h": 10.9
   },
   "promobit-3271487": {
    "fonte": "Promobit",
@@ -2059,7 +1991,7 @@
    "ressalvas": [],
    "id": "promobit-3271743",
    "publicado": "2026-11-27T22:39:05-0300",
-   "idade_h": 9.9
+   "idade_h": 10.0
   },
   "promobit-3271710": {
    "fonte": "Promobit",
@@ -2076,7 +2008,7 @@
    "ressalvas": [],
    "id": "promobit-3271710",
    "publicado": "2026-11-27T22:31:04-0300",
-   "idade_h": 10.0
+   "idade_h": 10.2
   },
   "tg-jogobarato/112777-0": {
    "fonte": "Telegram",
@@ -2095,7 +2027,7 @@
    "publicado": "2026-11-27T23:15:30-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.2
+   "idade_h": 9.4
   },
   "promobit-3272006": {
    "fonte": "Promobit",
@@ -2133,7 +2065,7 @@
    "publicado": "2026-11-27T23:26:47-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.1
+   "idade_h": 9.2
   },
   "tg-meups4/56249-0": {
    "fonte": "Telegram",
@@ -2154,7 +2086,7 @@
    "publicado": "2026-11-27T23:31:34-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 9.0
+   "idade_h": 9.1
   },
   "tg-promobyteacheips5/7042-0": {
    "fonte": "Telegram",
@@ -2173,7 +2105,7 @@
    "publicado": "2026-11-27T21:57:25-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.6
+   "idade_h": 10.7
   },
   "tg-promobyteacheips5/7045-0": {
    "fonte": "Telegram",
@@ -2194,7 +2126,7 @@
    "publicado": "2026-11-27T23:33:16-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.0
+   "idade_h": 9.1
   },
   "tg-promobyteacheips5/7046-0": {
    "fonte": "Telegram",
@@ -2213,7 +2145,7 @@
    "publicado": "2026-11-27T23:43:10-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 8.8
+   "idade_h": 9.0
   },
   "tg-promobyteacheips5/7044-0": {
    "fonte": "Telegram",
@@ -2232,7 +2164,7 @@
    "publicado": "2026-11-27T23:18:19-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.2
+   "idade_h": 9.4
   },
   "promobit-3272284": {
    "fonte": "Promobit",
@@ -2249,7 +2181,7 @@
    "ressalvas": [],
    "id": "promobit-3272284",
    "publicado": "2026-11-28T01:09:06-0300",
-   "idade_h": 7.4
+   "idade_h": 7.5
   },
   "tg-achadosdotb/12662-0": {
    "fonte": "Telegram",
@@ -2268,7 +2200,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 6.7
+   "idade_h": 6.9
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -2285,7 +2217,41 @@
    "ressalvas": [],
    "id": "promobit-3272317",
    "publicado": "2026-11-28T01:48:04-0300",
-   "idade_h": 6.7
+   "idade_h": 6.9
+  },
+  "promobit-3272490": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Monster Hunter Wilds Steelbook (PlayStation 5)",
+   "preco": 205.27,
+   "link": "https://www.promobit.com.br/oferta/monster-hunter-wilds-steelbook-playstation-5-3272490/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "cupom Ativar 30% Off (na página)",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3272490",
+   "publicado": "2026-11-28T08:35:07-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3272483": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Jogo Star Wars Galactic Racer: Deluxe Edition - PlayStation 5",
+   "preco": 248.03,
+   "link": "https://www.promobit.com.br/oferta/jogo-star-wars-galactic-racer-deluxe-edition-playstation-5-3272483/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "cupom Ativar 30% Off (na página)",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3272483",
+   "publicado": "2026-11-28T08:33:02-0300",
+   "idade_h": 0.1
   }
  },
  "alertados": {
@@ -2333,81 +2299,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 2,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
-   "barradas": 45
+   "buscas": 53,
+   "barradas": 46
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 52,
+   "buscas": 53,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T08:30:25-03:00",
+ "ultima": "2026-11-28T08:40:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-27",
  "encerradas": {
