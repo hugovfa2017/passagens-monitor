@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3262721": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "LEGO Horizon Adventures Edição Standard",
-   "preco": 59.9,
-   "link": "https://www.promobit.com.br/oferta/lego-horizon-adventures-edicao-standard-3262721/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3262721",
-   "publicado": "2026-11-26T22:06:03-0300",
-   "idade_h": 2.4
-  },
   "promobit-3263273": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -1732,7 +1715,7 @@
    "ressalvas": [],
    "id": "promobit-3271743",
    "publicado": "2026-11-27T22:39:05-0300",
-   "idade_h": 11.4
+   "idade_h": 11.5
   },
   "promobit-3271710": {
    "fonte": "Promobit",
@@ -1768,7 +1751,7 @@
    "publicado": "2026-11-27T23:15:30-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.8
+   "idade_h": 10.9
   },
   "promobit-3272006": {
    "fonte": "Promobit",
@@ -1806,7 +1789,7 @@
    "publicado": "2026-11-27T23:26:47-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.6
+   "idade_h": 10.7
   },
   "tg-meups4/56249-0": {
    "fonte": "Telegram",
@@ -1827,7 +1810,7 @@
    "publicado": "2026-11-27T23:31:34-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 10.5
+   "idade_h": 10.6
   },
   "tg-promobyteacheips5/7045-0": {
    "fonte": "Telegram",
@@ -1848,7 +1831,7 @@
    "publicado": "2026-11-27T23:33:16-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.5
+   "idade_h": 10.6
   },
   "tg-promobyteacheips5/7046-0": {
    "fonte": "Telegram",
@@ -1867,7 +1850,7 @@
    "publicado": "2026-11-27T23:43:10-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.3
+   "idade_h": 10.5
   },
   "tg-promobyteacheips5/7044-0": {
    "fonte": "Telegram",
@@ -1886,7 +1869,7 @@
    "publicado": "2026-11-27T23:18:19-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.7
+   "idade_h": 10.9
   },
   "promobit-3272284": {
    "fonte": "Promobit",
@@ -1903,7 +1886,7 @@
    "ressalvas": [],
    "id": "promobit-3272284",
    "publicado": "2026-11-28T01:09:06-0300",
-   "idade_h": 8.9
+   "idade_h": 9.0
   },
   "tg-achadosdotb/12662-0": {
    "fonte": "Telegram",
@@ -1922,7 +1905,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -1939,7 +1922,7 @@
    "ressalvas": [],
    "id": "promobit-3272317",
    "publicado": "2026-11-28T01:48:04-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3272490": {
    "fonte": "Promobit",
@@ -1956,7 +1939,7 @@
    "ressalvas": [],
    "id": "promobit-3272490",
    "publicado": "2026-11-28T08:35:07-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3272483": {
    "fonte": "Promobit",
@@ -1973,7 +1956,7 @@
    "ressalvas": [],
    "id": "promobit-3272483",
    "publicado": "2026-11-28T08:33:02-0300",
-   "idade_h": 1.5
+   "idade_h": 1.6
   },
   "promobit-3272541": {
    "fonte": "Promobit",
@@ -1990,7 +1973,7 @@
    "ressalvas": [],
    "id": "promobit-3272541",
    "publicado": "2026-11-28T08:56:44-0300",
-   "idade_h": 1.1
+   "idade_h": 1.2
   },
   "promobit-3272572": {
    "fonte": "Promobit",
@@ -2007,7 +1990,7 @@
    "ressalvas": [],
    "id": "promobit-3272572",
    "publicado": "2026-11-28T09:08:05-0300",
-   "idade_h": 0.9
+   "idade_h": 1.0
   },
   "promobit-3272560": {
    "fonte": "Promobit",
@@ -2024,7 +2007,7 @@
    "ressalvas": [],
    "id": "promobit-3272560",
    "publicado": "2026-11-28T09:03:25-0300",
-   "idade_h": 1.0
+   "idade_h": 1.1
   },
   "promobit-3272602": {
    "fonte": "Promobit",
@@ -2041,7 +2024,7 @@
    "ressalvas": [],
    "id": "promobit-3272602",
    "publicado": "2026-11-28T09:16:47-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "promobit-3272641": {
    "fonte": "Promobit",
@@ -2058,7 +2041,7 @@
    "ressalvas": [],
    "id": "promobit-3272641",
    "publicado": "2026-11-28T09:24:06-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "promobit-3272628": {
    "fonte": "Promobit",
@@ -2075,7 +2058,7 @@
    "ressalvas": [],
    "id": "promobit-3272628",
    "publicado": "2026-11-28T09:22:09-0300",
-   "idade_h": 0.6
+   "idade_h": 0.8
   },
   "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801": {
    "fonte": "Gatry",
@@ -2092,7 +2075,7 @@
    "ressalvas": [],
    "id": "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801",
    "publicado": "2026-11-28T09:50:24-0300",
-   "idade_h": 0.2
+   "idade_h": 0.3
   }
  },
  "alertados": {
@@ -2140,81 +2123,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 1,
+   "falhas": 2,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
-   "barradas": 52
+   "buscas": 62,
+   "barradas": 53
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 61,
+   "buscas": 62,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T10:00:33-03:00",
+ "ultima": "2026-11-28T10:10:21-03:00",
  "pular": [],
  "resumo_dia": "2026-11-28",
  "encerradas": {
