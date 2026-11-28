@@ -1,39 +1,5 @@
 {
  "postadas": {
-  "promobit-3264506": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "2 Jogos + DLCs: Coleção NIOH Collection - PS5 - Mídia Física",
-   "preco": 103.41,
-   "link": "https://www.promobit.com.br/oferta/2-jogos-dlcs-colecao-nioh-collection-ps5-midia-fisica-3264506/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3264506",
-   "publicado": "2026-11-27T01:10:44-0300",
-   "idade_h": 9.0
-  },
-  "promobit-3264533": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "Spider-Man: Miles Morales Edição Padrão PS5",
-   "preco": 90.12,
-   "link": "https://www.promobit.com.br/oferta/spider-man-miles-morales-edicao-padrao-ps5-3264533/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3264533",
-   "publicado": "2026-11-27T01:14:06-0300",
-   "idade_h": 9.6
-  },
   "promobit-3264656": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -1547,7 +1513,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 11.4
+   "idade_h": 11.5
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -1615,7 +1581,7 @@
    "ressalvas": [],
    "id": "promobit-3272541",
    "publicado": "2026-11-28T08:56:44-0300",
-   "idade_h": 3.2
+   "idade_h": 4.4
   },
   "promobit-3272572": {
    "fonte": "Promobit",
@@ -1632,7 +1598,7 @@
    "ressalvas": [],
    "id": "promobit-3272572",
    "publicado": "2026-11-28T09:08:05-0300",
-   "idade_h": 4.0
+   "idade_h": 4.2
   },
   "promobit-3272560": {
    "fonte": "Promobit",
@@ -1649,7 +1615,7 @@
    "ressalvas": [],
    "id": "promobit-3272560",
    "publicado": "2026-11-28T09:03:25-0300",
-   "idade_h": 4.1
+   "idade_h": 4.3
   },
   "promobit-3272602": {
    "fonte": "Promobit",
@@ -1666,7 +1632,7 @@
    "ressalvas": [],
    "id": "promobit-3272602",
    "publicado": "2026-11-28T09:16:47-0300",
-   "idade_h": 3.9
+   "idade_h": 4.1
   },
   "promobit-3272641": {
    "fonte": "Promobit",
@@ -1700,7 +1666,7 @@
    "ressalvas": [],
    "id": "promobit-3272628",
    "publicado": "2026-11-28T09:22:09-0300",
-   "idade_h": 3.8
+   "idade_h": 4.0
   },
   "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801": {
    "fonte": "Gatry",
@@ -1717,7 +1683,7 @@
    "ressalvas": [],
    "id": "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801",
    "publicado": "2026-11-28T09:50:24-0300",
-   "idade_h": 3.3
+   "idade_h": 3.5
   },
   "promobit-3272788": {
    "fonte": "Promobit",
@@ -1734,7 +1700,7 @@
    "ressalvas": [],
    "id": "promobit-3272788",
    "publicado": "2026-11-28T10:09:08-0300",
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "tg-promobyteacheips5/7048-0": {
    "fonte": "Telegram",
@@ -1753,7 +1719,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "tg-promobyteacheips5/7048-1": {
    "fonte": "Telegram",
@@ -1774,7 +1740,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "tg-promobyteacheips5/7048-2": {
    "fonte": "Telegram",
@@ -1795,7 +1761,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "tg-promobyteacheips5/7048-3": {
    "fonte": "Telegram",
@@ -1816,7 +1782,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "tg-promobyteacheips5/7048-4": {
    "fonte": "Telegram",
@@ -1837,7 +1803,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "tg-promobyteacheips5/7048-5": {
    "fonte": "Telegram",
@@ -1858,7 +1824,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "promobit-3272892": {
    "fonte": "Promobit",
@@ -1875,7 +1841,7 @@
    "ressalvas": [],
    "id": "promobit-3272892",
    "publicado": "2026-11-28T10:34:04-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "tg-jogobarato/112815-0": {
    "fonte": "Telegram",
@@ -1894,7 +1860,7 @@
    "publicado": "2026-11-28T10:36:37-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 2.6
+   "idade_h": 2.7
   },
   "promobit-3272957": {
    "fonte": "Promobit",
@@ -1911,7 +1877,7 @@
    "ressalvas": [],
    "id": "promobit-3272957",
    "publicado": "2026-11-28T10:47:13-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3273106": {
    "fonte": "Promobit",
@@ -1928,24 +1894,7 @@
    "ressalvas": [],
    "id": "promobit-3273106",
    "publicado": "2026-11-28T11:22:17-0300",
-   "idade_h": 1.8
-  },
-  "promobit-3273120": {
-   "fonte": "Promobit",
-   "loja": "Shopee",
-   "titulo": "Console PlayStation 5 Slim Digital 825GB",
-   "preco": 3955.91,
-   "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-825gb-3273120/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3273120",
-   "publicado": "2026-11-28T11:25:42-0300",
-   "idade_h": 1.7
+   "idade_h": 2.0
   },
   "tg-achadosdotb/12711-0": {
    "fonte": "Telegram",
@@ -1964,7 +1913,7 @@
    "publicado": "2026-11-28T11:36:33-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": null,
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3273167": {
    "fonte": "Promobit",
@@ -1981,7 +1930,7 @@
    "ressalvas": [],
    "id": "promobit-3273167",
    "publicado": "2026-11-28T11:38:09-0300",
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "promobit-3273308": {
    "fonte": "Promobit",
@@ -1998,7 +1947,7 @@
    "ressalvas": [],
    "id": "promobit-3273308",
    "publicado": "2026-11-28T12:12:35-0300",
-   "idade_h": 1.0
+   "idade_h": 1.1
   },
   "tg-meups4/56263-0": {
    "fonte": "Telegram",
@@ -2019,7 +1968,7 @@
    "publicado": "2026-11-28T12:18:57-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 0.9
+   "idade_h": 1.0
   },
   "tg-promobyteacheips5/7049-0": {
    "fonte": "Telegram",
@@ -2038,7 +1987,7 @@
    "publicado": "2026-11-28T12:12:50-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.0
+   "idade_h": 1.1
   },
   "tg-promobyteacheips5/7050-0": {
    "fonte": "Telegram",
@@ -2059,7 +2008,7 @@
    "publicado": "2026-11-28T12:19:41-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 0.8
+   "idade_h": 1.0
   }
  },
  "alertados": {
@@ -2107,81 +2056,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 4,
+   "falhas": 5,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
-   "barradas": 66
+   "buscas": 81,
+   "barradas": 67
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 80,
+   "buscas": 81,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T13:10:25-03:00",
+ "ultima": "2026-11-28T13:20:20-03:00",
  "pular": [],
  "resumo_dia": "2026-11-28",
  "encerradas": {
