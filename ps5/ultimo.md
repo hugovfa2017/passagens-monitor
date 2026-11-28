@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-28 04:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-28 04:20 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 9h
+**Mais barato agora:** PS5 Digital por R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 10h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-- **PS5 Digital**: R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 9h
+- **PS5 Digital**: R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 10h
    sem cupom: R$ 3.881 na Magazine Luiza
    não confirmada: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 4 lugares, postado há 11h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -35,13 +35,13 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 39 itens · barrada em 1 de 26 buscas hoje
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 21 de 26 buscas hoje
+- KaBuM!: ok, 39 itens · barrada em 1 de 27 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 22 de 27 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 27 itens · barrada em 1 de 26 buscas hoje
+- Zoom: ok, 28 itens · barrada em 1 de 27 buscas hoje
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 138 itens (23 de 23 canais)
