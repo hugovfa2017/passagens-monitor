@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-27 22:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 22:20 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 5h
 
@@ -16,10 +16,10 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.001,74; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74
 - KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 4.289 por ~R$ 3.002,30; `BLACKDASBLACKS` (Use o cupom Kabum e ganhe 15% OFF) → PS5 Digital de R$ 4.289 por ~R$ 3.645,65; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 4.289 por ~R$ 3.789
 - Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.299,90 por ~R$ 4.149,90
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
-- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.752,03 por ~R$ 4.602,03; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 4.752,03 por ~R$ 4.652,03; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.752,03 por ~R$ 4.652,03
 - Mercado Livre: `MELI1CL` (R$150 OFF em compras acima de R$1.199 Cupom: «MELI1CL»); `K4RMELI` (R$110 OFF em compras acima de R$699 Cupom: «K4RMELI»); `MELIO7N` (R$60 OFF em compras acima de R$399 Cupom: «MELIO7N»); `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC); `WEUYRUE` (R$120 OFF em compras acima de R$799 Cupom: «WEUYRUE»)
 - ?: `LOTE3DE4` (📱 📱 📱 JOGOS com 20% OFF com cupom LOTE3DE4 na NUUVEM 🎮)
 
@@ -36,7 +36,7 @@ Telegram: sem mensagem nesta varredura
 ## Fontes
 
 - KaBuM!: ok, 34 itens
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 117 de 137 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 118 de 138 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
