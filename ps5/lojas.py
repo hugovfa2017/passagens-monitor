@@ -57,6 +57,7 @@ CANAIS = [
     dict(canal='pichauofertas', nome='Pichau'),
     dict(canal='cuponomia', nome='Cuponomia (Telegram)'),
     dict(canal='reytergames', nome='Reyter Games'),
+    dict(canal='promobyteacheips5', nome='Promobyte Achei PS5'),     # só PS5; avisa "voltou" e "cupom esgotando" (28/11/2026)
 ]
 BUSCAS_TELEGRAM = ('PS5', 'PlayStation 5')
 

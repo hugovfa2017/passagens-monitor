@@ -15,7 +15,7 @@ Três modelos (com leitor de disco, Digital e Pro), cada um com o melhor preço 
 | Lojas | KaBuM!, Amazon, Americanas, Fast Shop, Webcontinental, Bemol | preço lido na loja (nível A) |
 | Comparador | Zoom (Magazine Luiza, Amazon, KaBuM!...) | nível A |
 | Ofertas postadas | Promobit, Gatry | preço final já com cupom (nível B) |
-| Grupos do Telegram | 22 canais públicos (Jogo Barato, MeuPlayStation, Pelando, PromoTop, Xet, Pechinchou, Nerd Ofertas, Tecnoblog, Canaltech...) | nível B se vista em 2+ redes independentes; senão "não confirmada" (nível C) |
+| Grupos do Telegram | 23 canais públicos (Jogo Barato, MeuPlayStation, Promobyte Achei PS5, Pelando, PromoTop, Xet, Pechinchou, Nerd Ofertas, Tecnoblog, Canaltech...) | nível B se vista em 2+ redes independentes; senão "não confirmada" (nível C) |
 | Cupons | páginas de cupom do Promobit e cupons anunciados nos grupos | "para testar no carrinho" |
 | À parte | open box, importados e leilões de logística reversa (Lance360, HISA, Bolsa de Leilões) | nunca entram no melhor preço |
 

@@ -1458,7 +1458,8 @@ def _teste():
         config.ALVOS, config.AVISAR_ABAIXO = alvos, None
 
     # ---- fora do modo caçador: a mesma não confirmada volta a chegar sem som; guarda do workflow de 7 para 25 min
-    assert cacador(datetime(2026, 11, 30, 23, 59, tzinfo=fontes.BRT)) and not cacador(datetime(2026, 12, 1, 0, 0, tzinfo=fontes.BRT))
+    fim_ = datetime.combine(config.CACADOR_ATE, datetime.min.time()).replace(tzinfo=fontes.BRT)   # exclusiva
+    assert cacador(fim_ - timedelta(minutes=1)) and not cacador(fim_)
     assert guarda_min(datetime(2026, 11, 27, tzinfo=fontes.BRT)) == 7 and guarda_min(datetime(2026, 12, 2, tzinfo=fontes.BRT)) == 25
     ate = config.CACADOR_ATE
     try:
