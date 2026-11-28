@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-28 14:31",
+  "quando": "2026-11-28 15:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 282,
+    "voos": 281,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
@@ -48,30 +48,29 @@
     },
     "diretos": {
      "telas": 11,
-     "lidas": 10
+     "lidas": 11
     },
-    "sem_preco": {
-     "a lista não abriu": 1
-    },
-    "seg": 150
-   },
-   "MaxMilhas": {
-    "buscas": 7,
-    "com_voo": 7
+    "sem_preco": {},
+    "seg": 83
    },
    "Vai de Promo": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
+   },
+   "MaxMilhas": {
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 7,
-    "com_voo": 7
-   },
-   "Viaza": {
-    "buscas": 7,
-    "com_voo": 7
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
+   },
+   "Viaza": {
     "buscas": 4,
     "com_voo": 0,
     "pulado": true
@@ -84,7 +83,7 @@
   "taxa_mala": {
    "Azul": 105,
    "Gol": 136,
-   "LATAM": 79
+   "LATAM": 94
   },
   "grupos": [
    {
@@ -370,16 +369,7 @@
   "d": "2026-12-19",
   "dia": "sáb 19/12",
   "ne": "REC",
-  "pp": 2391,
-  "conf": true
- },
- {
-  "tipo": "celula",
-  "serie": "r.ida",
-  "d": "2026-12-20",
-  "dia": "dom 20/12",
-  "ne": "REC",
-  "pp": 1112,
+  "pp": 2256,
   "conf": true
  },
  {
@@ -427,7 +417,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 804,
+   "pp": 803,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -438,7 +428,7 @@
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "R$416 acima do menor de 4 dias (R$388)",
+    "R$415 acima do menor de 4 dias (R$388)",
     "para o Google, preço normal (a rota costuma ficar entre R$1.525 e R$4.250)"
    ]
   },
@@ -695,8 +685,21 @@
    [
     "2026-11-28 14:31",
     804
+   ],
+   [
+    "2026-11-28 15:30",
+    803
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 1065,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -704,7 +707,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 896,
+  "pp": 936,
   "conf": true
  },
  {
@@ -713,7 +716,7 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 804,
+  "pp": 803,
   "conf": true
  },
  {
@@ -730,7 +733,7 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 1719,
+  "pp": 1718,
   "ida": {
    "d": "2026-12-23",
    "orig": "GRU",
@@ -752,7 +755,7 @@
    "saida": "03:25",
    "chegada": "06:40",
    "tipo": "direto",
-   "pp": 804,
+   "pp": 803,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECVCP270112/4/0/0/Y/",
    "dia": "ter 12/01"
