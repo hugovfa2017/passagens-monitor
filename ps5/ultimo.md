@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-27 21:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 21:20 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 4h
 
@@ -31,20 +31,20 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: leilões (lance não é preço final: há taxas, retirada e nenhum teste)
 
-- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 1.120,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
+- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 1.170,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
 
 ## Fontes
 
 - KaBuM!: ok, 35 itens
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 112 de 131 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 113 de 132 buscas hoje
 - Americanas: ok, 14 itens
-- Fast Shop: ok, 5 itens
+- Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 27 itens
+- Zoom: ok, 28 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 1 itens (40 ofertas no feed)
-- Telegram: ok, 105 itens (22 de 22 canais)
+- Telegram: ok, 98 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
 Descartados: 218 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
