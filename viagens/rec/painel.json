@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-28 06:30",
+  "quando": "2026-11-28 07:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,7 +37,7 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 319,
+    "voos": 317,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
@@ -51,7 +51,7 @@
      "lidas": 11
     },
     "sem_preco": {},
-    "seg": 44
+    "seg": 46
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -81,7 +81,7 @@
    "voos": 0
   },
   "taxa_mala": {
-   "Azul": 96,
+   "Azul": 105,
    "Gol": 136,
    "LATAM": 82
   },
@@ -435,10 +435,10 @@
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "acompanhar",
+   "sinal": "bom",
    "motivos": [
     "R$392 acima do menor de 4 dias (R$388)",
-    "para o Google, preço normal (a rota costuma ficar entre R$1.375 e R$3.875)"
+    "para o Google, preço baixo (a rota costuma ficar entre R$1.375 e R$3.875)"
    ]
   },
   "fora": null,
