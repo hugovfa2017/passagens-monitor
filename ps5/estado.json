@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3259949": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Controle Sony Dualsense Para Playstation 5 Cor Branco Branco",
-   "preco": 305.23,
-   "link": "https://www.promobit.com.br/oferta/controle-sony-dualsense-para-playstation-5-cor-branco-branco-3259949/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "PROMOAGORA",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3259949",
-   "publicado": "2026-11-26T15:50:40-0300",
-   "idade_h": 4.2
-  },
   "promobit-3260189": {
    "fonte": "Promobit",
    "loja": "KaBuM!",
@@ -1685,7 +1668,7 @@
    "publicado": "2026-11-27T16:25:07-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 11.4
+   "idade_h": 11.6
   },
   "tg-jogobarato/112467-1": {
    "fonte": "Telegram",
@@ -1706,7 +1689,7 @@
    "publicado": "2026-11-27T16:25:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 11.4
+   "idade_h": 11.6
   },
   "promobit-3269138": {
    "fonte": "Promobit",
@@ -1793,7 +1776,7 @@
    "publicado": "2026-11-27T17:09:13-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 10.7
+   "idade_h": 10.9
   },
   "tg-nerdofertas/156918-0": {
    "fonte": "Telegram",
@@ -1812,7 +1795,7 @@
    "publicado": "2026-11-27T17:10:25-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 10.7
+   "idade_h": 10.8
   },
   "tg-achadosdotb/12586-0": {
    "fonte": "Telegram",
@@ -1831,7 +1814,7 @@
    "publicado": "2026-11-27T17:19:20-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 4896.7,
-   "idade_h": 10.5
+   "idade_h": 10.7
   },
   "tg-superofertasbr/19560-0": {
    "fonte": "Telegram",
@@ -1850,7 +1833,7 @@
    "publicado": "2026-11-27T17:09:16-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 10.7
+   "idade_h": 10.9
   },
   "tg-superofertasbr/19570-0": {
    "fonte": "Telegram",
@@ -1869,7 +1852,7 @@
    "publicado": "2026-11-27T17:10:32-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 10.7
+   "idade_h": 10.8
   },
   "tg-cjpromos/84970-0": {
    "fonte": "Telegram",
@@ -1890,7 +1873,7 @@
    "publicado": "2026-11-27T17:12:51-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 10.6
+   "idade_h": 10.8
   },
   "promobit-3269683": {
    "fonte": "Promobit",
@@ -2011,7 +1994,7 @@
    "publicado": "2026-11-27T17:52:43-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.0
+   "idade_h": 10.1
   },
   "promobit-3269871": {
    "fonte": "Promobit",
@@ -2049,7 +2032,7 @@
    "publicado": "2026-11-27T18:04:06-0300",
    "canal": "Xet das Promoções",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 9.9
   },
   "tg-promotop/263067-0": {
    "fonte": "Telegram",
@@ -2070,7 +2053,7 @@
    "publicado": "2026-11-27T18:07:48-0300",
    "canal": "PromoTop",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-nerdofertas/156969-0": {
    "fonte": "Telegram",
@@ -2091,7 +2074,7 @@
    "publicado": "2026-11-27T18:04:03-0300",
    "canal": "Nerd Ofertas",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 9.9
   },
   "tg-cjpromos/85009-0": {
    "fonte": "Telegram",
@@ -2112,7 +2095,7 @@
    "publicado": "2026-11-27T18:04:03-0300",
    "canal": "CJ Promoções",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 9.9
   },
   "promobit-3269975": {
    "fonte": "Promobit",
@@ -2150,7 +2133,7 @@
    "publicado": "2026-11-27T18:07:43-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-jogobarato/112547-1": {
    "fonte": "Telegram",
@@ -2171,7 +2154,7 @@
    "publicado": "2026-11-27T18:07:43-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-jogobarato/112549-0": {
    "fonte": "Telegram",
@@ -2192,7 +2175,7 @@
    "publicado": "2026-11-27T18:07:57-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-jogobarato/112549-1": {
    "fonte": "Telegram",
@@ -2213,7 +2196,7 @@
    "publicado": "2026-11-27T18:07:57-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-jogobarato/112550-0": {
    "fonte": "Telegram",
@@ -2234,7 +2217,7 @@
    "publicado": "2026-11-27T18:08:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-jogobarato/112550-1": {
    "fonte": "Telegram",
@@ -2255,7 +2238,7 @@
    "publicado": "2026-11-27T18:08:22-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-meups4/56184-0": {
    "fonte": "Telegram",
@@ -2277,7 +2260,7 @@
    "publicado": "2026-11-27T18:08:23-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-superofertasbr/19865-0": {
    "fonte": "Telegram",
@@ -2298,7 +2281,7 @@
    "publicado": "2026-11-27T18:04:08-0300",
    "canal": "Super Ofertas BR",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 9.9
   },
   "promobit-3270028": {
    "fonte": "Promobit",
@@ -2353,7 +2336,7 @@
    "publicado": "2026-11-27T18:30:26-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.3
+   "idade_h": 9.5
   },
   "tg-jogobarato/112576-0": {
    "fonte": "Telegram",
@@ -2372,7 +2355,7 @@
    "publicado": "2026-11-27T18:31:25-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.3
+   "idade_h": 9.5
   },
   "promobit-3270131": {
    "fonte": "Promobit",
@@ -2461,7 +2444,7 @@
    "publicado": "2026-11-27T18:42:34-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.1
+   "idade_h": 9.3
   },
   "tg-jogobarato/112583-0": {
    "fonte": "Telegram",
@@ -2480,7 +2463,7 @@
    "publicado": "2026-11-27T18:44:15-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.1
+   "idade_h": 9.3
   },
   "tg-meups4/56196-0": {
    "fonte": "Telegram",
@@ -2501,7 +2484,7 @@
    "publicado": "2026-11-27T19:06:21-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 8.7
+   "idade_h": 8.9
   },
   "tg-jogobarato/112609-0": {
    "fonte": "Telegram",
@@ -2522,7 +2505,7 @@
    "publicado": "2026-11-27T19:10:50-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.7
+   "idade_h": 8.8
   },
   "tg-jogobarato/112609-1": {
    "fonte": "Telegram",
@@ -2543,7 +2526,7 @@
    "publicado": "2026-11-27T19:10:50-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.7
+   "idade_h": 8.8
   },
   "promobit-3270548": {
    "fonte": "Promobit",
@@ -2598,7 +2581,7 @@
    "publicado": "2026-11-27T19:21:33-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.5
+   "idade_h": 8.6
   },
   "tg-jogobarato/112636-0": {
    "fonte": "Telegram",
@@ -2617,7 +2600,7 @@
    "publicado": "2026-11-27T19:38:45-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "promobit-3270956": {
    "fonte": "Promobit",
@@ -2655,7 +2638,7 @@
    "publicado": "2026-11-27T20:30:11-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 7.3
+   "idade_h": 7.5
   },
   "tg-meups4/56212-0": {
    "fonte": "Telegram",
@@ -2676,7 +2659,7 @@
    "publicado": "2026-11-27T20:45:22-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 7.1
+   "idade_h": 7.3
   },
   "promobit-3271368": {
    "fonte": "Promobit",
@@ -2710,7 +2693,7 @@
    "ressalvas": [],
    "id": "promobit-3271552",
    "publicado": "2026-11-27T21:57:16-0300",
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "promobit-3271537": {
    "fonte": "Promobit",
@@ -2727,7 +2710,7 @@
    "ressalvas": [],
    "id": "promobit-3271537",
    "publicado": "2026-11-27T21:55:04-0300",
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "promobit-3271526": {
    "fonte": "Promobit",
@@ -2744,7 +2727,7 @@
    "ressalvas": [],
    "id": "promobit-3271526",
    "publicado": "2026-11-27T21:53:39-0300",
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "promobit-3271517": {
    "fonte": "Promobit",
@@ -2761,7 +2744,7 @@
    "ressalvas": [],
    "id": "promobit-3271517",
    "publicado": "2026-11-27T21:52:06-0300",
-   "idade_h": 6.0
+   "idade_h": 6.1
   },
   "promobit-3271502": {
    "fonte": "Promobit",
@@ -2778,7 +2761,7 @@
    "ressalvas": [],
    "id": "promobit-3271502",
    "publicado": "2026-11-27T21:50:43-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3271489": {
    "fonte": "Promobit",
@@ -2795,7 +2778,7 @@
    "ressalvas": [],
    "id": "promobit-3271489",
    "publicado": "2026-11-27T21:48:41-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3271487": {
    "fonte": "Promobit",
@@ -2812,7 +2795,7 @@
    "ressalvas": [],
    "id": "promobit-3271487",
    "publicado": "2026-11-27T21:47:51-0300",
-   "idade_h": 6.0
+   "idade_h": 6.2
   },
   "promobit-3271445": {
    "fonte": "Promobit",
@@ -2914,7 +2897,7 @@
    "ressalvas": [],
    "id": "promobit-3271694",
    "publicado": "2026-11-27T22:27:28-0300",
-   "idade_h": 5.4
+   "idade_h": 5.6
   },
   "promobit-3271743": {
    "fonte": "Promobit",
@@ -2931,7 +2914,7 @@
    "ressalvas": [],
    "id": "promobit-3271743",
    "publicado": "2026-11-27T22:39:05-0300",
-   "idade_h": 5.2
+   "idade_h": 5.4
   },
   "promobit-3271710": {
    "fonte": "Promobit",
@@ -2948,7 +2931,7 @@
    "ressalvas": [],
    "id": "promobit-3271710",
    "publicado": "2026-11-27T22:31:04-0300",
-   "idade_h": 5.3
+   "idade_h": 5.5
   },
   "tg-jogobarato/112777-0": {
    "fonte": "Telegram",
@@ -2967,7 +2950,7 @@
    "publicado": "2026-11-27T23:15:30-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.6
+   "idade_h": 4.8
   },
   "promobit-3272006": {
    "fonte": "Promobit",
@@ -3005,7 +2988,7 @@
    "publicado": "2026-11-27T23:26:47-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 4.4
+   "idade_h": 4.6
   },
   "tg-meups4/56249-0": {
    "fonte": "Telegram",
@@ -3026,7 +3009,7 @@
    "publicado": "2026-11-27T23:31:34-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 4.3
+   "idade_h": 4.5
   },
   "tg-promobyteacheips5/7032-0": {
    "fonte": "Telegram",
@@ -3047,7 +3030,7 @@
    "publicado": "2026-11-27T18:07:52-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.7
+   "idade_h": 9.9
   },
   "tg-promobyteacheips5/7034-0": {
    "fonte": "Telegram",
@@ -3068,7 +3051,7 @@
    "publicado": "2026-11-27T18:26:03-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.4
+   "idade_h": 9.6
   },
   "tg-promobyteacheips5/7036-0": {
    "fonte": "Telegram",
@@ -3087,7 +3070,7 @@
    "publicado": "2026-11-27T18:43:48-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.1
+   "idade_h": 9.3
   },
   "tg-promobyteacheips5/7037-0": {
    "fonte": "Telegram",
@@ -3106,7 +3089,7 @@
    "publicado": "2026-11-27T18:53:16-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.0
+   "idade_h": 9.1
   },
   "tg-promobyteacheips5/7038-0": {
    "fonte": "Telegram",
@@ -3127,7 +3110,7 @@
    "publicado": "2026-11-27T19:12:29-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 8.6
+   "idade_h": 8.8
   },
   "tg-promobyteacheips5/7039-0": {
    "fonte": "Telegram",
@@ -3148,7 +3131,7 @@
    "publicado": "2026-11-27T19:19:14-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 8.5
+   "idade_h": 8.7
   },
   "tg-promobyteacheips5/7040-0": {
    "fonte": "Telegram",
@@ -3167,7 +3150,7 @@
    "publicado": "2026-11-27T19:32:59-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 8.3
+   "idade_h": 8.5
   },
   "tg-promobyteacheips5/7042-0": {
    "fonte": "Telegram",
@@ -3186,7 +3169,7 @@
    "publicado": "2026-11-27T21:57:25-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 5.9
+   "idade_h": 6.1
   },
   "tg-promobyteacheips5/7045-0": {
    "fonte": "Telegram",
@@ -3207,7 +3190,7 @@
    "publicado": "2026-11-27T23:33:16-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 4.3
+   "idade_h": 4.5
   },
   "tg-promobyteacheips5/7046-0": {
    "fonte": "Telegram",
@@ -3226,7 +3209,7 @@
    "publicado": "2026-11-27T23:43:10-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 4.1
+   "idade_h": 4.3
   },
   "tg-promobyteacheips5/7030-0": {
    "fonte": "Telegram",
@@ -3245,7 +3228,7 @@
    "publicado": "2026-11-27T17:49:00-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.0
+   "idade_h": 10.2
   },
   "tg-promobyteacheips5/7035-0": {
    "fonte": "Telegram",
@@ -3266,7 +3249,7 @@
    "publicado": "2026-11-27T18:36:56-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.2
+   "idade_h": 9.4
   },
   "tg-promobyteacheips5/7044-0": {
    "fonte": "Telegram",
@@ -3285,7 +3268,7 @@
    "publicado": "2026-11-27T23:18:19-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 4.5
+   "idade_h": 4.7
   },
   "promobit-3272284": {
    "fonte": "Promobit",
@@ -3302,7 +3285,7 @@
    "ressalvas": [],
    "id": "promobit-3272284",
    "publicado": "2026-11-28T01:09:06-0300",
-   "idade_h": 2.7
+   "idade_h": 2.9
   },
   "tg-achadosdotb/12662-0": {
    "fonte": "Telegram",
@@ -3321,7 +3304,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -3338,7 +3321,7 @@
    "ressalvas": [],
    "id": "promobit-3272317",
    "publicado": "2026-11-28T01:48:04-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   }
  },
  "alertados": {
@@ -3386,81 +3369,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 20
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 24,
+   "buscas": 25,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T03:50:19-03:00",
+ "ultima": "2026-11-28T04:00:31-03:00",
  "pular": [],
  "resumo_dia": "2026-11-27",
  "encerradas": {
@@ -3565,15 +3548,15 @@
   {
    "loja": "Amazon",
    "modelo": "digital",
-   "preco": 4299,
-   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+   "preco": 4299.0,
+   "link": "https://www.amazon.com.br/dp/B0FPGF9J2J",
    "titulo": "PlayStation®5 Slim Digital 825GB – Pacote ASTRO BOT e Gran Turismo 7"
   },
   {
    "loja": "Amazon",
    "modelo": "leitor",
-   "preco": 4749.9,
-   "link": "https://www.zoom.com.br/console-de-video-game/playstation-5-slim-1tb-bundle-astro-bot-gran-turismo-7",
+   "preco": 4729.0,
+   "link": "https://www.amazon.com.br/dp/B0F8R9NDXC",
    "titulo": "PlayStation®5 Slim Disk - Pacote ASTRO BOT e Gran Turismo 7"
   },
   {
@@ -3608,8 +3591,8 @@
    "loja": "KaBuM!",
    "modelo": "leitor",
    "preco": 4698,
-   "link": "https://www.kabum.com.br/produto/1095505/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-ea-sports-fc-26-ps5",
-   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo EA Sports FC 26, PS5"
+   "link": "https://www.kabum.com.br/produto/1095506/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-marvels-wolverine-ps5",
+   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo Marvel's Wolverine, PS5"
   },
   {
    "loja": "Magazine Luiza",
