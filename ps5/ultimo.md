@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-28 01:30 (hora de Brasília)
+# PS5 — última varredura: 2026-11-28 01:40 (hora de Brasília)
 
-**Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 35h
+**Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 36h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-- **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 35h
+- **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 36h
    não confirmada: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 4 lugares, postado há 8h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
@@ -34,19 +34,19 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 34 itens · barrada em 1 de 10 buscas hoje
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 8 de 10 buscas hoje
+- KaBuM!: ok, 34 itens · barrada em 1 de 11 buscas hoje
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 9 de 11 buscas hoje
 - Americanas: ok, 13 itens
-- Fast Shop: ok, 6 itens
+- Fast Shop: ok, 5 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 26 itens · barrada em 1 de 10 buscas hoje
+- Zoom: ok, 26 itens · barrada em 1 de 11 buscas hoje
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 138 itens (23 de 23 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 219 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 218 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
