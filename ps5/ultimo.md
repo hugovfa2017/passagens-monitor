@@ -1,9 +1,9 @@
-# PS5 — última varredura: 2026-11-27 21:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 22:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 5h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 10h
+   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 11h
 - **PS5 Digital**: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 7 lugares, postado há 5h
    sem cupom: R$ 3.510,25 na Magazine Luiza
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -25,31 +25,29 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
-- PS5 Digital: R$ 4.654,90 na Amazon
 - PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon
-- PS5 Digital: R$ 6.649,05 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
+- PS5 Digital: R$ 6.999 na Amazon · à vista
 
 ## À parte: leilões (lance não é preço final: há taxas, retirada e nenhum teste)
 
-- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 1.170,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
+- HISA Leilões: PLAYSTATION 5 1TB MIDIA FÍSICA - HS 710 — último lance R$ 1.220,90, encerramento em 3 dias (https://www.hisaleiloes.com.br/lote/65144)
 
 ## Fontes
 
 - KaBuM!: ok, 34 itens
-- Amazon: ok, 41 itens · barrada em 115 de 135 buscas hoje
-- Americanas: ok, 14 itens
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 116 de 136 buscas hoje
+- Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
-- Webcontinental: ok, 50 itens
+- Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 27 itens
+- Zoom: ok, 26 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 1 itens (40 ofertas no feed)
 - Telegram: ok, 104 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 242 não é console PS5, 3 preço fora da faixa de PS5 com leitor de disco
+Descartados: 222 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
