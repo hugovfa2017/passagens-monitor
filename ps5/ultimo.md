@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-28 12:10 (hora de Brasília)
+# PS5 — última varredura: 2026-11-28 12:20 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.881 na Magazine Luiza · postado há 17h
 
@@ -14,10 +14,10 @@ Telegram: TELEGRAM_ENVIADO
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
+- KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 3.999 por ~R$ 2.799,30; `BLACKDASBLACKS` (Cupom de desconto Kabum: 15% OFF em todo o site) → PS5 Digital de R$ 3.999 por ~R$ 3.399,15; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 3.999 por ~R$ 3.499
 - Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 3.999,90 por ~R$ 3.849,90
-- KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 4.299 por ~R$ 3.009,30; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 4.299 por ~R$ 3.799
+- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.161,42 por ~R$ 4.011,42; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 4.161,42 por ~R$ 4.061,42; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.161,42 por ~R$ 4.061,42
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
-- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 5.403,85 por ~R$ 5.253,85; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 5.403,85 por ~R$ 5.303,85; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 5.403,85 por ~R$ 5.303,85
 - Mercado Livre: `WEUYRUE` (R$120 OFF em compras acima de R$799 Cupom: «WEUYRUE»); `PLSPQEWMAD` (R$60 OFF em compras acima de R$399 Cupom: «PLSPQEWMAD»)
 - ?: `LOTE3DE4` (📱 📱 📱 JOGOS com 20% OFF com cupom LOTE3DE4 na NUUVEM 🎮)
 
@@ -33,25 +33,26 @@ Telegram: TELEGRAM_ENVIADO
 
 ## Fontes
 
-- KaBuM!: ok, 37 itens · barrada em 1 de 74 buscas hoje
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 61 de 74 buscas hoje
+- KaBuM!: ok, 38 itens · barrada em 1 de 75 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 62 de 75 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 25 itens · barrada em 1 de 74 buscas hoje
+- Zoom: ok, 27 itens · barrada em 1 de 75 buscas hoje
 - Promobit: ok, 11 itens
 - Gatry: ok, 1 itens (40 ofertas no feed)
 - Telegram: ok, 140 itens (23 de 23 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 192 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 193 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
 ## Cupom já valendo: preço possível (não confirmado)
 
-- PS5 Digital: R$ 3.009,30 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.299)
+- PS5 Digital: R$ 2.799,30 na KaBuM! com `JOGATUDO` (sem cupom: R$ 3.999)
 - PS5 com leitor de disco: R$ 3.288,60 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.698)
-- PS5 Digital: R$ 3.799 na KaBuM! com `DISCONELES` (sem cupom: R$ 4.299)
+- PS5 Digital: R$ 3.399,15 na KaBuM! com `BLACKDASBLACKS` (sem cupom: R$ 3.999)
+- PS5 Digital: R$ 3.499 na KaBuM! com `DISCONELES` (sem cupom: R$ 3.999)
 - PS5 Digital: R$ 3.849,90 na Amazon com `INFLUPRIME` (sem cupom: R$ 3.999,90)

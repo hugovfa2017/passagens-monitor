@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3263793": {
-   "fonte": "Promobit",
-   "loja": "Shopee",
-   "titulo": "Volante Logitech G29 Driving Force para PS5 PS4 PS3 e PC",
-   "preco": 1144.07,
-   "link": "https://www.promobit.com.br/oferta/volante-logitech-g29-driving-force-para-ps5-ps4-ps3-e-pc-3263793/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": "3D14D3BL4CK",
-   "cupom_origem": "postado",
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3263793",
-   "publicado": "2026-11-27T00:12:06-0300",
-   "idade_h": 0.3
-  },
   "promobit-3264019": {
    "fonte": "Promobit",
    "loja": "Shopee",
@@ -1683,7 +1666,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 10.4
+   "idade_h": 10.5
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -1768,7 +1751,7 @@
    "ressalvas": [],
    "id": "promobit-3272572",
    "publicado": "2026-11-28T09:08:05-0300",
-   "idade_h": 3.0
+   "idade_h": 3.2
   },
   "promobit-3272560": {
    "fonte": "Promobit",
@@ -1785,7 +1768,7 @@
    "ressalvas": [],
    "id": "promobit-3272560",
    "publicado": "2026-11-28T09:03:25-0300",
-   "idade_h": 3.1
+   "idade_h": 3.3
   },
   "promobit-3272602": {
    "fonte": "Promobit",
@@ -1802,7 +1785,7 @@
    "ressalvas": [],
    "id": "promobit-3272602",
    "publicado": "2026-11-28T09:16:47-0300",
-   "idade_h": 2.9
+   "idade_h": 3.1
   },
   "promobit-3272641": {
    "fonte": "Promobit",
@@ -1836,7 +1819,7 @@
    "ressalvas": [],
    "id": "promobit-3272628",
    "publicado": "2026-11-28T09:22:09-0300",
-   "idade_h": 2.8
+   "idade_h": 3.0
   },
   "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801": {
    "fonte": "Gatry",
@@ -1853,7 +1836,7 @@
    "ressalvas": [],
    "id": "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801",
    "publicado": "2026-11-28T09:50:24-0300",
-   "idade_h": 2.3
+   "idade_h": 2.5
   },
   "promobit-3272788": {
    "fonte": "Promobit",
@@ -1870,7 +1853,7 @@
    "ressalvas": [],
    "id": "promobit-3272788",
    "publicado": "2026-11-28T10:09:08-0300",
-   "idade_h": 2.0
+   "idade_h": 2.2
   },
   "tg-promobyteacheips5/7048-0": {
    "fonte": "Telegram",
@@ -1889,7 +1872,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-promobyteacheips5/7048-1": {
    "fonte": "Telegram",
@@ -1910,7 +1893,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-promobyteacheips5/7048-2": {
    "fonte": "Telegram",
@@ -1931,7 +1914,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-promobyteacheips5/7048-3": {
    "fonte": "Telegram",
@@ -1952,7 +1935,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-promobyteacheips5/7048-4": {
    "fonte": "Telegram",
@@ -1973,7 +1956,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "tg-promobyteacheips5/7048-5": {
    "fonte": "Telegram",
@@ -1994,7 +1977,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "promobit-3272892": {
    "fonte": "Promobit",
@@ -2011,7 +1994,7 @@
    "ressalvas": [],
    "id": "promobit-3272892",
    "publicado": "2026-11-28T10:34:04-0300",
-   "idade_h": 1.6
+   "idade_h": 1.8
   },
   "tg-jogobarato/112815-0": {
    "fonte": "Telegram",
@@ -2030,7 +2013,7 @@
    "publicado": "2026-11-28T10:36:37-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 1.6
+   "idade_h": 1.7
   },
   "promobit-3272957": {
    "fonte": "Promobit",
@@ -2047,7 +2030,7 @@
    "ressalvas": [],
    "id": "promobit-3272957",
    "publicado": "2026-11-28T10:47:13-0300",
-   "idade_h": 1.4
+   "idade_h": 1.6
   },
   "promobit-3273106": {
    "fonte": "Promobit",
@@ -2064,7 +2047,7 @@
    "ressalvas": [],
    "id": "promobit-3273106",
    "publicado": "2026-11-28T11:22:17-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3273120": {
    "fonte": "Promobit",
@@ -2081,7 +2064,7 @@
    "ressalvas": [],
    "id": "promobit-3273120",
    "publicado": "2026-11-28T11:25:42-0300",
-   "idade_h": 0.7
+   "idade_h": 0.9
   },
   "tg-achadosdotb/12711-0": {
    "fonte": "Telegram",
@@ -2100,7 +2083,7 @@
    "publicado": "2026-11-28T11:36:33-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": null,
-   "idade_h": 0.6
+   "idade_h": 0.7
   },
   "promobit-3273167": {
    "fonte": "Promobit",
@@ -2117,7 +2100,24 @@
    "ressalvas": [],
    "id": "promobit-3273167",
    "publicado": "2026-11-28T11:38:09-0300",
-   "idade_h": 0.5
+   "idade_h": 0.7
+  },
+  "promobit-3273308": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Kit 2 Suportes Minimalista Para Controle Dualsense Ps5",
+   "preco": 19.48,
+   "link": "https://www.promobit.com.br/oferta/kit-2-suportes-minimalista-para-controle-dualsense-ps5-3273308/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3273308",
+   "publicado": "2026-11-28T12:12:35-0300",
+   "idade_h": 0.1
   }
  },
  "alertados": {
@@ -2165,81 +2165,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
-   "barradas": 61
+   "buscas": 75,
+   "barradas": 62
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 74,
+   "buscas": 75,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T12:10:20-03:00",
+ "ultima": "2026-11-28T12:20:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-28",
  "encerradas": {
@@ -2343,9 +2343,9 @@
   {
    "loja": "KaBuM!",
    "modelo": "digital",
-   "preco": 4299,
-   "link": "https://www.kabum.com.br/produto/989702/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais, Edição Digital"
+   "preco": 3999,
+   "link": "https://www.kabum.com.br/produto/934760/console-sony-playstation-5-edicao-digital-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais",
+   "titulo": "Console Sony PlayStation 5, Edição Digital, SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais"
   },
   {
    "loja": "KaBuM!",
@@ -2357,9 +2357,9 @@
   {
    "loja": "Magazine Luiza",
    "modelo": "digital",
-   "preco": 5403.85,
-   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-4k",
-   "titulo": "Console Sony PlayStation 5 Edição Digital Slim, SSD 825GB, Controle Du"
+   "preco": 4161.42,
+   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
+   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2"
   },
   {
    "loja": "Magazine Luiza",
@@ -2422,20 +2422,20 @@
    "preco": 3632.94
   },
   "cp|kabum!|JOGATUDO|digital": {
-   "quando": "2026-11-27T15:30:24-03:00",
-   "preco": 2991.84
+   "quando": "2026-11-28T12:20:19-03:00",
+   "preco": 2799.3
   },
   "cp|kabum!|JOGATUDO|leitor": {
    "quando": "2026-11-27T23:10:20-03:00",
    "preco": 3079.3
   },
   "cp|kabum!|BLACKDASBLACKS|digital": {
-   "quando": "2026-11-27T19:00:26-03:00",
-   "preco": 3645.65
+   "quando": "2026-11-28T12:20:19-03:00",
+   "preco": 3399.15
   },
   "cp|kabum!|DISCONELES|digital": {
-   "quando": "2026-11-28T00:14:57-03:00",
-   "preco": 3799.0
+   "quando": "2026-11-28T12:20:19-03:00",
+   "preco": 3499.0
   },
   "cp|amazon|INFLUPRIME|digital": {
    "quando": "2026-11-28T12:10:20-03:00",
