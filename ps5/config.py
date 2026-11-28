@@ -6,7 +6,8 @@ from datetime import date
 # com leitor ~R$4.275 (já houve R$3.644 na Vivo); Pro ~R$7.700.
 ALVOS = {
     'leitor': 3699,    # PS5 com leitor de disco (mídia física), Slim ou Standard
-    'digital': 3699,   # PS5 Edição Digital (era 3.299; subiu em 26/11/2026 para tocar mais vezes na Black Friday)
+    'digital': 3899,   # PS5 Edição Digital (3.299 -> 3.699 em 26/11; 3.899 em 28/11 para a Cyber Monday: na Black Friday as
+                       # ofertas reais do pacote Digital + 2 jogos ficaram entre R$ 3.851 e R$ 3.951)
     'pro': 6299,       # PS5 Pro
 }
 
@@ -32,7 +33,7 @@ MODELOS_COM_ALERTA = ['leitor', 'digital']   # Pro fora do orçamento (20/11/202
 # Modo caçador (Black Friday): até esta data (exclusiva), oferta de grupo ainda não confirmada que esteja no alvo toca com
 # som, o workflow roda de 10 em 10 minutos (guarda de 7 min) e o Plantão PS5 lê os posts novos uma vez por minuto.
 # Depois volta sozinho: sem som, sem plantão e uma rodada a cada 30 min.
-CACADOR_ATE = date(2026, 12, 1)   # None desliga na hora
+CACADOR_ATE = date(2026, 12, 2)   # até 01/12, o dia seguinte à Cyber Monday (30/11/2026). None desliga na hora
 
 # Aviso antecipado (plantão): post de canal que anuncia cupom com hora marcada ("Às 18h: cupom de R$ 1.000 no Mercado
 # Livre") numa loja que vende PS5 vira aviso na hora, com som, e um lembrete uns minutos antes de liberar.
