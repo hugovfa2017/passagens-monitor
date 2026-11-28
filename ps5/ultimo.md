@@ -1,4 +1,4 @@
-# PS5 — última varredura: 2026-11-27 23:50 (hora de Brasília)
+# PS5 — última varredura: 2026-11-28 00:00 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 34h
 
@@ -34,24 +34,24 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 34 itens · barrada em 1 de 147 buscas hoje
-- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 126 de 147 buscas hoje
+- KaBuM!: ok, 34 itens
+- Amazon: falhou (Bloqueado: a Amazon pediu verificação (página sem resultados)) · barrada em 1 de 1 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
 - Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 25 itens · barrada em 1 de 147 buscas hoje
+- Zoom: ok, 25 itens
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 98 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 225 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 224 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
 ## Cupom já valendo: preço possível (não confirmado)
 
 - PS5 Digital: R$ 3.009,30 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.299)
-- PS5 com leitor de disco: R$ 3.079,30 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.399)
+- PS5 com leitor de disco: R$ 3.288,60 na KaBuM! com `JOGATUDO` (sem cupom: R$ 4.698)
 - PS5 Digital: R$ 3.654,15 na KaBuM! com `BLACKDASBLACKS` (sem cupom: R$ 4.299)
