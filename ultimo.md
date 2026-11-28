@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-27 22:22
+# Passagens: última busca em 2026-11-27 23:28
 
-✈️ Passagens · sex 27/11, 22:22
+✈️ Passagens · sex 27/11, 23:28
 Preço por pessoa, sem mala, conferido nesta busca.
 🔥 Hora de comprar: H, volta R$334 (alvo R$350)
 Com 7+ dias de antecedência, dá para desistir em até 24 h sem custo (ANAC). Prefira emissão imediata.
@@ -10,27 +10,26 @@ Volta · 01/02 a 31/03
 ⭐ ✅ R$334 · sáb 20/02 · Azul, 1 conexão
 └ 00h50 Fortaleza → 06h20 Guarulhos · Vai de Promo
 🟢 Bom momento: abaixo do alvo de R$350
-🔗 Todas até R$450 nesta busca (52), da mais barata:
-• R$329 · ter 16/02 · 16h10 J. Pessoa → 21h35 Congonhas · Azul, 1 conexão · clique aqui (Vai de Promo)
-• R$330 · qua 17/02 · 03h20 Recife → 06h40 Congonhas · Azul 4716, direto · clique aqui (Zupper)
+🔗 Todas até R$450 nesta busca (24), da mais barata:
 ⭐ R$334 · sáb 20/02 · 00h50 Fortaleza → 06h20 Guarulhos · Azul, 1 conexão · clique aqui (Vai de Promo)
-• R$342 · qua 17/02 · 09h55 Natal → 16h10 Congonhas · Azul, 1 conexão (espera de 1h55) · clique aqui (Azul)
-• R$348 · qui 25/02 · 03h20 Juazeiro → 06h25 Guarulhos · LATAM, direto · clique aqui (Vai de Promo)
-• R$351 · qua 17/02 · 08h30 Recife → 12h00 Congonhas · Azul 4089, direto · clique aqui (Vai de Promo)
-• R$351 · qua 17/02 · 12h50 Recife → 16h10 Congonhas · Azul 4145, direto · clique aqui (Vai de Promo)
-• R$351 · qua 17/02 · 16h35 Recife → 20h05 Congonhas · Azul 4277, direto · clique aqui (Vai de Promo)
-• R$351 · qua 17/02 · 18h05 Recife → 21h35 Congonhas · Azul 6085, direto · clique aqui (Vai de Promo)
-• R$352 · ter 16/02 · 09h20 Fortaleza → 13h00 Congonhas · Gol 1511, direto · clique aqui (Vai de Promo)
-• R$352 · ter 16/02 · 17h10 Fortaleza → 22h25 Congonhas · Gol, 1 conexão · clique aqui (Vai de Promo)
-• R$352 · qua 17/02 · 09h20 Fortaleza → 13h00 Congonhas · Gol 1511, direto · clique aqui (Vai de Promo)
-• R$354 · qui 18/02 · 09h20 Fortaleza → 13h00 Congonhas · Gol, direto · clique aqui (Vai de Promo)
-• R$354 · sáb 20/02 · 13h20 Fortaleza → 16h55 Congonhas · Gol, direto · clique aqui (Vai de Promo)
+• R$348 · sex 26/02 · 03h20 Juazeiro → 06h25 Guarulhos · LATAM, direto · clique aqui (Vai de Promo)
+• R$352 · sáb 20/02 · 13h20 Fortaleza → 16h55 Congonhas · Gol, direto · clique aqui (Vai de Promo)
+• R$352 · sex 26/02 · 09h20 Fortaleza → 13h00 Congonhas · Gol, direto · clique aqui (Vai de Promo)
 • R$354 · sáb 20/02 · 17h10 Fortaleza → 22h25 Congonhas · Gol, 1 conexão · clique aqui (Vai de Promo)
-… e mais 37, as mais caras até R$450
-📅 Outras datas conferidas: qui 18/03 R$758 (Mossoró)
-Outras datas, preço ainda não conferido: qua 31/03 R$342 · sáb 06/03 R$356
+• R$356 · sex 26/02 · 04h50 Juazeiro → 08h05 Guarulhos · Gol 1581, direto · clique aqui (Vai de Promo)
+• R$357 · sex 26/02 · 11h25 Recife → 14h50 Congonhas · Gol, direto · clique aqui (Vai de Promo)
+• R$359 · ter 02/02 · 02h20 Fortaleza → 06h05 Guarulhos · Gol 1559, direto · clique aqui (MaxMilhas)
+• R$362 · qua 03/02 · 02h20 Fortaleza → 06h05 Guarulhos · Gol 1559, direto · clique aqui (Vai de Promo)
+• R$362 · sáb 20/02 · 02h25 Fortaleza → 06h05 Guarulhos · Gol 1559, direto · clique aqui (Vai de Promo)
+• R$362 · sex 26/02 · 02h20 Fortaleza → 06h05 Guarulhos · Gol 1559, direto · clique aqui (Vai de Promo)
+• R$364 · qua 03/02 · 04h50 Juazeiro → 08h05 Guarulhos · Gol, direto · clique aqui (Vai de Promo)
+• R$367 · sex 26/02 · 18h00 Fortaleza → 21h45 Guarulhos · Gol, direto · clique aqui (Vai de Promo)
+• R$369 · ter 02/02 · 17h10 Fortaleza → 22h40 Guarulhos · Gol, 1 conexão · clique aqui (MaxMilhas)
+• R$375 · sex 26/02 · 12h45 Fortaleza → 16h25 Guarulhos · Gol, direto · clique aqui (Vai de Promo)
+… e mais 9, as mais caras até R$450
+Outras datas, preço ainda não conferido: ter 16/03 R$356 · qua 17/03 R$356
 
-⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · 🧳 mala de 23 kg: +R$107 a R$135 por trecho · 123milhas não respondeu
+⭐ = melhor opção pela ordem Fortaleza, Mossoró, Juazeiro, Natal, J. Pessoa; Recife só em último caso · Mossoró: nenhum voo à venda · 🧳 mala de 23 kg: +R$104 a R$135 por trecho · 123milhas, Viaza não responderam
 
 Telegram: TELEGRAM_ENVIADO
 
