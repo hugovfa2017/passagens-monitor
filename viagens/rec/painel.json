@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-28 05:29",
+  "quando": "2026-11-28 06:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,21 +37,21 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 318,
+    "voos": 319,
     "conferidos": 11,
     "ofertas": 11,
     "bloqueio": null,
     "listas": {
      "vazias": 0,
-     "repetidas": 5,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
      "telas": 11,
      "lidas": 11
     },
     "sem_preco": {},
-    "seg": 61
+    "seg": 44
    },
    "MaxMilhas": {
     "buscas": 8,
@@ -83,7 +83,7 @@
   "taxa_mala": {
    "Azul": 96,
    "Gol": 136,
-   "LATAM": 69
+   "LATAM": 82
   },
   "grupos": [
    {
@@ -105,7 +105,7 @@
   "alvo": null,
   "igual_a": null,
   "recomendada": {
-   "d": "2026-12-20",
+   "d": "2026-12-23",
    "orig": "GRU",
    "dest": "REC",
    "cia": "Gol",
@@ -114,8 +114,8 @@
    "tipo": "escala 0h45",
    "pp": 915,
    "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "dom 20/12"
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIzIiAKA0dSVRIKMjAyNi0xMi0yMxoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjMaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 23/12"
   },
   "mais_barata": null,
   "comprado": null,
@@ -378,7 +378,7 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 915,
+  "pp": 1112,
   "conf": true
  },
  {
@@ -720,7 +720,7 @@
   "nome": "U",
   "pp": 1695,
   "ida": {
-   "d": "2026-12-20",
+   "d": "2026-12-23",
    "orig": "GRU",
    "dest": "REC",
    "cia": "Gol",
@@ -729,8 +729,8 @@
    "tipo": "escala 0h45",
    "pp": 915,
    "vend": "CIA Gol",
-   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
-   "dia": "dom 20/12"
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIzIiAKA0dSVRIKMjAyNi0xMi0yMxoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjMaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
+   "dia": "qua 23/12"
   },
   "volta": {
    "d": "2027-01-12",
