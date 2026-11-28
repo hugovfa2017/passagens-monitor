@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3263545": {
-   "fonte": "Promobit",
-   "loja": "Mercado Livre",
-   "titulo": "Playstation 5",
-   "preco": 49.0,
-   "link": "https://www.promobit.com.br/oferta/playstation-5-3263545/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3263545",
-   "publicado": "2026-11-26T23:50:04-0300",
-   "idade_h": 0.2
-  },
   "promobit-3263601": {
    "fonte": "Promobit",
    "loja": "Mercado Livre",
@@ -1734,25 +1717,6 @@
    "publicado": "2026-11-27T23:24:55-0300",
    "idade_h": 0.3
   },
-  "tg-promobyteacheips5/7046-0": {
-   "fonte": "Telegram",
-   "loja": "Amazon",
-   "titulo": "PS5 SLIM 1TB COM LEITOR DE MÍDIA FÍSICA COM 2 JOGOS (ASTRO BOT E GRAN TURISMO 7)",
-   "preco": 4299.0,
-   "link": "https://t.me/promobyteacheips5/7046",
-   "tipo": "grupo",
-   "origem": "promobyteacheips5",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no canal Promobyte Achei PS5",
-   "ressalvas": [],
-   "id": "tg-promobyteacheips5/7046-0",
-   "publicado": "2026-11-27T23:43:10-0300",
-   "canal": "Promobyte Achei PS5",
-   "preco_de": null,
-   "idade_h": 12.0
-  },
   "promobit-3272284": {
    "fonte": "Promobit",
    "loja": "Amazon",
@@ -1787,7 +1751,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 9.9
+   "idade_h": 10.0
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -1855,7 +1819,7 @@
    "ressalvas": [],
    "id": "promobit-3272541",
    "publicado": "2026-11-28T08:56:44-0300",
-   "idade_h": 2.7
+   "idade_h": 2.9
   },
   "promobit-3272572": {
    "fonte": "Promobit",
@@ -1872,7 +1836,7 @@
    "ressalvas": [],
    "id": "promobit-3272572",
    "publicado": "2026-11-28T09:08:05-0300",
-   "idade_h": 2.5
+   "idade_h": 2.7
   },
   "promobit-3272560": {
    "fonte": "Promobit",
@@ -1889,7 +1853,7 @@
    "ressalvas": [],
    "id": "promobit-3272560",
    "publicado": "2026-11-28T09:03:25-0300",
-   "idade_h": 2.6
+   "idade_h": 2.8
   },
   "promobit-3272602": {
    "fonte": "Promobit",
@@ -1906,7 +1870,7 @@
    "ressalvas": [],
    "id": "promobit-3272602",
    "publicado": "2026-11-28T09:16:47-0300",
-   "idade_h": 2.4
+   "idade_h": 2.6
   },
   "promobit-3272641": {
    "fonte": "Promobit",
@@ -1940,7 +1904,7 @@
    "ressalvas": [],
    "id": "promobit-3272628",
    "publicado": "2026-11-28T09:22:09-0300",
-   "idade_h": 2.3
+   "idade_h": 2.5
   },
   "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801": {
    "fonte": "Gatry",
@@ -1957,7 +1921,7 @@
    "ressalvas": [],
    "id": "gatry-b329a5fe-ad7a-4013-be56-f9f8ec44b801",
    "publicado": "2026-11-28T09:50:24-0300",
-   "idade_h": 1.8
+   "idade_h": 2.0
   },
   "promobit-3272788": {
    "fonte": "Promobit",
@@ -1974,7 +1938,7 @@
    "ressalvas": [],
    "id": "promobit-3272788",
    "publicado": "2026-11-28T10:09:08-0300",
-   "idade_h": 1.5
+   "idade_h": 1.7
   },
   "tg-promobyteacheips5/7048-0": {
    "fonte": "Telegram",
@@ -1993,7 +1957,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "tg-promobyteacheips5/7048-1": {
    "fonte": "Telegram",
@@ -2014,7 +1978,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "tg-promobyteacheips5/7048-2": {
    "fonte": "Telegram",
@@ -2035,7 +1999,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "tg-promobyteacheips5/7048-3": {
    "fonte": "Telegram",
@@ -2056,7 +2020,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "tg-promobyteacheips5/7048-4": {
    "fonte": "Telegram",
@@ -2077,7 +2041,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "tg-promobyteacheips5/7048-5": {
    "fonte": "Telegram",
@@ -2098,7 +2062,7 @@
    "publicado": "2026-11-28T10:20:07-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 1.3
+   "idade_h": 1.5
   },
   "promobit-3272892": {
    "fonte": "Promobit",
@@ -2115,7 +2079,7 @@
    "ressalvas": [],
    "id": "promobit-3272892",
    "publicado": "2026-11-28T10:34:04-0300",
-   "idade_h": 1.1
+   "idade_h": 1.3
   },
   "tg-jogobarato/112815-0": {
    "fonte": "Telegram",
@@ -2134,7 +2098,7 @@
    "publicado": "2026-11-28T10:36:37-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 1.1
+   "idade_h": 1.2
   },
   "promobit-3272957": {
    "fonte": "Promobit",
@@ -2151,7 +2115,7 @@
    "ressalvas": [],
    "id": "promobit-3272957",
    "publicado": "2026-11-28T10:47:13-0300",
-   "idade_h": 0.9
+   "idade_h": 1.1
   },
   "promobit-3273106": {
    "fonte": "Promobit",
@@ -2168,7 +2132,7 @@
    "ressalvas": [],
    "id": "promobit-3273106",
    "publicado": "2026-11-28T11:22:17-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3273120": {
    "fonte": "Promobit",
@@ -2185,7 +2149,7 @@
    "ressalvas": [],
    "id": "promobit-3273120",
    "publicado": "2026-11-28T11:25:42-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "tg-achadosdotb/12711-0": {
    "fonte": "Telegram",
@@ -2204,7 +2168,24 @@
    "publicado": "2026-11-28T11:36:33-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": null,
-   "idade_h": 0.1
+   "idade_h": 0.2
+  },
+  "promobit-3273167": {
+   "fonte": "Promobit",
+   "loja": "Shopee",
+   "titulo": "PS5 Slim Digital 825GB",
+   "preco": 3955.91,
+   "link": "https://www.promobit.com.br/oferta/ps5-slim-digital-825gb-3273167/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3273167",
+   "publicado": "2026-11-28T11:38:09-0300",
+   "idade_h": 0.2
   }
  },
  "alertados": {
@@ -2252,81 +2233,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 1
   },
   "Amazon": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 59
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 71,
+   "buscas": 72,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T11:40:21-03:00",
+ "ultima": "2026-11-28T11:50:19-03:00",
  "pular": [],
  "resumo_dia": "2026-11-28",
  "encerradas": {
@@ -2421,6 +2402,13 @@
    "titulo": "Console PlayStation 5 Slim Disk 1TB 1 Controle Branco Sony com 2 Jogos"
   },
   {
+   "loja": "Fast Shop",
+   "modelo": "digital",
+   "preco": 5085.9,
+   "link": "https://site.fastshop.com.br/console-playstation-5-slim-edicao-digital-825gb-com-2-jogos-branco-181030/p",
+   "titulo": "Console Playstation 5 Slim Edição Digital 825GB com 2 Jogos Branco"
+  },
+  {
    "loja": "KaBuM!",
    "modelo": "digital",
    "preco": 4299,
@@ -2431,15 +2419,15 @@
    "loja": "KaBuM!",
    "modelo": "leitor",
    "preco": 4698,
-   "link": "https://www.kabum.com.br/produto/1095505/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-ea-sports-fc-26-ps5",
-   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo EA Sports FC 26, PS5"
+   "link": "https://www.kabum.com.br/produto/1095506/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-marvels-wolverine-ps5",
+   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo Marvel's Wolverine, PS5"
   },
   {
    "loja": "Magazine Luiza",
    "modelo": "digital",
-   "preco": 4161.42,
-   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2"
+   "preco": 4752.03,
+   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
+   "titulo": "PlayStation 5 Edição Digital 825GB"
   },
   {
    "loja": "Magazine Luiza",
