@@ -1,6 +1,6 @@
-# Passagens: última busca em 2026-11-27 22:28
+# Passagens: última busca em 2026-11-27 23:35
 
-✈️ Passagens · sex 27/11, 22:28 · por pessoa, sem mala
+✈️ Passagens · sex 27/11, 23:35 · por pessoa, sem mala
 
 🧳 São Paulo ⇄ Recife
 🛫 Ida: R$915 · dom 20/12 · Gol, 1 conexão (espera de 0h45)

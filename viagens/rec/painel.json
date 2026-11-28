@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 22:28",
+  "quando": "2026-11-27 23:35",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,27 +37,29 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 322,
-    "conferidos": 11,
-    "ofertas": 11,
+    "voos": 286,
+    "conferidos": 10,
+    "ofertas": 7,
     "bloqueio": null,
     "listas": {
-     "vazias": 0,
-     "repetidas": 1,
+     "vazias": 1,
+     "repetidas": 4,
      "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
-     "telas": 10,
-     "lidas": 10
+     "telas": 11,
+     "lidas": 7
     },
-    "sem_preco": {},
-    "seg": 94
+    "sem_preco": {
+     "a lista não abriu": 4
+    },
+    "seg": 183
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -362,7 +364,7 @@
   "dia": "sáb 19/12",
   "ne": "REC",
   "pp": 2391,
-  "conf": true
+  "conf": false
  },
  {
   "tipo": "celula",
@@ -388,7 +390,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1385,
+  "pp": 1490,
   "conf": true
  },
  {
@@ -667,7 +669,7 @@
   "d": "2027-01-10",
   "dia": "dom 10/01",
   "ne": "REC",
-  "pp": 894,
+  "pp": 895,
   "conf": true
  },
  {
@@ -676,7 +678,7 @@
   "d": "2027-01-11",
   "dia": "seg 11/01",
   "ne": "REC",
-  "pp": 780,
+  "pp": 781,
   "conf": true
  },
  {
