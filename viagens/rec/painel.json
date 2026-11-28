@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-28 03:27",
+  "quando": "2026-11-28 04:30",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,41 +37,43 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 0,
-    "conferidos": 0,
-    "ofertas": 0,
+    "voos": 318,
+    "conferidos": 12,
+    "ofertas": 12,
     "bloqueio": null,
     "listas": {
-     "vazias": 9,
-     "repetidas": 9,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 0,
+     "exemplo": null
     },
     "diretos": {
-     "telas": 2,
-     "lidas": 0
+     "telas": 12,
+     "lidas": 12
     },
     "sem_preco": {},
-    "seg": 106
+    "seg": 40
    },
    "Vai de Promo": {
-    "buscas": 2,
-    "com_voo": 2
+    "buscas": 8,
+    "com_voo": 8
    },
    "MaxMilhas": {
-    "buscas": 2,
-    "com_voo": 2
+    "buscas": 8,
+    "com_voo": 8
    },
    "Zupper": {
-    "buscas": 2,
-    "com_voo": 2
+    "buscas": 8,
+    "com_voo": 8
    },
    "123milhas": {
-    "buscas": 2,
-    "com_voo": 0
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    },
    "Viaza": {
-    "buscas": 2,
-    "com_voo": 0
+    "buscas": 4,
+    "com_voo": 0,
+    "pulado": true
    }
   },
   "mossoro": {
@@ -81,7 +83,7 @@
   "taxa_mala": {
    "Azul": 96,
    "Gol": 136,
-   "LATAM": 71
+   "LATAM": 69
   },
   "grupos": [
    {
@@ -106,22 +108,23 @@
    "d": "2026-12-20",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "Azul",
-   "saida": "23:00",
-   "chegada": "02:00",
-   "tipo": "direto",
-   "pp": 1770,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261220/4/0/0/Y/",
+   "cia": "Gol",
+   "saida": "08:55",
+   "chegada": "14:35",
+   "tipo": "escala 0h45",
+   "pp": 915,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "dom 20/12"
   },
   "mais_barata": null,
   "comprado": null,
   "lugares": [],
   "momento": {
-   "sinal": "esperar",
+   "sinal": "bom",
    "motivos": [
-    "R$548 acima da média de 4 dias (R$1.222)"
+    "R$81 acima do menor de 4 dias (R$834)",
+    "para o Google, preço baixo (a rota costuma ficar entre R$2.075 e R$3.625)"
    ]
   },
   "fora": null,
@@ -353,8 +356,21 @@
    [
     "2026-11-28 03:27",
     1770
+   ],
+   [
+    "2026-11-28 04:30",
+    915
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-19",
+  "dia": "sáb 19/12",
+  "ne": "REC",
+  "pp": 2391,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -362,7 +378,34 @@
   "d": "2026-12-20",
   "dia": "dom 20/12",
   "ne": "REC",
-  "pp": 1770,
+  "pp": 915,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-21",
+  "dia": "seg 21/12",
+  "ne": "REC",
+  "pp": 1058,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-22",
+  "dia": "ter 22/12",
+  "ne": "REC",
+  "pp": 1385,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.ida",
+  "d": "2026-12-23",
+  "dia": "qua 23/12",
+  "ne": "REC",
+  "pp": 915,
   "conf": true
  },
  {
@@ -383,7 +426,7 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 780,
+   "pp": 781,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
@@ -394,7 +437,8 @@
   "momento": {
    "sinal": "acompanhar",
    "motivos": [
-    "R$392 acima do menor de 4 dias (R$388)"
+    "R$393 acima do menor de 4 dias (R$388)",
+    "para o Google, preço normal (a rota costuma ficar entre R$1.375 e R$3.875)"
    ]
   },
   "fora": null,
@@ -622,8 +666,30 @@
    [
     "2026-11-27 21:27",
     780
+   ],
+   [
+    "2026-11-28 04:30",
+    781
    ]
   ]
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-10",
+  "dia": "dom 10/01",
+  "ne": "REC",
+  "pp": 895,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-11",
+  "dia": "seg 11/01",
+  "ne": "REC",
+  "pp": 830,
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -631,7 +697,16 @@
   "d": "2027-01-12",
   "dia": "ter 12/01",
   "ne": "REC",
-  "pp": 780,
+  "pp": 781,
+  "conf": true
+ },
+ {
+  "tipo": "celula",
+  "serie": "r.volta",
+  "d": "2027-01-13",
+  "dia": "qua 13/01",
+  "ne": "REC",
+  "pp": 781,
   "conf": true
  },
  {
@@ -639,18 +714,18 @@
   "grupo": "r",
   "id": "U",
   "nome": "U",
-  "pp": 2550,
+  "pp": 1696,
   "ida": {
    "d": "2026-12-20",
    "orig": "GRU",
    "dest": "REC",
-   "cia": "Azul",
-   "saida": "23:00",
-   "chegada": "02:00",
-   "tipo": "direto",
-   "pp": 1770,
-   "vend": "Vai de Promo",
-   "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/GRUREC261220/4/0/0/Y/",
+   "cia": "Gol",
+   "saida": "08:55",
+   "chegada": "14:35",
+   "tipo": "escala 0h45",
+   "pp": 915,
+   "vend": "CIA Gol",
+   "link": "https://www.google.com/travel/flights/booking?tfs=CBwQAhp0EgoyMDI2LTEyLTIwIiAKA0dSVRIKMjAyNi0xMi0yMBoDRkVOKgJHMzIEMTc3NCIgCgNGRU4SCjIwMjYtMTItMjAaA1JFQyoCRzMyBDE3NzdqBwgBEgNHUlVqBwgBEgNDR0hqBwgBEgNWQ1ByBwgBEgNSRUNAAUABQAFAAUgBcAGCAQsI____________AZgBAg&hl=pt-BR&gl=BR&curr=BRL",
    "dia": "dom 20/12"
   },
   "volta": {
@@ -661,37 +736,11 @@
    "saida": "04:30",
    "chegada": "07:45",
    "tipo": "direto",
-   "pp": 780,
+   "pp": 781,
    "vend": "Vai de Promo",
    "link": "https://www.vaidepromo.com.br/passagens-aereas/pesquisa/RECGRU270112/4/0/0/Y/",
    "dia": "ter 12/01"
   },
-  "juntas": {
-   "pp": 2384,
-   "vend": "Zupper",
-   "link": "https://www.zupper.com.br/resultados?type=roundTrip&adultQty=4&childrenQty=0&infantQty=0&onlyBusinessClass=false&slices=%5B%7B%22originAirport%22%3A%22GRU%22%2C%22destinationAirport%22%3A%22REC%22%2C%22departureDate%22%3A%222026-12-20%22%7D%2C%7B%22originAirport%22%3A%22REC%22%2C%22destinationAirport%22%3A%22GRU%22%2C%22departureDate%22%3A%222027-01-12%22%7D%5D",
-   "economia": 166,
-   "mesmos": true,
-   "ida": {
-    "d": "2026-12-20",
-    "orig": "GRU",
-    "dest": "REC",
-    "cia": "Azul",
-    "saida": "23:00",
-    "chegada": "02:00",
-    "tipo": "direto",
-    "dia": "dom 20/12"
-   },
-   "volta": {
-    "d": "2027-01-12",
-    "orig": "REC",
-    "dest": "GRU",
-    "cia": "Azul",
-    "saida": "04:30",
-    "chegada": "07:45",
-    "tipo": "direto",
-    "dia": "ter 12/01"
-   }
-  }
+  "juntas": null
  }
 ]
