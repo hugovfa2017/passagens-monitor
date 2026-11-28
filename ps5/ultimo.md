@@ -1,9 +1,8 @@
-# PS5 — última varredura: 2026-11-27 23:20 (hora de Brasília)
+# PS5 — última varredura: 2026-11-27 23:30 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.510,25 na Magazine Luiza · postado há 33h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
-   não confirmada: R$ 3.399 na ? com cupom BFIN2711XX · o post não diz o modelo, postado há 12h
 - **PS5 Digital**: R$ 3.510,25 na Magazine Luiza · postado há 33h
    não confirmada: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 4 lugares, postado há 6h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
@@ -16,20 +15,17 @@ Telegram: sem mensagem nesta varredura
 
 ## Cupons para testar no carrinho (não confirmados para console)
 
-- Magazine Luiza: `INFLU150BLACK` (Cupom de desconto Magalu: R$ 150 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.001,74; `INFLU100` (Cupom de desconto Magazine Luiza: R$100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74; `PROMOBIT100` (Cupom de desconto Magazine Luiza: R$ 100 OFF em todo o site) → PS5 Digital de R$ 4.151,74 por ~R$ 4.051,74
 - KaBuM!: `JOGATUDO` (Garanta 30% OFF em Jogos de PS5 e PS4 com cupom Kabum) → PS5 Digital de R$ 4.299 por ~R$ 3.009,30; `BLACKDASBLACKS` (Use o cupom Kabum e ganhe 15% OFF) → PS5 Digital de R$ 4.299 por ~R$ 3.654,15; `DISCONELES` (Cupom de desconto Kabum: R$ 500 OFF) → PS5 Digital de R$ 4.299 por ~R$ 3.799
 - Amazon: `INFLUPRIME` (Garanta R$150 OFF em todo o site com cupom #Amazon) → PS5 Digital de R$ 4.299,90 por ~R$ 4.149,90
 - Americanas: `PROMOBIT` (Cupom de desconto Americanas: R$ 250 OFF em todo o site) → PS5 Digital de R$ 4.654,05 por ~R$ 4.404,05
-- Mercado Livre: `MELI1CL` (R$150 OFF em compras acima de R$1.199 Cupom: «MELI1CL»); `K4RMELI` (R$110 OFF em compras acima de R$699 Cupom: «K4RMELI»); `MELIO7N` (R$60 OFF em compras acima de R$399 Cupom: «MELIO7N»); `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC); `WEUYRUE` (R$120 OFF em compras acima de R$799 Cupom: «WEUYRUE»)
+- Mercado Livre: `PRECINHOBLACK` (20% OFF em compras acima de R$79, limite de R$100 Cupom: «PRECINHOBLAC); `WEUYRUE` (R$120 OFF em compras acima de R$799 Cupom: «WEUYRUE»); `PLSPQEWMAD` (R$60 OFF em compras acima de R$399 Cupom: «PLSPQEWMAD»)
 - ?: `LOTE3DE4` (📱 📱 📱 JOGOS com 20% OFF com cupom LOTE3DE4 na NUUVEM 🎮)
 
 ## À parte: importado
 
-- PS5 Digital: R$ 4.654,90 na Amazon
 - PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon · visto em 2 lugares
-- PS5 com leitor de disco: R$ 5.699,90 na Amazon
-- PS5 Digital: R$ 6.999 na Amazon · à vista
+- PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
+- PS5 Digital: R$ 6.649,05 na Amazon · à vista
 
 ## À parte: leilões (lance não é preço final: há taxas, retirada e nenhum teste)
 
@@ -37,19 +33,19 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 34 itens · barrada em 1 de 144 buscas hoje
-- Amazon: ok, 41 itens · barrada em 123 de 144 buscas hoje
+- KaBuM!: ok, 34 itens · barrada em 1 de 145 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 124 de 145 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
-- Webcontinental: ok, 50 itens
+- Webcontinental: ok, 49 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 25 itens · barrada em 1 de 144 buscas hoje
+- Zoom: ok, 24 itens · barrada em 1 de 145 buscas hoje
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
-- Telegram: ok, 101 itens (22 de 22 canais)
+- Telegram: ok, 98 itens (22 de 22 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 252 não é console PS5, 3 preço fora da faixa de PS5 com leitor de disco
+Descartados: 226 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
