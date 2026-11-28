@@ -1,22 +1,5 @@
 {
  "postadas": {
-  "promobit-3262396": {
-   "fonte": "Promobit",
-   "loja": "Amazon",
-   "titulo": "High on Life 2 - PlayStation 5",
-   "preco": 207.0,
-   "link": "https://www.promobit.com.br/oferta/high-on-life-2-playstation-5-3262396/",
-   "tipo": "postada",
-   "origem": "promobit",
-   "cupom": null,
-   "cupom_origem": null,
-   "preco_sem_cupom": null,
-   "obs": "postado no Promobit",
-   "ressalvas": [],
-   "id": "promobit-3262396",
-   "publicado": "2026-11-26T21:24:09-0300",
-   "idade_h": 3.6
-  },
   "promobit-3262584": {
    "fonte": "Promobit",
    "loja": "Mercado Livre",
@@ -1817,7 +1800,7 @@
    "ressalvas": [],
    "id": "promobit-3271743",
    "publicado": "2026-11-27T22:39:05-0300",
-   "idade_h": 10.7
+   "idade_h": 10.9
   },
   "promobit-3271710": {
    "fonte": "Promobit",
@@ -1834,7 +1817,7 @@
    "ressalvas": [],
    "id": "promobit-3271710",
    "publicado": "2026-11-27T22:31:04-0300",
-   "idade_h": 10.8
+   "idade_h": 11.0
   },
   "tg-jogobarato/112777-0": {
    "fonte": "Telegram",
@@ -1853,7 +1836,7 @@
    "publicado": "2026-11-27T23:15:30-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 10.1
+   "idade_h": 10.2
   },
   "promobit-3272006": {
    "fonte": "Promobit",
@@ -1891,7 +1874,7 @@
    "publicado": "2026-11-27T23:26:47-0300",
    "canal": "Jogo Barato",
    "preco_de": null,
-   "idade_h": 9.9
+   "idade_h": 10.1
   },
   "tg-meups4/56249-0": {
    "fonte": "Telegram",
@@ -1912,7 +1895,7 @@
    "publicado": "2026-11-27T23:31:34-0300",
    "canal": "MeuPlayStation",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 10.0
   },
   "tg-promobyteacheips5/7042-0": {
    "fonte": "Telegram",
@@ -1931,7 +1914,7 @@
    "publicado": "2026-11-27T21:57:25-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 11.4
+   "idade_h": 11.6
   },
   "tg-promobyteacheips5/7045-0": {
    "fonte": "Telegram",
@@ -1952,7 +1935,7 @@
    "publicado": "2026-11-27T23:33:16-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.8
+   "idade_h": 10.0
   },
   "tg-promobyteacheips5/7046-0": {
    "fonte": "Telegram",
@@ -1971,7 +1954,7 @@
    "publicado": "2026-11-27T23:43:10-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 9.6
+   "idade_h": 9.8
   },
   "tg-promobyteacheips5/7044-0": {
    "fonte": "Telegram",
@@ -1990,7 +1973,7 @@
    "publicado": "2026-11-27T23:18:19-0300",
    "canal": "Promobyte Achei PS5",
    "preco_de": null,
-   "idade_h": 10.0
+   "idade_h": 10.2
   },
   "promobit-3272284": {
    "fonte": "Promobit",
@@ -2007,7 +1990,7 @@
    "ressalvas": [],
    "id": "promobit-3272284",
    "publicado": "2026-11-28T01:09:06-0300",
-   "idade_h": 8.2
+   "idade_h": 8.4
   },
   "tg-achadosdotb/12662-0": {
    "fonte": "Telegram",
@@ -2026,7 +2009,7 @@
    "publicado": "2026-11-28T01:47:37-0300",
    "canal": "Achados do Tecnoblog",
    "preco_de": 5113.97,
-   "idade_h": 7.5
+   "idade_h": 7.7
   },
   "promobit-3272317": {
    "fonte": "Promobit",
@@ -2043,7 +2026,7 @@
    "ressalvas": [],
    "id": "promobit-3272317",
    "publicado": "2026-11-28T01:48:04-0300",
-   "idade_h": 7.5
+   "idade_h": 7.7
   },
   "promobit-3272490": {
    "fonte": "Promobit",
@@ -2060,7 +2043,7 @@
    "ressalvas": [],
    "id": "promobit-3272490",
    "publicado": "2026-11-28T08:35:07-0300",
-   "idade_h": 0.8
+   "idade_h": 0.9
   },
   "promobit-3272483": {
    "fonte": "Promobit",
@@ -2077,7 +2060,7 @@
    "ressalvas": [],
    "id": "promobit-3272483",
    "publicado": "2026-11-28T08:33:02-0300",
-   "idade_h": 0.8
+   "idade_h": 1.0
   },
   "promobit-3272541": {
    "fonte": "Promobit",
@@ -2094,7 +2077,7 @@
    "ressalvas": [],
    "id": "promobit-3272541",
    "publicado": "2026-11-28T08:56:44-0300",
-   "idade_h": 0.4
+   "idade_h": 0.6
   },
   "promobit-3272572": {
    "fonte": "Promobit",
@@ -2111,7 +2094,7 @@
    "ressalvas": [],
    "id": "promobit-3272572",
    "publicado": "2026-11-28T09:08:05-0300",
-   "idade_h": 0.2
+   "idade_h": 0.4
   },
   "promobit-3272560": {
    "fonte": "Promobit",
@@ -2128,7 +2111,7 @@
    "ressalvas": [],
    "id": "promobit-3272560",
    "publicado": "2026-11-28T09:03:25-0300",
-   "idade_h": 0.3
+   "idade_h": 0.5
   },
   "promobit-3272602": {
    "fonte": "Promobit",
@@ -2145,6 +2128,40 @@
    "ressalvas": [],
    "id": "promobit-3272602",
    "publicado": "2026-11-28T09:16:47-0300",
+   "idade_h": 0.2
+  },
+  "promobit-3272641": {
+   "fonte": "Promobit",
+   "loja": "Mercado Livre",
+   "titulo": "Controle Joystick Sem Fio Sony Playstation 5 Midnight Black Preto",
+   "preco": 314.0,
+   "link": "https://www.promobit.com.br/oferta/controle-joystick-sem-fio-sony-playstation-5-midnight-black-preto-3272641/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": "MELIG21",
+   "cupom_origem": "postado",
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3272641",
+   "publicado": "2026-11-28T09:24:06-0300",
+   "idade_h": 0.1
+  },
+  "promobit-3272628": {
+   "fonte": "Promobit",
+   "loja": "Amazon",
+   "titulo": "Toy Story: Retro Roundup! + Toy Story 3 Complete Edition Double Pack PlayStation 5",
+   "preco": 213.7,
+   "link": "https://www.promobit.com.br/oferta/toy-story-retro-roundup-toy-story-3-complete-edition-double-pack-playstation-5-3272628/",
+   "tipo": "postada",
+   "origem": "promobit",
+   "cupom": null,
+   "cupom_origem": null,
+   "preco_sem_cupom": null,
+   "obs": "postado no Promobit",
+   "ressalvas": [],
+   "id": "promobit-3272628",
+   "publicado": "2026-11-28T09:22:09-0300",
    "idade_h": 0.1
   }
  },
@@ -2193,81 +2210,81 @@
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 1
   },
   "Amazon": {
-   "falhas": 2,
+   "falhas": 3,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
-   "barradas": 49
+   "buscas": 58,
+   "barradas": 50
   },
   "Americanas": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Fast Shop": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Webcontinental": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Bemol": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Zoom": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 1
   },
   "Promobit": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Gatry": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Telegram": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   },
   "Leilões": {
    "falhas": 0,
    "ja_funcionou": true,
    "dia": "2026-11-28",
-   "buscas": 57,
+   "buscas": 58,
    "barradas": 0
   }
  },
- "ultima": "2026-11-28T09:20:19-03:00",
+ "ultima": "2026-11-28T09:30:26-03:00",
  "pular": [],
  "resumo_dia": "2026-11-28",
  "encerradas": {
@@ -2397,15 +2414,15 @@
    "loja": "KaBuM!",
    "modelo": "leitor",
    "preco": 4698,
-   "link": "https://www.kabum.com.br/produto/1095505/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-ea-sports-fc-26-ps5",
-   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo EA Sports FC 26, PS5"
+   "link": "https://www.kabum.com.br/produto/1095506/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-marvels-wolverine-ps5",
+   "titulo": "Console Sony PlayStation 5, Com Leitor de Discos, SSD 1TB + Jogo Marvel's Wolverine, PS5"
   },
   {
    "loja": "Magazine Luiza",
    "modelo": "digital",
-   "preco": 4161.42,
-   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
-   "titulo": "Console Sony PlayStation 5, SSD 825GB, Controle Sem Fio DualSense + 2"
+   "preco": 4752.03,
+   "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-edicao-digital-sony-4k",
+   "titulo": "PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony, Branco"
   },
   {
    "loja": "Magazine Luiza",
