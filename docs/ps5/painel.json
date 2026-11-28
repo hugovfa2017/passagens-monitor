@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-28 11:09",
+ "atualizado": "2026-11-28 11:17",
  "mais_barato": {
   "modelo": "digital",
   "fonte": "Gatry",
@@ -12,7 +12,7 @@
   "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
   "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
   "detalhes": "com jogo/extra",
-  "idade_h": 16.2,
+  "idade_h": 16.3,
   "tipo": "postada",
   "condicao": "novo",
   "confianca": "B",
@@ -21,7 +21,7 @@
    {
     "fonte": "Gatry",
     "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
-    "idade_h": 16.2,
+    "idade_h": 16.3,
     "tipo": "postada"
    }
   ],
@@ -114,7 +114,7 @@
     "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
     "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
     "detalhes": "com jogo/extra",
-    "idade_h": 20.6,
+    "idade_h": 20.8,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -123,13 +123,13 @@
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
-      "idade_h": 20.6,
+      "idade_h": 20.8,
       "tipo": "postada"
      },
      {
       "fonte": "Promobit",
       "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3266165/",
-      "idade_h": 24.7,
+      "idade_h": 24.8,
       "tipo": "postada"
      }
     ],
@@ -192,7 +192,7 @@
      "link": "https://t.me/promobyteacheips5/7046",
      "obs": "postado no canal Promobyte Achei PS5",
      "detalhes": "com jogo/extra",
-     "idade_h": 11.4,
+     "idade_h": 11.6,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -201,7 +201,7 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7046",
-       "idade_h": 11.4,
+       "idade_h": 11.6,
        "tipo": "grupo"
       }
      ],
@@ -220,7 +220,7 @@
      "link": "https://t.me/promobyteacheips5/7045",
      "obs": "postado no canal Promobyte Achei PS5",
      "detalhes": "com jogo/extra",
-     "idade_h": 11.6,
+     "idade_h": 11.7,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "B",
@@ -231,19 +231,19 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7045",
-       "idade_h": 11.6,
-       "tipo": "grupo"
-      },
-      {
-       "fonte": "MeuPlayStation",
-       "link": "https://t.me/meups4/56249",
-       "idade_h": 11.6,
+       "idade_h": 11.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112786",
-       "idade_h": 11.7,
+       "idade_h": 11.8,
+       "tipo": "grupo"
+      },
+      {
+       "fonte": "MeuPlayStation",
+       "link": "https://t.me/meups4/56249",
+       "idade_h": 11.8,
        "tipo": "grupo"
       }
      ],
@@ -262,7 +262,7 @@
      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 20.6,
+     "idade_h": 20.8,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -271,13 +271,13 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3268054/",
-       "idade_h": 20.6,
+       "idade_h": 20.8,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3266165/",
-       "idade_h": 24.7,
+       "idade_h": 24.8,
        "tipo": "postada"
       }
      ],
@@ -296,7 +296,7 @@
      "link": "https://www.kabum.com.br/produto/1095505/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-jogo-ea-sports-fc-26-ps5",
      "obs": "à vista no Pix",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.8,
+     "idade_h": 1.0,
      "tipo": "loja",
      "condicao": "novo",
      "confianca": "A",
@@ -313,7 +313,7 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7048",
-       "idade_h": 0.8,
+       "idade_h": 1.0,
        "tipo": "grupo"
       }
      ],
@@ -388,7 +388,7 @@
      "link": "https://t.me/promobyteacheips5/7048",
      "obs": "postado no canal Promobyte Achei PS5",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.8,
+     "idade_h": 1.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -399,7 +399,7 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7048",
-       "idade_h": 0.8,
+       "idade_h": 1.0,
        "tipo": "grupo"
       }
      ],
@@ -508,7 +508,7 @@
      "link": "https://www.promobit.com.br/oferta/bundle-marvels-wolverine-playstation-5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3269683/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 17.7,
+     "idade_h": 17.8,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -517,7 +517,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/bundle-marvels-wolverine-playstation-5-slim-disk-pacote-astro-bot-e-gran-turismo-7-3269683/",
-       "idade_h": 17.7,
+       "idade_h": 17.8,
        "tipo": "postada"
       }
      ],
@@ -536,7 +536,7 @@
      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3264423/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 34.2,
+     "idade_h": 34.3,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -545,7 +545,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-com-leitor-de-discos-ssd-1tb-controle-sem-fio-dualsense-2-jogos-3264423/",
-       "idade_h": 34.2,
+       "idade_h": 34.3,
        "tipo": "postada"
       }
      ],
@@ -767,7 +767,7 @@
     "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
     "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
     "detalhes": "com jogo/extra",
-    "idade_h": 16.2,
+    "idade_h": 16.3,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -776,7 +776,7 @@
      {
       "fonte": "Gatry",
       "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
-      "idade_h": 16.2,
+      "idade_h": 16.3,
       "tipo": "postada"
      }
     ],
@@ -795,7 +795,7 @@
     "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
     "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
     "detalhes": "com jogo/extra",
-    "idade_h": 16.2,
+    "idade_h": 16.3,
     "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
@@ -804,7 +804,7 @@
      {
       "fonte": "Gatry",
       "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
-      "idade_h": 16.2,
+      "idade_h": 16.3,
       "tipo": "postada"
      }
     ],
@@ -813,36 +813,42 @@
    },
    "com": {
     "modelo": "digital",
-    "fonte": "Telegram",
+    "fonte": "Promobit",
     "loja": "Magazine Luiza",
-    "titulo": "Bundle Console PlayStation 5 Slim Digital + ASTRO BOT + Gran Turismo 7",
-    "preco": 4051.74,
+    "titulo": "PS5 Edição Digital + 2 Jogos - SSD 825GB",
+    "preco": 4101.74,
     "preco_sem_cupom": null,
-    "cupom": "BLACKMAGALU100",
+    "cupom": "KABUPLAYSTATION50",
     "cupom_origem": "postado",
-    "link": "https://t.me/jogobarato/112777",
-    "obs": "postado no canal Jogo Barato",
+    "link": "https://www.promobit.com.br/oferta/ps5-edicao-digital-2-jogos-ssd-825gb-3272317/",
+    "obs": "postado no Promobit",
     "detalhes": "com jogo/extra",
-    "idade_h": 11.9,
-    "tipo": "grupo",
+    "idade_h": 9.5,
+    "tipo": "postada",
     "condicao": "novo",
     "confianca": "B",
     "ressalvas": [],
     "visto_em": [
      {
-      "fonte": "Jogo Barato",
-      "link": "https://t.me/jogobarato/112777",
-      "idade_h": 11.9,
-      "tipo": "grupo"
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/ps5-edicao-digital-2-jogos-ssd-825gb-3272317/",
+      "idade_h": 9.5,
+      "tipo": "postada"
      },
      {
-      "fonte": "Promobyte Achei PS5",
-      "link": "https://t.me/promobyteacheips5/7044",
-      "idade_h": 11.9,
+      "fonte": "Promobit",
+      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3270300/",
+      "idade_h": 16.3,
+      "tipo": "postada"
+     },
+     {
+      "fonte": "Achados do Tecnoblog",
+      "link": "https://t.me/achadosdotb/12662",
+      "idade_h": 9.5,
       "tipo": "grupo"
      }
     ],
-    "n_vistos": 2,
+    "n_vistos": 3,
     "cupom_citado": null
    },
    "nao_confirmada": null,
@@ -867,7 +873,7 @@
      "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
      "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 16.2,
+     "idade_h": 16.3,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -876,7 +882,7 @@
       {
        "fonte": "Gatry",
        "link": "https://gatry.com/promocoes/e77a0db9-30a4-4b03-9ea5-6c4c3b2a6052/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos",
-       "idade_h": 16.2,
+       "idade_h": 16.3,
        "tipo": "postada"
       }
      ],
@@ -895,7 +901,7 @@
      "link": "https://gatry.com/promocoes/49f35b7a-b81f-4849-9307-c8e2860a9fbd/playstation-5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7",
      "obs": "postado no Gatry (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 35.0,
+     "idade_h": 35.1,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -904,7 +910,7 @@
       {
        "fonte": "Gatry",
        "link": "https://gatry.com/promocoes/49f35b7a-b81f-4849-9307-c8e2860a9fbd/playstation-5-slim-digital-825gb-pacote-astro-bot-e-gran-turismo-7",
-       "idade_h": 35.0,
+       "idade_h": 35.1,
        "tipo": "postada"
       }
      ],
@@ -915,34 +921,28 @@
      "modelo": "digital",
      "fonte": "Telegram",
      "loja": "Magazine Luiza",
-     "titulo": "Bundle Console PlayStation 5 Slim Digital + ASTRO BOT + Gran Turismo 7",
+     "titulo": "Console PlayStation 5 Slim Digital + Astro Bot + Gran Turismo 7",
      "preco": 4051.74,
      "preco_sem_cupom": null,
      "cupom": "BLACKMAGALU100",
      "cupom_origem": "postado",
-     "link": "https://t.me/jogobarato/112777",
-     "obs": "postado no canal Jogo Barato",
+     "link": "https://t.me/promobyteacheips5/7044",
+     "obs": "postado no canal Promobyte Achei PS5",
      "detalhes": "com jogo/extra",
-     "idade_h": 11.9,
+     "idade_h": 12.0,
      "tipo": "grupo",
      "condicao": "novo",
-     "confianca": "B",
+     "confianca": "C",
      "ressalvas": [],
      "visto_em": [
       {
-       "fonte": "Jogo Barato",
-       "link": "https://t.me/jogobarato/112777",
-       "idade_h": 11.9,
-       "tipo": "grupo"
-      },
-      {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7044",
-       "idade_h": 11.9,
+       "idade_h": 12.0,
        "tipo": "grupo"
       }
      ],
-     "n_vistos": 2,
+     "n_vistos": 1,
      "cupom_citado": null
     },
     {
@@ -957,7 +957,7 @@
      "link": "https://www.promobit.com.br/oferta/ps5-edicao-digital-2-jogos-ssd-825gb-3272317/",
      "obs": "postado no Promobit",
      "detalhes": "com jogo/extra",
-     "idade_h": 9.4,
+     "idade_h": 9.5,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -966,19 +966,19 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/ps5-edicao-digital-2-jogos-ssd-825gb-3272317/",
-       "idade_h": 9.4,
+       "idade_h": 9.5,
        "tipo": "postada"
       },
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3270300/",
-       "idade_h": 16.2,
+       "idade_h": 16.3,
        "tipo": "postada"
       },
       {
        "fonte": "Achados do Tecnoblog",
        "link": "https://t.me/achadosdotb/12662",
-       "idade_h": 9.4,
+       "idade_h": 9.5,
        "tipo": "grupo"
       }
      ],
@@ -997,7 +997,7 @@
      "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3271368/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.6,
+     "idade_h": 0.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1006,19 +1006,19 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-sony-playstation-5-ssd-825gb-controle-sem-fio-dualsense-2-jogos-digitais-edicao-digital-3271368/",
-       "idade_h": 13.7,
+       "idade_h": 13.8,
        "tipo": "postada"
       },
       {
        "fonte": "Jogo Barato",
        "link": "https://t.me/jogobarato/112815",
-       "idade_h": 0.6,
+       "idade_h": 0.7,
        "tipo": "grupo"
       },
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7048",
-       "idade_h": 0.8,
+       "idade_h": 1.0,
        "tipo": "grupo"
       }
      ],
@@ -1071,7 +1071,7 @@
      "link": "https://www.zoom.com.br/console-de-video-game/console-playstation-5-slim-825gb-sony-ps5-edicao-digital-bundle-4k",
      "obs": "à vista",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.8,
+     "idade_h": 1.0,
      "tipo": "comparador",
      "condicao": "novo",
      "confianca": "A",
@@ -1088,7 +1088,7 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7048",
-       "idade_h": 0.8,
+       "idade_h": 1.0,
        "tipo": "grupo"
       }
      ],
@@ -1107,7 +1107,7 @@
      "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-branco-3266721/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "com jogo/extra",
-     "idade_h": 23.6,
+     "idade_h": 23.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1116,7 +1116,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/console-playstation-5-slim-digital-pacote-astro-bot-e-gran-turismo-7-branco-3266721/",
-       "idade_h": 23.6,
+       "idade_h": 23.7,
        "tipo": "postada"
       }
      ],
@@ -1169,7 +1169,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3266247/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 24.6,
+     "idade_h": 24.7,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1178,7 +1178,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3266247/",
-       "idade_h": 24.6,
+       "idade_h": 24.7,
        "tipo": "postada"
       }
      ],
@@ -1281,7 +1281,7 @@
      "link": "https://t.me/promobyteacheips5/7048",
      "obs": "postado no canal Promobyte Achei PS5",
      "detalhes": "com jogo/extra",
-     "idade_h": 0.8,
+     "idade_h": 1.0,
      "tipo": "grupo",
      "condicao": "novo",
      "confianca": "C",
@@ -1292,7 +1292,7 @@
       {
        "fonte": "Promobyte Achei PS5",
        "link": "https://t.me/promobyteacheips5/7048",
-       "idade_h": 0.8,
+       "idade_h": 1.0,
        "tipo": "grupo"
       }
      ],
@@ -1311,7 +1311,7 @@
      "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3264304/",
      "obs": "postado no Promobit (saiu da lista; pode ter acabado)",
      "detalhes": "",
-     "idade_h": 34.4,
+     "idade_h": 34.5,
      "tipo": "postada",
      "condicao": "novo",
      "confianca": "B",
@@ -1322,7 +1322,7 @@
       {
        "fonte": "Promobit",
        "link": "https://www.promobit.com.br/oferta/playstation-5-edicao-digital-825gb-1-controle-branco-sony-3264304/",
-       "idade_h": 34.4,
+       "idade_h": 34.5,
        "tipo": "postada"
       }
      ],
@@ -14896,6 +14896,18 @@
    "pro": "7899",
    "pro_cupom": "",
    "pro_loja": "KaBuM!"
+  },
+  {
+   "data_hora": "2026-11-28 11:17",
+   "leitor": "4284.0",
+   "leitor_cupom": "4499.0",
+   "leitor_loja": "Webcontinental · Lojas Colombo SA",
+   "digital": "3881.0",
+   "digital_cupom": "4101.74",
+   "digital_loja": "Magazine Luiza",
+   "pro": "7899",
+   "pro_cupom": "",
+   "pro_loja": "KaBuM!"
   }
  ],
  "cupons_teste": {
@@ -15189,39 +15201,39 @@
  "fontes": {
   "KaBuM!": {
    "ok": true,
-   "segundos": 0.3,
-   "ofertas": 38,
+   "segundos": 0.6,
+   "ofertas": 37,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 1,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Amazon": {
    "ok": false,
-   "erro": "Bloqueado: a Amazon pediu verificação (página sem resultados)",
-   "segundos": 0.1,
+   "erro": "Bloqueado: HTTP 503 (barrou o robô)",
+   "segundos": 0.3,
    "tipo": "loja",
-   "falhas_seguidas": 2,
-   "barradas_hoje": 57,
-   "buscas_hoje": 68
+   "falhas_seguidas": 3,
+   "barradas_hoje": 58,
+   "buscas_hoje": 69
   },
   "Americanas": {
    "ok": true,
-   "segundos": 1.2,
+   "segundos": 1.9,
    "ofertas": 13,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Fast Shop": {
    "ok": true,
-   "segundos": 0.8,
+   "segundos": 0.9,
    "ofertas": 6,
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Webcontinental": {
    "ok": true,
@@ -15230,7 +15242,7 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Bemol": {
    "ok": true,
@@ -15239,55 +15251,55 @@
    "tipo": "loja",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Zoom": {
    "ok": true,
-   "segundos": 4.3,
+   "segundos": 6.3,
    "ofertas": 25,
    "tipo": "comparador",
    "falhas_seguidas": 0,
    "barradas_hoje": 1,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Promobit": {
    "ok": true,
-   "segundos": 1.4,
+   "segundos": 1.3,
    "ofertas": 11,
    "tipo": "postada",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Gatry": {
    "ok": true,
-   "segundos": 0.4,
+   "segundos": 0.1,
    "ofertas": 1,
    "tipo": "postada",
    "detalhe": "40 ofertas no feed",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Telegram": {
    "ok": true,
-   "segundos": 28.3,
+   "segundos": 25.1,
    "ofertas": 140,
    "tipo": "grupo",
    "detalhe": "23 de 23 canais",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Leilões": {
    "ok": true,
-   "segundos": 5.1,
+   "segundos": 5.0,
    "ofertas": 1,
    "tipo": "leilão",
    "detalhe": "3 de 3 sites",
    "falhas_seguidas": 0,
    "barradas_hoje": 0,
-   "buscas_hoje": 68
+   "buscas_hoje": 69
   },
   "Cupons (Promobit)": {
    "ok": true,
@@ -15296,7 +15308,7 @@
   }
  },
  "descartados": {
-  "não é console PS5": 196,
+  "não é console PS5": 195,
   "preço fora da faixa de PS5 com leitor de disco": 3
  },
  "config": {
