@@ -1,11 +1,11 @@
-# PS5 — última varredura: 2026-11-28 05:00 (hora de Brasília)
+# PS5 — última varredura: 2026-11-28 05:10 (hora de Brasília)
 
 **Mais barato agora:** PS5 Digital por R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 10h
 
 - **PS5 com leitor de disco**: R$ 4.284 na Webcontinental · Lojas Colombo SA · à vista no Pix, visto em 2 lugares
 - **PS5 Digital**: R$ 3.851 na Magazine Luiza com cupom BLACKDASBLACKS · visto em 2 lugares, postado há 10h
    sem cupom: R$ 3.881 na Magazine Luiza
-   não confirmada: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 4 lugares, postado há 12h
+   não confirmada: R$ 3.288 no Mercado Livre com cupom PMFT0001JACATC · visto em 2 lugares, postado há 12h
 - **PS5 Pro**: R$ 7.899 na KaBuM! · à vista no Pix, visto em 2 lugares
 
 ## Alertas
@@ -25,7 +25,7 @@ Telegram: sem mensagem nesta varredura
 
 ## À parte: importado
 
-- PS5 com leitor de disco: R$ 4.999,90 na Amazon · à vista
+- PS5 com leitor de disco: R$ 4.749,90 na Amazon · à vista
 - PS5 com leitor de disco: R$ 5.699,90 na Amazon · à vista
 - PS5 Digital: R$ 6.999 na Amazon · à vista
 
@@ -35,19 +35,19 @@ Telegram: sem mensagem nesta varredura
 
 ## Fontes
 
-- KaBuM!: ok, 39 itens · barrada em 1 de 31 buscas hoje
-- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 26 de 31 buscas hoje
+- KaBuM!: ok, 39 itens · barrada em 1 de 32 buscas hoje
+- Amazon: falhou (Bloqueado: HTTP 503 (barrou o robô)) · barrada em 27 de 32 buscas hoje
 - Americanas: ok, 13 itens
 - Fast Shop: ok, 6 itens
-- Webcontinental: ok, 49 itens
+- Webcontinental: ok, 50 itens
 - Bemol: ok, 3 itens
-- Zoom: ok, 28 itens · barrada em 1 de 31 buscas hoje
+- Zoom: ok, 28 itens · barrada em 1 de 32 buscas hoje
 - Promobit: ok, 12 itens
 - Gatry: ok, 0 itens (40 ofertas no feed)
 - Telegram: ok, 138 itens (23 de 23 canais)
 - Leilões: ok, 1 itens (3 de 3 sites)
 
-Descartados: 214 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
+Descartados: 215 não é console PS5, 2 preço fora da faixa de PS5 com leitor de disco
 
 Painel: https://hugovfa2017.github.io/passagens-monitor/ps5/
 
