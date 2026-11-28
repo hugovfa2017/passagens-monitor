@@ -2,7 +2,7 @@
  {
   "tipo": "resumo",
   "versao": 2,
-  "quando": "2026-11-27 23:35",
+  "quando": "2026-11-28 00:28",
   "alerta": null,
   "ordem": [
    "REC"
@@ -37,29 +37,27 @@
   "fontes": {
    "Google": {
     "buscas": 9,
-    "voos": 286,
-    "conferidos": 10,
-    "ofertas": 7,
+    "voos": 319,
+    "conferidos": 11,
+    "ofertas": 11,
     "bloqueio": null,
     "listas": {
-     "vazias": 1,
-     "repetidas": 4,
-     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | Recife REC | São Paulo GRU CGH · Campinas VCP | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
+     "vazias": 0,
+     "repetidas": 3,
+     "exemplo": "dos | Pesquisa de voo | Só ida | 4 | Econômica | São Paulo GRU CGH · Campinas VCP | Recife REC | Filtros | Todos os filtros | Escalas | Companhias aéreas | Bagagens | Preço | Horários | Emissões | Aeroportos de conexão | Duração | Resultados da busca | Nenhum resultado encontrado. |  | Algo deu errado. |  | Atual @ /travel/flights/search"
     },
     "diretos": {
      "telas": 11,
-     "lidas": 7
+     "lidas": 10
     },
-    "sem_preco": {
-     "a lista não abriu": 4
-    },
-    "seg": 183
+    "sem_preco": {},
+    "seg": 81
    },
-   "Vai de Promo": {
+   "MaxMilhas": {
     "buscas": 8,
     "com_voo": 8
    },
-   "MaxMilhas": {
+   "Vai de Promo": {
     "buscas": 8,
     "com_voo": 8
    },
@@ -85,7 +83,7 @@
   "taxa_mala": {
    "Azul": 96,
    "Gol": 136,
-   "LATAM": 87
+   "LATAM": 77
   },
   "grupos": [
    {
@@ -364,7 +362,7 @@
   "dia": "sáb 19/12",
   "ne": "REC",
   "pp": 2391,
-  "conf": false
+  "conf": true
  },
  {
   "tipo": "celula",
@@ -390,7 +388,7 @@
   "d": "2026-12-22",
   "dia": "ter 22/12",
   "ne": "REC",
-  "pp": 1490,
+  "pp": 1385,
   "conf": true
  },
  {
@@ -696,7 +694,7 @@
   "d": "2027-01-13",
   "dia": "qua 13/01",
   "ne": "REC",
-  "pp": 781,
+  "pp": 780,
   "conf": true
  },
  {
